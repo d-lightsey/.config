@@ -8,30 +8,31 @@ next_project_number: 92
 
 ### 91. Add Himalaya label management keybindings in Neovim
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [RESEARCHED]
 - **Effort**: 2-3 hours
 - **Research Started**: 2026-02-13
 - **Research Completed**: 2026-02-13
-- **Planning Started**: 2026-02-13
-- **Planning Completed**: 2026-02-13
 - **Language**: neovim
 - **Dependencies**: None
-- **Research**: [research-001.md](091_himalaya_label_management_keybindings/reports/research-001.md)
-- **Plan**: [implementation-001.md](091_himalaya_label_management_keybindings/plans/implementation-001.md)
+- **Research**: [research-001.md](091_himalaya_label_management_keybindings/reports/research-001.md), [research-002.md](091_himalaya_label_management_keybindings/reports/research-002.md)
+- **Plan**: [implementation-001.md](091_himalaya_label_management_keybindings/plans/implementation-001.md) (may need revision)
 
 **Description**: Implement keybindings in Neovim for Himalaya label management: (1) create/edit/delete labels with editing changing all emails the label is applied to, (2) mapping to label the email under cursor (if no selection), and (3) mapping to label all selected emails in visual mode.
 
 ### 90. Ensure bidirectional syncing for labels and folders for himalaya and Protonmail
 - **Effort**: 1 hour
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-02-13
 - **Research Completed**: 2026-02-13
 - **Planning Started**: 2026-02-13
 - **Planning Completed**: 2026-02-13
+- **Implementation Started**: 2026-02-13
+- **Implementation Completed**: 2026-02-13
 - **Language**: general
 - **Dependencies**: Task #89
 - **Research**: [research-001.md](090_himalaya_protonmail_bidirectional_sync/reports/research-001.md)
 - **Plan**: [implementation-001.md](090_himalaya_protonmail_bidirectional_sync/plans/implementation-001.md)
+- **Summary**: [implementation-summary-20260213.md](090_himalaya_protonmail_bidirectional_sync/summaries/implementation-summary-20260213.md)
 
 **Description**: Ensure bidirectional syncing for labels and folders for himalaya and the logos (protonmail) email account in an analogous manner to the himalaya and gmail account detailed in task 89.
 
