@@ -1,7 +1,7 @@
 # Implementation Plan: Task #89 (Revised v002)
 
 - **Task**: 89 - gmail_himalaya_folder_label_sync
-- **Status**: [IMPLEMENTING]
+- **Status**: [PARTIAL]
 - **Effort**: 1 hour
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -97,7 +97,7 @@ The mbsyncrc is managed by home-manager in:
 
 ---
 
-### Phase 2: Rebuild Home-Manager and Test Sync [IN PROGRESS]
+### Phase 2: Rebuild Home-Manager and Test Sync [PARTIAL]
 
 **Goal**: Apply the new configuration and verify basic sync still works.
 
@@ -138,7 +138,7 @@ himalaya folder list --account gmail | grep -E "EuroTrip|CrazyTown|Letters"
 
 ---
 
-### Phase 3: Test Bidirectional Folder Sync [NOT STARTED]
+### Phase 3: Test Bidirectional Folder Sync [BLOCKED]
 
 **Goal**: Verify new labels/folders sync bidirectionally between Gmail and Himalaya.
 
@@ -164,7 +164,7 @@ himalaya folder list --account gmail | grep -E "EuroTrip|CrazyTown|Letters"
 
 ---
 
-### Phase 4: Update Documentation [NOT STARTED]
+### Phase 4: Update Documentation [COMPLETED]
 
 **Goal**: Document the new workflow and configuration for future reference.
 
