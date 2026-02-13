@@ -4,10 +4,10 @@
     {
       "project_number": 91,
       "project_name": "himalaya_label_management_keybindings",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-02-13T23:04:26Z",
-      "last_updated": "2026-02-13T23:28:28Z",
+      "last_updated": "2026-02-13T23:33:58Z",
       "session_id": "sess_1771025066_bf504d",
       "artifacts": [
         {
@@ -16,17 +16,17 @@
           "summary": "Research report on Himalaya label/flag management commands and Neovim integration patterns"
         },
         {
-          "type": "plan",
-          "path": "specs/091_himalaya_label_management_keybindings/plans/implementation-001.md",
-          "summary": "Implementation plan for label/flag management keybindings with selection-aware operations"
-        },
-        {
           "type": "research",
           "path": "specs/091_himalaya_label_management_keybindings/reports/research-002.md",
           "summary": "Supplemental research on labels vs flags vs folders, cross-account compatibility for Gmail and Protonmail"
+        },
+        {
+          "path": "specs/091_himalaya_label_management_keybindings/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Revised plan with single-letter keybindings and cross-account compatibility"
         }
       ],
-      "planned": "2026-02-13T23:17:23Z"
+      "planned": "2026-02-13T23:33:58Z"
     },
     {
       "project_number": 90,
