@@ -17,7 +17,7 @@ next_project_number: 90
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [research-001.md](089_gmail_himalaya_folder_label_sync/reports/research-001.md)
-- **Plan**: [implementation-001.md](089_gmail_himalaya_folder_label_sync/plans/implementation-001.md)
+- **Plan**: [implementation-002.md](089_gmail_himalaya_folder_label_sync/plans/implementation-002.md)
 
 **Description**: Research how Gmail labels and folders sync with Himalaya email client. Investigate: (1) whether creating/deleting labels in Gmail browser automatically syncs to Himalaya locally, (2) whether Himalaya can create/delete folders and labels that sync back to Gmail, and (3) best practices for bidirectional folder/label management between Gmail web interface and Himalaya in Neovim.
 

@@ -7,8 +7,8 @@
       "status": "planned",
       "language": "neovim",
       "created": "2026-02-13T22:03:59Z",
-      "last_updated": "2026-02-13T22:13:40Z",
-      "session_id": "sess_1771020682_ef225a",
+      "last_updated": "2026-02-13T22:19:01Z",
+      "session_id": "sess_1771021054_87e62e",
       "artifacts": [
         {
           "type": "research",
@@ -17,11 +17,11 @@
         },
         {
           "type": "plan",
-          "path": "specs/089_gmail_himalaya_folder_label_sync/plans/implementation-001.md",
-          "summary": "Implementation plan for mbsyncrc bidirectional sync configuration"
+          "path": "specs/089_gmail_himalaya_folder_label_sync/plans/implementation-002.md",
+          "summary": "Revised plan for mbsyncrc bidirectional sync via home-manager (git-based versioning)"
         }
       ],
-      "planned": "2026-02-13T22:13:40Z"
+      "planned": "2026-02-13T22:19:01Z"
     },
     {
       "project_number": 88,
