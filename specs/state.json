@@ -1,6 +1,14 @@
 {
-  "next_project_number": 91,
+  "next_project_number": 92,
   "active_projects": [
+    {
+      "project_number": 91,
+      "project_name": "himalaya_label_management_keybindings",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-02-13T23:04:26Z",
+      "last_updated": "2026-02-13T23:04:26Z"
+    },
     {
       "project_number": 90,
       "project_name": "himalaya_protonmail_bidirectional_sync",
