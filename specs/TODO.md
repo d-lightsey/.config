@@ -1,10 +1,17 @@
 ---
-next_project_number: 95
+next_project_number: 96
 ---
 
 # TODO
 
 ## Tasks
+
+### 95. Remove ineffective changes from tasks 92 and 94
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: general
+
+**Description**: Review and remove any changes made by tasks 92 and 94 that didn't have the intended effect and add complexity without merit. Context: After completing tasks 92 and 94, opening a WezTerm tab in some/directory/, then opening a Neovim session with root at some/root/, then pressing ctrl+space followed by 'c', still opens a new tab at the Neovim session's some/root/ instead of the original some/directory/. The user has decided to accept this behavior and wants to clean up any ineffective changes that were added.
 
 ### 94. Fix WezTerm new tab spawn directory by using parent shell CWD
 - **Effort**: 0.5 hours

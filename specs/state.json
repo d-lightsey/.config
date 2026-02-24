@@ -1,6 +1,14 @@
 {
-  "next_project_number": 95,
+  "next_project_number": 96,
   "active_projects": [
+    {
+      "project_number": 95,
+      "project_name": "remove_ineffective_changes_92_94",
+      "status": "not_started",
+      "language": "general",
+      "created": "2026-02-24T17:42:13Z",
+      "last_updated": "2026-02-24T17:42:13Z"
+    },
     {
       "project_number": 94,
       "project_name": "fix_wezterm_new_tab_spawn_directory_parent_shell_cwd",
