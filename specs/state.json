@@ -4,10 +4,18 @@
     {
       "project_number": 95,
       "project_name": "remove_ineffective_changes_92_94",
-      "status": "not_started",
+      "status": "researched",
       "language": "general",
       "created": "2026-02-24T17:42:13Z",
-      "last_updated": "2026-02-24T17:42:13Z"
+      "last_updated": "2026-02-24T18:00:00Z",
+      "session_id": "sess_1771955080_0d7df9",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/095_remove_ineffective_changes_92_94/reports/research-001.md",
+          "summary": "Research identifying 4 changes from tasks 92/94: 2 unrelated scope creep (CursorHold, maildir keymap), 2 ineffective fixes (fish prompt hook, wezterm Leader+c override). All recommended for revert."
+        }
+      ]
     },
     {
       "project_number": 94,

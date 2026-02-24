@@ -8,8 +8,11 @@ next_project_number: 96
 
 ### 95. Remove ineffective changes from tasks 92 and 94
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-02-24
+- **Research Completed**: 2026-02-24
 - **Language**: general
+- **Research**: [research-001.md](095_remove_ineffective_changes_92_94/reports/research-001.md)
 
 **Description**: Review and remove any changes made by tasks 92 and 94 that didn't have the intended effect and add complexity without merit. Context: After completing tasks 92 and 94, opening a WezTerm tab in some/directory/, then opening a Neovim session with root at some/root/, then pressing ctrl+space followed by 'c', still opens a new tab at the Neovim session's some/root/ instead of the original some/directory/. The user has decided to accept this behavior and wants to clean up any ineffective changes that were added.
 
