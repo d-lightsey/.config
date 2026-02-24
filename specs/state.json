@@ -36,21 +36,16 @@
     {
       "project_number": 92,
       "project_name": "sync_wezterm_directory_with_neovim_session",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-02-21T23:24:52Z",
-      "last_updated": "2026-02-24T16:17:01Z",
-      "session_id": "sess_1771949500_6fa8de",
+      "last_updated": "2026-02-24T16:25:29Z",
+      "session_id": "sess_1771950153_a53af2",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/092_sync_wezterm_directory_with_neovim_session/reports/research-001.md",
           "summary": "Research report on WezTerm-Neovim directory sync: found existing OSC 7 implementation already handles tab titles and spawn directory inheritance"
-        },
-        {
-          "path": "specs/092_sync_wezterm_directory_with_neovim_session/plans/implementation-001.md",
-          "type": "plan",
-          "summary": "4-phase verification and enhancement plan for WezTerm directory synchronization"
         },
         {
           "type": "research",
@@ -66,9 +61,14 @@
           "type": "research",
           "path": "specs/092_sync_wezterm_directory_with_neovim_session/reports/research-004.md",
           "summary": "Analysis of 4 fix options for OSC 7 metadata vs shell $PWD issue; recommends fish prompt hook as minimal fix (4 lines)"
+        },
+        {
+          "path": "specs/092_sync_wezterm_directory_with_neovim_session/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "1-phase implementation plan: add fish prompt hook to fix stale OSC 7 metadata after Neovim exits"
         }
       ],
-      "planned": "2026-02-21T23:42:56Z"
+      "planned": "2026-02-24T16:25:29Z"
     },
     {
       "project_number": 91,
