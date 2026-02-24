@@ -4,18 +4,24 @@
     {
       "project_number": 94,
       "project_name": "fix_wezterm_new_tab_spawn_directory_parent_shell_cwd",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-02-24T16:50:31Z",
-      "last_updated": "2026-02-24T17:04:08Z",
-      "session_id": "sess_1771952249_da1058",
+      "last_updated": "2026-02-24T17:07:44Z",
+      "session_id": "sess_1771952720_c4ca9b",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/094_fix_wezterm_new_tab_spawn_directory_parent_shell_cwd/reports/research-001.md",
           "summary": "WezTerm Lua API research confirming LocalProcessInfo.ppid/cwd fields, procinfo.current_working_dir_for_pid(), SpawnCommandInNewTab cwd parameter, and action_callback usage with exact implementation code"
+        },
+        {
+          "path": "specs/094_fix_wezterm_new_tab_spawn_directory_parent_shell_cwd/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "1-phase implementation plan to replace Leader+c keybinding with action_callback that reads process CWD from /proc"
         }
-      ]
+      ],
+      "planned": "2026-02-24T17:07:44Z"
     },
     {
       "project_number": 93,
