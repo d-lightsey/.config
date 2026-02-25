@@ -12,15 +12,18 @@ A user runs `/learn nvim/lua/` to scan the Neovim Lua configuration directory fo
 
 ## Tag Types and Task Generation
 
-The `/learn` command recognizes three tag types in source code comments:
+The `/learn` command recognizes four tag types in source code comments:
 
 | Tag | Task Type | Behavior |
 |-----|-----------|----------|
 | `FIX:` | fix-it-task | All FIX: and NOTE: tags grouped into single task |
 | `NOTE:` | fix-it-task + learn-it-task | Creates two task types (with dependency when both selected) |
 | `TODO:` | todo-task | User selects which TODO: tags become tasks (with optional topic grouping) |
+| `QUESTION:` | research-task | User selects which QUESTION: tags become research tasks (content-based language detection) |
 
 **Dependency behavior**: When NOTE: tags exist and both fix-it and learn-it tasks are selected, the learn-it task is created first and the fix-it task depends on it. This ensures proper workflow: learn-it extracts knowledge to context files (NOTE: tags remain in source), then fix-it addresses the code changes and removes both NOTE: and FIX: tags.
+
+**QUESTION: language detection**: Unlike other tag types, QUESTION: tags use **content-based language detection** instead of file-type detection. The question text is analyzed for domain keywords (nvim/lsp/telescope -> neovim, theorem/proof/lemma -> latex, .claude/command/agent -> meta), defaulting to "general" for ambiguous cases. This ensures research questions are routed to the appropriate research agent based on what is being asked, not where the question was written.
 
 ---
 
@@ -431,12 +434,13 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 
 ## Tag Detection Examples
 
-### Lean Files (.lua)
+### Lua Files (.lua)
 
-```lean
+```lua
 -- FIX: This needs to handle the empty frame case
 -- NOTE: The S5 axiom pattern could be generalized
 -- TODO: Add reflexivity lemma
+-- QUESTION: What is the best way to implement telescope pickers?
 ```
 
 ### LaTeX Files (.tex)
@@ -445,6 +449,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 % FIX: Correct the citation format
 % NOTE: This theorem should be referenced in the appendix
 % TODO: Add proof sketch for completeness
+% QUESTION: How do I prove the lemma about modal accessibility?
 ```
 
 ### Markdown Files (.md)
@@ -453,6 +458,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 <!-- FIX: Update outdated section -->
 <!-- NOTE: Consider reorganizing these examples -->
 <!-- TODO: Add code examples -->
+<!-- QUESTION: What is the best structure for agent documentation? -->
 ```
 
 ### Python/Shell Files
@@ -461,6 +467,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 # FIX: Handle edge case when input is empty
 # NOTE: This algorithm could be optimized
 # TODO: Add unit tests
+# QUESTION: What is the recommended approach for async file I/O?
 ```
 
 ---
@@ -489,12 +496,38 @@ If user runs `/learn nvim/lua/` but no tags exist:
 ## No Tags Found
 
 Scanned files in: nvim/lua/
-No FIX:, NOTE:, or TODO: tags detected.
+No FIX:, NOTE:, TODO:, or QUESTION: tags detected.
 
 Nothing to create.
 ```
 
 Exits gracefully without prompts.
+
+### Scenario E: QUESTION: Tags with Content-Based Language Detection
+
+If user runs `/learn` and the scan finds QUESTION: tags:
+
+```
+## Tag Scan Results
+
+**Files Scanned**: nvim/lua/
+**Tags Found**: 3
+
+### QUESTION: Tags (3)
+- `nvim/lua/config/lsp.lua:45` - What is the best way to configure LSP hover windows?
+- `docs/guide.tex:89` - How do I prove this theorem about completeness?
+- `scripts/build.sh:12` - What is the best approach for caching build artifacts?
+```
+
+When creating research tasks, language is detected from **question content**, not source file:
+
+| Question | Source File | Detected Language | Reason |
+|----------|-------------|-------------------|--------|
+| "What is the best way to configure LSP hover windows?" | `.lua` | neovim | Contains "LSP" keyword |
+| "How do I prove this theorem about completeness?" | `.tex` | latex | Contains "theorem" keyword |
+| "What is the best approach for caching build artifacts?" | `.sh` | general | No domain keywords found |
+
+**Key insight**: The middle question would be detected as "latex" even though it's in a .tex file - this is the desired behavior. A math question in a .tex file could theoretically be "general" if it doesn't contain latex keywords, while an LSP question in any file type would be "neovim".
 
 ### Scenario B: Only FIX: Tags
 
@@ -585,17 +618,19 @@ User runs: /learn nvim/lua/
 This example demonstrated:
 
 1. **Direct Execution**: No subagent delegation, all logic in skill-learn
-2. **Interactive Selection**: AskUserQuestion for task type and TODO item choices
-3. **Tag Extraction**: Using grep patterns for multiple file types
-4. **Task Grouping**: FIX:/NOTE: grouped into fix-it task, TODO: individual or topic-grouped tasks
-5. **Topic Analysis**: Automatic clustering of related TODO items by shared terms and context
-6. **User Control**: Granular selection of what to create and how to group
-7. **Edge Case Handling**: Graceful handling of no tags, user cancelation, large TODO lists
+2. **Interactive Selection**: AskUserQuestion for task type and TODO/QUESTION item choices
+3. **Tag Extraction**: Using grep patterns for multiple file types (FIX:, NOTE:, TODO:, QUESTION:)
+4. **Task Grouping**: FIX:/NOTE: grouped into fix-it task, TODO:/QUESTION: individual or topic-grouped tasks
+5. **Topic Analysis**: Automatic clustering of related TODO and QUESTION items by shared terms and context
+6. **Content-Based Language Detection**: QUESTION: tags detect language from question content, not source file
+7. **User Control**: Granular selection of what to create and how to group
+8. **Edge Case Handling**: Graceful handling of no tags, user cancelation, large item lists
 
 The `/learn` command provides:
 - Automated task discovery from embedded source comments
 - Interactive preview-then-select workflow
-- **Smart topic grouping for related TODO items**
+- **Smart topic grouping for related TODO and QUESTION items**
+- **Content-based language routing for research tasks**
 - Structured task creation following project standards
 - User control over which tasks are created and grouping approach
 

@@ -1,5 +1,5 @@
 ---
-description: Scan files for FIX:, NOTE:, TODO: tags and create structured tasks interactively
+description: Scan files for FIX:, NOTE:, TODO:, QUESTION: tags and create structured tasks interactively
 allowed-tools: Skill
 argument-hint: [PATH...]
 model: claude-opus-4-5-20251101
@@ -7,7 +7,7 @@ model: claude-opus-4-5-20251101
 
 # /learn Command
 
-Scans codebase files for embedded tags (`FIX:`, `NOTE:`, `TODO:`) and creates structured tasks based on user selection. This command helps capture work items embedded in source code comments.
+Scans codebase files for embedded tags (`FIX:`, `NOTE:`, `TODO:`, `QUESTION:`) and creates structured tasks based on user selection. This command helps capture work items embedded in source code comments.
 
 ## Arguments
 
@@ -22,7 +22,9 @@ The command always runs interactively:
 3. Prompt for task type selection
 4. Optionally prompt for individual TODO selection
 5. **Optionally prompt for TODO topic grouping** (if 2+ TODOs selected)
-6. Create selected tasks
+6. Optionally prompt for individual QUESTION selection
+7. **Optionally prompt for QUESTION topic grouping** (if 2+ QUESTIONs selected)
+8. Create selected tasks
 
 This design ensures users always see what was found before any tasks are created.
 
@@ -33,6 +35,7 @@ This design ensures users always see what was found before any tasks are created
 | `FIX:` | fix-it-task | Grouped into single task for small changes |
 | `NOTE:` | fix-it-task + learn-it-task | Creates both task types (with dependency) |
 | `TODO:` | todo-task | Individual task per selected tag |
+| `QUESTION:` | research-task | Research task to answer embedded questions |
 
 ### Task Type Details
 
@@ -41,6 +44,8 @@ This design ensures users always see what was found before any tasks are created
 **learn-it-task**: Groups NOTE: tags by target context directory. Creates tasks to update `.claude/context/` files based on the learnings. Only offered if NOTE: tags exist.
 
 **todo-task**: One task per selected TODO: tag (or grouped by topic). Preserves original text as task description. Language detected from source file type.
+
+**research-task**: One task per selected QUESTION: tag (or grouped by topic). Creates research tasks to answer embedded questions. **Language is detected from question content** (not source file type) using keyword matching: neovim keywords (nvim, lsp, telescope, etc.) -> "neovim", latex keywords (theorem, proof, lemma, etc.) -> "latex", meta keywords (.claude, command, agent, etc.) -> "meta", otherwise -> "general".
 
 ### TODO Topic Grouping
 
@@ -90,7 +95,7 @@ This dependency is only added when both task types are selected for NOTE: tags. 
 | Lua (`.lua`) | `--` | `-- FIX: Handle edge case` |
 | LaTeX (`.tex`) | `%` | `% NOTE: Document this pattern` |
 | Markdown (`.md`) | `<!--` | `<!-- TODO: Add section -->` |
-| Python/Shell/YAML | `#` | `# FIX: Optimize loop` |
+| Python/Shell/YAML | `#` | `# QUESTION: What is the best approach?` |
 
 ## Execution
 
@@ -102,7 +107,7 @@ The skill scans specified paths and displays findings:
 ## Tag Scan Results
 
 **Files Scanned**: nvim/lua/, docs/
-**Tags Found**: 15
+**Tags Found**: 17
 
 ### FIX: Tags (5)
 - `src/module.lua:23` - Handle edge case in parser
@@ -115,6 +120,10 @@ The skill scans specified paths and displays findings:
 
 ### TODO: Tags (7)
 - `nvim/lua/Layer1/Modal.lua:67` - Add LSP configuration
+...
+
+### QUESTION: Tags (2)
+- `nvim/lua/config/lsp.lua:45` - What is the best way to configure hover windows?
 ...
 ```
 
@@ -129,6 +138,7 @@ Which task types should be created?
 [ ] fix-it task (Combine 8 FIX:/NOTE: tags into single task)
 [ ] learn-it task (Update context from 3 NOTE: tags)
 [ ] TODO tasks (Create tasks for 7 TODO: items)
+[ ] Research tasks (Create research tasks for 2 QUESTION: items)
 ```
 
 ### 3. TODO Item Selection
@@ -171,7 +181,7 @@ Selected tasks are created in TODO.md and state.json.
 ## Tag Scan Results
 
 **Files Scanned**: .
-**Tags Found**: 15
+**Tags Found**: 17
 
 ### FIX: Tags (5)
 - `src/module.lua:23` - Handle edge case in parser
@@ -187,15 +197,19 @@ Selected tasks are created in TODO.md and state.json.
 - `nvim/lua/utils/helpers.lua:23` - Implement helper function
 ...
 
+### QUESTION: Tags (2)
+- `nvim/lua/config/lsp.lua:45` - What is the best way to configure hover windows?
+- `nvim/lua/plugins/cmp.lua:78` - How do I customize completion sources?
+
 ---
 
-[User selects task types and TODO items]
+[User selects task types and items]
 
 ---
 
 ## Tasks Created from Tags
 
-**Tags Processed**: 15
+**Tags Processed**: 17
 
 ### Created Tasks
 
@@ -205,6 +219,7 @@ Selected tasks are created in TODO.md and state.json.
 | 651 | learn-it | Update context files from NOTE: tags | Medium | meta |
 | 652 | todo | Add LSP configuration | Medium | neovim |
 | 653 | todo | Implement helper function | Medium | neovim |
+| 654 | research | Research: What is the best way to configure... | Medium | neovim |
 
 ---
 
@@ -220,7 +235,7 @@ Selected tasks are created in TODO.md and state.json.
 ## No Tags Found
 
 Scanned files in: nvim/lua/
-No FIX:, NOTE:, or TODO: tags detected.
+No FIX:, NOTE:, TODO:, or QUESTION: tags detected.
 
 Nothing to create.
 ```
@@ -260,9 +275,9 @@ This command implements the multi-task creation pattern. See `.claude/docs/refer
 
 | Component | Status | Notes |
 |-----------|--------|-------|
-| Discovery | Yes | Tag scanning (FIX:, NOTE:, TODO:) |
+| Discovery | Yes | Tag scanning (FIX:, NOTE:, TODO:, QUESTION:) |
 | Selection | Yes | AskUserQuestion with multiSelect |
-| Grouping | Yes | Topic clustering by shared terms/file section |
+| Grouping | Yes | Topic clustering for TODO and QUESTION |
 | Dependencies | Partial | Internal only (learn-it -> fix-it) |
 | Ordering | No | Sequential creation |
 | Visualization | No | Not implemented |

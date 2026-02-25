@@ -17,7 +17,7 @@ Identify items that could become tasks from various sources.
 **Sources by Command**:
 | Command | Discovery Source |
 |---------|------------------|
-| `/learn` | FIX:, NOTE:, TODO: tags in source files |
+| `/learn` | FIX:, NOTE:, TODO:, QUESTION: tags in source files |
 | `/meta` | User interview responses |
 | `/review` | Code analysis findings + roadmap items |
 | `/errors` | Error patterns from errors.json |
