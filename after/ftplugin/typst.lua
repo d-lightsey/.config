@@ -225,9 +225,27 @@ local function show_diagnostics()
 end
 
 local function tinymist_clear_cache()
+  -- Delete stale compiled artifacts (same base name as main .typ file)
+  local main_file = vim.b.typst_main_file or vim.fn.expand("%:p")
+  local main_dir = vim.fn.fnamemodify(main_file, ":h")
+  local main_base = vim.fn.fnamemodify(main_file, ":t:r")
+  local deleted = {}
+  for _, ext in ipairs({ ".svg", ".pdf" }) do
+    local path = main_dir .. "/" .. main_base .. ext
+    if vim.fn.filereadable(path) == 1 then
+      vim.fn.delete(path)
+      table.insert(deleted, main_base .. ext)
+    end
+  end
+
   pcall(vim.cmd, "TypstPreviewStop")
   vim.cmd("LspRestart tinymist")
-  vim.notify("tinymist cache cleared (run <leader>lp to reopen)", vim.log.levels.INFO)
+
+  local msg = "tinymist cache cleared"
+  if #deleted > 0 then
+    msg = msg .. " | deleted: " .. table.concat(deleted, ", ")
+  end
+  vim.notify(msg .. " | run <leader>lp to reopen", vim.log.levels.INFO)
 end
 
 -- Register which-key bindings for Typst (uses <leader>l like LaTeX)

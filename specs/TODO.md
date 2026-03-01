@@ -8,7 +8,8 @@ next_project_number: 100
 
 ### 99. Review agent systems to identify core features and extensions architecture
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
+- **Research Started**: 2026-03-01
 - **Language**: meta
 - **Dependencies**: None
 
@@ -16,10 +17,12 @@ next_project_number: 100
 
 ### 98. Remove deprecated index.md and consolidate context index to JSON
 - **Effort**: TBD
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Research Started**: 2026-03-01
+- **Research Completed**: 2026-03-01
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [research-001.md](098_consolidate_context_index_to_json/reports/research-001.md)
 
 **Description**: Remove index.md from .claude/context/ and all references, given that index.json has been implemented. Verify removal won't break anything by ensuring the system uses index.json consistently. Also evaluate index.schema.json - determine if it should be removed or moved to context files to document the index.json schema pattern rather than being an active part of the system.
 
