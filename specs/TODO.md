@@ -1,14 +1,23 @@
 ---
-next_project_number: 99
+next_project_number: 100
 ---
 
 # TODO
 
 ## Tasks
 
-### 98. Remove deprecated index.md and consolidate context index to JSON
+### 99. Review agent systems to identify core features and extensions architecture
 - **Effort**: TBD
 - **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Review .claude/ agent systems in ProofChecker/ and Theory/ directories to identify general-purpose features (commands, skills, agents, rules, context files) missing from the current nvim/.claude/ system. Design a core + extensions architecture where the core agent system is managed by `<leader>ac`, and extensions (e.g., Lean development support) are optional additions loadable through `<leader>ac` but not active by default. Goal: ProofChecker/ agent = core system + Lean extension.
+
+### 98. Remove deprecated index.md and consolidate context index to JSON
+- **Effort**: TBD
+- **Status**: [RESEARCHING]
+- **Research Started**: 2026-03-01
 - **Language**: meta
 - **Dependencies**: None
 

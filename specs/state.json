@@ -1,13 +1,22 @@
 {
-  "next_project_number": 99,
+  "next_project_number": 100,
   "active_projects": [
+    {
+      "project_number": 99,
+      "project_name": "review_agent_systems_core_extensions",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-01T20:06:21Z",
+      "last_updated": "2026-03-01T20:06:21Z"
+    },
     {
       "project_number": 98,
       "project_name": "consolidate_context_index_to_json",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-01T19:58:07Z",
-      "last_updated": "2026-03-01T19:58:07Z"
+      "last_updated": "2026-03-01T20:06:22Z",
+      "session_id": "sess_1772395561_4741f5"
     },
     {
       "project_number": 97,
