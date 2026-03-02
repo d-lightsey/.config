@@ -69,12 +69,7 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 
 **Update plan file** (if exists): Update the Status field in plan metadata:
 ```bash
-# Find latest plan file (use padded directory number)
-padded_num=$(printf "%03d" "$task_number")
-plan_file=$(ls -1 "specs/${padded_num}_${project_name}/plans/implementation-"*.md 2>/dev/null | sort -V | tail -1)
-if [ -n "$plan_file" ] && [ -f "$plan_file" ]; then
-    sed -i "s/^\- \*\*Status\*\*: \[.*\]$/- **Status**: [IMPLEMENTING]/" "$plan_file"
-fi
+.claude/scripts/update-plan-status.sh "$task_number" "$project_name" "IMPLEMENTING"
 ```
 
 **Create Postflight Marker**:
@@ -279,22 +274,9 @@ Update TODO.md:
 - Change status marker from `[IMPLEMENTING]` to `[COMPLETED]`
 - Add summary artifact link: `- **Summary**: [implementation-summary-{DATE}.md]({artifact_path})`
 
-**Update plan file** (if exists): Update the Status field to `[COMPLETED]` with verification:
+**Update plan file** (if exists): Update the Status field to `[COMPLETED]`:
 ```bash
-plan_file=$(ls -1 "specs/${padded_num}_${project_name}/plans/implementation-"*.md 2>/dev/null | sort -V | tail -1)
-if [ -n "$plan_file" ] && [ -f "$plan_file" ]; then
-    # Try bullet pattern first, then non-bullet pattern
-    sed -i 's/^\- \*\*Status\*\*: \[.*\]$/- **Status**: [COMPLETED]/' "$plan_file"
-    sed -i 's/^\*\*Status\*\*: \[.*\]$/**Status**: [COMPLETED]/' "$plan_file"
-    # Verify update
-    if grep -qE '^\*\*Status\*\*: \[COMPLETED\]|^\- \*\*Status\*\*: \[COMPLETED\]' "$plan_file"; then
-        echo "Plan file status updated to [COMPLETED]"
-    else
-        echo "WARNING: Could not verify plan file status update"
-    fi
-else
-    echo "INFO: No plan file found to update (directory: specs/${padded_num}_${project_name}/plans/)"
-fi
+.claude/scripts/update-plan-status.sh "$task_number" "$project_name" "COMPLETED"
 ```
 
 **If result.status == "partial"**:
@@ -311,22 +293,9 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 
 TODO.md stays as `[IMPLEMENTING]`.
 
-**Update plan file** (if exists): Update the Status field to `[PARTIAL]` with verification:
+**Update plan file** (if exists): Update the Status field to `[PARTIAL]`:
 ```bash
-plan_file=$(ls -1 "specs/${padded_num}_${project_name}/plans/implementation-"*.md 2>/dev/null | sort -V | tail -1)
-if [ -n "$plan_file" ] && [ -f "$plan_file" ]; then
-    # Try bullet pattern first, then non-bullet pattern
-    sed -i 's/^\- \*\*Status\*\*: \[.*\]$/- **Status**: [PARTIAL]/' "$plan_file"
-    sed -i 's/^\*\*Status\*\*: \[.*\]$/**Status**: [PARTIAL]/' "$plan_file"
-    # Verify update
-    if grep -qE '^\*\*Status\*\*: \[PARTIAL\]|^\- \*\*Status\*\*: \[PARTIAL\]' "$plan_file"; then
-        echo "Plan file status updated to [PARTIAL]"
-    else
-        echo "WARNING: Could not verify plan file status update"
-    fi
-else
-    echo "INFO: No plan file found to update (directory: specs/${padded_num}_${project_name}/plans/)"
-fi
+.claude/scripts/update-plan-status.sh "$task_number" "$project_name" "PARTIAL"
 ```
 
 **On failed**: Do NOT run postflight. Keep status as "implementing" for retry. Do not update plan file (leave as `[IMPLEMENTING]` for retry).
