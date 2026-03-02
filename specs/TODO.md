@@ -1,18 +1,26 @@
 ---
-next_project_number: 107
+next_project_number: 108
 ---
 
 # TODO
 
 ## Tasks
 
+### 107. Port TTS notification hooks from ProofChecker .claude system
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Port TTS functionality from /home/benjamin/Projects/ProofChecker/.claude/ to nvim/.claude/, extending triggers beyond task completion to include input-needed events (questions, user prompts). Update documentation in .claude/docs/ with all software dependencies.
+
 ### 106. Review dotfiles .claude agent system to add nix/ extension
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-02
 - **Research Completed**: 2026-03-02
 - **Planning Started**: 2026-03-02
 - **Planning Completed**: 2026-03-02
+- **Implementation Started**: 2026-03-02
 - **Language**: meta
 - **Research**: [research-001.md](106_review_dotfiles_claude_nix_extension/reports/research-001.md)
 - **Plan**: [implementation-001.md](106_review_dotfiles_claude_nix_extension/plans/implementation-001.md)

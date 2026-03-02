@@ -1,7 +1,7 @@
 # Implementation Plan: Task #106
 
 - **Task**: 106 - Review dotfiles .claude/ agent system for NixOS to add nix/ extension
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2-3 hours
 - **Dependencies**: Task #102, Task #105
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -55,7 +55,7 @@ The research report (research-001.md) identified:
 
 ## Implementation Phases
 
-### Phase 1: Extension Metadata Files [NOT STARTED]
+### Phase 1: Extension Metadata Files [COMPLETED]
 
 **Goal**: Create the extension directory structure and the 3 core metadata files that define the extension.
 
@@ -79,7 +79,7 @@ The research report (research-001.md) identified:
 
 ---
 
-### Phase 2: MCP Settings Fragment [NOT STARTED]
+### Phase 2: MCP Settings Fragment [COMPLETED]
 
 **Goal**: Create the MCP-NixOS server configuration fragment following the lean/ extension pattern.
 
@@ -104,7 +104,7 @@ The research report (research-001.md) identified:
 
 ---
 
-### Phase 3: Agents [NOT STARTED]
+### Phase 3: Agents [IN PROGRESS]
 
 **Goal**: Adapt the 2 Nix agents from dotfiles to extension format with updated context paths.
 
