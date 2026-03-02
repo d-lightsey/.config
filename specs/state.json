@@ -4,10 +4,19 @@
     {
       "project_number": 106,
       "project_name": "review_dotfiles_claude_nix_extension",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-02T20:05:29Z",
-      "last_updated": "2026-03-02T20:05:29Z"
+      "last_updated": "2026-03-02T20:13:52Z",
+      "session_id": "sess_1772482064_f2479f",
+      "researched": "2026-03-02T20:13:52Z",
+      "artifacts": [
+        {
+          "path": "specs/106_review_dotfiles_claude_nix_extension/reports/research-001.md",
+          "type": "research",
+          "summary": "Research report documenting dotfiles Nix agent system components (2 agents, 2 skills, 1 rule, 11 context files) and extension architecture requirements for nix/ extension"
+        }
+      ]
     },
     {
       "project_number": 105,
