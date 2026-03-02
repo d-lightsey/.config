@@ -137,16 +137,7 @@ The skill will spawn the appropriate agent which executes plan phases sequential
        # Check if plan file has [COMPLETED] status
        if ! grep -qE '^\*\*Status\*\*: \[COMPLETED\]|^\- \*\*Status\*\*: \[COMPLETED\]' "$plan_file"; then
            echo "WARNING: Plan file status not updated to [COMPLETED]. Applying defensive correction."
-           # Try bullet pattern first
-           sed -i 's/^\- \*\*Status\*\*: \[.*\]$/- **Status**: [COMPLETED]/' "$plan_file"
-           # Try non-bullet pattern
-           sed -i 's/^\*\*Status\*\*: \[.*\]$/**Status**: [COMPLETED]/' "$plan_file"
-           # Verify correction applied
-           if grep -qE '^\*\*Status\*\*: \[COMPLETED\]|^\- \*\*Status\*\*: \[COMPLETED\]' "$plan_file"; then
-               echo "Plan file status corrected to [COMPLETED]"
-           else
-               echo "WARNING: Could not update plan file status (pattern mismatch)"
-           fi
+           .claude/scripts/update-plan-status.sh "$task_number" "$project_name" "COMPLETED"
        fi
    fi
    ```
