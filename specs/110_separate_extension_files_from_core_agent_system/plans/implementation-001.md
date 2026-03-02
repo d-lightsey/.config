@@ -1,7 +1,7 @@
 # Implementation Plan: Task #110
 
 - **Task**: 110 - separate_extension_files_from_core_agent_system
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2-4 hours
 - **Dependencies**: Task #109 (completed)
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -46,7 +46,7 @@ Research report `research-001.md` identified the complete inventory of 25 extens
 
 ## Implementation Phases
 
-### Phase 1: Create Document-Converter Extension [NOT STARTED]
+### Phase 1: Create Document-Converter Extension [COMPLETED]
 
 - **Goal:** Establish a new `extensions/document-converter/` extension with manifest, EXTENSION.md, and copies of the core document-converter files, following the same structure as existing extensions (latex, typst).
 
@@ -76,7 +76,7 @@ Research report `research-001.md` identified the complete inventory of 25 extens
 
 ---
 
-### Phase 2: Remove Extension-Specific Files from Core [NOT STARTED]
+### Phase 2: Remove Extension-Specific Files from Core [COMPLETED]
 
 - **Goal:** Delete all 25 extension-specific files from the core `.claude/` directory. These files are duplicated in their respective extensions and their presence in core pollutes new project syncs.
 
@@ -114,7 +114,7 @@ Research report `research-001.md` identified the complete inventory of 25 extens
 
 ---
 
-### Phase 3: Update Core Reference Files [NOT STARTED]
+### Phase 3: Update Core Reference Files [COMPLETED]
 
 - **Goal:** Remove all references to LaTeX, Typst, and document-converter agents/skills from core configuration files so that the core system is self-consistent and does not reference non-existent files.
 
@@ -165,7 +165,7 @@ Research report `research-001.md` identified the complete inventory of 25 extens
 
 ---
 
-### Phase 4: Verification and Consistency Check [NOT STARTED]
+### Phase 4: Verification and Consistency Check [IN PROGRESS]
 
 - **Goal:** Validate that the core system is self-consistent after all removals and updates, and that extensions can load cleanly without conflicts.
 

@@ -1,18 +1,26 @@
 ---
-next_project_number: 111
+next_project_number: 112
 ---
 
 # TODO
 
 ## Tasks
 
+### 111. Systematically compare opencode agent systems to evaluate virtues and preference
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Systematically compare the /home/benjamin/.config/nvim/.opencode/ and /home/benjamin/Projects/ProofChecker/.opencode/ agent systems in order to evaluate which has which virtues, and which I should prefer.
+
 ### 110. Separate LaTeX/Typst extension files from core agent system for portability
 - **Effort**: 2-4 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-02
 - **Research Completed**: 2026-03-02
 - **Planning Started**: 2026-03-02
 - **Planning Completed**: 2026-03-02
+- **Implementation Started**: 2026-03-02
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](110_separate_extension_files_from_core_agent_system/reports/research-001.md)
