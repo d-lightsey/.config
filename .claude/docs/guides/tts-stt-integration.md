@@ -95,17 +95,12 @@ mv vosk-model-small-en-us-0.15 vosk-model-small-en-us
 Claude Code triggers `tts-notify.sh` via hooks when:
 
 1. **Stop Event**: Claude finishes responding - announces "Tab N"
-2. **Notification Events** (input-needed):
-   - `permission_prompt`: Claude needs tool permission - announces "Tab N needs permission"
-   - `idle_prompt`: Claude needs user input - announces "Tab N needs input"
-   - `elicitation_dialog`: Claude has a question - announces "Tab N has a question"
+2. **Notification Events** (input-needed): `permission_prompt`, `idle_prompt`, `elicitation_dialog` - announces "Tab N"
 
 The script:
-1. Reads JSON from stdin to determine event type
-2. Checks a 10-second cooldown to prevent notification spam
-3. Detects the WezTerm tab number via `wezterm cli list`
-4. Generates an event-specific message
-5. Speaks the message using Piper TTS
+1. Checks a 10-second cooldown to prevent notification spam
+2. Detects the WezTerm tab number via `wezterm cli list`
+3. Speaks "Tab N" using Piper TTS
 
 ### Hook Configuration
 
@@ -166,9 +161,9 @@ export TTS_COOLDOWN=5
 | Event | Trigger | Message |
 |-------|---------|---------|
 | Stop | Claude finishes responding | "Tab N" |
-| permission_prompt | Claude needs tool permission | "Tab N needs permission" |
-| idle_prompt | Claude is waiting for user input | "Tab N needs input" |
-| elicitation_dialog | Claude asks a clarifying question | "Tab N has a question" |
+| permission_prompt | Claude needs tool permission | "Tab N" |
+| idle_prompt | Claude is waiting for user input | "Tab N" |
+| elicitation_dialog | Claude asks a clarifying question | "Tab N" |
 
 ### Troubleshooting
 
@@ -293,7 +288,7 @@ require('neotex.plugins.tools.stt').setup({
 
 1. Run a command that triggers tool use (e.g., file writes)
 2. Switch to another tab while Claude works
-3. When Claude needs permission, hear "Tab 1 needs permission"
+3. When Claude needs permission, hear "Tab 1"
 4. Switch back to approve/deny the tool use
 
 ### Using STT for Dictation in Neovim

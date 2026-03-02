@@ -7,9 +7,7 @@
 #
 # Supported Events:
 #   Stop - Claude finished responding: "Tab N"
-#   Notification (permission_prompt) - Permission needed: "Tab N needs permission"
-#   Notification (idle_prompt) - Input needed: "Tab N needs input"
-#   Notification (elicitation_dialog) - Question for user: "Tab N has a question"
+#   Notification (permission_prompt, idle_prompt, elicitation_dialog) - "Tab N"
 #
 # Configuration:
 #   PIPER_MODEL - Path to piper voice model (default: ~/.local/share/piper/en_US-lessac-medium.onnx)
@@ -123,22 +121,7 @@ if [[ -z "$TAB_PREFIX" ]]; then
     TAB_PREFIX="Tab"  # Fallback if tab detection failed
 fi
 
-# Select message suffix based on notification type
-case "$NOTIFICATION_TYPE" in
-    permission_prompt)
-        MESSAGE="$TAB_PREFIX needs permission"
-        ;;
-    idle_prompt)
-        MESSAGE="$TAB_PREFIX needs input"
-        ;;
-    elicitation_dialog)
-        MESSAGE="$TAB_PREFIX has a question"
-        ;;
-    *)
-        # Default for Stop hook or unknown notification types
-        MESSAGE="$TAB_PREFIX"
-        ;;
-esac
+MESSAGE="$TAB_PREFIX"
 
 # Speak using piper with paplay (background, tolerant of errors)
 if command -v paplay &>/dev/null; then
