@@ -1,9 +1,15 @@
 #!/bin/bash
-# TTS notification hook for Claude Code completion
-# Announces WezTerm tab number via Piper TTS when Claude stops
+# TTS notification hook for Claude Code events
+# Announces WezTerm tab number via Piper TTS when Claude stops or needs input
 #
-# Integration: Called from Stop hook in .claude/settings.json
+# Integration: Called from Stop and Notification hooks in .claude/settings.json
 # Requirements: piper-tts, aplay (alsa-utils), jq, wezterm
+#
+# Supported Events:
+#   Stop - Claude finished responding: "Tab N"
+#   Notification (permission_prompt) - Permission needed: "Tab N needs permission"
+#   Notification (idle_prompt) - Input needed: "Tab N needs input"
+#   Notification (elicitation_dialog) - Question for user: "Tab N has a question"
 #
 # Configuration:
 #   PIPER_MODEL - Path to piper voice model (default: ~/.local/share/piper/en_US-lessac-medium.onnx)
@@ -16,6 +22,25 @@ set -uo pipefail
 PIPER_MODEL="${PIPER_MODEL:-$HOME/.local/share/piper/en_US-lessac-medium.onnx}"
 TTS_COOLDOWN="${TTS_COOLDOWN:-10}"
 TTS_ENABLED="${TTS_ENABLED:-1}"
+
+# Read stdin JSON (hooks provide context via stdin)
+# Use timeout to avoid hanging if no stdin is available
+STDIN_JSON=""
+if read -t 0.1 -r line; then
+    STDIN_JSON="$line"
+    # Read any remaining lines
+    while read -t 0.1 -r more; do
+        STDIN_JSON="${STDIN_JSON}${more}"
+    done
+fi
+
+# Parse event type and notification type from stdin JSON
+HOOK_EVENT_NAME=""
+NOTIFICATION_TYPE=""
+if [[ -n "$STDIN_JSON" ]] && command -v jq &>/dev/null; then
+    HOOK_EVENT_NAME=$(echo "$STDIN_JSON" | jq -r '.hook_event_name // empty' 2>/dev/null || echo "")
+    NOTIFICATION_TYPE=$(echo "$STDIN_JSON" | jq -r '.notification_type // empty' 2>/dev/null || echo "")
+fi
 
 # State files
 LAST_NOTIFY_FILE="/tmp/claude-tts-last-notify"
@@ -92,11 +117,28 @@ if [[ -n "${WEZTERM_PANE:-}" ]] && command -v wezterm &>/dev/null; then
     fi
 fi
 
-# Simple message: just "Tab N"
-MESSAGE="${TAB_LABEL%: }"  # Strip ": " suffix if present
-if [[ -z "$MESSAGE" ]]; then
-    MESSAGE="Tab"  # Fallback if tab detection failed
+# Build message based on event type
+TAB_PREFIX="${TAB_LABEL%: }"  # Strip ": " suffix if present
+if [[ -z "$TAB_PREFIX" ]]; then
+    TAB_PREFIX="Tab"  # Fallback if tab detection failed
 fi
+
+# Select message suffix based on notification type
+case "$NOTIFICATION_TYPE" in
+    permission_prompt)
+        MESSAGE="$TAB_PREFIX needs permission"
+        ;;
+    idle_prompt)
+        MESSAGE="$TAB_PREFIX needs input"
+        ;;
+    elicitation_dialog)
+        MESSAGE="$TAB_PREFIX has a question"
+        ;;
+    *)
+        # Default for Stop hook or unknown notification types
+        MESSAGE="$TAB_PREFIX"
+        ;;
+esac
 
 # Speak using piper with paplay (background, tolerant of errors)
 if command -v paplay &>/dev/null; then

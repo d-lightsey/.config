@@ -1,7 +1,7 @@
 # Implementation Plan: Task #107
 
 - **Task**: 107 - port_tts_notification_hooks
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.5-1 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -52,7 +52,7 @@ The TTS notification system (`tts-notify.sh`) is already present and identical i
 
 ## Implementation Phases
 
-### Phase 1: Extend tts-notify.sh for Notification Events [NOT STARTED]
+### Phase 1: Extend tts-notify.sh for Notification Events [COMPLETED]
 
 **Goal**: Modify the TTS script to read stdin JSON, detect the hook event type, and customize the spoken message based on whether Claude stopped, needs permission, or has a question.
 
@@ -80,7 +80,7 @@ The TTS notification system (`tts-notify.sh`) is already present and identical i
 
 ---
 
-### Phase 2: Add Notification Hook to settings.json [NOT STARTED]
+### Phase 2: Add Notification Hook to settings.json [COMPLETED]
 
 **Goal**: Register the `Notification` hook event in settings.json so Claude Code triggers `tts-notify.sh` on input-needed events.
 
@@ -102,7 +102,7 @@ The TTS notification system (`tts-notify.sh`) is already present and identical i
 
 ---
 
-### Phase 3: Port and Update Documentation [NOT STARTED]
+### Phase 3: Port and Update Documentation [COMPLETED]
 
 **Goal**: Port the comprehensive TTS/STT integration guide from ProofChecker and update it for nvim-specific paths and the new Notification trigger events.
 

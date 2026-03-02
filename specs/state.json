@@ -4,13 +4,15 @@
     {
       "project_number": 107,
       "project_name": "port_tts_notification_hooks",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-02T20:37:33Z",
-      "last_updated": "2026-03-02T21:05:00Z",
-      "session_id": "sess_1772485079_e843f4",
+      "last_updated": "2026-03-02T21:30:00Z",
+      "session_id": "sess_1772485491_d8db97",
       "researched": "2026-03-02T20:45:00Z",
       "planned": "2026-03-02T21:05:00Z",
+      "started": "2026-03-02T21:05:15Z",
+      "completed": "2026-03-02T21:30:00Z",
       "artifacts": [
         {
           "type": "research",
@@ -21,8 +23,15 @@
           "type": "plan",
           "path": "specs/107_port_tts_notification_hooks/plans/implementation-001.md",
           "summary": "3-phase plan: extend tts-notify.sh for Notification events, add Notification hook to settings.json, port TTS/STT documentation"
+        },
+        {
+          "type": "summary",
+          "path": "specs/107_port_tts_notification_hooks/summaries/implementation-summary-20260302.md",
+          "summary": "Implementation summary for TTS notification hooks extension"
         }
-      ]
+      ],
+      "completion_summary": "Extended tts-notify.sh to support Notification hook events with event-specific messages, added Notification hook to settings.json, and created comprehensive TTS/STT integration documentation with software dependencies.",
+      "claudemd_suggestions": "Added tts-stt-integration.md to .claude/docs/guides/, updated neovim-integration.md with Notification hook documentation and cross-references"
     },
     {
       "project_number": 106,
