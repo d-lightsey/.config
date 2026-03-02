@@ -143,7 +143,7 @@ fi
 
 ---
 
-### Phase 2: Fix Plan Templates [IN PROGRESS]
+### Phase 2: Fix Plan Templates [COMPLETED]
 
 **Goal**: Align artifact-formats.md with plan-format.md so new plans have heading-only phase status.
 
