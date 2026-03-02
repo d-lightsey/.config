@@ -1,6 +1,14 @@
 {
-  "next_project_number": 108,
+  "next_project_number": 109,
   "active_projects": [
+    {
+      "project_number": 108,
+      "project_name": "extension_asterisk_indicator",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-02T22:18:43Z",
+      "last_updated": "2026-03-02T22:18:43Z"
+    },
     {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",

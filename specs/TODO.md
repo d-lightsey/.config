@@ -1,10 +1,18 @@
 ---
-next_project_number: 108
+next_project_number: 109
 ---
 
 # TODO
 
 ## Tasks
+
+### 108. Show active/current extensions with '*' indicator in <leader>ac picker
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+- **Dependencies**: None
+
+**Description**: Show active/current extensions with '*' indicator in <leader>ac picker. Add an asterisk (*) next to extensions that are both loaded (active status) and do not differ from the available version (i.e., current/up-to-date). This visual indicator helps users quickly identify which extensions are loaded and current without needing to check each one individually.
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
