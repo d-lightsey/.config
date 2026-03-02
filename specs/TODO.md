@@ -1,18 +1,27 @@
 ---
-next_project_number: 103
+next_project_number: 104
 ---
 
 # TODO
 
 ## Tasks
 
+### 103. Compare .opencode agent systems against .claude North Star
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Compare the .opencode agent systems in /home/benjamin/Projects/Logos/Theory/.opencode/ and /home/benjamin/.config/nvim/.opencode/ to evaluate their capacities and determine which to prefer. Goal is to make these agent systems provide the same functionality as /home/benjamin/.config/nvim/.claude/, which serves as the North Star reference.
+
 ### 102. Review extensions and populate missing resources from Logos, ModelChecker, ProofChecker
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-02
 - **Research Completed**: 2026-03-02
 - **Planning Started**: 2026-03-02
 - **Planning Completed**: 2026-03-02
+- **Implementation Started**: 2026-03-02
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-002.md](102_review_extensions_populate_missing_resources/reports/research-002.md)
