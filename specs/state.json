@@ -1,6 +1,14 @@
 {
-  "next_project_number": 104,
+  "next_project_number": 105,
   "active_projects": [
+    {
+      "project_number": 104,
+      "project_name": "fix_implement_phase_status_live_updates",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-02T18:06:25Z",
+      "last_updated": "2026-03-02T18:06:25Z"
+    },
     {
       "project_number": 103,
       "project_name": "compare_opencode_agent_systems_against_claude",
