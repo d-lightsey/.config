@@ -1,10 +1,18 @@
 ---
-next_project_number: 102
+next_project_number: 103
 ---
 
 # TODO
 
 ## Tasks
+
+### 102. Review extensions and populate missing resources from Logos, ModelChecker, ProofChecker
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Review the extensions in .claude/extensions/ to identify resources in /home/benjamin/Projects/Logos/Theory/.claude/, /home/benjamin/Projects/ModelChecker/.claude/, and /home/benjamin/Projects/ProofChecker/.claude/ that should be included but are not already. Fill all gaps such as missing commands (e.g., lean.md missing from lean/commands/).
 
 ### 101. Add contents to lean, latex, z3, typst, and python extensions
 - **Effort**: TBD
