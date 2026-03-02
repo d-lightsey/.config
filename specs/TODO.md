@@ -8,15 +8,18 @@ next_project_number: 109
 
 ### 108. Show active/current extensions with '*' indicator in <leader>ac picker
 - **Effort**: 0.5-1 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-03-02
 - **Research Completed**: 2026-03-02
 - **Planning Started**: 2026-03-02
 - **Planning Completed**: 2026-03-02
+- **Implementation Started**: 2026-03-02
+- **Implementation Completed**: 2026-03-02
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [research-001.md](108_extension_asterisk_indicator/reports/research-001.md)
 - **Plan**: [implementation-001.md](108_extension_asterisk_indicator/plans/implementation-001.md)
+- **Summary**: [implementation-summary-20260302.md](108_extension_asterisk_indicator/summaries/implementation-summary-20260302.md)
 
 **Description**: Show active/current extensions with '*' indicator in <leader>ac picker. Add an asterisk (*) next to extensions that are both loaded (active status) and do not differ from the available version (i.e., current/up-to-date). This visual indicator helps users quickly identify which extensions are loaded and current without needing to check each one individually.
 

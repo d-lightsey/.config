@@ -603,6 +603,9 @@ function M.create_extensions_entries()
     local is_first = (i == 1)
     local indent_char = helpers.get_tree_char(is_first)
 
+    -- Asterisk prefix for active extensions (loaded and current)
+    local prefix = (ext.status == "active") and "*" or " "
+
     local status_indicator
     if ext.status == "active" then
       status_indicator = "[active]"
@@ -613,7 +616,8 @@ function M.create_extensions_entries()
     end
 
     local display = string.format(
-      "  %s %-28s %-10s %s",
+      "%s %s %-28s %-10s %s",
+      prefix,
       indent_char,
       ext.name,
       status_indicator,

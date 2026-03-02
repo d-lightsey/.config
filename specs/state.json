@@ -4,11 +4,11 @@
     {
       "project_number": 108,
       "project_name": "extension_asterisk_indicator",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-02T22:18:43Z",
-      "last_updated": "2026-03-02T22:27:14Z",
-      "session_id": "sess_1772490300_5f9583",
+      "last_updated": "2026-03-02T22:31:02Z",
+      "session_id": "sess_1772490519_aa8fad",
       "artifacts": [
         {
           "type": "research",
@@ -19,9 +19,16 @@
           "path": "specs/108_extension_asterisk_indicator/plans/implementation-001.md",
           "type": "plan",
           "summary": "1-phase implementation plan for adding asterisk prefix to active extensions in picker display"
+        },
+        {
+          "path": "specs/108_extension_asterisk_indicator/summaries/implementation-summary-20260302.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 108"
         }
       ],
-      "planned": "2026-03-02T22:27:14Z"
+      "planned": "2026-03-02T22:27:14Z",
+      "completed": "2026-03-02T22:31:02Z",
+      "completion_summary": "Added asterisk prefix to extensions with active status in the <leader>ac picker, bringing extensions into alignment with all other artifact types that show * for local/active items."
     },
     {
       "project_number": 87,

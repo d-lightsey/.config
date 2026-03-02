@@ -1,7 +1,7 @@
 # Implementation Plan: Task #108
 
 - **Task**: 108 - Show active/current extensions with '*' indicator in picker
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5-1 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -42,7 +42,7 @@ Add the `*` prefix indicator to extensions in the `<leader>ac` Claude Commands p
 
 ## Implementation Phases
 
-### Phase 1: Add asterisk prefix to extension entries [NOT STARTED]
+### Phase 1: Add asterisk prefix to extension entries [COMPLETED]
 
 **Goal**: Modify `create_extensions_entries()` to include the `*` prefix for active extensions, matching the established pattern used by all other artifact types.
 
