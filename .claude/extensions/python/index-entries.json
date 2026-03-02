@@ -1,15 +1,6 @@
 {
   "entries": [
     {
-      "path": "context/project/python/domain/python-patterns.md",
-      "description": "Python design patterns and idioms",
-      "tags": ["python", "patterns", "idioms"],
-      "load_when": {
-        "languages": ["python"],
-        "agents": ["python-research-agent", "python-implementation-agent"]
-      }
-    },
-    {
       "path": "context/project/python/standards/code-style.md",
       "description": "Python coding style and conventions",
       "tags": ["python", "style", "conventions"],
@@ -28,9 +19,27 @@
       }
     },
     {
-      "path": "context/project/python/tools/development-setup.md",
-      "description": "Python development environment setup",
-      "tags": ["python", "setup", "development"],
+      "path": "context/project/python/domain/application-api-patterns.md",
+      "description": "Application API structure and patterns",
+      "tags": ["python", "api", "architecture"],
+      "load_when": {
+        "languages": ["python"],
+        "agents": ["python-implementation-agent", "python-research-agent"]
+      }
+    },
+    {
+      "path": "context/project/python/domain/library-patterns.md",
+      "description": "Domain-specific library patterns",
+      "tags": ["python", "library", "patterns"],
+      "load_when": {
+        "languages": ["python"],
+        "agents": ["python-implementation-agent", "python-research-agent"]
+      }
+    },
+    {
+      "path": "context/project/python/patterns/semantic-evaluation.md",
+      "description": "Tree-walking evaluation patterns",
+      "tags": ["python", "evaluation", "interpreter"],
       "load_when": {
         "languages": ["python"],
         "agents": ["python-implementation-agent"]
