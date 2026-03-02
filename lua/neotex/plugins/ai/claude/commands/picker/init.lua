@@ -131,10 +131,17 @@ function M.show_commands_picker(opts)
           actions.close(prompt_bufnr)
           edit.edit_artifact_file(selection.value.filepath)
         elseif selection.value.entry_type == "extension" then
-          -- Navigate to extension picker focused on this extension
           actions.close(prompt_bufnr)
-          local ext_picker = require("neotex.plugins.ai.claude.extensions.picker")
-          ext_picker.show(opts)
+          local ext = selection.value
+          local exts = require("neotex.plugins.ai.claude.extensions")
+          if ext.status == "active" or ext.status == "update-available" then
+            exts.unload(ext.name, { confirm = true })
+          else
+            exts.load(ext.name, { confirm = true })
+          end
+          vim.defer_fn(function()
+            M.show_commands_picker(opts)
+          end, 100)
         end
       end)
 

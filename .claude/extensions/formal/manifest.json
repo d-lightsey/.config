@@ -29,11 +29,12 @@
   "merge_targets": {
     "claudemd": {
       "source": "EXTENSION.md",
-      "target_section": "Formal Reasoning Extension"
+      "target": ".claude/CLAUDE.md",
+      "section_id": "extension_formal"
     },
     "index": {
       "source": "index-entries.json",
-      "target_file": ".claude/context/index.json"
+      "target": ".claude/context/index.json"
     }
   }
 }
