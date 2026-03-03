@@ -8,7 +8,14 @@
       "language": "neovim",
       "created": "2026-03-03T23:46:00Z",
       "last_updated": "2026-03-03T23:51:31Z",
-      "session_id": "sess_1772581619_40ff3c"
+      "session_id": "sess_1772581619_40ff3c",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/123_fix_nonatomic_extension_loading/reports/research-001.md",
+          "summary": "Research report analyzing failure points in extension loading, evaluating 4 proposed solutions, and recommending a hybrid approach"
+        }
+      ]
     },
     {
       "project_number": 122,
