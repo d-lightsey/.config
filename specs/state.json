@@ -4,10 +4,19 @@
     {
       "project_number": 114,
       "project_name": "make_leader_ao_identical_to_leader_ac",
-      "status": "not_started",
+      "status": "researched",
       "language": "neovim",
       "created": "2026-03-03T01:33:11Z",
-      "last_updated": "2026-03-03T01:33:11Z"
+      "last_updated": "2026-03-03T01:38:09Z",
+      "session_id": "sess_1772501634_b7364a",
+      "researched": "2026-03-03T01:38:09Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/114_make_leader_ao_identical_to_leader_ac/reports/research-001.md",
+          "summary": "Research report analyzing current <leader>ac, <leader>ao, and <leader>ae keymaps with implementation recommendations"
+        }
+      ]
     },
     {
       "project_number": 113,

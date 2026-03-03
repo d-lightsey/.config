@@ -8,9 +8,12 @@ next_project_number: 115
 
 ### 114. Make <leader>ao identical to <leader>ac and remove <leader>ae picker
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-03
+- **Research Completed**: 2026-03-03
 - **Language**: neovim
 - **Dependencies**: None
+- **Research**: [research-001.md](114_make_leader_ao_identical_to_leader_ac/reports/research-001.md)
 
 **Description**: Make <leader>ao identical to <leader>ac since <C-g> already opens OpenCode directly. Remove <leader>ae picker for both Claude Code and OpenCode as it is no longer needed.
 
