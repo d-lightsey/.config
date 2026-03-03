@@ -26,11 +26,11 @@
     {
       "project_number": 112,
       "project_name": "fix_leader_ac_artifact_loader_project_overview",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-03T00:04:14Z",
-      "last_updated": "2026-03-03T00:16:15Z",
-      "session_id": "sess_1772496833_210bba",
+      "last_updated": "2026-03-03T00:31:32Z",
+      "session_id": "sess_1772497660_162aba",
       "researched": "2026-03-03T00:09:44Z",
       "artifacts": [
         {
@@ -42,18 +42,26 @@
           "path": "specs/112_fix_leader_ac_artifact_loader_project_overview/plans/implementation-001.md",
           "type": "plan",
           "summary": "3-phase implementation plan: Phase 1 adds exclude_patterns parameter to scan_directory_for_sync in scan.lua, Phase 2 applies context exclusions and removes root CLAUDE.md sync in sync.lua, Phase 3 adds test cases to scan_spec.lua"
+        },
+        {
+          "path": "specs/112_fix_leader_ac_artifact_loader_project_overview/summaries/implementation-summary-20260302.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "planned": "2026-03-03T00:16:15Z"
+      "planned": "2026-03-03T00:16:15Z",
+      "started": "2026-03-03T00:28:01Z",
+      "completed": "2026-03-03T00:31:32Z",
+      "completion_summary": "Added exclude_patterns parameter to scan_directory_for_sync() and configured CONTEXT_EXCLUDE_PATTERNS to skip project-overview.md and self-healing-implementation-details.md. Removed root CLAUDE.md sync (only .claude/CLAUDE.md syncs now). Added 5 tests."
     },
     {
       "project_number": 111,
       "project_name": "compare_opencode_agent_systems",
-      "status": "researched",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-02T23:58:29Z",
-      "last_updated": "2026-03-03T00:10:00Z",
-      "session_id": "sess_1772495968_0f0d8a",
+      "last_updated": "2026-03-03T00:27:36Z",
+      "session_id": "sess_1772497639_af44d1",
       "researched": "2026-03-03T00:10:00Z",
       "artifacts": [
         {

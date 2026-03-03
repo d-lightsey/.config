@@ -1,7 +1,7 @@
 # Implementation Plan: Task #112
 
 - **Task**: 112 - Fix leader ac artifact loader project-overview exclusion
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Date**: 2026-03-02
 - **Feature**: Add file exclusion logic to Load All Artifacts sync to skip project-specific files and root CLAUDE.md
 - **Estimated Hours**: 1-2 hours
@@ -47,7 +47,7 @@ Research report identified three key issues:
 
 ## Implementation Phases
 
-### Phase 1: Add exclude_patterns to scan_directory_for_sync [NOT STARTED]
+### Phase 1: Add exclude_patterns to scan_directory_for_sync [COMPLETED]
 
 **Goal**: Extend `scan_directory_for_sync()` in `scan.lua` to accept and apply an optional exclusion list, filtering files by their relative path within the scanned directory.
 
@@ -68,7 +68,7 @@ Research report identified three key issues:
 
 ---
 
-### Phase 2: Apply exclusions in sync.lua and remove root CLAUDE.md sync [NOT STARTED]
+### Phase 2: Apply exclusions in sync.lua and remove root CLAUDE.md sync [COMPLETED]
 
 **Goal**: Pass exclusion patterns when scanning context artifacts and remove the root-level `CLAUDE.md` from the sync operation.
 
@@ -91,7 +91,7 @@ Research report identified three key issues:
 
 ---
 
-### Phase 3: Add tests for exclusion logic [NOT STARTED]
+### Phase 3: Add tests for exclusion logic [COMPLETED]
 
 **Goal**: Add test cases to `scan_spec.lua` verifying that exclusion patterns work correctly.
 

@@ -47,8 +47,9 @@ end
 --- @param subdir string Subdirectory to scan (e.g., "commands", "hooks")
 --- @param extension string File extension pattern (e.g., "*.md", "*.sh")
 --- @param recursive boolean Enable recursive scanning with ** pattern (default: true)
+--- @param exclude_patterns table|nil Optional array of relative path strings to exclude (e.g., {"project/repo/project-overview.md"})
 --- @return table Array of file sync info {name, global_path, local_path, action, is_subdir}
-function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive)
+function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive, exclude_patterns)
   if recursive == nil then recursive = true end
 
   local global_path = global_dir .. "/.claude/" .. subdir
@@ -81,22 +82,36 @@ function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, rec
   end
 
   local files = {}
+  exclude_patterns = exclude_patterns or {}
+
   for _, global_file in ipairs(all_files) do
     -- Calculate relative path from global_path base (e.g., "core/utils.sh" from "/path/lib/core/utils.sh")
     local rel_path = global_file:sub(#global_path + 2)
-    local local_file = local_path .. "/" .. rel_path
 
-    -- Detect if file is in subdirectory (for reporting depth breakdown)
-    local is_subdir = rel_path:match("/") ~= nil
+    -- Check if file matches any exclusion pattern (exact string match)
+    local should_exclude = false
+    for _, pattern in ipairs(exclude_patterns) do
+      if rel_path == pattern then
+        should_exclude = true
+        break
+      end
+    end
 
-    local action = vim.fn.filereadable(local_file) == 1 and "replace" or "copy"
-    table.insert(files, {
-      name = vim.fn.fnamemodify(global_file, ":t"),
-      global_path = global_file,
-      local_path = local_file,
-      action = action,
-      is_subdir = is_subdir,
-    })
+    if not should_exclude then
+      local local_file = local_path .. "/" .. rel_path
+
+      -- Detect if file is in subdirectory (for reporting depth breakdown)
+      local is_subdir = rel_path:match("/") ~= nil
+
+      local action = vim.fn.filereadable(local_file) == 1 and "replace" or "copy"
+      table.insert(files, {
+        name = vim.fn.fnamemodify(global_file, ":t"),
+        global_path = global_file,
+        local_path = local_file,
+        action = action,
+        is_subdir = is_subdir,
+      })
+    end
   end
 
   return files

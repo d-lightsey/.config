@@ -7,6 +7,13 @@ local M = {}
 local scan = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
 local helpers = require("neotex.plugins.ai.claude.commands.picker.utils.helpers")
 
+-- Files to exclude from context sync (repository-specific files that should not be copied)
+-- Note: update-project.md is intentionally NOT excluded as it is a guide/template
+local CONTEXT_EXCLUDE_PATTERNS = {
+  "project/repo/project-overview.md",
+  "project/repo/self-healing-implementation-details.md",
+}
+
 --- Count files by depth (top-level vs subdirectory)
 --- @param files table Array of file sync info with is_subdir field
 --- @return number top_level_count Number of top-level files
@@ -160,7 +167,8 @@ local function scan_all_artifacts(global_dir, project_dir)
   artifacts.agents = scan.scan_directory_for_sync(global_dir, project_dir, "agents", "*.md")
   artifacts.rules = scan.scan_directory_for_sync(global_dir, project_dir, "rules", "*.md")
   -- Context (multiple file types: md, json, yaml)
-  local ctx_md = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.md")
+  -- Pass exclusion patterns to skip repository-specific files
+  local ctx_md = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.md", true, CONTEXT_EXCLUDE_PATTERNS)
   local ctx_json = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.json")
   local ctx_yaml = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.yaml")
   artifacts.context = {}
@@ -213,18 +221,10 @@ local function scan_all_artifacts(global_dir, project_dir)
     end
   end
 
-  -- Project-root CLAUDE.md (outside .claude/ directory)
-  local project_claude_global = global_dir .. "/CLAUDE.md"
-  local project_claude_local = project_dir .. "/CLAUDE.md"
-  if vim.fn.filereadable(project_claude_global) == 1 then
-    table.insert(artifacts.root_files, {
-      name = "CLAUDE.md (project root)",
-      global_path = project_claude_global,
-      local_path = project_claude_local,
-      action = vim.fn.filereadable(project_claude_local) == 1 and "replace" or "copy",
-      is_subdir = false,
-    })
-  end
+  -- NOTE: Root-level CLAUDE.md (outside .claude/) is intentionally NOT synced.
+  -- The global CLAUDE.md contains Neovim-specific coding standards that are irrelevant
+  -- to non-Neovim projects. The .claude/CLAUDE.md (synced via root_file_names above)
+  -- contains the agent system configuration which IS appropriate for all projects.
 
   return artifacts
 end
