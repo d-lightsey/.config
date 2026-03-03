@@ -4,10 +4,19 @@
     {
       "project_number": 115,
       "project_name": "investigate_leader_ao_load_all_feature_parity",
-      "status": "not_started",
+      "status": "researched",
       "language": "neovim",
       "created": "2026-03-03T02:06:56Z",
-      "last_updated": "2026-03-03T02:06:56Z"
+      "last_updated": "2026-03-03T02:17:09Z",
+      "session_id": "sess_1772503944_fb6062",
+      "researched": "2026-03-03T02:17:09Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/115_investigate_leader_ao_load_all_feature_parity/reports/research-001.md",
+          "summary": "Research report documenting 11 missing artifact categories in OpenCode Load All, agents path mismatch, and specific code changes needed"
+        }
+      ]
     },
     {
       "project_number": 114,
