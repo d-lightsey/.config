@@ -7,7 +7,7 @@
       "status": "planned",
       "language": "meta",
       "created": "2026-03-03T02:34:37Z",
-      "last_updated": "2026-03-03T04:44:05Z",
+      "last_updated": "2026-03-03T05:20:41Z",
       "session_id": "sess_1772512407_108851",
       "researched": "2026-03-03T04:39:48Z",
       "artifacts": [
@@ -22,12 +22,12 @@
           "summary": "Supplementary research analyzing Logos/Theory, ProofChecker, and dotfiles .opencode/ systems for reusable extension components"
         },
         {
-          "path": "specs/116_verify_opencode_implement_extension_parity/plans/implementation-002.md",
+          "path": "specs/116_verify_opencode_implement_extension_parity/plans/implementation-003.md",
           "type": "plan",
-          "summary": "Revised 6-phase plan with category-based approach (A/B/C) and mechanical translation patterns from research-002"
+          "summary": "Revised plan: latex/typst require full creation (not in core), all 9 extensions need full creation from .claude/"
         }
       ],
-      "planned": "2026-03-03T04:44:05Z"
+      "planned": "2026-03-03T05:20:41Z"
     },
     {
       "project_number": 115,
