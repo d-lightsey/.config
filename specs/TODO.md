@@ -1,10 +1,18 @@
 ---
-next_project_number: 120
+next_project_number: 121
 ---
 
 # TODO
 
 ## Tasks
+
+### 120. Fix PreToolUse hook picker display for inline-command hooks
+- **Effort**: 2-3 hours
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+- **Dependencies**: None
+
+**Description**: Fix PreToolUse hook picker display: extend build_hook_dependencies to recognize inline-command hooks so they show '*' when present in the local project's settings.json. Currently parser.lua:build_hook_dependencies uses regex ([^/%s]+%.sh) to extract hook names from command strings, which only matches .sh file references. The PreToolUse hook in settings.json uses an inline bash -c '...' command with no .sh filename, so hook_events["PreToolUse"] stays empty, event_hooks is empty in create_hooks_entries, has_local_hook is always false in format_hook_event, and no '*' is ever shown. The fix should: (1) detect inline-command hooks (those that don't reference a .sh file) in build_hook_dependencies, (2) represent them as a synthetic hook entry so the event can still show '*' when the event key exists in the LOCAL project's settings.json hooks section, (3) determine is_local by checking whether the local project's settings.json has the same hook event key configured (not by checking for a .sh file). The same gap affects any other hook event using inline commands. Key files: lua/neotex/plugins/ai/claude/commands/parser.lua (build_hook_dependencies ~line 334), lua/neotex/plugins/ai/claude/commands/picker/display/entries.lua (format_hook_event ~line 16, create_hooks_entries ~line 494).
 
 ### 119. Fix hardcoded paths in picker for config-aware directory scanning
 - **Effort**: 2-3 hours
