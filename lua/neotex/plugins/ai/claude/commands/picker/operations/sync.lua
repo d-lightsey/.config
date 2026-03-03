@@ -91,10 +91,12 @@ end
 --- @param project_dir string Project directory path
 --- @param all_artifacts table Map of artifact type -> array of files
 --- @param merge_only boolean If true, only add new files (skip conflicts)
+--- @param base_dir string|nil Base directory name (default: ".claude")
 --- @return number total_synced Total number of artifacts synced
-local function execute_sync(project_dir, all_artifacts, merge_only)
-  -- Create base .claude directory
-  helpers.ensure_directory(project_dir .. "/.claude")
+local function execute_sync(project_dir, all_artifacts, merge_only, base_dir)
+  base_dir = base_dir or ".claude"
+  -- Create base directory
+  helpers.ensure_directory(project_dir .. "/" .. base_dir)
 
   -- Sync all artifact types
   local counts = {}
@@ -152,35 +154,24 @@ end
 --- Scan all artifact types from global directory
 --- @param global_dir string Global directory path
 --- @param project_dir string Project directory path
+--- @param config table|nil Picker config with base_dir field (defaults to .claude config)
 --- @return table Map of artifact type -> array of files
-local function scan_all_artifacts(global_dir, project_dir)
+local function scan_all_artifacts(global_dir, project_dir, config)
+  local base_dir = (config and config.base_dir) or ".claude"
   local artifacts = {}
 
-  -- Core artifacts
-  artifacts.commands = scan.scan_directory_for_sync(global_dir, project_dir, "commands", "*.md")
-  artifacts.hooks = scan.scan_directory_for_sync(global_dir, project_dir, "hooks", "*.sh")
-  artifacts.templates = scan.scan_directory_for_sync(global_dir, project_dir, "templates", "*.yaml")
-  artifacts.lib = scan.scan_directory_for_sync(global_dir, project_dir, "lib", "*.sh")
-  artifacts.docs = scan.scan_directory_for_sync(global_dir, project_dir, "docs", "*.md")
-  artifacts.scripts = scan.scan_directory_for_sync(global_dir, project_dir, "scripts", "*.sh")
-  artifacts.tests = scan.scan_directory_for_sync(global_dir, project_dir, "tests", "test_*.sh")
-  artifacts.agents = scan.scan_directory_for_sync(global_dir, project_dir, "agents", "*.md")
-  artifacts.rules = scan.scan_directory_for_sync(global_dir, project_dir, "rules", "*.md")
-  -- Context (multiple file types: md, json, yaml)
-  -- Pass exclusion patterns to skip repository-specific files
-  local ctx_md = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.md", true, CONTEXT_EXCLUDE_PATTERNS)
-  local ctx_json = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.json")
-  local ctx_yaml = scan.scan_directory_for_sync(global_dir, project_dir, "context", "*.yaml")
-  artifacts.context = {}
-  for _, files in ipairs({ ctx_md, ctx_json, ctx_yaml }) do
-    for _, file in ipairs(files) do
-      table.insert(artifacts.context, file)
-    end
+  -- Helper to scan with base_dir threaded through
+  local function sync_scan(subdir, ext, recursive, exclude)
+    return scan.scan_directory_for_sync(global_dir, project_dir, subdir, ext, recursive, exclude, base_dir)
   end
 
+  -- Core artifacts common to both systems
+  artifacts.commands = sync_scan("commands", "*.md")
+  artifacts.agents = sync_scan("agents", "*.md")
+
   -- Skills (multiple file types)
-  local skills_md = scan.scan_directory_for_sync(global_dir, project_dir, "skills", "*.md")
-  local skills_yaml = scan.scan_directory_for_sync(global_dir, project_dir, "skills", "*.yaml")
+  local skills_md = sync_scan("skills", "*.md")
+  local skills_yaml = sync_scan("skills", "*.yaml")
   artifacts.skills = {}
   for _, file in ipairs(skills_md) do
     table.insert(artifacts.skills, file)
@@ -189,26 +180,54 @@ local function scan_all_artifacts(global_dir, project_dir)
     table.insert(artifacts.skills, file)
   end
 
-  -- Systemd (multiple file types: .service, .timer)
-  local systemd_service = scan.scan_directory_for_sync(global_dir, project_dir, "systemd", "*.service")
-  local systemd_timer = scan.scan_directory_for_sync(global_dir, project_dir, "systemd", "*.timer")
-  artifacts.systemd = {}
-  for _, file in ipairs(systemd_service) do
-    table.insert(artifacts.systemd, file)
-  end
-  for _, file in ipairs(systemd_timer) do
-    table.insert(artifacts.systemd, file)
+  -- .claude/-specific artifacts
+  if base_dir == ".claude" then
+    artifacts.hooks = sync_scan("hooks", "*.sh")
+    artifacts.templates = sync_scan("templates", "*.yaml")
+    artifacts.lib = sync_scan("lib", "*.sh")
+    artifacts.docs = sync_scan("docs", "*.md")
+    artifacts.scripts = sync_scan("scripts", "*.sh")
+    artifacts.tests = sync_scan("tests", "test_*.sh")
+    artifacts.rules = sync_scan("rules", "*.md")
+
+    -- Context (multiple file types: md, json, yaml)
+    local ctx_md = sync_scan("context", "*.md", true, CONTEXT_EXCLUDE_PATTERNS)
+    local ctx_json = sync_scan("context", "*.json")
+    local ctx_yaml = sync_scan("context", "*.yaml")
+    artifacts.context = {}
+    for _, files in ipairs({ ctx_md, ctx_json, ctx_yaml }) do
+      for _, file in ipairs(files) do
+        table.insert(artifacts.context, file)
+      end
+    end
+
+    -- Systemd (multiple file types: .service, .timer)
+    local systemd_service = sync_scan("systemd", "*.service")
+    local systemd_timer = sync_scan("systemd", "*.timer")
+    artifacts.systemd = {}
+    for _, file in ipairs(systemd_service) do
+      table.insert(artifacts.systemd, file)
+    end
+    for _, file in ipairs(systemd_timer) do
+      table.insert(artifacts.systemd, file)
+    end
+
+    -- Settings
+    artifacts.settings = sync_scan("", "settings.json")
   end
 
-  -- Settings
-  artifacts.settings = scan.scan_directory_for_sync(global_dir, project_dir, "", "settings.json")
+  -- Root files vary by system
+  local root_file_names
+  if base_dir == ".opencode" then
+    root_file_names = { "OPENCODE.md", "settings.json" }
+  else
+    root_file_names = { ".gitignore", "README.md", "CLAUDE.md", "settings.local.json" }
+  end
 
-  -- Root files (direct children of .claude/)
-  local root_file_names = { ".gitignore", "README.md", "CLAUDE.md", "settings.local.json" }
   artifacts.root_files = {}
   for _, filename in ipairs(root_file_names) do
-    local global_path = global_dir .. "/.claude/" .. filename
-    local local_path = project_dir .. "/.claude/" .. filename
+    local global_path = global_dir .. "/" .. base_dir .. "/" .. filename
+    local local_path = project_dir .. "/" .. base_dir .. "/" .. filename
     if vim.fn.filereadable(global_path) == 1 then
       local action = vim.fn.filereadable(local_path) == 1 and "replace" or "copy"
       table.insert(artifacts.root_files, {
@@ -231,10 +250,12 @@ end
 
 --- Load all global artifacts locally
 --- Scans global directory, copies new artifacts, with option to replace existing
+--- @param config table|nil Picker config with base_dir field (defaults to .claude)
 --- @return number count Total number of artifacts loaded or updated
-function M.load_all_globally()
+function M.load_all_globally(config)
   local project_dir = vim.fn.getcwd()
   local global_dir = scan.get_global_dir()
+  local base_dir = (config and config.base_dir) or ".claude"
 
   -- Don't load if we're in the global directory
   if project_dir == global_dir then
@@ -242,8 +263,8 @@ function M.load_all_globally()
     return 0
   end
 
-  -- Scan all artifact types
-  local all_artifacts = scan_all_artifacts(global_dir, project_dir)
+  -- Scan all artifact types using config-appropriate base_dir
+  local all_artifacts = scan_all_artifacts(global_dir, project_dir, config)
 
   -- Count totals
   local total_files = 0
@@ -258,7 +279,7 @@ function M.load_all_globally()
   end
 
   if total_files == 0 then
-    helpers.notify("No global artifacts found in " .. global_dir .. "/.claude/", "WARN")
+    helpers.notify("No global artifacts found in " .. global_dir .. "/" .. base_dir .. "/", "WARN")
     return 0
   end
 
@@ -315,7 +336,7 @@ function M.load_all_globally()
     end
   end
 
-  return execute_sync(project_dir, all_artifacts, merge_only)
+  return execute_sync(project_dir, all_artifacts, merge_only, base_dir)
 end
 
 --- Update local artifact from global version

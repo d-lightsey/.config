@@ -48,12 +48,14 @@ end
 --- @param extension string File extension pattern (e.g., "*.md", "*.sh")
 --- @param recursive boolean Enable recursive scanning with ** pattern (default: true)
 --- @param exclude_patterns table|nil Optional array of relative path strings to exclude (e.g., {"project/repo/project-overview.md"})
+--- @param base_dir string|nil Base directory name (default: ".claude", use ".opencode" for OpenCode)
 --- @return table Array of file sync info {name, global_path, local_path, action, is_subdir}
-function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive, exclude_patterns)
+function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive, exclude_patterns, base_dir)
   if recursive == nil then recursive = true end
+  base_dir = base_dir or ".claude"
 
-  local global_path = global_dir .. "/.claude/" .. subdir
-  local local_path = local_dir .. "/.claude/" .. subdir
+  local global_path = global_dir .. "/" .. base_dir .. "/" .. subdir
+  local local_path = local_dir .. "/" .. base_dir .. "/" .. subdir
 
   local all_files = {}
   local seen = {}  -- Deduplication table to prevent copying same file twice
