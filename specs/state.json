@@ -4,27 +4,34 @@
     {
       "project_number": 113,
       "project_name": "review_proofchecker_opencode_virtues",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-03T00:10:48Z",
-      "last_updated": "2026-03-03T00:10:48Z"
+      "last_updated": "2026-03-03T00:13:04Z",
+      "session_id": "sess_1772496780_lh8tfy"
     },
     {
       "project_number": 112,
       "project_name": "fix_leader_ac_artifact_loader_project_overview",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-03-03T00:04:14Z",
-      "last_updated": "2026-03-03T00:09:44Z",
-      "session_id": "sess_1772496320_a38921",
+      "last_updated": "2026-03-03T00:16:15Z",
+      "session_id": "sess_1772496833_210bba",
       "researched": "2026-03-03T00:09:44Z",
       "artifacts": [
         {
           "path": "specs/112_fix_leader_ac_artifact_loader_project_overview/reports/research-001.md",
           "type": "research",
           "summary": "Research report analyzing <leader>ac Load All sync behavior, project-overview.md exclusion gap, and CLAUDE.md file relationship"
+        },
+        {
+          "path": "specs/112_fix_leader_ac_artifact_loader_project_overview/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan: Phase 1 adds exclude_patterns parameter to scan_directory_for_sync in scan.lua, Phase 2 applies context exclusions and removes root CLAUDE.md sync in sync.lua, Phase 3 adds test cases to scan_spec.lua"
         }
-      ]
+      ],
+      "planned": "2026-03-03T00:16:15Z"
     },
     {
       "project_number": 111,
