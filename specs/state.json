@@ -1,6 +1,23 @@
 {
-  "next_project_number": 121,
+  "next_project_number": 122,
   "active_projects": [
+    {
+      "project_number": 121,
+      "project_name": "clean_up_core_skills_directories",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-03T22:30:00Z",
+      "last_updated": "2026-03-03T22:45:00Z",
+      "session_id": "sess_1772576342_26731f",
+      "researched": "2026-03-03T22:45:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/121_clean_up_core_skills_directories/reports/research-001.md",
+          "summary": "Comprehensive analysis of extension artifact contamination across three directories (skills, agents, commands, rules) with manifest-driven cleanup approach"
+        }
+      ]
+    },
     {
       "project_number": 120,
       "project_name": "fix_pretooluse_hook_picker_display",

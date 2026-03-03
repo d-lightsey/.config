@@ -1,10 +1,28 @@
 ---
-next_project_number: 121
+next_project_number: 122
 ---
 
 # TODO
 
 ## Tasks
+
+### 121. Clean up core skills directories to remove extension-specific skills
+- **Effort**: 30-60 minutes
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-03
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](121_clean_up_core_skills_directories/reports/research-001.md)
+
+**Description**: Extension-specific skills currently exist in the core skills directories and should be removed. Two locations need cleanup:
+
+1. `~/.config/nvim/.opencode/skills/` has 22 skills including extension-owned ones. Only the 11 core skills should remain (matching `.claude/skills/`): skill-git-workflow, skill-implementer, skill-learn, skill-meta, skill-neovim-implementation, skill-neovim-research, skill-orchestrator, skill-planner, skill-refresh, skill-researcher, skill-status-sync.
+
+2. `~/.config/.claude/skills/` (live Claude config) has 14 skills including 3 extension-specific ones (skill-document-converter, skill-latex-implementation, skill-typst-implementation) that were inadvertently synced.
+
+Skills to remove from `.opencode/skills/`: skill-document-converter (→ document-converter ext), skill-lake-repair (→ lean ext), skill-latex-implementation (→ latex ext), skill-latex-research (→ latex ext), skill-lean-implementation (→ lean ext), skill-lean-research (→ lean ext), skill-lean-version (→ lean ext), skill-logic-research (→ formal ext), skill-math-research (→ formal ext), skill-typst-implementation (→ typst ext), skill-typst-research (→ typst ext).
+
+All extension-specific skills already exist in their correct extension directories (`.opencode/extensions/{ext}/skills/`) and are declared in `provides.skills` in each extension's `manifest.json`. The sync exclusion mechanism in `sync.lua` (`build_extension_exclusions` + `filter_extension_skills`) already correctly filters based on manifests — the problem is the stale copies in the core directories. After cleanup, "Load Core Agent System" will only sync the 11 core skills to projects.
 
 ### 120. Fix PreToolUse hook picker display for inline-command hooks
 - **Effort**: 2-3 hours
