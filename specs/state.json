@@ -4,19 +4,28 @@
     {
       "project_number": 112,
       "project_name": "fix_leader_ac_artifact_loader_project_overview",
-      "status": "not_started",
+      "status": "researching",
       "language": "neovim",
       "created": "2026-03-03T00:04:14Z",
-      "last_updated": "2026-03-03T00:04:14Z"
+      "last_updated": "2026-03-03T00:05:36Z",
+      "session_id": "sess_1772496320_a38921"
     },
     {
       "project_number": 111,
       "project_name": "compare_opencode_agent_systems",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-02T23:58:29Z",
-      "last_updated": "2026-03-02T23:59:47Z",
-      "session_id": "sess_1772495968_0f0d8a"
+      "last_updated": "2026-03-03T00:10:00Z",
+      "session_id": "sess_1772495968_0f0d8a",
+      "researched": "2026-03-03T00:10:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/111_compare_opencode_agent_systems/reports/research-001.md",
+          "summary": "Comprehensive comparison of nvim and ProofChecker .opencode systems across 10 dimensions (architecture, agents, domain knowledge, documentation, hooks, extensions, validation, state management) with recommendation to use nvim as base architecture and port ProofChecker domain context as extensions"
+        }
+      ]
     },
     {
       "project_number": 110,

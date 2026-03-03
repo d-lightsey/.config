@@ -8,17 +8,21 @@ next_project_number: 113
 
 ### 112. Fix <leader>ac artifact loader still loading project-overview.md and clarify CLAUDE.md placement
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
+- **Research Started**: 2026-03-03
 - **Language**: neovim
 - **Dependencies**: None
 
 **Description**: Load all artifacts in <leader>ac is still loading project-overview.md which it should skip. Also clarify whether both .claude/CLAUDE.md and root CLAUDE.md are needed, and which one should be preferred if only including one.
 
 ### 111. Systematically compare opencode agent systems to evaluate virtues and preference
-- **Effort**: TBD
-- **Status**: [RESEARCHING]
+- **Effort**: 1-2 hours
+- **Status**: [RESEARCHED]
 - **Research Started**: 2026-03-02
+- **Research Completed**: 2026-03-03
 - **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](111_compare_opencode_agent_systems/reports/research-001.md)
 
 **Description**: Systematically compare the /home/benjamin/.config/nvim/.opencode/ and /home/benjamin/Projects/ProofChecker/.opencode/ agent systems in order to evaluate which has which virtues, and which I should prefer.
 
