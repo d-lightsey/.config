@@ -4,12 +4,12 @@
     {
       "project_number": 116,
       "project_name": "verify_opencode_implement_extension_parity",
-      "status": "planned",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-03T02:34:37Z",
-      "last_updated": "2026-03-03T02:45:33Z",
-      "session_id": "sess_1772505688_269893",
-      "researched": "2026-03-03T02:40:48Z",
+      "last_updated": "2026-03-03T04:39:48Z",
+      "session_id": "sess_1772512407_108851",
+      "researched": "2026-03-03T04:39:48Z",
       "artifacts": [
         {
           "path": "specs/116_verify_opencode_implement_extension_parity/reports/research-001.md",
@@ -20,6 +20,11 @@
           "path": "specs/116_verify_opencode_implement_extension_parity/plans/implementation-001.md",
           "type": "plan",
           "summary": "6-phase implementation plan to achieve full .opencode extension parity with .claude extensions (9 extensions, ~202 files)"
+        },
+        {
+          "path": "specs/116_verify_opencode_implement_extension_parity/reports/research-002.md",
+          "type": "research",
+          "summary": "Supplementary research analyzing Logos/Theory, ProofChecker, and dotfiles .opencode/ systems for reusable extension components"
         }
       ],
       "planned": "2026-03-03T02:45:33Z"
