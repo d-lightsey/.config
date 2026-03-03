@@ -30,7 +30,7 @@
       "status": "planned",
       "language": "meta",
       "created": "2026-03-03T22:30:00Z",
-      "last_updated": "2026-03-03T22:58:50Z",
+      "last_updated": "2026-03-03T23:06:24Z",
       "session_id": "sess_1772578517_8a8729",
       "researched": "2026-03-03T23:30:00Z",
       "artifacts": [
@@ -50,12 +50,12 @@
           "summary": "Safety verification, context exclusion analysis, picker feature parity audit, and context contamination discovery for .opencode cleanup"
         },
         {
-          "path": "specs/121_clean_up_core_skills_directories/plans/implementation-001.md",
+          "path": "specs/121_clean_up_core_skills_directories/plans/implementation-002.md",
           "type": "plan",
-          "summary": "5-phase implementation plan to remove extension artifacts from core directories, simplify sync.lua, and add disjointness validation"
+          "summary": "Revised 5-phase plan: removes validation script, adds hooks/ context copy, preserves CONTEXT_EXCLUDE_PATTERNS"
         }
       ],
-      "planned": "2026-03-03T22:58:50Z"
+      "planned": "2026-03-03T23:06:24Z"
     },
     {
       "project_number": 120,
