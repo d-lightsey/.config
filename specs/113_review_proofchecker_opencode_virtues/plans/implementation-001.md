@@ -51,7 +51,7 @@ Three research reports inform this plan:
 
 ## Implementation Phases
 
-### Phase 1: Create .opencode/ Extension System Architecture [NOT STARTED]
+### Phase 1: Create .opencode/ Extension System Architecture [COMPLETED]
 
 **Goal**: Establish the `.opencode/extensions/` directory structure in the global config, with at least one example extension manifest to validate the system works end-to-end.
 
@@ -75,7 +75,7 @@ Three research reports inform this plan:
 
 ---
 
-### Phase 2: Parameterize the Claude Picker into a Shared Picker [NOT STARTED]
+### Phase 2: Parameterize the Claude Picker into a Shared Picker [COMPLETED]
 
 **Goal**: Refactor the Claude commands picker so it accepts a configuration table specifying paths (`.claude/` vs `.opencode/`), labels ("Claude" vs "OpenCode"), and directory names. The existing `<leader>ac` behavior must remain identical.
 
@@ -128,7 +128,7 @@ Three research reports inform this plan:
 
 ---
 
-### Phase 3: Create OpenCode Commands Picker (`<leader>ao`) [NOT STARTED]
+### Phase 3: Create OpenCode Commands Picker (`<leader>ao`) [COMPLETED]
 
 **Goal**: Create the OpenCode-specific picker using the shared infrastructure from Phase 2, registered as `:OpencodeCommands` and bound to an appropriate keymap.
 
@@ -176,7 +176,7 @@ Three research reports inform this plan:
 
 ---
 
-### Phase 4: Add Machine-Readable Context Index to .opencode/ [NOT STARTED]
+### Phase 4: Add Machine-Readable Context Index to .opencode/ [COMPLETED]
 
 **Goal**: Create `context/index.json` for `.opencode/` enabling automated context discovery via jq queries, mirroring the `.claude/context/index.json` pattern.
 
@@ -210,7 +210,7 @@ Three research reports inform this plan:
 
 ---
 
-### Phase 5: Reorganize .opencode/ Agents into Core vs Extensions [NOT STARTED]
+### Phase 5: Reorganize .opencode/ Agents into Core vs Extensions [COMPLETED]
 
 **Goal**: Move domain-specific agents and skills from the flat `.opencode/` structure into the extension directories created in Phase 1.
 
@@ -242,7 +242,7 @@ Three research reports inform this plan:
 
 ---
 
-### Phase 6: Validation, Documentation, and Tests [NOT STARTED]
+### Phase 6: Validation, Documentation, and Tests [COMPLETED]
 
 **Goal**: Validate the complete system, update documentation, and write test coverage for the shared picker infrastructure.
 
