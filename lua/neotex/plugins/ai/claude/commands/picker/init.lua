@@ -21,28 +21,34 @@ local helpers = require("neotex.plugins.ai.claude.commands.picker.utils.helpers"
 
 --- Show the Claude artifacts picker
 --- @param opts table Telescope options
-function M.show_commands_picker(opts)
+--- @param config table|nil Picker configuration from shared.picker.config (optional)
+function M.show_commands_picker(opts, config)
   opts = opts or {}
 
+  -- Get config values with defaults for Claude
+  local label = config and config.label or "Claude"
+  local base_dir = config and config.base_dir or ".claude"
+  local extensions_module = config and config.extensions_module or "neotex.plugins.ai.claude.extensions"
+
   -- Get extended structure with all commands, skills, hooks
-  local structure = parser.get_extended_structure()
+  local structure = parser.get_extended_structure(config)
 
   if not structure or not structure.primary_commands or vim.tbl_isempty(structure.primary_commands) then
     local scan_mod = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
-    local global_dir = scan_mod.get_global_dir()
+    local global_dir = config and config.global_source_dir or scan_mod.get_global_dir()
     helpers.notify(
-      "No Claude commands found in .claude/commands/ or " .. global_dir .. "/.claude/commands/",
+      "No " .. label .. " commands found in " .. base_dir .. "/commands/ or " .. global_dir .. "/" .. base_dir .. "/commands/",
       "WARN"
     )
     return
   end
 
-  -- Create entries for picker
-  local picker_entries = entries.create_picker_entries(structure)
+  -- Create entries for picker (pass config for extension loading)
+  local picker_entries = entries.create_picker_entries(structure, config)
 
   -- Create picker
   pickers.new(opts, {
-    prompt_title = "Claude Commands",
+    prompt_title = label .. " Commands",
     finder = finders.new_table {
       results = picker_entries,
       entry_maker = function(entry)
@@ -133,14 +139,14 @@ function M.show_commands_picker(opts)
         elseif selection.value.entry_type == "extension" then
           actions.close(prompt_bufnr)
           local ext = selection.value
-          local exts = require("neotex.plugins.ai.claude.extensions")
+          local exts = require(extensions_module)
           if ext.status == "active" or ext.status == "update-available" then
             exts.unload(ext.name, { confirm = true })
           else
             exts.load(ext.name, { confirm = true })
           end
           vim.defer_fn(function()
-            M.show_commands_picker(opts)
+            M.show_commands_picker(opts, config)
           end, 100)
         end
       end)

@@ -531,25 +531,32 @@ local function parse_skills_with_fallback(project_skills_dir, global_skills_dir)
   return merged_skills
 end
 
---- Scan root-level .claude/ configuration files
+--- Scan root-level configuration files for a base directory
 --- @param project_dir string Path to project directory
 --- @param global_dir string Path to global directory
+--- @param base_dir string Base directory name (.claude or .opencode)
+--- @param root_config_file string Root config file name (CLAUDE.md or OPENCODE.md)
+--- @param settings_file string Settings file name (settings.local.json or settings.json)
 --- @return table Array of root file metadata with name, filepath, is_local, description
-local function scan_root_files(project_dir, global_dir)
+local function scan_root_files(project_dir, global_dir, base_dir, root_config_file, settings_file)
+  base_dir = base_dir or ".claude"
+  root_config_file = root_config_file or "CLAUDE.md"
+  settings_file = settings_file or "settings.local.json"
+
   local root_files_config = {
     { name = ".gitignore", description = "Git ignore patterns" },
     { name = "README.md", description = "Documentation" },
-    { name = "CLAUDE.md", description = "Claude configuration" },
-    { name = "settings.local.json", description = "Local settings" },
+    { name = root_config_file, description = base_dir:sub(2) .. " configuration" },
+    { name = settings_file, description = "Local settings" },
   }
 
   local root_files = {}
   local seen = {}
 
   -- Check local project first
-  local project_claude_dir = project_dir .. "/.claude"
+  local project_base_dir = project_dir .. "/" .. base_dir
   for _, config in ipairs(root_files_config) do
-    local filepath = project_claude_dir .. "/" .. config.name
+    local filepath = project_base_dir .. "/" .. config.name
     if vim.fn.filereadable(filepath) == 1 then
       table.insert(root_files, {
         name = config.name,
@@ -562,11 +569,11 @@ local function scan_root_files(project_dir, global_dir)
   end
 
   -- Check global, but only if different from project and file not already found locally
-  local global_claude_dir = global_dir .. "/.claude"
+  local global_base_dir = global_dir .. "/" .. base_dir
   if project_dir ~= global_dir then
     for _, config in ipairs(root_files_config) do
       if not seen[config.name] then
-        local filepath = global_claude_dir .. "/" .. config.name
+        local filepath = global_base_dir .. "/" .. config.name
         if vim.fn.filereadable(filepath) == 1 then
           table.insert(root_files, {
             name = config.name,
@@ -671,43 +678,57 @@ local function parse_hooks_with_fallback(project_hooks_dir, global_hooks_dir)
 end
 
 --- Get extended structure with commands, hooks, and skills
+--- @param config table|nil Picker config from shared.picker.config (optional, defaults to claude)
 --- @return table Structure with commands, hooks, skills, and dependencies
-function M.get_extended_structure()
+function M.get_extended_structure(config)
   local project_dir = vim.fn.getcwd()
   local scan = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+
+  -- Get config values with defaults for Claude
+  local base_dir = config and config.base_dir or ".claude"
+  local commands_subdir = config and config.commands_subdir or "commands"
+  local skills_subdir = config and config.skills_subdir or "skills"
+  local agents_subdir = config and config.agents_subdir or "agents"
+  local hooks_subdir = config and config.hooks_subdir or "hooks"
+  local settings_file = config and config.settings_file or "settings.local.json"
+  local root_config_file = config and config.root_config_file or "CLAUDE.md"
 
   -- Get command structure
-  local project_commands_dir = project_dir .. "/.claude/commands"
-  local global_commands_dir = global_dir .. "/.claude/commands"
+  local project_commands_dir = project_dir .. "/" .. base_dir .. "/" .. commands_subdir
+  local global_commands_dir = global_dir .. "/" .. base_dir .. "/" .. commands_subdir
   local commands = M.parse_with_fallback(project_commands_dir, global_commands_dir)
   local hierarchy = M.build_hierarchy(commands)
   local sorted_hierarchy = M.sort_hierarchy(hierarchy)
 
-  -- Get hooks
-  local project_hooks_dir = project_dir .. "/.claude/hooks"
-  local global_hooks_dir = global_dir .. "/.claude/hooks"
-  local hooks = parse_hooks_with_fallback(project_hooks_dir, global_hooks_dir)
+  -- Get hooks (only if hooks_subdir is configured)
+  local hooks = {}
+  local hook_events = {}
+  if hooks_subdir then
+    local project_hooks_dir = project_dir .. "/" .. base_dir .. "/" .. hooks_subdir
+    local global_hooks_dir = global_dir .. "/" .. base_dir .. "/" .. hooks_subdir
+    hooks = parse_hooks_with_fallback(project_hooks_dir, global_hooks_dir)
+
+    -- Build hook dependencies
+    local settings_path = project_dir .. "/" .. base_dir .. "/" .. settings_file
+    if vim.fn.filereadable(settings_path) ~= 1 then
+      settings_path = global_dir .. "/" .. base_dir .. "/" .. settings_file
+    end
+    hook_events = M.build_hook_dependencies(hooks, settings_path)
+  end
 
   -- Get skills
-  local project_skills_dir = project_dir .. "/.claude/skills"
-  local global_skills_dir = global_dir .. "/.claude/skills"
+  local project_skills_dir = project_dir .. "/" .. base_dir .. "/" .. skills_subdir
+  local global_skills_dir = global_dir .. "/" .. base_dir .. "/" .. skills_subdir
   local skills = parse_skills_with_fallback(project_skills_dir, global_skills_dir)
 
   -- Get agents
-  local project_agents_dir = project_dir .. "/.claude/agents"
-  local global_agents_dir = global_dir .. "/.claude/agents"
+  local project_agents_dir = project_dir .. "/" .. base_dir .. "/" .. agents_subdir
+  local global_agents_dir = global_dir .. "/" .. base_dir .. "/" .. agents_subdir
   local agents = parse_agents_with_fallback(project_agents_dir, global_agents_dir)
 
-  -- Build hook dependencies
-  local settings_path = project_dir .. "/.claude/settings.local.json"
-  if vim.fn.filereadable(settings_path) ~= 1 then
-    settings_path = global_dir .. "/.claude/settings.local.json"
-  end
-  local hook_events = M.build_hook_dependencies(hooks, settings_path)
-
   -- Get root files
-  local root_files = scan_root_files(project_dir, global_dir)
+  local root_files = scan_root_files(project_dir, global_dir, base_dir, root_config_file, settings_file)
 
   return {
     primary_commands = sorted_hierarchy.primary_commands,

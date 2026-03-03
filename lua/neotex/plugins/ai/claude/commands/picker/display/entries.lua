@@ -581,12 +581,16 @@ function M.create_commands_entries(structure)
 end
 
 --- Create entries for extensions section
+--- @param config table|nil Picker configuration with extensions_module
 --- @return table Array of entries
-function M.create_extensions_entries()
+function M.create_extensions_entries(config)
   local entries = {}
 
+  -- Get extensions module from config or default to claude
+  local extensions_module = config and config.extensions_module or "neotex.plugins.ai.claude.extensions"
+
   -- Try to load extensions module
-  local ok, extensions = pcall(require, "neotex.plugins.ai.claude.extensions")
+  local ok, extensions = pcall(require, extensions_module)
   if not ok then
     return entries
   end
@@ -684,8 +688,9 @@ end
 --- Create all picker entries from structure
 --- Insertion order is REVERSED for descending sort: last inserted appears at TOP
 --- @param structure table Extended structure from parser.get_extended_structure()
+--- @param config table|nil Picker configuration from shared.picker.config
 --- @return table Array of entries for telescope
-function M.create_picker_entries(structure)
+function M.create_picker_entries(structure, config)
   local all_entries = {}
 
   -- Insert in reverse order (last inserted appears first with descending sort)
@@ -697,7 +702,7 @@ function M.create_picker_entries(structure)
   end
 
   -- 2. Extensions section (after Load All)
-  local ext_entries = M.create_extensions_entries()
+  local ext_entries = M.create_extensions_entries(config)
   for _, entry in ipairs(ext_entries) do
     table.insert(all_entries, entry)
   end
