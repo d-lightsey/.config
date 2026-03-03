@@ -76,14 +76,16 @@ local function format_command(command, indent_char, is_dependent)
 end
 
 --- Create entries for docs section
+--- @param config table|nil Picker configuration for config-aware path construction
 --- @return table Array of entries
-function M.create_docs_entries()
+function M.create_docs_entries(config)
   local entries = {}
   local project_dir = vim.fn.getcwd()
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+  local base_dir = config and config.base_dir or ".claude"
 
-  local local_docs = scan.scan_directory(project_dir .. "/.claude/docs", "*.md")
-  local global_docs = scan.scan_directory(global_dir .. "/.claude/docs", "*.md")
+  local local_docs = scan.scan_directory(project_dir .. "/" .. base_dir .. "/docs", "*.md")
+  local global_docs = scan.scan_directory(global_dir .. "/" .. base_dir .. "/docs", "*.md")
   local all_docs = scan.merge_artifacts(local_docs, global_docs)
 
   if #all_docs > 0 then
@@ -114,7 +116,8 @@ function M.create_docs_entries()
       name = "~~~docs_heading",
       display = string.format("%-40s %s", "[Docs]", "Integration guides"),
       entry_type = "heading",
-      ordinal = "docs"
+      ordinal = "docs",
+      config = config,
     })
   end
 
@@ -122,14 +125,16 @@ function M.create_docs_entries()
 end
 
 --- Create entries for lib section
+--- @param config table|nil Picker configuration for config-aware path construction
 --- @return table Array of entries
-function M.create_lib_entries()
+function M.create_lib_entries(config)
   local entries = {}
   local project_dir = vim.fn.getcwd()
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+  local base_dir = config and config.base_dir or ".claude"
 
-  local local_lib = scan.scan_directory(project_dir .. "/.claude/lib", "*.sh")
-  local global_lib = scan.scan_directory(global_dir .. "/.claude/lib", "*.sh")
+  local local_lib = scan.scan_directory(project_dir .. "/" .. base_dir .. "/lib", "*.sh")
+  local global_lib = scan.scan_directory(global_dir .. "/" .. base_dir .. "/lib", "*.sh")
   local all_lib = scan.merge_artifacts(local_lib, global_lib)
 
   if #all_lib > 0 then
@@ -160,7 +165,8 @@ function M.create_lib_entries()
       name = "~~~lib_heading",
       display = string.format("%-40s %s", "[Lib]", "Utility libraries"),
       entry_type = "heading",
-      ordinal = "lib"
+      ordinal = "lib",
+      config = config,
     })
   end
 
@@ -168,14 +174,16 @@ function M.create_lib_entries()
 end
 
 --- Create entries for templates section
+--- @param config table|nil Picker configuration for config-aware path construction
 --- @return table Array of entries
-function M.create_templates_entries()
+function M.create_templates_entries(config)
   local entries = {}
   local project_dir = vim.fn.getcwd()
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+  local base_dir = config and config.base_dir or ".claude"
 
-  local local_templates = scan.scan_directory(project_dir .. "/.claude/templates", "*.yaml")
-  local global_templates = scan.scan_directory(global_dir .. "/.claude/templates", "*.yaml")
+  local local_templates = scan.scan_directory(project_dir .. "/" .. base_dir .. "/templates", "*.yaml")
+  local global_templates = scan.scan_directory(global_dir .. "/" .. base_dir .. "/templates", "*.yaml")
   local all_templates = scan.merge_artifacts(local_templates, global_templates)
 
   if #all_templates > 0 then
@@ -206,7 +214,8 @@ function M.create_templates_entries()
       name = "~~~templates_heading",
       display = string.format("%-40s %s", "[Templates]", "Workflow templates"),
       entry_type = "heading",
-      ordinal = "templates"
+      ordinal = "templates",
+      config = config,
     })
   end
 
@@ -214,14 +223,16 @@ function M.create_templates_entries()
 end
 
 --- Create entries for scripts section
+--- @param config table|nil Picker configuration for config-aware path construction
 --- @return table Array of entries
-function M.create_scripts_entries()
+function M.create_scripts_entries(config)
   local entries = {}
   local project_dir = vim.fn.getcwd()
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+  local base_dir = config and config.base_dir or ".claude"
 
-  local local_scripts = scan.scan_directory(project_dir .. "/.claude/scripts", "*.sh")
-  local global_scripts = scan.scan_directory(global_dir .. "/.claude/scripts", "*.sh")
+  local local_scripts = scan.scan_directory(project_dir .. "/" .. base_dir .. "/scripts", "*.sh")
+  local global_scripts = scan.scan_directory(global_dir .. "/" .. base_dir .. "/scripts", "*.sh")
   local all_scripts = scan.merge_artifacts(local_scripts, global_scripts)
 
   if #all_scripts > 0 then
@@ -252,7 +263,8 @@ function M.create_scripts_entries()
       name = "~~~scripts_heading",
       display = string.format("%-40s %s", "[Scripts]", "Standalone CLI tools"),
       entry_type = "heading",
-      ordinal = "scripts"
+      ordinal = "scripts",
+      config = config,
     })
   end
 
@@ -260,14 +272,16 @@ function M.create_scripts_entries()
 end
 
 --- Create entries for tests section
+--- @param config table|nil Picker configuration for config-aware path construction
 --- @return table Array of entries
-function M.create_tests_entries()
+function M.create_tests_entries(config)
   local entries = {}
   local project_dir = vim.fn.getcwd()
-  local global_dir = scan.get_global_dir()
+  local global_dir = config and config.global_source_dir or scan.get_global_dir()
+  local base_dir = config and config.base_dir or ".claude"
 
-  local local_tests = scan.scan_directory(project_dir .. "/.claude/tests", "test_*.sh")
-  local global_tests = scan.scan_directory(global_dir .. "/.claude/tests", "test_*.sh")
+  local local_tests = scan.scan_directory(project_dir .. "/" .. base_dir .. "/tests", "test_*.sh")
+  local global_tests = scan.scan_directory(global_dir .. "/" .. base_dir .. "/tests", "test_*.sh")
   local all_tests = scan.merge_artifacts(local_tests, global_tests)
 
   if #all_tests > 0 then
@@ -298,7 +312,8 @@ function M.create_tests_entries()
       name = "~~~tests_heading",
       display = string.format("%-40s %s", "[Tests]", "Test suites"),
       entry_type = "heading",
-      ordinal = "tests"
+      ordinal = "tests",
+      config = config,
     })
   end
 
@@ -341,8 +356,9 @@ end
 
 --- Create entries for skills section
 --- @param structure table Extended structure from parser
+--- @param config table|nil Picker configuration for threading to heading entries
 --- @return table Array of entries
-function M.create_skills_entries(structure)
+function M.create_skills_entries(structure, config)
   local entries = {}
   local skills = structure.skills or {}
 
@@ -372,7 +388,8 @@ function M.create_skills_entries(structure)
       name = "~~~skills_heading",
       display = string.format("%-40s %s", "[Skills]", "Model-invoked capabilities"),
       entry_type = "heading",
-      ordinal = "skills"
+      ordinal = "skills",
+      config = config,
     })
   end
 
@@ -381,8 +398,9 @@ end
 
 --- Create entries for agents section
 --- @param structure table Extended structure from parser
+--- @param config table|nil Picker configuration for threading to heading entries
 --- @return table Array of entries
-function M.create_agents_entries(structure)
+function M.create_agents_entries(structure, config)
   local entries = {}
   local agents = structure.agents or {}
 
@@ -409,7 +427,8 @@ function M.create_agents_entries(structure)
       name = "~~~agents_heading",
       display = string.format("%-40s %s", "[Agents]", "AI agent definitions"),
       entry_type = "heading",
-      ordinal = "agents"
+      ordinal = "agents",
+      config = config,
     })
   end
 
@@ -435,8 +454,9 @@ end
 
 --- Create entries for root files section
 --- @param structure table Extended structure from parser
+--- @param config table|nil Picker configuration for threading to heading entries
 --- @return table Array of entries
-function M.create_root_files_entries(structure)
+function M.create_root_files_entries(structure, config)
   local entries = {}
   local root_files = structure.root_files or {}
 
@@ -463,7 +483,8 @@ function M.create_root_files_entries(structure)
       name = "~~~root_files_heading",
       display = string.format("%-40s %s", "[Root Files]", "Configuration files"),
       entry_type = "heading",
-      ordinal = "root_files"
+      ordinal = "root_files",
+      config = config,
     })
   end
 
@@ -472,8 +493,9 @@ end
 
 --- Create entries for hooks section
 --- @param structure table Extended structure from parser
+--- @param config table|nil Picker configuration for threading to heading entries
 --- @return table Array of entries
-function M.create_hooks_entries(structure)
+function M.create_hooks_entries(structure, config)
   local entries = {}
   local hook_events = structure.hook_events or {}
   local hooks = structure.hooks or {}
@@ -515,7 +537,8 @@ function M.create_hooks_entries(structure)
       name = "~~~hooks_heading",
       display = string.format("%-40s %s", "[Hook Events]", "Event-triggered scripts"),
       entry_type = "heading",
-      ordinal = "hooks"
+      ordinal = "hooks",
+      config = config,
     })
   end
 
@@ -524,8 +547,9 @@ end
 
 --- Create entries for commands section
 --- @param structure table Extended structure from parser
+--- @param config table|nil Picker configuration for threading to heading entries
 --- @return table Array of entries
-function M.create_commands_entries(structure)
+function M.create_commands_entries(structure, config)
   local entries = {}
 
   local sorted_primary_names = {}
@@ -574,7 +598,8 @@ function M.create_commands_entries(structure)
     name = "~~~commands_heading",
     display = string.format("%-40s %s", "[Commands]", "Slash commands"),
     entry_type = "heading",
-    ordinal = "commands"
+    ordinal = "commands",
+    config = config,
   })
 
   return entries
@@ -711,61 +736,61 @@ function M.create_picker_entries(structure, config)
   end
 
   -- 3. Docs section
-  local docs = M.create_docs_entries()
+  local docs = M.create_docs_entries(config)
   for _, entry in ipairs(docs) do
     table.insert(all_entries, entry)
   end
 
   -- 3. Lib section
-  local lib = M.create_lib_entries()
+  local lib = M.create_lib_entries(config)
   for _, entry in ipairs(lib) do
     table.insert(all_entries, entry)
   end
 
   -- 4. Templates section
-  local templates = M.create_templates_entries()
+  local templates = M.create_templates_entries(config)
   for _, entry in ipairs(templates) do
     table.insert(all_entries, entry)
   end
 
   -- 5. Scripts section
-  local scripts = M.create_scripts_entries()
+  local scripts = M.create_scripts_entries(config)
   for _, entry in ipairs(scripts) do
     table.insert(all_entries, entry)
   end
 
   -- 6. Tests section
-  local tests = M.create_tests_entries()
+  local tests = M.create_tests_entries(config)
   for _, entry in ipairs(tests) do
     table.insert(all_entries, entry)
   end
 
   -- 7. Hooks section
-  local hooks = M.create_hooks_entries(structure)
+  local hooks = M.create_hooks_entries(structure, config)
   for _, entry in ipairs(hooks) do
     table.insert(all_entries, entry)
   end
 
   -- 8. Skills section
-  local skills = M.create_skills_entries(structure)
+  local skills = M.create_skills_entries(structure, config)
   for _, entry in ipairs(skills) do
     table.insert(all_entries, entry)
   end
 
   -- 9. Agents section
-  local agents = M.create_agents_entries(structure)
+  local agents = M.create_agents_entries(structure, config)
   for _, entry in ipairs(agents) do
     table.insert(all_entries, entry)
   end
 
   -- 10. Root Files section (between Agents and Commands)
-  local root_files = M.create_root_files_entries(structure)
+  local root_files = M.create_root_files_entries(structure, config)
   for _, entry in ipairs(root_files) do
     table.insert(all_entries, entry)
   end
 
   -- 11. Commands section (appears at top)
-  local commands = M.create_commands_entries(structure)
+  local commands = M.create_commands_entries(structure, config)
   for _, entry in ipairs(commands) do
     table.insert(all_entries, entry)
   end

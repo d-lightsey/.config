@@ -4,11 +4,11 @@
     {
       "project_number": 119,
       "project_name": "fix_hardcoded_paths_in_picker",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-03T20:19:29Z",
-      "last_updated": "2026-03-03T20:31:50Z",
-      "session_id": "sess_1772569720_14b090",
+      "last_updated": "2026-03-03T20:49:40Z",
+      "session_id": "sess_1772570321_56d358",
       "artifacts": [
         {
           "type": "research",
@@ -19,9 +19,16 @@
           "path": "specs/119_fix_hardcoded_paths_in_picker/plans/implementation-001.md",
           "type": "plan",
           "summary": "5-phase implementation plan to replace 23 hardcoded .claude/ paths with config.base_dir across 7 picker modules"
+        },
+        {
+          "path": "specs/119_fix_hardcoded_paths_in_picker/summaries/implementation-summary-20260303.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification details"
         }
       ],
-      "planned": "2026-03-03T20:31:50Z"
+      "planned": "2026-03-03T20:31:50Z",
+      "completed": "2026-03-03T20:49:40Z",
+      "completion_summary": "Replaced 23 hardcoded .claude/ paths with config-aware base_dir construction across 7 picker modules. Both Claude (<leader>ac) and OpenCode (<leader>ao) pickers now correctly scan their respective directories."
     },
     {
       "project_number": 118,

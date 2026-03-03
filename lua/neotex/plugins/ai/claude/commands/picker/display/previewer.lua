@@ -64,8 +64,11 @@ local function preview_heading(self, entry)
   local readme_path = nil
 
   local scan_mod = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
-  local local_path = vim.fn.getcwd() .. "/.claude/" .. ordinal .. "/README.md"
-  local global_path = scan_mod.get_global_dir() .. "/.claude/" .. ordinal .. "/README.md"
+  local entry_config = entry.value.config
+  local base_dir = (entry_config and entry_config.base_dir) or ".claude"
+  local global_dir = (entry_config and entry_config.global_source_dir) or scan_mod.get_global_dir()
+  local local_path = vim.fn.getcwd() .. "/" .. base_dir .. "/" .. ordinal .. "/README.md"
+  local global_path = global_dir .. "/" .. base_dir .. "/" .. ordinal .. "/README.md"
 
   if vim.fn.filereadable(local_path) == 1 then
     readme_path = local_path

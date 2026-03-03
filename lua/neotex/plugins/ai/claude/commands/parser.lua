@@ -743,8 +743,9 @@ end
 
 --- Main function to get organized command structure
 --- @param commands_dir string Path to commands directory (optional)
+--- @param config table|nil Picker configuration with base_dir field (optional)
 --- @return table Organized, sorted command hierarchy
-function M.get_command_structure(commands_dir)
+function M.get_command_structure(commands_dir, config)
   if commands_dir then
     local commands = M.parse_all_commands(commands_dir)
     local hierarchy = M.build_hierarchy(commands)
@@ -752,8 +753,10 @@ function M.get_command_structure(commands_dir)
   end
 
   local scan_mod = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
-  local project_dir = vim.fn.getcwd() .. "/.claude/commands"
-  local global_dir = scan_mod.get_global_dir() .. "/.claude/commands"
+  local base_dir = (config and config.base_dir) or ".claude"
+  local commands_subdir = (config and config.commands_subdir) or "commands"
+  local project_dir = vim.fn.getcwd() .. "/" .. base_dir .. "/" .. commands_subdir
+  local global_dir = scan_mod.get_global_dir() .. "/" .. base_dir .. "/" .. commands_subdir
 
   local commands = M.parse_with_fallback(project_dir, global_dir)
   local hierarchy = M.build_hierarchy(commands)

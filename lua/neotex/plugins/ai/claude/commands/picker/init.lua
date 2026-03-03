@@ -166,12 +166,12 @@ function M.show_commands_picker(opts, config)
 
         -- Load artifact
         local artifact = selection.value.command or selection.value
-        edit.load_artifact_locally(artifact, artifact_type, parser)
+        edit.load_artifact_locally(artifact, artifact_type, parser, config)
 
         -- Refresh picker
         vim.defer_fn(function()
           actions.close(prompt_bufnr)
-          M.show_commands_picker(opts)
+          M.show_commands_picker(opts, config)
         end, 100)
       end)
 
@@ -190,12 +190,12 @@ function M.show_commands_picker(opts, config)
 
         -- Update artifact
         local artifact = selection.value.command or selection.value
-        sync.update_artifact_from_global(artifact, artifact_type, false)
+        sync.update_artifact_from_global(artifact, artifact_type, false, config)
 
         -- Refresh picker
         vim.defer_fn(function()
           actions.close(prompt_bufnr)
-          M.show_commands_picker(opts)
+          M.show_commands_picker(opts, config)
         end, 100)
       end)
 
@@ -214,12 +214,12 @@ function M.show_commands_picker(opts, config)
 
         -- Save artifact
         local artifact = selection.value.command or selection.value
-        edit.save_artifact_to_global(artifact, artifact_type)
+        edit.save_artifact_to_global(artifact, artifact_type, config)
 
         -- Refresh picker
         vim.defer_fn(function()
           actions.close(prompt_bufnr)
-          M.show_commands_picker(opts)
+          M.show_commands_picker(opts, config)
         end, 100)
       end)
 

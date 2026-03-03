@@ -1,7 +1,7 @@
 # Implementation Plan: Task #119
 
 - **Task**: 119 - Fix hardcoded paths in picker for config-aware directory scanning
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2-3 hours
 - **Dependencies**: Task 118 (completed)
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -47,7 +47,7 @@ The research report (research-001.md) identified all 23 hardcoded path locations
 
 ## Implementation Phases
 
-### Phase 1: Thread config to entries.lua directory-scanning functions [NOT STARTED]
+### Phase 1: Thread config to entries.lua directory-scanning functions [COMPLETED]
 
 **Goal**: Add `config` parameter to the 5 directory-scanning entry creator functions and update `create_picker_entries()` to pass config through. Also attach config to heading entries for previewer access.
 
@@ -104,7 +104,7 @@ table.insert(entries, {
 
 ---
 
-### Phase 2: Thread config to previewer.preview_heading() [NOT STARTED]
+### Phase 2: Thread config to previewer.preview_heading() [COMPLETED]
 
 **Goal**: Update `preview_heading()` to extract config from the entry and use `base_dir` for README path construction instead of hardcoded `".claude/"`.
 
@@ -138,7 +138,7 @@ local global_path = global_dir .. "/" .. base_dir .. "/" .. ordinal .. "/README.
 
 ---
 
-### Phase 3: Thread config to init.lua call sites and fix sync/edit operations [NOT STARTED]
+### Phase 3: Thread config to init.lua call sites and fix sync/edit operations [COMPLETED]
 
 **Goal**: Pass config from `init.lua` to `sync.update_artifact_from_global()`, `edit.load_artifact_locally()`, and `edit.save_artifact_to_global()`. Also rename the shadowed `config` variable in sync.lua.
 
@@ -219,7 +219,7 @@ M.show_commands_picker(opts, config)
 
 ---
 
-### Phase 4: Fix scan.lua and parser.lua hardcoded paths [NOT STARTED]
+### Phase 4: Fix scan.lua and parser.lua hardcoded paths [COMPLETED]
 
 **Goal**: Update `scan_artifacts_for_picker()` in scan.lua and `get_command_structure()` in parser.lua to accept and use `base_dir` instead of hardcoded `".claude/"`.
 
@@ -275,7 +275,7 @@ function M.get_command_structure(commands_dir, config)
 
 ---
 
-### Phase 5: End-to-end verification and testing [NOT STARTED]
+### Phase 5: End-to-end verification and testing [COMPLETED]
 
 **Goal**: Verify the complete picker system works correctly for both Claude and OpenCode configurations with no remaining hardcoded paths.
 

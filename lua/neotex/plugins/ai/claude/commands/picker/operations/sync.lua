@@ -542,8 +542,9 @@ end
 --- @param artifact table Artifact data with filepath and name
 --- @param artifact_type string Type of artifact (for directory determination)
 --- @param silent boolean Don't show notifications
+--- @param picker_config table|nil Picker configuration with base_dir field
 --- @return boolean success
-function M.update_artifact_from_global(artifact, artifact_type, silent)
+function M.update_artifact_from_global(artifact, artifact_type, silent, picker_config)
   if not artifact or not artifact.name then
     if not silent then
       helpers.notify("No artifact selected", "ERROR")
@@ -553,6 +554,7 @@ function M.update_artifact_from_global(artifact, artifact_type, silent)
 
   local project_dir = vim.fn.getcwd()
   local global_dir = scan.get_global_dir()
+  local base_dir = (picker_config and picker_config.base_dir) or ".claude"
 
   -- Don't update if we're in the global directory
   if project_dir == global_dir then
@@ -578,8 +580,8 @@ function M.update_artifact_from_global(artifact, artifact_type, silent)
     root_file = { dir = "", ext = "" },  -- Root files have no subdir, name includes extension
   }
 
-  local config = subdir_map[artifact_type]
-  if not config then
+  local type_config = subdir_map[artifact_type]
+  if not type_config then
     if not silent then
       helpers.notify("Unknown artifact type: " .. artifact_type, "ERROR")
     end
@@ -590,9 +592,9 @@ function M.update_artifact_from_global(artifact, artifact_type, silent)
   local global_filepath
   if artifact_type == "root_file" then
     -- Root files: name already includes extension, no subdirectory
-    global_filepath = global_dir .. "/.claude/" .. artifact.name
+    global_filepath = global_dir .. "/" .. base_dir .. "/" .. artifact.name
   else
-    global_filepath = global_dir .. "/.claude/" .. config.dir .. "/" .. artifact.name .. config.ext
+    global_filepath = global_dir .. "/" .. base_dir .. "/" .. type_config.dir .. "/" .. artifact.name .. type_config.ext
   end
 
   -- Check if global version exists
@@ -607,11 +609,11 @@ function M.update_artifact_from_global(artifact, artifact_type, silent)
   local local_dir
   local local_filepath
   if artifact_type == "root_file" then
-    -- Root files go directly in .claude/
-    local_dir = project_dir .. "/.claude"
+    -- Root files go directly in base_dir/
+    local_dir = project_dir .. "/" .. base_dir
     local_filepath = local_dir .. "/" .. artifact.name
   else
-    local_dir = project_dir .. "/.claude/" .. config.dir
+    local_dir = project_dir .. "/" .. base_dir .. "/" .. type_config.dir
     local_filepath = local_dir .. "/" .. vim.fn.fnamemodify(global_filepath, ":t")
   end
   helpers.ensure_directory(local_dir)
@@ -632,7 +634,7 @@ function M.update_artifact_from_global(artifact, artifact_type, silent)
   end
 
   -- Preserve permissions for shell scripts
-  if config.ext == ".sh" then
+  if type_config.ext == ".sh" then
     helpers.copy_file_permissions(global_filepath, local_filepath)
   end
 

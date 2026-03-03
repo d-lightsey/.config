@@ -172,16 +172,18 @@ end
 
 --- Scan artifacts for picker display
 --- @param type_config table Artifact type configuration from registry
+--- @param base_dir string|nil Base directory name (default: ".claude")
 --- @return table Array of artifacts with metadata
-function M.scan_artifacts_for_picker(type_config)
+function M.scan_artifacts_for_picker(type_config, base_dir)
   local dirs = M.get_directories()
   local local_artifacts = {}
   local global_artifacts = {}
+  base_dir = base_dir or ".claude"
 
   -- Scan each subdirectory defined in type_config
   for _, subdir in ipairs(type_config.subdirs) do
-    local local_path = dirs.project_dir .. "/.claude/" .. subdir
-    local global_path = dirs.global_dir .. "/.claude/" .. subdir
+    local local_path = dirs.project_dir .. "/" .. base_dir .. "/" .. subdir
+    local global_path = dirs.global_dir .. "/" .. base_dir .. "/" .. subdir
 
     local local_files = M.scan_directory(local_path, "*" .. type_config.extension)
     local global_files = M.scan_directory(global_path, "*" .. type_config.extension)
