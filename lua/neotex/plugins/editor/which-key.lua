@@ -259,6 +259,7 @@ return {
 
       -- OpenCode group
       { "<leader>ao", group = "opencode", icon = "󰘳" },
+      { "<leader>aoc", "<cmd>OpencodeCommands<CR>", desc = "opencode commands", icon = "󰘳" },
       { "<leader>aoe", "<cmd>OpencodeExtensions<CR>", desc = "opencode extensions", icon = "󰏗" },
       { "<leader>aot", function() require("opencode").toggle() end, desc = "opencode toggle", icon = "󰚩" },
 
