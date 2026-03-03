@@ -1,7 +1,7 @@
 # Implementation Plan: Redesign leader ao picker - Load Core Agent System
 
 - **Task**: 118 - Redesign leader ao picker: Load All Artifacts -> Load Core Agent System
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3-5 hours
 - **Dependencies**: None
 - **Research Inputs**:

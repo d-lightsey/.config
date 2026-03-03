@@ -4,10 +4,10 @@
     {
       "project_number": 118,
       "project_name": "redesign_leader_ao_load_core_agent_system",
-      "status": "implementing",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-03T18:46:14Z",
-      "last_updated": "2026-03-03T19:22:00Z",
+      "last_updated": "2026-03-03T19:28:31Z",
       "session_id": "sess_1772565690_aebacd",
       "researched": "2026-03-03T19:12:26Z",
       "artifacts": [
@@ -25,10 +25,17 @@
           "type": "plan",
           "path": "specs/118_redesign_leader_ao_load_core_agent_system/plans/implementation-001.md",
           "summary": "5-phase plan to redesign Load All Artifacts into Load Core Agent System with extension exclusion filtering, previewer fix, and config threading"
+        },
+        {
+          "type": "summary",
+          "path": "specs/118_redesign_leader_ao_load_core_agent_system/summaries/implementation-summary-20260303.md",
+          "summary": "Implementation summary with verification results"
         }
       ],
       "planned": "2026-03-03T19:19:53Z",
-      "started": "2026-03-03T19:22:00Z"
+      "started": "2026-03-03T19:22:00Z",
+      "completed": "2026-03-03T19:28:31Z",
+      "completion_summary": "Redesigned leader ao/ac picker's Load All Artifacts entry to Load Core Agent System with extension-owned artifact exclusion. Built exclusion sets from extension manifests' provides fields, filtering agents, commands, rules, scripts, hooks, skills, and context from scan results. Fixed previewer hardcoded .claude paths to use config.base_dir."
     },
     {
       "project_number": 117,
