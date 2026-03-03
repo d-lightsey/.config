@@ -1,6 +1,14 @@
 {
-  "next_project_number": 115,
+  "next_project_number": 116,
   "active_projects": [
+    {
+      "project_number": 115,
+      "project_name": "investigate_leader_ao_load_all_feature_parity",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-03T02:06:56Z",
+      "last_updated": "2026-03-03T02:06:56Z"
+    },
     {
       "project_number": 114,
       "project_name": "make_leader_ao_identical_to_leader_ac",
