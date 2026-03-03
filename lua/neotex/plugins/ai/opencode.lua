@@ -55,7 +55,12 @@ return {
     -- Plugin loaded successfully
     -- Run :checkhealth opencode manually to verify configuration
 
-    -- Register OpencodeExtensions command
+    -- Register OpencodeCommands command (main artifact picker)
+    vim.api.nvim_create_user_command("OpencodeCommands", function()
+      require("neotex.plugins.ai.opencode.commands.picker").show_commands_picker()
+    end, { desc = "Browse OpenCode commands, skills, agents, and extensions" })
+
+    -- Register OpencodeExtensions command (extension management)
     vim.api.nvim_create_user_command("OpencodeExtensions", function()
       require("neotex.plugins.ai.opencode.extensions.picker").show()
     end, { desc = "Manage OpenCode extensions" })

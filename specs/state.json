@@ -4,11 +4,11 @@
     {
       "project_number": 113,
       "project_name": "review_proofchecker_opencode_virtues",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-03T00:10:48Z",
-      "last_updated": "2026-03-03T01:07:53Z",
-      "session_id": "sess_1772499790_75e838",
+      "last_updated": "2026-03-03T01:18:09Z",
+      "session_id": "sess_1772500132_e02406",
       "researched": "2026-03-03T00:59:19Z",
       "artifacts": [
         {
@@ -30,9 +30,18 @@
           "path": "specs/113_review_proofchecker_opencode_virtues/plans/implementation-001.md",
           "type": "plan",
           "summary": "6-phase implementation plan for opencode feature parity including extension system, shared picker architecture, and context index"
+        },
+        {
+          "path": "specs/113_review_proofchecker_opencode_virtues/summaries/implementation-summary-20260302.md",
+          "type": "summary",
+          "summary": "Implementation summary for opencode feature parity: shared picker, extension system, context index"
         }
       ],
-      "planned": "2026-03-03T01:07:53Z"
+      "planned": "2026-03-03T01:07:53Z",
+      "started": "2026-03-03T01:09:08Z",
+      "completed": "2026-03-03T01:18:09Z",
+      "completion_summary": "Implemented opencode feature parity with shared picker architecture supporting both .claude/ and .opencode/ directories, extension system with lean and formal domain extensions, and machine-readable context discovery via index.json.",
+      "claudemd_suggestions": "Added <leader>aoc keymap in which-key.lua, OpencodeCommands user command in opencode.lua, shared picker config at lua/neotex/plugins/ai/shared/picker/config.lua"
     },
     {
       "project_number": 112,
