@@ -8,7 +8,8 @@ next_project_number: 123
 
 ### 122. Expand document-converter extension to filetypes extension
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
+- **Research Started**: 2026-03-03
 - **Language**: meta
 - **Dependencies**: None
 
@@ -21,7 +22,7 @@ next_project_number: 123
 - **Research Completed**: 2026-03-03
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [research-001.md](121_clean_up_core_skills_directories/reports/research-001.md), [research-002.md](121_clean_up_core_skills_directories/reports/research-002.md)
+- **Research**: [research-001.md](121_clean_up_core_skills_directories/reports/research-001.md), [research-002.md](121_clean_up_core_skills_directories/reports/research-002.md), [research-003.md](121_clean_up_core_skills_directories/reports/research-003.md)
 
 **Description**: Extension-specific skills currently exist in the core skills directories and should be removed. Two locations need cleanup:
 

@@ -4,10 +4,11 @@
     {
       "project_number": 122,
       "project_name": "expand_document_converter_to_filetypes",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-03T22:38:06Z",
-      "last_updated": "2026-03-03T22:38:06Z"
+      "last_updated": "2026-03-03T22:49:59Z",
+      "session_id": "sess_1772578174_eae23e"
     },
     {
       "project_number": 121,
@@ -15,9 +16,9 @@
       "status": "researched",
       "language": "meta",
       "created": "2026-03-03T22:30:00Z",
-      "last_updated": "2026-03-03T23:15:00Z",
-      "session_id": "sess_1772576988_8fdaec",
-      "researched": "2026-03-03T23:15:00Z",
+      "last_updated": "2026-03-03T23:30:00Z",
+      "session_id": "sess_1772577772_f42510",
+      "researched": "2026-03-03T23:30:00Z",
       "artifacts": [
         {
           "type": "research",
@@ -28,6 +29,11 @@
           "type": "research",
           "path": "specs/121_clean_up_core_skills_directories/reports/research-002.md",
           "summary": "Supplementary research on clean-source architecture redesign: removing extension artifacts from .opencode source directories and simplifying sync.lua by eliminating the exclusion filter machinery"
+        },
+        {
+          "type": "research",
+          "path": "specs/121_clean_up_core_skills_directories/reports/research-003.md",
+          "summary": "Safety verification, context exclusion analysis, picker feature parity audit, and context contamination discovery for .opencode cleanup"
         }
       ]
     },
