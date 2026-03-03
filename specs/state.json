@@ -1,6 +1,14 @@
 {
-  "next_project_number": 114,
+  "next_project_number": 115,
   "active_projects": [
+    {
+      "project_number": 114,
+      "project_name": "make_leader_ao_identical_to_leader_ac",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-03T01:33:11Z",
+      "last_updated": "2026-03-03T01:33:11Z"
+    },
     {
       "project_number": 113,
       "project_name": "review_proofchecker_opencode_virtues",

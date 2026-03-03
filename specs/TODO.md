@@ -1,10 +1,18 @@
 ---
-next_project_number: 114
+next_project_number: 115
 ---
 
 # TODO
 
 ## Tasks
+
+### 114. Make <leader>ao identical to <leader>ac and remove <leader>ae picker
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+- **Dependencies**: None
+
+**Description**: Make <leader>ao identical to <leader>ac since <C-g> already opens OpenCode directly. Remove <leader>ae picker for both Claude Code and OpenCode as it is no longer needed.
 
 ### 113. Review the virtues of ProofChecker .opencode/ in order to incorporate any missing elements to improve the current .opencode/ agent system
 - **Effort**: 10-14 hours
