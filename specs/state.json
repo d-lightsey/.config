@@ -7,7 +7,7 @@
       "status": "planned",
       "language": "meta",
       "created": "2026-03-03T22:38:06Z",
-      "last_updated": "2026-03-03T23:02:12Z",
+      "last_updated": "2026-03-03T23:24:21Z",
       "session_id": "sess_1772578706_6b2850",
       "researched": "2026-03-03T22:55:11Z",
       "artifacts": [
@@ -17,17 +17,17 @@
           "summary": "Comprehensive research on filetype conversion tools, pipelines, and architecture for expanding document-converter to filetypes extension with Excel, PowerPoint, and academic slide support"
         },
         {
-          "path": "specs/122_expand_document_converter_to_filetypes/plans/implementation-001.md",
-          "type": "plan",
-          "summary": "5-phase plan covering extension rename, spreadsheet agent, presentation agent, dependency documentation, and validation"
-        },
-        {
           "path": "specs/122_expand_document_converter_to_filetypes/reports/research-002.md",
           "type": "research",
           "summary": "Plan review and gap analysis: 6 findings including missing OpenCode parity, plan metadata fields, NixOS dependencies, task 121 soft dependency, untracked typst enhancement, and tool detection sequencing"
+        },
+        {
+          "path": "specs/122_expand_document_converter_to_filetypes/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Revised 5-phase plan with OpenCode parity, Option A tool detection in Phase 1, NixOS dependencies, and Future Work section"
         }
       ],
-      "planned": "2026-03-03T23:02:12Z"
+      "planned": "2026-03-03T23:24:21Z"
     },
     {
       "project_number": 121,
