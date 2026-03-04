@@ -36,10 +36,12 @@ next_project_number: 128
 
 ### 125. Add epidemiology research extension for R and related tooling
 - **Effort**: TBD
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Research Started**: 2026-03-03
+- **Research Completed**: 2026-03-03
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [research-001.md](125_epidemiology_r_extension/reports/research-001.md)
 
 **Description**: Add an extension for conducting epidemiology research using R and any other standard software, MCP servers, agents, skills, and commands that would help to streamline the workflow. The same extension should be added to both .opencode/extensions/ and .claude/extensions/
 

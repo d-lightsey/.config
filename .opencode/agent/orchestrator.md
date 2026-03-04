@@ -54,7 +54,7 @@ permissions:
   - @specs/TODO.md - Current task list and status
   - @specs/state.json - Machine state, active projects, repository health metrics
   - @.opencode/context/core/architecture/system-overview.md - System architecture
-  - @.opencode/OPENCODE.md - Command quick reference and workflow overview
+  - @.opencode/README.md - Command quick reference and workflow overview
 </context_references>
 
 <query_handling>
