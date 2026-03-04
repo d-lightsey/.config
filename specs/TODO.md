@@ -8,8 +8,11 @@ next_project_number: 125
 
 ### 124. Limit [Docs] section in pickers to single README entry
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-03
+- **Research Completed**: 2026-03-03
 - **Language**: neovim
+- **Research**: [research-001.md](124_limit_docs_section_in_pickers/reports/research-001.md)
 
 **Description**: Limit [Docs] section in <leader>ao picker to show only .opencode/docs/README.md and in <leader>ac picker to show only .claude/docs/README.md.
 

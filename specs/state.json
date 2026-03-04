@@ -4,10 +4,19 @@
     {
       "project_number": 124,
       "project_name": "limit_docs_section_in_pickers",
-      "status": "not_started",
+      "status": "researched",
       "language": "neovim",
       "created": "2026-03-04T00:25:31Z",
-      "last_updated": "2026-03-04T00:25:31Z"
+      "last_updated": "2026-03-04T00:31:17Z",
+      "session_id": "sess_1772583982_9a8cc3",
+      "researched": "2026-03-04T00:31:17Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/124_limit_docs_section_in_pickers/reports/research-001.md",
+          "summary": "Research report documenting picker architecture, docs entry generation flow, and recommended implementation approach"
+        }
+      ]
     },
     {
       "project_number": 123,
