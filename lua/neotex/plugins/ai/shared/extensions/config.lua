@@ -15,6 +15,7 @@ function M.create(opts)
     state_file = { opts.state_file, "string" },
     global_extensions_dir = { opts.global_extensions_dir, "string" },
     merge_target_key = { opts.merge_target_key, "string", true },
+    agents_subdir = { opts.agents_subdir, "string", true },
   })
 
   return {
@@ -35,6 +36,9 @@ function M.create(opts)
 
     -- Merge target key in manifest (claudemd or opencode_md)
     merge_target_key = opts.merge_target_key or "claudemd",
+
+    -- Agents subdirectory path (agents for Claude, agent/subagents for OpenCode)
+    agents_subdir = opts.agents_subdir or "agents",
   }
 end
 
@@ -50,6 +54,7 @@ function M.claude(global_dir)
     state_file = "extensions.json",
     global_extensions_dir = global_dir .. "/.claude/extensions",
     merge_target_key = "claudemd",
+    agents_subdir = "agents",
   })
 end
 
@@ -65,6 +70,7 @@ function M.opencode(global_dir)
     state_file = "extensions.json",
     global_extensions_dir = global_dir .. "/.opencode/extensions",
     merge_target_key = "opencode_md",
+    agents_subdir = "agent/subagents",
   })
 end
 
