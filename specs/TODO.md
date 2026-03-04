@@ -1,10 +1,20 @@
 ---
-next_project_number: 131
+next_project_number: 133
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_132. Create context loading best practices guide
+- **Effort**: 1 hour
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Research**: [research-001.md](132_create_context_loading_best_practices_guide/reports/research-001.md)
+
+**Description**: Document the "Push vs Pull" context loading strategy that was implemented in task 128. Create `docs/guides/context-loading-best-practices.md` explaining: (1) Push model - critical context injected directly into agent prompts via `<context_injection>` blocks in SKILL.md files, (2) Pull model - context loaded on-demand via @-references, (3) When to use each approach - Push for strict formats/rules that must be followed, Pull for optional documentation and code examples, (4) How to implement Push loading in skills with examples from skill-planner, skill-researcher, and skill-implementer. This guide will help future skill developers understand and apply the context loading patterns correctly.
+
+---
 
 ### OC_130. Make .opencode system self-contained
 - **Effort**: 2 hours
