@@ -4,10 +4,10 @@
     {
       "project_number": 132,
       "project_name": "create_context_loading_best_practices_guide",
-      "status": "planned",
+      "status": "implementing",
       "language": "meta",
       "created": "2026-03-04T18:35:00Z",
-      "last_updated": "2026-03-04T19:40:00Z",
+      "last_updated": "2026-03-04T11:09:36-08:00",
       "artifacts": [
         {
           "type": "research",
@@ -24,15 +24,20 @@
     {
       "project_number": 131,
       "project_name": "sync_state_todo_plan_during_implementation",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-04T18:30:00Z",
-      "last_updated": "2026-03-04T19:05:02.053Z",
+      "last_updated": "2026-03-04T19:09:39.709Z",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/OC_131_sync_state_todo_plan_during_implementation/reports/research-001.md",
           "summary": "Research report identifying existing status synchronization infrastructure and gaps in phase-level tracking enforcement during implementation"
+        },
+        {
+          "type": "plan",
+          "path": "specs/OC_131_sync_state_todo_plan_during_implementation/plans/implementation-001.md",
+          "summary": "5-phase plan to strengthen phase status synchronization: audit compliance, update implement.md spec, enhance skill-implementer postflight, test workflow, and document protocol"
         }
       ]
     },
