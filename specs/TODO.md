@@ -7,15 +7,15 @@ next_project_number: 124
 ## Tasks
 
 ### 123. Fix non-atomic extension loading causing orphaned files
-- **Effort**: 2-4 hours
-- **Status**: [RESEARCHED]
+- **Effort**: 1-2 hours
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-03
 - **Research Completed**: 2026-03-03
 - **Planning Started**: 2026-03-03
 - **Planning Completed**: 2026-03-03
 - **Language**: neovim
 - **Research**: [research-001.md](123_fix_nonatomic_extension_loading/reports/research-001.md), [research-002.md](123_fix_nonatomic_extension_loading/reports/research-002.md)
-- **Plan**: [implementation-001.md](123_fix_nonatomic_extension_loading/plans/implementation-001.md)
+- **Plan**: [implementation-002.md](123_fix_nonatomic_extension_loading/plans/implementation-002.md)
 
 **Description**: The extension loading system in `lua/neotex/plugins/ai/shared/extensions/init.lua` has a non-atomic loading sequence that causes state corruption when load operations fail mid-execution.
 

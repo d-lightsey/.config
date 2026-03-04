@@ -4,10 +4,10 @@
     {
       "project_number": 123,
       "project_name": "fix_nonatomic_extension_loading",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-03-03T23:46:00Z",
-      "last_updated": "2026-03-04T00:06:51Z",
+      "last_updated": "2026-03-04T00:09:06Z",
       "session_id": "sess_1772582526_b8cb34",
       "artifacts": [
         {
@@ -16,17 +16,17 @@
           "summary": "Research report analyzing failure points in extension loading, evaluating 4 proposed solutions, and recommending a hybrid approach"
         },
         {
-          "type": "plan",
-          "path": "specs/123_fix_nonatomic_extension_loading/plans/implementation-001.md",
-          "summary": "4-phase implementation plan for atomic extension loading with pcall rollback and recovery detection"
-        },
-        {
           "type": "research",
           "path": "specs/123_fix_nonatomic_extension_loading/reports/research-002.md",
           "summary": "Simplification research finding that pcall-only approach replaces 4-phase hybrid plan"
+        },
+        {
+          "path": "specs/123_fix_nonatomic_extension_loading/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Simplified pcall-only approach: 2 phases, 1-2 hours, ~20 lines of changes"
         }
       ],
-      "planned": "2026-03-04T00:10:00Z"
+      "planned": "2026-03-04T00:09:06Z"
     },
     {
       "project_number": 122,
