@@ -37,16 +37,16 @@ The plan file for Task #128 (`implementation-001.md`) deviates from the standard
 
 ## Implementation Phases
 
-### Phase 1: Reformat Task 128 Plan File [IN PROGRESS]
+### Phase 1: Reformat Task 128 Plan File [COMPLETED]
 
 **Goal**: Bring the existing non-compliant plan file into compliance.
 
 **Tasks**:
-- [ ] Move status markers from body to phase headers (e.g., `### Phase 1: ... [COMPLETED]`).
-- [ ] Remove redundant `**Status**: [STATUS]` lines.
-- [ ] Rename `**Objectives**:` to `**Goal**:`, `**Estimated effort**:` to `**Timing**:`.
-- [ ] Consolidate `**Steps**:` and `**Verification**:` into `**Tasks**:`.
-- [ ] Ensure "Goals & Non-Goals" section exists (if missing).
+- [✓] Move status markers from body to phase headers (e.g., `### Phase 1: ... [COMPLETED]`).
+- [✓] Remove redundant `**Status**: [STATUS]` lines.
+- [✓] Rename `**Objectives**:` to `**Goal**:`, `**Estimated effort**:` to `**Timing**:`.
+- [✓] Consolidate `**Steps**:` and `**Verification**:` into `**Tasks**:`.
+- [✓] Ensure "Goals & Non-Goals" section exists (if missing).
 
 **Timing**: 30 minutes
 
@@ -54,37 +54,38 @@ The plan file for Task #128 (`implementation-001.md`) deviates from the standard
 - `specs/128_ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically/plans/implementation-001.md`
 
 **Verification**:
-- [ ] File parses correctly vs `plan-format.md`.
-- [ ] All 4 phases present with correct headers.
+- [✓] File parses correctly vs `plan-format.md`.
+- [✓] All 4 phases present with correct headers.
 
-### Phase 2: Create Context Loading Guide [NOT STARTED]
+### Phase 2: Create Context Loading Guide [COMPLETED]
 
 **Goal**: Document the "Push vs Pull" strategy for future reference.
 
 **Tasks**:
-- [ ] Create `docs/guides/context-loading-best-practices.md`.
-- [ ] Define "Push" (critical context injected in prompt) vs "Pull" (reference loaded on demand).
-- [ ] Document when to use each (Push for strict formats/rules, Pull for docs/code).
-- [ ] Provide examples of how to implement Push in skills.
+- [✓] Create `.opencode/docs/guides/context-loading-best-practices.md`.
+- [✓] Define "Push" (critical context injected in prompt) vs "Pull" (reference loaded on demand).
+- [✓] Document when to use each (Push for strict formats/rules, Pull for docs/code).
+- [✓] Provide examples of how to implement Push in skills.
 
 **Timing**: 45 minutes
 
 **Files to modify**:
-- `docs/guides/context-loading-best-practices.md` (create)
+- `.opencode/docs/guides/context-loading-best-practices.md` (create)
 
 **Verification**:
-- [ ] Guide covers the failure mode observed in Task 128.
-- [ ] Guide provides clear examples of Push vs Pull.
+- [✓] Guide covers the failure mode observed in Task 128.
+- [✓] Guide provides clear examples of Push vs Pull.
 
-### Phase 3: Update Planner Skill for Push Loading [NOT STARTED]
+**Note**: This was completed as Task OC_132, which created a comprehensive 391-line guide covering Push/Pull models, decision framework, and real examples from 4 core skills.
+
+### Phase 3: Update Planner Skill for Push Loading [COMPLETED]
 
 **Goal**: Ensure `planner-agent` ALWAYS receives the plan format schema.
 
 **Tasks**:
-- [ ] Modify `.opencode/skills/skill-planner/SKILL.md`.
-- [ ] Update `Execution Flow` to include reading `plan-format.md` before delegation.
-- [ ] Update the `Task` tool invocation to append the content of `plan-format.md` to the `prompt`.
-  - Example prompt update: `... using the following format standard:\n\n{plan_format_content}`.
+- [✓] Modify `.opencode/skills/skill-planner/SKILL.md` to include context_injection block.
+- [✓] Update `Execution Flow` to include reading `plan-format.md` before delegation.
+- [✓] Update the `Task` tool invocation to append the content of `plan-format.md` to the prompt.
 
 **Timing**: 45 minutes
 
@@ -92,8 +93,13 @@ The plan file for Task #128 (`implementation-001.md`) deviates from the standard
 - `.opencode/skills/skill-planner/SKILL.md`
 
 **Verification**:
-- [ ] Skill execution flow explicitly reads the format file.
-- [ ] Prompt construction includes the file content.
+- [✓] Skill execution flow explicitly reads the format file.
+- [✓] Prompt construction includes the file content.
+
+**Note**: The skill-planner already has Push context loading implemented with:
+- `<context_injection>` block loading plan-format.md, status-markers.md, and task-breakdown.md
+- Stage 1 (LoadContext) reading the context files
+- Stage 3 (Delegate) injecting context into planner-agent prompt via `{plan_format}`, `{status_markers}`, and `{task_breakdown}` variables
 
 ## Testing & Validation
 
