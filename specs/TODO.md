@@ -1,14 +1,26 @@
 ---
-next_project_number: 126
+next_project_number: 127
 ---
 
 # TODO
 
 ## Tasks
 
+### 126. Fix <leader>ao picker to load extensions into correct subdirectory
+- **Effort**: 2-4 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](126_fix_ao_picker_extension_loading_path/reports/research-001.md)
+
+**Description**: Fix the `<leader>ao` picker to load extensions into the correct `.opencode/agents/subagents/` subdirectory instead of directly into `.opencode/agents/`. Currently, when loading extensions via `<leader>ao` in `/home/benjamin/Projects/Logos/Theory/`, files are being placed at `.opencode/agents/formal-research-agent.md` instead of the desired `.opencode/agents/subagents/`. This functionality must be distinct from `<leader>ac` which should continue loading directly into `.claude/agents/`.
+
+---
+
 ### 125. Add epidemiology research extension for R and related tooling
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
+- **Research Started**: 2026-03-03
 - **Language**: meta
 - **Dependencies**: None
 
