@@ -1,6 +1,14 @@
 {
-  "next_project_number": 124,
+  "next_project_number": 125,
   "active_projects": [
+    {
+      "project_number": 124,
+      "project_name": "limit_docs_section_in_pickers",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-04T00:25:31Z",
+      "last_updated": "2026-03-04T00:25:31Z"
+    },
     {
       "project_number": 123,
       "project_name": "fix_nonatomic_extension_loading",

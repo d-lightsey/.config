@@ -1,10 +1,17 @@
 ---
-next_project_number: 124
+next_project_number: 125
 ---
 
 # TODO
 
 ## Tasks
+
+### 124. Limit [Docs] section in pickers to single README entry
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+
+**Description**: Limit [Docs] section in <leader>ao picker to show only .opencode/docs/README.md and in <leader>ac picker to show only .claude/docs/README.md.
 
 ### 123. Fix non-atomic extension loading causing orphaned files
 - **Effort**: 1-2 hours
