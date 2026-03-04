@@ -1,10 +1,20 @@
 ---
-next_project_number: 128
+next_project_number: 129
 ---
 
 # TODO
 
 ## Tasks
+
+### 128. Ensure /task command only creates tasks and never implements solutions automatically
+- **Effort**: 2-4 hours
+- **Status**: [RESEARCHED]
+- **Language**: general
+- **Research**: [research-001.md](128_ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically/reports/research-001.md)
+
+**Description**: Ensure /task command only creates tasks and never implements solutions automatically.
+
+---
 
 ### 127. Migrate OPENCODE.md to README.md and rename QUICK-START.md to INSTALLATION.md
 - **Effort**: 2-3 hours
