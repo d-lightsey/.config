@@ -11,10 +11,10 @@ Create a comprehensive guide at `.opencode/docs/guides/context-loading-best-prac
 
 ## Phases
 
-### Phase 1: Create Guide Structure and Core Content [NOT STARTED]
+### Phase 1: Create Guide Structure and Core Content [COMPLETED]
 
-**Status**: [NOT STARTED]
-**Estimated effort**: 30 minutes
+**Status**: [COMPLETED]
+**Completed**: 2026-03-04
 
 **Objectives**:
 1. Create the guide file at `.opencode/docs/guides/context-loading-best-practices.md`
@@ -49,10 +49,10 @@ Create a comprehensive guide at `.opencode/docs/guides/context-loading-best-prac
 
 ---
 
-### Phase 2: Add Real Examples and Decision Framework [NOT STARTED]
+### Phase 2: Add Real Examples and Decision Framework [COMPLETED]
 
-**Status**: [NOT STARTED]
-**Estimated effort**: 30 minutes
+**Status**: [COMPLETED]
+**Completed**: 2026-03-04
 
 **Objectives**:
 1. Add concrete examples from existing skills (skill-planner, skill-researcher, skill-implementer, skill-orchestrator)
