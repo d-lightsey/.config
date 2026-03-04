@@ -89,7 +89,7 @@ Add `agents_subdir` configuration to the extension system and update the loader 
 
 ### Phase 4: Test and Validate Both Claude and OpenCode Paths
 
-**Status**: [NOT STARTED]
+**Status**: [COMPLETED]
 **Estimated effort**: 1 hour
 
 **Objectives**:

@@ -24,10 +24,11 @@
     {
       "project_number": 126,
       "project_name": "fix_ao_picker_extension_loading_path",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-04T01:24:10Z",
-      "last_updated": "2026-03-04T01:27:08Z",
+      "last_updated": "2026-03-04T01:28:00Z",
+      "completion_summary": "Added agents_subdir configuration to extension system (3 files modified): config.lua now supports configurable agent subdirectory paths, loader.lua respects agents_subdir when copying agent files, init.lua passes agents_subdir from config to loader. OpenCode extensions now load agents to agent/subagents/, Claude extensions unchanged at agents/.",
       "artifacts": [
         {
           "type": "research",
@@ -38,6 +39,11 @@
           "type": "plan",
           "path": "specs/126_fix_ao_picker_extension_loading_path/plans/implementation-001.md",
           "summary": "4-phase plan to add agents_subdir config and update loader functions to respect subdirectory paths for OpenCode extensions"
+        },
+        {
+          "type": "summary",
+          "path": "specs/126_fix_ao_picker_extension_loading_path/summaries/implementation-summary-20260304.md",
+          "summary": "Implementation complete: Added agents_subdir config parameter to extension system with Claude using 'agents' and OpenCode using 'agent/subagents' subdirectory"
         }
       ]
     },
