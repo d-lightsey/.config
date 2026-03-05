@@ -59,6 +59,8 @@ next_project_number: 148
 
 **Description**: Implement a comprehensive knowledge capture system with three integrated features that were lost when reverting. This system enables capturing, classifying, and organizing knowledge from completed tasks and codebase scans.
 
+**Report**: [specs/OC_142_implement_knowledge_capture_system/reports/research-001.md](specs/OC_142_implement_knowledge_capture_system/reports/research-001.md)
+
 **Phase 1: Rename /learn to /fix (1-2 hours)**
 - Rename command from `/learn` to `/fix` for clarity
 - Rename skill from `skill-learn` to `skill-fix`
