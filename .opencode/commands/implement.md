@@ -42,7 +42,7 @@ Directory: `specs/OC_NNN_<project_name>/`
 
 ### 3. Display task header
 
-Print a visual header showing the active task:
+The skill displays a visual header during its Preflight stage to show the active task:
 
 ```
 ╔══════════════════════════════════════════════════════════╗
@@ -51,7 +51,7 @@ Print a visual header showing the active task:
 ╚══════════════════════════════════════════════════════════╝
 ```
 
-This header appears at the start of the implement command to clearly indicate which task is being implemented.
+This header appears at the start of the implement command (after validation, before delegation) to clearly indicate which task is being implemented. The header is displayed by the skill-implementer before invoking the general-implementation-agent subagent.
 
 ### 4. Find implementation plan
 

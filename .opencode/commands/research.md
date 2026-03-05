@@ -41,7 +41,7 @@ Directory: `specs/OC_NNN_<project_name>/`
 
 ### 3. Display task header
 
-Print a visual header showing the active task:
+The skill displays a visual header during its Preflight stage to show the active task:
 
 ```
 ╔══════════════════════════════════════════════════════════╗
@@ -50,7 +50,7 @@ Print a visual header showing the active task:
 ╚══════════════════════════════════════════════════════════╝
 ```
 
-This header appears at the start of the research command to clearly indicate which task is being worked on.
+This header appears at the start of the research command (after validation, before delegation) to clearly indicate which task is being worked on. The header is displayed by the skill-researcher before invoking the general-research-agent subagent.
 
 ### 4. Update status to RESEARCHING
 
