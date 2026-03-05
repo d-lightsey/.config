@@ -66,63 +66,41 @@ Check for `specs/OC_NNN_<project_name>/reports/research-001.md`. If it exists, r
 
 Decompose the task into phases. Each phase should be independently completable (2-4 hours of work). Use the task description, research findings, and any notes from $ARGUMENTS.
 
+**CRITICAL**: Do NOT use embedded templates in this command specification. 
+All plan format specifications must come from context-injected files only.
+
 Create directory: `mkdir -p specs/OC_NNN_<project_name>/plans/`
 
-Write `specs/OC_NNN_<project_name>/plans/implementation-001.md`:
+Write the plan file by delegating to planner-agent with injected context:
 
-```markdown
-# Implementation Plan: Task #N
-
-**Task**: OC_N - <title>
-**Version**: 001
-**Created**: YYYY-MM-DD
-**Language**: <language>
-
-## Overview
-
-<2-3 sentence description of the approach>
-
-## Phases
-
-### Phase 1: <Name>
-
-**Status**: [NOT STARTED]
-**Estimated effort**: X hours
-
-**Objectives**:
-1. <objective>
-
-**Files to modify**:
-- `path/to/file` - <what changes>
-
-**Steps**:
-1. <step>
-
-**Verification**:
-- <how to verify this phase is done>
-
----
-
-### Phase 2: <Name>
-
-...
-
----
-
-## Dependencies
-
-- <dependency or "None">
-
-## Risks & Mitigations
-
-| Risk | Mitigation |
-|------|------------|
-| <risk> | <mitigation> |
-
-## Success Criteria
-
-- [ ] <criterion>
+**Delegate to planner-agent** with prompt:
 ```
+Create implementation plan for task {N}.
+
+<system_context>
+Using the following format standards and guidelines:
+{plan_format}
+{status_markers}
+{task_breakdown}
+</system_context>
+
+IMPORTANT: Use ONLY the injected plan-format.md context. 
+Do NOT reference any embedded templates from command specifications.
+If plan_format is not available, load @.opencode/context/core/formats/plan-format.md directly.
+```
+
+**Where**: {plan_format}, {status_markers}, {task_breakdown} are injected via skill-planner context.
+
+**Output file**: `specs/OC_NNN_<project_name>/plans/implementation-001.md`
+
+**Format Reference**: All plan files must follow `.opencode/context/core/formats/plan-format.md` exactly.
+Key requirements:
+- Metadata block with Task, Status, Effort, Dependencies, Research Inputs, Artifacts, Standards, Type
+- Section named "## Implementation Phases" (not "## Phases")
+- Phase format: "### Phase N: Name [STATUS]" (status IN heading, not separate line)
+- Phase fields: **Goal**, **Tasks**, **Timing** (not Objectives, Estimated effort)
+- No `---` separators between phases
+- Required sections: Goals & Non-Goals, Risks & Mitigations, Testing & Validation, Artifacts & Outputs, Rollback/Contingency
 
 ### 7. Update status to PLANNED
 
@@ -191,3 +169,5 @@ Show:
 - Directories use 3-digit padded number: `OC_174_slug` not `OC_17_slug`
 - If plan already exists, create `implementation-002.md` (increment version)
 - Commit changes after creating plan (non-blocking — log warning if commit fails)
+- **NEVER use embedded plan templates** - always delegate to planner-agent with injected plan-format.md context
+- **NO EMBEDDED TEMPLATES**: Do not include example plan structures in this file - they violate plan-format.md
