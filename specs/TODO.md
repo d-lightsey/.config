@@ -30,7 +30,7 @@ next_project_number: 138
 
 ### OC_137. Investigate and fix planner-agent format compliance issue
 - **Effort**: 3-4 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](OC_137_investigate_and_fix_planner_agent_format_compliance_issue/reports/research-001.md) - Initial analysis of context injection failures

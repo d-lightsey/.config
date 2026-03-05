@@ -9,6 +9,11 @@ description: Create new version of implementation plan, or update task descripti
   <task_context>Parse task number and optional reason, determine if plan exists, route to appropriate agent</task_context>
 </context>
 
+<context_injection>
+  <file path=".opencode/context/core/formats/plan-format.md" variable="plan_format" />
+  <file path=".opencode/context/core/standards/status-markers.md" variable="status_markers" />
+</context_injection>
+
 <role>Revise command agent - Parse arguments, check for existing plan, route to planner or task-updater</role>
 
 <task>
@@ -16,7 +21,16 @@ description: Create new version of implementation plan, or update task descripti
 </task>
 
 <workflow_execution>
-  <stage id="1" name="ParseAndValidate">
+  <stage id="1" name="LoadContext">
+    <action>Read context files defined in <context_injection></action>
+    <process>
+      1. Load plan-format.md -> {plan_format}
+      2. Load status-markers.md -> {status_markers}
+    </process>
+    <checkpoint>Context loaded: plan_format, status_markers</checkpoint>
+  </stage>
+  
+  <stage id="2" name="ParseAndValidate">
     <action>Parse task number and check for existing plan</action>
     <process>
       1. Parse task number and optional reason from $ARGUMENTS
@@ -90,7 +104,7 @@ description: Create new version of implementation plan, or update task descripti
     <checkpoint>Task validated, plan existence checked, routing determined</checkpoint>
   </stage>
   
-  <stage id="2" name="RouteAndExecute">
+  <stage id="3" name="RouteAndExecute">
     <action>Route to appropriate agent based on plan existence</action>
     <process>
       1. Determine target agent based on plan existence
@@ -111,7 +125,21 @@ description: Create new version of implementation plan, or update task descripti
          if [ "$plan_exists" = true ]; then
               task(
                 subagent_type="planner-agent",
-                prompt="Revise implementation plan for task ${task_number}: ${reason}. Current status: ${status}. Existing plan: ${plan_path}",
+                prompt="""
+                Revise implementation plan for task ${task_number}: ${reason}. 
+                Current status: ${status}. 
+                Existing plan: ${plan_path}
+                
+                <system_context>
+                Using the following format standards and guidelines:
+                {plan_format}
+                {status_markers}
+                </system_context>
+                
+                IMPORTANT: Always use the injected plan-format.md context. 
+                Do NOT use embedded templates from command specifications.
+                If plan_format is not available, load @.opencode/context/core/formats/plan-format.md directly.
+                """,
                 description="Revise implementation plan for task ${task_number}",
                 session_id="${session_id}"
               )
@@ -132,7 +160,7 @@ description: Create new version of implementation plan, or update task descripti
     <checkpoint>Delegated to appropriate agent, return captured</checkpoint>
   </stage>
   
-  <stage id="3" name="ValidateReturn">
+  <stage id="4" name="ValidateReturn">
     <action>Validate agent return format and artifacts</action>
     <process>
       1. Log return for debugging
@@ -239,7 +267,7 @@ description: Create new version of implementation plan, or update task descripti
     <checkpoint>Subagent return validated, all checks passed</checkpoint>
   </stage>
   
-  <stage id="4" name="RelayResult">
+  <stage id="5" name="RelayResult">
     <action>Relay validated result to user</action>
     <process>
       1. Extract key information from validated return
@@ -327,5 +355,15 @@ All task operations are language-agnostic and work with any task type.
 - **Description Updates**: Allows task description updates without creating plans
 - **Status Validation**: Respects current task status with --force override
 - **Session Tracking**: Consistent session management across operations
+- **Context Injection**: Injects plan-format.md and status-markers.md for plan revisions (ensures format compliance)
+
+## Context Injection
+
+This command uses the Push context loading model to ensure plan format compliance:
+
+1. **plan-format.md**: Loaded and injected into planner-agent prompts to ensure revised plans follow the specification
+2. **status-markers.md**: Loaded for status validation and transitions
+
+**Fallback Mechanism**: If context injection fails, the planner-agent is instructed to load plan-format.md directly via @-reference.
 
 See individual subagent files for detailed operation implementations.
