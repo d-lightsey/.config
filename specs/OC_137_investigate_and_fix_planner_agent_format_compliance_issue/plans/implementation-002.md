@@ -120,27 +120,15 @@ This revised implementation plan addresses all findings from the three research 
 
 **Timing**: 0.5 hours (shorter than estimated 1.5 hours - only plan.md had embedded template)
 
-### Phase 3: Remove Embedded Templates from Other Commands [NOT STARTED]
+### Phase 3: Remove Embedded Templates from Other Commands [COMPLETED]
 
 **Goal**: Remove any additional embedded plan templates found during audit
 
-**Tasks**:
-- [ ] For each file identified in Phase 2:
-  - Read the embedded template section
-  - Remove or replace with reference to external specs
-  - Ensure command still has clear instructions
-- [ ] Update any command that shows plan examples to reference plan-format.md
-- [ ] Verify all modified files have no syntax errors
+**Results**: Phase 2 audit found no additional embedded templates. Only plan.md had embedded templates (removed in Phase 1).
 
-**Files to Modify**:
-- (TBD based on Phase 2 audit results)
+**No files required modification.**
 
-**Verification**:
-- [ ] All identified embedded templates removed
-- [ ] Commands still function correctly
-- [ ] No syntax errors in any modified files
-
-**Timing**: 1.5 hours
+**Timing**: 0 hours (nothing to remove)
 
 ### Phase 4: Add Context Injection to Revise Flow [COMPLETED]
 
@@ -214,46 +202,30 @@ This revised implementation plan addresses all findings from the three research 
 
 **Timing**: 1.5 hours (increased from 1 hour due to discovery-layer implementation)
 
-### Phase 6: Implement Conditional Status-Marker Injection [NOT STARTED]
+### Phase 6: Implement Conditional Status-Marker Injection [COMPLETED]
 
 **Goal**: Remove status-markers.md from skills that don't perform status transitions
 
-**Research Finding**: 4 skills inject status-markers.md unnecessarily, wasting ~400 lines of context.
+**Investigation Results**:
 
-**Skills to Modify** (remove status-markers.md from context_injection):
-- `skill-learn` - Reads tags, doesn't transition status
-- `skill-refresh` - Cleanup operations, status unchanged
-- `skill-status-sync` - Synchronizes existing status, doesn't transition
-- `skill-git-workflow` - Git operations, separate from task status
+**Skills examined for status-markers.md injection**:
+| Skill | Injects status-markers.md? | Performs Status Transitions? |
+|-------|---------------------------|------------------------------|
+| skill-learn | NO | NO (reads tags only) |
+| skill-refresh | NO | NO (cleanup only) |
+| skill-status-sync | NO | NO (syncs existing status) |
+| skill-git-workflow | NO | NO (git operations only) |
+| skill-planner | YES | YES (researched→planning→planned) |
+| skill-researcher | YES | YES (not_started→researching→researched) |
+| skill-implementer | NO | YES (but uses postflight patterns instead) |
 
-**Skills to KEEP status-markers.md** (perform status transitions):
-- `skill-researcher` - not_started -> researching -> researched
-- `skill-planner` - researched -> planning -> planned
-- `skill-implementer` - planned -> implementing -> completed
-- `skill-meta` - Depends on operation, may transition status
-- `skill-orchestrator` - May transition status
+**Finding**: The 4 non-transition skills identified in research-003.md already do NOT inject status-markers.md. The system already implements conditional context injection correctly.
 
-**Tasks**:
-- [ ] Read each skill's SKILL.md to verify it doesn't transition status
-- [ ] Remove `<file path="...status-markers.md"...>` from context_injection blocks
-- [ ] Update skill documentation to reflect context changes
-- [ ] Verify skills still function correctly (they should - status is checked in preflight)
+**Conclusion**: No changes needed. Phase is complete. The research assumption was incorrect - the skills were already optimized.
 
-**Files to Modify**:
-- `.opencode/skills/skill-learn/SKILL.md`
-- `.opencode/skills/skill-refresh/SKILL.md`
-- `.opencode/skills/skill-status-sync/SKILL.md`
-- `.opencode/skills/skill-git-workflow/SKILL.md`
+**Note**: skill-implementer performs status transitions (planned→implementing→completed) but uses postflight-control.md patterns instead of status-markers.md for state management. This is the correct architecture.
 
-**Verification**:
-- [ ] status-markers.md removed from 4 non-transition skills
-- [ ] Each skill's SKILL.md updated
-- [ ] Skills still validate status correctly in preflight (may need to load status-markers there instead)
-- [ ] **CRITICAL**: Test that skills can still check status without injected context
-
-**Timing**: 1 hour
-
-**Note**: If removing status-markers breaks status validation, consider loading it only in Preflight stage rather than full injection.
+**Timing**: 0.5 hours (faster than estimated - nothing to remove)
 
 ### Phase 7: Demonstrate Stage-Progressive Loading [NOT STARTED]
 
