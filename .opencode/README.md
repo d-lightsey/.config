@@ -77,6 +77,31 @@ All commands follow the same lifecycle:
 | `/refresh` | `/refresh [--dry-run] [--force]` | Clean orphaned processes and files |
 | `/convert` | `/convert FILE --to FORMAT` | Convert document formats |
 
+### Memory System
+
+Store and retrieve knowledge with the `/remember` command:
+
+```bash
+# Add memories
+/remember "Text content to remember"
+/remember /path/to/file.md
+
+# Research with memory augmentation
+/research N --remember
+```
+
+The memory system provides:
+- **Checkbox Confirmation**: Interactive multi-select (like `/learn` command)
+- **Similarity Detection**: Finds related memories automatically
+- **MCP Integration**: Search memories via Obsidian CLI REST server
+- **Git Versioning**: All memories tracked in git
+- **Markdown Format**: Plain text with YAML frontmatter
+
+**Quick Links**:
+- [Memory Vault](../memory/README.md) - Organization and usage
+- [Usage Guide](docs/remember-usage.md) - Detailed examples
+- [MCP Setup](docs/memory-setup.md) - Server configuration
+
 For detailed command documentation, see [commands/README.md](commands/README.md).
 
 ## Extensions
