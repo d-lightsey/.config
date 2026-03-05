@@ -81,6 +81,23 @@ Thin wrapper that delegates research to `general-research-agent`.
      """
      Conduct research for task {N}.
 
+     **Delegation Context**:
+     ```json
+     {
+       "task_context": {
+         "task_number": {N},
+         "task_name": "{project_name}",
+         "language": "general"
+       },
+       "metadata": {
+         "session_id": "{session_id}",
+         "delegation_depth": 1,
+         "delegation_path": ["orchestrator", "research", "general-research-agent"]
+       },
+       "metadata_file_path": "specs/OC_{N}_{project_name}/.return-meta.json"
+     }
+     ```
+
      <system_context>
      Using the following format standards:
      {report_format}
