@@ -4,10 +4,10 @@
     {
       "project_number": 148,
       "project_name": "fix_status_updates_in_implementations",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-05T20:00:00Z",
-      "last_updated": "2026-03-05T22:30:00Z",
+      "last_updated": "2026-03-05T22:48:06Z",
       "researched": "2026-03-05T21:30:00Z",
       "planned": "2026-03-05T22:30:00Z",
       "artifacts": [
@@ -20,13 +20,19 @@
           "type": "plan",
           "path": "specs/OC_148_fix_status_updates_in_implementations/plans/implementation-001.md",
           "summary": "6-phase implementation plan for fixing status update gaps in skill-implementer preflight/postflight and implement.md command"
+        },
+        {
+          "path": "specs/OC_148_fix_status_updates_in_implementations/summaries/implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for status update fixes in skill-implementer and implement.md"
         }
-      ]
+      ],
+      "completed": "2026-03-05T22:48:06Z"
     },
     {
       "project_number": 147,
       "project_name": "fix_artifact_metadata_linking_in_todo",
-      "status": "researched",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-05T15:00:00Z",
       "last_updated": "2026-03-05T15:00:00Z",

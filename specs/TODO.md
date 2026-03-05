@@ -8,7 +8,7 @@ next_project_number: 148
 
 ### OC_148. Fix status updates during implementation phases
 - **Effort**: 3-4 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Researched**: 2026-03-05
 - **Planned**: 2026-03-05
 - **Language**: meta
@@ -16,6 +16,7 @@ next_project_number: 148
 - **Artifacts**:
   - [specs/OC_148_fix_status_updates_in_implementations/reports/research-001.md](specs/OC_148_fix_status_updates_in_implementations/reports/research-001.md) - Research report identifying 6 specific status update gaps in skill-implementer and general-implementation-agent with detailed recommendations and file references
   - [specs/OC_148_fix_status_updates_in_implementations/plans/implementation-001.md](specs/OC_148_fix_status_updates_in_implementations/plans/implementation-001.md) - 6-phase implementation plan for fixing status update gaps
+  - [specs/OC_148_fix_status_updates_in_implementations/summaries/implementation-summary.md](specs/OC_148_fix_status_updates_in_implementations/summaries/implementation-summary.md) - Implementation summary for status update fixes in skill-implementer and implement.md
 
 **Description**: Fix status update gaps in skill-implementer and general-implementation-agent. During OC_147 implementation, observed that:
 
@@ -41,7 +42,7 @@ The skill-implementer SKILL.md has preflight that updates status to implementing
 
 ### OC_147. Fix artifact metadata linking in TODO.md
 - **Effort**: 4-6 hours
-- **Status**: [RESEARCHED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: None
 

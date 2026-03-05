@@ -61,13 +61,7 @@ If no plan found: "No plan found. Run `/plan OC_N` first."
 
 Read the plan to understand all phases and their current status (`[NOT STARTED]`, `[IN PROGRESS]`, `[COMPLETED]`, `[PARTIAL]`).
 
-### 5. Update status to IMPLEMENTING
-
-Edit `specs/state.json`: set `status` to `"implementing"`, update `last_updated`.
-
-Edit `specs/TODO.md`: change current status marker to `[IMPLEMENTING]` on the `### OC_N.` entry.
-
-### 6. Invoke skill-implementer
+### 5. Invoke skill-implementer
 
 **Call skill tool** to execute the implementation workflow:
 
@@ -79,10 +73,15 @@ Edit `specs/TODO.md`: change current status marker to `[IMPLEMENTING]` on the `#
 
 The skill-implementer will:
 1. Load context files (plan-format.md, status-markers.md)
-2. Execute preflight (validate, display header, update status to IMPLEMENTING)
+2. Execute preflight (validate, display header, update status to [IMPLEMENTING])
 3. **Call Task tool with `subagent_type="general-implementation-agent"`** to execute phases
-4. Execute postflight (update state.json to COMPLETED/IMPLEMENTING, create summary, update TODO.md, commit)
+4. Execute postflight (update state.json to COMPLETED/PARTIAL, create summary, update TODO.md, commit)
 5. Return results
+
+**Note**: Status updates are handled by skill-implementer, not this command. The skill updates:
+- state.json status to "implementing" in preflight
+- state.json status to "completed" or "partial" in postflight
+- TODO.md status markers at both stages
 
 **CRITICAL**: Do NOT implement phase execution logic in this command. All implementation logic belongs in skill-implementer and general-implementation-agent.
 
