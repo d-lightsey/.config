@@ -4,10 +4,10 @@
     {
       "project_number": 134,
       "project_name": "fix_workflow_command_header_display",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-04T22:00:00Z",
-      "last_updated": "2026-03-04T22:30:00Z",
+      "last_updated": "2026-03-04T22:50:00Z",
       "artifacts": [
         {
           "type": "research",
@@ -18,6 +18,11 @@
           "type": "research",
           "path": "specs/OC_134_fix_workflow_command_header_display/reports/research-002.md",
           "summary": "Comprehensive research on customizing OpenCode TUI header in Neovim using WezTerm hooks and skill preflight modifications"
+        },
+        {
+          "type": "plan",
+          "path": "specs/OC_134_fix_workflow_command_header_display/plans/implementation-001.md",
+          "summary": "4-phase plan: extend WezTerm hooks for TASK_NAME/ACTION variables, implement skill Preflight headers, update command specs, and test all workflow commands"
         }
       ]
     },
