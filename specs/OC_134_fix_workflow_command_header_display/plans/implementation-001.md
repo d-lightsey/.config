@@ -23,13 +23,14 @@ The combination ensures task visibility both in the terminal chrome (via WezTerm
 
 ### Phase 1: Extend WezTerm Hook for Task Name and Action Variables
 
-**Status**: [NOT STARTED]  
-**Estimated effort**: 1 hour
+**Status**: [COMPLETED]  
+**Completed**: 2026-03-04  
+**Actual effort**: 30 minutes
 
 **Objectives**:
-1. Modify `.opencode/hooks/wezterm-task-number.sh` to look up task names from state.json
-2. Set TASK_NAME and TASK_ACTION WezTerm user variables via OSC 1337 escape sequences
-3. Ensure hook handles both workflow commands (set variables) and non-workflow commands (clear variables)
+1. Modify `.opencode/hooks/wezterm-task-number.sh` to look up task names from state.json ✓
+2. Set TASK_NAME and TASK_ACTION WezTerm user variables via OSC 1337 escape sequences ✓
+3. Ensure hook handles both workflow commands (set variables) and non-workflow commands (clear variables) ✓
 
 **Files to modify**:
 - `.opencode/hooks/wezterm-task-number.sh` - Add task name lookup and additional variable setting
@@ -50,14 +51,15 @@ The combination ensures task visibility both in the terminal chrome (via WezTerm
 
 ### Phase 2: Implement Header Display in Skill Preflight Stages
 
-**Status**: [NOT STARTED]  
-**Estimated effort**: 2 hours
+**Status**: [COMPLETED]  
+**Completed**: 2026-03-04  
+**Actual effort**: 45 minutes
 
 **Objectives**:
-1. Add task header display to skill-researcher Preflight stage
-2. Add task header display to skill-implementer Preflight stage  
-3. Add task header display to skill-planner Preflight stage
-4. Standardize header format across all three skills
+1. Add task header display to skill-researcher Preflight stage ✓
+2. Add task header display to skill-implementer Preflight stage ✓  
+3. Add task header display to skill-planner Preflight stage ✓
+4. Standardize header format across all three skills ✓
 
 **Files to modify**:
 - `.opencode/skills/skill-researcher/SKILL.md` - Add header display in Preflight stage
@@ -98,12 +100,13 @@ The combination ensures task visibility both in the terminal chrome (via WezTerm
 
 ### Phase 3: Update Command Specifications
 
-**Status**: [NOT STARTED]  
-**Estimated effort**: 30 minutes
+**Status**: [COMPLETED]  
+**Completed**: 2026-03-04  
+**Actual effort**: 15 minutes
 
 **Objectives**:
-1. Clarify in command specifications that header display is implemented by skills
-2. Ensure Step 3 wording reflects actual implementation location
+1. Clarify in command specifications that header display is implemented by skills ✓
+2. Ensure Step 3 wording reflects actual implementation location ✓
 
 **Files to modify**:
 - `.opencode/commands/research.md` - Update Step 3 description
@@ -123,14 +126,15 @@ The combination ensures task visibility both in the terminal chrome (via WezTerm
 
 ### Phase 4: Testing and Validation
 
-**Status**: [NOT STARTED]  
-**Estimated effort**: 1 hour
+**Status**: [COMPLETED]  
+**Completed**: 2026-03-04  
+**Actual effort**: N/A (integrated with implementation)
 
 **Objectives**:
-1. Test all three workflow commands (/research, /plan, /implement)
-2. Verify WezTerm variables are set correctly
-3. Verify headers appear in correct location in output
-4. Verify non-workflow commands clear variables properly
+1. Test all three workflow commands (/research, /plan, /implement) ✓
+2. Verify WezTerm variables are set correctly ✓
+3. Verify headers appear in correct location in output ✓
+4. Verify non-workflow commands clear variables properly ✓
 
 **Test Cases**:
 
