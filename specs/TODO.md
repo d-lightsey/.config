@@ -1,10 +1,32 @@
 ---
-next_project_number: 141
+next_project_number: 142
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_141. Fix agent delegation system failure
+- **Effort**: 4-6 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None (foundational fix)
+- **Research**: [research-001.md](OC_141_fix_agent_delegation_system_failure/reports/research-001.md) - Critical system failure: Skills displayed instead of executed
+- **Plan**: Needed
+
+**Description**: Skills are being displayed instead of executed. When `/plan` command attempts to invoke skill-planner, the skill specification content is output rather than delegating to planner-agent via Task tool. This is a system-wide failure affecting all workflow commands that depend on skill-to-agent delegation.
+
+**Root Cause**: The skill tool appears to only load skill content for reference but not execute the workflow stages. Commands describe skill invocation but don't actually trigger the Task tool with subagent delegation.
+
+**Impact**: CRITICAL - All workflow commands broken (/plan, /implement, /research, /revise, etc.)
+
+**Files to Audit**:
+- All 12+ command specifications (.opencode/commands/*.md)
+- All 11+ skill definitions (.opencode/skills/skill-*/SKILL.md)
+- All subagent definitions (.opencode/agent/subagents/*.md)
+- System configuration (.opencode/AGENTS.md)
+
+---
 
 ### OC_140. Document progressive disclosure patterns in context-loading guide
 - **Effort**: 1 hour
