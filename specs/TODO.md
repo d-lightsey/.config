@@ -11,6 +11,7 @@ next_project_number: 148
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Report**: [specs/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md](specs/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md)
 
 *Description**: Research and implement best practices for using subagents with isolated context windows and careful metadata passing in the .opencode/ agent system. Currently all research is conducted by the primary agent rather than being delegated to research subagents. Need to investigate 2026 best practices for:
 
@@ -27,7 +28,6 @@ next_project_number: 148
 - **Result Aggregation**: Skills use postflight pattern to read metadata, validate artifacts, update state, and commit changes
 - **Error Handling**: Comprehensive patterns with early metadata creation, validation gates, timeout handling, and fallback chains
 - **Gap Identified**: Primary agent currently performs research directly instead of delegating to research subagents - this is the core issue to address
-- **Report**: [specs/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md](specs/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md)
 
 ---
 

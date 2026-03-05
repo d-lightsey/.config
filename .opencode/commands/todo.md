@@ -1,12 +1,12 @@
 ---
-description: Archive completed and abandoned tasks
+description: Archive completed and abandoned tasks with CHANGE_LOG updates and memory harvest
 ---
 
 # Command: /todo
 
-**Purpose**: Archive completed and abandoned tasks to clean up active task list  
-**Layer**: 2 (Command File - Argument Parsing Agent)  
-**Delegates To**: None (Direct execution)
+**Purpose**: Archive completed and abandoned tasks with automatic CHANGE_LOG.md updates and memory harvest suggestions  
+**Layer**: 2 (Command File)  
+**Delegates To**: skill-todo (Direct execution skill)
 
 ---
 
@@ -25,214 +25,72 @@ description: Archive completed and abandoned tasks
 
 <workflow_execution>
   <step_1>
-    <action>Scan for Archivable Tasks</action>
+    <action>Execute skill-todo</action>
     <process>
-      Read specs/state.json and identify:
-      - Tasks with status = "completed"
-      - Tasks with status = "abandoned"
+      Invoke skill-todo with parsed arguments.
       
-      Read specs/TODO.md and cross-reference:
-      - Entries marked [COMPLETED]
-      - Entries marked [ABANDONED]
+      The skill handles:
+      - Scanning for archivable tasks
+      - Detecting orphaned/misplaced directories  
+      - Scanning roadmap and README suggestions
+      - Harvesting memory suggestions from artifacts
+      - Interactive prompts for user decisions
+      - Archiving tasks to specs/archive/
+      - Updating ROAD_MAP.md annotations
+      - Applying README.md suggestions
+      - Updating CHANGE_LOG.md with entries
+      - Creating selected memories
+      - Git commit with comprehensive message
     </process>
   </step_1>
-
-  <step_2>
-    <action>Detect Orphaned Directories</action>
-    <process>
-      Scan for project directories not tracked in any state file.
-      
-      Get orphaned directories in specs/ (not tracked anywhere):
-      ```bash
-      orphaned_in_specs=()
-      # Match both OC_ prefixed (OpenCode) and plain number (Claude Code) directories
-      for dir in specs/OC_[0-9]*_*/ specs/[0-9]*_*/; do
-        [ -d "$dir" ] || continue
-        basename_dir=$(basename "$dir")
-        # Strip OC_ prefix if present for numeric lookup
-        project_num=$(echo "$basename_dir" | sed 's/^OC_//' | cut -d_ -f1)
-        
-        in_active=$(jq -r --arg n "$project_num" \
-          '.active_projects[] | select(.project_number == ($n | tonumber)) | .project_number' \
-          specs/state.json 2>/dev/null)
-        
-        in_archive=$(jq -r --arg n "$project_num" \
-          '.completed_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
-          specs/archive/state.json 2>/dev/null)
-        
-        if [ -z "$in_active" ] && [ -z "$in_archive" ]; then
-          orphaned_in_specs+=("$dir")
-        fi
-      done
-      ```
-      
-      Get orphaned directories in archive/ (not tracked in state):
-      ```bash
-      orphaned_in_archive=()
-      # Match both OC_ prefixed (OpenCode) and plain number (Claude Code) directories
-      for dir in specs/archive/OC_[0-9]*_*/ specs/archive/[0-9]*_*/; do
-        [ -d "$dir" ] || continue
-        basename_dir=$(basename "$dir")
-        # Strip OC_ prefix if present for numeric lookup
-        project_num=$(echo "$basename_dir" | sed 's/^OC_//' | cut -d_ -f1)
-        
-        in_archive=$(jq -r --arg n "$project_num" \
-          '.completed_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
-          specs/archive/state.json 2>/dev/null)
-        
-        if [ -z "$in_archive" ]; then
-          orphaned_in_archive+=("$dir")
-        fi
-      done
-      ```
-      
-      Combine for archival operations.
-    </process>
-  </step_2>
-
-  <step_3>
-    <action>Detect Misplaced Directories</action>
-    <process>
-      Scan for project directories in specs/ that ARE tracked in specs/archive/state.json:
-      ```bash
-      misplaced_in_specs=()
-      # Match both OC_ prefixed (OpenCode) and plain number (Claude Code) directories
-      for dir in specs/OC_[0-9]*_*/ specs/[0-9]*_*/; do
-        [ -d "$dir" ] || continue
-        basename_dir=$(basename "$dir")
-        # Strip OC_ prefix if present for numeric lookup
-        project_num=$(echo "$basename_dir" | sed 's/^OC_//' | cut -d_ -f1)
-        
-        in_active=$(jq -r --arg n "$project_num" \
-          '.active_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
-          specs/state.json 2>/dev/null)
-        
-        in_archive=$(jq -r --arg n "$project_num" \
-          '.completed_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
-          specs/archive/state.json 2>/dev/null)
-        
-        if [ -z "$in_active" ] && [ -n "$in_archive" ]; then
-          misplaced_in_specs+=("$dir")
-        fi
-      done
-      ```
-    </process>
-  </step_3>
-
-  <step_4>
-    <action>Scan Roadmap for Task References</action>
-    <process>
-      Use structured extraction from completion_summary fields, falling back to exact (Task {N}) matching.
-      
-      Separate meta and non-meta tasks.
-      For non-meta tasks with completion summaries, match against ROAD_MAP.md:
-      - Explicit roadmap_items (highest confidence)
-      - Exact (Task N) references
-      - Summary-based search (optional)
-      
-      Track roadmap_matches array with confidence levels.
-    </process>
-  </step_4>
-
-  <step_5>
-    <action>Scan Meta Tasks for README.md Suggestions</action>
-    <process>
-      For meta tasks, extract readme_suggestions if present.
-      Track by action type:
-      - Add: Insert new content
-      - Update: Replace existing content  
-      - Remove: Delete content
-      - None: No changes needed
-    </process>
-  </step_5>
-
-  <step_6>
-    <action>Dry Run Output (if --dry-run)</action>
-    <process>
-      Display comprehensive preview:
-      - Tasks to archive (completed/abandoned)
-      - Orphaned directories (specs/archive counts)
-      - Misplaced directories count
-      - Roadmap updates needed
-      - README.md suggestions
-      
-      Exit after display.
-    </process>
-  </step_6>
-
-  <step_7>
-    <action>Handle Interactive Prompts</action>
-    <process>
-      If orphaned directories found:
-      Use AskUserQuestion for track/skip decision
-      
-      If misplaced directories found:
-      Use AskUserQuestion for move/skip decision
-      
-      Store decisions for use in archival steps.
-    </process>
-  </step_7>
-
-  <step_8>
-    <action>Archive Tasks</action>
-    <process>
-      A. Update specs/archive/state.json
-      B. Update specs/state.json (remove archived tasks)
-      C. Update specs/TODO.md (remove archived entries)
-      D. Move project directories to archive/
-      E. Track orphaned directories (if approved)
-      F. Move misplaced directories (if approved)
-    </process>
-  </step_8>
-
-  <step_9>
-    <action>Update Roadmap for Archived Tasks</action>
-    <process>
-      For each roadmap match:
-      - Skip if already annotated
-      - Apply appropriate annotation (use OC_ prefix for OpenCode tasks):
-        * Completed: - [x] item *(Completed: Task OC_N, DATE)*
-        * Abandoned: - [ ] item *(Task OC_N abandoned: reason)*
-      - Track changes: completed_annotated, abandoned_annotated, skipped
-    </process>
-  </step_9>
-
-  <step_10>
-    <action>Interactive README.md Suggestion Selection</action>
-    <process>
-      For actionable meta task suggestions:
-      A. Filter suggestions where action != "none"
-      B. Present AskUserQuestion with multiSelect
-      C. Apply selected suggestions via Edit tool
-      D. Display results (applied/failed/skipped)
-      E. Acknowledge "none" action tasks
-    </process>
-  </step_10>
-
-  <step_11>
-    <action>Git Commit</action>
-    <process>
-      Include comprehensive message with counts:
-      - todo: archive {N} tasks
-      - update {R} roadmap items  
-      - track {M} orphans
-      - move {P} misplaced directories
-      - update README.md with {S} suggestions
-    </process>
-  </step_11>
-
-  <step_12>
-    <action>Output Results</action>
-    <process>
-      Display complete summary:
-      - Archived tasks (completed/abandoned counts)
-      - Directory operations
-      - Roadmap updates
-      - README.md suggestions
-      - Active tasks remaining
-    </process>
-  </step_12>
 </workflow_execution>
+
+---
+
+## Features
+
+### Automatic CHANGE_LOG.md Updates
+
+The skill automatically creates/updates `specs/CHANGE_LOG.md` with entries for each archived task:
+
+```markdown
+### 2026-03-05
+
+**Task OC_142: implement_knowledge_capture_system**
+- Status: completed
+- Type: meta
+- Summary: Implemented comprehensive knowledge capture system with /fix command, /remember task mode, and enhanced /todo features
+
+Artifacts:
+- .opencode/commands/fix.md - Renamed from learn.md
+- .opencode/skills/skill-todo/SKILL.md - New skill definition
+- specs/CHANGE_LOG.md - New changelog file
+```
+
+### Memory Harvest Suggestions
+
+After archiving, the skill scans task artifacts for valuable knowledge:
+
+1. **Research reports** - Findings with general applicability
+2. **Implementation plans** - Reusable patterns and techniques
+3. **Summaries** - Key learnings and insights
+
+Presented interactively with categories:
+- [TECHNIQUE] - Reusable method or approach
+- [PATTERN] - Design or implementation pattern
+- [CONFIG] - Configuration or setup knowledge
+- [WORKFLOW] - Process or procedure
+- [INSIGHT] - Key learning or understanding
+
+### Roadmap Annotation
+
+Automatically annotates ROAD_MAP.md items when tasks complete:
+- Completed: `- [x] item *(Completed: Task OC_N, DATE)*`
+- Abandoned: `- [ ] item *(Task OC_N abandoned: reason)*`
+
+### README.md Suggestions
+
+For meta tasks, applies readme_suggestions from completion_data to update .opencode/README.md.
 
 ---
 
@@ -244,8 +102,8 @@ description: Archive completed and abandoned tasks
   </parsing_errors>
   
   <execution_errors>
-    - jq failures -> Return error with technical details
-    - File permission errors -> Return error with guidance
+    - Skill execution errors -> Log and return guidance
+    - State file errors -> Return error with technical details
     - Git commit failures -> Log warning, continue
   </execution_errors>
   
@@ -273,6 +131,9 @@ description: Archive completed and abandoned tasks
     specs/state.json
     specs/TODO.md
     specs/ROAD_MAP.md
+    specs/CHANGE_LOG.md
     .opencode/README.md
+    .opencode/memory/10-Memories/
+    .opencode/memory/20-Indices/index.md
   </writes>
 </state_management>
