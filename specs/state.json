@@ -4,10 +4,10 @@
     {
       "project_number": 135,
       "project_name": "enforce_workflow_command_delegation_to_prevent_direct_implementation",
-      "status": "planned",
+      "status": "revised",
       "language": "meta",
       "created": "2026-03-04T23:30:00Z",
-      "last_updated": "2026-03-05T01:28:52Z",
+      "last_updated": "2026-03-05T01:35:46Z",
       "artifacts": [
         {
           "type": "research",
@@ -23,6 +23,11 @@
           "type": "research",
           "path": "specs/OC_135_enforce_workflow_command_delegation_to_prevent_direct_implementation/reports/research-002.md",
           "summary": "Comparative analysis of .claude/ vs .opencode/ systems, identifying explicit delegation via Skill tool as key difference; includes industry best practices for command routing"
+        },
+        {
+          "type": "plan",
+          "path": "specs/OC_135_enforce_workflow_command_delegation_to_prevent_direct_implementation/plans/implementation-002.md",
+          "summary": "REVISED: 5-phase plan to redesign 9 workflow commands from implementation guides to routing specs, adopt .claude/ postflight patterns, and add command router (12 hours, up from 8)"
         }
       ]
     },
