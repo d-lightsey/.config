@@ -87,15 +87,19 @@ Based on research-001.md, the root cause is a gap between skill loading and skil
 - **Report:** [audit-skills.md](../reports/audit-skills.md)
 - **Findings:** ALL SKILLS ARE CORRECTLY DESIGNED! Skills correctly use Task tool with subagent_type. Problem is upstream in command invocation.
 
-### Phase 3: Test Current Behavior [NOT STARTED]
+### Phase 3: Test Current Behavior [COMPLETED]
+- **Started:** 2026-03-06T19:15:00Z
+- **Completed:** 2026-03-06T19:20:00Z
 - **Goal:** Confirm the exact failure mode and identify where execution stops
 - **Tasks:**
-  - [ ] Test /plan command with verbose output to see execution flow
-  - [ ] Verify skill content is displayed vs skill being executed
-  - [ ] Check if Task tool is ever invoked
-  - [ ] Test if subagent delegation fails or never attempted
-  - [ ] Document exact failure point for each workflow command
+  - [x] Test /plan command with verbose output to see execution flow
+  - [x] Verify skill content is displayed vs skill being executed
+  - [x] Check if Task tool is ever invoked
+  - [x] Test if subagent delegation fails or never attempted
+  - [x] Document exact failure point for each workflow command
 - **Timing:** 30 minutes
+- **Report:** [test-behavior.md](../reports/test-behavior.md)
+- **Findings:** CONFIRMED - Skills displayed, not executed. Task tool never invoked.
 
 ### Phase 4: Design Fix Approach [NOT STARTED]
 - **Goal:** Determine the minimal fix that makes skills execute their workflows
