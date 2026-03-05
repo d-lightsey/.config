@@ -8,12 +8,14 @@ next_project_number: 148
 
 ### OC_148. Fix status updates during implementation phases
 - **Effort**: 3-4 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Researched**: 2026-03-05
+- **Planned**: 2026-03-05
 - **Language**: meta
 - **Dependencies**: None
 - **Artifacts**:
   - [specs/OC_148_fix_status_updates_in_implementations/reports/research-001.md](specs/OC_148_fix_status_updates_in_implementations/reports/research-001.md) - Research report identifying 6 specific status update gaps in skill-implementer and general-implementation-agent with detailed recommendations and file references
+  - [specs/OC_148_fix_status_updates_in_implementations/plans/implementation-001.md](specs/OC_148_fix_status_updates_in_implementations/plans/implementation-001.md) - 6-phase implementation plan for fixing status update gaps
 
 **Description**: Fix status update gaps in skill-implementer and general-implementation-agent. During OC_147 implementation, observed that:
 
