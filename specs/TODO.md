@@ -1,10 +1,73 @@
 ---
-next_project_number: 135
+next_project_number: 136
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_136. Design and implement `/remember` command for intelligent memory management
+- **Effort**: 6-8 hours
+- **Status**: [RESEARCHED]
+- **Researched**: 2026-03-05
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](OC_136_design_and_implement_remember_command_for_intelligent_memory_management/reports/research-001.md)
+
+**Description**: Design and implement a `/remember` command that takes either a prompt or file path as input, learns what it can from what has been passed in, compares existing content in the `.opencode/context/memory/` files, conducts further research online if more information would be helpful, identifies key additions to make to the memory files in a natural and well-orchestrated way, then proposes these additions for the user to approve with interactive checkboxes.
+
+**Key Features Required**:
+1. **Input Handling**: Support both text prompts and file paths as input sources
+2. **Content Analysis**: Extract key concepts, patterns, and important information from input
+3. **Memory Comparison**: Compare against existing `.opencode/context/memory/` files to avoid duplicates and identify gaps
+4. **Research Augmentation**: Conduct web research when additional context would strengthen the memory entry
+5. **Interactive Approval**: Present proposed memory additions with checkboxes for user selection
+6. **Natural Integration**: Additions should fit naturally into existing memory structure
+7. **Orchestrated Workflow**: Well-designed flow from input → analysis → research → proposal → approval → storage
+
+**Components to Create**:
+- **Command**: `.opencode/commands/remember.md` - User-facing entry point with argument parsing
+- **Skill**: `.opencode/skills/skill-remember/SKILL.md` - Validation and delegation logic
+- **Agent**: `.opencode/agents/remember-agent.md` - Core execution agent for analysis and proposal
+
+**Workflow Design**:
+```
+User Input (prompt or file)
+    |
+    v
+Input Parsing & Validation
+    |
+    v
+Content Analysis (extract key info)
+    |
+    v
+Memory File Comparison (check existing)
+    |
+    v
+Research Decision (need more info?)
+    |-- YES --> Web Research
+    |-- NO ----> Skip
+    |
+    v
+Generate Proposed Additions
+    |
+    v
+Interactive Approval (checkboxes)
+    |
+    v
+Update Memory Files
+    |
+    v
+Confirmation & Summary
+```
+
+**Research Requirements**:
+- Review existing memory management patterns in opencode ecosystem
+- Study best practices from AGENTS.md pattern (project context files)
+- Understand interactive checkbox workflows in opencode
+- Design natural memory file organization structure
+
+---
 
 ### OC_135. Enforce workflow command delegation to prevent direct implementation
 - **Effort**: 3-4 hours

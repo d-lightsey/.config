@@ -1,6 +1,22 @@
 {
-  "next_project_number": 136,
+  "next_project_number": 137,
   "active_projects": [
+    {
+      "project_number": 136,
+      "project_name": "design_and_implement_remember_command_for_intelligent_memory_management",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-05T22:00:00Z",
+      "last_updated": "2026-03-05T23:30:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/OC_136_design_and_implement_remember_command_for_intelligent_memory_management/reports/research-001.md",
+          "summary": "Research completed: comprehensive analysis of memory management patterns, interactive workflows, and system architecture recommendations"
+        }
+      ],
+      "description": "Design and implement a `/remember` command for intelligent memory management that takes prompts or file paths, analyzes content, compares with existing memory files, conducts research when needed, and proposes additions via interactive checkboxes"
+    },
     {
       "project_number": 135,
       "project_name": "enforce_workflow_command_delegation_to_prevent_direct_implementation",
