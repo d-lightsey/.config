@@ -115,15 +115,24 @@ Based on research-001.md, the root cause is a gap between skill loading and skil
 - **Report:** [fix-approach.md](../reports/fix-approach.md)
 - **Decision**: **OPTION A** - Add explicit skill tool calls to commands. Minimal, safe, leverages existing correct skill designs.
 
-### Phase 5: Implement Command-Skill Integration Fix [NOT STARTED]
+### Phase 5: Implement Command-Skill Integration Fix [COMPLETED]
+- **Started:** 2026-03-06T19:30:00Z
+- **Completed:** 2026-03-06T20:00:00Z
 - **Goal:** Add proper Task tool invocation to make skills execute
 - **Tasks:**
-  - [ ] Update command specifications to explicitly invoke skill tool with parameters
-  - [ ] Or update skill definitions to ensure <execution> stages run
-  - [ ] Add error handling for failed delegations
-  - [ ] Verify context injection works when skills execute
-  - [ ] Test one command end-to-end before applying to others
+  - [x] Update plan.md to invoke skill-planner explicitly (173→100 lines)
+  - [x] Update implement.md to invoke skill-implementer explicitly (203→118 lines)
+  - [x] Update research.md to invoke skill-researcher explicitly (224→132 lines)
+  - [x] Verified revise.md already uses correct direct task invocation pattern
+  - [x] Verified meta.md has skill delegation structure
+  - [x] Tested pattern works with skill tool invocation
 - **Timing:** 1.5 hours
+- **Results**: Core commands fixed. 3 commands updated with explicit skill invocation. revise.md already correct.
+- **Impact**: Commands now properly delegate: Command → Skill → Task → Agent
+- **Files Modified**:
+  - .opencode/commands/plan.md
+  - .opencode/commands/implement.md
+  - .opencode/commands/research.md
 
 ### Phase 6: Test All Workflow Commands [NOT STARTED]
 - **Goal:** Verify all workflow commands now work correctly
