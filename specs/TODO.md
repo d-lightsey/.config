@@ -1,10 +1,35 @@
 ---
-next_project_number: 146
+next_project_number: 147
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_146. Research and implement subagent workflow best practices
+- **Effort**: 6-8 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](OC_146_subagent_invocation_consistency_in_opencode_system/reports/research-001.md) - Comprehensive analysis of subagent invocation patterns
+  - [research-002.md](OC_146_subagent_invocation_consistency_in_opencode_system/reports/research-002.md) - Verification of no changes since original research
+
+**Description**: Research and implement best practices for using subagents with isolated context windows and careful metadata passing in the .opencode/ agent system. Currently all research is conducted by the primary agent rather than being delegated to research subagents. Need to investigate 2026 best practices for:
+
+1. **Isolated Context Windows**: How to properly delegate to subagents with clean, isolated context to prevent context pollution and reduce token usage
+2. **Metadata Passing**: Careful passing of task metadata (task number, description, requirements) between primary agent and subagents
+3. **Result Aggregation**: How subagents should return structured results that can be properly integrated back into the primary agent's workflow
+4. **Error Handling**: Best practices for handling subagent failures and fallbacks
+5. **Integration with Skills**: How subagent delegation should work within the existing skill-based architecture (skill-researcher, skill-implementer, skill-planner)
+
+**Key Findings**:
+- All workflow commands correctly invoke subagents via Task tool
+- OC_145 metadata_file_path fix is complete and working
+- Only structural inconsistency: /revise uses advanced pattern while others use simple pattern
+- **System is working correctly - no implementation required**
+- All delegation chains remain intact and functional
+
+---
 
 ### OC_145. Restore settings.json format and state sync validation
 - **Effort**: medium

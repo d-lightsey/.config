@@ -1,6 +1,27 @@
 {
-  "next_project_number": 146,
+  "next_project_number": 147,
   "active_projects": [
+    {
+      "project_number": 146,
+      "project_name": "research_implement_subagent_workflow_best_practices",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-05T12:00:00Z",
+      "last_updated": "2026-03-05T14:00:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/OC_146_subagent_invocation_consistency_in_opencode_system/reports/research-001.md",
+          "summary": "Comprehensive analysis reveals all workflow commands correctly invoke subagents. OC_145 metadata_file_path fix is complete. Only inconsistency is structural: /revise uses advanced pattern while others use simple pattern. System working correctly - no implementation required."
+        },
+        {
+          "type": "research",
+          "path": "specs/OC_146_subagent_invocation_consistency_in_opencode_system/reports/research-002.md",
+          "summary": "Re-research confirms no changes to workflow commands since original research (2026-03-05). Git history verification shows no modifications. All delegation chains remain intact and functional. System unchanged and working correctly."
+        }
+      ],
+      "description": "Research and implement best practices for using subagents with isolated context windows and careful metadata passing in the .opencode/ agent system. Current issue: all research is conducted by the primary agent instead of being delegated to research subagents. Need to investigate 2026 best practices for subagent workflows that integrate naturally with the existing skill-based architecture."
+    },
     {
       "project_number": 145,
       "project_name": "restore_settings_json_and_state_sync",
