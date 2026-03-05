@@ -33,15 +33,16 @@
       "status": "researched",
       "language": "meta",
       "created": "2026-03-07T12:00:00Z",
-      "last_updated": "2026-03-05T13:45:00Z",
+      "last_updated": "2026-03-05T23:08:48Z",
       "artifacts": [
         {
+          "path": "specs/OC_142_implement_knowledge_capture_system/reports/research-002.md",
           "type": "research",
-          "path": "specs/OC_142_implement_knowledge_capture_system/reports/research-001.md",
-          "summary": "Comprehensive analysis of three knowledge capture features: /learn rename to /fix, /remember task mode for artifact review with interactive classification, /todo CHANGE_LOG.md integration. All three commands analyzed with current implementation details, architecture patterns, integration requirements, and implementation strategy."
+          "summary": "Updated research analyzing current .opencode/ system state vs planned knowledge capture features"
         }
       ],
-      "description": "Implement a comprehensive knowledge capture system with three integrated features: (1) Rename /learn to /fix, (2) Add task mode to /remember for artifact review with interactive classification, (3) Enhance /todo with auto CHANGE_LOG.md updates and memory harvest suggestions."
+      "description": "Implement a comprehensive knowledge capture system with three integrated features: (1) Rename /learn to /fix, (2) Add task mode to /remember for artifact review with interactive classification, (3) Enhance /todo with auto CHANGE_LOG.md updates and memory harvest suggestions.",
+      "researched": "2026-03-05T23:08:48Z"
     },
     {
       "project_number": 140,
