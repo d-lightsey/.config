@@ -30,10 +30,17 @@ next_project_number: 141
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: OC_137 (completed)
-- **Research**: [research-001.md](OC_139_implement_stage_progressive_loading_demo/reports/research-001.md) - Proof-of-concept for progressive context loading in skill-planner
+- **Research**: [research-001.md](OC_139_implement_stage_progressive_loading_demo/reports/research-001.md) - Initial POC for progressive context loading in skill-planner
+  - [research-002.md](OC_139_implement_stage_progressive_loading_demo/reports/research-002.md) - **Systematic review**: Comprehensive audit of all 11 skills with 30-60% optimization opportunities and 2026 best practices alignment
 - **Plan**: Needed
 
 **Description**: Follow-up to OC_137 Phase 7. Implement stage-progressive context loading in skill-planner as proof-of-concept: load status-markers.md in Stage 1 (for preflight validation), defer plan-format.md and task-breakdown.md to Stage 3 (for plan creation). Expected ~40-50% reduction in initial context window usage.
+
+**Systematic Review Findings** (from research-002.md):
+- **Current**: 100% context loaded in Stage 1 across all skills
+- **Opportunity**: Stage-progressive loading reduces initial context by 40-60%
+- **Priority Skills**: skill-planner, skill-implementer, skill-meta (highest impact)
+- **2026 Best Practices**: Checkpoint-based loading, context budget enforcement, conditional domain context
 
 **Implementation**:
 - Modify skill-planner/SKILL.md execution stages
