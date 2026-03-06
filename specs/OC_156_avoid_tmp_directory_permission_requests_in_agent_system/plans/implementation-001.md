@@ -63,7 +63,7 @@ The `specs/tmp/` directory already exists and is user-owned, making it the ideal
 
 ## Implementation Phases
 
-### Phase 1: Core Commands [NOT STARTED]
+### Phase 1: Core Commands [COMPLETED]
 
 **Goal**: Update the 4 core command files (14 occurrences total)
 

@@ -60,7 +60,7 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
     status: $status,
     last_updated: $ts,
     implementing: $ts
-  }' specs/state.json > /tmp/state.json && mv /tmp/state.json specs/state.json
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
 ```
 
 **Update TODO.md to [IMPLEMENTING]**:
@@ -129,7 +129,7 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
     status: $status,
     last_updated: $ts,
     "${final_status}": $ts
-  }' specs/state.json > /tmp/state.json && mv /tmp/state.json specs/state.json
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
 ```
 
 **Step 7d: Update TODO.md**:
@@ -142,14 +142,14 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 # Step 1: Filter out existing summary artifacts
 jq '(.active_projects[] | select(.project_number == N)).artifacts =
     [(.active_projects[] | select(.project_number == N)).artifacts // [] | .[] | select(.type == "summary" | not)]' \
-  specs/state.json > /tmp/state.json && mv /tmp/state.json specs/state.json
+  specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
 
 # Step 2: Add new summary artifact
 jq --arg path "$artifact_path" \
    --arg type "$artifact_type" \
    --arg summary "$artifact_summary" \
   '(.active_projects[] | select(.project_number == N)).artifacts += [{"path": $path, "type": $type, "summary": $summary}]' \
-  specs/state.json > /tmp/state.json && mv /tmp/state.json specs/state.json
+  specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
 ```
 
 **Step 7f: Add artifact to TODO.md**:
