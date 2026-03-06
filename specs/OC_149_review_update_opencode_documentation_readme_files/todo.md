@@ -1,7 +1,7 @@
 # Task: OC_149 - Review and update .opencode/ documentation with comprehensive README files
 
 **Created**: 2026-03-05  
-**Status**: [PLANNING]  
+**Status**: [PLANNED]  
 **Language**: meta
 
 ## Description
@@ -24,6 +24,20 @@ Review and systematically update the documentation in .opencode/ so that every s
 - [ ] Update existing README.md files with proper navigation
 - [ ] Organize docs/ directory markdown files
 - [ ] Verify all cross-links work correctly
+
+## Plan
+
+**Implementation Plan**: [implementation-001.md](plans/implementation-001.md)
+
+### Phase Summary:
+1. **Phase 1**: Template creation and core system directories (20 dirs) - 2 hours
+2. **Phase 2**: Extension root directories (11 dirs) - 1 hour
+3. **Phase 3**: Extension structure directories (~100 dirs) - 2.5 hours
+4. **Phase 4**: Docs directory organization - 45 minutes
+5. **Phase 5**: Remaining directories (~26 dirs) - 1.5 hours
+6. **Phase 6**: Verification and cross-linking - 45 minutes
+
+**Total Effort**: 6-8 hours
 
 ## Notes
 
