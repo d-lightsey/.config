@@ -4002,6 +4002,591 @@
       "abandoned": "2026-03-05T23:02:03Z",
       "artifacts": [],
       "description": "Fix the settings.json format change that removed critical PreToolUse and PostToolUse hooks. The new format removed permissions object and validation hooks that ensured TODO.md and state.json stayed synchronized after writes. Need to restore either the old format or adapt the hooks to work with the new format."
+    },
+    {
+      "project_number": 159,
+      "project_name": "require_planner_agent_for_plan_command",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T03:50:00Z",
+      "last_updated": "2026-03-06T18:16:47Z",
+      "artifacts": [
+        {
+          "path": "specs/OC_159_require_planner_agent_for_plan_command/reports/research-001.md",
+          "type": "research",
+          "summary": "Research report identifying the delegation gap: workflow commands must explicitly call Task tool with subagent_type after loading skill context. Skill tool only loads definitions, does not auto-delegate."
+        },
+        {
+          "path": "specs/OC_159_require_planner_agent_for_plan_command/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for fixing /plan, /research, /implement agent delegation routing"
+        },
+        {
+          "path": "specs/OC_159_require_planner_agent_for_plan_command/summaries/implementation-summary-20260306.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting delegation enforcement changes to commands and skills"
+        }
+      ],
+      "description": "The /plan command currently uses the general agent instead of the planner agent, as seen when it shows General Task instead of delegating to the planner-agent. Need to fix the command routing to ensure /plan always calls the planner-agent, and similarly ensure other workflow commands (/research, /implement) call their respective specialized agents instead of falling back to the general agent.",
+      "researching": "2026-03-06T03:50:14Z",
+      "researched": "2026-03-06T03:52:48Z",
+      "session_id": "sess_1772820706_547565",
+      "planning": "2026-03-06T18:04:58Z",
+      "planned": "2026-03-06T18:08:37Z",
+      "implementing": "2026-03-06T18:12:20Z",
+      "completed": "2026-03-06T18:16:47Z",
+      "completion_summary": "Fixed workflow command routing by adding explicit Task tool delegation requirements with EXECUTE NOW directives and FAILURE CONDITIONS to 3 commands (plan, research, implement) and 5 skills (planner, researcher, implementer, neovim-research, neovim-implementation). Added GATE OUT agent_type verification to detect delegation failures.",
+      "claudemd_suggestions": "Updated .opencode/commands/plan.md, research.md, implement.md with delegation enforcement blocks. Updated .opencode/skills/skill-planner/SKILL.md, skill-researcher/SKILL.md, skill-implementer/SKILL.md, skill-neovim-research/SKILL.md, skill-neovim-implementation/SKILL.md with EXECUTE NOW directives and FAILURE CONDITIONS.",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 153,
+      "project_name": "fix_skill_implementer_postflight_not_executing",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T01:00:00Z",
+      "last_updated": "2026-03-06T02:14:15Z",
+      "researching": "2026-03-06T01:30:00Z",
+      "researched": "2026-03-06T02:00:00Z",
+      "planning": "2026-03-06T02:30:00Z",
+      "planned": "2026-03-06T02:45:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/OC_153_fix_skill_implementer_postflight_not_executing/reports/research-001.md",
+          "summary": "Comprehensive analysis identifying that skill tool only loads definitions, doesn't execute workflows. Commands must implement preflight/postflight status updates themselves, not rely on skills to do it."
+        },
+        {
+          "path": "specs/OC_153_fix_skill_implementer_postflight_not_executing/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Revised 6-phase plan with clarifications: bug documentation added, risk upgraded to High, new success criterion for automatic status updates without orchestrator intervention"
+        },
+        {
+          "path": "specs/OC_153_fix_skill_implementer_postflight_not_executing/summaries/implementation-summary-20260306.md",
+          "type": "summary",
+          "summary": "Complete implementation summary: Fixed skill-implementer postflight bug. Updated 3 command files with preflight/postflight execution, clarified 3 skill files, remediated OC_151 status. 388 lines changed across 11 files."
+        }
+      ],
+      "description": "Fix the issue where task status is not being updated to [COMPLETED] after implementation finishes. The skill tool only loads skill definitions but doesn't execute the preflight/postflight workflow defined in SKILL.md files. After implementing OC_151, state.json still shows 'planning', TODO.md shows [PLANNING], and the plan file header shows [NOT STARTED].",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 152,
+      "project_name": "fix_git_commit_co_author_attribution",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-05T00:00:00Z",
+      "last_updated": "2026-03-06T02:46:34Z",
+      "artifacts": [
+        {
+          "path": "specs/OC_152_fix_git_commit_co_author_attribution/reports/research-001.md",
+          "type": "research",
+          "summary": "Research report identifying 14 files with incorrect Claude Opus 4.5 co-author attribution that should be standardized to OpenCode"
+        },
+        {
+          "path": "specs/OC_152_fix_git_commit_co_author_attribution/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for removing co-author attribution from 15 files"
+        },
+        {
+          "path": "specs/OC_152_fix_git_commit_co_author_attribution/summaries/implementation-summary-001.md",
+          "type": "summary",
+          "summary": "Implementation summary with file list and verification results"
+        }
+      ],
+      "description": "Fix git commit co-author attribution showing 'Co-Authored-By: Claude Opus 4.5' when using Kimi K2.5 in OpenCode. The commit messages incorrectly attribute co-authorship to Claude Opus when the actual model being used is Kimi K2.5. Need to investigate where this attribution is coming from and either correct it to reflect the actual model or remove it entirely.",
+      "researching": "2026-03-06T02:32:47Z",
+      "researched": "2026-03-06T02:36:13Z",
+      "planning": "2026-03-06T02:38:57Z",
+      "planned": "2026-03-06T02:40:47Z",
+      "implementing": "2026-03-06T02:41:56Z",
+      "completed": "2026-03-06T02:46:34Z",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 151,
+      "project_name": "rename_remember_command_to_learn",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T00:00:00Z",
+      "last_updated": "2026-03-06T00:30:00Z",
+      "planning": "2026-03-06T00:30:00Z",
+      "researched": "2026-03-06T00:00:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/OC_151_rename_remember_command_to_learn/reports/research-001.md",
+          "summary": "Comprehensive research report identifying 47+ references to skill-remember and /remember across the OpenCode system. Categorized by priority (Critical, High, Medium, Low) and provided clean-break rename recommendations based on OC_142 precedent."
+        }
+      ],
+      "description": "Rename the /remember command to /learn throughout the OpenCode system. This involves: 1) Renaming skill-remember/ directory to skill-learn/, 2) Updating SKILL.md to register as /learn command, 3) Updating any documentation references, 4) Ensuring backward compatibility if needed.",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 154,
+      "project_name": "task_command_fails_to_create_entries_not_specs_directory_issue",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T02:30:00Z",
+      "last_updated": "2026-03-06T03:04:25Z",
+      "researching": "2026-03-06T02:43:21Z",
+      "researched": "2026-03-06T02:47:36Z",
+      "artifacts": [
+        {
+          "path": "specs/OC_154_task_command_fails_to_create_entries_not_specs_directory_issue/reports/research-002.md",
+          "type": "research",
+          "summary": "Regression analysis: /task command broke due to architectural shift in task 153 phases 1-4 that changed other commands to 'command orchestrates workflow' pattern while /task remained on 'direct agent execution' pattern"
+        },
+        {
+          "path": "specs/OC_154_task_command_fails_to_create_entries_not_specs_directory_issue/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "REPLAN: 4-phase implementation plan for task 154 regression fix based on architectural pattern analysis"
+        }
+      ],
+      "description": "The /task command fails to create task entries even when specs/ directory exists with TODO.md and state.json. Initial diagnosis assumed the issue was missing specs/ directory when copying .opencode/ to other directories, but the command also fails in the current directory where specs/ is present. This indicates a deeper issue with the task command implementation or the agent's interpretation of the command rules.",
+      "planning": "2026-03-06T02:50:07Z",
+      "planned": "2026-03-06T02:52:41Z",
+      "implementing": "2026-03-06T02:56:27Z",
+      "completed": "2026-03-06T03:04:25Z",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 155,
+      "project_name": "review_opencode_agent_system_leader_ao_picker",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T03:08:57Z",
+      "last_updated": "2026-03-06T03:31:44Z",
+      "creating": "2026-03-06T03:08:57Z",
+      "description": "Review .opencode/ agent system to identify improvements for the <leader>ao picker for managing the agent system. Many changes have been made and need to verify everything is tracked correctly.",
+      "artifacts": [
+        {
+          "path": "specs/OC_155_review_opencode_agent_system_leader_ao_picker/reports/research-001.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of .opencode/ agent system and <leader>ao picker identifying 6 major gaps: context files (90+ not surfaced), memory system not integrated, rules directory not exposed, no task status visibility, architectural coupling risks, and incomplete docs coverage. Includes 6 prioritized recommendations for picker enhancements."
+        },
+        {
+          "path": "specs/OC_155_review_opencode_agent_system_leader_ao_picker/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for adding context files, memory system, and rules directory to <leader>ao picker"
+        }
+      ],
+      "researching": "2026-03-06T03:13:42Z",
+      "researched": "2026-03-06T03:18:34Z",
+      "planning": "2026-03-06T03:21:20Z",
+      "planned": "2026-03-06T03:23:34Z",
+      "implementing": "2026-03-06T03:25:32Z",
+      "completed": "2026-03-06T03:31:44Z",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 156,
+      "project_name": "avoid_tmp_directory_permission_requests_in_agent_system",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T03:13:31Z",
+      "last_updated": "2026-03-06T04:01:34Z",
+      "creating": "2026-03-06T03:13:31Z",
+      "description": "Avoid permission requests for /tmp directory in opencode agent system. When using jq to update state.json, the current implementation writes to /tmp/state.json and moves it back, causing permission prompts. Use specs/tmp/ exclusively throughout .opencode/ agent system or find an elegant way to avoid temporary files altogether.",
+      "artifacts": [
+        {
+          "path": "specs/OC_156_avoid_tmp_directory_permission_requests_in_agent_system/reports/research-001.md",
+          "type": "research",
+          "summary": "Comprehensive analysis identifying 85+ occurrences of /tmp/state.json pattern across .opencode/ system. Recommended solution: replace with specs/tmp/state.json using existing project-local tmp directory."
+        },
+        {
+          "path": "specs/OC_156_avoid_tmp_directory_permission_requests_in_agent_system/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "8-phase implementation plan for migrating /tmp/state.json to specs/tmp/state.json across 85+ occurrences in 21 files"
+        },
+        {
+          "path": "specs/OC_156_avoid_tmp_directory_permission_requests_in_agent_system/summaries/implementation-summary-20260305.md",
+          "type": "summary",
+          "summary": "Complete implementation summary with all changes documented"
+        }
+      ],
+      "researching": "2026-03-06T03:22:08Z",
+      "researched": "2026-03-06T03:23:54Z",
+      "planning": "2026-03-06T03:25:59Z",
+      "planned": "2026-03-06T03:28:54Z",
+      "implementing": "2026-03-06T03:47:20Z",
+      "completed": "2026-03-06T04:01:34Z",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 157,
+      "project_name": "fix_task_creation_agent_not_found_error",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-06T03:16:07Z",
+      "last_updated": "2026-03-06T03:55:03Z",
+      "creating": "2026-03-06T03:16:07Z",
+      "description": "Fix task-creation-agent not found error. The skill-task.md references an agent type task-creation-agent that does not exist, causing Error: Unknown agent type: task-creation-agent is not a valid agent type. Need to either create the agent, update the skill to use general agent, or fix the reference.",
+      "artifacts": [
+        {
+          "path": "specs/OC_157_fix_task_creation_agent_not_found_error/reports/research-001.md",
+          "type": "research",
+          "summary": "Research report analyzing /task command complexity and proposing 97% reduction through direct execution pattern, eliminating skill-task delegation and non-existent task-creation-agent dependency"
+        },
+        {
+          "path": "specs/OC_157_fix_task_creation_agent_not_found_error/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "Implementation plan for simplifying /task command: 6-phase approach to remove skill-task delegation, reduce code by 97%, and perform direct task creation"
+        },
+        {
+          "path": "specs/OC_157_fix_task_creation_agent_not_found_error/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Revised implementation plan following plan-format.md specification"
+        },
+        {
+          "path": "specs/OC_157_fix_task_creation_agent_not_found_error/summaries/implementation-summary-20260306.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 157: Simplified /task command by removing skill-task delegation, achieving 97% code reduction (274 lines removed)"
+        }
+      ],
+      "researching": "2026-03-06T03:19:30Z",
+      "researched": "2026-03-06T03:22:31Z",
+      "planning": "2026-03-06T03:27:06Z",
+      "planned": "2026-03-06T03:29:30Z",
+      "implementing": "2026-03-06T03:49:54Z",
+      "completed": "2026-03-06T03:55:03Z",
+      "archived": "2026-03-06T18:32:22Z"
+    },
+    {
+      "project_number": 101,
+      "project_name": "add_contents_to_language_extensions",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "101_add_contents_to_language_extensions"
+    },
+    {
+      "project_number": 102,
+      "project_name": "review_extensions_populate_missing_resources",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "102_review_extensions_populate_missing_resources"
+    },
+    {
+      "project_number": 103,
+      "project_name": "compare_opencode_agent_systems_against_claude",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "103_compare_opencode_agent_systems_against_claude"
+    },
+    {
+      "project_number": 104,
+      "project_name": "fix_implement_phase_status_live_updates",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "104_fix_implement_phase_status_live_updates"
+    },
+    {
+      "project_number": 105,
+      "project_name": "create_web_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "105_create_web_extension"
+    },
+    {
+      "project_number": 106,
+      "project_name": "review_dotfiles_claude_nix_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "106_review_dotfiles_claude_nix_extension"
+    },
+    {
+      "project_number": 107,
+      "project_name": "port_tts_notification_hooks",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "107_port_tts_notification_hooks"
+    },
+    {
+      "project_number": 108,
+      "project_name": "extension_asterisk_indicator",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "108_extension_asterisk_indicator"
+    },
+    {
+      "project_number": 109,
+      "project_name": "generic_agent_system_portability",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "109_generic_agent_system_portability"
+    },
+    {
+      "project_number": 110,
+      "project_name": "separate_extension_files_from_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "110_separate_extension_files_from_core_agent_system"
+    },
+    {
+      "project_number": 111,
+      "project_name": "compare_opencode_agent_systems",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "111_compare_opencode_agent_systems"
+    },
+    {
+      "project_number": 112,
+      "project_name": "fix_leader_ac_artifact_loader_project_overview",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "112_fix_leader_ac_artifact_loader_project_overview"
+    },
+    {
+      "project_number": 113,
+      "project_name": "review_proofchecker_opencode_virtues",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "113_review_proofchecker_opencode_virtues"
+    },
+    {
+      "project_number": 114,
+      "project_name": "make_leader_ao_identical_to_leader_ac",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "114_make_leader_ao_identical_to_leader_ac"
+    },
+    {
+      "project_number": 115,
+      "project_name": "investigate_leader_ao_load_all_feature_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "115_investigate_leader_ao_load_all_feature_parity"
+    },
+    {
+      "project_number": 116,
+      "project_name": "verify_opencode_implement_extension_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "116_verify_opencode_implement_extension_parity"
+    },
+    {
+      "project_number": 117,
+      "project_name": "study_core_artifacts_extension_overlap",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "117_study_core_artifacts_extension_overlap"
+    },
+    {
+      "project_number": 118,
+      "project_name": "redesign_leader_ao_load_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "118_redesign_leader_ao_load_core_agent_system"
+    },
+    {
+      "project_number": 119,
+      "project_name": "fix_hardcoded_paths_in_picker",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "119_fix_hardcoded_paths_in_picker"
+    },
+    {
+      "project_number": 120,
+      "project_name": "fix_pretooluse_hook_picker_display",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "120_fix_pretooluse_hook_picker_display"
+    },
+    {
+      "project_number": 121,
+      "project_name": "clean_up_core_skills_directories",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "121_clean_up_core_skills_directories"
+    },
+    {
+      "project_number": 122,
+      "project_name": "expand_document_converter_to_filetypes",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "122_expand_document_converter_to_filetypes"
+    },
+    {
+      "project_number": 123,
+      "project_name": "fix_nonatomic_extension_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "123_fix_nonatomic_extension_loading"
+    },
+    {
+      "project_number": 124,
+      "project_name": "limit_docs_section_in_pickers",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "124_limit_docs_section_in_pickers"
+    },
+    {
+      "project_number": 125,
+      "project_name": "epidemiology_r_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "125_epidemiology_r_extension"
+    },
+    {
+      "project_number": 126,
+      "project_name": "fix_ao_picker_extension_loading_path",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "126_fix_ao_picker_extension_loading_path"
+    },
+    {
+      "project_number": 127,
+      "project_name": "migrate_opencode_md_to_readme_and_rename_quick_start_to_installation",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "127_migrate_opencode_md_to_readme_and_rename_quick_start_to_installation"
+    },
+    {
+      "project_number": 128,
+      "project_name": "ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "128_ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically"
+    },
+    {
+      "project_number": 129,
+      "project_name": "fix_plan_format_in_implementation_001_md",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "129_fix_plan_format_in_implementation_001_md"
+    },
+    {
+      "project_number": 130,
+      "project_name": "make_opencode_self_contained",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "130_make_opencode_self_contained"
+    },
+    {
+      "project_number": 132,
+      "project_name": "create_context_loading_best_practices_guide",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "132_create_context_loading_best_practices_guide"
+    },
+    {
+      "project_number": 145,
+      "project_name": "restore_settings_json_and_state_sync",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "145_restore_settings_json_and_state_sync"
+    },
+    {
+      "project_number": 131,
+      "project_name": "sync_state_todo_plan_during_implementation",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_131_sync_state_todo_plan_during_implementation"
+    },
+    {
+      "project_number": 133,
+      "project_name": "fix_planner_agent_not_following_plan_format_specification",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_133_fix_planner_agent_not_following_plan_format_specification"
+    },
+    {
+      "project_number": 134,
+      "project_name": "fix_workflow_command_header_display",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_134_fix_workflow_command_header_display"
+    },
+    {
+      "project_number": 135,
+      "project_name": "enforce_workflow_command_delegation_to_prevent_direct_implementation",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_135_enforce_workflow_command_delegation_to_prevent_direct_implementation"
+    },
+    {
+      "project_number": 136,
+      "project_name": "design_and_implement_remember_command_for_intelligent_memory_management",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_136_design_and_implement_remember_command_for_intelligent_memory_management"
+    },
+    {
+      "project_number": 137,
+      "project_name": "investigate_and_fix_planner_agent_format_compliance_issue",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_137_investigate_and_fix_planner_agent_format_compliance_issue"
+    },
+    {
+      "project_number": 141,
+      "project_name": "fix_agent_delegation_system_failure",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_141_fix_agent_delegation_system_failure"
+    },
+    {
+      "project_number": 144,
+      "project_name": "fix_systemic_metadata_delegation",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_144_fix_systemic_metadata_delegation"
+    },
+    {
+      "project_number": 147,
+      "project_name": "fix_artifact_metadata_linking_in_todo",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_147_fix_artifact_metadata_linking_in_todo"
+    },
+    {
+      "project_number": 148,
+      "project_name": "fix_status_updates_in_implementations",
+      "status": "orphan_archived",
+      "archived": "2026-03-06T18:33:32Z",
+      "source": "orphan_recovery",
+      "original_directory": "OC_148_fix_status_updates_in_implementations"
     }
   ],
   "abandoned_projects": []
