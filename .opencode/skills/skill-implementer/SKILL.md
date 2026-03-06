@@ -121,8 +121,16 @@ newString: "### Phase {N}: {Name} [IN PROGRESS]"
 - Provides early warning for status synchronization issues
 - Ensures plan file is accurate resume point source of truth
 
-3. **Delegate**: Invoke general-implementation-agent via Task tool with injected context.
+3. **Delegate**:
+
+   **EXECUTE NOW**: You MUST invoke the Task tool with the following parameters. This is a NON-OPTIONAL requirement.
+
+   **CRITICAL**: Do NOT execute implementation phases directly. You MUST delegate to `general-implementation-agent` via the Task tool. Failure to invoke the Task tool means this skill has FAILED.
+
+   - Call `Task` tool with `subagent_type="general-implementation-agent"`
    - Pass all {variables} from context_injection.
+
+   **FAILURE CONDITION**: If you do not call the Task tool with `subagent_type="general-implementation-agent"`, this skill invocation has FAILED. Implementation must be executed by the specialized general-implementation-agent, not by the primary agent.
 4. **Postflight**: Read metadata file and update state + TODO using {file_metadata} and {jq_workarounds}.
 
    **Stage 5: Parse Subagent Return**

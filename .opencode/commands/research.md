@@ -110,6 +110,19 @@ The skill-researcher will:
 
 **CRITICAL**: The skill tool ONLY loads skill definitions. It does NOT execute preflight/postflight workflows. This command MUST execute status updates before and after delegation.
 
+**DELEGATION REQUIREMENT**:
+
+After skill context is loaded, the skill MUST invoke the `Task` tool with the appropriate `subagent_type`. This is a NON-OPTIONAL requirement.
+
+| Language | Required subagent_type |
+|----------|------------------------|
+| neovim | `neovim-research-agent` |
+| general, meta, markdown, latex | `general-research-agent` |
+
+**EXECUTE NOW**: USE the Task tool with the correct `subagent_type` to delegate research to the specialized agent. Do NOT process the research request directly in this context.
+
+**FAILURE CONDITION**: If the Task tool is not invoked with the correct `subagent_type`, this command has FAILED. The primary agent must NOT conduct research itself — it MUST delegate to the appropriate research agent via the Task tool.
+
 **Research strategy** (handled by agent based on language):
 - **meta**: Focus on existing `.opencode/` files, conventions, patterns
 - **lean**: Search codebase for existing proofs, check Lean/Mathlib patterns
@@ -128,8 +141,37 @@ if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
     artifact_path=$(jq -r '.artifacts[0].path // ""' "$metadata_file")
     artifact_type=$(jq -r '.artifacts[0].type // ""' "$metadata_file")
     artifact_summary=$(jq -r '.artifacts[0].summary // ""' "$metadata_file")
+    agent_type=$(jq -r '.metadata.agent_type // ""' "$metadata_file")
 fi
 ```
+
+**Step 7a-verify: Verify correct agent was used**:
+
+**CRITICAL**: Verify that the metadata contains the correct `agent_type`. Expected values depend on task language:
+
+| Language | Expected agent_type |
+|----------|---------------------|
+| neovim | `neovim-research-agent` |
+| general, meta, markdown, latex | `general-research-agent` |
+
+```bash
+# Determine expected agent based on task language
+if [ "$language" == "neovim" ]; then
+    expected_agent="neovim-research-agent"
+else
+    expected_agent="general-research-agent"
+fi
+
+if [ "$agent_type" != "$expected_agent" ]; then
+    echo "WARNING: Delegation verification failed!"
+    echo "Expected agent_type: $expected_agent"
+    echo "Actual agent_type: $agent_type"
+    echo "The skill may have processed the request directly instead of delegating."
+    # Log this as an error for tracking
+fi
+```
+
+If `agent_type` is empty or does not match the expected agent, log a warning but continue with postflight (the research may still have been completed correctly).
 
 **Step 7b: Update state.json to researched**:
 ```bash

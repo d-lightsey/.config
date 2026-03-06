@@ -4,10 +4,10 @@
     {
       "project_number": 159,
       "project_name": "require_planner_agent_for_plan_command",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-06T03:50:00Z",
-      "last_updated": "2026-03-06T18:08:37Z",
+      "last_updated": "2026-03-06T18:16:47Z",
       "artifacts": [
         {
           "path": "specs/OC_159_require_planner_agent_for_plan_command/reports/research-001.md",
@@ -18,14 +18,23 @@
           "path": "specs/OC_159_require_planner_agent_for_plan_command/plans/implementation-001.md",
           "type": "plan",
           "summary": "6-phase implementation plan for fixing /plan, /research, /implement agent delegation routing"
+        },
+        {
+          "path": "specs/OC_159_require_planner_agent_for_plan_command/summaries/implementation-summary-20260306.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting delegation enforcement changes to commands and skills"
         }
       ],
       "description": "The /plan command currently uses the general agent instead of the planner agent, as seen when it shows General Task instead of delegating to the planner-agent. Need to fix the command routing to ensure /plan always calls the planner-agent, and similarly ensure other workflow commands (/research, /implement) call their respective specialized agents instead of falling back to the general agent.",
       "researching": "2026-03-06T03:50:14Z",
       "researched": "2026-03-06T03:52:48Z",
-      "session_id": "sess_1770706800_a3f2c7",
+      "session_id": "sess_1772820706_547565",
       "planning": "2026-03-06T18:04:58Z",
-      "planned": "2026-03-06T18:08:37Z"
+      "planned": "2026-03-06T18:08:37Z",
+      "implementing": "2026-03-06T18:12:20Z",
+      "completed": "2026-03-06T18:16:47Z",
+      "completion_summary": "Fixed workflow command routing by adding explicit Task tool delegation requirements with EXECUTE NOW directives and FAILURE CONDITIONS to 3 commands (plan, research, implement) and 5 skills (planner, researcher, implementer, neovim-research, neovim-implementation). Added GATE OUT agent_type verification to detect delegation failures.",
+      "claudemd_suggestions": "Updated .opencode/commands/plan.md, research.md, implement.md with delegation enforcement blocks. Updated .opencode/skills/skill-planner/SKILL.md, skill-researcher/SKILL.md, skill-implementer/SKILL.md, skill-neovim-research/SKILL.md, skill-neovim-implementation/SKILL.md with EXECUTE NOW directives and FAILURE CONDITIONS."
     },
     {
       "project_number": 153,

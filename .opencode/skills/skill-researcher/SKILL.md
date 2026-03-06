@@ -73,6 +73,11 @@ Thin wrapper that delegates research to `general-research-agent`.
    - Create postflight marker file.
 
 3. **Delegate**:
+
+   **EXECUTE NOW**: You MUST invoke the Task tool with the following parameters. This is a NON-OPTIONAL requirement.
+
+   **CRITICAL**: Do NOT conduct this research directly. You MUST delegate to `general-research-agent` via the Task tool. Failure to invoke the Task tool means this skill has FAILED.
+
    - Call `Task` tool with `subagent_type="general-research-agent"`
    - Prompt:
      """
@@ -101,6 +106,8 @@ Thin wrapper that delegates research to `general-research-agent`.
      {status_markers}
      </system_context>
      """
+
+   **FAILURE CONDITION**: If you do not call the Task tool with `subagent_type="general-research-agent"`, this skill invocation has FAILED. Research must be conducted by the specialized general-research-agent, not by the primary agent.
 
 4. **Postflight**:
 

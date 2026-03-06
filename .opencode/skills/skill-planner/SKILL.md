@@ -75,6 +75,11 @@ Thin wrapper that delegates plan creation to `planner-agent`.
    - Create postflight marker file.
 
 3. **Delegate**:
+
+   **EXECUTE NOW**: You MUST invoke the Task tool with the following parameters. This is a NON-OPTIONAL requirement.
+
+   **CRITICAL**: Do NOT process this planning request directly. You MUST delegate to `planner-agent` via the Task tool. Failure to invoke the Task tool means this skill has FAILED.
+
    - Call `Task` tool with `subagent_type="planner-agent"`
    - Prompt:
      """
@@ -87,6 +92,8 @@ Thin wrapper that delegates plan creation to `planner-agent`.
      {task_breakdown}
      </system_context>
      """
+
+   **FAILURE CONDITION**: If you do not call the Task tool with `subagent_type="planner-agent"`, this skill invocation has FAILED. The plan must be created by the specialized planner-agent, not by the primary agent.
 
 4. **Postflight**:
 

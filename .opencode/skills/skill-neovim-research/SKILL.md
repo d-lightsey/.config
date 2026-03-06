@@ -64,7 +64,14 @@ Reference (do not load eagerly):
 1. Validate task and status.
 2. Update status to researching.
 3. Create postflight marker file.
-4. Delegate to `neovim-research-agent` via Task tool.
+4. **Delegate to `neovim-research-agent` via Task tool.**
+
+   **EXECUTE NOW**: You MUST invoke the Task tool with `subagent_type="neovim-research-agent"`. This is a NON-OPTIONAL requirement.
+
+   **CRITICAL**: Do NOT conduct Neovim research directly. You MUST delegate to `neovim-research-agent` via the Task tool. Failure to invoke the Task tool means this skill has FAILED.
+
+   **FAILURE CONDITION**: If you do not call the Task tool with `subagent_type="neovim-research-agent"`, this skill invocation has FAILED. Neovim research must be conducted by the specialized neovim-research-agent, not by the primary agent.
+
 5. Read metadata file and update state + TODO.
 6. Link research artifact and commit.
 7. Clean up marker and metadata files.

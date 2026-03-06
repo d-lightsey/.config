@@ -1,7 +1,7 @@
 # Implementation Plan: Task #159
 
 - **Task**: 159 - Require planner agent for /plan command (and similar workflow commands)
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1.5-2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -52,7 +52,7 @@ Research report (research-001.md) confirmed:
 
 ## Implementation Phases
 
-### Phase 1: Update /plan Command [NOT STARTED]
+### Phase 1: Update /plan Command [COMPLETED]
 
 **Goal**: Add explicit enforcement in plan.md's DELEGATE stage to ensure Task tool invocation with `subagent_type="planner-agent"` is non-optional.
 
@@ -74,7 +74,7 @@ Research report (research-001.md) confirmed:
 
 ---
 
-### Phase 2: Update /research Command [NOT STARTED]
+### Phase 2: Update /research Command [COMPLETED]
 
 **Goal**: Add explicit enforcement in research.md's DELEGATE stage for correct agent routing.
 
@@ -96,7 +96,7 @@ Research report (research-001.md) confirmed:
 
 ---
 
-### Phase 3: Update /implement Command [NOT STARTED]
+### Phase 3: Update /implement Command [COMPLETED]
 
 **Goal**: Add explicit enforcement in implement.md's DELEGATE stage for correct agent routing.
 
@@ -118,7 +118,7 @@ Research report (research-001.md) confirmed:
 
 ---
 
-### Phase 4: Strengthen Skill SKILL.md Delegation Instructions [NOT STARTED]
+### Phase 4: Strengthen Skill SKILL.md Delegation Instructions [COMPLETED]
 
 **Goal**: Add stronger enforcement language to each SKILL.md's Stage 5 (Invoke Subagent) to make it impossible for the model to skip delegation.
 
@@ -145,7 +145,7 @@ Research report (research-001.md) confirmed:
 
 ---
 
-### Phase 5: Add GATE OUT Delegation Verification [NOT STARTED]
+### Phase 5: Add GATE OUT Delegation Verification [COMPLETED]
 
 **Goal**: Add a check in each command's GATE OUT (CHECKPOINT 2) to verify that a subagent was actually spawned, not just skill context loaded.
 
@@ -168,7 +168,7 @@ Research report (research-001.md) confirmed:
 
 ---
 
-### Phase 6: Verification and Testing [NOT STARTED]
+### Phase 6: Verification and Testing [COMPLETED]
 
 **Goal**: Verify all changes are internally consistent and follow project standards.
 

@@ -65,7 +65,14 @@ Reference (do not load eagerly):
 1. Validate task, status, and plan exists.
 2. Update status to implementing.
 3. Create postflight marker file.
-4. Delegate to `neovim-implementation-agent` via Task tool.
+4. **Delegate to `neovim-implementation-agent` via Task tool.**
+
+   **EXECUTE NOW**: You MUST invoke the Task tool with `subagent_type="neovim-implementation-agent"`. This is a NON-OPTIONAL requirement.
+
+   **CRITICAL**: Do NOT execute Neovim implementation phases directly. You MUST delegate to `neovim-implementation-agent` via the Task tool. Failure to invoke the Task tool means this skill has FAILED.
+
+   **FAILURE CONDITION**: If you do not call the Task tool with `subagent_type="neovim-implementation-agent"`, this skill invocation has FAILED. Neovim implementation must be executed by the specialized neovim-implementation-agent, not by the primary agent.
+
 5. Read metadata file and update state + TODO.
 6. Link implementation artifacts and commit.
 7. Clean up marker and metadata files.
