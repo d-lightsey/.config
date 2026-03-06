@@ -1,10 +1,32 @@
 ---
-next_project_number: 154
+next_project_number: 155
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_154. Task command fails to create entries - not a specs/ directory issue
+- **Effort**: 2-4 hours
+- **Status**: [RESEARCHING]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: The /task command fails to create task entries even when specs/ directory exists with TODO.md and state.json. Initial diagnosis assumed the issue was missing specs/ directory when copying .opencode/ to other directories, but the command also fails in the current directory where specs/ is present. This indicates a deeper issue with the task command implementation or the agent's interpretation of the command rules. The command file (.opencode/commands/task.md) exists and appears correct, yet task creation is not occurring.
+
+**Revised Root Cause**: Unknown. The previous diagnosis (missing specs/ directory) is incorrect since the command fails even when specs/ exists. Potential causes:
+1. Agent not properly following task.md command instructions
+2. Task command not being invoked correctly by the system
+3. Command parsing issues preventing /task from being recognized
+4. Agent role confusion - agent diagnosing instead of creating
+
+**Required Investigation**:
+1. Verify /task command is being invoked correctly by the system
+2. Check if task.md command is being loaded and parsed properly
+3. Determine why agent is not executing the CREATE mode steps
+4. Review agent behavior when /task is called vs other commands
+
+---
 
 ### OC_153. Fix skill-implementer postflight not executing - status not updating after implementation
 - **Effort**: 2-3 hours
@@ -45,11 +67,15 @@ next_project_number: 154
 
 ### OC_152. Fix git commit co-author attribution showing Claude Opus instead of actual model
 - **Effort**: 1-2 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research**: [research-001.md](OC_152_fix_git_commit_co_author_attribution/reports/research-001.md) - Research report identifying 14 files with incorrect 'Claude Opus 4.5' co-author attribution that should be standardized to 'OpenCode'
 - **Language**: meta
 - **Dependencies**: None
 
 **Description**: Fix git commit co-author attribution showing 'Co-Authored-By: Claude Opus 4.5' when using Kimi K2.5 in OpenCode. The commit messages incorrectly attribute co-authorship to Claude Opus when the actual model being used is Kimi K2.5. Need to investigate where this attribution is coming from and either correct it to reflect the actual model or remove it entirely.
+
+**Artifacts**:
+- [research-001.md](OC_152_fix_git_commit_co_author_attribution/reports/research-001.md) - Research report identifying 14 files with incorrect 'Claude Opus 4.5' co-author attribution
 
 ---
 
