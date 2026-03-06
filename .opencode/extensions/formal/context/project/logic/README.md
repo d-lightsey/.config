@@ -61,6 +61,16 @@ In all logic documentation, use **"sentence letter"** instead of "propositional 
 
 ---
 
+## Contents
+
+### Subdirectories
+
+- [domain/](domain/README.md) - Core logic concepts
+- [processes/](processes/README.md) - Logic processes
+- [standards/](standards/README.md) - Logic standards
+
+---
+
 ## Navigation
 
-[← Parent Directory](../../../../../README.md)
+- [← Parent Directory](../README.md)

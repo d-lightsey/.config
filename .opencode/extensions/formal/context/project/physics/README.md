@@ -40,6 +40,14 @@ Potential expansion areas:
 
 ---
 
+## Contents
+
+### Subdirectories
+
+- [dynamical-systems/](dynamical-systems/README.md) - Dynamical systems
+
+---
+
 ## Navigation
 
-[← Parent Directory](../../../../../README.md)
+- [← Parent Directory](../README.md)

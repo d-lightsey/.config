@@ -58,6 +58,19 @@ ls -la .opencode/extensions/formal/context/project/math/*/
 
 ---
 
+## Contents
+
+### Subdirectories
+
+- [algebra/](algebra/README.md) - Algebraic structures
+- [category-theory/](category-theory/README.md) - Category theory
+- [foundations/](foundations/README.md) - Mathematical foundations
+- [lattice-theory/](lattice-theory/README.md) - Lattice theory
+- [order-theory/](order-theory/README.md) - Order theory
+- [topology/](topology/README.md) - Topology
+
+---
+
 ## Navigation
 
-[← Parent Directory](../../../../../README.md)
+- [← Parent Directory](../README.md)
