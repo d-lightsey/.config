@@ -6,6 +6,47 @@ next_project_number: 148
 
 ## Tasks
 
+### OC_150. Fix /todo orphan detection for completed tasks not in state.json
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [research-001.md](OC_150_fix_todo_orphan_detection/reports/research-001.md) - Analysis of orphan detection gap where completed tasks in TODO.md but removed from state.json are not archived
+
+**Description**: Fix /todo command's orphan detection to properly handle completed tasks that appear in TODO.md but have been manually removed from state.json. Currently, tasks like OC_138, OC_139, OC_140 are marked [COMPLETED] in TODO.md and have directories in specs/, but are not being archived because they're not in state.json's active_projects array.
+
+**Problem:**
+The /todo command's Stage 3 (ScanTasks) only looks for tasks with status "completed" or "abandoned" in state.json. It misses tasks that:
+1. Have [COMPLETED] or [ABANDONED] status in TODO.md
+2. Have directories existing in specs/
+3. Are NOT in state.json active_projects (manually removed)
+
+**Key Findings:**
+- OC_138, OC_139, OC_140 are actual orphans - marked [COMPLETED] in TODO.md, have directories in specs/, but not in state.json
+- Detection logic needs to scan TODO.md AND cross-reference with state.json
+- Fix required in skill-todo stages 3, 9, 10, and 11
+
+**Fix Required:**
+1. Add TODO.md scanning to identify completed/abandoned entries
+2. Cross-reference with state.json active_projects array
+3. Cross-reference with filesystem directories
+4. Identify "TODO.md orphans" - tasks in TODO.md that should be archived but aren't tracked
+5. Include these in the archival workflow
+
+**Files to Modify:**
+- .opencode/skills/skill-todo/SKILL.md (Stages 3, 9, 10, 11)
+
+---
+
+### OC_149. Review and update .opencode/ documentation with comprehensive README files
+- **Effort**: 3-4 hours
+- **Status**: [RESEARCHING]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Review and systematically update the documentation in .opencode/ so that every subdirectory has a README.md that fully reports the contents of that directory and links to the README.md files in any further subdirectories that it contains as well as backlinking. Also, organize the markdown files in /home/benjamin/.config/nvim/.opencode/docs/ into appropriate subdirectories (aside from README.md which should live in that docs/ directory to report on the subdirectories it contains).
+
+---
 
 ### OC_140. Document progressive disclosure patterns in context-loading guide
 - **Effort**: 1 hour
