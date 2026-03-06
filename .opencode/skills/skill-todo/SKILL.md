@@ -40,7 +40,7 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
   </stage>
   
   <stage id="3" name="DetectOrphans">
-    <action>Detect orphaned directories</action>
+    <action>Detect orphaned directories and TODO.md orphans</action>
     <process>
       1. Scan specs/ for directories not tracked in state files:
          ```bash
@@ -48,36 +48,96 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
            [ -d "$dir" ] || continue
            basename_dir=$(basename "$dir")
            project_num=$(echo "$basename_dir" | sed 's/^OC_//' | cut -d_ -f1)
-           
+
            in_active=$(jq -r --arg n "$project_num" \
              '.active_projects[] | select(.project_number == ($n | tonumber)) | .project_number' \
              specs/state.json 2>/dev/null)
-           
+
            in_archive=$(jq -r --arg n "$project_num" \
              '.completed_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
              specs/archive/state.json 2>/dev/null)
-           
+
            if [ -z "$in_active" ] && [ -z "$in_archive" ]; then
              orphaned_in_specs+=("$dir")
            fi
          done
          ```
-      
+
       2. Scan specs/archive/ for orphaned directories:
          ```bash
          for dir in specs/archive/OC_[0-9]*_*/ specs/archive/[0-9]*_*/; do
            [ -d "$dir" ] || continue
            basename_dir=$(basename "$dir")
            project_num=$(echo "$basename_dir" | sed 's/^OC_//' | cut -d_ -f1)
-           
+
            in_archive=$(jq -r --arg n "$project_num" \
              '.completed_projects[] | select(.project_number == ($num | tonumber)) | .project_number' \
              specs/archive/state.json 2>/dev/null)
-           
+
            if [ -z "$in_archive" ]; then
              orphaned_in_archive+=("$dir")
            fi
          done
+         ```
+
+      3. Scan TODO.md for completed/abandoned tasks not in state.json:
+         ```lua
+         -- Read TODO.md content
+         local todo_content = read_file("specs/TODO.md")
+
+         -- Pattern to match task headers: ### OC_{N}. or ### {N}.
+         local task_pattern = "###%s+(OC_)?(%d+)%.%s+(.-)\n"
+
+         -- Pattern to match status line
+         local status_pattern = "%-%s+\*\*Status%*\*:%s+\[(COMPLETED|ABANDONED)\]"
+
+         -- Extract all tasks with their status
+         local todo_tasks = {}
+         for prefix, num_str, name in todo_content:gmatch(task_pattern) do
+           local task_num = tonumber(num_str)
+           local task_entry = todo_content:match("(###%s+" .. (prefix or "") .. num_str .. "%." .. name .. ".-)\n###%s+")
+             or todo_content:match("(###%s+" .. (prefix or "") .. num_str .. "%." .. name .. ".-)$")
+
+           if task_entry then
+             local status = task_entry:match(status_pattern)
+             if status then
+               table.insert(todo_tasks, {
+                 project_number = task_num,
+                 status = status:lower(),
+                 project_name = name:gsub("%s*\n.*", ""), -- First line only
+                 has_directory = vim.fn.isdirectory("specs/OC_" .. num_str .. "_" .. name:gsub("%s*\n.*", "")) == 1
+                   or vim.fn.isdirectory("specs/" .. num_str .. "_" .. name:gsub("%s*\n.*", "")) == 1
+               })
+             end
+           end
+         end
+
+         -- Cross-reference with state.json active_projects
+         local todo_md_orphans = {}
+         for _, task in ipairs(todo_tasks) do
+           local in_active = false
+           for _, proj in ipairs(state.active_projects or {}) do
+             if proj.project_number == task.project_number then
+               in_active = true
+               break
+             end
+           end
+
+           local in_archive = false
+           if archive_state.completed_projects then
+             for _, proj in ipairs(archive_state.completed_projects) do
+               if proj.project_number == task.project_number then
+                 in_archive = true
+                 break
+               end
+             end
+           end
+
+           -- If task is in TODO.md as completed/abandoned but not in state.json and has directory
+           if not in_active and not in_archive and task.has_directory then
+             table.insert(todo_md_orphans, task)
+           end
+         end
          ```
     </process>
   </stage>
@@ -174,12 +234,35 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
       1. If orphaned directories found:
          - Present AskUserQuestion with track/skip options
          - Store user decisions
-      
+
       2. If misplaced directories found:
          - Present AskUserQuestion with move/skip options
          - Store user decisions
-         
-      3. If memory harvest suggestions found:
+
+      3. If TODO.md orphans found (todo_md_orphans array not empty):
+         - Display formatted list:
+           ```
+           Found {N} completed/abandoned tasks in TODO.md not tracked in state.json:
+           ```
+         - For each orphan, show:
+           ```
+           - OC_{project_number}: {project_name} (Status: {status})
+             Directory: specs/OC_{project_number}_{project_name}/
+           ```
+         - Use AskUserQuestion with multiSelect to prompt:
+           ```json
+           {
+             "question": "Select TODO.md orphans to archive:",
+             "options": [
+               {"label": "OC_138: task_name (completed)", "value": "todo_orphan_138"},
+               {"label": "OC_139: task_name (abandoned)", "value": "todo_orphan_139"}
+             ],
+             "multiple": true
+           }
+           ```
+         - Store user decisions in `selected_todo_orphans` array
+
+      4. If memory harvest suggestions found:
          - Present suggestions with multiSelect:
            ```json
            {
@@ -203,18 +286,64 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
          - Add to completed_projects array
          - Include all task fields
          - Add archived timestamp
-      
+
       2. Update specs/state.json:
          - Remove from active_projects array
-      
+
       3. Update specs/TODO.md:
-         - Remove archived entries
-      
+         - Remove archived entries (both regular and TODO.md orphans)
+         - Pattern to match task entry start:
+           ```lua
+           -- Match both "### OC_N. " and "### N. " formats
+           local task_start_pattern = "###%s+(OC_)?(%d+)%.%s+"
+           ```
+         - For each task to remove:
+           a. Find entry start (header line)
+           b. Find entry end (next task header or end of Active Tasks section)
+           c. Extract complete entry including all lines
+           d. Validate entry matches expected format before removal
+         - Use Edit tool to remove validated entries:
+           ```lua
+           -- Remove the matched section
+           edit_file("specs/TODO.md", old_entry_content, "")
+           ```
+         - Note: next_project_number should NOT be decremented when removing orphans
+           (numbering continues from highest used number)
+
       4. Move project directories to specs/archive/
-      
+
       5. Track orphaned directories (if approved)
-      
+
       6. Move misplaced directories (if approved)
+
+      7. Archive TODO.md orphans:
+         For each selected orphan in `selected_todo_orphans`:
+         a. Build archive entry from TODO.md data:
+            ```json
+            {
+              "project_number": orphan.project_number,
+              "project_name": orphan.project_name,
+              "status": orphan.status,  // "completed" or "abandoned"
+              "created_at": "TODO.md_orphan",  // Marker indicating source
+              "archived_at": "YYYY-MM-DDTHH:MM:SSZ"
+            }
+            ```
+         b. Add entry to specs/archive/state.json completed_projects array
+         c. Move directory from specs/ to specs/archive/:
+            ```bash
+            source_dir="specs/OC_${orphan.project_number}_${orphan.project_name}/"
+            if [ ! -d "$source_dir" ]; then
+              source_dir="specs/${orphan.project_number}_${orphan.project_name}/"
+            fi
+            target_dir="specs/archive/$(basename "$source_dir")"
+            mv "$source_dir" "$target_dir"
+            ```
+         d. Track orphan archival for CHANGE_LOG.md
+         e. If no directory found, log warning:
+            ```
+            Warning: TODO.md orphan OC_{N} has no directory in specs/
+            Archive entry created but no files moved
+            ```
     </process>
   </stage>
   
