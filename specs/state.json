@@ -1,5 +1,16 @@
 {
-  "next_project_number": 151,
+  "next_project_number": 152,
+  "active_projects": [
+    {
+      "project_number": 151,
+      "project_name": "rename_remember_command_to_learn",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-06T00:00:00Z",
+      "last_updated": "2026-03-06T00:00:00Z",
+      "artifacts": [],
+      "description": "Rename the /remember command to /learn throughout the OpenCode system. This involves: 1) Renaming skill-remember/ directory to skill-learn/, 2) Updating SKILL.md to register as /learn command, 3) Updating any documentation references, 4) Ensuring backward compatibility if needed."
+    },
   "active_projects": [
     {
       "project_number": 150,

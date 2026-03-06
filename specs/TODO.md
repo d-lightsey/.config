@@ -1,10 +1,20 @@
 ---
-next_project_number: 148
+next_project_number: 151
 ---
 
 # TODO
 
 ## Tasks
+
+### OC_151. Rename /remember command to /learn
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Rename the /remember command to /learn throughout the OpenCode system. This involves updating the skill definition (skill-remember → skill-learn), command registration, and all documentation references.
+
+---
 
 ### OC_150. Fix /todo orphan detection for completed tasks not in state.json
 - **Effort**: 2-3 hours
