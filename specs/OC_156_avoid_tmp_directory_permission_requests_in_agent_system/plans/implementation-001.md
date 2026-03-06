@@ -99,7 +99,7 @@ The `specs/tmp/` directory already exists and is user-owned, making it the ideal
 - All 4 core skill files updated
 - Grep returns zero results for `/tmp/state.json` in skills/ directory (core only)
 
-### Phase 3: Extension Skills [NOT STARTED]
+### Phase 3: Extension Skills [COMPLETED]
 
 **Goal**: Update 4 extension skill files (23+ occurrences total)
 

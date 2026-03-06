@@ -8,11 +8,14 @@ next_project_number: 159
 
 ### OC_159. Require planner agent for /plan command and similar workflow commands
 - **Effort**: 2-3 hours
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
 
 **Description**: The /plan command currently uses the general agent instead of the planner agent, as seen when it shows "General Task" instead of delegating to the planner-agent. Need to fix the command routing to ensure /plan always calls the planner-agent, and similarly ensure other workflow commands (/research, /implement) call their respective specialized agents instead of falling back to the general agent.
+
+**Artifacts**:
+- [research-001.md](OC_159_require_planner_agent_for_plan_command/reports/research-001.md) - Research report identifying the delegation gap: workflow commands must explicitly call Task tool with subagent_type after loading skill context. Skill tool only loads definitions, does not auto-delegate.
 
 ---
 
