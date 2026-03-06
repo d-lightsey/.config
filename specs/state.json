@@ -232,10 +232,10 @@
     {
       "project_number": 158,
       "project_name": "ensure_workflow_command_uniformity_prevent_research_failure",
-      "status": "creating",
+      "status": "not_started",
       "language": "meta",
       "created": "2026-03-06T03:24:12Z",
-      "last_updated": "2026-03-06T03:24:12Z",
+      "last_updated": "2026-03-06T03:24:42Z",
       "creating": "2026-03-06T03:24:12Z",
       "description": "Prevent /research command from failing to call the research agent, making task workflow commands /research, /plan, /revise, and /implement uniform. Sometimes /research fails to call the research agent, conducting the research by the primary agent instead."
     }

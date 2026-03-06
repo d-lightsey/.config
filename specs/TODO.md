@@ -8,7 +8,7 @@ next_project_number: 158
 
 ### OC_158. Ensure workflow command uniformity - prevent /research from failing to call research agent
 - **Effort**: 2-3 hours
-- **Status**: [CREATING]
+- **Status**: [NOT STARTED]
 - **Language**: meta
 - **Dependencies**: None
 
