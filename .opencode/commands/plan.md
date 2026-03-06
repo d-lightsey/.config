@@ -43,14 +43,6 @@ Directory: `specs/OC_NNN_<project_name>/`
 
 **CRITICAL**: Commands must execute preflight BEFORE delegating to agents. The skill tool only loads skill definitions but does NOT execute workflows.
 
-**Display task header**:
-```
-╔══════════════════════════════════════════════════════════╗
-║  Task OC_N: <project_name>                               ║
-║  Action: PLANNING                                        ║
-╚══════════════════════════════════════════════════════════╝
-```
-
 **Update state.json to planning**:
 ```bash
 jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
@@ -149,9 +141,7 @@ jq --arg path "$artifact_path" \
 git add -A
 git commit -m "task N: create implementation plan
 
-Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Session: ${session_id}"
 ```
 
 **Step 7g: Cleanup**:

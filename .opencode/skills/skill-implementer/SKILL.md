@@ -70,13 +70,6 @@ Reference (do not load eagerly):
 
 1. **LoadContext**: Read injected context files.
 2. **Preflight**: Validate task and status using {return_metadata} and {postflight_control}.
-    - **Display Task Header**: Print the following header to show which task is being implemented:
-      ```
-      ╔══════════════════════════════════════════════════════════╗
-      ║  Task OC_{N}: {project_name}                             ║
-      ║  Action: IMPLEMENTING                                    ║
-      ╚══════════════════════════════════════════════════════════╝
-      ```
     - **Update state.json to implementing**:
       ```bash
       jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
@@ -199,11 +192,9 @@ newString: "### Phase {N}: {Name} [IN PROGRESS]"
    - Stage all changes and commit:
      ```bash
      git add -A
-     git commit -m "task ${task_number}: complete implementation
+git commit -m "task ${task_number}: complete implementation
 
-     Session: ${session_id}
-
-     Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Session: ${session_id}"
      ```
 
    **Stage 9: Cleanup**

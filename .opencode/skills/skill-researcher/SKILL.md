@@ -69,13 +69,6 @@ Thin wrapper that delegates research to `general-research-agent`.
 
 2. **Preflight**:
    - Validate task and status using `{status_markers}`.
-   - **Display Task Header**: Print the following header to show which task is being researched:
-     ```
-     ╔══════════════════════════════════════════════════════════╗
-     ║  Task OC_{N}: {project_name}                             ║
-     ║  Action: RESEARCHING                                     ║
-     ╚══════════════════════════════════════════════════════════╝
-     ```
    - Update status to researching.
    - Create postflight marker file.
 
@@ -171,11 +164,9 @@ Thin wrapper that delegates research to `general-research-agent`.
    - Stage all changes and commit:
      ```bash
      git add -A
-     git commit -m "task ${task_number}: complete research
+git commit -m "task ${task_number}: complete research
 
-     Session: ${session_id}
-
-     Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Session: ${session_id}"
      ```
 
    **Stage 9: Cleanup**

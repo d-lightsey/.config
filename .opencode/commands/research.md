@@ -172,9 +172,7 @@ jq --arg path "$artifact_path" \
 git add -A
 git commit -m "task N: complete research
 
-Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Session: ${session_id}"
 ```
 
 **Step 7g: Cleanup**:

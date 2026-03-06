@@ -164,9 +164,7 @@ description: Review code and create analysis reports
           git add $changed_files
           git commit -m "review: analyze ${scope} (task OC_${N})
 
-Session: ${session_id}
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>" || echo "Warning: Commit failed but review completed"
+Session: ${session_id}" || echo "Warning: Commit failed but review completed"
       fi
       
       # Cleanup

@@ -40,20 +40,7 @@ Directory: `specs/OC_NNN_<project_name>/`
 - `abandoned`: error "task is abandoned, use /task --recover first"
 - `completed`: error "already completed, use --force to re-implement"
 
-### 3. Display task header
-
-The skill displays a visual header during its Preflight stage to show the active task:
-
-```
-╔══════════════════════════════════════════════════════════╗
-║  Task OC_N: <project_name>                               ║
-║  Action: IMPLEMENTING                                     ║
-╚══════════════════════════════════════════════════════════╝
-```
-
-This header appears at the start of the implement command (after validation, before delegation) to clearly indicate which task is being implemented. The header is displayed by the skill-implementer before invoking the general-implementation-agent subagent.
-
-### 4. Find implementation plan
+### 3. Find implementation plan
 
 Look for `specs/OC_NNN_<project_name>/plans/implementation-*.md` — use the highest version.
 
@@ -61,7 +48,7 @@ If no plan found: "No plan found. Run `/plan OC_N` first."
 
 Read the plan to understand all phases and their current status (`[NOT STARTED]`, `[IN PROGRESS]`, `[COMPLETED]`, `[PARTIAL]`).
 
-### 5. Execute Preflight
+### 4. Execute Preflight
 
 **CRITICAL**: Commands must execute preflight BEFORE delegating to agents. The skill tool only loads skill definitions but does NOT execute workflows.
 
@@ -86,7 +73,7 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
 touch "specs/OC_NNN_<project_name>/.postflight-pending"
 ```
 
-### 6. Delegate to Implementation Agent
+### 5. Delegate to Implementation Agent
 
 **Call skill tool** to load skill context and delegate to implementation agent:
 
@@ -112,7 +99,7 @@ The skill-implementer will:
 - **latex**: Write LaTeX, use `pdflatex` to verify
 - **general**: Follow the plan steps using appropriate tools
 
-### 7. Execute Postflight
+### 6. Execute Postflight
 
 **CRITICAL**: Commands must execute postflight AFTER agents return. The skill tool does NOT execute workflows.
 
@@ -175,9 +162,7 @@ jq --arg path "$artifact_path" \
 git add -A
 git commit -m "task N: complete implementation
 
-Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Session: ${session_id}"
 ```
 
 **Step 7h: Cleanup**:
@@ -187,7 +172,7 @@ rm -f "specs/OC_NNN_<project_name>/.postflight-loop-guard"
 rm -f "specs/OC_NNN_<project_name>/.return-meta.json"
 ```
 
-### 8. Report results
+### 7. Report results
 
 Show:
 - Phases completed
