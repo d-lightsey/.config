@@ -101,7 +101,7 @@ This plan implements the findings from research-001.md and research-002.md, whic
 - [ ] plan.md contains postflight with status="planned"
 - [ ] plan.md links created plan file to TODO.md
 
-### Phase 3: research.md Command Update [IN PROGRESS]
+### Phase 3: research.md Command Update [COMPLETED]
 
 **Goal**: Apply same preflight/postflight pattern to research.md
 
@@ -121,7 +121,7 @@ This plan implements the findings from research-001.md and research-002.md, whic
 - [ ] research.md contains postflight with status="researched"
 - [ ] research.md links created research report to TODO.md
 
-### Phase 4: Skill Documentation Updates [NOT STARTED]
+### Phase 4: Skill Documentation Updates [IN PROGRESS]
 
 **Goal**: Clarify skill files to indicate they are context definitions only
 

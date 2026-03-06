@@ -8,6 +8,8 @@ agent: planner-agent
 
 # Planner Skill
 
+**WARNING**: This file defines context injection patterns ONLY. Commands must execute status updates themselves — this skill does NOT execute workflows.
+
 Thin wrapper that delegates plan creation to `planner-agent`.
 
 <context>
@@ -59,6 +61,8 @@ Thin wrapper that delegates plan creation to `planner-agent`.
 - /plan command invoked
 
 ## Execution Flow
+
+**IMPORTANT**: The skill tool only LOADS this skill definition. It does NOT execute the workflow below. Commands must implement preflight/postflight logic themselves.
 
 1. **Load Context**:
    - Read `plan-format.md` -> `{plan_format}`

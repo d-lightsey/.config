@@ -8,6 +8,8 @@ agent: general-implementation-agent
 
 # Implementer Skill
 
+**WARNING**: This file defines context injection patterns ONLY. Commands must execute status updates themselves — this skill does NOT execute workflows.
+
 Thin wrapper that delegates implementation to `general-implementation-agent`.
 
 <context>
@@ -63,6 +65,8 @@ Reference (do not load eagerly):
 - Path: `.opencode/context/index.md` - Context discovery index
 
 ## Execution Flow
+
+**IMPORTANT**: The skill tool only LOADS this skill definition. It does NOT execute the workflow below. Commands must implement preflight/postflight logic themselves.
 
 1. **LoadContext**: Read injected context files.
 2. **Preflight**: Validate task and status using {return_metadata} and {postflight_control}.

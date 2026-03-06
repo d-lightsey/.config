@@ -8,6 +8,8 @@ agent: general-research-agent
 
 # Researcher Skill
 
+**WARNING**: This file defines context injection patterns ONLY. Commands must execute status updates themselves — this skill does NOT execute workflows.
+
 Thin wrapper that delegates research to `general-research-agent`.
 
 <context>
@@ -58,6 +60,8 @@ Thin wrapper that delegates research to `general-research-agent`.
 - /research command invoked
 
 ## Execution Flow
+
+**IMPORTANT**: The skill tool only LOADS this skill definition. It does NOT execute the workflow below. Commands must implement preflight/postflight logic themselves.
 
 1. **Load Context**:
    - Read `report-format.md` -> `{report_format}`
