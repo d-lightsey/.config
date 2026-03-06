@@ -95,6 +95,25 @@ Before processing a task creation request, check:
 
 **STOP**: If you find yourself wanting to write code, create scripts, or implement solutions, STOP. Your role is task administration only.
 
+0. **Initialize specs/ directory if missing**:
+   - If `specs/` directory does not exist, create it with `mkdir -p specs/archive`
+   - If `specs/state.json` does not exist, create it with initial content:
+     ```json
+     {
+       "version": "1.0.0",
+       "next_project_number": 1,
+       "active_projects": [],
+       "completed_projects": [],
+       "repository_health": {}
+     }
+     ```
+   - If `specs/TODO.md` does not exist, create it with initial content:
+     ```markdown
+     # Task List
+
+     ## Tasks
+     ```
+   - Report: "Initialized task tracking system in specs/"
 1. Read `specs/state.json` to get `next_project_number` (call it N)
 2. Generate slug from title: lowercase, spaces→underscores, strip punctuation
 3. Infer language: `lean` (proofs/theorems/Lean), `typst` (Typst docs), `latex` (LaTeX docs), `meta` (.opencode/.claude/ changes), `general` (everything else)
@@ -182,7 +201,7 @@ Archives a task by moving it from active state to archive, consistent with the `
 
 ## Rules
 
-- NEVER create directories or files other than TODO.md and state.json edits (except for archival moves in ABANDON mode)
+- NEVER create directories or files other than TODO.md and state.json edits (except for archival moves in ABANDON mode, and initial specs/ directory creation)
 - NEVER start implementing the task
 - Timestamps use ISO 8601 format: `2026-01-01T00:00:00Z`
 - Task numbers are plain integers (no OC_ prefix in these files)
