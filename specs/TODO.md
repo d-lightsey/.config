@@ -31,7 +31,7 @@ next_project_number: 159
 
 ### OC_157. Fix task-creation-agent not found error
 - **Effort**: 1-2 hours
-- **Status**: [PLANNING]
+- **Status**: [IMPLEMENTING]
 - **Language**: meta
 - **Dependencies**: None
 
@@ -40,12 +40,13 @@ next_project_number: 159
 **Artifacts**:
 - [research-001.md](OC_157_fix_task_creation_agent_not_found_error/reports/research-001.md) - Research report analyzing /task command complexity and proposing 97% reduction through direct execution pattern, eliminating skill-task delegation and non-existent task-creation-agent dependency
 - [implementation-001.md](OC_157_fix_task_creation_agent_not_found_error/plans/implementation-001.md) - Implementation plan for simplifying /task command: 6-phase approach to remove skill-task delegation, reduce code by 97%, and perform direct task creation
+- [implementation-002.md](OC_157_fix_task_creation_agent_not_found_error/plans/implementation-002.md) - Revised implementation plan following plan-format.md specification
 
 ---
 
 ### OC_156. Avoid tmp directory permission requests in agent system
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-06
 - **Research Completed**: 2026-03-06
 - **Planning Started**: 2026-03-06
@@ -221,7 +222,7 @@ next_project_number: 159
 
 ### 78. Fix Himalaya SMTP authentication failure when sending emails
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-02-13
 - **Research Completed**: 2026-02-13
 - **Planning Started**: 2026-02-13

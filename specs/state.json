@@ -206,10 +206,10 @@
     {
       "project_number": 156,
       "project_name": "avoid_tmp_directory_permission_requests_in_agent_system",
-      "status": "planned",
+      "status": "implementing",
       "language": "meta",
       "created": "2026-03-06T03:13:31Z",
-      "last_updated": "2026-03-06T03:28:54Z",
+      "last_updated": "2026-03-06T03:47:20Z",
       "creating": "2026-03-06T03:13:31Z",
       "description": "Avoid permission requests for /tmp directory in opencode agent system. When using jq to update state.json, the current implementation writes to /tmp/state.json and moves it back, causing permission prompts. Use specs/tmp/ exclusively throughout .opencode/ agent system or find an elegant way to avoid temporary files altogether.",
       "artifacts": [
@@ -227,15 +227,16 @@
       "researching": "2026-03-06T03:22:08Z",
       "researched": "2026-03-06T03:23:54Z",
       "planning": "2026-03-06T03:25:59Z",
-      "planned": "2026-03-06T03:28:54Z"
+      "planned": "2026-03-06T03:28:54Z",
+      "implementing": "2026-03-06T03:47:20Z"
     },
     {
       "project_number": 157,
       "project_name": "fix_task_creation_agent_not_found_error",
-      "status": "planning",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-06T03:16:07Z",
-      "last_updated": "2026-03-06T03:45:28Z",
+      "last_updated": "2026-03-06T03:47:10Z",
       "creating": "2026-03-06T03:16:07Z",
       "description": "Fix task-creation-agent not found error. The skill-task.md references an agent type task-creation-agent that does not exist, causing Error: Unknown agent type: task-creation-agent is not a valid agent type. Need to either create the agent, update the skill to use general agent, or fix the reference.",
       "artifacts": [
@@ -248,6 +249,11 @@
           "path": "specs/OC_157_fix_task_creation_agent_not_found_error/plans/implementation-001.md",
           "type": "plan",
           "summary": "Implementation plan for simplifying /task command: 6-phase approach to remove skill-task delegation, reduce code by 97%, and perform direct task creation"
+        },
+        {
+          "path": "specs/OC_157_fix_task_creation_agent_not_found_error/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "Revised implementation plan following plan-format.md specification"
         }
       ],
       "researching": "2026-03-06T03:19:30Z",
