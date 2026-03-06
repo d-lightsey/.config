@@ -67,3 +67,27 @@ Each entry includes:
 - .opencode/docs/guides/documentation-audit-checklist.md
 
 ---
+
+### 2026-03-05
+
+**Task OC_143: fix_skill_researcher_todo_linking**
+- Status: completed
+- Type: meta
+- Summary: Fixed regression in skill-researcher where research reports were not being linked in TODO.md
+
+**Root Cause:**
+Missing `metadata_file_path` parameter in Stage 3 delegation prompt. The general-research-agent requires this parameter to know where to write its `.return-meta.json` file.
+
+**Fix Applied:**
+Added JSON delegation context to skill-researcher/SKILL.md Stage 3 including:
+- `task_context` with task number, name, and language
+- `metadata` with session_id, delegation_depth, and delegation_path
+- `metadata_file_path` pointing to expected metadata file location
+
+**Files Modified:**
+- .opencode/skills/skill-researcher/SKILL.md - Added metadata_file_path parameter (lines 78-108)
+
+**Memories Harvested:**
+- [PATTERN] Metadata Delegation Pattern with .return-meta.json
+
+---

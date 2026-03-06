@@ -6,11 +6,21 @@
 - [Templates](30-Templates/) - Memory entry templates
 
 ## Recent Memories
-<!-- Auto-populated by /remember command -->
 
-## By Topic
-<!-- Organized links to memory categories -->
+### 2026-03-05
+- [Clean-Break Command Renaming Pattern](../10-Memories/MEM-2026-03-05-001-clean-break-command-renaming.md) - [PATTERN]
+- [Metadata Delegation Pattern](../10-Memories/MEM-2026-03-05-002-metadata-delegation-pattern.md) - [PATTERN]
+- [5-Category Memory Classification Taxonomy](../10-Memories/MEM-2026-03-05-003-memory-classification-taxonomy.md) - [CONFIG]
+
+## By Category
+
+### [PATTERN]
+- [Clean-Break Command Renaming Pattern](../10-Memories/MEM-2026-03-05-001-clean-break-command-renaming.md)
+- [Metadata Delegation Pattern](../10-Memories/MEM-2026-03-05-002-metadata-delegation-pattern.md)
+
+### [CONFIG]
+- [5-Category Memory Classification Taxonomy](../10-Memories/MEM-2026-03-05-003-memory-classification-taxonomy.md)
 
 ## Statistics
-- Total memories: 0
-- Last updated: 2026-03-06
+- Total memories: 3
+- Last updated: 2026-03-05

@@ -2,63 +2,6 @@
   "next_project_number": 149,
   "active_projects": [
     {
-      "project_number": 146,
-      "project_name": "research_implement_subagent_workflow_best_practices",
-      "status": "researched",
-      "language": "meta",
-      "created": "2026-03-05T12:00:00Z",
-      "last_updated": "2026-03-05T14:00:00Z",
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md",
-          "summary": "Comprehensive research report on subagent workflow best practices covering isolated context windows, metadata passing, result aggregation, error handling, and skill integration"
-        }
-      ],
-      "description": "Research and implement best practices for using subagents with isolated context windows and careful metadata passing in the .opencode/ agent system. Current issue: all research is conducted by the primary agent instead of being delegated to research subagents. Need to investigate 2026 best practices for subagent workflows that integrate naturally with the existing skill-based architecture."
-    },
-    {
-      "project_number": 143,
-      "project_name": "fix_skill_researcher_todo_linking",
-      "status": "completed",
-      "language": "meta",
-      "created": "2026-03-07T12:00:00Z",
-      "last_updated": "2026-03-05T23:31:26Z",
-      "artifacts": [],
-      "description": "Fix the specific regression in skill-researcher where research reports are not being linked in TODO.md. Root cause is missing metadata_file_path parameter in the delegation prompt to general-research-agent. When the agent completes research, it doesn't know where to write the return metadata file.",
-      "completed": "2026-03-05T23:31:26Z"
-    },
-    {
-      "project_number": 142,
-      "project_name": "implement_knowledge_capture_system",
-      "status": "completed",
-      "language": "meta",
-      "created": "2026-03-07T12:00:00Z",
-      "last_updated": "2026-03-05T23:52:27Z",
-      "artifacts": [
-        {
-          "path": "specs/OC_142_implement_knowledge_capture_system/reports/research-002.md",
-          "type": "research",
-          "summary": "Updated research analyzing current .opencode/ system state vs planned knowledge capture features"
-        },
-        {
-          "path": "specs/OC_142_implement_knowledge_capture_system/plans/implementation-003.md",
-          "type": "plan",
-          "summary": "Clean-break implementation plan with no backwards compatibility for /learn rename"
-        },
-        {
-          "path": "specs/OC_142_implement_knowledge_capture_system/summaries/implementation-summary-20260305.md",
-          "type": "summary",
-          "summary": "Comprehensive implementation summary with verification results"
-        }
-      ],
-      "description": "Implement a comprehensive knowledge capture system with three integrated features: (1) Rename /learn to /fix, (2) Add task mode to /remember for artifact review with interactive classification, (3) Enhance /todo with auto CHANGE_LOG.md updates and memory harvest suggestions.",
-      "researched": "2026-03-05T23:08:48Z",
-      "planned": "2026-03-05T23:14:21Z",
-      "revised": "2026-03-05T23:30:20Z",
-      "completed": "2026-03-05T23:52:27Z"
-    },
-    {
       "project_number": 140,
       "project_name": "document_progressive_disclosure_patterns",
       "status": "researched",

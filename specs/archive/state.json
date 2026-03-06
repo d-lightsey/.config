@@ -1,6 +1,102 @@
 {
   "completed_projects": [
     {
+      "project_number": 143,
+      "project_name": "fix_skill_researcher_todo_linking",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-07T12:00:00Z",
+      "last_updated": "2026-03-05T23:31:26Z",
+      "completed": "2026-03-05T23:31:26Z",
+      "completion_summary": "Fixed the regression in skill-researcher where research reports were not being linked in TODO.md by adding the missing metadata_file_path parameter to Stage 3 delegation prompt.",
+      "archived": "2026-03-05",
+      "artifacts": [
+        {
+          "path": "specs/OC_143_fix_skill_researcher_todo_linking/reports/research-001.md",
+          "type": "research",
+          "summary": "Root cause analysis: missing metadata_file_path in delegation prompt"
+        },
+        {
+          "path": "specs/OC_143_fix_skill_researcher_todo_linking/summaries/implementation-summary-20260305.md",
+          "type": "summary",
+          "summary": "Implementation summary for the metadata delegation fix"
+        }
+      ]
+    },
+    {
+      "project_number": 142,
+      "project_name": "implement_knowledge_capture_system",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-07T12:00:00Z",
+      "last_updated": "2026-03-05T23:52:27Z",
+      "researched": "2026-03-05T23:08:48Z",
+      "planned": "2026-03-05T23:14:21Z",
+      "revised": "2026-03-05T23:30:20Z",
+      "completed": "2026-03-05T23:52:27Z",
+      "completion_summary": "Implemented comprehensive knowledge capture system with three integrated features: (1) Renamed /learn to /fix with clean-break approach, (2) Added task mode to /remember with artifact review and 5-category classification, (3) Enhanced /todo with automatic CHANGE_LOG.md updates and memory harvest suggestions.",
+      "archived": "2026-03-05",
+      "artifacts": [
+        {
+          "path": "specs/OC_142_implement_knowledge_capture_system/reports/research-002.md",
+          "type": "research",
+          "summary": "Updated research analyzing current .opencode/ system state vs planned knowledge capture features"
+        },
+        {
+          "path": "specs/OC_142_implement_knowledge_capture_system/plans/implementation-003.md",
+          "type": "plan",
+          "summary": "Clean-break implementation plan with no backwards compatibility for /learn rename"
+        },
+        {
+          "path": "specs/OC_142_implement_knowledge_capture_system/summaries/implementation-summary-20260305.md",
+          "type": "summary",
+          "summary": "Comprehensive implementation summary with verification results"
+        }
+      ],
+      "memory_harvest": [
+        {
+          "id": "MEM-2026-03-05-001",
+          "title": "Clean-Break Command Renaming Pattern",
+          "category": "PATTERN",
+          "created": true
+        },
+        {
+          "id": "MEM-2026-03-05-002",
+          "title": "Metadata Delegation Pattern with .return-meta.json",
+          "category": "PATTERN",
+          "created": true
+        },
+        {
+          "id": "MEM-2026-03-05-003",
+          "title": "5-Category Memory Classification Taxonomy",
+          "category": "CONFIG",
+          "created": true
+        }
+      ]
+    },
+    {
+      "project_number": 146,
+      "project_name": "research_implement_subagent_workflow_best_practices",
+      "status": "abandoned",
+      "language": "meta",
+      "created": "2026-03-05T12:00:00Z",
+      "last_updated": "2026-03-05T15:55:00Z",
+      "abandoned": "2026-03-05T16:00:00Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/archive/OC_146_research_implement_subagent_workflow_best_practices/reports/research-001.md",
+          "summary": "Comprehensive research report on subagent workflow best practices covering isolated context windows, metadata passing, result aggregation, error handling, and skill integration"
+        },
+        {
+          "type": "research",
+          "path": "specs/archive/OC_146_research_implement_subagent_workflow_best_practices/reports/research-002.md",
+          "summary": "Impact analysis: All best practices from research-001 have been implemented. System now has mature three-layer delegation, context forking, file-based metadata exchange, and 8 specialized agents. Task objectives achieved."
+        }
+      ],
+      "description": "Research and implement best practices for using subagents with isolated context windows and careful metadata passing in the .opencode/ agent system. Current issue: all research is conducted by the primary agent instead of being delegated to research subagents. Need to investigate 2026 best practices for subagent workflows that integrate naturally with the existing skill-based architecture."
+    },
+    {
       "project_number": 100,
       "project_name": "fix_extension_picker_preview",
       "status": "completed",
