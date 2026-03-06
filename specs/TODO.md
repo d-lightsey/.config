@@ -8,9 +8,10 @@ next_project_number: 151
 
 ### OC_151. Rename /remember command to /learn
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [research-001.md](OC_151_rename_remember_command_to_learn/reports/research-001.md) - Comprehensive research report identifying 47+ references to skill-remember and /remember across the OpenCode system. Categorized by priority and provided clean-break rename recommendations based on OC_142 precedent.
 
 **Description**: Rename the /remember command to /learn throughout the OpenCode system. This involves updating the skill definition (skill-remember → skill-learn), command registration, and all documentation references.
 
