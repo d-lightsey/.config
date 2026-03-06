@@ -106,7 +106,7 @@ For detailed command documentation, see [commands/README.md](commands/README.md)
 
 ## Extensions
 
-The system supports 9 language/domain-specific extensions:
+The system supports 10 language/domain-specific extensions. See [extensions/README.md](extensions/README.md) for complete listing:
 
 | Extension | Description | Documentation |
 |-----------|-------------|---------------|
