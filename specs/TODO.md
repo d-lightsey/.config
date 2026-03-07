@@ -1,10 +1,19 @@
 ---
-next_project_number: 161
+next_project_number: 162
 ---
 
 # TODO
 
 ## Tasks
+
+### 161. Fix nvim/.opencode/ source directory to include missing core files and fix scan bugs
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+
+**Description**: Three fixes needed for the `<leader>ao` Load Core Agent System picker. (1) Copy 9 missing core files from `.claude/` into `.opencode/` in the nvim config (the true source for OpenCode syncs): `context/core/patterns/early-metadata-pattern.md`, `context/core/troubleshooting/workflow-interruptions.md`, `context/index.schema.json`, `docs/reference/standards/agent-frontmatter-standard.md`, `docs/reference/standards/multi-task-creation-standard.md`, `docs/templates/agent-template.md`, `docs/templates/command-template.md`, `scripts/update-plan-status.sh`, `scripts/validate-context-index.sh`. (2) Fix templates scan in `sync.lua` to include `*.json` in addition to `*.yaml` so `templates/settings.json` is synced. (3) Decide whether context `.sh` files (`context/core/patterns/command-execution.sh` and similar) should be synced and fix the context scan accordingly.
+
+---
 
 ### 160. Fix 'Load Core Agent System' in which-key picker to include missing core files
 - **Effort**: TBD

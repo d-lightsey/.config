@@ -1,6 +1,14 @@
 {
-  "next_project_number": 161,
+  "next_project_number": 162,
   "active_projects": [
+    {
+      "project_number": 161,
+      "project_name": "fix_opencode_source_missing_files_and_scan_bugs",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-07T21:28:55Z",
+      "last_updated": "2026-03-07T21:28:55Z"
+    },
     {
       "project_number": 160,
       "project_name": "fix_load_core_agent_system_missing_files",
