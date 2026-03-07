@@ -9,36 +9,6 @@ local previewers = require("telescope.previewers")
 -- Maximum lines for doc previews (to avoid performance issues)
 local MAX_PREVIEW_LINES = 150
 
---- Helper function to scan directory for sync info
---- @param global_dir string Global directory
---- @param project_dir string Project directory
---- @param subdir string Subdirectory path
---- @param extension string File extension pattern
---- @param base_dir string|nil Base directory name (default: ".claude")
---- @return table Array of file sync info
-local function scan_directory_for_sync(global_dir, project_dir, subdir, extension, base_dir)
-  base_dir = base_dir or ".claude"
-  local global_path = global_dir .. "/" .. base_dir .. "/" .. subdir
-  local local_path = project_dir .. "/" .. base_dir .. "/" .. subdir
-  local global_files = vim.fn.glob(global_path .. "/" .. extension, false, true)
-
-  local files = {}
-  for _, global_file in ipairs(global_files) do
-    local filename = vim.fn.fnamemodify(global_file, ":t")
-    local local_file = local_path .. "/" .. filename
-
-    local action = vim.fn.filereadable(local_file) == 1 and "replace" or "copy"
-    table.insert(files, {
-      name = filename,
-      global_path = global_file,
-      local_path = local_file,
-      action = action,
-    })
-  end
-
-  return files
-end
-
 --- Count operations by action type
 --- @param files table Array of file sync info
 --- @return number copy_count Number of copy operations
@@ -184,54 +154,42 @@ local function preview_help(self, config)
 end
 
 --- Create preview for Load Core Agent System entry
+--- Uses sync.scan_all_artifacts for accurate counts matching actual sync operation
 --- @param self table Telescope previewer state
 --- @param config table|nil Picker configuration with base_dir
 local function preview_load_all(self, config)
   local project_dir = vim.fn.getcwd()
   local scan = require("neotex.plugins.ai.claude.commands.picker.utils.scan")
+  local sync_ops = require("neotex.plugins.ai.claude.commands.picker.operations.sync")
   local global_dir = scan.get_global_dir()
   local base_dir = (config and config.base_dir) or ".claude"
 
-  local commands = scan_directory_for_sync(global_dir, project_dir, "commands", "*.md", base_dir)
-  local hooks = scan_directory_for_sync(global_dir, project_dir, "hooks", "*.sh", base_dir)
-  local skills = scan_directory_for_sync(global_dir, project_dir, "skills", "*.md", base_dir)
-  local templates = scan_directory_for_sync(global_dir, project_dir, "templates", "*.yaml", base_dir)
-  local lib_utils = scan_directory_for_sync(global_dir, project_dir, "lib", "*.sh", base_dir)
-  local docs = scan_directory_for_sync(global_dir, project_dir, "docs", "*.md", base_dir)
-  local scripts = scan_directory_for_sync(global_dir, project_dir, "scripts", "*.sh", base_dir)
-  local tests = scan_directory_for_sync(global_dir, project_dir, "tests", "test_*.sh", base_dir)
-  local rules = scan_directory_for_sync(global_dir, project_dir, "rules", "*.md", base_dir)
-  local output = scan_directory_for_sync(global_dir, project_dir, "output", "*.md", base_dir)
-  local systemd_service = scan_directory_for_sync(global_dir, project_dir, "systemd", "*.service", base_dir)
-  local systemd_timer = scan_directory_for_sync(global_dir, project_dir, "systemd", "*.timer", base_dir)
-  local systemd = {}
-  for _, file in ipairs(systemd_service) do
-    table.insert(systemd, file)
-  end
-  for _, file in ipairs(systemd_timer) do
-    table.insert(systemd, file)
-  end
-  local settings = scan_directory_for_sync(global_dir, project_dir, "", "settings.json", base_dir)
+  -- Use the same scan function as the actual sync operation
+  local all_artifacts = sync_ops.scan_all_artifacts(global_dir, project_dir, config)
 
-  local cmd_copy, cmd_replace = count_actions(commands)
-  local hook_copy, hook_replace = count_actions(hooks)
-  local skill_copy, skill_replace = count_actions(skills)
-  local tmpl_copy, tmpl_replace = count_actions(templates)
-  local lib_copy, lib_replace = count_actions(lib_utils)
-  local doc_copy, doc_replace = count_actions(docs)
-  local script_copy, script_replace = count_actions(scripts)
-  local test_copy, test_replace = count_actions(tests)
-  local rule_copy, rule_replace = count_actions(rules)
-  local out_copy, out_replace = count_actions(output)
-  local sys_copy, sys_replace = count_actions(systemd)
-  local set_copy, set_replace = count_actions(settings)
+  -- Count actions for each category
+  local cmd_copy, cmd_replace = count_actions(all_artifacts.commands or {})
+  local hook_copy, hook_replace = count_actions(all_artifacts.hooks or {})
+  local skill_copy, skill_replace = count_actions(all_artifacts.skills or {})
+  local tmpl_copy, tmpl_replace = count_actions(all_artifacts.templates or {})
+  local lib_copy, lib_replace = count_actions(all_artifacts.lib or {})
+  local doc_copy, doc_replace = count_actions(all_artifacts.docs or {})
+  local script_copy, script_replace = count_actions(all_artifacts.scripts or {})
+  local test_copy, test_replace = count_actions(all_artifacts.tests or {})
+  local rule_copy, rule_replace = count_actions(all_artifacts.rules or {})
+  local sys_copy, sys_replace = count_actions(all_artifacts.systemd or {})
+  local set_copy, set_replace = count_actions(all_artifacts.settings or {})
+  local agent_copy, agent_replace = count_actions(all_artifacts.agents or {})
+  local ctx_copy, ctx_replace = count_actions(all_artifacts.context or {})
+  local root_copy, root_replace = count_actions(all_artifacts.root_files or {})
 
   local total_copy = cmd_copy + hook_copy + skill_copy + tmpl_copy + lib_copy +
                      doc_copy + script_copy + test_copy + rule_copy +
-                     out_copy + sys_copy + set_copy
+                     sys_copy + set_copy + agent_copy + ctx_copy + root_copy
   local total_replace = cmd_replace + hook_replace + skill_replace + tmpl_replace +
                         lib_replace + doc_replace + script_replace + test_replace +
-                        rule_replace + out_replace + sys_replace + set_replace
+                        rule_replace + sys_replace + set_replace + agent_replace +
+                        ctx_replace + root_replace
 
   local lines = {
     "Load Core Agent System",
@@ -252,9 +210,11 @@ local function preview_load_all(self, config)
     table.insert(lines, string.format("  Scripts:    %d new, %d replace", script_copy, script_replace))
     table.insert(lines, string.format("  Tests:      %d new, %d replace", test_copy, test_replace))
     table.insert(lines, string.format("  Rules:      %d new, %d replace", rule_copy, rule_replace))
-    table.insert(lines, string.format("  Output:     %d new, %d replace", out_copy, out_replace))
+    table.insert(lines, string.format("  Agents:     %d new, %d replace", agent_copy, agent_replace))
+    table.insert(lines, string.format("  Context:    %d new, %d replace", ctx_copy, ctx_replace))
     table.insert(lines, string.format("  Systemd:    %d new, %d replace", sys_copy, sys_replace))
     table.insert(lines, string.format("  Settings:   %d new, %d replace", set_copy, set_replace))
+    table.insert(lines, string.format("  Root Files: %d new, %d replace", root_copy, root_replace))
     table.insert(lines, "")
     table.insert(lines, string.format("**Total:** %d new, %d replace", total_copy, total_replace))
     table.insert(lines, "")

@@ -67,7 +67,7 @@ Research confirmed that `scan_all_artifacts` in `sync.lua` (lines 161-264) is a 
 
 ---
 
-### Phase 2: Replace previewer scan with sync's scan_all_artifacts [NOT STARTED]
+### Phase 2: Replace previewer scan with sync's scan_all_artifacts [COMPLETED]
 
 **Goal**: Rewrite `preview_load_all` in previewer.lua to use the exported `scan_all_artifacts` instead of the local non-recursive scan, adding all missing categories.
 
