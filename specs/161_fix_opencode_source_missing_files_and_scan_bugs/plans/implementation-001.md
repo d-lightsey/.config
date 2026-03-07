@@ -65,7 +65,7 @@ Research confirmed: (1) all 9 files exist in `.claude/` and are absent from `.op
 
 ---
 
-### Phase 2: Delete orphaned .sh files [NOT STARTED]
+### Phase 2: Delete orphaned .sh files [COMPLETED]
 
 **Goal**: Remove the 4 orphaned `.sh` files from `.opencode/context/core/patterns/` that have no source counterpart in `.claude/`.
 
