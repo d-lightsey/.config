@@ -4,10 +4,10 @@
     {
       "project_number": 161,
       "project_name": "fix_opencode_source_missing_files_and_scan_bugs",
-      "status": "implementing",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-07T21:28:55Z",
-      "last_updated": "2026-03-07T21:43:35Z",
+      "last_updated": "2026-03-07T21:47:04Z",
       "session_id": "sess_1772919788_b73b3c",
       "artifacts": [
         {
@@ -19,9 +19,16 @@
           "type": "plan",
           "path": "specs/161_fix_opencode_source_missing_files_and_scan_bugs/plans/implementation-001.md",
           "summary": "3-phase implementation plan for fixing opencode sync templates scan, deleting orphaned .sh files, and validating sync"
+        },
+        {
+          "type": "summary",
+          "path": "specs/161_fix_opencode_source_missing_files_and_scan_bugs/summaries/implementation-summary-20260307.md",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "planned": "2026-03-07T21:41:24Z"
+      "planned": "2026-03-07T21:41:24Z",
+      "completed": "2026-03-07T21:47:04Z",
+      "completion_summary": "Fixed opencode sync templates scan to discover *.json files alongside *.yaml, updated subdir_map template entry to use dynamic extension, and deleted 4 orphaned .sh files from .opencode/context/core/patterns/. The 9 missing core files will now sync correctly."
     },
     {
       "project_number": 160,

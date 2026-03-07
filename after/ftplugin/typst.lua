@@ -4,6 +4,40 @@
 -- Buffer-local variable to store pinned main file
 vim.b.typst_main_file = vim.b.typst_main_file or nil
 
+-- Detect project root for --root flag (needed for multi-file projects with cross-directory imports)
+-- Priority: TYPST_ROOT env > typst.toml > typst/ subdir in git repo > nil
+local function detect_project_root(main_file)
+  -- 1. Check TYPST_ROOT environment variable (highest priority)
+  local env_root = os.getenv("TYPST_ROOT")
+  if env_root then
+    return env_root
+  end
+
+  -- 2. Search upward for project markers
+  local main_dir = vim.fn.fnamemodify(main_file, ":h")
+  local markers = vim.fs.find({ "typst.toml", ".git" }, { path = main_dir, upward = true })
+
+  if #markers > 0 then
+    local marker_dir = vim.fn.fnamemodify(markers[1], ":h")
+
+    -- Special case for Logos/Theory: if .git found and typst/ subdir exists, use that
+    if markers[1]:match("%.git$") then
+      local typst_subdir = marker_dir .. "/typst"
+      if vim.fn.isdirectory(typst_subdir) == 1 and main_file:find(typst_subdir, 1, true) then
+        return typst_subdir
+      end
+    end
+
+    -- For typst.toml, use its containing directory
+    if markers[1]:match("typst%.toml$") then
+      return marker_dir
+    end
+  end
+
+  -- 3. Fallback: no special root needed
+  return nil
+end
+
 -- Auto-detect main file for multi-file projects
 local function detect_main_file()
   if vim.b.typst_main_file then
@@ -148,9 +182,19 @@ end
 local function typst_compile()
   local main_file = detect_main_file()
   local main_filename = vim.fn.fnamemodify(main_file, ":t")
+  local root = detect_project_root(main_file)
 
-  vim.notify("Compiling " .. main_filename .. "...", vim.log.levels.INFO)
-  vim.fn.jobstart({ "typst", "compile", main_file }, {
+  local cmd = { "typst", "compile" }
+  if root then
+    table.insert(cmd, "--root")
+    table.insert(cmd, root)
+  end
+  table.insert(cmd, main_file)
+
+  local root_info = root and (" (root: " .. vim.fn.fnamemodify(root, ":t") .. ")") or ""
+  vim.notify("Compiling " .. main_filename .. root_info .. "...", vim.log.levels.INFO)
+
+  vim.fn.jobstart(cmd, {
     on_exit = function(_, exit_code)
       if exit_code == 0 then
         vim.notify("Compilation successful", vim.log.levels.INFO)
@@ -167,14 +211,23 @@ local typst_watch_job = nil
 local function typst_watch()
   local main_file = detect_main_file()
   local main_filename = vim.fn.fnamemodify(main_file, ":t")
+  local root = detect_project_root(main_file)
 
   -- Stop existing watch if running
   if typst_watch_job then
     vim.fn.jobstop(typst_watch_job)
   end
 
-  vim.notify("Starting watch on " .. main_filename .. "...", vim.log.levels.INFO)
-  typst_watch_job = vim.fn.jobstart({ "typst", "watch", main_file }, {
+  local cmd = { "typst", "watch" }
+  if root then
+    table.insert(cmd, "--root")
+    table.insert(cmd, root)
+  end
+  table.insert(cmd, main_file)
+
+  local root_info = root and (" (root: " .. vim.fn.fnamemodify(root, ":t") .. ")") or ""
+  vim.notify("Starting watch on " .. main_filename .. root_info .. "...", vim.log.levels.INFO)
+  typst_watch_job = vim.fn.jobstart(cmd, {
     on_stdout = function(_, data)
       if data and #data > 0 then
         local msg = table.concat(data, "\n")

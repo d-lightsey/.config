@@ -1,7 +1,7 @@
 # Implementation Plan: Task #161
 
 - **Task**: 161 - fix_opencode_source_missing_files_and_scan_bugs
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 1-2 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
