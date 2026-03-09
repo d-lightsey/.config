@@ -1,7 +1,7 @@
 # Implementation Plan: Pitch Deck Command-Skill-Agent for Typst
 
 - **Task**: 162 - deck_command_skill_agent_typst_pitchdeck
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 3-5 hours
 - **Dependencies**: None (filetypes extension already exists)
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -54,7 +54,7 @@ Research report (research-001.md) provided:
 
 ## Implementation Phases
 
-### Phase 1: Context Files [NOT STARTED]
+### Phase 1: Context Files [COMPLETED]
 
 **Goal**: Create the two context files that encode YC pitch deck knowledge and touying template patterns for agent reference.
 
@@ -77,7 +77,7 @@ Research report (research-001.md) provided:
 
 ---
 
-### Phase 2: Deck Agent [NOT STARTED]
+### Phase 2: Deck Agent [COMPLETED]
 
 **Goal**: Create the deck-agent that generates Typst pitch deck files from user input, following the presentation-agent pattern.
 
@@ -103,7 +103,7 @@ Research report (research-001.md) provided:
 
 ---
 
-### Phase 3: Deck Skill [NOT STARTED]
+### Phase 3: Deck Skill [COMPLETED]
 
 **Goal**: Create the skill-deck skill wrapper that validates input and delegates to deck-agent via Task tool.
 
@@ -127,7 +127,7 @@ Research report (research-001.md) provided:
 
 ---
 
-### Phase 4: Deck Command [NOT STARTED]
+### Phase 4: Deck Command [COMPLETED]
 
 **Goal**: Create the /deck command following the /slides checkpoint-based pattern.
 
@@ -154,7 +154,7 @@ Research report (research-001.md) provided:
 
 ---
 
-### Phase 5: Extension Integration and Validation [NOT STARTED]
+### Phase 5: Extension Integration and Validation [COMPLETED]
 
 **Goal**: Update the filetypes extension manifest, index-entries, and EXTENSION.md to register the new command, skill, agent, and context files.
 

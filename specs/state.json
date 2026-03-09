@@ -4,11 +4,11 @@
     {
       "project_number": 162,
       "project_name": "deck_command_skill_agent_typst_pitchdeck",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-09T18:31:24Z",
-      "last_updated": "2026-03-09T18:54:00Z",
-      "session_id": "sess_1773082256_11c2c5",
+      "last_updated": "2026-03-09T19:04:07Z",
+      "session_id": "sess_1773082533_8a8ba1",
       "researched": "2026-03-09T18:37:48Z",
       "artifacts": [
         {
@@ -20,9 +20,18 @@
           "path": "specs/162_deck_command_skill_agent_typst_pitchdeck/plans/implementation-001.md",
           "type": "plan",
           "summary": "5-phase implementation plan for /deck command-skill-agent generating YC-style pitch decks in Typst"
+        },
+        {
+          "path": "specs/162_deck_command_skill_agent_typst_pitchdeck/summaries/implementation-summary-20260309.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "planned": "2026-03-09T18:54:00Z"
+      "planned": "2026-03-09T18:54:00Z",
+      "started": "2026-03-09T18:55:57Z",
+      "completed": "2026-03-09T19:04:07Z",
+      "completion_summary": "Created /deck command-skill-agent system in the filetypes extension for generating YC-style investor pitch decks. Includes 2 context files (pitch deck structure, touying template), 1 agent, 1 skill, 1 command, and updates to manifest.json, index-entries.json, and EXTENSION.md.",
+      "claudemd_suggestions": "Added skill-deck/deck-agent mapping to filetypes EXTENSION.md, added /deck command documentation with YC slide structure reference"
     },
     {
       "project_number": 161,
