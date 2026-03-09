@@ -8,9 +8,10 @@ next_project_number: 164
 
 ### 163. Review extension system language routing for correct agent and context loading
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Research**: [research-001.md](163_review_extension_language_routing/reports/research-001.md)
+- **Plan**: [implementation-001.md](163_review_extension_language_routing/plans/implementation-001.md)
 
 **Description**: Review extension system to ensure that when extensions are added, the range of available language types for tasks is correctly updated so that the correct agents are called when running tasks with those types and the context files for those languages are loaded by the correct specialist agents.
 
