@@ -1,6 +1,14 @@
 {
-  "next_project_number": 163,
+  "next_project_number": 164,
   "active_projects": [
+    {
+      "project_number": 163,
+      "project_name": "review_extension_language_routing",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-09T22:47:16Z",
+      "last_updated": "2026-03-09T22:47:16Z"
+    },
     {
       "project_number": 162,
       "project_name": "deck_command_skill_agent_typst_pitchdeck",

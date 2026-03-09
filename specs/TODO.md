@@ -1,10 +1,19 @@
 ---
-next_project_number: 163
+next_project_number: 164
 ---
 
 # TODO
 
 ## Tasks
+
+### 163. Review extension system language routing for correct agent and context loading
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Review extension system to ensure that when extensions are added, the range of available language types for tasks is correctly updated so that the correct agents are called when running tasks with those types and the context files for those languages are loaded by the correct specialist agents.
+
+---
 
 ### 162. Create /deck command-skill-agent for typst pitch deck generation
 - **Effort**: 3-5 hours
