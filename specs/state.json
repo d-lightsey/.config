@@ -4,11 +4,11 @@
     {
       "project_number": 164,
       "project_name": "include_tag_command_skill_web_extension",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-09T23:29:36Z",
-      "last_updated": "2026-03-09T23:37:55Z",
-      "session_id": "sess_1773099320_7ca6ae",
+      "last_updated": "2026-03-09T23:44:53Z",
+      "session_id": "sess_1773099552_3100c4",
       "artifacts": [
         {
           "type": "research",
@@ -19,10 +19,19 @@
           "path": "specs/164_include_tag_command_skill_web_extension/plans/implementation-001.md",
           "type": "plan",
           "summary": "4-phase implementation plan to port /tag command and skill-tag into web extension"
+        },
+        {
+          "path": "specs/164_include_tag_command_skill_web_extension/summaries/implementation-summary-20260309.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
       "effort": "1-2 hours",
-      "planned": "2026-03-09T23:37:55Z"
+      "planned": "2026-03-09T23:37:55Z",
+      "started": "2026-03-09T23:39:32Z",
+      "completed": "2026-03-09T23:44:53Z",
+      "completion_summary": "Ported /tag command and skill-tag from Logos Website project into the web extension at .claude/extensions/web/. Generalized all project-specific references (logos-labs, GitLab) and documented the deployment_versions state.json schema extension.",
+      "claudemd_suggestions": "Added /tag command and skill-tag to web extension (manifest.json, EXTENSION.md). EXTENSION.md now includes Commands section and Deployment Version Tracking section. No changes to root CLAUDE.md required - extension auto-discovery handles integration."
     },
     {
       "project_number": 163,

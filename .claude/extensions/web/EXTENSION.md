@@ -14,6 +14,13 @@ This project includes web development support via the web extension.
 |-------|-------|---------|
 | skill-web-research | web-research-agent | Astro/Tailwind/Cloudflare research |
 | skill-web-implementation | web-implementation-agent | Web (Astro/Tailwind/TypeScript) implementation |
+| skill-tag | (direct execution) | Semantic version tagging for CI/CD deployment (user-only) |
+
+### Commands
+
+| Command | Syntax | Description |
+|---------|--------|-------------|
+| `/tag` | `/tag [--patch\|--minor\|--major] [--force] [--dry-run]` | Create and push semantic version tags for CI/CD deployment. **User-only** - agents cannot invoke. |
 
 ### Key Technologies
 
@@ -45,3 +52,29 @@ pnpm preview
 - **Standards**: Coding conventions and targets (style guide, performance, accessibility)
 - **Tools**: Tool-specific guides (CLI, deployment, debugging)
 - **Templates**: Boilerplate templates (pages, components)
+
+### Deployment Version Tracking
+
+The `/tag` command tracks deployment versions in `specs/state.json`:
+
+```json
+{
+  "deployment_versions": {
+    "last_deployed": "v0.2.4",
+    "last_deployed_at": "2026-02-10T18:00:00Z",
+    "deployment_history": [
+      {
+        "version": "v0.2.4",
+        "deployed_at": "2026-02-10T18:00:00Z",
+        "commit_sha": "abc1234def5678"
+      }
+    ]
+  }
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `last_deployed` | string | Most recent version tag (e.g., `v0.2.4`) |
+| `last_deployed_at` | string | ISO8601 timestamp of last deployment |
+| `deployment_history` | array | Last 10 deployments with version, timestamp, and commit SHA |

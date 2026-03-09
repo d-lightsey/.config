@@ -8,10 +8,12 @@ next_project_number: 165
 
 ### 164. Include /tag command and skill from Logos/Website in web extension
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Implementation Completed**: 2026-03-09
 - **Language**: meta
 - **Research**: [research-001.md](164_include_tag_command_skill_web_extension/reports/research-001.md)
 - **Plan**: [implementation-001.md](164_include_tag_command_skill_web_extension/plans/implementation-001.md)
+- **Summary**: [implementation-summary-20260309.md](164_include_tag_command_skill_web_extension/summaries/implementation-summary-20260309.md)
 
 **Description**: Include the /tag command and skill from /home/benjamin/Projects/Logos/Website/.claude/ in the web extension of the current .claude/ agent system, updating everything relevant to do so.
 
