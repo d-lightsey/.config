@@ -1,10 +1,19 @@
 ---
-next_project_number: 164
+next_project_number: 165
 ---
 
 # TODO
 
 ## Tasks
+
+### 164. Include /tag command and skill from Logos/Website in web extension
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Include the /tag command and skill from /home/benjamin/Projects/Logos/Website/.claude/ in the web extension of the current .claude/ agent system, updating everything relevant to do so.
+
+---
 
 ### 163. Review extension system language routing for correct agent and context loading
 - **Effort**: 3-5 hours

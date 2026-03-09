@@ -1,6 +1,14 @@
 {
-  "next_project_number": 164,
+  "next_project_number": 165,
   "active_projects": [
+    {
+      "project_number": 164,
+      "project_name": "include_tag_command_skill_web_extension",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-09T23:29:36Z",
+      "last_updated": "2026-03-09T23:29:36Z"
+    },
     {
       "project_number": 163,
       "project_name": "review_extension_language_routing",
