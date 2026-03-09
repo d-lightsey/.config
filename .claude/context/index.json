@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "generated": "2026-03-09T00:00:00Z",
+  "version": null,
+  "generated": "2026-03-09T23:25:02Z",
   "entries": [
     {
       "path": "README.md",
@@ -552,108 +552,6 @@
         ],
         "agents": [
           "epidemiology-implementation-agent"
-        ]
-      }
-    },
-    {
-      "path": "context/project/z3/domain/z3-api.md",
-      "domain": "project",
-      "subdomain": "z3",
-      "topics": [
-        "z3",
-        "api",
-        "python"
-      ],
-      "keywords": [
-        "z3",
-        "api",
-        "python"
-      ],
-      "summary": "Z3 Python API reference and examples",
-      "line_count": 100,
-      "load_when": {
-        "languages": [
-          "z3"
-        ],
-        "agents": [
-          "z3-research-agent",
-          "z3-implementation-agent"
-        ]
-      }
-    },
-    {
-      "path": "context/project/z3/domain/smt-patterns.md",
-      "domain": "project",
-      "subdomain": "z3",
-      "topics": [
-        "z3",
-        "smt",
-        "tactics"
-      ],
-      "keywords": [
-        "z3",
-        "smt",
-        "tactics"
-      ],
-      "summary": "SMT-LIB patterns and Z3 tactics",
-      "line_count": 100,
-      "load_when": {
-        "languages": [
-          "z3"
-        ],
-        "agents": [
-          "z3-research-agent",
-          "z3-implementation-agent"
-        ]
-      }
-    },
-    {
-      "path": "context/project/z3/patterns/constraint-generation.md",
-      "domain": "project",
-      "subdomain": "z3",
-      "topics": [
-        "z3",
-        "constraints",
-        "patterns"
-      ],
-      "keywords": [
-        "z3",
-        "constraints",
-        "patterns"
-      ],
-      "summary": "Constraint building patterns for Z3",
-      "line_count": 100,
-      "load_when": {
-        "languages": [
-          "z3"
-        ],
-        "agents": [
-          "z3-implementation-agent"
-        ]
-      }
-    },
-    {
-      "path": "context/project/z3/patterns/bitvector-operations.md",
-      "domain": "project",
-      "subdomain": "z3",
-      "topics": [
-        "z3",
-        "bitvector",
-        "state"
-      ],
-      "keywords": [
-        "z3",
-        "bitvector",
-        "state"
-      ],
-      "summary": "BitVec state manipulation patterns",
-      "line_count": 100,
-      "load_when": {
-        "languages": [
-          "z3"
-        ],
-        "agents": [
-          "z3-implementation-agent"
         ]
       }
     },
@@ -2193,6 +2091,108 @@
         "languages": [
           "physics",
           "formal"
+        ]
+      }
+    },
+    {
+      "path": "context/project/z3/domain/z3-api.md",
+      "domain": "project",
+      "subdomain": "z3",
+      "topics": [
+        "z3",
+        "api",
+        "python"
+      ],
+      "keywords": [
+        "z3",
+        "api",
+        "python"
+      ],
+      "summary": "Z3 Python API reference and examples",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "z3-research-agent",
+          "z3-implementation-agent"
+        ],
+        "languages": [
+          "z3"
+        ]
+      }
+    },
+    {
+      "path": "context/project/z3/domain/smt-patterns.md",
+      "domain": "project",
+      "subdomain": "z3",
+      "topics": [
+        "z3",
+        "smt",
+        "tactics"
+      ],
+      "keywords": [
+        "z3",
+        "smt",
+        "tactics"
+      ],
+      "summary": "SMT-LIB patterns and Z3 tactics",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "z3-research-agent",
+          "z3-implementation-agent"
+        ],
+        "languages": [
+          "z3"
+        ]
+      }
+    },
+    {
+      "path": "context/project/z3/patterns/constraint-generation.md",
+      "domain": "project",
+      "subdomain": "z3",
+      "topics": [
+        "z3",
+        "constraints",
+        "patterns"
+      ],
+      "keywords": [
+        "z3",
+        "constraints",
+        "patterns"
+      ],
+      "summary": "Constraint building patterns for Z3",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "z3-implementation-agent"
+        ],
+        "languages": [
+          "z3"
+        ]
+      }
+    },
+    {
+      "path": "context/project/z3/patterns/bitvector-operations.md",
+      "domain": "project",
+      "subdomain": "z3",
+      "topics": [
+        "z3",
+        "bitvector",
+        "state"
+      ],
+      "keywords": [
+        "z3",
+        "bitvector",
+        "state"
+      ],
+      "summary": "BitVec state manipulation patterns",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "z3-implementation-agent"
+        ],
+        "languages": [
+          "z3"
         ]
       }
     }
