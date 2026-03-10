@@ -1,10 +1,20 @@
 ---
-next_project_number: 175
+next_project_number: 176
 ---
 
 # TODO
 
 ## Tasks
+
+### 175. Port memory/ extension to .claude/ agent system
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Port the memory/ extension included in .opencode/ over to .claude/ while respecting any differences that may exist for proper integration into the .claude/ agent system.
+
+---
 
 ### 174. Study .opencode/memory/ systems for memory extension creation
 - **Effort**: 4-6 hours
