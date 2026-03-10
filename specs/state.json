@@ -7,14 +7,19 @@
       "status": "researched",
       "language": "meta",
       "created": "2026-03-10T19:14:19Z",
-      "last_updated": "2026-03-10T19:24:13Z",
-      "session_id": "sess_1773170282_48e298",
-      "researched": "2026-03-10T19:24:13Z",
+      "last_updated": "2026-03-10T20:15:00Z",
+      "session_id": "sess_1773171356_55f741",
+      "researched": "2026-03-10T20:15:00Z",
       "artifacts": [
         {
           "path": "specs/169_verify_agent_systems_wired_after_reload/reports/research-001.md",
           "type": "research",
           "summary": "Agent system wiring is correct for routing and delegation, but neovim/filetypes extension context entries are not merged into main index.json, and 76 context files referenced in .claude index are missing from disk"
+        },
+        {
+          "path": "specs/169_verify_agent_systems_wired_after_reload/reports/research-002.md",
+          "type": "research",
+          "summary": "Supplemental research on extension loading architecture: core vs extended comparison, 27 agents/28 skills/5 rules to remove from core, index.json path inconsistencies, loader improvements"
         }
       ]
     },
