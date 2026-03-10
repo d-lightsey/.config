@@ -1,10 +1,82 @@
 ---
-next_project_number: 170
+next_project_number: 171
 ---
 
 # TODO
 
 ## Tasks
+
+### 170. Audit agent systems for complete wiring correctness
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Carefully audit the core and extended agent systems in both .claude/ and .opencode/ (with .claude_core/ and .opencode_core/ available for comparison) to ensure everything is working correctly and no gaps remain from the work in tasks 163-169. The following must be verified:
+
+**1. Core system completeness** (.claude_core/ and .opencode_core/):
+- Exactly 4 agents present (general-research, general-implementation, planner, meta-builder) — no extension agents
+- Exactly the right core skills present — no extension skills
+- Core rules only (no neovim-lua.md, web-astro.md, lean4.md, etc.)
+- Core context directories only (meta/, repo/, hooks/, processes/) — no project/neovim, project/lean4, etc.
+- context/index.json references only core context files and all referenced files exist on disk
+- CLAUDE.md routing table covers only core languages (general, meta, markdown) with extension note
+- OPENCODE.md equivalent wiring correct
+- settings.local.json / settings.json correctly scoped to core
+
+**2. Extension source completeness** (.claude/extensions/{ext}/ and .opencode/extensions/{ext}/):
+For each extension (epidemiology, filetypes, formal, latex, lean, nix, nvim, python, typst, web, z3):
+- manifest.json declares correct provides (agents, skills, rules, context) matching actual source files
+- agents/ subdirectory contains all declared agent .md files
+- skills/ subdirectory contains all declared skill directories with SKILL.md
+- rules/ subdirectory contains all declared rule files (where applicable)
+- context/ subdirectory contains all files referenced by index-entries.json
+- EXTENSION.md exists and documents the extension's routing table and skill-to-agent mappings
+- index-entries.json entries all reference files that actually exist in context/
+- settings-fragment.json present where needed
+- .claude vs .opencode manifests have correct system-specific merge_targets (claudemd vs opencode_md, correct section_id prefixes)
+
+**3. Extension loading correctness** (compare .claude/ vs .claude_core/ after loading all extensions):
+- All extension agents appear in .claude/agents/ after loading
+- All extension skills appear in .claude/skills/ after loading
+- All extension rules appear in .claude/rules/ after loading
+- All extension context files appear in .claude/context/project/ after loading
+- context/index.json in .claude/ contains both core entries AND all extension entries
+- CLAUDE.md contains injected EXTENSION.md sections for each loaded extension with correct section markers (<!-- SECTION: extension_{name} -->)
+- OPENCODE.md contains correct markers (<!-- SECTION: extension_oc_{name} -->)
+- extensions.json state file correctly tracks loaded extensions and installed files
+
+**4. Routing wiring end-to-end** (for each language type):
+- CLAUDE.md routing table maps each language to correct skill
+- That skill exists in .claude/skills/ and its SKILL.md delegates to the correct agent
+- That agent exists in .claude/agents/ with correct model, skills frontmatter
+- Agent's skills frontmatter references skills that exist
+- context/index.json has entries with load_when.agents matching the agent name
+- Those context files exist on disk
+
+**5. Loader mechanics** (Neovim Lua loaders <leader>ac and <leader>ao):
+- Loader correctly identifies extension source directories
+- Loader copies agents/skills/rules/context from extension source to target
+- Loader merges index-entries.json into context/index.json (additive, no duplicates)
+- Loader injects EXTENSION.md into CLAUDE.md/OPENCODE.md with correct section markers
+- Loader updates extensions.json state for rollback/unload support
+- Loader's post-load verify.lua correctly uses config.section_prefix (not hardcoded)
+- verify.lua verify_context checks files in index-entries.json against TARGET directory (not source)
+- Unloader correctly removes all installed files and reverts merged sections
+
+**6. Cross-system parity and independence**:
+- .claude/ and .opencode/ systems are independent (no shared state files)
+- Equivalent extensions exist in both systems with appropriate system-specific differences
+- .opencode/ uses correct path conventions (agent/subagents/ not agents/)
+- .opencode/ uses extension_oc_ section prefix, not extension_
+
+**7. Known issues from tasks 163-169 to recheck**:
+- All 474 extension files correctly placed in extension source dirs (not just core)
+- verify.lua config.section_prefix fix applied (not hardcoded extension_)
+- nvim .opencode index-entries.json synced with .claude version
+- No stray files in core from previous extension merges
+- No broken @-references in CLAUDE.md pointing to extension paths that no longer exist in core
+
+---
 
 ### 169. Verify agent systems are wired correctly after reload
 - **Effort**: TBD

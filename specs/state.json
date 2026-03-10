@@ -1,6 +1,14 @@
 {
-  "next_project_number": 170,
+  "next_project_number": 171,
   "active_projects": [
+    {
+      "project_number": 170,
+      "project_name": "audit_agent_systems_wiring_correctness",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-10T20:29:10Z",
+      "last_updated": "2026-03-10T20:29:10Z"
+    },
     {
       "project_number": 169,
       "project_name": "verify_agent_systems_wired_after_reload",
