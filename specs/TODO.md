@@ -7,9 +7,11 @@ next_project_number: 173
 ## Tasks
 
 ### 172. Investigate OPENCODE.md core content loss on <leader>ao reload
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Completed**: 2026-03-10
 - **Planning Completed**: 2026-03-10
+- **Completed**: 2026-03-10
+- **Summary**: Created global AGENTS.md (165 lines), updated sync.lua root_file_names, modified all 11 extension manifests to target AGENTS.md, hardened merge.lua inject_section to seed from README.md.
 - **Language**: neovim
 - **Research**: [research-001.md](172_investigate_opencode_core_content_loss_on_reload/reports/research-001.md)
 - **Plan**: [implementation-002.md](172_investigate_opencode_core_content_loss_on_reload/plans/implementation-002.md) (revised)

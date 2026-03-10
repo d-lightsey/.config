@@ -4,10 +4,10 @@
     {
       "project_number": 172,
       "project_name": "investigate_opencode_core_content_loss_on_reload",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-10T21:41:27Z",
-      "last_updated": "2026-03-10T15:07:24-07:00",
+      "last_updated": "2026-03-10T15:17:02-07:00",
       "researched": "2026-03-10T14:53:12-07:00",
       "artifacts": [
         {
@@ -24,9 +24,16 @@
           "path": "specs/172_investigate_opencode_core_content_loss_on_reload/plans/implementation-002.md",
           "type": "plan",
           "summary": "Revised 3-phase plan using AGENTS.md (not OPENCODE.md) per OpenCode conventions"
+        },
+        {
+          "path": "specs/172_investigate_opencode_core_content_loss_on_reload/summaries/implementation-summary-20260310.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting AGENTS.md fix for core content loss"
         }
       ],
-      "planned": "2026-03-10T15:07:24-07:00"
+      "planned": "2026-03-10T15:07:24-07:00",
+      "completed": "2026-03-10T15:17:02-07:00",
+      "completion_summary": "Created global AGENTS.md (165 lines), updated sync.lua root_file_names, modified all 11 extension manifests to target AGENTS.md, hardened merge.lua inject_section to seed from README.md. Fix prevents core content loss on extension reload."
     },
     {
       "project_number": 171,
