@@ -71,7 +71,7 @@ Research report 001 confirmed the sync mechanism works correctly and identified 
 
 ---
 
-### Phase 2: Copy Extension Artifacts into .claude/ Core Directories [NOT STARTED]
+### Phase 2: Copy Extension Artifacts into .claude/ Core Directories [COMPLETED]
 
 - **Goal:** Move all extension-provided files from extensions/ subdirectories into the corresponding core directories, replacing symlinks with real files.
 
