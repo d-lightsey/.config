@@ -44,11 +44,3 @@ next_project_number: 174
 **Description**: Fix himalaya sidebar help display (shown via '?') incorrectly showing leader keybindings (`<leader>mA` - Switch account, `<leader>mf` - Change folder, `<leader>ms` - Sync folder) in the Folder Management section. These leader commands should not be accessible or defined in the sidebar since `<leader>` is `<Space>` which is used for toggle selections in that buffer.
 
 ---
-
-### 999. Test plan format compliance
-- **Effort**: TBD
-- **Status**: [NOT STARTED]
-- **Language**: meta
-- **Dependencies**: None
-
-**Description**: Test task for verifying plan format compliance.

@@ -48,15 +48,6 @@
       "language": "neovim",
       "created": "2026-02-12T19:03:20Z",
       "last_updated": "2026-02-12T19:03:20Z"
-    },
-    {
-      "project_number": 999,
-      "project_name": "test_plan_format_compliance",
-      "status": "not_started",
-      "language": "meta",
-      "created": "2026-03-05T22:53:22Z",
-      "last_updated": "2026-03-05T22:53:22Z",
-      "artifacts": []
     }
   ],
   "repository_health": {
