@@ -1,10 +1,19 @@
 ---
-next_project_number: 167
+next_project_number: 168
 ---
 
 # TODO
 
 ## Tasks
+
+### 167. Verify and revise agent system loaders for .claude/ and .opencode/
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+
+**Description**: Verify that the core agent systems loaded via <leader>ac and <leader>ao keymaps for .claude/ and .opencode/ respectively in /home/benjamin/Projects/Logos/Vision/ are correct with no missing elements or inappropriate additions. Revise the agent system loaders or the agent system contents if needed while making no unnecessary changes.
+
+---
 
 ### 166. Move NeoVim-specific elements to nvim/ extension in .claude/ and .opencode/ agent systems
 - **Effort**: 4-6 hours

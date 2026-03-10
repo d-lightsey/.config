@@ -1,6 +1,14 @@
 {
-  "next_project_number": 167,
+  "next_project_number": 168,
   "active_projects": [
+    {
+      "project_number": 167,
+      "project_name": "verify_revise_agent_system_loaders",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-10T17:32:33Z",
+      "last_updated": "2026-03-10T17:32:33Z"
+    },
     {
       "project_number": 166,
       "project_name": "move_neovim_elements_to_nvim_extension",
