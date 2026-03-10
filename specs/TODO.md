@@ -1,10 +1,19 @@
 ---
-next_project_number: 165
+next_project_number: 166
 ---
 
 # TODO
 
 ## Tasks
+
+### 165. Review .opencode/ agent system extension language routing for correct agent and context loading
+- **Effort**: 3-5 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Review .opencode/ agent system to ensure that when extensions are added, the range of available language types for tasks is correctly updated so that the correct agents are called when running tasks with those types and the context files for those languages are loaded by the correct specialist agents.
+
+---
 
 ### 164. Include /tag command and skill from Logos/Website in web extension
 - **Effort**: 1-2 hours
