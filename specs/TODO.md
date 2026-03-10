@@ -8,8 +8,11 @@ next_project_number: 169
 
 ### 168. Verify core agent system loading without extensions
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-10
+- **Research Completed**: 2026-03-10
 - **Language**: meta
+- **Research**: [research-001.md](168_verify_core_agent_system_loading/reports/research-001.md)
 
 **Description**: Verify that the core agent systems reloaded in .claude/ and .opencode/ in /home/benjamin/Projects/Logos/Vision/ contain no missing elements and are wired together correctly. These should ONLY include the core agent systems without extensions, where just the task types covered by the core system are available, and agents have access to an appropriate index of the context files included in the core agent systems.
 

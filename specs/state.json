@@ -4,10 +4,17 @@
     {
       "project_number": 168,
       "project_name": "verify_core_agent_system_loading",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-10T18:25:28Z",
-      "last_updated": "2026-03-10T18:25:28Z"
+      "last_updated": "2026-03-10T18:32:45Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/168_verify_core_agent_system_loading/reports/research-001.md",
+          "summary": "CRITICAL: 77 broken paths in index.json, routing.md inconsistent with CLAUDE.md, minor .opencode parity gaps"
+        }
+      ]
     },
     {
       "project_number": 167,
