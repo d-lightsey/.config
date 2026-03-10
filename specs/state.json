@@ -4,10 +4,10 @@
     {
       "project_number": 167,
       "project_name": "verify_revise_agent_system_loaders",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-03-10T17:32:33Z",
-      "last_updated": "2026-03-10T18:04:10Z",
+      "last_updated": "2026-03-10T18:16:02Z",
       "artifacts": [
         {
           "type": "research",
@@ -23,8 +23,14 @@
           "type": "plan",
           "path": "specs/167_verify_revise_agent_system_loaders/plans/implementation-001.md",
           "summary": "5-phase plan: fix bugs, eliminate symlinks, copy extensions to core, mirror to .opencode/, update docs"
+        },
+        {
+          "type": "summary",
+          "path": "specs/167_verify_revise_agent_system_loaders/summaries/implementation-summary-20260310.md",
+          "summary": "Full implementation summary with all phases completed"
         }
-      ]
+      ],
+      "completion_summary": "Fixed filetypes manifest bug, merged double-confirm dialog, copied all extension artifacts to core directories (27 agents, 29 skills, 5 rules, 7 commands), updated 159 path references, mirrored to .opencode/"
     },
     {
       "project_number": 166,
