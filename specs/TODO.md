@@ -1,10 +1,16 @@
 ---
-next_project_number: 173
+next_project_number: 174
 ---
 
 # TODO
 
 ## Tasks
+
+### 173. Rename /learn command to /fix-it in .claude/ system
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Rename the /learn command to /fix-it in the .claude/ system, updating all references throughout so nothing breaks. This includes: the command file itself (.claude/commands/learn.md -> fix-it.md), the skill file (skill-learn -> skill-fix-it or appropriate name), CLAUDE.md command reference table, agent frontmatter skill references, any keybinding or picker entries that reference the learn command, and any documentation that references /learn.
 
 ### 172. Investigate OPENCODE.md core content loss on <leader>ao reload
 - **Status**: [COMPLETED]

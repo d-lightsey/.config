@@ -1,6 +1,14 @@
 {
-  "next_project_number": 173,
+  "next_project_number": 174,
   "active_projects": [
+    {
+      "project_number": 173,
+      "project_name": "rename_learn_command_to_fix_it",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-10T22:22:38Z",
+      "last_updated": "2026-03-10T22:22:38Z"
+    },
     {
       "project_number": 172,
       "project_name": "investigate_opencode_core_content_loss_on_reload",
