@@ -245,7 +245,7 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   -- Root files vary by system
   local root_file_names
   if base_dir == ".opencode" then
-    root_file_names = { "OPENCODE.md", "settings.json", ".gitignore", "README.md", "QUICK-START.md" }
+    root_file_names = { "AGENTS.md", "OPENCODE.md", "settings.json", ".gitignore", "README.md", "QUICK-START.md" }
   else
     root_file_names = { ".gitignore", "README.md", "CLAUDE.md", "settings.local.json" }
   end
