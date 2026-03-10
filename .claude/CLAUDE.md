@@ -53,12 +53,10 @@ specs/{NNN}_{SLUG}/
 
 | Language | Research Skill | Implementation Skill | Tools |
 |----------|----------------|---------------------|-------|
-| `neovim` | `skill-neovim-research` | `skill-neovim-implementation` | WebSearch, WebFetch, Read, Bash (nvim --headless) |
 | `lean4` | `skill-lean-research` | `skill-lean-implementation` | MCP (lean-lsp), Read, Write, Edit |
 | `latex` | `skill-latex-research` | `skill-latex-implementation` | WebSearch, Read, Write, Edit, Bash |
 | `typst` | `skill-typst-research` | `skill-typst-implementation` | WebSearch, Read, Write, Edit, Bash |
 | `python` | `skill-python-research` | `skill-python-implementation` | WebSearch, Read, Write, Edit, Bash |
-| `z3` | `skill-z3-research` | `skill-z3-implementation` | Read, Write, Edit, Bash |
 | `nix` | `skill-nix-research` | `skill-nix-implementation` | MCP (mcp-nixos), Read, Write, Edit, Bash |
 | `web` | `skill-web-research` | `skill-web-implementation` | WebSearch, WebFetch, Read, Write, Edit, Bash |
 | `epidemiology` | `skill-epidemiology-research` | `skill-epidemiology-implementation` | WebSearch, Read, Write, Edit, Bash |
@@ -66,7 +64,7 @@ specs/{NNN}_{SLUG}/
 | `general` | `skill-researcher` | `skill-implementer` | WebSearch, WebFetch, Read, Write, Edit, Bash |
 | `meta` | `skill-researcher` | `skill-implementer` | Read, Grep, Glob, Write, Edit |
 
-**Note**: Extension skills are located in `.claude/extensions/{ext}/skills/`. Claude Code discovers these automatically.
+**Note**: Extension skills (neovim, z3, etc.) are located in `.claude/extensions/{ext}/skills/`. Claude Code discovers these automatically.
 
 ## Command Reference
 
@@ -135,8 +133,6 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 
 | Skill | Agent | Model | Purpose |
 |-------|-------|-------|---------|
-| skill-neovim-research | neovim-research-agent | opus | Neovim/plugin research |
-| skill-neovim-implementation | neovim-implementation-agent | - | Neovim configuration implementation |
 | skill-researcher | general-research-agent | opus | General web/codebase research |
 | skill-planner | planner-agent | opus | Implementation plan creation |
 | skill-implementer | general-implementation-agent | - | General file implementation |
@@ -146,17 +142,18 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 
 **Model Enforcement**: Agents declare preferred models via `model:` frontmatter field. Research and planning agents use `opus` for superior reasoning. Implementation agents use default model. See `.claude/docs/reference/standards/agent-frontmatter-standard.md` for details.
 
-**Note**: Additional skills (latex, typst, filetypes) are available via extensions in `.claude/extensions/`.
+**Note**: Additional skills (neovim, latex, typst, z3, etc.) are available via extensions in `.claude/extensions/`.
 
 ## Rules References
 
 Core rules (auto-applied by file path):
 - @.claude/rules/state-management.md - Task state patterns (specs/**)
 - @.claude/rules/git-workflow.md - Commit conventions
-- @.claude/rules/neovim-lua.md - Neovim Lua development (lua/**/*.lua, after/**/*.lua)
 - @.claude/rules/error-handling.md - Error recovery (.claude/**)
 - @.claude/rules/artifact-formats.md - Report/plan formats (specs/**)
 - @.claude/rules/workflows.md - Command lifecycle (.claude/**)
+
+**Note**: Extension rules (neovim-lua.md, etc.) are provided by extensions in `.claude/extensions/`.
 
 ## Context Discovery
 
@@ -164,10 +161,10 @@ Agents use `index.json` for automated context discovery instead of hardcoded fil
 
 ```bash
 # Find context files for an agent
-jq -r '.entries[] | select(.load_when.agents[]? == "neovim-research-agent") | .path' .claude/context/index.json
+jq -r '.entries[] | select(.load_when.agents[]? == "planner-agent") | .path' .claude/context/index.json
 
 # Find context by task language
-jq -r '.entries[] | select(.load_when.languages[]? == "neovim") | .path' .claude/context/index.json
+jq -r '.entries[] | select(.load_when.languages[]? == "lean4") | .path' .claude/context/index.json
 
 # Get line counts for budget calculation
 jq -r '.entries[] | select(.load_when.agents[]? == "planner-agent") | "\(.line_count)\t\(.path)"' .claude/context/index.json
@@ -175,13 +172,14 @@ jq -r '.entries[] | select(.load_when.agents[]? == "planner-agent") | "\(.line_c
 
 See `.claude/context/core/patterns/context-discovery.md` for query patterns.
 
+**Note**: Extension context files (neovim, z3, etc.) have their own index-entries.json in `.claude/extensions/{ext}/`.
+
 ## Context Imports
 
 Domain knowledge (load as needed):
-- @.claude/context/project/neovim/domain/neovim-api.md
-- @.claude/context/project/neovim/patterns/plugin-spec.md
-- @.claude/context/project/neovim/tools/lazy-nvim-guide.md
 - @.claude/context/project/repo/project-overview.md
+
+**Note**: Extension context imports (neovim, z3, etc.) are documented in each extension's EXTENSION.md file.
 
 ## Multi-Task Creation Standards
 

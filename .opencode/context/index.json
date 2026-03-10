@@ -60,7 +60,7 @@
       "summary": "Metadata file schema for agent return values",
       "line_count": 150,
       "load_when": {
-        "agents": ["general-implementation-agent", "neovim-implementation-agent", "lean-implementation-agent"]
+        "agents": ["general-implementation-agent", "lean-implementation-agent"]
       }
     },
     {
@@ -97,7 +97,7 @@
       "summary": "Patterns to prevent premature agent termination",
       "line_count": 80,
       "load_when": {
-        "agents": ["general-implementation-agent", "neovim-implementation-agent", "lean-implementation-agent"]
+        "agents": ["general-implementation-agent", "lean-implementation-agent"]
       }
     },
     {
@@ -151,33 +151,7 @@
         "agents": ["lean-research-agent", "lean-implementation-agent"]
       }
     },
-    {
-      "path": "project/neovim/README.md",
-      "domain": "project",
-      "subdomain": "neovim",
-      "topics": ["neovim", "lua", "configuration"],
-      "keywords": ["neovim", "lua", "plugin"],
-      "summary": "Neovim configuration domain overview",
-      "line_count": 80,
-      "load_when": {
-        "languages": ["neovim"],
-        "agents": ["neovim-research-agent", "neovim-implementation-agent"]
-      }
-    },
-    {
-      "path": "project/neovim/patterns/plugin-spec.md",
-      "domain": "project",
-      "subdomain": "neovim",
-      "topics": ["lazy-nvim", "plugin-spec", "dependencies"],
-      "keywords": ["lazy", "plugin", "dependencies"],
-      "summary": "lazy.nvim plugin specification patterns",
-      "line_count": 150,
-      "load_when": {
-        "languages": ["neovim"],
-        "agents": ["neovim-implementation-agent"]
-      }
-    },
-    {
+        {
       "path": "project/logic/README.md",
       "domain": "project",
       "subdomain": "logic",

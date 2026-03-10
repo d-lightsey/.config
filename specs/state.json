@@ -4,11 +4,11 @@
     {
       "project_number": 166,
       "project_name": "move_neovim_elements_to_nvim_extension",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-10T16:58:21Z",
-      "last_updated": "2026-03-10T17:12:32Z",
-      "session_id": "sess_1773162479_902b1a",
+      "last_updated": "2026-03-10T17:26:04Z",
+      "session_id": "sess_1773162842_85910e",
       "researched": "2026-03-10T17:06:19Z",
       "artifacts": [
         {
@@ -20,9 +20,18 @@
           "path": "specs/166_move_neovim_elements_to_nvim_extension/plans/implementation-001.md",
           "type": "plan",
           "summary": "7-phase implementation plan for moving neovim elements to nvim extension in both .claude/ and .opencode/ systems"
+        },
+        {
+          "path": "specs/166_move_neovim_elements_to_nvim_extension/summaries/implementation-summary-20260310.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results for nvim extension migration"
         }
       ],
-      "planned": "2026-03-10T17:12:32Z"
+      "planned": "2026-03-10T17:12:32Z",
+      "started": "2026-03-10T17:14:45Z",
+      "completed": "2026-03-10T17:26:04Z",
+      "completion_summary": "Moved neovim-specific agents, skills, context, and rules to nvim/ extensions in both .claude/ and .opencode/ systems, updating all wiring (CLAUDE.md, README.md, index.json, orchestration-core.md) to reference extensions instead of core paths.",
+      "claudemd_suggestions": "Removed neovim rows from CLAUDE.md routing tables, updated context import references to note extensions, moved neovim-lua.md rule to extension"
     },
     {
       "project_number": 165,

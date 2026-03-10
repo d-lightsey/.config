@@ -181,9 +181,9 @@ Every delegation MUST include this context:
 
 | Command | Language-Based | Agent(s) |
 |---------|---------------|----------|
-| /research | Yes | lean4: lean-research-agent, neovim: neovim-research-agent, z3: z3-research-agent, nix: nix-research-agent, python: python-research-agent, latex: latex-research-agent, typst: typst-research-agent, web: web-research-agent, epidemiology: epidemiology-research-agent, formal/logic/math/physics: formal-research-agent, default: general-research-agent |
+| /research | Yes | lean4: lean-research-agent, extensions: {lang}-research-agent, formal/logic/math/physics: formal-research-agent, default: general-research-agent |
 | /plan | No | planner-agent |
-| /implement | Yes | lean4: lean-implementation-agent, neovim: neovim-implementation-agent, z3: z3-implementation-agent, nix: nix-implementation-agent, python: python-implementation-agent, latex: latex-implementation-agent, typst: typst-implementation-agent, web: web-implementation-agent, epidemiology: epidemiology-implementation-agent, default: general-implementation-agent |
+| /implement | Yes | lean4: lean-implementation-agent, extensions: {lang}-implementation-agent, default: general-implementation-agent |
 | /revise | No | planner-agent |
 | /review | No | reviewer-agent |
 | /meta | No | meta-builder-agent |
@@ -217,13 +217,8 @@ if [ "$language" == "lean4" ] && [[ ! "$agent" =~ ^lean- ]]; then
   exit 1
 fi
 
-if [ "$language" == "neovim" ] && [[ ! "$agent" =~ ^neovim- ]]; then
-  echo "Error: Neovim task must route to neovim-* agent"
-  exit 1
-fi
-
-# Extension language routing validation
-for lang_agent in "z3:z3-" "nix:nix-" "python:python-" "latex:latex-" "typst:typst-" "web:web-" "epidemiology:epidemiology-"; do
+# Extension language routing validation (includes neovim, z3, nix, etc.)
+for lang_agent in "neovim:neovim-" "z3:z3-" "nix:nix-" "python:python-" "latex:latex-" "typst:typst-" "web:web-" "epidemiology:epidemiology-"; do
   lang="${lang_agent%%:*}"
   prefix="${lang_agent##*:}"
   if [ "$language" == "$lang" ] && [[ ! "$agent" =~ ^${prefix} ]]; then

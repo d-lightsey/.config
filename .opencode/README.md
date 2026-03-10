@@ -44,12 +44,13 @@ Terminal states: `[BLOCKED]`, `[ABANDONED]`, `[PARTIAL]`, `[EXPANDED]`
 
 | Language | Research Tools | Implementation Tools |
 |----------|----------------|---------------------|
-| `neovim` | WebSearch, WebFetch, Read | Read, Write, Edit, Bash (nvim --headless) |
 | `lean` | lean_leansearch, lean_loogle, lean_leanfinder | lean_goal, lean_hover_info, lean_multi_attempt |
 | `latex` | skill-latex-research (LaTeX context) | Read, Write, Edit, Bash (pdflatex) |
 | `typst` | skill-typst-research (Typst context) | Read, Write, Edit, Bash (typst compile) |
 | `general` | WebSearch, WebFetch, Read | Read, Write, Edit, Bash |
 | `meta` | Read, Grep, Glob | Write, Edit |
+
+**Note**: Extension languages (neovim, z3, etc.) are provided by extensions in `extensions/`.
 
 ### Checkpoint Execution
 
@@ -106,7 +107,7 @@ For detailed command documentation, see [commands/README.md](commands/README.md)
 
 ## Extensions
 
-The system supports 10 language/domain-specific extensions. See [extensions/README.md](extensions/README.md) for complete listing.
+The system supports 11 language/domain-specific extensions. See [extensions/README.md](extensions/README.md) for complete listing.
 
 **Adding New Extensions**: To add a new language extension, follow the extension registration process documented in [orchestration-core.md](context/core/orchestration/orchestration-core.md#extension-registration). Key steps:
 1. Create extension directory with manifest, agents, skills, and context
@@ -118,6 +119,7 @@ The system supports 10 language/domain-specific extensions. See [extensions/READ
 
 | Extension | Description | Documentation |
 |-----------|-------------|---------------|
+| **nvim** | Neovim configuration development | [README](extensions/nvim/README.md) |
 | **lean** | Lean 4 theorem proving with Lake build system | [README](extensions/lean/context/project/lean4/README.md) |
 | **typst** | Modern document typesetting | [README](extensions/typst/context/project/typst/README.md) |
 | **latex** | Traditional document typesetting | [README](extensions/latex/context/project/latex/README.md) |
@@ -191,8 +193,6 @@ TODO.md and state.json must stay synchronized. Update state.json first (machine 
 
 | Skill | Agent | Purpose |
 |-------|-------|---------|
-| skill-neovim-research | neovim-research-agent | Neovim/plugin research |
-| skill-neovim-implementation | neovim-implementation-agent | Neovim configuration implementation |
 | skill-lean-research | lean-research-agent | Lean 4/Mathlib research |
 | skill-lean-implementation | lean-implementation-agent | Lean proof implementation |
 | skill-logic-research | logic-research-agent | Mathematical logic research |
@@ -220,19 +220,19 @@ Core rules (auto-applied by file path):
 |------|---------|-----------------|
 | [state-management.md](rules/state-management.md) | Task state patterns | `specs/**` |
 | [git-workflow.md](rules/git-workflow.md) | Commit conventions | All files |
-| [neovim-lua.md](rules/neovim-lua.md) | Neovim Lua development | `lua/**/*.lua`, `after/**/*.lua` |
 | [error-handling.md](rules/error-handling.md) | Error recovery | `.opencode/**` |
 | [artifact-formats.md](rules/artifact-formats.md) | Report/plan formats | `specs/**` |
 | [workflows.md](rules/workflows.md) | Command lifecycle | `.opencode/**` |
+
+**Note**: Extension rules (neovim-lua.md, etc.) are provided by extensions in `extensions/`.
 
 ## Context Imports
 
 Domain knowledge (load as needed):
 
-- [Neovim API](context/project/neovim/domain/neovim-api.md)
-- [Plugin Spec Patterns](context/project/neovim/patterns/plugin-spec.md)
-- [lazy.nvim Guide](context/project/neovim/tools/lazy-nvim-guide.md)
 - [Project Overview](context/project/repo/project-overview.md)
+
+**Note**: Extension context imports (neovim, z3, etc.) are documented in each extension's EXTENSION.md file.
 
 ## Error Handling
 

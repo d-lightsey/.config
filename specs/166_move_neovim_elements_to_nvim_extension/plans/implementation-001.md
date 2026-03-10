@@ -1,7 +1,7 @@
 # Implementation Plan: Task #166
 
 - **Task**: 166 - move_neovim_elements_to_nvim_extension
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 3-4 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -48,7 +48,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ## Implementation Phases
 
-### Phase 1: Create nvim extension scaffold in .claude/ [NOT STARTED]
+### Phase 1: Create nvim extension scaffold in .claude/ [COMPLETED]
 
 **Goal**: Create the extension directory structure and metadata files for the .claude/ system, following the established pattern from z3/latex extensions.
 
@@ -72,7 +72,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 2: Create nvim extension scaffold in .opencode/ [NOT STARTED]
+### Phase 2: Create nvim extension scaffold in .opencode/ [COMPLETED]
 
 **Goal**: Create the extension directory structure and metadata files for the .opencode/ system, respecting the README-at-every-level convention.
 
@@ -99,7 +99,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 3: Move files from .claude/ core to nvim extension [NOT STARTED]
+### Phase 3: Move files from .claude/ core to nvim extension [COMPLETED]
 
 **Goal**: Move all neovim-specific files from their core locations to the nvim extension directory in the .claude/ system.
 
@@ -127,7 +127,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 4: Move files from .opencode/ core to nvim extension [NOT STARTED]
+### Phase 4: Move files from .opencode/ core to nvim extension [COMPLETED]
 
 **Goal**: Move all neovim-specific files from their core locations to the nvim extension directory in the .opencode/ system.
 
@@ -155,7 +155,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 5: Update wiring in .claude/ system [NOT STARTED]
+### Phase 5: Update wiring in .claude/ system [COMPLETED]
 
 **Goal**: Update all references, routing tables, and index entries in the .claude/ system so neovim routing works via the extension.
 
@@ -191,7 +191,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 6: Update wiring in .opencode/ system [NOT STARTED]
+### Phase 6: Update wiring in .opencode/ system [COMPLETED]
 
 **Goal**: Update all references, routing tables, and index entries in the .opencode/ system so neovim routing works via the extension.
 
@@ -228,7 +228,7 @@ Research identified 21 files to move in .claude/ and 27 in .opencode/ (extra REA
 
 ---
 
-### Phase 7: Cross-system verification [NOT STARTED]
+### Phase 7: Cross-system verification [COMPLETED]
 
 **Goal**: Verify both systems are correctly wired after all moves and updates. Ensure no broken references or orphaned files.
 
