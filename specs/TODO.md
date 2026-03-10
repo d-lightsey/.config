@@ -1,10 +1,19 @@
 ---
-next_project_number: 169
+next_project_number: 170
 ---
 
 # TODO
 
 ## Tasks
+
+### 169. Verify agent systems are wired correctly after reload
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Verify agent systems are wired correctly after reload. Check .claude/ and .opencode/ have appropriate task types available so the right subagents are called by task type, and agents load an index with correct context files.
+
+---
 
 ### 168. Verify core agent system loading without extensions
 - **Effort**: TBD
