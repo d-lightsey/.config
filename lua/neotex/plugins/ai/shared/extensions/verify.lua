@@ -160,7 +160,7 @@ end
 --- @param config table Extension system configuration
 --- @return boolean injected True if section marker found
 local function verify_section_injection(extension_name, target_dir, config)
-  local main_md_path = target_dir .. "/" .. config.main_config_file
+  local main_md_path = target_dir .. "/" .. config.config_file
 
   if not file_exists(main_md_path) then
     return false
@@ -299,7 +299,7 @@ function M.verify_extension(extension_name, extension_dir, target_dir, config)
   local section_ok = verify_section_injection(extension_name, target_dir, config)
   if not section_ok then
     verification.section = { passed = false }
-    table.insert(verification.errors, "Section not injected into " .. config.main_config_file)
+    table.insert(verification.errors, "Section not injected into " .. config.config_file)
   end
 
   -- Verify index merge
