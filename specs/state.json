@@ -4,12 +4,13 @@
     {
       "project_number": 169,
       "project_name": "verify_agent_systems_wired_after_reload",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-10T19:14:19Z",
-      "last_updated": "2026-03-10T20:15:00Z",
-      "session_id": "sess_1773171356_55f741",
+      "last_updated": "2026-03-10T21:00:00Z",
+      "session_id": "sess_1773171815_2953a4",
       "researched": "2026-03-10T20:15:00Z",
+      "planned": "2026-03-10T21:00:00Z",
       "artifacts": [
         {
           "path": "specs/169_verify_agent_systems_wired_after_reload/reports/research-001.md",
@@ -20,6 +21,11 @@
           "path": "specs/169_verify_agent_systems_wired_after_reload/reports/research-002.md",
           "type": "research",
           "summary": "Supplemental research on extension loading architecture: core vs extended comparison, 27 agents/28 skills/5 rules to remove from core, index.json path inconsistencies, loader improvements"
+        },
+        {
+          "path": "specs/169_verify_agent_systems_wired_after_reload/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "6-phase plan to establish clean core/extension boundary, fix index.json as adaptive registry, and add post-load verification"
         }
       ]
     },
