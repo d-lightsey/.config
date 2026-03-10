@@ -110,7 +110,7 @@ Research identified three critical issues with the agent systems wiring: (1) ext
 
 ---
 
-### Phase 3: Fix index.json as Adaptive Registry [NOT STARTED]
+### Phase 3: Fix index.json as Adaptive Registry [COMPLETED]
 
 - **Goal:** Rebuild index.json to contain only core entries with canonical paths, fix extension index-entries.json files to use correct path format, and ensure the merge module handles the clean union correctly.
 
