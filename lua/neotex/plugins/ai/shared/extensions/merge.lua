@@ -128,17 +128,25 @@ local function get_section_markers(section_id)
   return start_marker, end_marker
 end
 
---- Inject a section into a config markdown file (CLAUDE.md or OPENCODE.md)
+--- Inject a section into a config markdown file (CLAUDE.md, AGENTS.md, or OPENCODE.md)
 --- @param target_path string Path to config file
 --- @param section_content string Section content (without markers)
 --- @param section_id string Section identifier
 --- @return boolean success True if injection succeeded
 --- @return table|nil tracked Tracking data for unmerge
 function M.inject_section(target_path, section_content, section_id)
-  -- Create file if it doesn't exist
+  -- Create file if it doesn't exist, seeding from sibling README.md to preserve
+  -- core content. This defends against content loss when extensions are reloaded
+  -- and the target file has been deleted or is missing.
   if vim.fn.filereadable(target_path) ~= 1 then
     helpers.ensure_directory(vim.fn.fnamemodify(target_path, ":h"))
-    write_file_string(target_path, "")
+    local target_dir = vim.fn.fnamemodify(target_path, ":h")
+    local readme_path = target_dir .. "/README.md"
+    local seed_content = ""
+    if vim.fn.filereadable(readme_path) == 1 then
+      seed_content = read_file_string(readme_path) or ""
+    end
+    write_file_string(target_path, seed_content)
   end
 
   -- Backup the file
