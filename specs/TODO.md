@@ -84,11 +84,12 @@ This ensures the system uses the default model without provider lookup failures.
 
 ### 175. Port memory/ extension to .claude/ agent system
 - **Effort**: TBD
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Research Started**: 2026-03-10
+- **Research Completed**: 2026-03-11
 - **Language**: meta
 - **Dependencies**: Task 176
-- **Research**: [research-001.md](175_port_memory_extension_to_claude/reports/research-001.md), [research-002.md](175_port_memory_extension_to_claude/reports/research-002.md) - Updated for Vision architecture changes
+- **Research**: [research-001.md](175_port_memory_extension_to_claude/reports/research-001.md), [research-002.md](175_port_memory_extension_to_claude/reports/research-002.md), [research-003.md](175_port_memory_extension_to_claude/reports/research-003.md) - Claude Code MCP and Obsidian integration
 - **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 - **Implementation Started**: 2026-03-10
 - **Implementation Completed**: 2026-03-10

@@ -122,12 +122,12 @@
     {
       "project_number": 175,
       "project_name": "port_memory_extension_to_claude",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-10T23:56:29Z",
-      "last_updated": "2026-03-11T03:03:28Z",
+      "last_updated": "2026-03-11T03:11:12Z",
       "session_id": "sess_1773198186_20b539",
-      "researched": "2026-03-11T01:23:29Z",
+      "researched": "2026-03-11T03:11:12Z",
       "artifacts": [
         {
           "path": "specs/175_port_memory_extension_to_claude/reports/research-001.md",
@@ -138,6 +138,11 @@
           "path": "specs/175_port_memory_extension_to_claude/reports/research-002.md",
           "type": "research",
           "summary": "Updated research incorporating Vision architecture changes - memory vault now at .memory/ instead of .opencode/memory/"
+        },
+        {
+          "path": "specs/175_port_memory_extension_to_claude/reports/research-003.md",
+          "type": "research",
+          "summary": "Research report covering Claude Code MCP differences, obsidian-claude-code-mcp alternative, task 179 data directory bug status, and updated porting strategy with 7 key findings"
         }
       ]
     },

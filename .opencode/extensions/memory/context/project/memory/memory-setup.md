@@ -5,7 +5,7 @@ This guide explains how to set up the MCP (Model Context Protocol) server for ad
 ## Prerequisites
 
 - Obsidian desktop app installed (available at [obsidian.md](https://obsidian.md))
-- `.memory/` vault created
+- `.memory/` vault created (located at `.opencode/memory/` in this project)
 - Node.js/npm installed (for npx)
 
 ## Installation Steps
@@ -14,28 +14,43 @@ This guide explains how to set up the MCP (Model Context Protocol) server for ad
 
 1. Launch Obsidian desktop app
 2. Click "Open folder as vault"
-3. Select `.memory/` directory
+3. Navigate to `.opencode/memory/` and select it
 4. The vault should open successfully
 
-### 2. Install Obsidian CLI REST Plugin
+### 2. Install Local REST API Plugin
+
+The MCP server (`@dsebastien/obsidian-cli-rest-mcp`) connects to the **Local REST API** plugin by coddingtonbear.
 
 1. In Obsidian, open Settings (gear icon)
 2. Go to "Community Plugins"
-3. Turn off "Safe mode" if it's on
+3. Turn off "Safe mode" if prompted
 4. Click "Browse" community plugins
-5. Search for: "Obsidian CLI REST"
-6. Click "Install"
-7. Click "Enable"
+5. Search for: **"Local REST API"** (by coddingtonbear)
+6. Click "Install", then "Enable"
 
-### 3. Configure the Plugin
+### 3. Get the API Key
 
-1. In plugin settings, note the **API Key** (you'll need this)
-2. The default port is `27124` (change if there's a conflict)
-3. Keep Obsidian running - the MCP server connects to it
+1. Open the **Local REST API** plugin settings
+2. The API key is auto-generated and shown on the settings page
+3. Copy it — you'll need it in the next step
 
-### 4. Configure MCP Server
+### 4. Set the API Key as an Environment Variable
 
-Add to your Claude Code MCP settings (usually in `~/.claude/settings.json` or similar):
+The MCP server config uses `${OBSIDIAN_API_KEY}` (see `extensions/memory/settings-fragment.json`), so set it in your shell:
+
+**Fish** (`~/.config/fish/config.fish`):
+```fish
+set -gx OBSIDIAN_API_KEY "your-api-key-here"
+```
+
+**Bash/Zsh** (`~/.bashrc` or `~/.zshrc`):
+```bash
+export OBSIDIAN_API_KEY="your-api-key-here"
+```
+
+### 5. Enable the MCP Server in OpenCode
+
+Merge the MCP config from `extensions/memory/settings-fragment.json` into your project's `settings.json`:
 
 ```json
 {
@@ -44,7 +59,7 @@ Add to your Claude Code MCP settings (usually in `~/.claude/settings.json` or si
       "command": "npx",
       "args": ["-y", "@dsebastien/obsidian-cli-rest-mcp@latest"],
       "env": {
-        "OBSIDIAN_API_KEY": "your-api-key-here",
+        "OBSIDIAN_API_KEY": "${OBSIDIAN_API_KEY}",
         "OBSIDIAN_PORT": "27124"
       }
     }
@@ -52,19 +67,18 @@ Add to your Claude Code MCP settings (usually in `~/.claude/settings.json` or si
 }
 ```
 
-Replace `your-api-key-here` with the API key from Obsidian plugin settings.
+The `${OBSIDIAN_API_KEY}` placeholder is substituted from your environment at runtime — never hardcode the key in the config file.
 
-### 5. Test the Connection
+### 6. Test the Connection
 
-Test the MCP server:
 ```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" \
+curl -H "Authorization: Bearer $OBSIDIAN_API_KEY" \
   http://127.0.0.1:27124/vault/
 ```
 
-You should see a list of vault files.
+You should see a list of vault files. If Obsidian is not running, you'll get "connection refused".
 
-### 6. Test with OpenCode
+### 7. Test with OpenCode
 
 Run a memory-augmented research query:
 ```
@@ -91,8 +105,8 @@ If configured correctly, the system will:
 - **Solution**: Copy the correct API key from Obsidian plugin settings
 
 ### Plugin Not Found
-- **Cause**: Plugin not in community list
-- **Solution**: Ensure "Safe mode" is off and search again
+- **Cause**: Plugin not in community list, or searching wrong name
+- **Solution**: Ensure "Safe mode" is off; search for **"Local REST API"** by coddingtonbear
 
 ## MCP Tools Available
 
