@@ -8,13 +8,16 @@ next_project_number: 183
 
 ### 182. Fix Website opencode multi-extension agent dependency
 - **Effort**: 0.5-1 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Implementation Started**: 2026-03-11
+- **Implementation Completed**: 2026-03-11
 - **Language**: meta
 - **Dependencies**: None
 - **Planning Started**: 2026-03-11
 - **Planning Completed**: 2026-03-11
 - **Research**: [research-001.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-001.md), [research-002.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-002.md), [research-003.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-003.md) - Zero-overlap architecture
 - **Plan**: [implementation-003.md](182_fix_website_opencode_multi_extension_agent_dependency/plans/implementation-003.md) (zero-overlap)
+- **Summary**: [implementation-summary-20260311.md](182_fix_website_opencode_multi_extension_agent_dependency/summaries/implementation-summary-20260311.md)
 
 **Description**: Eliminate extension overlap: remove document-converter-agent from web extension (filetypes provides document-agent), keep neovim agents in nvim extension only, update Website opencode.json to remove unused agent references.
 

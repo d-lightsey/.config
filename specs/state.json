@@ -301,10 +301,10 @@
     {
       "project_number": 182,
       "project_name": "fix_website_opencode_multi_extension_agent_dependency",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-11T05:23:39Z",
-      "last_updated": "2026-03-11T18:19:18Z",
+      "last_updated": "2026-03-11T18:32:44Z",
       "researched": "2026-03-11T18:15:00Z",
       "artifacts": [
         {
@@ -326,11 +326,20 @@
           "path": "specs/182_fix_website_opencode_multi_extension_agent_dependency/plans/implementation-003.md",
           "type": "plan",
           "summary": "3-phase zero-overlap plan: remove document-converter from web, update Website opencode.json, verify"
+        },
+        {
+          "path": "specs/182_fix_website_opencode_multi_extension_agent_dependency/summaries/implementation-summary-20260311.md",
+          "type": "summary",
+          "summary": "Zero-overlap implementation: removed document-converter from web, updated Website opencode.json"
         }
       ],
       "planning": "2026-03-11T17:22:20Z",
-      "session_id": "sess_1773252892_8372d2",
-      "planned": "2026-03-11T18:19:18Z"
+      "session_id": "sess_1773253840_352e7b",
+      "planned": "2026-03-11T18:19:18Z",
+      "implementing": "2026-03-11T18:31:06Z",
+      "completed": "2026-03-11T18:32:44Z",
+      "completion_summary": "Eliminated extension overlap: removed document-converter-agent from web extension (filetypes provides document-agent), updated Website opencode.json. Extensions now have zero overlap.",
+      "claudemd_suggestions": "none"
     }
   ],
   "completed_projects": [],
