@@ -8,10 +8,11 @@ next_project_number: 178
 
 ### 177. Remove all model preferences from opencode system
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](177_remove_model_preferences_from_opencode/reports/research-001.md)
+- **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 
 **Description**: Remove all model preferences from the opencode agent system to fix ProviderModelNotFoundError when invoking planner-agent. The issue is that agent files (like planner-agent.md) specify `model: opus` in their frontmatter, but settings.json only has `"model": "sonnet"` with no `models` configuration section. This causes delegation to fail when the system cannot find a provider for "opus". Systematically remove all model preferences from:
 1. `.opencode/settings.json` - remove `"model": "sonnet"`
@@ -24,11 +25,12 @@ This ensures the system uses the default model without provider lookup failures.
 
 ### 176. Port Vision memory system changes to neovim configuration
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-10
 - **Research Completed**: 2026-03-10
 - **Planning Started**: 2026-03-11
 - **Planning Completed**: 2026-03-11
+- **Implementation Started**: 2026-03-11
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-002.md](176_port_vision_memory_system_changes_to_neovim/reports/research-002.md)
@@ -40,12 +42,13 @@ This ensures the system uses the default model without provider lookup failures.
 
 ### 175. Port memory/ extension to .claude/ agent system
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-10
 - **Research Completed**: 2026-03-10
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](175_port_memory_extension_to_claude/reports/research-001.md)
+- **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 
 **Description**: Port the memory/ extension included in .opencode/ over to .claude/ while respecting any differences that may exist for proper integration into the .claude/ agent system.
 
@@ -63,6 +66,7 @@ This ensures the system uses the default model without provider lookup failures.
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](174_study_opencode_memory_extension/reports/research-001.md)
+- **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 - **Plan**: [implementation-001.md](174_study_opencode_memory_extension/plans/implementation-001.md)
 - **Summary**: [implementation-summary-20260310.md](174_study_opencode_memory_extension/summaries/implementation-summary-20260310.md)
 
@@ -72,12 +76,13 @@ This ensures the system uses the default model without provider lookup failures.
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research Started**: 2026-02-13
 - **Research Completed**: 2026-02-13
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [research-001.md](087_investigate_wezterm_terminal_directory_change/reports/research-001.md)
+- **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 
 **Description**: Investigate why the terminal working directory changes to a project root when opening neovim sessions in wezterm from the home directory (~). Determine whether this behavior is caused by neovim or wezterm (configured in ~/.dotfiles/config/). Identify if any functionality depends on this behavior before modifying it. Goal is to avoid changing the terminal directory unless necessary.
 
@@ -93,6 +98,7 @@ This ensures the system uses the default model without provider lookup failures.
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [research-001.md](078_fix_himalaya_smtp_authentication_failure/reports/research-001.md)
+- **Plan**: [implementation-001.md](177_remove_model_preferences_from_opencode/plans/implementation-001.md)
 - **Plan**: [implementation-001.md](078_fix_himalaya_smtp_authentication_failure/plans/implementation-001.md)
 
 **Description**: Fix Gmail SMTP authentication failure when sending emails via Himalaya (<leader>me). Error: "Authentication failed: Code: 535, Enhanced code: 5.7.8, Message: Username and Password not accepted". The error occurs with TLS connection attempts and persists through multiple retry attempts. Identify and fix the root cause of the SMTP credential configuration.
@@ -101,7 +107,7 @@ This ensures the system uses the default model without provider lookup failures.
 
 ### 72. Fix himalaya sidebar help showing leader keybindings that conflict with toggle selection
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: neovim
 - **Dependencies**: None
 

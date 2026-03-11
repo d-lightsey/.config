@@ -155,12 +155,12 @@ Original behavior for adding arbitrary text or files:
 <state_management>
   <reads>
     - specs/{NNN}_*/ (task mode - artifact directories)
-    - .opencode/memory/30-Templates/memory-template.md
-    - .opencode/memory/10-Memories/ (for ID generation)
+    - .memory/30-Templates/memory-template.md
+    - .memory/10-Memories/ (for ID generation)
   </reads>
 
   <writes>
-    - .opencode/memory/10-Memories/*.md (new memory files)
-    - .opencode/memory/20-Indices/index.md (updated links)
+    - .memory/10-Memories/*.md (new memory files)
+    - .memory/20-Indices/index.md (updated links)
   </writes>
 </state_management>

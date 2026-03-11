@@ -13,8 +13,8 @@ Direct execution skill for memory vault management. Handles memory creation, sim
 ## Context References
 
 Reference (do not load eagerly):
-- Path: `@.opencode/memory/30-Templates/memory-template.md` - Memory template
-- Path: `@.opencode/memory/20-Indices/index.md` - Memory index
+- Path: `@.memory/30-Templates/memory-template.md` - Memory template
+- Path: `@.memory/20-Indices/index.md` - Memory index
 - Path: `@.opencode/context/project/memory/learn-usage.md` - Usage guide
 
 ---
@@ -53,7 +53,7 @@ fi
 ```bash
 # Get today's date and count existing memories
 today=$(date +%Y-%m-%d)
-count=$(ls -1 .opencode/memory/10-Memories/MEM-${today}-*.md 2>/dev/null | wc -l)
+count=$(ls -1 .memory/10-Memories/MEM-${today}-*.md 2>/dev/null | wc -l)
 next_num=$(printf "%03d" $((count + 1)))
 memory_id="MEM-${today}-${next_num}"
 ```
@@ -78,7 +78,7 @@ keywords=$(echo "$content" | tr ' ' '\n' | grep -E '^[a-zA-Z]{4,}$' | sort -u | 
 
 # Search existing memories
 for keyword in $keywords; do
-  grep -l -i "$keyword" .opencode/memory/10-Memories/*.md 2>/dev/null
+  grep -l -i "$keyword" .memory/10-Memories/*.md 2>/dev/null
 done | sort | uniq -c | sort -rn | head -3
 ```
 
@@ -138,7 +138,7 @@ Similar Memories Found:
 # Generate slug from title
 slug=$(echo "$title" | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | tr -cd 'a-z0-9-' | cut -c1-50)
 filename="MEM-${today}-${next_num}-${slug}.md"
-filepath=".opencode/memory/10-Memories/${filename}"
+filepath=".memory/10-Memories/${filename}"
 
 # Create memory file from template
 cat > "$filepath" << EOF
@@ -182,7 +182,7 @@ Add link to new memory in index.md:
 
 ```bash
 # Append to index
-echo "- [${title}](../10-Memories/${filename})" >> .opencode/memory/20-Indices/index.md
+echo "- [${title}](../10-Memories/${filename})" >> .memory/20-Indices/index.md
 ```
 
 ### Step 8: Return Result
@@ -302,7 +302,7 @@ For each non-skipped artifact:
 category=$selected_classification
 today=$(date +%Y-%m-%d)
 
-cat > ".opencode/memory/10-Memories/${filename}" << EOF
+cat > ".memory/10-Memories/${filename}" << EOF
 ---
 id: ${memory_id}
 title: "${title}"
@@ -381,7 +381,7 @@ No memories created (all artifacts classified as SKIP)
 After successful memory creation:
 
 ```bash
-git add .opencode/memory/
+git add .memory/
 git commit -m "memory: add ${memory_id}
 
 Session: ${session_id}
