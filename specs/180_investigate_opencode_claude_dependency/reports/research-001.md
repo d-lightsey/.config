@@ -82,14 +82,49 @@ The nvim config (`~/.config/nvim/.opencode/`) has:
 
 **Note**: The agents are in `agent/subagents/` (OpenCode convention), not `agents/`.
 
-## Root Cause
+## Root Cause (UPDATED)
 
-The Website repository's `opencode.json` was created with agent references that assume the full opencode agent system is present. However:
+**Original analysis was incorrect.** The agents DO exist - the paths in `opencode.json` are wrong.
 
-1. **The memory extension only provides memory-specific functionality** (commands, skills, context, data)
-2. **The memory extension does NOT provide general-purpose agents** (web-research, neovim-research, etc.)
-3. **The extension loader only copies what the manifest declares in `provides`**
-4. **No extension currently exists that provides the agents** the Website repo expects
+### The Problem
+
+The `opencode.json` references paths like:
+```
+{file:.opencode/agents/web-research.md}
+```
+
+But agents are actually installed to:
+```
+.opencode/agent/subagents/web-research-agent.md
+```
+
+**Two discrepancies:**
+1. **Directory path**: `agents/` vs `agent/subagents/`
+2. **Filename**: `web-research.md` vs `web-research-agent.md` (missing `-agent` suffix)
+
+### What's Actually Installed
+
+The Website repo has these agents installed via extensions:
+- `web-research-agent.md` (from web extension)
+- `web-implementation-agent.md` (from web extension)
+- `general-research-agent.md` (core)
+- `general-implementation-agent.md` (core)
+- `planner-agent.md` (core)
+- `meta-builder-agent.md` (core)
+- `code-reviewer-agent.md` (core)
+
+The `web` extension IS loaded (per `extensions.json`) and agents ARE present in `.opencode/agent/subagents/`.
+
+### Why Original Analysis Was Wrong
+
+The original research concluded:
+> "No extension currently exists that provides the agents the Website repo expects"
+
+This was incorrect because:
+1. Multiple extensions DO provide agents (web, nvim, etc.)
+2. The `web` extension IS loaded in Website repo
+3. The agents ARE installed to the correct OpenCode location
+4. The `opencode.json` simply has the **wrong file paths**
 
 ## Attempted Solution (Incorrect)
 
@@ -136,73 +171,43 @@ All agent files referenced in `opencode.json`:
 - `.opencode/agents/meta-builder.md`
 - `.opencode/agents/document-converter.md`
 
-## Options for Resolution
+## Resolution (SIMPLIFIED)
 
-### Option 1: Create a Separate "Core" Extension
+### Fix opencode.json Paths
 
-Create a new extension that provides the general-purpose agents:
-- Extension name: `core-agents` or `base-system`
-- Provides: all the agents the Website repo expects
-- Loaded before or alongside the memory extension
+The fix is straightforward - update `Website/opencode.json` to use correct paths:
 
-**Pros**:
-- Keeps concerns separated (memory vs. general agents)
-- Allows repos to opt-in to general agents
-- Clean architecture
+| Current (Broken) | Correct Path |
+|------------------|--------------|
+| `.opencode/agents/web-research.md` | `.opencode/agent/subagents/web-research-agent.md` |
+| `.opencode/agents/web-implementation.md` | `.opencode/agent/subagents/web-implementation-agent.md` |
+| `.opencode/agents/neovim-research.md` | `.opencode/agent/subagents/neovim-research-agent.md` |
+| `.opencode/agents/neovim-implementation.md` | `.opencode/agent/subagents/neovim-implementation-agent.md` |
+| `.opencode/agents/general-research.md` | `.opencode/agent/subagents/general-research-agent.md` |
+| `.opencode/agents/general-implementation.md` | `.opencode/agent/subagents/general-implementation-agent.md` |
+| `.opencode/agents/task-planner.md` | `.opencode/agent/subagents/planner-agent.md` |
+| `.opencode/agents/meta-builder.md` | `.opencode/agent/subagents/meta-builder-agent.md` |
+| `.opencode/agents/document-converter.md` | (needs filetypes extension loaded) |
 
-**Cons**:
-- Requires creating a new extension
-- Website repo would need to load both extensions
+### Additional Extension Needed
 
-### Option 2: Modify Website Repo opencode.json
+For `neovim-research-agent.md` and `neovim-implementation-agent.md`, the **nvim extension** must be loaded. Currently only `web` and `memory` extensions are active.
 
-Remove the agent file references from `Website/opencode.json` and define agents inline or not at all.
+### For document-converter
 
-**Pros**:
-- Immediate fix
-- No changes needed to nvim config
-
-**Cons**:
-- Website repo loses agent functionality
-- Other repos with similar configs will have same issue
-
-### Option 3: Add Agents to Memory Extension (NOT RECOMMENDED)
-
-Add all missing agent files to the memory extension manifest.
-
-**Pros**:
-- Single extension to load
-- Works immediately
-
-**Cons**:
-- Violates separation of concerns
-- Memory extension becomes bloated
-- Agents unrelated to memory functionality
-
-### Option 4: Change How Extensions Work
-
-Modify the extension system to always copy base agents from nvim config, not just from extensions.
-
-**Pros**:
-- Transparent to users
-- Works for all repos
-
-**Cons**:
-- Complex implementation
-- May cause conflicts
-- Breaks extension isolation model
+The `filetypes` extension provides `document-agent.md`. Either:
+- Load the filetypes extension
+- Or change the reference to use the filetypes agent path
 
 ## Recommendations
 
-1. **Short-term**: Fix the Website repo by creating the missing agent files directly in `Website/.opencode/agents/`, or modify `opencode.json` to not reference them.
+1. **Immediate fix**: Update all path references in `Website/opencode.json` to use `.opencode/agent/subagents/` and add `-agent` suffix to filenames.
 
-2. **Long-term**: Create a "core" or "base" extension that provides general-purpose agents, separate from the memory extension. This extension would provide:
-   - web-research, neovim-research, general-research agents
-   - web-implementation, neovim-implementation, general-implementation agents
-   - task-planner, meta-builder agents
-   - etc.
+2. **Load nvim extension**: If neovim development is needed, load the nvim extension via `<leader>ao`.
 
-3. **Update documentation**: Document that the memory extension only provides memory-specific functionality, and additional extensions may be needed for full agent support.
+3. **Load filetypes extension**: If document conversion is needed, load the filetypes extension.
+
+4. **No new extensions needed**: The architecture is correct - extensions provide agents, they just need to be loaded and referenced correctly.
 
 ## Related Issues
 
@@ -217,16 +222,27 @@ Modify the extension system to always copy base agents from nvim config, not jus
 4. `/home/benjamin/.config/nvim/lua/neotex/plugins/ai/shared/extensions/config.lua` - Extension configuration
 5. `/home/benjamin/.config/nvim/.opencode/agent/subagents/` - Core agents in nvim config
 
-## Conclusion
+## Conclusion (CORRECTED)
 
-The issue is an architectural mismatch: the Website repo expects a full opencode agent system, but the memory extension only provides memory-specific functionality. The extension system works correctly - it copies exactly what the manifest declares. The solution requires either:
+The issue is **NOT** an architectural mismatch - it's a simple **path configuration error** in `opencode.json`.
 
-1. Creating the missing agents in the Website repo directly
-2. Creating a separate extension for general-purpose agents
-3. Updating the Website repo configuration to not reference non-existent agents
+**What's working correctly:**
+- Extension system loads agents to correct location (`.opencode/agent/subagents/`)
+- Web extension provides web-research-agent and web-implementation-agent
+- Core agents (general-research, planner, meta-builder) are installed
 
-The memory extension itself is working as designed and should not be modified to include unrelated agents.
+**What's broken:**
+- `opencode.json` references wrong directory (`agents/` vs `agent/subagents/`)
+- `opencode.json` uses wrong filenames (missing `-agent` suffix)
+
+**Fix Required:**
+1. Update path references in `Website/opencode.json`
+2. Load additional extensions if needed (nvim, filetypes)
+
+The memory extension IS working as designed. The error message about missing agents is due to incorrect path references, not missing functionality.
 
 ---
 
-**Next Steps**: Decide which resolution option to pursue (recommend Option 1 or 2).
+**Next Steps**:
+1. Fix paths in `Website/opencode.json` (10 minutes)
+2. Optionally load nvim/filetypes extensions for full agent coverage
