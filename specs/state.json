@@ -304,13 +304,18 @@
       "status": "planned",
       "language": "meta",
       "created": "2026-03-11T05:23:39Z",
-      "last_updated": "2026-03-11T17:38:11Z",
-      "researched": "2026-03-11T05:23:39Z",
+      "last_updated": "2026-03-11T18:15:00Z",
+      "researched": "2026-03-11T18:15:00Z",
       "artifacts": [
         {
           "path": "specs/182_fix_website_opencode_multi_extension_agent_dependency/reports/research-001.md",
           "type": "research",
           "summary": "Root cause: opencode.json uses {file:...} references to extension-managed agents; every core reload removes them, requiring manual reload of web + nvim + memory extensions"
+        },
+        {
+          "path": "specs/182_fix_website_opencode_multi_extension_agent_dependency/reports/research-002.md",
+          "type": "research",
+          "summary": "Extension overlap analysis and dependency management pattern comparison across 5 industry approaches; confirms self-contained approach (Option B) is appropriate at current scale"
         },
         {
           "path": "specs/182_fix_website_opencode_multi_extension_agent_dependency/plans/implementation-002.md",
@@ -319,7 +324,7 @@
         }
       ],
       "planning": "2026-03-11T17:22:20Z",
-      "session_id": "sess_1773249706_99e8fa",
+      "session_id": "sess_1773252027_bc0c2e",
       "planned": "2026-03-11T17:38:11Z"
     }
   ],
