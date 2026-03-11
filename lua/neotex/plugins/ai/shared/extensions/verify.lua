@@ -154,13 +154,22 @@ local function verify_context(extension_dir, target_dir)
   return results
 end
 
---- Verify EXTENSION.md section was injected into main CLAUDE.md/OPENCODE.md
+--- Verify EXTENSION.md section was injected into main CLAUDE.md/OPENCODE.md/AGENTS.md
+--- Uses the manifest's actual merge target path if available, falling back to config.config_file
 --- @param extension_name string Extension name
 --- @param target_dir string Target base directory
 --- @param config table Extension system configuration
+--- @param manifest table|nil Extension manifest (used to find actual merge target)
 --- @return boolean injected True if section marker found
-local function verify_section_injection(extension_name, target_dir, config)
-  local main_md_path = target_dir .. "/" .. config.config_file
+local function verify_section_injection(extension_name, target_dir, config, manifest)
+  -- Prefer the manifest's declared merge target over the config default
+  local main_md_path
+  local merge_key = config.merge_target_key
+  if manifest and merge_key and manifest.merge_targets and manifest.merge_targets[merge_key] then
+    main_md_path = target_dir .. "/../" .. manifest.merge_targets[merge_key].target
+  else
+    main_md_path = target_dir .. "/" .. config.config_file
+  end
 
   if not file_exists(main_md_path) then
     return false
@@ -295,11 +304,15 @@ function M.verify_extension(extension_name, extension_dir, target_dir, config)
     end
   end
 
-  -- Verify section injection
-  local section_ok = verify_section_injection(extension_name, target_dir, config)
+  -- Verify section injection (pass manifest so it can check the actual merge target)
+  local section_ok = verify_section_injection(extension_name, target_dir, config, manifest)
   if not section_ok then
     verification.section = { passed = false }
-    table.insert(verification.errors, "Section '" .. (config.section_prefix or "extension_") .. extension_name .. "' not injected into " .. config.config_file)
+    local merge_key = config.merge_target_key
+    local actual_target = (manifest and merge_key and manifest.merge_targets and manifest.merge_targets[merge_key])
+      and manifest.merge_targets[merge_key].target
+      or config.config_file
+    table.insert(verification.errors, "Section '" .. (config.section_prefix or "extension_") .. extension_name .. "' not injected into " .. actual_target)
   end
 
   -- Verify index merge
