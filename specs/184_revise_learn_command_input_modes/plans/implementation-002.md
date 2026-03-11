@@ -134,7 +134,7 @@ Research-002 identified six major improvements over the original design: (1) MCP
 
 ---
 
-### Phase 4: MCP Memory Search and Deduplication [NOT STARTED]
+### Phase 4: MCP Memory Search and Deduplication [COMPLETED]
 
 **Goal**: Add MCP-based memory search to SKILL.md that matches each content map segment against existing memories, scores overlap, and classifies the relationship as UPDATE, EXTEND, or CREATE. This reuses the same search mechanism as /research --remember.
 
