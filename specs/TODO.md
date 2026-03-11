@@ -7,10 +7,14 @@ next_project_number: 186
 ## Tasks
 
 ### 185. Remove extension-specific commands from core agent system
-- **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Effort**: 2-3 hours
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-11
+- **Research Completed**: 2026-03-11
+- **Planning Started**: 2026-03-11
+- **Planning Completed**: 2026-03-11
 - **Research**: [research-001.md](185_remove_extension_commands_from_core_system/reports/research-001.md)
+- **Plan**: [implementation-001.md](185_remove_extension_commands_from_core_system/plans/implementation-001.md)
 - **Language**: meta
 - **Dependencies**: None
 
