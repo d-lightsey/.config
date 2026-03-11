@@ -14,7 +14,7 @@ next_project_number: 183
 - **Planning Started**: 2026-03-11
 - **Planning Completed**: 2026-03-11
 - **Research**: [research-001.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-001.md), [research-002.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-002.md), [research-003.md](182_fix_website_opencode_multi_extension_agent_dependency/reports/research-003.md) - Zero-overlap architecture
-- **Plan**: [implementation-002.md](182_fix_website_opencode_multi_extension_agent_dependency/plans/implementation-002.md) (needs revision)
+- **Plan**: [implementation-003.md](182_fix_website_opencode_multi_extension_agent_dependency/plans/implementation-003.md) (zero-overlap)
 
 **Description**: Eliminate extension overlap: remove document-converter-agent from web extension (filetypes provides document-agent), keep neovim agents in nvim extension only, update Website opencode.json to remove unused agent references.
 
