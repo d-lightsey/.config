@@ -64,19 +64,12 @@ Execute implementation plan with automatic resume support by delegating to the a
 
 | Language | Skill to Invoke |
 |----------|-----------------|
-| `neovim` | `skill-neovim-implementation` |
-| `lean4` | `skill-lean-implementation` |
-| `latex` | `skill-latex-implementation` |
-| `typst` | `skill-typst-implementation` |
-| `python` | `skill-python-implementation` |
-| `z3` | `skill-z3-implementation` |
-| `nix` | `skill-nix-implementation` |
-| `web` | `skill-web-implementation` |
-| `epidemiology` | `skill-epidemiology-implementation` |
-| `formal`, `logic`, `math`, `physics` | `skill-implementer` |
 | `general`, `meta`, `markdown` | `skill-implementer` |
+| `formal`, `logic`, `math`, `physics` | `skill-implementer` |
 
-**Note**: Extension skills are located in `.claude/extensions/{ext}/skills/`. Claude Code should automatically discover these skills.
+**Extension Languages**: When extensions are loaded (via `<leader>ac` in Neovim), additional language-specific skills become available. Extension skills follow the pattern `skill-{lang}-implementation` and are discovered automatically. See `.claude/extensions/*/manifest.json` for available extensions.
+
+**Note**: Extension skills are located in `.claude/extensions/{ext}/skills/`. Claude Code should automatically discover these skills when extensions are installed.
 
 **Invoke the Skill tool NOW** with:
 ```

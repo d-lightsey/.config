@@ -1,0 +1,1 @@
+../extensions/lean/agents/lean-implementation-agent.md

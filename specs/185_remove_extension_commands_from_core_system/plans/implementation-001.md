@@ -1,7 +1,7 @@
 # Implementation Plan: Task #185
 
 - **Task**: 185 - Remove extension commands from core system
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2-3 hours
 - **Dependencies**: None
 - **Research Inputs**: [research-001.md](../reports/research-001.md)
@@ -48,7 +48,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ## Implementation Phases
 
-### Phase 1: Create Extension Command Directories and Move Commands [NOT STARTED]
+### Phase 1: Create Extension Command Directories and Move Commands [COMPLETED]
 
 **Goal**: Move 7 commands from core to their respective extension directories
 
@@ -81,7 +81,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ---
 
-### Phase 2: Remove Duplicate Core Skill [NOT STARTED]
+### Phase 2: Remove Duplicate Core Skill [COMPLETED]
 
 **Goal**: Remove skill-tag from core since it already exists in the web extension
 
@@ -102,7 +102,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ---
 
-### Phase 3: Update Extension Installer and Uninstaller [NOT STARTED]
+### Phase 3: Update Extension Installer and Uninstaller [COMPLETED]
 
 **Goal**: Add command symlink support to `install-extension.sh` and `uninstall-extension.sh`
 
@@ -125,7 +125,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ---
 
-### Phase 4: Simplify Routing Tables [NOT STARTED]
+### Phase 4: Simplify Routing Tables [COMPLETED]
 
 **Goal**: Reduce routing tables in research.md and implement.md to core-only entries
 
@@ -149,7 +149,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ---
 
-### Phase 5: Update CLAUDE.md and Documentation [NOT STARTED]
+### Phase 5: Update CLAUDE.md and Documentation [COMPLETED]
 
 **Goal**: Update system documentation to reflect the new core-only command and skill lists
 
@@ -173,7 +173,7 @@ Research identified 7 commands to move (convert, deck, slides, table to filetype
 
 ---
 
-### Phase 6: Verification and Testing [NOT STARTED]
+### Phase 6: Verification and Testing [COMPLETED]
 
 **Goal**: Validate the complete migration works end-to-end
 

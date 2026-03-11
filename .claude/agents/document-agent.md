@@ -1,0 +1,1 @@
+../extensions/filetypes/agents/document-agent.md

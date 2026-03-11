@@ -71,6 +71,39 @@ fi
 
 log_info "Uninstalling extension: $EXT_NAME"
 
+# Function to remove command symlinks
+remove_commands() {
+  local commands_dir="$EXT_DIR/commands"
+  local target_dir="$CLAUDE_DIR/commands"
+
+  if [ ! -d "$commands_dir" ]; then
+    log_info "No commands directory found, skipping command symlink removal"
+    return 0
+  fi
+
+  for cmd in "$commands_dir"/*.md; do
+    if [ -f "$cmd" ]; then
+      local cmd_name=$(basename "$cmd")
+      local target="$target_dir/$cmd_name"
+
+      if [ -L "$target" ]; then
+        # Check if symlink points to this extension
+        local current_target=$(readlink "$target")
+        if [[ "$current_target" == *"$EXT_NAME"* ]]; then
+          rm "$target"
+          log_info "Removed command symlink: $cmd_name"
+        else
+          log_warn "Command symlink points elsewhere, not removing: $cmd_name"
+        fi
+      elif [ -f "$target" ]; then
+        log_warn "Command is a file (not a symlink), not removing: $cmd_name"
+      else
+        log_info "Command symlink not found: $cmd_name"
+      fi
+    fi
+  done
+}
+
 # Function to remove skill symlinks
 remove_skills() {
   local skills_dir="$EXT_DIR/skills"
@@ -194,6 +227,7 @@ remove_index_entries() {
 }
 
 # Main uninstallation
+remove_commands
 remove_skills
 remove_agents
 remove_index_entries

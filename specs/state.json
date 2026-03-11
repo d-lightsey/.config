@@ -5,11 +5,11 @@
     {
       "project_number": 185,
       "project_name": "remove_extension_commands_from_core_system",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-11T21:42:53Z",
-      "last_updated": "2026-03-11T21:59:58Z",
-      "session_id": "sess_1773266109_d2079a",
+      "last_updated": "2026-03-11T22:14:59Z",
+      "session_id": "sess_1773266942_7605e4",
       "researched": "2026-03-11T21:51:09Z",
       "artifacts": [
         {
@@ -21,9 +21,17 @@
           "path": "specs/185_remove_extension_commands_from_core_system/plans/implementation-001.md",
           "type": "plan",
           "summary": "6-phase implementation plan to move 7 extension commands and 1 duplicate skill from core to extensions, simplify routing tables, and update extension installer"
+        },
+        {
+          "path": "specs/185_remove_extension_commands_from_core_system/summaries/implementation-summary-20260311.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "planned": "2026-03-11T21:59:58Z"
+      "planned": "2026-03-11T21:59:58Z",
+      "completed": "2026-03-11T22:14:59Z",
+      "completion_summary": "Moved 7 extension-specific commands to their respective extensions, removed duplicate skill-tag from core, added command symlink support to extension installer/uninstaller, and simplified routing tables to core-only entries.",
+      "claudemd_suggestions": "Added markdown to core language routing table in .claude/CLAUDE.md, simplified routing tables in commands/research.md and commands/implement.md"
     },
     {
       "project_number": 184,

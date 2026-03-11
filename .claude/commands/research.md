@@ -49,19 +49,11 @@ Conduct research for a task by delegating to the appropriate research skill/suba
 
 | Language | Skill to Invoke |
 |----------|-----------------|
-| `neovim` | `skill-neovim-research` |
-| `lean4` | `skill-lean-research` |
-| `latex` | `skill-latex-research` |
-| `typst` | `skill-typst-research` |
-| `python` | `skill-python-research` |
-| `z3` | `skill-z3-research` |
-| `nix` | `skill-nix-research` |
-| `web` | `skill-web-research` |
-| `epidemiology` | `skill-epidemiology-research` |
-| `formal`, `logic`, `math`, `physics` | `skill-formal-research` |
 | `general`, `meta`, `markdown` | `skill-researcher` |
 
-**Note**: Extension skills are located in `.claude/extensions/{ext}/skills/`. Claude Code should automatically discover these skills.
+**Extension Languages**: When extensions are loaded (via `<leader>ac` in Neovim), additional language-specific skills become available. Extension skills follow the pattern `skill-{lang}-research` and are discovered automatically. See `.claude/extensions/*/manifest.json` for available extensions.
+
+**Note**: Extension skills are located in `.claude/extensions/{ext}/skills/`. Claude Code should automatically discover these skills when extensions are installed.
 
 **Invoke the Skill tool NOW** with:
 ```

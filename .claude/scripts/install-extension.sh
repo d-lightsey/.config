@@ -72,6 +72,42 @@ fi
 
 log_info "Installing extension: $EXT_NAME"
 
+# Function to create symlinks for commands
+install_commands() {
+  local commands_dir="$EXT_DIR/commands"
+  local target_dir="$CLAUDE_DIR/commands"
+
+  if [ ! -d "$commands_dir" ]; then
+    log_info "No commands directory found, skipping command symlinks"
+    return 0
+  fi
+
+  for cmd in "$commands_dir"/*.md; do
+    if [ -f "$cmd" ]; then
+      local cmd_name=$(basename "$cmd")
+      local target="$target_dir/$cmd_name"
+
+      if [ -L "$target" ]; then
+        # Already a symlink, check if it points to the right place
+        local current_target=$(readlink "$target")
+        local expected_target="../extensions/$EXT_NAME/commands/$cmd_name"
+        if [ "$current_target" = "$expected_target" ]; then
+          log_info "Command symlink already exists: $cmd_name"
+        else
+          log_warn "Command symlink exists but points elsewhere: $cmd_name"
+        fi
+      elif [ -f "$target" ]; then
+        log_warn "Command file exists (not a symlink): $cmd_name"
+      else
+        # Create symlink
+        local rel_path="../extensions/$EXT_NAME/commands/$cmd_name"
+        ln -s "$rel_path" "$target"
+        log_info "Created command symlink: $cmd_name -> $rel_path"
+      fi
+    fi
+  done
+}
+
 # Function to create symlinks for skills
 install_skills() {
   local skills_dir="$EXT_DIR/skills"
@@ -235,6 +271,7 @@ merge_index_entries() {
 }
 
 # Main installation
+install_commands
 install_skills
 install_agents
 merge_index_entries

@@ -57,6 +57,7 @@ specs/{NNN}_{SLUG}/
 |----------|----------------|---------------------|-------|
 | `general` | `skill-researcher` | `skill-implementer` | WebSearch, WebFetch, Read, Write, Edit, Bash |
 | `meta` | `skill-researcher` | `skill-implementer` | Read, Grep, Glob, Write, Edit |
+| `markdown` | `skill-researcher` | `skill-implementer` | Read, Write, Edit |
 
 **Extension Languages** (available when extensions are loaded via `<leader>ac`):
 

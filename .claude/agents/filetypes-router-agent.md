@@ -1,0 +1,1 @@
+../extensions/filetypes/agents/filetypes-router-agent.md

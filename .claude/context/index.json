@@ -1,6 +1,6 @@
 {
   "version": null,
-  "generated": "2026-03-10T19:56:40Z",
+  "generated": "2026-03-11T22:13:42Z",
   "entries": [
     {
       "path": "README.md",
@@ -239,6 +239,1130 @@
         ],
         "agents": [
           "meta-builder-agent"
+        ]
+      }
+    },
+    {
+      "path": "project/filetypes/tools/tool-detection.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Shared tool detection patterns for all filetypes agents",
+      "line_count": 180,
+      "load_when": {
+        "agents": [
+          "filetypes-router-agent",
+          "document-agent",
+          "spreadsheet-agent",
+          "presentation-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/tools/dependency-guide.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Platform-specific installation instructions for conversion tools",
+      "line_count": 120,
+      "load_when": {
+        "agents": [
+          "filetypes-router-agent",
+          "document-agent",
+          "spreadsheet-agent",
+          "presentation-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/tools/mcp-integration.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "MCP server integration patterns for format conversion",
+      "line_count": 80,
+      "load_when": {
+        "agents": [
+          "filetypes-router-agent",
+          "document-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/patterns/spreadsheet-tables.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Spreadsheet to LaTeX/Typst table conversion patterns",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "spreadsheet-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/patterns/presentation-slides.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Presentation extraction and slide generation patterns",
+      "line_count": 180,
+      "load_when": {
+        "agents": [
+          "presentation-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/README.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Filetypes extension overview and navigation",
+      "line_count": 60,
+      "load_when": {
+        "agents": [],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/patterns/pitch-deck-structure.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "YC pitch deck structure, slide content guidelines, and design principles",
+      "line_count": 253,
+      "load_when": {
+        "agents": [
+          "deck-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/filetypes/patterns/touying-pitch-deck-template.md",
+      "domain": "project",
+      "subdomain": "filetypes",
+      "topics": [],
+      "keywords": [],
+      "summary": "Touying 0.6.3 template for investor pitch decks with customization patterns",
+      "line_count": 396,
+      "load_when": {
+        "agents": [
+          "deck-agent"
+        ],
+        "languages": []
+      }
+    },
+    {
+      "path": "project/lean4/domain/mathlib-overview.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "mathlib",
+        "library"
+      ],
+      "keywords": [
+        "lean4",
+        "mathlib",
+        "library"
+      ],
+      "summary": "Mathlib library organization and key modules",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent",
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/domain/dependent-types.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "types",
+        "theory"
+      ],
+      "keywords": [
+        "lean4",
+        "types",
+        "theory"
+      ],
+      "summary": "Dependent type theory foundations in Lean 4",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent",
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/domain/key-mathematical-concepts.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "math",
+        "concepts"
+      ],
+      "keywords": [
+        "lean4",
+        "math",
+        "concepts"
+      ],
+      "summary": "Key mathematical concepts in Lean 4 type theory",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/domain/lean4-syntax.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "syntax",
+        "metaprogramming"
+      ],
+      "keywords": [
+        "lean4",
+        "syntax",
+        "metaprogramming"
+      ],
+      "summary": "Advanced Lean 4 syntax and metaprogramming",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent",
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/patterns/tactic-patterns.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "proofs",
+        "tactics"
+      ],
+      "keywords": [
+        "lean4",
+        "proofs",
+        "tactics"
+      ],
+      "summary": "Common proof patterns and tactics in Lean 4",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/standards/lean4-style-guide.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "style",
+        "conventions"
+      ],
+      "keywords": [
+        "lean4",
+        "style",
+        "conventions"
+      ],
+      "summary": "Lean 4 coding style and conventions",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/standards/proof-conventions-lean.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "proofs",
+        "conventions"
+      ],
+      "keywords": [
+        "lean4",
+        "proofs",
+        "conventions"
+      ],
+      "summary": "Lean-specific proof conventions and docstrings",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/standards/proof-debt-policy.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "sorry",
+        "debt"
+      ],
+      "keywords": [
+        "lean4",
+        "sorry",
+        "debt"
+      ],
+      "summary": "Sorry and axiom policy for Lean proofs",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/standards/proof-readability-criteria.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "readability",
+        "quality"
+      ],
+      "keywords": [
+        "lean4",
+        "readability",
+        "quality"
+      ],
+      "summary": "Guidelines for writing readable Lean proofs",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/tools/mcp-tools-guide.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "mcp",
+        "lsp"
+      ],
+      "keywords": [
+        "lean4",
+        "mcp",
+        "lsp"
+      ],
+      "summary": "Lean LSP MCP server tools reference",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent",
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/tools/aesop-integration.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "aesop",
+        "automation"
+      ],
+      "keywords": [
+        "lean4",
+        "aesop",
+        "automation"
+      ],
+      "summary": "Aesop automated theorem prover integration",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/tools/leansearch-api.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "search",
+        "api"
+      ],
+      "keywords": [
+        "lean4",
+        "search",
+        "api"
+      ],
+      "summary": "LeanSearch semantic search API integration",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/tools/loogle-api.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "search",
+        "types"
+      ],
+      "keywords": [
+        "lean4",
+        "search",
+        "types"
+      ],
+      "summary": "Loogle type pattern search API",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/tools/lsp-integration.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "lsp",
+        "integration"
+      ],
+      "keywords": [
+        "lean4",
+        "lsp",
+        "integration"
+      ],
+      "summary": "Lean 4 LSP server integration guide",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/agents/lean-implementation-flow.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "agent",
+        "implementation"
+      ],
+      "keywords": [
+        "lean4",
+        "agent",
+        "implementation"
+      ],
+      "summary": "Lean implementation agent execution flow",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/agents/lean-research-flow.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "agent",
+        "research"
+      ],
+      "keywords": [
+        "lean4",
+        "agent",
+        "research"
+      ],
+      "summary": "Lean research agent execution flow",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/operations/multi-instance-optimization.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "optimization",
+        "mcp"
+      ],
+      "keywords": [
+        "lean4",
+        "optimization",
+        "mcp"
+      ],
+      "summary": "Optimizing multiple Lean-LSP instances",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/processes/end-to-end-proof-workflow.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "workflow",
+        "proofs"
+      ],
+      "keywords": [
+        "lean4",
+        "workflow",
+        "proofs"
+      ],
+      "summary": "Complete proof development workflow",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/processes/project-structure-best-practices.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "project",
+        "structure"
+      ],
+      "keywords": [
+        "lean4",
+        "project",
+        "structure"
+      ],
+      "summary": "Lean 4 project organization best practices",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/templates/definition-template.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "template",
+        "definition"
+      ],
+      "keywords": [
+        "lean4",
+        "template",
+        "definition"
+      ],
+      "summary": "Template for Lean 4 definitions",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/templates/new-file-template.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "template",
+        "file"
+      ],
+      "keywords": [
+        "lean4",
+        "template",
+        "file"
+      ],
+      "summary": "Template for new Lean 4 files",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/templates/proof-structure-templates.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "template",
+        "proofs"
+      ],
+      "keywords": [
+        "lean4",
+        "template",
+        "proofs"
+      ],
+      "summary": "Templates for common proof structures",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/README.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "overview",
+        "navigation"
+      ],
+      "keywords": [
+        "lean4",
+        "overview",
+        "navigation"
+      ],
+      "summary": "Lean 4 extension overview and navigation",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-research-agent",
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/lean4/standards/proof-conventions.md",
+      "domain": "project",
+      "subdomain": "lean",
+      "topics": [
+        "lean4",
+        "proofs",
+        "conventions"
+      ],
+      "keywords": [
+        "lean4",
+        "proofs",
+        "conventions"
+      ],
+      "summary": "Lean proof conventions and best practices",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "lean-implementation-agent"
+        ],
+        "languages": [
+          "lean4"
+        ]
+      }
+    },
+    {
+      "path": "project/web/README.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Web context overview with directory structure and loading strategy",
+      "line_count": 110,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/domain/astro-framework.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Astro 5/6 framework reference with .astro file format and islands architecture",
+      "line_count": 287,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/domain/tailwind-v4.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Tailwind CSS v4 CSS-first configuration with @theme directive",
+      "line_count": 225,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/domain/cloudflare-pages.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Cloudflare Pages deployment platform and edge CDN reference",
+      "line_count": 203,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/domain/typescript-web.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "TypeScript configuration and patterns for type-safe Astro development",
+      "line_count": 304,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/patterns/astro-component.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Common patterns for building Astro components",
+      "line_count": 315,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/patterns/astro-layout.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Patterns for building layout components that wrap pages",
+      "line_count": 278,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/patterns/astro-content-collections.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Patterns for defining, querying, and rendering type-safe content collections",
+      "line_count": 317,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/patterns/tailwind-patterns.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "UI component patterns with Tailwind CSS v4",
+      "line_count": 200,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/patterns/accessibility-patterns.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Semantic HTML, ARIA, and keyboard navigation patterns",
+      "line_count": 200,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/standards/web-style-guide.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Naming conventions, structure, and coding standards",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/standards/performance-standards.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Core Web Vitals targets and performance optimization rules",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/standards/accessibility-standards.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "WCAG 2.2 AA compliance requirements",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tools/astro-cli-guide.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Astro CLI commands and development workflow",
+      "line_count": 120,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tools/pnpm-guide.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "pnpm package manager commands and best practices",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tools/cloudflare-deploy-guide.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Wrangler deployment workflow for Cloudflare Pages",
+      "line_count": 120,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tools/cicd-pipeline-guide.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "CI/CD pipeline configuration and deployment debugging",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tools/debugging-utilities.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "CLI debugging and optimization tools (optipng, httpie, dig, etc.)",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/templates/astro-page-template.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Page boilerplate variations",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/templates/astro-component-template.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Component boilerplate variations",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/astro-framework.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Astro framework quick reference",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
+        ]
+      }
+    },
+    {
+      "path": "project/web/tailwind-v4.md",
+      "domain": "project",
+      "subdomain": "web",
+      "topics": [],
+      "keywords": [],
+      "summary": "Tailwind CSS v4 quick reference",
+      "line_count": 100,
+      "load_when": {
+        "agents": [
+          "web-research-agent",
+          "web-implementation-agent"
+        ],
+        "languages": [
+          "web"
         ]
       }
     }
