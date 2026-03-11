@@ -1,14 +1,23 @@
 {
   "version": "1.0.0",
-  "next_project_number": 179,
+  "next_project_number": 180,
   "active_projects": [
+    {
+      "project_number": 179,
+      "project_name": "investigate_opencode_claude_mcp_dependency",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-11T01:38:33Z",
+      "last_updated": "2026-03-11T01:38:33Z",
+      "artifacts": []
+    },
     {
       "project_number": 178,
       "project_name": "fix_memory_extension_mcp_port",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-10T23:00:00Z",
-      "last_updated": "2026-03-11T01:34:28Z",
+      "last_updated": "2026-03-11T01:38:48Z",
       "researched": "2026-03-10T23:00:00Z",
       "artifacts": [
         {
@@ -20,11 +29,18 @@
           "path": "specs/178_fix_memory_extension_mcp_port/plans/implementation-001.md",
           "type": "plan",
           "summary": "5-phase implementation plan for fixing MCP port configuration (3000 -> 27124)"
+        },
+        {
+          "path": "specs/178_fix_memory_extension_mcp_port/summaries/implementation-summary-20260310.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting investigation findings - system already correctly configured"
         }
       ],
       "planning": "2026-03-11T01:31:18Z",
       "planned": "2026-03-11T01:33:25Z",
-      "implementing": "2026-03-11T01:34:28Z"
+      "implementing": "2026-03-11T01:34:28Z",
+      "completed": "2026-03-11T01:38:48Z",
+      "completion_summary": "Verified MCP port configuration is correctly set to 27124 in settings.local.json and documentation. No code modifications required as research commands use MCP tool patterns rather than direct HTTP calls with hardcoded ports."
     },
     {
       "project_number": 177,
