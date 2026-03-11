@@ -1,50 +1,81 @@
 {
-  "$schema": "https://opencode.ai/config.schema.json",
-  "_managed_by": "neotex-extensions",
-  "_managed_version": "1.0.0",
+  "$schema": "https://opencode.ai/config.json",
   "default_agent": "build",
   "agent": {
     "build": {
-      "description": "Default agent for general code tasks",
-      "mode": "default"
+      "mode": "primary"
     },
     "plan": {
-      "description": "Creates implementation plans from research",
-      "mode": "subagent",
-      "prompt": "{file:.opencode/agent/subagents/planner-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+      "mode": "primary",
+      "prompt": "You are in planning mode. Analyze requests and create detailed implementation plans without making code changes. Focus on architecture, dependencies, and step-by-step approaches.",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false
+      }
     },
     "task-planner": {
-      "description": "Creates implementation plans from research (alias)",
+      "description": "Create implementation plans from research findings",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/planner-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+      "tools": {
+        "write": true,
+        "edit": true,
+        "read": true
+      }
     },
     "general-research": {
       "description": "Research general tasks using web search and codebase exploration",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/general-research-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "WebFetch"]
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true,
+        "webfetch": true,
+        "websearch": true
+      }
     },
     "general-implementation": {
       "description": "Implement general, meta, and markdown tasks from plans",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/general-implementation-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
     },
     "meta-builder": {
-      "description": "System builder for .claude and .opencode changes",
+      "description": "Interactive system builder for .opencode/ architecture changes",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/meta-builder-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": true,
+        "read": true,
+        "grep": true,
+        "glob": true
+      }
     },
     "code-reviewer": {
-      "description": "Reviews code for quality, patterns, and best practices",
+      "description": "Review code for security, performance, and maintainability",
       "mode": "subagent",
-      "prompt": "{file:.opencode/agent/subagents/code-reviewer-agent.md}",
-      "tools": ["Read", "Glob", "Grep", "Bash"]
+      "prompt": "You are a code reviewer. Focus on security, performance, maintainability, and adherence to project standards. Provide constructive feedback without making direct changes.",
+      "tools": {
+        "write": false,
+        "edit": false,
+        "bash": false,
+        "read": true,
+        "grep": true
+      }
     }
-  },
-  "command": {},
-  "tools": {}
+  }
 }

@@ -48,14 +48,12 @@ local function read_json(filepath)
 end
 
 --- Check if an opencode.json is managed by the extension system
+--- Uses a sidecar file (.opencode.json.managed) to avoid schema validation errors
 --- @param json_path string Path to opencode.json
 --- @return boolean is_managed True if managed by neotex-extensions
 local function is_managed(json_path)
-  local data = read_json(json_path)
-  if not data then
-    return false
-  end
-  return data._managed_by == "neotex-extensions"
+  local marker_path = json_path .. ".managed"
+  return vim.fn.filereadable(marker_path) == 1
 end
 
 --- Install base opencode.json template
@@ -82,13 +80,16 @@ function M.install_base_opencode_json(project_dir, global_dir)
     return false, "Failed to read template"
   end
 
+  local marker_path = target_path .. ".managed"
+
   -- Check if opencode.json exists
   if vim.fn.filereadable(target_path) == 1 then
-    -- Check if managed
+    -- Check if managed (via sidecar file)
     if is_managed(target_path) then
       -- Overwrite managed file
       local success = write_file_string(target_path, template_content)
       if success then
+        write_file_string(marker_path, "managed-by: neotex-extensions\n")
         return true, "Updated managed opencode.json"
       else
         return false, "Failed to update opencode.json"
@@ -103,9 +104,10 @@ function M.install_base_opencode_json(project_dir, global_dir)
           return false, "Failed to create backup"
         end
       end
-      -- Now install template
+      -- Now install template and create managed marker
       local success = write_file_string(target_path, template_content)
       if success then
+        write_file_string(marker_path, "managed-by: neotex-extensions\n")
         return true, "Installed template (user config backed up to opencode.json.user-backup)"
       else
         return false, "Failed to install template"
@@ -115,6 +117,7 @@ function M.install_base_opencode_json(project_dir, global_dir)
     -- No existing file, just install
     local success = write_file_string(target_path, template_content)
     if success then
+      write_file_string(marker_path, "managed-by: neotex-extensions\n")
       return true, "Installed base opencode.json"
     else
       return false, "Failed to install opencode.json"
@@ -133,7 +136,6 @@ function M.needs_base_install(project_dir)
     return true
   end
 
-  -- If exists but not managed, we might want to install
   return not is_managed(target_path)
 end
 

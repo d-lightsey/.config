@@ -4,13 +4,29 @@
       "description": "Research Lean 4 theorem proving and Mathlib",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/lean-research-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash", "WebSearch", "WebFetch"]
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "glob": true,
+        "grep": true,
+        "bash": true,
+        "webfetch": true,
+        "websearch": true
+      }
     },
     "lean-implementation": {
       "description": "Implement Lean 4 proofs and definitions",
       "mode": "subagent",
       "prompt": "{file:.opencode/agent/subagents/lean-implementation-agent.md}",
-      "tools": ["Read", "Write", "Edit", "Glob", "Grep", "Bash"]
+      "tools": {
+        "read": true,
+        "write": true,
+        "edit": true,
+        "glob": true,
+        "grep": true,
+        "bash": true
+      }
     }
   }
 }
