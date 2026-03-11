@@ -1,10 +1,42 @@
 ---
-next_project_number: 186
+next_project_number: 187
 ---
 
 # TODO
 
 ## Tasks
+
+### 186. Filter extension artifacts from "Load Core Agent System" sync
+- **Effort**: 3-5 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: The "Load Core Agent System" picker action (`<leader>ac` / `<leader>ao`) syncs artifacts from the global nvim config to the target project. Currently it has no mechanism to distinguish "core" artifacts from "extension" artifacts, causing extension-provided agents, skills, and (for .claude/) commands to leak into every project that loads the core system.
+
+The root cause is `scan_directory_for_sync()` in `scan.lua` which performs an unfiltered glob of the global `.claude/` and `.opencode/` directories. For `.claude/`, extensions install symlinks into `agents/`, `skills/`, and `commands/` directories; the glob follows those symlinks and copies them as real files to the target. For `.opencode/`, extensions copy real files into `skills/` (30 extension skills currently present alongside 12 core skills); these are indistinguishable from core artifacts during sync.
+
+**Scope of leakage** (approximate current state):
+
+| System | Category | Core | Extension | Leaks |
+|--------|----------|------|-----------|-------|
+| .claude/ | Commands | 11 | 7 symlinks | 7 |
+| .claude/ | Agents | 4 | 9 symlinks | 9 |
+| .claude/ | Skills | 10 | 11 symlinks | 11 |
+| .opencode/ | Commands | 12 | 0 | 0 |
+| .opencode/ | Agents | 5 | 0 | 0 |
+| .opencode/ | Skills | 12 | 30 copies | 30 |
+
+**Proposed fix**: Filter extension artifacts from sync using extension manifests as the authoritative blocklist. Each extension declares `provides.agents`, `provides.commands`, `provides.skills` etc. in its `manifest.json`. The sync operation should aggregate all extension manifests' `provides` lists and exclude those filenames/directories from the scan result, for both `.claude/` and `.opencode/` systems.
+
+**Key files to modify**:
+- `lua/neotex/plugins/ai/claude/commands/picker/utils/scan.lua` — add manifest-based filtering to `scan_directory_for_sync()`
+- `lua/neotex/plugins/ai/claude/commands/picker/operations/sync.lua` — thread the extension blocklist into `scan_all_artifacts()`
+- Possibly `lua/neotex/plugins/ai/shared/extensions/manifest.lua` — add a utility to aggregate `provides` across all extensions
+
+**Alternative considered**: Symlink detection (skip symlinks in `.claude/` scans) — simpler but only works for `.claude/`, not `.opencode/`.
+
+---
 
 ### 185. Remove extension-specific commands from core agent system
 - **Effort**: 2-3 hours

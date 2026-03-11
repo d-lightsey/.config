@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 186,
+  "next_project_number": 187,
   "active_projects": [
     {
       "project_number": 185,
@@ -437,6 +437,17 @@
       "completed": "2026-03-11T18:32:44Z",
       "completion_summary": "Eliminated extension overlap: removed document-converter-agent from web extension (filetypes provides document-agent), updated Website opencode.json. Extensions now have zero overlap.",
       "claudemd_suggestions": "none"
+    },
+    {
+      "project_number": 186,
+      "project_name": "filter_extension_artifacts_from_core_sync",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "3-5 hours",
+      "created": "2026-03-11T22:39:19Z",
+      "last_updated": "2026-03-11T22:39:19Z",
+      "dependencies": [],
+      "artifacts": []
     }
   ],
   "completed_projects": [],
