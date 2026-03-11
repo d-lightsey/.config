@@ -1,18 +1,30 @@
 ---
-next_project_number: 179
+next_project_number: 181
 ---
 
 # TODO
 
 ## Tasks
 
-### 179. Investigate .opencode/ dependency on .claude/ MCP server settings
+### 180. Investigate .opencode/ dependency on .claude/ MCP server settings
 - **Effort**: 1-2 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [research-001.md](180_investigate_opencode_claude_dependency/reports/research-001.md)
 
-**Description**: It seems like .opencode/ depends on the .claude/ mcp server settings file and setup. Investigate whether this dependency exists and determine how to make these systems completely independent. Review the MCP server configurations, settings files, and any cross-references between .opencode/ and .claude/ to identify dependencies and propose decoupling strategies.
+**Description**: Investigation of cross-system dependency between .opencode/ and .claude/ agent systems. When loading the memory extension in the Website repo, the opencode.json references agents (web-research, neovim-research, etc.) that don't exist. The memory extension only provides memory-specific functionality (commands, skills, context, data) and does NOT provide general-purpose agents. This creates a dependency issue where repos with custom opencode.json configurations expect a full agent system that the memory extension doesn't provide. Documented findings and proposed solutions: 1) Create missing agents directly in Website repo, 2) Create separate "core" extension for general agents, 3) Modify Website repo to not reference non-existent agents.
+
+---
+
+### 179. Fix memory extension data directory loading location
+- **Effort**: 0.5 hours
+- **Status**: [RESEARCHED]
+- **Language**: neovim
+- **Dependencies**: None
+- **Research**: [research-001.md](179_fix_memory_extension_data_directory_loading/reports/research-001.md)
+
+**Description**: When loading the memory extension via `<leader>ao`, the data directory is incorrectly placed at `.opencode/memory/` instead of the project root `.memory/`. This happens because `copy_data_dirs()` in `lua/neotex/plugins/ai/shared/extensions/init.lua:297` is called with `target_dir` (which is `.opencode/`) instead of `project_dir` (which is the project root). The loader function expects `project_dir` but receives `target_dir`, causing the vault to be created in the wrong location. Additionally, verify that existing `.memory/` directories are not overwritten - the merge-copy semantics should preserve existing user data. Required fix: Change line 297 parameter from `target_dir` to `project_dir`.
 
 ---
 
