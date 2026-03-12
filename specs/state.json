@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 187,
+  "next_project_number": 188,
   "active_projects": [
+    {
+      "project_number": 187,
+      "project_name": "port_memory_extension_to_claude",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-12T00:27:50Z",
+      "last_updated": "2026-03-12T00:27:50Z"
+    },
     {
       "project_number": 185,
       "project_name": "remove_extension_commands_from_core_system",

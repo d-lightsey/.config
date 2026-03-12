@@ -1,10 +1,20 @@
 ---
-next_project_number: 187
+next_project_number: 188
 ---
 
 # TODO
 
 ## Tasks
+
+### 187. Port memory extension to .claude/ agent system
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Port the .opencode/ memory extension system to .claude/ while adapting to existing .claude/ agent system patterns and best practices. The memory extension was tested successfully in /home/benjamin/Projects/Logos/Vision/ and provides persistent memory capabilities that should be integrated into the Claude Code agent architecture.
+
+---
 
 ### 186. Filter extension artifacts from "Load Core Agent System" sync
 - **Effort**: 4-6 hours
