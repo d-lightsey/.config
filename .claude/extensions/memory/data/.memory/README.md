@@ -1,10 +1,22 @@
-# Claude Code Memory Vault
+# Shared Memory Vault
 
-This directory contains an Obsidian-compatible vault for the Claude Code memory management system.
+This directory contains an Obsidian-compatible vault shared between Claude Code and OpenCode AI systems. Memories created by either system are accessible to both.
 
-## Purpose
+## Multi-System Usage
 
-The memory vault stores structured knowledge that the Claude Code system can reference and search. Memories are stored as Markdown files with YAML frontmatter for metadata.
+This vault is intentionally shared across AI systems:
+- Both Claude Code and OpenCode can read all memories
+- Both systems can create and update memories
+- Memory IDs include timestamps for collision resistance
+- Index files are regenerated from filesystem state
+
+### MCP Server Considerations
+
+Only one AI system should use MCP-based search at a time:
+- Claude Code: Uses WebSocket port 22360
+- OpenCode: Uses REST API port 27124
+
+Both systems fall back to grep-based search when MCP is unavailable, which works safely in concurrent scenarios.
 
 ## Directory Structure
 
@@ -25,7 +37,7 @@ Use the `/learn` command:
 
 The command will:
 1. Parse the input
-2. Generate a unique memory ID
+2. Generate a unique memory ID (collision-resistant format)
 3. Present a preview with checkbox options
 4. Allow you to add new, update existing, edit, or skip
 
@@ -43,30 +55,30 @@ The command will:
 
 ## MCP Server Setup
 
-For advanced features (search, retrieval), configure the MCP server in `.mcp.json`:
+For advanced features (search, retrieval), configure the MCP server:
 
 1. Open Obsidian app
 2. Open this `.memory/` as a vault
-3. Install the Claude Code MCP plugin (or Local REST API as fallback)
-4. Configure MCP server in `.mcp.json`
+3. Install the appropriate MCP plugin for your system
+4. Configure MCP server in your project settings
 
-See `.claude/extensions/memory/context/project/memory/memory-setup.md` for detailed instructions.
+See the memory-setup.md in your system's context directory for detailed instructions.
 
 ## Naming Conventions
 
 Memory files follow the pattern:
 ```
-MEM-YYYY-MM-DD-NNN-slugified-title.md
+MEM-YYYY-MM-DD-{unix_ms}-{random_4}-slugified-title.md
 ```
 
-Example: `MEM-2026-03-06-001-neovim-lsp-best-practices.md`
+Example: `MEM-2026-03-06-1710000000000-a7b3-neovim-lsp-best-practices.md`
 
 ## Template Format
 
 Memory entries use YAML frontmatter:
 ```yaml
 ---
-id: MEM-2026-03-06-001
+id: MEM-2026-03-06-1710000000000-a7b3
 title: "Neovim LSP Best Practices"
 date: 2026-03-06
 tags: neovim, lsp, configuration

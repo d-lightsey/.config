@@ -310,7 +310,17 @@ Template for EXTEND:
 Generate new memory from segment:
 
 ```
-1. Generate memory ID: MEM-{today}-{sequence}
+1. Generate memory ID: MEM-{today}-{unix_ms}-{random_4}
+   - {today} = date in YYYY-MM-DD format
+   - {unix_ms} = 13-digit Unix timestamp in milliseconds
+   - {random_4} = 4 hex characters from /dev/urandom
+
+   Generation algorithm:
+   today=$(date +%Y-%m-%d)
+   unix_ms=$(date +%s%N | head -c13)
+   random_4=$(od -An -N2 -tx1 /dev/urandom | tr -d ' ')
+   memory_id="MEM-${today}-${unix_ms}-${random_4}"
+
 2. Generate slug from topic/summary: {topic}-{first_words}
 3. Apply memory template with all fields
 4. Infer and apply topic
@@ -322,7 +332,7 @@ Template for CREATE:
 
 ```markdown
 ---
-id: MEM-{today}-{sequence}
+id: MEM-{today}-{unix_ms}-{random_4}
 title: "{segment.summary}"
 date: {today}
 tags: {inferred_tags}
@@ -384,6 +394,32 @@ After each operation, update both `index.md` and `.memory/10-Memories/README.md`
    **Tags**: {tags}
 4. Keep "## Navigation" section at the bottom
 ```
+
+### Index Regeneration Pattern
+
+To avoid concurrent write conflicts, regenerate index.md from filesystem state rather than append:
+
+```bash
+# 1. List all memory files
+memories=$(ls .memory/10-Memories/MEM-*.md 2>/dev/null)
+
+# 2. Extract metadata from each file
+for mem in $memories; do
+  id=$(grep -m1 "^id:" "$mem" | cut -d: -f2 | tr -d ' ')
+  title=$(grep -m1 "^title:" "$mem" | cut -d'"' -f2)
+  topic=$(grep -m1 "^topic:" "$mem" | cut -d'"' -f2)
+  date=$(grep -m1 "^date:" "$mem" | cut -d: -f2 | tr -d ' ')
+  # Store for index generation
+done
+
+# 3. Regenerate index.md from extracted data
+# Sort by date descending, write complete file
+```
+
+Benefits:
+- No append conflicts (complete overwrite)
+- Self-healing (missing entries recovered)
+- Idempotent (multiple regenerations produce same result)
 
 ---
 

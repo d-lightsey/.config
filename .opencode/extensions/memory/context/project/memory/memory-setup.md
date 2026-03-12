@@ -2,6 +2,30 @@
 
 This guide explains how to set up the MCP (Model Context Protocol) server for advanced memory vault features like search and retrieval.
 
+## Multi-System Architecture
+
+The memory extension is designed to work across both Claude Code and OpenCode:
+
+### Shared Components
+- `.memory/` vault at project root (single source of truth)
+- Memory ID format: `MEM-{date}-{unix_ms}-{random_4}`
+- Index regeneration from filesystem
+
+### System-Specific Components
+- MCP server configuration (different ports, different protocols)
+- Context reference paths (`.claude/` vs `.opencode/`)
+- Extension loading mechanics
+
+### Concurrent Usage Safety
+
+| Scenario | Safety | Notes |
+|----------|--------|-------|
+| Both reading memories | Safe | No conflicts |
+| One writing, one reading | Safe | Atomic file writes |
+| Both writing different memories | Safe | Unique IDs per write |
+| Both updating same memory | Last-write-wins | Rare edge case |
+| Both using MCP | Avoid | Use one system's MCP at a time |
+
 ## Prerequisites
 
 - Obsidian desktop app installed (available at [obsidian.md](https://obsidian.md))
