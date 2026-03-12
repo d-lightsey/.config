@@ -1,10 +1,20 @@
 ---
-next_project_number: 188
+next_project_number: 189
 ---
 
 # TODO
 
 ## Tasks
+
+### 188. Review memory extension durability: identify and fix overwrite risks, loader conflicts, and dual-system storage conflicts
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Review memory extension durability: identify and fix overwrite risks, loader conflicts, and dual-system (claude+opencode) storage conflicts to enhance memory system reliability. Specifically investigate: (1) overwrite risks when loading the extension via .claude/ (<leader>ac) or .opencode/ (<leader>ao) extension loaders, (2) conflicts when both Claude Code and OpenCode agents are storing memories to the same .memory/ vault, and (3) any other improvements to enhance durability and reliability of the shared memory system.
+
+---
 
 ### 187. Port memory extension to .claude/ agent system
 - **Effort**: 2-3 hours
