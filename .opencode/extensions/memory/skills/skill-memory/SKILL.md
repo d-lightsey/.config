@@ -216,13 +216,13 @@ Topic: {segment.topic}
 Key terms: {segment.key_terms.join(", ")}
 
 Related Memories:
-1. MEM-2026-03-05-042 (72% overlap) -> Recommended: UPDATE
-2. MEM-2026-03-04-038 (45% overlap) -> Recommended: EXTEND
-3. MEM-2026-03-03-015 (18% overlap) -> Recommended: CREATE (no strong match)
+1. MEM-telescope-custom-pickers (72% overlap) -> Recommended: UPDATE
+2. MEM-neovim-plugin-patterns (45% overlap) -> Recommended: EXTEND
+3. MEM-lua-module-structure (18% overlap) -> Recommended: CREATE (no strong match)
 
 What would you like to do with this segment?
-[ ] UPDATE MEM-2026-03-05-042 (replace content)
-[ ] EXTEND MEM-2026-03-04-038 (append section)
+[ ] UPDATE MEM-telescope-custom-pickers (replace content)
+[ ] EXTEND MEM-neovim-plugin-patterns (append section)
 [ ] CREATE new memory
 [ ] SKIP - don't save this segment
 ```
@@ -412,15 +412,16 @@ After each operation, update both `index.md` and `.memory/10-Memories/README.md`
 4. Update "## Statistics" counts
 ```
 
-**`.memory/10-Memories/README.md`** — regenerate the full file listing:
+**`.memory/10-Memories/README.md`** -- regenerate the full file listing:
 ```
 1. List all MEM-*.md files in the directory (ls .memory/10-Memories/MEM-*.md)
-2. For each file, extract: id, title, topic, tags from frontmatter
+2. For each file, extract: title, topic, tags, created from frontmatter
 3. Rewrite README.md with updated count and one entry per memory:
-   ### [MEM-YYYY-MM-DD-NNN](MEM-YYYY-MM-DD-NNN.md)
+   ### [MEM-{slug}](MEM-{slug}.md)
    **Title**: {title}
    **Topic**: {topic}
    **Tags**: {tags}
+   **Created**: {created}
 4. Keep "## Navigation" section at the bottom
 ```
 
@@ -434,10 +435,9 @@ memories=$(ls .memory/10-Memories/MEM-*.md 2>/dev/null)
 
 # 2. Extract metadata from each file
 for mem in $memories; do
-  id=$(grep -m1 "^id:" "$mem" | cut -d: -f2 | tr -d ' ')
   title=$(grep -m1 "^title:" "$mem" | cut -d'"' -f2)
   topic=$(grep -m1 "^topic:" "$mem" | cut -d'"' -f2)
-  date=$(grep -m1 "^date:" "$mem" | cut -d: -f2 | tr -d ' ')
+  created=$(grep -m1 "^created:" "$mem" | cut -d: -f2 | tr -d ' ')
   # Store for index generation
 done
 
