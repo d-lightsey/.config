@@ -13,7 +13,7 @@ next_project_number: 191
 - **Research Completed**: 2026-03-12
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [research-001.md](190_investigate_ux_inconsistencies_and_improve_command_outputs/reports/research-001.md)
+- **Research**: [research-001.md](190_investigate_ux_inconsistencies_and_improve_command_outputs/reports/research-001.md), [research-002.md](190_investigate_ux_inconsistencies_and_improve_command_outputs/reports/research-002.md)
 
 **Description**: Investigate UX inconsistencies throughout the .claude/ agent system (commands, skills, agents) in order to standardize the approach where it makes sense and otherwise improve the UX by making simplifications or additions as appropriate. Key known issues include: inconsistent "next step" suggestion formats across commands (some use `Next: /cmd N`, others use numbered lists, others use varied vocabulary like "Suggested", "Recommended", "Next Steps"); lack of a unified output formatting standard for command completions; and the finding that Claude Code's auto-suggest feature is not triggered by command output formatting (it's session-level) meaning users must type suggestions manually. The investigation should audit all commands for output consistency, identify other UX pain points, and propose/implement a clean, unified approach.
 
