@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 191,
+  "next_project_number": 192,
   "active_projects": [
+    {
+      "project_number": 191,
+      "project_name": "typst_compilation_error_reporting",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-03-12T18:42:29Z",
+      "last_updated": "2026-03-12T18:42:29Z"
+    },
     {
       "project_number": 190,
       "project_name": "investigate_ux_inconsistencies_and_improve_command_outputs",

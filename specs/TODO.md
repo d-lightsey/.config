@@ -1,10 +1,20 @@
 ---
-next_project_number: 191
+next_project_number: 192
 ---
 
 # TODO
 
 ## Tasks
+
+### 191. Fix typst compilation error reporting
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+- **Dependencies**: None
+
+**Description**: Fix typst compilation error reporting in neovim. When running `<leader>lr` (compile once) on a chapter file, compilation fails with exit code 1 but the error details are not captured. When running `<leader>le` (show errors), no errors appear in quickfix even though compilation failed. Errors should be captured from typst stderr and displayed in the quickfix list.
+
+---
 
 ### 190. Investigate UX inconsistencies and improve command outputs
 - **Effort**: 6-8 hours
