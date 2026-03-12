@@ -290,8 +290,8 @@ Select files to process:
 ```
 Processing telescope.lua...
   Segment 1: "Telescope setup" -> CREATE (18% overlap)
-  Segment 2: "Custom pickers" -> UPDATE MEM-2026-03-05-042 (68% overlap)
-  Segment 3: "Key mappings" -> EXTEND MEM-2026-03-04-038 (42% overlap)
+  Segment 2: "Custom pickers" -> UPDATE MEM-telescope-custom-pickers (68% overlap)
+  Segment 3: "Key mappings" -> EXTEND MEM-neovim-plugin-patterns (42% overlap)
 
 Processing lsp.lua...
   [...]

@@ -88,8 +88,8 @@ Segment: "Telescope picker creation"
 Key terms: telescope, picker, finders, sorters, attach_mappings
 
 Related Memories:
-1. MEM-2026-03-05-042 (72% overlap) -> UPDATE recommended
-2. MEM-2026-03-04-038 (45% overlap) -> EXTEND recommended
+1. MEM-telescope-custom-pickers (72% overlap) -> UPDATE recommended
+2. MEM-neovim-plugin-patterns (45% overlap) -> EXTEND recommended
 3. (no match) -> CREATE recommended
 ```
 
@@ -106,10 +106,10 @@ Related Memories:
 Replace existing memory content:
 
 ```
-Before: MEM-2026-03-05-042 "Telescope basics"
-After:  MEM-2026-03-05-042 "Telescope picker creation"
+Before: MEM-telescope-basics "Telescope basics"
+After:  MEM-telescope-basics "Telescope picker creation"
         - Old content moved to ## History section
-        - last_updated field updated
+        - modified field updated
 ```
 
 ### EXTEND (30-60% overlap)
@@ -117,8 +117,8 @@ After:  MEM-2026-03-05-042 "Telescope picker creation"
 Append new section to existing memory:
 
 ```
-Before: MEM-2026-03-04-038 "Neovim plugin patterns"
-After:  MEM-2026-03-04-038 with new:
+Before: MEM-neovim-plugin-patterns "Neovim plugin patterns"
+After:  MEM-neovim-plugin-patterns with new:
         ## Extension (2026-03-11)
         [new content about telescope]
 ```
@@ -128,7 +128,7 @@ After:  MEM-2026-03-04-038 with new:
 Create new memory file:
 
 ```
-New: MEM-2026-03-11-001 "Telescope picker creation"
+New: MEM-telescope-picker-creation "Telescope picker creation"
      - Fresh memory with topic and tags
      - Added to index (category + topic sections)
 ```
@@ -173,15 +173,15 @@ Topic: neovim/lua
 Key terms: pcall, lua, safe, function, error
 
 Related Memories Found:
-- MEM-2026-03-05-042: "Lua error handling" (65% match)
+- MEM-lua-error-handling: "Lua error handling" (65% match)
 ```
 
 ### Step 2: Operation Selection
 
 ```
 What would you like to do with this segment?
-[ ] UPDATE MEM-2026-03-05-042 (replace content)
-[ ] EXTEND MEM-2026-03-05-042 (append section)
+[ ] UPDATE MEM-lua-error-handling (replace content)
+[ ] EXTEND MEM-lua-error-handling (append section)
 [ ] CREATE new memory
 [ ] SKIP - don't save
 ```
@@ -189,7 +189,7 @@ What would you like to do with this segment?
 ### Step 3: Confirmation
 
 ```
-Operation: UPDATE MEM-2026-03-05-042
+Operation: UPDATE MEM-lua-error-handling
 Topic: neovim/lua (confirm or modify)
 
 Proceed? [Yes/No]
@@ -207,7 +207,7 @@ Proceed? [Yes/No]
 
 Flow:
 1. Single segment (under 500 tokens)
-2. Search finds MEM-2026-03-05-042 (45% match)
+2. Search finds MEM-lua-error-handling (45% match)
 3. User selects EXTEND
 4. Memory updated with new section
 

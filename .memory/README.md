@@ -57,23 +57,28 @@ See `.opencode/docs/memory-setup.md` for detailed instructions.
 
 Memory files follow the pattern:
 ```
-MEM-YYYY-MM-DD-NNN-slugified-title.md
+MEM-{semantic-slug}.md
 ```
 
-Example: `MEM-2026-03-06-001-neovim-lsp-best-practices.md`
+Example: `MEM-telescope-custom-pickers.md`, `MEM-neovim-lsp-best-practices.md`
+
+The MEM- prefix is preserved for grep discoverability (`grep -r "MEM-" .memory/`).
 
 ## Template Format
 
 Memory entries use YAML frontmatter:
 ```yaml
 ---
-id: MEM-2026-03-06-001
 title: "Neovim LSP Best Practices"
-date: 2026-03-06
+created: 2026-03-06
 tags: neovim, lsp, configuration
+topic: "neovim/lsp"
 source: "user input"
+modified: 2026-03-06
 ---
 ```
+
+Note: The `id:` field has been removed. Filenames serve as unique identifiers.
 
 ## Best Practices
 

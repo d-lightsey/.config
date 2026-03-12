@@ -68,23 +68,28 @@ See the memory-setup.md in your system's context directory for detailed instruct
 
 Memory files follow the pattern:
 ```
-MEM-YYYY-MM-DD-{unix_ms}-{random_4}-slugified-title.md
+MEM-{semantic-slug}.md
 ```
 
-Example: `MEM-2026-03-06-1710000000000-a7b3-neovim-lsp-best-practices.md`
+Example: `MEM-telescope-custom-pickers.md`, `MEM-neovim-lsp-best-practices.md`
+
+The MEM- prefix is preserved for grep discoverability (`grep -r "MEM-" .memory/`).
 
 ## Template Format
 
 Memory entries use YAML frontmatter:
 ```yaml
 ---
-id: MEM-2026-03-06-1710000000000-a7b3
 title: "Neovim LSP Best Practices"
-date: 2026-03-06
+created: 2026-03-06
 tags: neovim, lsp, configuration
+topic: "neovim/lsp"
 source: "user input"
+modified: 2026-03-06
 ---
 ```
+
+Note: The `id:` field has been removed. Filenames serve as unique identifiers.
 
 ## Best Practices
 

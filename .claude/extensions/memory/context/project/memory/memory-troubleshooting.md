@@ -194,7 +194,7 @@ lsof -i :22360
 
 Manually add to index.md:
 ```markdown
-- [Memory Title](10-Memories/MEM-2026-03-06-001-title.md)
+- [Memory Title](10-Memories/MEM-memory-title.md)
 ```
 
 ## Debug Steps
