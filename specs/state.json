@@ -5,11 +5,11 @@
     {
       "project_number": 190,
       "project_name": "investigate_ux_inconsistencies_and_improve_command_outputs",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-12T16:52:24Z",
-      "last_updated": "2026-03-12T17:05:41Z",
-      "session_id": "sess_1773334936_d0d90b",
+      "last_updated": "2026-03-12T17:09:38Z",
+      "session_id": "sess_1773335230_c0d748",
       "researched": "2026-03-12T16:57:27Z",
       "artifacts": [
         {
@@ -21,8 +21,14 @@
           "path": "specs/190_investigate_ux_inconsistencies_and_improve_command_outputs/reports/research-002.md",
           "type": "research",
           "summary": "Additional research on command output standardization with unified templates and implementation recommendations"
+        },
+        {
+          "path": "specs/190_investigate_ux_inconsistencies_and_improve_command_outputs/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for standardizing command output UX"
         }
-      ]
+      ],
+      "planned": "2026-03-12T17:09:38Z"
     },
     {
       "project_number": 87,
