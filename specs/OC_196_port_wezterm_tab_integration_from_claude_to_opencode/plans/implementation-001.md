@@ -1,7 +1,7 @@
 # Implementation Plan: Port Wezterm Tab Integration Features
 
 - **Task**: OC_196 - port_wezterm_tab_integration_from_claude_to_opencode
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 65 minutes
 - **Dependencies**: None
 - **Research Inputs**: specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/reports/research-001.md
@@ -47,7 +47,7 @@ Research report `research-001.md` identified:
 
 ## Implementation Phases
 
-### Phase 1: Add Notification Hook [NOT STARTED]
+### Phase 1: Add Notification Hook [COMPLETED]
 
 **Goal**: Add the Notification hook configuration to `.opencode/settings.json` for TTS alerts on permission prompts, idle prompts, and elicitation dialogs.
 
@@ -72,7 +72,7 @@ Research report `research-001.md` identified:
 
 ---
 
-### Phase 2: Add Claude-Ready Signal to SessionStart [NOT STARTED]
+### Phase 2: Add Claude-Ready Signal to SessionStart [COMPLETED]
 
 **Goal**: Add claude-ready-signal.sh invocation to SessionStart hook to eliminate Neovim sidebar initialization delay.
 
@@ -98,7 +98,7 @@ Research report `research-001.md` identified:
 
 ---
 
-### Phase 3: Documentation Update and Final Verification [NOT STARTED]
+### Phase 3: Documentation Update and Final Verification [COMPLETED]
 
 **Goal**: Update documentation to reflect the changes and perform final verification.
 
