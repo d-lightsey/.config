@@ -34,14 +34,14 @@ next_project_number: 195
 
 ### 192. Bypass opencode permission requests
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [RESEARCHED]
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
 - **Planning Completed**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [research-001.md](192_bypass_opencode_permission_requests/reports/research-001.md)
+- **Research**: [research-001.md](192_bypass_opencode_permission_requests/reports/research-001.md), [research-002.md](192_bypass_opencode_permission_requests/reports/research-002.md)
 - **Plan**: [implementation-001.md](192_bypass_opencode_permission_requests/plans/implementation-001.md)
 
 **Description**: Investigate and implement a way to bypass all permission requests in the local .opencode/ agent system. Currently, opencode frequently asks for permission to access external directories (e.g., `/tmp/*`) with dialog options for Once, Always, or Reject. The user wants to prevent these permission prompts always by configuring the system to automatically allow such permissions.

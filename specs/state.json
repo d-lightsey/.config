@@ -39,10 +39,10 @@
     {
       "project_number": 192,
       "project_name": "bypass_opencode_permission_requests",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-13T16:50:08Z",
-      "last_updated": "2026-03-13T17:16:25Z",
+      "last_updated": "2026-03-13T17:19:46Z",
       "artifacts": [
         {
           "path": "specs/192_bypass_opencode_permission_requests/reports/research-001.md",
@@ -53,10 +53,15 @@
           "path": "specs/192_bypass_opencode_permission_requests/plans/implementation-001.md",
           "type": "plan",
           "summary": "6-phase implementation plan for bypassing opencode permission requests for /tmp/* paths"
+        },
+        {
+          "path": "specs/192_bypass_opencode_permission_requests/reports/research-002.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of /tmp/ usage across codebase with recommendation to migrate .claude/ files to specs/tmp/ (following pattern already implemented in .opencode/ for task OC_156). Identified 161 occurrences in .claude/, 133 in .opencode/ (already migrated), and detailed 6-phase implementation plan."
         }
       ],
       "researching": "2026-03-13T17:16:25Z",
-      "researched": "2026-03-13T16:58:23Z",
+      "researched": "2026-03-13T17:19:46Z",
       "planning": "2026-03-13T17:00:03Z",
       "planned": "2026-03-13T17:02:46Z"
     },
