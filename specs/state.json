@@ -14,10 +14,10 @@
     {
       "project_number": 194,
       "project_name": "standardize_opencode_task_naming_consistency",
-      "status": "planning",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-13T16:59:19Z",
-      "last_updated": "2026-03-13T17:24:44Z",
+      "last_updated": "2026-03-13T17:28:04Z",
       "artifacts": [
         {
           "path": "specs/OC_194_standardize_opencode_task_naming_consistency/reports/research-001.md",
@@ -28,11 +28,17 @@
           "path": "specs/OC_194_standardize_opencode_task_naming_consistency/reports/research-002.md",
           "type": "research",
           "summary": "Root cause analysis identifying the exact timeframe (3-minute window) and commit when task naming changed from plain numbers to OC_ prefix"
+        },
+        {
+          "path": "specs/OC_194_standardize_opencode_task_naming_consistency/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "11-phase implementation plan for standardizing OC_ prefix in task naming across 60-70 files"
         }
       ],
       "researching": "2026-03-13T17:00:20Z",
       "researched": "2026-03-13T17:03:50Z",
-      "planning": "2026-03-13T17:24:44Z"
+      "planning": "2026-03-13T17:24:44Z",
+      "planned": "2026-03-13T17:28:04Z"
     },
     {
       "project_number": 193,
@@ -80,6 +86,11 @@
           "path": "specs/192_bypass_opencode_permission_requests/reports/research-002.md",
           "type": "research",
           "summary": "Comprehensive analysis of /tmp/ usage across codebase with recommendation to migrate .claude/ files to specs/tmp/ (following pattern already implemented in .opencode/ for task OC_156). Identified 161 occurrences in .claude/, 133 in .opencode/ (already migrated), and detailed 6-phase implementation plan."
+        },
+        {
+          "path": "specs/192_bypass_opencode_permission_requests/plans/implementation-002.md",
+          "type": "plan",
+          "summary": "8-phase migration plan to move .claude/ from /tmp/ to specs/tmp/ (161 occurrences, 30+ files)"
         }
       ],
       "researching": "2026-03-13T17:16:25Z",
