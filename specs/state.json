@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 199,
+  "next_project_number": 200,
   "active_projects": [
+    {
+      "project_number": 199,
+      "project_name": "complete_summary_naming_migration_fix_validation_globs",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-13T18:37:34Z",
+      "last_updated": "2026-03-13T18:37:34Z"
+    },
     {
       "project_number": 198,
       "project_name": "review_recent_claude_commits_consistency",
@@ -67,10 +75,10 @@
     {
       "project_number": 196,
       "project_name": "port_wezterm_tab_integration_from_claude_to_opencode",
-      "status": "researched",
+      "status": "implementing",
       "language": "meta",
       "created": "2026-03-13T17:31:45Z",
-      "last_updated": "2026-03-13T11:33:36-07:00",
+      "last_updated": "2026-03-13T11:36:37-07:00",
       "artifacts": [
         {
           "path": "specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/reports/research-001.md",
@@ -92,7 +100,8 @@
       "researched": "2026-03-13T18:10:13Z",
       "planning": "2026-03-13T18:12:50Z",
       "planned": "2026-03-13T18:14:38Z",
-      "researching_2": "2026-03-13T11:32:36-07:00"
+      "researching_2": "2026-03-13T11:32:36-07:00",
+      "implementing": "2026-03-13T11:36:37-07:00"
     },
     {
       "project_number": 195,
