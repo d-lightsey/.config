@@ -103,9 +103,9 @@ The `/learn` command adds knowledge to the memory vault with four input modes.
    ```
    Artifacts found for Task 142:
 
-   1. reports/research-002.md (Research Report)
-   2. plans/implementation-003.md (Implementation Plan)
-   3. summaries/implementation-summary-20260305.md (Summary)
+   1. reports/01_research-findings.md (Research Report)
+   2. plans/01_implementation-plan.md (Implementation Plan)
+   3. summaries/01_capture-summary.md (Summary)
    ```
 3. User selects artifacts to review
 4. Content mapped and searched
