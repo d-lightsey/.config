@@ -95,7 +95,7 @@ Commit failure is non-blocking (log and continue).
 ```
 Plan created for Task #{N}
 
-Plan: specs/{NNN}_{SLUG}/plans/implementation-{NNN}.md
+Plan: specs/{NNN}_{SLUG}/plans/MM_{short-slug}.md
 
 Phases: {phase_count}
 Estimated effort: {estimated_hours}

@@ -135,7 +135,7 @@ Prepare delegation context for the subagent:
     "description": "{description}",
     "language": "{language}"
   },
-  "plan_path": "specs/OC_{NNN}_{SLUG}/plans/implementation-{NNN}.md",
+  "plan_path": "specs/OC_{NNN}_{SLUG}/plans/MM_{short-slug}.md",
   "metadata_file_path": "specs/OC_{NNN}_{SLUG}/.return-meta.json"
 }
 ```
@@ -311,7 +311,7 @@ fi
 
 **Update TODO.md** (if implemented): Add summary artifact link:
 ```markdown
-- **Summary**: [implementation-summary-{DATE}.md]({artifact_path})
+- **Summary**: [MM_{short-slug}-summary.md]({artifact_path})
 ```
 
 ---
@@ -351,7 +351,7 @@ Return a brief text summary (NOT JSON). Example:
 Implementation completed for task {N}:
 - All {phases_total} phases executed successfully
 - Key changes: {summary of changes}
-- Created summary at specs/OC_{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md
+- Created summary at specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed
 ```
@@ -387,7 +387,7 @@ Example successful return:
 Implementation completed for task 350:
 - All 5 phases executed successfully
 - Created new feature component with tests
-- Created summary at specs/OC_350_feature/summaries/implementation-summary-20260118.md
+- Created summary at specs/OC_350_feature/summaries/MM_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed with session sess_1736700000_abc123
 ```
@@ -397,6 +397,6 @@ Example partial return:
 Implementation partially completed for task 350:
 - Phases 1-3 of 5 executed
 - Phase 4 failed: TypeScript compilation error
-- Partial summary at specs/OC_350_feature/summaries/implementation-summary-20260118.md
+- Partial summary at specs/OC_350_feature/summaries/MM_{short-slug}-summary.md
 - Status remains [IMPLEMENTING] - run /implement 350 to resume
 ```

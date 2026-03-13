@@ -202,7 +202,7 @@ Return a brief text summary (NOT JSON). Example:
 Research completed for task {N}:
 - Found {count} relevant Mathlib theorems
 - Identified proof strategy: {strategy}
-- Created report at specs/{N}_{SLUG}/reports/research-{NNN}.md
+- Created report at specs/{N}_{SLUG}/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed
 ```

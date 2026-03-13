@@ -19,9 +19,34 @@ Placeholders in path templates and content follow these conventions:
 
 **Key distinction**: Task numbers in text and JSON (`{N}`) remain unpadded for readability. Directory names and artifact versions (`{NNN}`) use 3-digit zero-padding for proper lexicographic sorting.
 
+## Artifact Naming Convention
+
+All task artifacts use the `MM_{short-slug}.md` format:
+- `MM` = Zero-padded sequence number within task (01, 02, 03...)
+- `{short-slug}` = 3-5 word kebab-case description (e.g., `configure-lsp-python`, `implement-core-api`)
+
+### Slug Generation Rules
+1. Extract 3-5 most significant words from task title
+2. Convert to kebab-case (lowercase, spaces to hyphens)
+3. Remove: articles (a, an, the), prepositions (in, on, at, of), conjunctions (and, or, for, to)
+4. Keep: main nouns, verbs, adjectives that capture task essence
+5. Examples:
+   - "Configure LSP for Python" -> `configure-lsp-python`
+   - "Add Telescope keymaps" -> `add-telescope-keymaps`
+   - "Fix memory leak in parser" -> `fix-memory-leak-parser`
+
+### Per-Task Sequential Numbering
+- Reports: 01, 02, 03... (research reports within task, chronological)
+- Plans: 01, 02, 03... (plan versions, sequential)
+- Summaries: Always follows plan execution (highest number + 1)
+- Example sequence:
+  - `01_research-findings.md`
+  - `02_design-approach.md`
+  - `03_execution-summary.md`
+
 ## Research Reports
 
-**Location**: `specs/{NNN}_{SLUG}/reports/research-{NNN}.md`
+**Location**: `specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md`
 
 ```markdown
 # Research Report: Task #{N}
@@ -76,7 +101,7 @@ During research, agents should note when:
 
 ## Implementation Plans
 
-**Location**: `specs/{NNN}_{SLUG}/plans/implementation-{NNN}.md`
+**Location**: `specs/{NNN}_{SLUG}/plans/MM_{short-slug}.md`
 
 ```markdown
 # Implementation Plan: Task #{N}
@@ -126,7 +151,9 @@ During research, agents should note when:
 
 ## Implementation Summaries
 
-**Location**: `specs/{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md`
+**Location**: `specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`
+
+Summaries follow the same naming convention but use `-summary` suffix for clarity.
 
 ```markdown
 # Implementation Summary: Task #{N}
@@ -205,16 +232,23 @@ Use in plan files:
 ## Versioning
 
 ### Research Reports
-Increment: research-001.md, research-002.md
+Increment sequentially within task:
+- `01_initial-research.md`
+- `02_deep-dive-analysis.md`
 - Multiple reports for same task allowed
 - Later reports supplement earlier ones
 
 ### Plans
-Increment: implementation-001.md, implementation-002.md
+Increment sequentially within task:
+- `02_design-approach.md`
+- `03_revised-design.md`
 - New version = revised approach
 - Previous versions preserved for history
+- Use sequential numbering rather than version suffixes
 
 ### Summaries
-Date-based: implementation-summary-20260109.md
+Use sequential numbering with `-summary` suffix:
+- `04_implementation-summary.md`
 - One per completion
 - Includes all phases
+- Placed after plan files in sequence

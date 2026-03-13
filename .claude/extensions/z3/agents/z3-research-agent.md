@@ -89,7 +89,7 @@ Identify research topic and determine research questions.
 Compile discovered information.
 
 ### Stage 5: Create Research Report
-Write to `specs/{N}_{SLUG}/reports/research-{NNN}.md`
+Write to `specs/{N}_{SLUG}/reports/MM_{short-slug}.md`
 
 ### Stage 6: Write Metadata File
 Write to `specs/{N}_{SLUG}/.return-meta.json`

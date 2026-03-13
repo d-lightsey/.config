@@ -204,9 +204,9 @@ jq --arg path "{artifact_path}" \
 
 | Type | Format in TODO.md |
 |------|-------------------|
-| research | `- **Research**: [research-{NNN}.md]({path})` |
-| plan | `- **Plan**: [implementation-{NNN}.md]({path})` |
-| summary | `- **Summary**: [implementation-summary-{DATE}.md]({path})` |
+| research | `- **Research**: [MM_{short-slug}.md]({path})` |
+| plan | `- **Plan**: [MM_{short-slug}.md]({path})` |
+| summary | `- **Summary**: [MM_{short-slug}-summary.md]({path})` |
 
 **Insertion order**:
 - research: after Language line

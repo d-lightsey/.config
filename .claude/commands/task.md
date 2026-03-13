@@ -356,7 +356,7 @@ fi
 summary_file=""
 if [ -n "$task_dir" ]; then
   summary_dir="${task_dir}/summaries"
-  summary_file=$(ls -t "$summary_dir"/implementation-summary-*.md 2>/dev/null | head -1)
+  summary_file=$(ls -t "$summary_dir"/*-summary.md 2>/dev/null | head -1)
 fi
 ```
 
@@ -365,7 +365,7 @@ fi
 research_files=""
 if [ -n "$task_dir" ]; then
   reports_dir="${task_dir}/reports"
-  research_files=$(ls "$reports_dir"/research-*.md 2>/dev/null)
+  research_files=$(ls "$reports_dir"/*.md 2>/dev/null | grep -v README)
 fi
 ```
 

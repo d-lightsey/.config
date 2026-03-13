@@ -90,7 +90,7 @@ Prepare delegation context for the subagent:
     "description": "{description}",
     "language": "lean"
   },
-  "plan_path": "specs/{N}_{SLUG}/plans/implementation-{NNN}.md",
+  "plan_path": "specs/{N}_{SLUG}/plans/MM_{short-slug}.md",
   "metadata_file_path": "specs/{N}_{SLUG}/.return-meta.json"
 }
 ```
@@ -234,7 +234,7 @@ Lean implementation completed for task {N}:
 - All {phases_total} phases executed, all proofs verified
 - Lake build: Success
 - Key theorems: {theorem names}
-- Created summary at specs/{N}_{SLUG}/summaries/implementation-summary-{DATE}.md
+- Created summary at specs/{N}_{SLUG}/summaries/MM_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed
 ```

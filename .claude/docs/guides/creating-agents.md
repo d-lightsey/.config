@@ -346,11 +346,11 @@ Create directory structure:
 ```
 specs/{NNN}_{SLUG}/
 ├── reports/
-│   └── research-{NNN}.md
+│   └── MM_{short-slug}.md
 ├── plans/
-│   └── implementation-{NNN}.md
+│   └── MM_{short-slug}.md
 └── summaries/
-    └── implementation-summary-{DATE}.md
+    └── MM_{short-slug}-summary.md
 ```
 
 Write artifacts and verify:

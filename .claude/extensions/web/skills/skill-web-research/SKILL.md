@@ -187,7 +187,7 @@ fi
 **Strip specs/ prefix for TODO.md** (TODO.md is inside specs/): `todo_link_path="${artifact_path#specs/}"`
 
 ```markdown
-- **Research**: [research-{NNN}.md]({todo_link_path})
+- **Research**: [MM_{short-slug}.md]({todo_link_path})
 ```
 
 ---
@@ -221,7 +221,7 @@ rm -f "specs/OC_${padded_num}_${project_name}/.return-meta.json"
 Research completed for task {N}:
 - Found framework documentation and project patterns
 - Identified implementation approach with accessibility considerations
-- Created report at specs/{NNN}_{SLUG}/reports/research-{NNN}.md
+- Created report at specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed
 ```

@@ -227,7 +227,7 @@ Check if research reveals gaps in project context documentation:
 
 Create directory and write report:
 
-**Path**: `specs/OC_{NNN}_{SLUG}/reports/research-{NNN}.md`
+**Path**: `specs/OC_{NNN}_{SLUG}/reports/MM_{short-slug}.md`
 
 **Structure** (from report-format.md):
 ```markdown
@@ -288,7 +288,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
   "artifacts": [
     {
       "type": "report",
-      "path": "specs/OC_{NNN}_{SLUG}/reports/research-{NNN}.md",
+      "path": "specs/OC_{NNN}_{SLUG}/reports/MM_{short-slug}.md",
       "summary": "Research report with {count} findings and recommendations"
     }
   ],
@@ -316,7 +316,7 @@ Research completed for task 412:
 - Found 8 relevant patterns for agent implementation
 - Identified lazy context loading and skill-to-agent mapping patterns
 - Documented report-format.md standard for research reports
-- Created report at specs/412_create_general_research_agent/reports/research-001.md
+- Created report at specs/412_create_general_research_agent/reports/MM_{short-slug}.md
 - Metadata written for skill postflight
 ```
 
@@ -399,7 +399,7 @@ Research completed for task 412:
 - Found 8 relevant patterns for agent implementation
 - Key patterns: subagent return format, lazy context loading, skill-to-agent mapping
 - Identified report-format.md standard for research reports
-- Created report at specs/412_create_general_research_agent/reports/research-001.md
+- Created report at specs/412_create_general_research_agent/reports/MM_{short-slug}.md
 - Metadata written for skill postflight
 ```
 
@@ -409,7 +409,7 @@ Research completed for task 412:
 Research partially completed for task 412:
 - Found 4 codebase patterns
 - WebSearch failed due to network error
-- Partial report saved at specs/412_create_general_research_agent/reports/research-001.md
+- Partial report saved at specs/412_create_general_research_agent/reports/MM_{short-slug}.md
 - Metadata written with partial status
 - Recommend: retry research or proceed with codebase-only findings
 ```

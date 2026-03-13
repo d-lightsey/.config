@@ -197,7 +197,7 @@ Compile discovered information:
 
 Create directory and write report:
 
-**Path**: `specs/OC_{NNN}_{SLUG}/reports/research-{NNN}.md`
+**Path**: `specs/OC_{NNN}_{SLUG}/reports/MM_{short-slug}.md`
 
 **Structure**:
 ```markdown
@@ -253,7 +253,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
   "artifacts": [
     {
       "type": "report",
-      "path": "specs/OC_{NNN}_{SLUG}/reports/research-{NNN}.md",
+      "path": "specs/OC_{NNN}_{SLUG}/reports/MM_{short-slug}.md",
       "summary": "Research report with {count} findings and recommendations"
     }
   ],

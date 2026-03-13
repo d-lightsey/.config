@@ -220,7 +220,7 @@ fi
 
 **Update TODO.md**: Add research artifact link:
 ```markdown
-- **Research**: [research-{NNN}.md]({artifact_path})
+- **Research**: [MM_{short-slug}.md]({artifact_path})
 ```
 
 ---
@@ -260,7 +260,7 @@ Return a brief text summary (NOT JSON). Example:
 Research completed for task {N}:
 - Found {count} relevant patterns and resources
 - Identified implementation approach: {approach}
-- Created report at specs/OC_{NNN}_{SLUG}/reports/research-{NNN}.md
+- Created report at specs/OC_{NNN}_{SLUG}/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed
 ```
@@ -296,7 +296,7 @@ Example successful return:
 Research completed for task 412:
 - Found 8 relevant patterns for implementation
 - Identified lazy context loading and skill-to-agent mapping patterns
-- Created report at specs/OC_412_general_research/reports/research-001.md
+- Created report at specs/OC_412_general_research/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed with session sess_1736700000_abc123
 ```
@@ -306,6 +306,6 @@ Example partial return:
 Research partially completed for task 412:
 - Found 4 codebase patterns
 - Web search failed due to network error
-- Partial report created at specs/OC_412_general_research/reports/research-001.md
+- Partial report created at specs/OC_412_general_research/reports/MM_{short-slug}.md
 - Status remains [RESEARCHING] - run /research 412 to continue
 ```

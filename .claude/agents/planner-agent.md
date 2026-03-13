@@ -113,7 +113,7 @@ Extract from input:
     "delegation_depth": 1,
     "delegation_path": ["orchestrator", "plan", "skill-planner"]
   },
-  "research_path": "specs/414_slug/reports/research-001.md",
+  "research_path": "specs/414_slug/reports/MM_{short-slug}.md",
   "metadata_file_path": "specs/414_slug/.return-meta.json"
 }
 ```
@@ -187,7 +187,7 @@ Create directory if needed:
 mkdir -p specs/OC_{NNN}_{SLUG}/plans/
 ```
 
-Find next plan version (implementation-001.md, implementation-002.md, etc.)
+Find next plan version (MM_{short-slug}.md format)
 
 Write plan file following plan-format.md structure:
 
@@ -199,7 +199,7 @@ Write plan file following plan-format.md structure:
 - **Effort**: {total_hours} hours
 - **Dependencies**: {deps or None}
 - **Research Inputs**: {research report path or None}
-- **Artifacts**: plans/implementation-{NNN}.md (this file)
+- **Artifacts**: plans/MM_{short-slug}.md (this file)
 - **Standards**: plan-format.md, status-markers.md, artifact-management.md, tasks.md
 - **Type**: {language}
 - **Lean Intent**: {true if lean, false otherwise}
@@ -299,7 +299,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
   "artifacts": [
     {
       "type": "plan",
-      "path": "specs/OC_{NNN}_{SLUG}/plans/implementation-{NNN}.md",
+      "path": "specs/OC_{NNN}_{SLUG}/plans/MM_{short-slug}.md",
       "summary": "{phase_count}-phase implementation plan for {task_name}"
     }
   ],
@@ -328,7 +328,7 @@ Plan created for task 414:
 - 5 phases defined, 2.5 hours estimated
 - Covers: agent structure, execution flow, error handling, examples, verification
 - Integrated research findings on subagent patterns
-- Created plan at specs/OC_414_create_planner_agent/plans/implementation-001.md
+- Created plan at specs/OC_414_create_planner_agent/plans/MM_{short-slug}.md
 - Metadata written for skill postflight
 ```
 
@@ -377,7 +377,7 @@ Plan created for task 414:
 - 5 phases defined, 2.5 hours estimated
 - Covers: agent structure, execution flow, error handling, examples, verification
 - Integrated research findings on subagent patterns
-- Created plan at specs/OC_414_create_planner_agent/plans/implementation-001.md
+- Created plan at specs/OC_414_create_planner_agent/plans/MM_{short-slug}.md
 - Metadata written for skill postflight
 ```
 
@@ -388,7 +388,7 @@ Partial plan created for task 414:
 - 3 of 5 phases defined before timeout
 - Phases completed: agent structure, execution flow, error handling
 - Phases pending: examples, verification
-- Partial plan saved at specs/OC_414_create_planner_agent/plans/implementation-001.md
+- Partial plan saved at specs/OC_414_create_planner_agent/plans/MM_{short-slug}.md
 - Metadata written with partial status
 ```
 

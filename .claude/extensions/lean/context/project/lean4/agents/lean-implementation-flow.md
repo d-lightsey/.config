@@ -104,7 +104,7 @@ lake build
 
 ## Stage 6: Create Implementation Summary
 
-Write summary to `specs/{N}_{SLUG}/summaries/implementation-summary-{DATE}.md`
+Write summary to `specs/{N}_{SLUG}/summaries/MM_{short-slug}-summary.md`
 
 ---
 

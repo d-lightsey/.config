@@ -102,7 +102,7 @@ Commit failure is non-blocking (log and continue).
 ```
 Research completed for Task #{N}
 
-Report: specs/{NNN}_{SLUG}/reports/research-{NNN}.md
+Report: specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md
 
 Status: [RESEARCHED]
 Next: /plan {N}

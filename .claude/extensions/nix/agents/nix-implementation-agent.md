@@ -212,7 +212,7 @@ home-manager build --flake .#user
 
 ### Stage 6: Create Implementation Summary
 
-Write to `specs/OC_{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md`:
+Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ```markdown
 # Implementation Summary: Task #{N}
@@ -268,7 +268,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
     },
     {
       "type": "summary",
-      "path": "specs/OC_{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md",
+      "path": "specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
       "summary": "Implementation summary with verification"
     }
   ],

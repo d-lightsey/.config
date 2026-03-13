@@ -187,7 +187,7 @@ Commit failure is non-blocking (log and continue).
 ```
 Implementation complete for Task #{N}
 
-Summary: specs/{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md
+Summary: specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md
 
 Phases completed: {phases_completed}/{phases_total}
 

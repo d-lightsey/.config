@@ -136,7 +136,7 @@ Research completed for task {N}:
 - Found existing patterns in source files
 - Loaded domain context for algebra/lattice theory
 - Used Mathlib lookup tools to discover relevant theorems
-- Created report at specs/{NNN}_{SLUG}/reports/research-{NNN}.md
+- Created report at specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed
 ```

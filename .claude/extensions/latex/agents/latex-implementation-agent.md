@@ -89,7 +89,7 @@ latexmk -pdf document.tex
 
 ### Stage 6: Create Implementation Summary
 
-Write to `specs/{N}_{SLUG}/summaries/implementation-summary-{DATE}.md`
+Write to `specs/{N}_{SLUG}/summaries/MM_{short-slug}-summary.md`
 
 ### Stage 7: Write Metadata File
 

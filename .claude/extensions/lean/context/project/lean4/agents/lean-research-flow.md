@@ -80,7 +80,7 @@ Compile discovered information:
 
 Create directory and write report.
 
-**Path**: `specs/{N}_{SLUG}/reports/research-{NNN}.md`
+**Path**: `specs/{N}_{SLUG}/reports/MM_{short-slug}.md`
 
 **Structure**:
 ```markdown
@@ -129,7 +129,7 @@ Write to `specs/{N}_{SLUG}/.return-meta.json`:
   "artifacts": [
     {
       "type": "report",
-      "path": "specs/{N}_{SLUG}/reports/research-{NNN}.md",
+      "path": "specs/{N}_{SLUG}/reports/MM_{short-slug}.md",
       "summary": "Research report with theorem findings"
     }
   ],

@@ -57,7 +57,7 @@ The agent system uses a three-layer architecture that separates user interaction
     |   specs/{NNN}_{SLUG}/                                  |
     |   ├── reports/research-001.md                       |
     |   ├── plans/implementation-001.md                   |
-    |   └── summaries/implementation-summary-{DATE}.md    |
+    |   └── summaries/MM_{short-slug}-summary.md    |
     +-----------------------------------------------------+
 ```
 

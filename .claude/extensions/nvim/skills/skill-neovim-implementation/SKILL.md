@@ -287,7 +287,7 @@ Implementation completed for task {N}:
 - Executed {phases_completed}/{phases_total} phases
 - Created/modified Neovim config files
 - Verified startup and module loading
-- Created summary at specs/{NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md
+- Created summary at specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed
 ```

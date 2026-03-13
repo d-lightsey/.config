@@ -131,7 +131,7 @@ Prepare delegation context:
     "description": "{description}",
     "language": "nix"
   },
-  "plan_path": "specs/OC_{NNN}_{SLUG}/plans/implementation-{NNN}.md",
+  "plan_path": "specs/OC_{NNN}_{SLUG}/plans/MM_{short-slug}.md",
   "metadata_file_path": "specs/OC_{NNN}_{SLUG}/.return-meta.json"
 }
 ```
@@ -260,7 +260,7 @@ jq --arg path "$artifact_path" \
 
 Update TODO.md:
 - Change status marker from `[IMPLEMENTING]` to `[COMPLETED]`
-- Add summary artifact link: `- **Summary**: [implementation-summary-{DATE}.md]({artifact_path})`
+- Add summary artifact link: `- **Summary**: [MM_{short-slug}-summary.md]({artifact_path})`
 
 **Update plan file** (if exists): Update the Status field to `[COMPLETED]`:
 ```bash

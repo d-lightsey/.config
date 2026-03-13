@@ -61,9 +61,9 @@ For tasks with existing plans (planned, implementing, partial, blocked):
    - What dependencies weren't anticipated?
 
 3. **Create Revised Plan**
-   Increment version: implementation-002.md, implementation-003.md, etc.
+   Increment version: MM_{short-slug}.md format (e.g., 02_revised-approach.md, 03_updated-design.md)
 
-   Write to `specs/{NNN}_{SLUG}/plans/implementation-{NEW_VERSION}.md`
+   Write to `specs/{NNN}_{SLUG}/plans/MM_{short-slug}.md`
    (Always use padded directory for new plans)
 
 4. **Update Status Inline** (two-step to avoid jq escaping bug - see `jq-escaping-workarounds.md`)
@@ -171,8 +171,8 @@ Commit failure is non-blocking (log and continue).
 ```
 Plan revised for Task #{N}
 
-Previous: implementation-{PREV}.md
-New: implementation-{NEW}.md
+Previous: MM_{short-slug}.md
+New: MM_{short-slug}.md
 
 Preserved phases: {N}
 Revised phases: {range}

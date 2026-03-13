@@ -195,7 +195,7 @@ Plan artifact:
 
 Summary artifact:
 ```markdown
-- **Summary**: [implementation-summary-{DATE}.md]({NNN}_{SLUG}/summaries/implementation-summary-{DATE}.md)
+- **Summary**: [MM_{short-slug}-summary.md]({NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md)
 ```
 
 ---

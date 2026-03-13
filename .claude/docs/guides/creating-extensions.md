@@ -225,7 +225,7 @@ Run Grep/Glob for codebase, WebSearch for external resources.
 Compile discoveries into coherent recommendations.
 
 ### Stage 5: Create Research Report
-Write report to `specs/{NNN}_{SLUG}/reports/research-{NNN}.md`.
+Write report to `specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md`.
 
 ### Stage 6: Write Metadata File
 Write completion status to `.return-meta.json`.

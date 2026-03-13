@@ -195,7 +195,7 @@ rm -f "specs/OC_${padded_num}_${project_name}/.return-meta.json"
 Research completed for task {N}:
 - Found NixOS module patterns
 - Identified package configuration
-- Created report at specs/{NNN}_{SLUG}/reports/research-{NNN}.md
+- Created report at specs/{NNN}_{SLUG}/reports/MM_{short-slug}.md
 - Status updated to [RESEARCHED]
 - Changes committed
 ```

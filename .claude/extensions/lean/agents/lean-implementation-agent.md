@@ -72,7 +72,7 @@ This agent has access to:
 Use Edit tool to mark the phase `[IN PROGRESS]`:
 ```
 Edit:
-  file_path: specs/{N}_{SLUG}/plans/implementation-{NNN}.md
+  file_path: specs/{N}_{SLUG}/plans/MM_{short-slug}.md
   old_string: "### Phase {P}: {exact_phase_name} [NOT STARTED]"
   new_string: "### Phase {P}: {exact_phase_name} [IN PROGRESS]"
 ```
@@ -82,7 +82,7 @@ Edit:
 Use Edit tool to mark the phase `[COMPLETED]` (or `[PARTIAL]`/`[BLOCKED]` if appropriate):
 ```
 Edit:
-  file_path: specs/{N}_{SLUG}/plans/implementation-{NNN}.md
+  file_path: specs/{N}_{SLUG}/plans/MM_{short-slug}.md
   old_string: "### Phase {P}: {exact_phase_name} [IN PROGRESS]"
   new_string: "### Phase {P}: {exact_phase_name} [COMPLETED]"
 ```

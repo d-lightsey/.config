@@ -41,13 +41,18 @@ Task management and agent orchestration for project development. For comprehensi
 ### Artifact Paths
 ```
 specs/{NNN}_{SLUG}/
-├── reports/research-{NNN}.md
-├── plans/implementation-{NNN}.md
-└── summaries/implementation-summary-{DATE}.md
+├── reports/MM_{short-slug}.md
+├── plans/MM_{short-slug}.md
+└── summaries/MM_{short-slug}-summary.md
 ```
-`{NNN}` = 3-digit zero-padded (directories and artifact versions), `{DATE}` = YYYYMMDD.
+`{NNN}` = 3-digit zero-padded task directory numbers, `{DATE}` = YYYYMMDD.
 
-**Note**: Task numbers remain unpadded (`{N}`) in TODO.md entries, state.json values, and commit messages. Only directory names and artifact version numbers use zero-padding for lexicographic sorting.
+**Naming Convention**: Artifacts use `MM_{short-slug}.md` format:
+- `MM` = Zero-padded sequence number within task (01, 02, 03...)
+- `{short-slug}` = 3-5 word kebab-case description extracted from task title
+- Examples: `01_configure-lsp-python.md`, `02_implementation-plan.md`, `03_execution-summary.md`
+
+**Note**: Task numbers remain unpadded (`{N}`) in TODO.md entries, state.json values, and commit messages. Only directory names and artifact sequence numbers use zero-padding for lexicographic sorting.
 
 ### Language-Based Routing
 
