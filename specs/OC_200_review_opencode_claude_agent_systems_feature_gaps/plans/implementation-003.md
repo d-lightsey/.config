@@ -147,7 +147,7 @@ This plan assumes task 199 will complete the naming convention work, allowing th
 
 ---
 
-### Phase 3: Port skill-todo to .claude/ System [IN PROGRESS]
+### Phase 3: Port skill-todo to .claude/ System [COMPLETED]
 
 **Goal**: Enable task archiving workflow in .claude/
 
@@ -175,7 +175,7 @@ This plan assumes task 199 will complete the naming convention work, allowing th
 
 ---
 
-### Phase 4: Port Missing Agent Types to .claude/ [NOT STARTED]
+### Phase 4: Port Missing Agent Types to .claude/ [IN PROGRESS]
 
 **Goal**: Add atomic-task-numberer, git-workflow-manager, and task-executor agents to .claude/
 

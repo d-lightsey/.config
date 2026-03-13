@@ -242,7 +242,7 @@ next_project_number: 201
 
 ### 72. Fix himalaya sidebar help showing leader keybindings that conflict with toggle selection
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Language**: neovim
 - **Dependencies**: None
 

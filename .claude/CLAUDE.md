@@ -147,6 +147,16 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 | skill-todo | (direct execution) | - | Archive completed tasks with CHANGE_LOG updates |
 | skill-tag | (user-only) | - | Semantic version tagging for deployment |
 
+### Agents
+
+| Agent | Purpose |
+|-------|---------|
+| general-research-agent | General web/codebase research |
+| general-implementation-agent | General file implementation |
+| planner-agent | Implementation plan creation |
+| meta-builder-agent | System building and meta tasks |
+| code-reviewer-agent | Code quality assessment and review |
+
 **Model Enforcement**: Agents declare preferred models via `model:` frontmatter field. Research and planning agents use `opus` for superior reasoning. Implementation agents use default model. See `.claude/docs/reference/standards/agent-frontmatter-standard.md` for details.
 
 **User-Only Skills**: Skills marked as "user-only" cannot be invoked by agents. These are for human-controlled operations like deployment (`skill-tag`).
