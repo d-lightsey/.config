@@ -118,7 +118,7 @@ This plan assumes task 199 will complete the naming convention work, allowing th
 
 ---
 
-### Phase 2: Port skill-tag to .claude/ System [NOT STARTED]
+### Phase 2: Port skill-tag to .claude/ System [IN PROGRESS]
 
 **Goal**: Enable semantic versioning tag creation in .claude/
 

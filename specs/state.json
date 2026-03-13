@@ -36,10 +36,10 @@
     {
       "project_number": 199,
       "project_name": "complete_summary_naming_migration_fix_validation_globs",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-13T18:37:34Z",
-      "last_updated": "2026-03-13T19:12:35Z",
+      "last_updated": "2026-03-13T19:19:59Z",
       "session_id": "sess_1773429128_abca27",
       "researched": "2026-03-13T18:41:34Z",
       "artifacts": [
@@ -52,10 +52,18 @@
           "path": "specs/199_complete_summary_naming_migration_fix_validation_globs/plans/01_naming-convention-migration.md",
           "type": "plan",
           "summary": "7-phase implementation plan for completing artifact naming convention migration"
+        },
+        {
+          "path": "specs/199_complete_summary_naming_migration_fix_validation_globs/summaries/01_naming-migration-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 199 artifact naming migration"
         }
       ],
       "planned": "2026-03-13T18:46:05Z",
-      "started": "2026-03-13T19:12:35Z"
+      "started": "2026-03-13T19:12:35Z",
+      "completed": "2026-03-13T19:19:59Z",
+      "completion_summary": "Migrated artifact naming convention across 25+ files in .claude/ system. Fixed validation globs to match new MM_{short-slug}.md format, updated all discovery scripts, and clarified per-type independent numbering (reports/plans/summaries each start at 01).",
+      "claudemd_suggestions": "Updated artifact-formats.md Per-Type Sequential Numbering section, fixed validation.md globs, updated discovery patterns in task.md/update-plan-status.sh/implement.md/revise.md, updated planning-workflow.md and implementation-workflow.md path patterns"
     },
     {
       "project_number": 198,
@@ -131,10 +139,10 @@
     {
       "project_number": 196,
       "project_name": "port_wezterm_tab_integration_from_claude_to_opencode",
-      "status": "completed",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-13T17:31:45Z",
-      "last_updated": "2026-03-13T11:38:01-07:00",
+      "last_updated": "2026-03-13T19:19:57Z",
       "artifacts": [
         {
           "path": "specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/reports/research-001.md",
@@ -165,7 +173,8 @@
       "implementing": "2026-03-13T11:36:37-07:00",
       "completed": "2026-03-13T11:38:01-07:00",
       "completion_summary": "Ported remaining wezterm tab integration features to .opencode/: added Notification hook for TTS alerts on permission/idle/elicitation events, and added claude-ready-signal.sh to SessionStart for faster Neovim sidebar initialization.",
-      "claudemd_suggestions": "Updated .opencode/settings.json with Notification hook and claude-ready-signal.sh in SessionStart. Documentation at .opencode/docs/guides/tts-stt-integration.md was already correct."
+      "claudemd_suggestions": "Updated .opencode/settings.json with Notification hook and claude-ready-signal.sh in SessionStart. Documentation at .opencode/docs/guides/tts-stt-integration.md was already correct.",
+      "researching_3": "2026-03-13T19:19:57Z"
     },
     {
       "project_number": 195,
