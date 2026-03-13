@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Himalaya Sidebar Leader Keybindings in Help
 
 - **Task**: 72 - fix_himalaya_sidebar_leader_keybindings_in_help
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1 hour
 - **Dependencies**: None
 - **Research Inputs**: reports/research-072.md
@@ -50,7 +50,7 @@ Research report `research-072.md` confirmed:
 
 ## Implementation Phases
 
-### Phase 1: Verify Fix Implementation [NOT STARTED]
+### Phase 1: Verify Fix Implementation [COMPLETED]
 
 **Goal**: Confirm the fix is correctly implemented and functioning
 
@@ -71,7 +71,7 @@ Research report `research-072.md` confirmed:
 
 ---
 
-### Phase 2: Documentation and Task Completion [NOT STARTED]
+### Phase 2: Documentation and Task Completion [COMPLETED]
 
 **Goal**: Document the fix and mark task as complete
 

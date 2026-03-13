@@ -284,7 +284,7 @@ next_project_number: 204
 
 ### 78. Fix Himalaya SMTP authentication failure when sending emails
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-02-13
 - **Research Completed**: 2026-02-13
 - **Planning Started**: 2026-02-13
@@ -300,13 +300,14 @@ next_project_number: 204
 
 ### 72. Fix himalaya sidebar help showing leader keybindings that conflict with toggle selection
 - **Effort**: 1 hour
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: neovim
 - **Dependencies**: None
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Research**: [research-072.md](OC_072_fix_himalaya_sidebar_leader_keybindings_in_help/reports/research-072.md)
 - **Plan**: [implementation-001.md](OC_072_fix_himalaya_sidebar_leader_keybindings_in_help/plans/implementation-001.md) - 2-phase verification plan
+- **Summary**: [001_himalaya-sidebar-keybindings-summary.md](OC_072_fix_himalaya_sidebar_leader_keybindings_in_help/summaries/001_himalaya-sidebar-keybindings-summary.md) - Comprehensive documentation of the fix and verification results
 
 **Description**: Fix himalaya sidebar help display (shown via '?') incorrectly showing leader keybindings (`<leader>mA` - Switch account, `<leader>mf` - Change folder, `<leader>ms` - Sync folder) in the Folder Management section. These leader commands should not be accessible or defined in the sidebar since `<leader>` is `<Space>` which is used for toggle selections in that buffer.
 
