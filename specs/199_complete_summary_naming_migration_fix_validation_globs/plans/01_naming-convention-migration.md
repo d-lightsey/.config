@@ -173,7 +173,7 @@ This looks like a single global sequence, but the text says "Reports: 01, 02, 03
 
 ---
 
-### Phase 6: Update Format Specification Examples [NOT STARTED]
+### Phase 6: Update Format Specification Examples [COMPLETED]
 
 **Goal**: Fix examples in format documentation for consistency with new convention and per-type numbering
 

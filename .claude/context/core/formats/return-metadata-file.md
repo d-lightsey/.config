@@ -252,7 +252,7 @@ rm -f "specs/OC_${padded_num}_${task_slug}/.return-meta.json"
     },
     {
       "type": "summary",
-      "path": "specs/1_setup_lsp_config/summaries/implementation-summary-20260118.md",
+      "path": "specs/1_setup_lsp_config/summaries/01_lsp-config-summary.md",
       "summary": "Implementation summary with verification results"
     }
   ],
@@ -286,7 +286,7 @@ rm -f "specs/OC_${padded_num}_${task_slug}/.return-meta.json"
     },
     {
       "type": "summary",
-      "path": "specs/412_create_agent/summaries/implementation-summary-20260118.md",
+      "path": "specs/412_create_agent/summaries/01_agent-creation-summary.md",
       "summary": "Implementation summary"
     }
   ],
@@ -320,7 +320,7 @@ rm -f "specs/OC_${padded_num}_${task_slug}/.return-meta.json"
     },
     {
       "type": "summary",
-      "path": "specs/413_create_script/summaries/implementation-summary-20260118.md",
+      "path": "specs/413_create_script/summaries/01_script-creation-summary.md",
       "summary": "Implementation summary"
     }
   ],
@@ -354,7 +354,7 @@ rm -f "specs/OC_${padded_num}_${task_slug}/.return-meta.json"
     },
     {
       "type": "summary",
-      "path": "specs/1_setup_lsp_config/summaries/implementation-summary-20260118.md",
+      "path": "specs/1_setup_lsp_config/summaries/01_lsp-config-summary.md",
       "summary": "Implementation summary with partial progress"
     }
   ],

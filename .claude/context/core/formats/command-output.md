@@ -100,7 +100,7 @@ Next: /{command} {N}
 ```
 Implementation complete for Task #258
 
-Summary: specs/258_modal_logic/summaries/implementation-summary-20260312.md
+Summary: specs/258_modal_logic/summaries/01_modal-logic-summary.md
 
 Phases completed: 3/3
 
@@ -266,7 +266,7 @@ Use labeled paths for console output:
 ```
 Report: specs/258_modal_logic/reports/01_modal-logic-research.md
 Plan: specs/258_modal_logic/plans/02_modal-logic-plan.md
-Summary: specs/258_modal_logic/summaries/implementation-summary-20260312.md
+Summary: specs/258_modal_logic/summaries/01_modal-logic-summary.md
 ```
 
 ### Markdown File Format
@@ -340,7 +340,7 @@ Artifacts path: specs/260_fix_parser_edge_case/ (created on first artifact)
 ```
 Implementation complete for Task #258
 
-Summary: specs/258_modal_logic/summaries/implementation-summary-20260312.md
+Summary: specs/258_modal_logic/summaries/01_modal-logic-summary.md
 
 Phases completed: 3/3
 
