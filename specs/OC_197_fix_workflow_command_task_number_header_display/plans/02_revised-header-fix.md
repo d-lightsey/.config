@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Workflow Command Task Number Header Display
 
 - **Task**: OC_197 - fix_workflow_command_task_number_header_display
-- **Status**: [IN PROGRESS]
+- **Status**: [COMPLETED]
 - **Date**: 2026-03-13 (Revised)
 - **Feature**: Add explicit header display to workflow command preflight sections
 - **Estimated Hours**: 0.5-1 hours
@@ -99,7 +99,7 @@ This task fixes a display bug in the opencode workflow commands (research.md, pl
 
 ---
 
-### Phase 3: Fix implement.md [IN PROGRESS]
+### Phase 3: Fix implement.md [COMPLETED]
 
 **Goal**: Add "Display header" step AND update Critical Notes
 
@@ -128,7 +128,7 @@ This task fixes a display bug in the opencode workflow commands (research.md, pl
 
 ---
 
-### Phase 4: Verification [NOT STARTED]
+### Phase 4: Verification [COMPLETED]
 
 **Goal**: Verify all changes and test functionality
 

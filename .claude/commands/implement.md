@@ -20,6 +20,11 @@ Execute implementation plan with automatic resume support by delegating to the a
 
 ### CHECKPOINT 1: GATE IN
 
+**Display header**:
+```
+[Implementing] Task OC_{N}: {project_name}
+```
+
 1. **Generate Session ID**
    ```
    session_id = sess_{timestamp}_{random}

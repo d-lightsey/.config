@@ -5,20 +5,29 @@
     {
       "project_number": 200,
       "project_name": "review_opencode_claude_agent_systems_feature_gaps",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-13T18:39:43Z",
-      "last_updated": "2026-03-13T18:39:43Z",
-      "artifacts": []
+      "last_updated": "2026-03-13T18:40:35Z",
+      "artifacts": [],
+      "researching": "2026-03-13T18:40:35Z"
     },
     {
       "project_number": 199,
       "project_name": "complete_summary_naming_migration_fix_validation_globs",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-13T18:37:34Z",
-      "last_updated": "2026-03-13T18:38:37Z",
-      "session_id": "sess_1773427098_3d4630"
+      "last_updated": "2026-03-13T18:41:34Z",
+      "session_id": "sess_1773427098_3d4630",
+      "researched": "2026-03-13T18:41:34Z",
+      "artifacts": [
+        {
+          "path": "specs/199_complete_summary_naming_migration_fix_validation_globs/reports/01_naming-migration-gaps.md",
+          "type": "research",
+          "summary": "Research report identifying 28 files with old naming conventions across 6 priority categories"
+        }
+      ]
     },
     {
       "project_number": 198,
@@ -55,10 +64,10 @@
     {
       "project_number": 197,
       "project_name": "fix_workflow_command_task_number_header_display",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-13T17:59:57Z",
-      "last_updated": "2026-03-13T18:38:34Z",
+      "last_updated": "2026-03-13T18:41:31Z",
       "artifacts": [
         {
           "path": "specs/OC_197_fix_workflow_command_task_number_header_display/reports/research-001.md",
@@ -81,7 +90,10 @@
       "planning": "2026-03-13T18:12:53Z",
       "planned": "2026-03-13T18:35:33Z",
       "session_id": "sess_1773427089_d1d653",
-      "implementing": "2026-03-13T18:38:34Z"
+      "implementing": "2026-03-13T18:38:34Z",
+      "completed": "2026-03-13T18:41:31Z",
+      "completion_summary": "Added explicit Display header steps to all three workflow commands (research.md, plan.md, implement.md) as FIRST step in GATE IN section, ensuring task number and name display immediately.",
+      "claudemd_suggestions": "Updated .claude/commands/research.md, .claude/commands/plan.md, and .claude/commands/implement.md with Display header steps"
     },
     {
       "project_number": 196,
