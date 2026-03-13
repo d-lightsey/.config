@@ -5,18 +5,19 @@
     {
       "project_number": 202,
       "project_name": "debounce_tts_session_idle",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-13T19:34:58Z",
-      "last_updated": "2026-03-13T19:34:58Z"
+      "last_updated": "2026-03-13T19:36:50Z",
+      "session_id": "sess_1741894540_a3c8f2"
     },
     {
       "project_number": 201,
       "project_name": "fix_header_display_plan_implement_revise",
-      "status": "planning",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-13T19:29:29Z",
-      "last_updated": "2026-03-13T19:34:27Z",
+      "last_updated": "2026-03-13T19:36:41Z",
       "session_id": "sess_1741894380_b7e4d1",
       "researched": "2026-03-13T19:32:56Z",
       "artifacts": [
@@ -24,8 +25,14 @@
           "path": "specs/OC_201_fix_header_display_plan_implement_revise/reports/01_header-display-fix.md",
           "type": "research",
           "summary": "Research report documenting the header display fix pattern with exact code to add to each command"
+        },
+        {
+          "path": "specs/OC_201_fix_header_display_plan_implement_revise/plans/02_header-fix-plan.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan to add header instruction blocks to /plan, /implement, and /revise commands"
         }
-      ]
+      ],
+      "planned": "2026-03-13T19:36:41Z"
     },
     {
       "project_number": 200,

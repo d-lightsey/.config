@@ -18,12 +18,15 @@ next_project_number: 203
 
 ### 201. Fix header display in /plan, /implement, and /revise commands to match working /research pattern
 - **Effort**: 1-2 hours
-- **Status**: [PLANNING]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
+- **Planning Started**: 2026-03-13
+- **Planning Completed**: 2026-03-13
 - **Research**: [01_header-display-fix.md](OC_201_fix_header_display_plan_implement_revise/reports/01_header-display-fix.md)
+- **Plan**: [02_header-fix-plan.md](OC_201_fix_header_display_plan_implement_revise/plans/02_header-fix-plan.md)
 
 **Description**: Fix header display in /plan, /implement, and /revise commands to match working /research pattern. The /research command now correctly shows the task number in its response header (e.g. "# Research OC_072 task: ..."). The /plan, /implement, and /revise commands need the same fix applied consistently. Study the current working research.md to understand what makes it work, then apply the same pattern to plan.md, implement.md, and revise.md in .opencode/commands/.
 
