@@ -32,9 +32,10 @@ next_project_number: 199
 
 ### OC_196. Port wezterm tab integration features from .claude/ to .opencode/
 - **Effort**: 2-3 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Language**: meta
 - **Dependencies**: None
+- **Research Started**: 2026-03-13
 
 **Description**: Port wezterm tab integration features from the .claude/ agent system to .opencode/. The .claude/ system currently: (1) updates wezterm tabs to show the task number immediately upon running a task-number-based command, and (2) announces the tab number when Claude Code finishes, needs input, or asks a question. These features need to be adapted for opencode-specific details while maintaining the same functionality. This involves examining how .claude/ implements these features (likely through OSC escape sequences or wezterm CLI commands) and creating equivalent functionality in .opencode/.
 
@@ -99,15 +100,18 @@ next_project_number: 199
 
 ### 192. Bypass opencode permission requests
 - **Effort**: 8-10 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-03-13
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
 - **Planning Completed**: 2026-03-13
+- **Implementation Started**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](192_bypass_opencode_permission_requests/reports/research-001.md), [research-002.md](192_bypass_opencode_permission_requests/reports/research-002.md), [research-003.md](192_bypass_opencode_permission_requests/reports/research-003.md)
 - **Plan**: [implementation-001.md](192_bypass_opencode_permission_requests/plans/implementation-001.md), [implementation-002.md](192_bypass_opencode_permission_requests/plans/implementation-002.md), [implementation-003.md](192_bypass_opencode_permission_requests/plans/implementation-003.md)
+- **Summary**: [implementation-summary-20260313.md](192_bypass_opencode_permission_requests/summaries/implementation-summary-20260313.md)
 
 **Description**: Investigate and implement a way to bypass all permission requests in the local .opencode/ agent system. Currently, opencode frequently asks for permission to access external directories (e.g., `/tmp/*`) with dialog options for Once, Always, or Reject. The user wants to prevent these permission prompts always by configuring the system to automatically allow such permissions.
 

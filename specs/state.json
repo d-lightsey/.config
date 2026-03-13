@@ -144,10 +144,10 @@
     {
       "project_number": 192,
       "project_name": "bypass_opencode_permission_requests",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-13T16:50:08Z",
-      "last_updated": "2026-03-13T17:58:01Z",
+      "last_updated": "2026-03-13T18:06:34Z",
       "artifacts": [
         {
           "path": "specs/192_bypass_opencode_permission_requests/reports/research-001.md",
@@ -178,13 +178,21 @@
           "path": "specs/192_bypass_opencode_permission_requests/plans/implementation-003.md",
           "type": "plan",
           "summary": "9-phase unified implementation plan integrating opencode permission disable and /tmp/ to specs/tmp/ migration"
+        },
+        {
+          "path": "specs/192_bypass_opencode_permission_requests/summaries/implementation-summary-20260313.md",
+          "type": "summary",
+          "summary": "Detailed implementation summary documenting all 153+ changes across 38+ files"
         }
       ],
       "researching": "2026-03-13T17:35:35Z",
       "researched": "2026-03-13T17:42:48Z",
       "planning": "2026-03-13T17:00:03Z",
       "planned": "2026-03-13T17:02:46Z",
-      "implementing": "2026-03-13T17:58:01Z"
+      "implementing": "2026-03-13T17:58:01Z",
+      "completed": "2026-03-13T18:06:34Z",
+      "completion_summary": "Disabled opencode permission UI and migrated 153+ /tmp/ references to specs/tmp/ across 38+ files in .claude/ system. Both .claude/ and .opencode/ now consistently use specs/tmp/ for temporary files.",
+      "claudemd_suggestions": "Updated all skill, command, and script documentation to use specs/tmp/ pattern. Migration complete across entire .claude/ codebase."
     },
     {
       "project_number": 191,
