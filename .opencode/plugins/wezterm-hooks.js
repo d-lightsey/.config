@@ -17,29 +17,54 @@
  * NOTE: .opencode/settings.json hooks (Stop, UserPromptSubmit, Notification,
  * SessionStart) are Claude Code format and are ignored by opencode. This plugin
  * is the opencode equivalent.
+ *
+ * TTS Debounce Strategy (trailing-edge):
+ * - session.idle: Delay TTS by 1.5s (trailing-edge). If session becomes busy
+ *   before timer fires, cancel the pending TTS. This prevents premature
+ *   announcements when sub-agents complete mid-operation.
+ * - permission.asked/question.asked: Fire immediately (no delay) since these
+ *   require user input and should not be delayed.
  */
 export const WeztermHooksPlugin = async ({ $, directory }) => {
   const hookDir = `${directory}/.opencode/hooks`;
 
-  // Debounce TTS: multiple session.idle events fire when interrupting
-  // (one per sub-agent). Only fire TTS once per burst.
-  let lastTtsMs = 0;
-  const TTS_DEBOUNCE_MS = 3000;
+  // Trailing-edge debounce for TTS: delay firing until session stays idle
+  // for the configured delay. Cancel pending timer if session becomes busy.
+  let pendingTtsTimer = null;
+  const TTS_TRAILING_DELAY_MS = parseInt(process.env.TTS_TRAILING_DELAY || "1500", 10);
 
   return {
     event: async ({ event }) => {
       if (event.type === "session.idle") {
-        const now = Date.now();
-        if (now - lastTtsMs < TTS_DEBOUNCE_MS) return;
-        lastTtsMs = now;
-        // Opencode finished responding - TTS + wezterm amber tab
-        await $`bash ${hookDir}/tts-notify.sh`.cwd(directory).quiet().nothrow();
-        await $`bash ${hookDir}/wezterm-notify.sh`.cwd(directory).quiet().nothrow();
+        // Clear any existing pending timer before starting a new one
+        if (pendingTtsTimer) {
+          clearTimeout(pendingTtsTimer);
+          pendingTtsTimer = null;
+        }
+
+        // Start trailing-edge timer: TTS fires only if idle persists
+        pendingTtsTimer = setTimeout(async () => {
+          pendingTtsTimer = null;
+          // Opencode finished responding - TTS + wezterm amber tab
+          await $`bash ${hookDir}/tts-notify.sh`.cwd(directory).quiet().nothrow();
+          await $`bash ${hookDir}/wezterm-notify.sh`.cwd(directory).quiet().nothrow();
+        }, TTS_TRAILING_DELAY_MS);
+      } else if (event.type === "session.status") {
+        // Session became busy (non-idle) - cancel pending TTS
+        if (pendingTtsTimer && event.status?.type !== "idle") {
+          clearTimeout(pendingTtsTimer);
+          pendingTtsTimer = null;
+        }
       } else if (
         event.type === "permission.asked" ||
         event.type === "question.asked"
       ) {
-        // Opencode needs input or is asking a question - TTS only
+        // Opencode needs input or is asking a question - TTS immediately (no delay)
+        // Clear any pending idle timer to avoid double-notification
+        if (pendingTtsTimer) {
+          clearTimeout(pendingTtsTimer);
+          pendingTtsTimer = null;
+        }
         await $`bash ${hookDir}/tts-notify.sh`.cwd(directory).quiet().nothrow();
       }
     },
