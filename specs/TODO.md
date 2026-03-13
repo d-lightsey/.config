@@ -1,14 +1,24 @@
 ---
-next_project_number: 202
+next_project_number: 203
 ---
 
 # TODO
 
 ## Tasks
 
+### 202. Implement trailing-edge debounce for TTS session.idle notifications
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Implement trailing-edge delay for TTS notifications to prevent premature announcements during sub-agent operations. The problem is session.idle fires for sub-agents mid-operation (e.g., each agent step briefly goes idle before the next starts). The fix is a trailing-edge delay: when session.idle fires, wait 1.5 seconds and cancel if session.status:busy fires again before the timer expires.
+
+---
+
 ### 201. Fix header display in /plan, /implement, and /revise commands to match working /research pattern
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research Started**: 2026-03-13

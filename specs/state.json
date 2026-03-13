@@ -1,15 +1,23 @@
 {
   "version": "1.0.0",
-  "next_project_number": 202,
+  "next_project_number": 203,
   "active_projects": [
+    {
+      "project_number": 202,
+      "project_name": "debounce_tts_session_idle",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-13T19:34:58Z",
+      "last_updated": "2026-03-13T19:34:58Z"
+    },
     {
       "project_number": 201,
       "project_name": "fix_header_display_plan_implement_revise",
-      "status": "researched",
+      "status": "planning",
       "language": "meta",
       "created": "2026-03-13T19:29:29Z",
-      "last_updated": "2026-03-13T19:32:56Z",
-      "session_id": "sess_1741894200_a3f9c2",
+      "last_updated": "2026-03-13T19:34:27Z",
+      "session_id": "sess_1741894380_b7e4d1",
       "researched": "2026-03-13T19:32:56Z",
       "artifacts": [
         {
