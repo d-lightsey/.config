@@ -37,6 +37,11 @@
           "path": "specs/OC_197_fix_workflow_command_task_number_header_display/reports/research-001.md",
           "type": "report",
           "summary": "Research report identifying missing Display header steps in workflow command preflight sections as root cause of OC_NNN placeholder bug"
+        },
+        {
+          "path": "specs/OC_197_fix_workflow_command_task_number_header_display/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan for fixing workflow command header display bug, 45 minutes estimated"
         }
       ],
       "researching": "2026-03-13T18:02:28Z",
