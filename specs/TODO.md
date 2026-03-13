@@ -1,10 +1,20 @@
 ---
-next_project_number: 192
+next_project_number: 193
 ---
 
 # TODO
 
 ## Tasks
+
+### 192. Bypass opencode permission requests
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Investigate and implement a way to bypass all permission requests in the local .opencode/ agent system. Currently, opencode frequently asks for permission to access external directories (e.g., `/tmp/*`) with dialog options for Once, Always, or Reject. The user wants to prevent these permission prompts always by configuring the system to automatically allow such permissions. Investigate where permission checks are configured in .opencode/, identify the best mechanism to disable/bypass these prompts (possibly a configuration file, environment variable, or settings change), and implement the solution to eliminate permission dialogs.
+
+---
 
 ### 191. Fix typst compilation error reporting
 - **Effort**: 1-2 hours

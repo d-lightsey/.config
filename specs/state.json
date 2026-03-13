@@ -1,7 +1,16 @@
 {
   "version": "1.0.0",
-  "next_project_number": 192,
+  "next_project_number": 193,
   "active_projects": [
+    {
+      "project_number": 192,
+      "project_name": "bypass_opencode_permission_requests",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-13T16:50:08Z",
+      "last_updated": "2026-03-13T16:50:08Z",
+      "artifacts": []
+    },
     {
       "project_number": 191,
       "project_name": "typst_compilation_error_reporting",
