@@ -18,12 +18,12 @@ next_project_number: 197
 
 ### 195. Standardize artifact naming convention with MM_padded_slug format
 - **Effort**: 4-6 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [research-001.md](195_standardize_artifact_naming_convention_mm_padded_slug/reports/research-001.md)
+- **Research**: [research-001.md](OC_195_standardize_artifact_naming_convention_mm_padded_slug/reports/research-001.md)
 - **Plan**: [implementation-001.md](OC_195_standardize_artifact_naming_convention_mm_padded_slug/plans/implementation-001.md)
 
 **Description**: When artifacts are created for tasks with OpenCode, they are named such as `/home/benjamin/Projects/Logos/Theory/specs/OC_286_research_n_place_predicate_church_style_systems/reports/research-286.md` which is not correct. Instead, they should use a padded `MM_{short-slug}.md` where the short slug indicates the research topic such as `01_n-place-predicates.md`. Something similar should be done for plans and summaries. Review all commands/skills/agents/rules/context-files/etc that require revision to consistently impose this convention throughout the opencode agent system.
@@ -69,8 +69,8 @@ next_project_number: 197
 ---
 
 ### 192. Bypass opencode permission requests
-- **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Effort**: 8-10 hours
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
@@ -78,7 +78,7 @@ next_project_number: 197
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](192_bypass_opencode_permission_requests/reports/research-001.md), [research-002.md](192_bypass_opencode_permission_requests/reports/research-002.md), [research-003.md](192_bypass_opencode_permission_requests/reports/research-003.md)
-- **Plan**: [implementation-001.md](192_bypass_opencode_permission_requests/plans/implementation-001.md), [implementation-002.md](192_bypass_opencode_permission_requests/plans/implementation-002.md)
+- **Plan**: [implementation-001.md](192_bypass_opencode_permission_requests/plans/implementation-001.md), [implementation-002.md](192_bypass_opencode_permission_requests/plans/implementation-002.md), [implementation-003.md](192_bypass_opencode_permission_requests/plans/implementation-003.md)
 
 **Description**: Investigate and implement a way to bypass all permission requests in the local .opencode/ agent system. Currently, opencode frequently asks for permission to access external directories (e.g., `/tmp/*`) with dialog options for Once, Always, or Reject. The user wants to prevent these permission prompts always by configuring the system to automatically allow such permissions.
 

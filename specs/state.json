@@ -14,10 +14,10 @@
     {
       "project_number": 195,
       "project_name": "standardize_artifact_naming_convention_mm_padded_slug",
-      "status": "planned",
+      "status": "implementing",
       "language": "meta",
       "created": "2026-03-13T17:23:59Z",
-      "last_updated": "2026-03-13T17:42:53Z",
+      "last_updated": "2026-03-13T17:50:34Z",
       "artifacts": [
         {
           "path": "specs/195_standardize_artifact_naming_convention_mm_padded_slug/reports/research-001.md",
@@ -33,7 +33,8 @@
       "researching": "2026-03-13T17:31:59Z",
       "researched": "2026-03-13T17:34:45Z",
       "planning": "2026-03-13T17:40:21Z",
-      "planned": "2026-03-13T17:42:53Z"
+      "planned": "2026-03-13T17:42:53Z",
+      "implementing": "2026-03-13T17:50:34Z"
     },
     {
       "project_number": 194,
@@ -137,6 +138,11 @@
           "path": "specs/192_bypass_opencode_permission_requests/reports/research-003.md",
           "type": "research",
           "summary": "Comprehensive analysis of permission systems in Claude Code vs opencode, root cause analysis, and recommended fixes"
+        },
+        {
+          "path": "specs/192_bypass_opencode_permission_requests/plans/implementation-003.md",
+          "type": "plan",
+          "summary": "9-phase unified implementation plan integrating opencode permission disable and /tmp/ to specs/tmp/ migration"
         }
       ],
       "researching": "2026-03-13T17:35:35Z",
