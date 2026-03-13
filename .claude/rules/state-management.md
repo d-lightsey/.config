@@ -262,6 +262,10 @@ specs/{NNN}_{SLUG}/
 Use `printf "%03d" $task_num` for path construction. Task numbers 1000+ will
 naturally have 4 digits.
 
+**System-specific naming**: Claude Code uses `specs/{NNN}_{SLUG}/` (no prefix).
+OpenCode uses `specs/OC_{NNN}_{SLUG}/` (OC_ prefix). This distinction identifies
+which system created each task.
+
 **DO NOT** create directories at task creation time. The `/task` command only:
 1. Updates `specs/state.json` (adds task to active_projects)
 2. Updates `specs/TODO.md` (adds task entry)

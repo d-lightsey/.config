@@ -19,6 +19,10 @@ Placeholders in path templates and content follow these conventions:
 
 **Key distinction**: Task numbers in text and JSON (`{N}`) remain unpadded for readability. Directory names and artifact versions (`{NNN}`) use 3-digit zero-padding for proper lexicographic sorting.
 
+**System-specific directory prefixes**:
+- Claude Code tasks: `specs/{NNN}_{SLUG}/` (no prefix)
+- OpenCode tasks: `specs/OC_{NNN}_{SLUG}/` (OC_ prefix)
+
 ## Artifact Naming Convention
 
 All task artifacts use the `MM_{short-slug}.md` format:

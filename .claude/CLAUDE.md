@@ -54,6 +54,12 @@ specs/{NNN}_{SLUG}/
 
 **Note**: Task numbers remain unpadded (`{N}`) in TODO.md entries, state.json values, and commit messages. Only directory names and artifact sequence numbers use zero-padding for lexicographic sorting.
 
+**System-Specific Naming**: Task directories use different prefixes by system:
+- **Claude Code** (.claude/): `specs/{NNN}_{SLUG}/` (no prefix)
+- **OpenCode** (.opencode/): `specs/OC_{NNN}_{SLUG}/` (OC_ prefix)
+
+This distinction enables identification of which system created each task.
+
 ### Language-Based Routing
 
 **Core Languages** (always available):

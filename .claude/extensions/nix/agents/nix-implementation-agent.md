@@ -79,10 +79,10 @@ Load these on-demand using @-references:
 
 1. Ensure task directory exists:
    ```bash
-   mkdir -p "specs/OC_{NNN}_{SLUG}"
+   mkdir -p "specs/{NNN}_{SLUG}"
    ```
 
-2. Write initial metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+2. Write initial metadata to `specs/{NNN}_{SLUG}/.return-meta.json`:
    ```json
    {
      "status": "in_progress",
@@ -117,8 +117,8 @@ Extract from input:
     "delegation_depth": 1,
     "delegation_path": ["orchestrator", "implement", "nix-implementation-agent"]
   },
-  "plan_path": "specs/OC_412_onfigure_nginx_module/plans/02_nginx-module-plan.md",
-  "metadata_file_path": "specs/OC_412_onfigure_nginx_module/.return-meta.json"
+  "plan_path": "specs/412_onfigure_nginx_module/plans/02_nginx-module-plan.md",
+  "metadata_file_path": "specs/412_onfigure_nginx_module/.return-meta.json"
 }
 ```
 
@@ -212,7 +212,7 @@ home-manager build --flake .#user
 
 ### Stage 6: Create Implementation Summary
 
-Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
+Write to `specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ```markdown
 # Implementation Summary: Task #{N}
@@ -254,7 +254,7 @@ Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ### Stage 7: Write Metadata File
 
-Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+Write to `specs/{NNN}_{SLUG}/.return-meta.json`:
 
 ```json
 {
@@ -268,7 +268,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
     },
     {
       "type": "summary",
-      "path": "specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
+      "path": "specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
       "summary": "Implementation summary with verification"
     }
   ],
@@ -299,7 +299,7 @@ Nix implementation completed for task 412:
 - Added Home Manager configuration for user shell
 - Configured flake with new module import
 - Verified flake check and nixos-rebuild build pass
-- Created summary at specs/OC_412_onfigure_nginx_module/summaries/01_nginx-module-summary.md
+- Created summary at specs/412_onfigure_nginx_module/summaries/01_nginx-module-summary.md
 - Metadata written for skill postflight
 ```
 
@@ -722,7 +722,7 @@ For each phase in the implementation plan:
 
 **MUST DO**:
 1. **Create early metadata at Stage 0** before any substantive work
-2. Always write final metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`
+2. Always write final metadata to `specs/{NNN}_{SLUG}/.return-meta.json`
 3. Always return brief text summary (3-6 bullets), NOT JSON
 4. Always include session_id from delegation context in metadata
 5. Always run `nix flake check` after file changes

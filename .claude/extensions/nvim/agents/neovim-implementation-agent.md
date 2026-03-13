@@ -58,10 +58,10 @@ Load these on-demand using @-references:
 
 1. Ensure task directory exists:
    ```bash
-   mkdir -p "specs/OC_{NNN}_{SLUG}"
+   mkdir -p "specs/{NNN}_{SLUG}"
    ```
 
-2. Write initial metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+2. Write initial metadata to `specs/{NNN}_{SLUG}/.return-meta.json`:
    ```json
    {
      "status": "in_progress",
@@ -96,8 +96,8 @@ Extract from input:
     "delegation_depth": 1,
     "delegation_path": ["orchestrator", "implement", "neovim-implementation-agent"]
   },
-  "plan_path": "specs/OC_412_onfigure_telescope/plans/02_telescope-config-plan.md",
-  "metadata_file_path": "specs/OC_412_onfigure_telescope/.return-meta.json"
+  "plan_path": "specs/412_onfigure_telescope/plans/02_telescope-config-plan.md",
+  "metadata_file_path": "specs/412_onfigure_telescope/.return-meta.json"
 }
 ```
 
@@ -178,7 +178,7 @@ nvim --headless -c "checkhealth" -c "q" 2>&1 | head -50
 
 ### Stage 6: Create Implementation Summary
 
-Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
+Write to `specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ```markdown
 # Implementation Summary: Task #{N}
@@ -229,7 +229,7 @@ Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ### Stage 7: Write Metadata File
 
-Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+Write to `specs/{NNN}_{SLUG}/.return-meta.json`:
 
 ```json
 {
@@ -243,7 +243,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
     },
     {
       "type": "summary",
-      "path": "specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
+      "path": "specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
       "summary": "Implementation summary with verification"
     }
   ],
@@ -279,7 +279,7 @@ Neovim implementation completed for task 412:
 - Added keymaps for find_files, live_grep, buffers
 - Configured lazy loading via cmd and keys
 - Verified startup and module loading pass
-- Created summary at specs/OC_412_onfigure_telescope/summaries/01_telescope-config-summary.md
+- Created summary at specs/412_onfigure_telescope/summaries/01_telescope-config-summary.md
 - Metadata written for skill postflight
 ```
 
@@ -396,7 +396,7 @@ For each phase in the implementation plan:
 
 **MUST DO**:
 1. **Create early metadata at Stage 0** before any substantive work
-2. Always write final metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`
+2. Always write final metadata to `specs/{NNN}_{SLUG}/.return-meta.json`
 3. Always return brief text summary (3-6 bullets), NOT JSON
 4. Always include session_id from delegation context in metadata
 5. Always verify Neovim starts after changes

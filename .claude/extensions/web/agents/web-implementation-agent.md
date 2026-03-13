@@ -96,10 +96,10 @@ Load these on-demand using @-references:
 
 1. Ensure task directory exists:
    ```bash
-   mkdir -p "specs/OC_{NNN}_{SLUG}"
+   mkdir -p "specs/{NNN}_{SLUG}"
    ```
 
-2. Write initial metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+2. Write initial metadata to `specs/{NNN}_{SLUG}/.return-meta.json`:
    ```json
    {
      "status": "in_progress",
@@ -136,8 +136,8 @@ Extract from input:
     "delegation_depth": 1,
     "delegation_path": ["orchestrator", "implement", "web-implementation-agent"]
   },
-  "plan_path": "specs/OC_10_reate_about_page/plans/02_implementation-plan.md",
-  "metadata_file_path": "specs/OC_10_reate_about_page/.return-meta.json"
+  "plan_path": "specs/10_reate_about_page/plans/02_implementation-plan.md",
+  "metadata_file_path": "specs/10_reate_about_page/.return-meta.json"
 }
 ```
 
@@ -233,7 +233,7 @@ Verify:
 
 ### Stage 6: Create Implementation Summary
 
-Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
+Write to `specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 ```markdown
 # Implementation Summary: Task #{N}
@@ -294,7 +294,7 @@ Write to `specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md`:
 
 **CRITICAL**: Write metadata to the specified file path, NOT to console.
 
-Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
+Write to `specs/{NNN}_{SLUG}/.return-meta.json`:
 
 ```json
 {
@@ -308,7 +308,7 @@ Write to `specs/OC_{NNN}_{SLUG}/.return-meta.json`:
     },
     {
       "type": "summary",
-      "path": "specs/OC_{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
+      "path": "specs/{NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md",
       "summary": "Implementation summary with build verification results"
     }
   ],
@@ -344,7 +344,7 @@ Web implementation completed for task 10:
 - Created about page with hero section and team grid component
 - Added responsive Tailwind styles with dark mode support
 - Verified: pnpm build and pnpm check pass with no errors
-- Created summary at specs/OC_10_reate_about_page/summaries/01_about-page-summary.md
+- Created summary at specs/10_reate_about_page/summaries/01_about-page-summary.md
 - Metadata written for skill postflight
 ```
 
@@ -788,7 +788,7 @@ Web implementation completed for task 10:
 - Created about page with hero section, team grid, and contact form
 - Added responsive Tailwind styles with dark mode support
 - Verified: pnpm build and pnpm check pass
-- Created summary at specs/OC_10_reate_about_page/summaries/01_about-page-summary.md
+- Created summary at specs/10_reate_about_page/summaries/01_about-page-summary.md
 - Metadata written for skill postflight
 ```
 
@@ -799,7 +799,7 @@ Web implementation partially completed for task 10:
 - Phases 1-2 of 3 executed successfully
 - Phase 3 failed: TypeScript error in ContactForm component (Type 'string' not assignable to 'number')
 - Source files created but build does not pass
-- Partial summary at specs/OC_10_reate_about_page/summaries/01_about-page-summary.md
+- Partial summary at specs/10_reate_about_page/summaries/01_about-page-summary.md
 - Metadata written with partial status
 - Recommend: Fix type error in src/components/ContactForm.astro:15, then resume
 ```
@@ -808,7 +808,7 @@ Web implementation partially completed for task 10:
 
 ```
 Web implementation failed for task 10:
-- Plan file not found: specs/OC_10_reate_about_page/plans/02_implementation-plan.md
+- Plan file not found: specs/10_reate_about_page/plans/02_implementation-plan.md
 - Cannot proceed without valid implementation plan
 - No artifacts created
 - Metadata written with failed status
@@ -819,7 +819,7 @@ Web implementation failed for task 10:
 
 **MUST DO**:
 1. **Create early metadata at Stage 0** before any substantive work
-2. Always write final metadata to `specs/OC_{NNN}_{SLUG}/.return-meta.json`
+2. Always write final metadata to `specs/{NNN}_{SLUG}/.return-meta.json`
 3. Always return brief text summary (3-6 bullets), NOT JSON
 4. Always include session_id from delegation context in metadata
 5. Always run `pnpm build` to verify build succeeds (when available)
