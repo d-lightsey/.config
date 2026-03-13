@@ -51,15 +51,18 @@ next_project_number: 201
 
 ### OC_197. Fix workflow command task number header display
 - **Effort**: 0.5-1 hours
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
 - **Planning Completed**: 2026-03-13
+- **Implementation Started**: 2026-03-13
 - **Research**: [research-001.md](OC_197_fix_workflow_command_task_number_header_display/reports/research-001.md), [02_opencode-best-practices.md](OC_197_fix_workflow_command_task_number_header_display/reports/02_opencode-best-practices.md)
 - **Plan**: [02_revised-header-fix.md](OC_197_fix_workflow_command_task_number_header_display/plans/02_revised-header-fix.md)
+- **Summary**: [03_header-fix-summary.md](OC_197_fix_workflow_command_task_number_header_display/summaries/03_header-fix-summary.md)
 
 **Description**: When running workflow commands in opencode that have task numbers, the header does not always update to show the actual task number. When it does update, it shows generic placeholder 'OC_NNN' instead of the actual task number like 'OC_193'. This appears to be a display/UI bug in the workflow command output formatting. Investigate and fix the task number substitution in workflow command headers.
 

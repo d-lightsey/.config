@@ -83,6 +83,11 @@
           "path": "specs/OC_197_fix_workflow_command_task_number_header_display/plans/02_revised-header-fix.md",
           "type": "plan",
           "summary": "Revised 4-phase plan incorporating CLI UX best practices research, header display FIRST pattern"
+        },
+        {
+          "path": "specs/OC_197_fix_workflow_command_task_number_header_display/summaries/03_header-fix-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
       "researching": "2026-03-13T18:02:28Z",
