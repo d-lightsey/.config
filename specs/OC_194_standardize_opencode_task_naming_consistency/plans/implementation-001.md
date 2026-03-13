@@ -60,7 +60,7 @@ Key findings from research reports:
 
 ## Implementation Phases
 
-### Phase 1: Fix Core Skills (.opencode/skills/) [NOT STARTED]
+### Phase 1: Fix Core Skills (.opencode/skills/) [COMPLETED]
 
 **Goal**: Update the three core skills to use `OC_` prefix in directory creation
 
@@ -99,7 +99,7 @@ Key findings from research reports:
 
 ---
 
-### Phase 2: Fix Core Skills (.claude/skills/) [NOT STARTED]
+### Phase 2: Fix Core Skills (.claude/skills/) [IN PROGRESS]
 
 **Goal**: Mirror changes in .claude directory (if skills exist there)
 

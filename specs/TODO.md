@@ -18,9 +18,12 @@ next_project_number: 197
 
 ### 195. Standardize artifact naming convention with MM_padded_slug format
 - **Effort**: 4-6 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-13
+- **Research Completed**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [research-001.md](195_standardize_artifact_naming_convention_mm_padded_slug/reports/research-001.md)
 
 **Description**: When artifacts are created for tasks with OpenCode, they are named such as `/home/benjamin/Projects/Logos/Theory/specs/OC_286_research_n_place_predicate_church_style_systems/reports/research-286.md` which is not correct. Instead, they should use a padded `MM_{short-slug}.md` where the short slug indicates the research topic such as `01_n-place-predicates.md`. Something similar should be done for plans and summaries. Review all commands/skills/agents/rules/context-files/etc that require revision to consistently impose this convention throughout the opencode agent system.
 
@@ -28,11 +31,12 @@ next_project_number: 197
 
 ### OC_194. Standardize OpenCode task naming consistency
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
 - **Planning Completed**: 2026-03-13
+- **Implementation Started**: 2026-03-13
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [research-001.md](OC_194_standardize_opencode_task_naming_consistency/reports/research-001.md), [research-002.md](OC_194_standardize_opencode_task_naming_consistency/reports/research-002.md)
@@ -44,11 +48,12 @@ next_project_number: 197
 
 ### 193. Set default opencode model to Kimi K2.5 OpenCode Go
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Research Started**: 2026-03-13
 - **Research Completed**: 2026-03-13
 - **Planning Started**: 2026-03-13
 - **Planning Completed**: 2026-03-13
+- **Implementation Started**: 2026-03-13
 - **Language**: general
 - **Dependencies**: None
 - **Research**: [research-193.md](193_set_default_opencode_model_to_kimi_k2_5_opencode_go/reports/research-193.md)
