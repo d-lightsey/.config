@@ -1,10 +1,20 @@
 ---
-next_project_number: 198
+next_project_number: 199
 ---
 
 # TODO
 
 ## Tasks
+
+### 198. Review recent .claude/ commits for consistency
+- **Effort**: 2-3 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Review the recent commits which make changes to .claude/ to ensure these are correct and consistent, making any natural improvements.
+
+---
 
 ### OC_197. Fix workflow command task number header display
 - **Effort**: 2-3 hours
