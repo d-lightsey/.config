@@ -98,8 +98,8 @@ rm -f "specs/OC_${padded_num}_${project_name}/.postflight-loop-guard"
 # Set stop_hook_active to force stop on next iteration
 marker_file=$(find specs -maxdepth 3 -name ".postflight-pending" -type f | head -1)
 if [ -n "$marker_file" ]; then
-    jq '.stop_hook_active = true' "$marker_file" > /tmp/marker.json && \
-      mv /tmp/marker.json "$marker_file"
+    jq '.stop_hook_active = true' "$marker_file" > specs/tmp/marker.json && \
+      mv specs/tmp/marker.json "$marker_file"
 fi
 ```
 

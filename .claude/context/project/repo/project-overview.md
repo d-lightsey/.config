@@ -134,7 +134,7 @@ nvim --headless -c "lua require('plugins')" -c "q"
 nvim --headless -c "checkhealth" -c "q"
 
 # Profile startup
-nvim --startuptime /tmp/startup.log
+nvim --startuptime specs/tmp/startup.log
 ```
 
 ## Related Documentation
