@@ -28,10 +28,10 @@
     {
       "project_number": 197,
       "project_name": "fix_workflow_command_task_number_header_display",
-      "status": "planning",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-13T17:59:57Z",
-      "last_updated": "2026-03-13T18:12:53Z",
+      "last_updated": "2026-03-13T18:14:40Z",
       "artifacts": [
         {
           "path": "specs/OC_197_fix_workflow_command_task_number_header_display/reports/research-001.md",
@@ -41,25 +41,32 @@
       ],
       "researching": "2026-03-13T18:02:28Z",
       "researched": "2026-03-13T18:05:23Z",
-      "planning": "2026-03-13T18:12:53Z"
+      "planning": "2026-03-13T18:12:53Z",
+      "planned": "2026-03-13T18:14:40Z"
     },
     {
       "project_number": 196,
       "project_name": "port_wezterm_tab_integration_from_claude_to_opencode",
-      "status": "planning",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-13T17:31:45Z",
-      "last_updated": "2026-03-13T18:12:50Z",
+      "last_updated": "2026-03-13T18:14:38Z",
       "artifacts": [
         {
           "path": "specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/reports/research-001.md",
           "type": "research",
           "summary": "Comprehensive research report comparing .claude/ and .opencode/ wezterm integration implementations. Found that most features are already ported (and enhanced in .opencode/), but Notification hook and claude-ready-signal are missing from .opencode/settings.json. Includes detailed technical implementation details, OSC sequence documentation, and specific recommendations for completing the port."
+        },
+        {
+          "path": "specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/plans/implementation-001.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for porting wezterm tab integration features from .claude/ to .opencode/"
         }
       ],
       "researching": "2026-03-13T18:06:03Z",
       "researched": "2026-03-13T18:10:13Z",
-      "planning": "2026-03-13T18:12:50Z"
+      "planning": "2026-03-13T18:12:50Z",
+      "planned": "2026-03-13T18:14:38Z"
     },
     {
       "project_number": 195,
