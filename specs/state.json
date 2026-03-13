@@ -139,10 +139,10 @@
     {
       "project_number": 196,
       "project_name": "port_wezterm_tab_integration_from_claude_to_opencode",
-      "status": "researching",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-13T17:31:45Z",
-      "last_updated": "2026-03-13T19:19:57Z",
+      "last_updated": "2026-03-13T19:21:49Z",
       "artifacts": [
         {
           "path": "specs/OC_196_port_wezterm_tab_integration_from_claude_to_opencode/reports/research-001.md",
@@ -174,7 +174,8 @@
       "completed": "2026-03-13T11:38:01-07:00",
       "completion_summary": "Ported remaining wezterm tab integration features to .opencode/: added Notification hook for TTS alerts on permission/idle/elicitation events, and added claude-ready-signal.sh to SessionStart for faster Neovim sidebar initialization.",
       "claudemd_suggestions": "Updated .opencode/settings.json with Notification hook and claude-ready-signal.sh in SessionStart. Documentation at .opencode/docs/guides/tts-stt-integration.md was already correct.",
-      "researching_3": "2026-03-13T19:19:57Z"
+      "researching_3": "2026-03-13T19:19:57Z",
+      "researched_3": "2026-03-13T19:21:49Z"
     },
     {
       "project_number": 195,

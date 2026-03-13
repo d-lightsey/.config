@@ -88,6 +88,7 @@ All commands use checkpoint-based execution: GATE IN (preflight) -> DELEGATE (sk
 | `/meta` | `/meta` | System builder for .claude/ changes |
 | `/fix-it` | `/fix-it [PATH...]` | Scan for FIX:/NOTE:/TODO: tags |
 | `/refresh` | `/refresh [--dry-run] [--force]` | Clean orphaned processes and old files |
+| `/tag` | `/tag [--patch|--minor|--major]` | Create semantic version tag (user-only) |
 
 ### Utility Scripts
 
@@ -143,8 +144,11 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 | skill-meta | meta-builder-agent | - | System building and task creation |
 | skill-status-sync | (direct execution) | - | Atomic status updates |
 | skill-refresh | (direct execution) | - | Process and file cleanup |
+| skill-tag | (user-only) | - | Semantic version tagging for deployment |
 
 **Model Enforcement**: Agents declare preferred models via `model:` frontmatter field. Research and planning agents use `opus` for superior reasoning. Implementation agents use default model. See `.claude/docs/reference/standards/agent-frontmatter-standard.md` for details.
+
+**User-Only Skills**: Skills marked as "user-only" cannot be invoked by agents. These are for human-controlled operations like deployment (`skill-tag`).
 
 **Extension Skills**: When extensions are loaded, additional skill-to-agent mappings are added (e.g., skill-neovim-research -> neovim-research-agent).
 

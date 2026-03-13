@@ -507,6 +507,7 @@ Convert documents between formats.
 | `/errors` | `/errors [--fix N]` | Analyze errors |
 | `/meta` | `/meta [PROMPT] \| --analyze` | System builder |
 | `/fix-it` | `/fix-it [PATH...]` | Extract tags to tasks |
+| `/tag` | `/tag [--patch|--minor|--major]` | Create semantic version tag (user-only) |
 | `/convert` | `/convert SOURCE [OUTPUT]` | Convert documents |
 
 ### Status Transitions
