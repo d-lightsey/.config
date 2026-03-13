@@ -35,14 +35,26 @@ All task artifacts use the `MM_{short-slug}.md` format:
    - "Add Telescope keymaps" -> `add-telescope-keymaps`
    - "Fix memory leak in parser" -> `fix-memory-leak-parser`
 
-### Per-Task Sequential Numbering
-- Reports: 01, 02, 03... (research reports within task, chronological)
-- Plans: 01, 02, 03... (plan versions, sequential)
-- Summaries: Always follows plan execution (highest number + 1)
-- Example sequence:
-  - `01_research-findings.md`
-  - `02_design-approach.md`
-  - `03_execution-summary.md`
+### Per-Type Sequential Numbering
+Each artifact type maintains its own independent sequence within a task:
+- **Reports**: 01, 02, 03... (research reports, chronological)
+- **Plans**: 01, 02, 03... (plan versions, sequential)
+- **Summaries**: 01, 02, 03... (execution summaries, follows plan execution)
+
+**Example**: A task with multiple artifacts has separate sequences per type:
+```
+specs/{NNN}_{SLUG}/
+├── reports/
+│   ├── 01_research-findings.md   (first report, sequence starts at 01)
+│   └── 02_supplemental-analysis.md  (second report)
+├── plans/
+│   ├── 01_implementation-plan.md  (first plan, sequence starts at 01)
+│   └── 02_revised-plan.md         (second plan version)
+└── summaries/
+    └── 01_execution-summary.md    (first summary, sequence starts at 01)
+```
+
+**Key**: Each subdirectory (reports/, plans/, summaries/) has its own 01, 02, 03 sequence.
 
 ## Research Reports
 
