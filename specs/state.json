@@ -1,15 +1,23 @@
 {
   "version": "1.0.0",
-  "next_project_number": 203,
+  "next_project_number": 204,
   "active_projects": [
+    {
+      "project_number": 203,
+      "project_name": "remove_oc_prefix_from_claude_task_directories",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-13T19:51:01Z",
+      "last_updated": "2026-03-13T19:51:01Z"
+    },
     {
       "project_number": 202,
       "project_name": "debounce_tts_session_idle",
-      "status": "planned",
+      "status": "implementing",
       "language": "meta",
       "created": "2026-03-13T19:34:58Z",
-      "last_updated": "2026-03-13T19:49:22Z",
-      "session_id": "sess_1741894598_b4d9e3",
+      "last_updated": "2026-03-13T19:51:12Z",
+      "session_id": "sess_1773431439_5ea40e",
       "researched": "2026-03-13T19:40:09Z",
       "artifacts": [
         {
@@ -23,7 +31,8 @@
           "summary": "3-phase implementation plan for trailing-edge TTS debounce"
         }
       ],
-      "planned": "2026-03-13T19:49:22Z"
+      "planned": "2026-03-13T19:49:22Z",
+      "started": "2026-03-13T19:51:12Z"
     },
     {
       "project_number": 201,
