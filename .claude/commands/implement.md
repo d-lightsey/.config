@@ -108,11 +108,11 @@ The skill will spawn the appropriate agent which executes plan phases sequential
    completion_summary="$result_summary"
 
    # Update state.json with completion_summary field
-   jq --arg num "$task_number" \
-      --arg summary "$completion_summary" \
-      '(.active_projects[] | select(.project_number == ($num | tonumber))) += {
-        completion_summary: $summary
-      }' specs/state.json > /tmp/state.json && mv /tmp/state.json specs/state.json
+    jq --arg num "$task_number" \
+       --arg summary "$completion_summary" \
+       '(.active_projects[] | select(.project_number == ($num | tonumber))) += {
+         completion_summary: $summary
+       }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
    ```
 
    **Update TODO.md with Summary line:**

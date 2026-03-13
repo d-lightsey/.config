@@ -157,7 +157,7 @@ done
 ```bash
 # Only process non-meta tasks for ROAD_MAP.md matching
 # Use file-based jq filter to avoid Issue #1132 with != operator
-cat > /tmp/todo_nonmeta_$$.jq << 'EOF'
+cat > specs/tmp/todo_nonmeta_$$.jq << 'EOF'
 .active_projects[] |
 select(.status == "completed") |
 select(.language != "meta") |
@@ -169,8 +169,8 @@ select(.completion_summary != null) |
   roadmap_items: (.roadmap_items // [])
 }
 EOF
-completed_with_summaries=$(jq -rf /tmp/todo_nonmeta_$$.jq specs/state.json)
-rm -f /tmp/todo_nonmeta_$$.jq
+completed_with_summaries=$(jq -rf specs/tmp/todo_nonmeta_$$.jq specs/state.json)
+rm -f specs/tmp/todo_nonmeta_$$.jq
 ```
 
 **Step 3.5.3: Match non-meta tasks against ROAD_MAP.md**:
@@ -1138,10 +1138,10 @@ If an Edit operation fails (section not found, text mismatch), the failure is lo
 1. **File-based filters** for `!=` operators:
    ```bash
    # Instead of: jq 'select(.language != "meta")' file
-   cat > /tmp/filter_$$.jq << 'EOF'
+   cat > specs/tmp/filter_$$.jq << 'EOF'
    select(.language != "meta")
    EOF
-   jq -f /tmp/filter_$$.jq file && rm -f /tmp/filter_$$.jq
+   jq -f specs/tmp/filter_$$.jq file && rm -f specs/tmp/filter_$$.jq
    ```
 
 2. **`has()` for null checks**:

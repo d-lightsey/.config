@@ -572,13 +572,13 @@ Parse task ranges:
 
    **Move to archive via jq** (two-step to avoid jq escaping bug - see `jq-escaping-workarounds.md`):
    ```bash
-   # Step 1: Add to archive with abandoned status
-   jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --argjson task "$task_data" \
-     '.completed_projects = [$task | .status = "abandoned" | .abandoned = $ts] + .completed_projects' \
-     specs/archive/state.json > /tmp/archive.json && \
-     mv /tmp/archive.json specs/archive/state.json
+    # Step 1: Add to archive with abandoned status
+    jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" --argjson task "$task_data" \
+      '.completed_projects = [$task | .status = "abandoned" | .abandoned = $ts] + .completed_projects' \
+      specs/archive/state.json > specs/tmp/archive.json && \
+      mv specs/tmp/archive.json specs/archive/state.json
 
-   # Step 2: Remove from active using del() instead of map(select(!=))
+    # Step 2: Remove from active using del() instead of map(select(!=))
     jq --arg num "$task_number" \
       'del(.active_projects[] | select(.project_number == ($num | tonumber)))' \
       specs/state.json > specs/tmp/state.json && \
