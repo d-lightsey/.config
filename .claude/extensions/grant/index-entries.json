@@ -7,7 +7,217 @@
       "topics": ["grant", "proposal", "funding", "research"],
       "keywords": ["grant", "proposal", "funder", "budget"],
       "summary": "Grant writing domain overview and extension capabilities",
-      "line_count": 100,
+      "line_count": 120,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/domain/funder-types.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["funders", "ai-safety", "sbir", "nsf", "nih", "foundations"],
+      "keywords": ["funder", "foundation", "federal", "open-philanthropy", "sff", "ltff"],
+      "summary": "Funder categories including AI Safety, SBIR, Foundation, and Academic funders",
+      "line_count": 95,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/domain/proposal-components.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["proposal", "sections", "executive-summary", "budget", "evaluation"],
+      "keywords": ["proposal", "narrative", "budget", "timeline", "evaluation"],
+      "summary": "Standard grant proposal sections with purpose and content guidance",
+      "line_count": 140,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/domain/grant-terminology.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["terminology", "definitions", "acronyms", "federal"],
+      "keywords": ["terminology", "glossary", "definitions", "acronyms", "cfda", "sam"],
+      "summary": "Key grant writing terms, definitions, and common acronyms",
+      "line_count": 110,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/patterns/proposal-structure.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["structure", "organization", "sections", "formatting"],
+      "keywords": ["structure", "outline", "sections", "nsf", "nih", "foundation"],
+      "summary": "Proposal structural patterns by funder type with section hierarchy",
+      "line_count": 165,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/patterns/budget-patterns.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["budget", "personnel", "travel", "equipment", "indirect"],
+      "keywords": ["budget", "justification", "personnel", "fringe", "indirect", "mtdc"],
+      "summary": "Budget formats and justification templates for NSF, NIH, SBIR, Foundation",
+      "line_count": 210,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/patterns/evaluation-patterns.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["evaluation", "logic-model", "outcomes", "indicators", "measurement"],
+      "keywords": ["evaluation", "logic-model", "outcomes", "indicators", "process", "impact"],
+      "summary": "Evaluation frameworks including logic models and measurement approaches",
+      "line_count": 175,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/patterns/narrative-patterns.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["narrative", "writing", "impact", "problem-framing"],
+      "keywords": ["narrative", "impact", "active-voice", "specificity", "evidence"],
+      "summary": "Writing patterns for impact statements, problem framing, and persuasion",
+      "line_count": 145,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/standards/writing-standards.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["writing", "style", "voice", "formatting"],
+      "keywords": ["writing", "style", "active-voice", "formatting", "consistency"],
+      "summary": "Grant writing style guide covering voice, precision, and formatting",
+      "line_count": 135,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/standards/character-limits.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["limits", "character-count", "page-limits", "formatting"],
+      "keywords": ["character-limit", "page-limit", "nsf", "nih", "sbir", "word-count"],
+      "summary": "Funder-specific character and page limits for proposal sections",
+      "line_count": 115,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/templates/executive-summary.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["executive-summary", "abstract", "template"],
+      "keywords": ["executive-summary", "abstract", "overview", "template", "ai-safety"],
+      "summary": "Executive summary templates for Foundation, Research, AI Safety, SBIR",
+      "line_count": 155,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/templates/budget-justification.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["budget", "justification", "personnel", "equipment", "travel"],
+      "keywords": ["budget", "justification", "personnel", "fringe", "equipment", "travel"],
+      "summary": "Budget justification templates for all standard cost categories",
+      "line_count": 200,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/templates/evaluation-plan.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["evaluation", "plan", "logic-model", "data-collection"],
+      "keywords": ["evaluation", "plan", "logic-model", "indicators", "data-collection"],
+      "summary": "Evaluation plan templates with logic model and data collection guidance",
+      "line_count": 180,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/templates/submission-checklist.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["checklist", "submission", "compliance", "attachments"],
+      "keywords": ["checklist", "submission", "nsf", "nih", "sbir", "foundation"],
+      "summary": "Pre-submission verification checklists for federal and foundation grants",
+      "line_count": 175,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/tools/funder-research.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["research", "funders", "990", "databases", "due-diligence"],
+      "keywords": ["funder", "research", "990", "database", "candid", "grants-gov"],
+      "summary": "Systematic funder research process with tracking templates",
+      "line_count": 165,
+      "load_when": {
+        "languages": ["grant"],
+        "agents": ["grant-agent"],
+        "commands": ["/grant"]
+      }
+    },
+    {
+      "path": "project/grant/tools/web-resources.md",
+      "domain": "project",
+      "subdomain": "grant",
+      "topics": ["resources", "databases", "tools", "training"],
+      "keywords": ["resources", "grants-gov", "candid", "nsf", "nih", "training"],
+      "summary": "Curated list of grant research databases, writing tools, and training",
+      "line_count": 125,
       "load_when": {
         "languages": ["grant"],
         "agents": ["grant-agent"],

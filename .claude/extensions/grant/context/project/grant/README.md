@@ -79,14 +79,48 @@ Every grant proposal includes these essential sections:
 
 ## Context Files
 
-- `domain/` - Core grant concepts and terminology
-- `patterns/` - Proposal structure and writing patterns
-- `templates/` - Budget, timeline, and checklist templates
-- `tools/` - Funder-specific application guides
-- `standards/` - Writing standards and character limits
+### Domain Knowledge
+
+Core concepts and terminology for grant writing:
+
+- [Funder Types](domain/funder-types.md) - AI Safety, SBIR, Foundation, Academic funder categories
+- [Proposal Components](domain/proposal-components.md) - Standard sections and their purposes
+- [Grant Terminology](domain/grant-terminology.md) - Key terms and definitions
+
+### Patterns
+
+Reusable structure and writing patterns:
+
+- [Proposal Structure](patterns/proposal-structure.md) - Section organization by funder type
+- [Budget Patterns](patterns/budget-patterns.md) - Budget formats (NSF, NIH, Foundation, SBIR)
+- [Evaluation Patterns](patterns/evaluation-patterns.md) - Logic models and measurement approaches
+- [Narrative Patterns](patterns/narrative-patterns.md) - Impact statements and problem framing
+
+### Standards
+
+Style guides and reference material:
+
+- [Writing Standards](standards/writing-standards.md) - Grant writing style guide
+- [Character Limits](standards/character-limits.md) - Funder-specific length requirements
+
+### Templates
+
+Ready-to-use section templates:
+
+- [Executive Summary](templates/executive-summary.md) - Summary templates by funder type
+- [Budget Justification](templates/budget-justification.md) - Line-item justification patterns
+- [Evaluation Plan](templates/evaluation-plan.md) - Evaluation section templates
+- [Submission Checklist](templates/submission-checklist.md) - Pre-submission verification
+
+### Tools
+
+Guides for grant research and resources:
+
+- [Funder Research](tools/funder-research.md) - How to research and evaluate funders
+- [Web Resources](tools/web-resources.md) - Databases, tools, and reference sites
 
 ## Navigation
 
-- [Extension](.claude/extensions/grant/EXTENSION.md)
-- [Agent Definition](.claude/extensions/grant/agents/grant-agent.md) (Task #205)
-- [Skill Definition](.claude/extensions/grant/skills/skill-grant/SKILL.md) (Task #206)
+- [Extension](../../../EXTENSION.md)
+- [Agent Definition](../../../agents/grant-agent.md) (Task #205)
+- [Skill Definition](../../../skills/skill-grant/SKILL.md) (Task #206)
