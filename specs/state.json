@@ -188,12 +188,12 @@
     {
       "project_number": 209,
       "project_name": "create_extension_metadata",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "effort": "1 hour",
       "created": "2026-03-15T12:00:00Z",
-      "last_updated": "2026-03-16T05:46:19Z",
-      "session_id": "sess_1742022400_e9f6c4",
+      "last_updated": "2026-03-16T05:53:01Z",
+      "session_id": "sess_1742036000_f1a7b5",
       "dependencies": [
         207,
         208
@@ -203,9 +203,15 @@
           "path": "specs/209_create_extension_metadata/reports/01_extension-metadata-research.md",
           "type": "research",
           "summary": "Research findings showing existing metadata files are complete with proper structure"
+        },
+        {
+          "path": "specs/209_create_extension_metadata/plans/02_extension-metadata-plan.md",
+          "type": "plan",
+          "summary": "4-phase verification plan for grant extension metadata files"
         }
       ],
-      "researched": "2026-03-16T05:46:19Z"
+      "researched": "2026-03-16T05:46:19Z",
+      "planned": "2026-03-16T05:53:01Z"
     },
     {
       "project_number": 87,
