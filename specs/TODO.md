@@ -8,10 +8,11 @@ next_project_number: 210
 
 ### 209. Create EXTENSION.md and index-entries.json for grant extension
 - **Effort**: 1 hour
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #207, Task #208
 - **Created**: 2026-03-15
+- **Research**: [01_extension-metadata-research.md](209_create_extension_metadata/reports/01_extension-metadata-research.md)
 
 **Description**: Create the EXTENSION.md file with content to inject into CLAUDE.md when the grant extension is loaded, and index-entries.json with canonical paths for context discovery. This finalizes the extension for use with the `<leader>ac` loader.
 
