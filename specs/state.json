@@ -5,13 +5,21 @@
     {
       "project_number": 217,
       "project_name": "revise_grant_workflow_order_draft_budget_before_plan",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "effort": "1-2 hours",
       "created": "2026-03-16T00:00:00Z",
-      "last_updated": "2026-03-16T00:00:00Z",
+      "last_updated": "2026-03-16T23:30:14Z",
       "dependencies": [],
-      "artifacts": []
+      "artifacts": [
+        {
+          "path": "specs/217_revise_grant_workflow_order_draft_budget_before_plan/reports/01_grant-improvements.md",
+          "type": "report",
+          "summary": "Research report identifying 9 issues: workflow order (3 locations), consistency, missing features, documentation gaps, error handling, UX"
+        }
+      ],
+      "session_id": "sess_1773703643_6cde97",
+      "researched": "2026-03-16T23:30:14Z"
     },
     {
       "project_number": 216,
