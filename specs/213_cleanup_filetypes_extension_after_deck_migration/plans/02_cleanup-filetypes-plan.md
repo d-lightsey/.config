@@ -1,7 +1,7 @@
 # Implementation Plan: Cleanup Filetypes Extension After Deck Migration
 
 - **Task**: 213 - cleanup_filetypes_extension_after_deck_migration
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5-1 hour
 - **Dependencies**: Task 212 (deck components moved to present/ extension)
 - **Research Inputs**: specs/213_cleanup_filetypes_extension_after_deck_migration/reports/01_cleanup-filetypes-research.md
