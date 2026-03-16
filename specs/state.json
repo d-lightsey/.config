@@ -93,12 +93,12 @@
     {
       "project_number": 213,
       "project_name": "cleanup_filetypes_extension_after_deck_migration",
-      "status": "researched",
+      "status": "planning",
       "language": "meta",
       "effort": "30 min",
       "created": "2026-03-16T14:00:00Z",
-      "last_updated": "2026-03-16T20:57:02Z",
-      "session_id": "sess_1741902976_a3b7c1",
+      "last_updated": "2026-03-16T20:57:48Z",
+      "session_id": "sess_1741903200_b4c8d2",
       "dependencies": [
         211
       ],
@@ -114,16 +114,23 @@
     {
       "project_number": 214,
       "project_name": "restructure_context_grant_to_present",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "effort": "1 hour",
       "created": "2026-03-16T14:00:00Z",
-      "last_updated": "2026-03-16T20:55:19Z",
+      "last_updated": "2026-03-16T20:57:40Z",
       "session_id": "sess_1742072400_c4d9e2",
       "dependencies": [
         212
       ],
-      "artifacts": []
+      "artifacts": [
+        {
+          "path": "specs/214_restructure_context_grant_to_present/reports/01_context-restructure-research.md",
+          "type": "research",
+          "summary": "Research report documenting 16 index-entries.json paths, 6 grant-agent.md references, 4 EXTENSION.md references, 1 manifest.json entry, and 1 SKILL.md reference"
+        }
+      ],
+      "researched": "2026-03-16T20:57:40Z"
     },
     {
       "project_number": 204,
