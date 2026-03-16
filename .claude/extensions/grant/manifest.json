@@ -7,7 +7,7 @@
   "provides": {
     "agents": ["grant-agent.md"],
     "skills": ["skill-grant"],
-    "commands": [],
+    "commands": ["grant.md"],
     "rules": [],
     "context": ["project/grant"],
     "scripts": [],

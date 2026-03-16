@@ -39,12 +39,14 @@ next_project_number: 210
 
 ### 207. Create /grant command
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: Task #206
 - **Created**: 2026-03-15
+- **Completed**: 2026-03-16
 - **Research**: [01_grant-command-research.md](207_create_grant_command/reports/01_grant-command-research.md)
 - **Plan**: [02_grant-command-plan.md](207_create_grant_command/plans/02_grant-command-plan.md)
+- **Summary**: [03_grant-command-summary.md](207_create_grant_command/summaries/03_grant-command-summary.md)
 
 **Description**: Create grant/commands/grant.md command following existing command patterns. The command should parse arguments (e.g., project name, funder, deadline), invoke skill-grant via the Skill tool, and handle postflight operations including git commits.
 
