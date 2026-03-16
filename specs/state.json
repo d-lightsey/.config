@@ -1,7 +1,67 @@
 {
   "version": "1.0.0",
-  "next_project_number": 210,
+  "next_project_number": 215,
   "active_projects": [
+    {
+      "project_number": 210,
+      "project_name": "rename_grant_extension_to_present",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T14:00:00Z",
+      "session_id": "sess_1741898400_d4e5f6",
+      "dependencies": [],
+      "artifacts": []
+    },
+    {
+      "project_number": 211,
+      "project_name": "move_deck_elements_to_present",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T14:00:00Z",
+      "session_id": "sess_1741898400_d4e5f6",
+      "dependencies": [210],
+      "artifacts": []
+    },
+    {
+      "project_number": 212,
+      "project_name": "update_present_extension_metadata_for_deck",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T14:00:00Z",
+      "session_id": "sess_1741898400_d4e5f6",
+      "dependencies": [211],
+      "artifacts": []
+    },
+    {
+      "project_number": 213,
+      "project_name": "cleanup_filetypes_extension_after_deck_migration",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "30 min",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T14:00:00Z",
+      "session_id": "sess_1741898400_d4e5f6",
+      "dependencies": [211],
+      "artifacts": []
+    },
+    {
+      "project_number": 214,
+      "project_name": "restructure_context_grant_to_present",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T14:00:00Z",
+      "session_id": "sess_1741898400_d4e5f6",
+      "dependencies": [212],
+      "artifacts": []
+    },
     {
       "project_number": 204,
       "project_name": "create_grant_extension_scaffold",

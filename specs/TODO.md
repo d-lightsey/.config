@@ -1,10 +1,65 @@
 ---
-next_project_number: 210
+next_project_number: 215
 ---
 
 # TODO
 
 ## Tasks
+
+### 210. Rename grant/ extension directory to present/
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+- **Created**: 2026-03-16
+
+**Description**: Rename the extension directory from `.claude/extensions/grant/` to `.claude/extensions/present/`. Update manifest.json: change `name` field from "grant" to "present", `language` field from "grant" to "present", and `merge_targets.claudemd.section_id` from "extension_grant" to "extension_present". This is the foundational rename that all subsequent tasks depend on.
+
+---
+
+### 211. Move deck elements from filetypes/ to present/
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #210
+- **Created**: 2026-03-16
+
+**Description**: Move deck-related files from the filetypes/ extension into the renamed present/ extension. Files to move: `agents/deck-agent.md`, `commands/deck.md`, `skills/skill-deck/SKILL.md`, and context patterns `context/project/filetypes/patterns/pitch-deck-structure.md` and `context/project/filetypes/patterns/touying-pitch-deck-template.md`. Move context patterns to `context/project/present/patterns/` in the present/ extension.
+
+---
+
+### 212. Update present/ extension metadata for deck integration
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #211
+- **Created**: 2026-03-16
+
+**Description**: Update present/ extension configuration to register the newly moved deck components. Update `manifest.json` provides arrays: add "deck-agent.md" to agents, "skill-deck" to skills, "deck.md" to commands. Update `EXTENSION.md`: add a deck documentation section and revise the title to reflect both grant writing and presentation capabilities. Update `index-entries.json`: add the two deck context entries (pitch-deck-structure.md, touying-pitch-deck-template.md) with correct present/ paths and load_when referencing deck-agent and /deck command. Update `deck-agent.md` to change all `@context/project/filetypes/patterns/` references to `@context/project/present/patterns/`.
+
+---
+
+### 213. Clean up filetypes/ extension after deck migration
+- **Effort**: 30 min
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #211
+- **Created**: 2026-03-16
+
+**Description**: Remove all deck-related references from the filetypes/ extension after deck components have been moved to present/. Remove "deck-agent.md" from `manifest.json` agents array, "skill-deck" from skills array, and "deck.md" from commands array. Remove the deck documentation section from `EXTENSION.md`. Remove the two deck context entries (pitch-deck-structure.md, touying-pitch-deck-template.md) from `index-entries.json`.
+
+---
+
+### 214. Restructure context/project/grant/ to context/project/present/
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #212
+- **Created**: 2026-03-16
+
+**Description**: Rename the context subdirectory from `context/project/grant/` to `context/project/present/` within the present/ extension. Update all 16 path entries in `index-entries.json` from `project/grant/` to `project/present/` (including README and all domain/patterns/standards/templates/tools files). Update `grant-agent.md` all `@context/project/grant/` @-references to `@context/project/present/`. Update any `@.claude/context/project/grant/` references in `EXTENSION.md` to `@.claude/context/project/present/`. Update the `provides.context` field in `manifest.json` from "project/grant" to "project/present".
+
+---
 
 ### 209. Create EXTENSION.md and index-entries.json for grant extension
 - **Effort**: 1 hour
