@@ -5,19 +5,25 @@
     {
       "project_number": 219,
       "project_name": "incorporate_proofchecker_docs_and_patterns",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-17T00:41:13Z",
-      "last_updated": "2026-03-17T00:49:18Z",
-      "session_id": "sess_1773708329_fd7fe4",
+      "last_updated": "2026-03-17T00:57:06Z",
+      "session_id": "sess_1773708833_c558eb",
       "researched": "2026-03-17T00:49:18Z",
       "artifacts": [
         {
           "path": "specs/219_incorporate_proofchecker_docs_and_patterns/reports/01_proofchecker-integration.md",
           "type": "research",
           "summary": "Research report covering 6 files to port from ProofChecker, /merge command design with GitHub/GitLab detection, and index.json entries"
+        },
+        {
+          "path": "specs/219_incorporate_proofchecker_docs_and_patterns/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for porting ProofChecker documentation, patterns, and /merge command"
         }
-      ]
+      ],
+      "planned": "2026-03-17T00:57:06Z"
     },
     {
       "project_number": 218,
