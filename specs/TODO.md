@@ -8,8 +8,9 @@ next_project_number: 222
 
 ### 221. Fix phase status marker updates in grant-agent, skill-grant, and latex/typst implementation agents
 - **Effort**: 2.25 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research**: [01_phase-status-markers.md](221_fix_phase_status_markers_implementation_agents/reports/01_phase-status-markers.md)
+- **Plan**: [02_implementation-plan.md](221_fix_phase_status_markers_implementation_agents/plans/02_implementation-plan.md)
 - **Language**: meta
 - **Dependencies**: None
 
