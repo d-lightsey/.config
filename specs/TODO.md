@@ -1,10 +1,26 @@
 ---
-next_project_number: 220
+next_project_number: 221
 ---
 
 # TODO
 
 ## Tasks
+
+### 220. Add `--fix-it` flag to `/grant` command with grant directory scanning
+- **Effort**: 3-5 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Add a `--fix-it N` mode to the `/grant` command (`.claude/extensions/present/commands/grant.md`) that scans the grant project directory for embedded `FIX:` and `TODO:` tags and creates structured tasks to implement those changes, following the same interactive pattern as the `/fix-it` command.
+
+**Component 1 — Modify `/grant` command** (`grant.md`): Add `--fix-it` to the Modes table and Mode Detection section. Syntax: `/grant N --fix-it`. Parse the grant number N, validate the task exists in state.json (or archive), extract the slug to locate `grants/{N}_{slug}/`, and abort with a clear message if the directory does not exist. Then delegate to `skill-grant-fix-it` with args `task_number={N} grant_dir=grants/{N}_{slug}/ session_id={session_id}`. Implement GATE IN / GATE OUT checkpoints matching the pattern used by `--draft` and `--budget` modes. Output on success: list of task numbers created and suggested next steps.
+
+**Component 2 — Create `skill-grant-fix-it`** (new file `.claude/extensions/present/skills/skill-grant-fix-it/SKILL.md`): Direct-execution skill that mirrors the logic of `skill-fix-it` but scoped to a grant directory. Steps: (1) Accept `task_number` and `grant_dir` from args. (2) Scan `{grant_dir}` recursively for `FIX:` and `TODO:` tags across all relevant file types (`.tex`, `.md`, `.bib`, `.txt`). Use comment-style patterns appropriate to each type: `% FIX:` / `% TODO:` for `.tex`, `<!-- FIX:` / `<!-- TODO:` for `.md`, `# FIX:` / `# TODO:` for `.bib`/`.txt`. (3) Display tag scan results to the user before any selection. If no tags found, report and exit. (4) Prompt for task type selection via `AskUserQuestion` with `multiSelect: true` — offer "fix-it task" (combine all FIX: tags into one task) and/or "TODO tasks" (one task per selected TODO: item, or grouped by topic). (5) For TODO tasks with 2+ items, offer topic grouping using the same clustering algorithm as `skill-fix-it` (shared key terms, directory proximity, action type). (6) Confirm before creating. (7) Create selected tasks in `specs/state.json` and `specs/TODO.md` with `language="grant"` so they route through the grant workflow. Task descriptions include file paths and line numbers from the scan. (8) Git commit with message `fix-it: create {N} tasks from grant {M} tags`.
+
+**Component 3 — Register in manifest.json**: Add `skill-grant-fix-it` to the `skills` array in `.claude/extensions/present/manifest.json`.
+
+---
 
 ### 219. Incorporate ProofChecker documentation, patterns, and /merge command into nvim .claude/ system
 - **Effort**: 6-8 hours
