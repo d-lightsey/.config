@@ -5,10 +5,19 @@
     {
       "project_number": 222,
       "project_name": "document_memory_extension_usage",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-17T23:01:29Z",
-      "last_updated": "2026-03-17T23:01:29Z"
+      "last_updated": "2026-03-17T23:04:51Z",
+      "session_id": "sess_1742252493_a8f3c1",
+      "researched": "2026-03-17T23:04:51Z",
+      "artifacts": [
+        {
+          "path": "specs/222_document_memory_extension_usage/reports/01_memory-extension-analysis.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of memory extension architecture, components, usage patterns, MCP integration, and recommendations for documentation"
+        }
+      ]
     },
     {
       "project_number": 221,
