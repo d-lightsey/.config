@@ -8,11 +8,13 @@ next_project_number: 221
 
 ### 220. Add `--fix-it` flag to `/grant` command with grant directory scanning
 - **Effort**: 3-5 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-03-17
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_fix-it-flag-research.md](220_add_fix_it_flag_to_grant_command/reports/01_fix-it-flag-research.md)
 - **Plan**: [02_implementation-plan.md](220_add_fix_it_flag_to_grant_command/plans/02_implementation-plan.md)
+- **Summary**: [03_implementation-summary.md](220_add_fix_it_flag_to_grant_command/summaries/03_implementation-summary.md)
 
 **Description**: Add a `--fix-it N` mode to the `/grant` command (`.claude/extensions/present/commands/grant.md`) that scans the grant project directory for embedded `FIX:` and `TODO:` tags and creates structured tasks to implement those changes, following the same interactive pattern as the `/fix-it` command.
 
