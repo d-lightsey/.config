@@ -1,10 +1,19 @@
 ---
-next_project_number: 219
+next_project_number: 220
 ---
 
 # TODO
 
 ## Tasks
+
+### 219. Incorporate ProofChecker documentation and patterns into nvim .claude/ system
+- **Effort**: 4-6 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Incorporate missing documentation, patterns, and format schemas from ProofChecker's `.claude/` system to make the nvim agent system more complete. Investigation found /lake and /lean are already in the lean extension (no gaps), and /merge is GitLab-specific and not applicable. The real gaps are context reference docs, pattern docs, and format schemas that ProofChecker has formalized but nvim lacks or embeds informally. Specifically: (1) Add `blocked-mcp-tools.md` to the lean extension's context as a standalone doc with the unblocking procedure (currently only embedded in mcp-tools-guide.md without formal recovery steps); (2) Create `context/core/reference/state-json-schema.md` — a complete schema reference for state.json; (3) Create `context/core/reference/skill-agent-mapping.md` — maps skills to agents and routing rules (currently only in CLAUDE.md); (4) Create `context/core/patterns/early-metadata-pattern.md` — pattern for writing metadata early to enable recovery from interrupted delegation; (5) Create `context/core/patterns/mcp-tool-recovery.md` — structured retry/fallback patterns for MCP tool failures; (6) Create `context/core/formats/handoff-artifact.md` — schema for teammate handoff documents enabling context-efficient continuation (needed for --team successor pattern); (7) Create `context/core/formats/progress-file.md` — schema for progress-tracking JSON files supporting resumable work; (8) Update `context/index.json` with entries for all new files so agents can discover them. The reference source for all of these is `/home/benjamin/Projects/ProofChecker/.claude/` — read each ProofChecker file, adapt it to the nvim extension-based architecture (removing ProofChecker-specific content, generalizing for a multi-extension system), and place in the correct location.
+
+---
 
 ### 218. Implement `--team` flag for `/research` command
 - **Effort**: 12-16 hours
