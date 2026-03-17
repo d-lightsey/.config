@@ -84,9 +84,9 @@ All commands use checkpoint-based execution: GATE IN (preflight) -> DELEGATE (sk
 |---------|-------|-------------|
 | `/task` | `/task "Description"` | Create task |
 | `/task` | `/task --recover N`, `--expand N`, `--sync`, `--abandon N` | Manage tasks |
-| `/research` | `/research N [focus]` | Research task, route by language |
-| `/plan` | `/plan N` | Create implementation plan |
-| `/implement` | `/implement N` | Execute plan, resume from incomplete phase |
+| `/research` | `/research N [focus] [--team]` | Research task, route by language |
+| `/plan` | `/plan N [--team]` | Create implementation plan |
+| `/implement` | `/implement N [--team]` | Execute plan, resume from incomplete phase |
 | `/revise` | `/revise N` | Create new plan version |
 | `/review` | `/review` | Analyze codebase |
 | `/todo` | `/todo` | Archive completed/abandoned tasks, sync repository metrics |
@@ -152,6 +152,9 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 | skill-refresh | (direct execution) | - | Process and file cleanup |
 | skill-todo | (direct execution) | - | Archive completed tasks with CHANGE_LOG updates |
 | skill-tag | (user-only) | - | Semantic version tagging for deployment |
+| skill-team-research | (team orchestration) | sonnet | Multi-agent parallel research (--team flag) |
+| skill-team-plan | (team orchestration) | sonnet | Multi-agent parallel planning (--team flag) |
+| skill-team-implement | (team orchestration) | sonnet | Multi-agent parallel implementation (--team flag) |
 
 ### Agents
 
@@ -168,6 +171,16 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 **User-Only Skills**: Skills marked as "user-only" cannot be invoked by agents. These are for human-controlled operations like deployment (`skill-tag`).
 
 **Extension Skills**: When extensions are loaded, additional skill-to-agent mappings are added (e.g., skill-neovim-research -> neovim-research-agent).
+
+**Team Mode Skills**: When `--team` flag is passed to `/research`, `/plan`, or `/implement`, routing overrides to team skills which spawn multiple parallel teammates. Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` environment variable. Gracefully degrades to single-agent if unavailable.
+
+| Flag | Team Skill | Teammates | Purpose |
+|------|------------|-----------|---------|
+| `--team` | skill-team-research | 2-4 | Parallel investigation with synthesis |
+| `--team` | skill-team-plan | 2-3 | Parallel plan generation with trade-offs |
+| `--team` | skill-team-implement | 2-4 | Parallel phase execution with debugger |
+
+**Note**: Team mode uses ~5x tokens compared to single-agent. Default team_size=2 minimizes cost.
 
 ## Rules References
 

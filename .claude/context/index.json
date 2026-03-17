@@ -221,6 +221,60 @@
       }
     },
     {
+      "path": "core/patterns/team-orchestration.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "topics": [
+        "team-mode",
+        "wave-execution",
+        "parallel-agents"
+      ],
+      "keywords": [
+        "team",
+        "wave",
+        "parallel",
+        "synthesis"
+      ],
+      "summary": "Wave-based coordination patterns for multi-agent team execution",
+      "line_count": 150,
+      "load_when": {
+        "agents": [
+          "skill-team-research",
+          "skill-team-plan",
+          "skill-team-implement"
+        ],
+        "commands": [
+          "/research --team",
+          "/plan --team",
+          "/implement --team"
+        ]
+      }
+    },
+    {
+      "path": "core/formats/team-metadata-extension.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "topics": [
+        "team-mode",
+        "metadata",
+        "return-format"
+      ],
+      "keywords": [
+        "team",
+        "metadata",
+        "execution"
+      ],
+      "summary": "Schema for team execution metadata in return-meta.json files",
+      "line_count": 80,
+      "load_when": {
+        "agents": [
+          "skill-team-research",
+          "skill-team-plan",
+          "skill-team-implement"
+        ]
+      }
+    },
+    {
       "path": "core/patterns/metadata-file-return.md",
       "domain": "core",
       "subdomain": "patterns",
