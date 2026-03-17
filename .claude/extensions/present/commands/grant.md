@@ -1,7 +1,7 @@
 ---
 description: Create grant tasks, execute grant workflows (draft, budget), or create revisions
 allowed-tools: Skill, Bash(jq:*), Bash(git:*), Bash(date:*), Bash(sed:*), Read, Edit
-argument-hint: "description" | TASK_NUMBER --draft ["prompt"] | --budget ["prompt"] | --revise N "description"
+argument-hint: "description" | TASK_NUMBER --draft ["prompt"] | --budget ["prompt"] | --revise N "description" | TASK_NUMBER --fix-it
 model: claude-opus-4-5-20251101
 ---
 
@@ -16,6 +16,7 @@ Hybrid command supporting both task creation and grant-specific workflows.
 | Task Creation | `/grant "Description"` | Create task with language="grant" |
 | Draft | `/grant N --draft ["prompt"]` | Draft narrative sections |
 | Budget | `/grant N --budget ["prompt"]` | Develop line-item budget |
+| Fix-It | `/grant N --fix-it` | Scan grant directory for FIX:/TODO: tags |
 | Revise | `/grant --revise N "description"` | Create revision task for grant N |
 | Legacy | `/grant N workflow_type [focus]` | (Deprecated) Direct workflow invocation |
 
@@ -42,6 +43,7 @@ Parse $ARGUMENTS to determine mode:
 2. **Check for flags**:
    - `N --draft [prompt]` → Draft Mode
    - `N --budget [prompt]` → Budget Mode
+   - `N --fix-it` → Fix-It Scan Mode
    - `--revise N "description"` → Revise Mode
 
 3. **Check for legacy workflow_type**:
@@ -387,6 +389,76 @@ Recommended workflow:
 1. /grant {NEW_N} --draft "Focus on sections needing revision"
 2. /grant {NEW_N} --budget "Update budget items as needed"
 3. /implement {NEW_N} - Update existing grant directory
+```
+
+---
+
+## Fix-It Scan Mode (--fix-it)
+
+Scan grant directory for embedded tags and create structured tasks.
+
+### Syntax
+- `/grant N --fix-it` - Scan grant directory for FIX:, TODO:, NOTE:, QUESTION: tags
+
+### CHECKPOINT 1: GATE IN
+
+**Display header**:
+```
+[Grant Fix-It] Task {N}: {project_name}
+```
+
+1. **Generate Session ID**
+   ```bash
+   session_id="sess_$(date +%s)_$(od -An -N3 -tx1 /dev/urandom | tr -d ' ')"
+   ```
+
+2. **Lookup Task**
+   ```bash
+   task_data=$(jq -r --argjson num "$task_number" \
+     '.active_projects[] | select(.project_number == $num)' \
+     specs/state.json)
+   ```
+
+3. **Validate Task**
+   - Task must exist (ABORT if not)
+   - Language must be "grant" (ABORT with message if not)
+   - Status does not change for fix-it scan (non-destructive operation)
+
+**ABORT** if validation fails.
+
+### STAGE 2: DELEGATE
+
+**Invoke Skill tool**:
+```
+skill: "skill-grant"
+args: "task_number={N} workflow_type=fix_it_scan session_id={session_id}"
+```
+
+### CHECKPOINT 2: GATE OUT
+
+1. **Validate Return**
+   - Check for error indicators
+
+2. **Verify Created Tasks**
+   - If tasks were created, verify they appear in state.json
+
+**On success, output**:
+```
+Grant fix-it scan completed for Task #{N}
+
+{N} tasks created from embedded tags.
+
+Status: [unchanged] (scan operation)
+Next: /research {NEW_N} to begin work on created tasks
+```
+
+**On no tags found**:
+```
+Grant fix-it scan completed for Task #{N}
+
+No FIX:, TODO:, NOTE:, or QUESTION: tags found in grant directory.
+
+Nothing to create.
 ```
 
 ---

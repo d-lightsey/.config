@@ -1,7 +1,7 @@
 # Implementation Plan: Task #220
 
 - **Task**: 220 - Add --fix-it flag to /grant command
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETE]
 - **Effort**: 2-3 hours
 - **Dependencies**: None
 - **Research Inputs**: [01_fix-it-flag-research.md](../reports/01_fix-it-flag-research.md)
@@ -53,7 +53,7 @@ Key findings from research report:
 
 ## Implementation Phases
 
-### Phase 1: Update Command File [NOT STARTED]
+### Phase 1: Update Command File [COMPLETED]
 
 **Goal**: Add --fix-it mode detection and delegation to grant.md command
 
@@ -79,7 +79,7 @@ Key findings from research report:
 
 ---
 
-### Phase 2: Update Skill Allowed Tools [NOT STARTED]
+### Phase 2: Update Skill Allowed Tools [COMPLETED]
 
 **Goal**: Add AskUserQuestion to skill-grant allowed-tools
 
@@ -100,7 +100,7 @@ Key findings from research report:
 
 ---
 
-### Phase 3: Add Workflow Type Routing [NOT STARTED]
+### Phase 3: Add Workflow Type Routing [COMPLETED]
 
 **Goal**: Add fix_it_scan routing to workflow type table and status mapping
 
@@ -124,7 +124,7 @@ Key findings from research report:
 
 ---
 
-### Phase 4: Implement fix_it_scan Execution Section [NOT STARTED]
+### Phase 4: Implement fix_it_scan Execution Section [COMPLETED]
 
 **Goal**: Add the main fix_it_scan execution logic to skill-grant
 
@@ -194,7 +194,7 @@ Key findings from research report:
 
 ---
 
-### Phase 5: Add Error Handling [NOT STARTED]
+### Phase 5: Add Error Handling [COMPLETED]
 
 **Goal**: Add error handling for fix_it_scan workflow
 
@@ -217,7 +217,7 @@ Key findings from research report:
 
 ---
 
-### Phase 6: Testing and Verification [NOT STARTED]
+### Phase 6: Testing and Verification [COMPLETED]
 
 **Goal**: Verify implementation works end-to-end
 

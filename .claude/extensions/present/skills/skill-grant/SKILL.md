@@ -1,7 +1,7 @@
 ---
 name: skill-grant
 description: Grant proposal research and drafting with funder analysis. Invoke for grant tasks.
-allowed-tools: Task, Bash, Edit, Read, Write
+allowed-tools: Task, Bash, Edit, Read, Write, AskUserQuestion
 # Context (loaded by subagent):
 #   - .claude/extensions/present/context/project/present/README.md
 # Tools (used by subagent):
@@ -46,6 +46,7 @@ This skill routes to grant-agent with one of five workflow types:
 | budget_develop | planning | planned | [PLANNING] -> [PLANNED] |
 | progress_track | (no change) | (no change) | (no change) |
 | assemble | implementing | completed | [IMPLEMENTING] -> [COMPLETED] |
+| fix_it_scan | (no change) | (no change) | (no change) |
 
 **Note**: The `assemble` workflow is triggered via `/implement N` command (not `/grant`), which routes to skill-grant when the task language is "grant".
 
@@ -105,10 +106,10 @@ fi
 
 # Validate workflow_type
 case "$workflow_type" in
-  funder_research|proposal_draft|budget_develop|progress_track|assemble)
+  funder_research|proposal_draft|budget_develop|progress_track|assemble|fix_it_scan)
     ;;
   *)
-    return error "Invalid workflow_type: $workflow_type. Expected one of: funder_research, proposal_draft, budget_develop, progress_track, assemble"
+    return error "Invalid workflow_type: $workflow_type. Expected one of: funder_research, proposal_draft, budget_develop, progress_track, assemble, fix_it_scan"
     ;;
 esac
 ```
@@ -147,6 +148,10 @@ case "$workflow_type" in
   assemble)
     preflight_status="implementing"
     preflight_marker="[IMPLEMENTING]"
+    ;;
+  fix_it_scan)
+    preflight_status=""  # No status change (non-destructive scan)
+    preflight_marker=""
     ;;
 esac
 
@@ -326,6 +331,8 @@ Map workflow_type + metadata status to final state.json status:
 | progress_track | partial | (no change) | (no change) |
 | assemble | assembled | completed | [COMPLETED] |
 | assemble | partial | implementing | [IMPLEMENTING] |
+| fix_it_scan | scanned | (no change) | (no change) |
+| fix_it_scan | partial | (no change) | (no change) |
 | any | failed | (keep preflight) | (keep preflight marker) |
 
 **Update state.json** (if status changed to success):
@@ -353,6 +360,10 @@ case "$workflow_type" in
       postflight_status="completed"
       postflight_marker="[COMPLETED]"
     fi
+    ;;
+  fix_it_scan)
+    postflight_status=""  # No status change for fix-it scan
+    postflight_marker=""
     ;;
 esac
 
@@ -541,6 +552,320 @@ Grant {workflow_type} partially completed for task {N}:
 
 ---
 
+## Fix-It Scan Workflow (Direct Execution)
+
+When `workflow_type=fix_it_scan`, this skill performs direct execution (no subagent) following the interactive tag scanning pattern from `/fix-it`.
+
+**IMPORTANT**: This workflow does NOT delegate to a subagent. It executes all steps directly within the skill context.
+
+### Step F1: Locate Grant Directory
+
+```bash
+# Check for grant directory in specs/ (active task)
+padded_num=$(printf "%03d" "$task_number")
+if [ -d "specs/${padded_num}_${project_name}" ]; then
+    grant_dir="specs/${padded_num}_${project_name}"
+# Check for grant directory in grants/ (completed grant)
+elif [ -d "grants/${task_number}_${project_name}" ]; then
+    grant_dir="grants/${task_number}_${project_name}"
+else
+    return error "Grant directory not found for task ${task_number}. Checked:
+    - specs/${padded_num}_${project_name}/
+    - grants/${task_number}_${project_name}/"
+fi
+```
+
+---
+
+### Step F2: Scan for Tags
+
+Extract tags from grant-specific file types (.tex, .md, .bib):
+
+```bash
+# Initialize tag arrays
+declare -a fix_tags
+declare -a note_tags
+declare -a todo_tags
+declare -a question_tags
+
+# Scan LaTeX files (% comment prefix)
+while IFS= read -r line; do
+    fix_tags+=("$line")
+done < <(grep -rn --include="*.tex" "% FIX:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    note_tags+=("$line")
+done < <(grep -rn --include="*.tex" "% NOTE:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    todo_tags+=("$line")
+done < <(grep -rn --include="*.tex" "% TODO:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    question_tags+=("$line")
+done < <(grep -rn --include="*.tex" "% QUESTION:" "$grant_dir" 2>/dev/null || true)
+
+# Scan Markdown files (<!-- comment prefix)
+while IFS= read -r line; do
+    fix_tags+=("$line")
+done < <(grep -rn --include="*.md" "<!-- FIX:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    note_tags+=("$line")
+done < <(grep -rn --include="*.md" "<!-- NOTE:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    todo_tags+=("$line")
+done < <(grep -rn --include="*.md" "<!-- TODO:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    question_tags+=("$line")
+done < <(grep -rn --include="*.md" "<!-- QUESTION:" "$grant_dir" 2>/dev/null || true)
+
+# Scan BibTeX files (% comment prefix)
+while IFS= read -r line; do
+    fix_tags+=("$line")
+done < <(grep -rn --include="*.bib" "% FIX:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    note_tags+=("$line")
+done < <(grep -rn --include="*.bib" "% NOTE:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    todo_tags+=("$line")
+done < <(grep -rn --include="*.bib" "% TODO:" "$grant_dir" 2>/dev/null || true)
+
+while IFS= read -r line; do
+    question_tags+=("$line")
+done < <(grep -rn --include="*.bib" "% QUESTION:" "$grant_dir" 2>/dev/null || true)
+```
+
+---
+
+### Step F3: Early Exit if No Tags
+
+```bash
+total_tags=$((${#fix_tags[@]} + ${#note_tags[@]} + ${#todo_tags[@]} + ${#question_tags[@]}))
+
+if [ "$total_tags" -eq 0 ]; then
+    echo "## No Tags Found"
+    echo ""
+    echo "Scanned files in: $grant_dir"
+    echo "No FIX:, NOTE:, TODO:, or QUESTION: tags detected."
+    echo ""
+    echo "Nothing to create."
+    return 0  # Not an error - just no work to do
+fi
+```
+
+---
+
+### Step F4: Display Tag Summary
+
+```
+## Tag Scan Results
+
+**Grant Directory**: {grant_dir}
+**Tags Found**: {total_tags}
+
+### FIX: Tags ({count})
+- `{file}:{line}` - {message}
+...
+
+### NOTE: Tags ({count})
+- `{file}:{line}` - {message}
+...
+
+### TODO: Tags ({count})
+- `{file}:{line}` - {message}
+...
+
+### QUESTION: Tags ({count})
+- `{file}:{line}` - {message}
+...
+```
+
+---
+
+### Step F5: Interactive Task Type Selection
+
+Use AskUserQuestion to let user select which task types to create:
+
+```json
+{
+  "question": "Which task types should be created from grant tags?",
+  "header": "Grant Task Types",
+  "multiSelect": true,
+  "options": [
+    {"label": "FIX: Combined fix task", "description": "Combine {N} FIX:/NOTE: tags into single task"},
+    {"label": "NOTE: Documentation task", "description": "Update context from {N} NOTE: tags"},
+    {"label": "TODO: Individual tasks", "description": "Create tasks for {N} TODO: items"},
+    {"label": "QUESTION: Research tasks", "description": "Create research tasks for {N} QUESTION: items"}
+  ]
+}
+```
+
+Only show options for tag types that were found.
+
+---
+
+### Step F6: Individual TODO Selection (if TODO selected)
+
+If user selected TODO tasks, prompt for individual selection:
+
+```json
+{
+  "question": "Select TODO items to create as tasks:",
+  "header": "TODO Selection",
+  "multiSelect": true,
+  "options": [
+    {"label": "{TODO message}", "description": "{file}:{line}"},
+    ...
+  ]
+}
+```
+
+For >20 TODO items, add "Select all" option.
+
+---
+
+### Step F7: TODO Topic Grouping (if 2+ TODOs selected)
+
+When multiple TODOs are selected, offer grouping options:
+
+```json
+{
+  "question": "How should TODO items be grouped into tasks?",
+  "header": "Topic Grouping",
+  "multiSelect": false,
+  "options": [
+    {"label": "Accept suggested topic groups", "description": "Creates {N} grouped tasks based on shared topics"},
+    {"label": "Keep as separate tasks", "description": "Creates {N} individual tasks"},
+    {"label": "Create single combined task", "description": "Creates 1 task containing all items"}
+  ]
+}
+```
+
+**Topic detection uses**:
+- Shared key terms in TODO messages
+- Same file proximity
+- Section similarity (based on line numbers)
+
+---
+
+### Step F8: Individual QUESTION Selection (if QUESTION selected)
+
+If user selected QUESTION tasks, prompt for individual selection:
+
+```json
+{
+  "question": "Select QUESTION items to create as research tasks:",
+  "header": "QUESTION Selection",
+  "multiSelect": true,
+  "options": [
+    {"label": "{QUESTION message}", "description": "{file}:{line}"},
+    ...
+  ]
+}
+```
+
+---
+
+### Step F9: QUESTION Topic Grouping (if 2+ QUESTIONs selected)
+
+When multiple QUESTIONs are selected, offer grouping options (same pattern as TODO).
+
+---
+
+### Step F10: Create Tasks
+
+For each selected task type, create tasks with `language="grant"`:
+
+**FIX Task Creation**:
+```bash
+next_num=$(jq -r '.next_project_number' specs/state.json)
+slug="fix_grant_${task_number}_issues"
+description="Fix embedded FIX: and NOTE: issues in grant ${task_number}"
+
+# Update state.json
+jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+  --arg desc "$description" \
+  --argjson parent "$task_number" \
+  '.next_project_number = ($next_num + 1) |
+   .active_projects = [{
+     "project_number": $next_num,
+     "project_name": "'"$slug"'",
+     "status": "not_started",
+     "language": "grant",
+     "description": $desc,
+     "parent_task": $parent,
+     "created": $ts,
+     "last_updated": $ts
+   }] + .active_projects' \
+  specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+```
+
+**TODO Task Creation** (per selected/grouped item):
+```bash
+# Same pattern, with language="grant" and parent_task=$task_number
+```
+
+**QUESTION Task Creation** (per selected/grouped item):
+```bash
+# Same pattern, with language="grant" and parent_task=$task_number
+```
+
+---
+
+### Step F11: Update TODO.md
+
+For each created task, prepend entry to TODO.md `## Tasks` section:
+
+```markdown
+### {NEW_N}. {Title}
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: grant
+- **Parent Task**: Task #{N}
+
+**Description**: {description}
+```
+
+---
+
+### Step F12: Git Commit
+
+```bash
+git add specs/state.json specs/TODO.md
+git commit -m "task ${task_number}: create fix-it tasks from grant tags
+
+Created {count} tasks from embedded tags in grant directory.
+
+Session: ${session_id}
+
+Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+```
+
+---
+
+### Step F13: Return Summary
+
+```
+Grant fix-it scan completed for task {N}:
+- Scanned: {grant_dir}
+- Tags found: {total_tags} (FIX: {fix_count}, NOTE: {note_count}, TODO: {todo_count}, QUESTION: {question_count})
+- Tasks created: {created_count}
+- Created task numbers: #{X}, #{Y}, #{Z}
+- Parent grant status unchanged
+- Changes committed with session {session_id}
+
+Next steps:
+- /research {NEW_N} to begin work on created tasks
+- Review tasks in TODO.md
+```
+
+---
+
 ## Error Handling
 
 ### Input Validation Errors
@@ -559,7 +884,7 @@ Return immediately with error message:
 ```
 Grant skill error for task {N}:
 - Invalid workflow_type: {provided_value}
-- Expected one of: funder_research, proposal_draft, budget_develop, progress_track, assemble
+- Expected one of: funder_research, proposal_draft, budget_develop, progress_track, assemble, fix_it_scan
 - No status changes made
 ```
 
@@ -611,6 +936,41 @@ Grant {workflow_type} timed out for task {N}:
 - Partial progress: {partial_details}
 - Status remains [{preflight_marker}]
 - Run /grant {N} {flag} to continue
+```
+
+### Fix-It Scan Errors
+
+**Grant directory not found**:
+```
+Grant fix-it scan error for task {N}:
+- Grant directory not found
+- Checked: specs/{NNN}_{project_name}/ and grants/{N}_{project_name}/
+- No tasks created
+- Ensure grant directory exists before running fix-it scan
+```
+
+**No tags found** (not an error - informational):
+```
+Grant fix-it scan completed for task {N}:
+- Scanned: {grant_dir}
+- No FIX:, NOTE:, TODO:, or QUESTION: tags found
+- Nothing to create
+```
+
+**Empty selection** (user selected nothing):
+```
+Grant fix-it scan completed for task {N}:
+- Tags found: {total_tags}
+- No task types selected
+- No tasks created
+```
+
+**Git commit failure** (non-blocking):
+```
+Grant fix-it scan completed for task {N}:
+- Tasks created: {count}
+- [Warning] Git commit failed: {error}
+- Manual commit recommended: git add specs/ && git commit
 ```
 
 ---
