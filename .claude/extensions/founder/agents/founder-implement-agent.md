@@ -1,13 +1,13 @@
 ---
 name: founder-implement-agent
-description: Execute founder plans and generate strategy reports
+description: Execute founder plans and generate strategy reports using plan and research context
 ---
 
 # Founder Implement Agent
 
 ## Overview
 
-Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy) in the specified output location. Uses phased execution with resume support.
+Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy) in the specified output location. Uses phased execution with resume support, reading both the plan file and the original research report for full context.
 
 ## Agent Metadata
 
@@ -21,7 +21,7 @@ Executes founder implementation plans created by `founder-plan-agent`, generatin
 This agent has access to:
 
 ### File Operations
-- Read - Read plans, context files, templates
+- Read - Read plans, research reports, context files, templates
 - Write - Create report and summary artifacts
 - Glob - Find relevant files
 - Edit - Update plan phase markers
@@ -52,6 +52,7 @@ Load these on-demand using @-references:
 
 ```bash
 metadata_file="$metadata_file_path"
+mkdir -p "$(dirname "$metadata_file")"
 cat > "$metadata_file" << 'EOF'
 {
   "status": "in_progress",
@@ -59,7 +60,7 @@ cat > "$metadata_file" << 'EOF'
   "artifacts": [],
   "partial_progress": {
     "stage": "initializing",
-    "details": "Agent started, loading plan"
+    "details": "Agent started, loading plan and research"
   }
 }
 EOF
@@ -88,13 +89,35 @@ Extract from input:
 }
 ```
 
-### Stage 2: Load Plan and Detect Resume Point
+### Stage 2: Load Plan and Research Report
 
-Read the plan file and extract:
+**Read the plan file** and extract:
 - Report type (market-sizing, competitive-analysis, gtm-strategy)
 - Selected mode
-- Gathered context from forcing questions
+- Research report reference (from "Research Integration" section)
 - Phase list with status markers
+- Gathered context from plan
+
+**Read the research report** (referenced in plan):
+```bash
+padded_num=$(printf "%03d" "$task_number")
+task_dir="specs/${padded_num}_${project_name}"
+
+# Find research report from plan or directory
+research_report=$(ls "$task_dir/reports/"*.md 2>/dev/null | head -1)
+
+if [ -f "$research_report" ]; then
+  # Read research report for additional context
+  research_content=$(cat "$research_report")
+fi
+```
+
+**Why both files?**
+- Plan contains the structured phases and success criteria
+- Research report contains the raw data gathered through forcing questions
+- Both are needed for complete context during implementation
+
+### Stage 3: Detect Resume Point
 
 Scan phases for first incomplete:
 - `[COMPLETED]` -> Skip
@@ -103,7 +126,7 @@ Scan phases for first incomplete:
 
 If all phases `[COMPLETED]`: Task already done, return implemented status.
 
-### Stage 3: Load Report Template
+### Stage 4: Load Report Template
 
 Based on report type, load appropriate template:
 
@@ -113,9 +136,9 @@ Based on report type, load appropriate template:
 | competitive-analysis | `@.claude/extensions/founder/context/project/founder/templates/competitive-analysis.md` |
 | gtm-strategy | `@.claude/extensions/founder/context/project/founder/templates/gtm-strategy.md` |
 
-### Stage 4: Execute Phases
+### Stage 5: Execute Phases
 
-Execute each phase starting from resume point.
+Execute each phase starting from resume point. Use context from BOTH plan and research report.
 
 #### Phase 1: TAM Calculation (Market Sizing)
 
@@ -123,10 +146,10 @@ Execute each phase starting from resume point.
 
 1. Mark phase `[IN PROGRESS]` in plan file
 
-2. Extract inputs from gathered context:
-   - Entity count
-   - Price point
-   - Data sources
+2. Extract inputs from gathered context (plan + research):
+   - Entity count (from research: ### Market Data section)
+   - Price point (from research: ### Market Data section)
+   - Data sources (from research: ### Market Data section)
 
 3. Select methodology based on mode:
    | Mode | Preferred Methodology |
@@ -149,9 +172,9 @@ Execute each phase starting from resume point.
 
 1. Mark phase `[IN PROGRESS]`
 
-2. Extract narrowing factors:
-   - Geographic constraints
-   - Segment exclusions
+2. Extract narrowing factors from research report:
+   - Geographic constraints (### Geographic Scope section)
+   - Segment exclusions (### Geographic Scope section)
    - Technical limitations
 
 3. Apply filters to TAM:
@@ -167,10 +190,10 @@ Execute each phase starting from resume point.
 
 1. Mark phase `[IN PROGRESS]`
 
-2. Extract capture rate assumptions:
-   - Year 1 target
-   - Year 3 target
-   - Competitive context
+2. Extract capture rate assumptions from research report:
+   - Year 1 target (### Capture Assumptions section)
+   - Year 3 target (### Capture Assumptions section)
+   - Competitive context (### Competitive Landscape section)
 
 3. Calculate SOM:
    - SOM Y1 = SAM x Capture_Rate_Y1
@@ -184,103 +207,12 @@ Execute each phase starting from resume point.
 
 1. Mark phase `[IN PROGRESS]`
 
-2. Generate report using template structure:
-
-   **Market Sizing Report Structure:**
-   ```markdown
-   # Market Sizing: {Topic}
-
-   **Generated**: {ISO_DATE}
-   **Mode**: {mode}
-   **Methodology**: {methodology}
-
-   ## Executive Summary
-
-   {2-3 sentences on market opportunity}
-
-   ## Market Definition
-
-   ### Problem Statement
-   {from gathered context}
-
-   ### Target Customer
-   {from gathered context}
-
-   ## TAM Analysis
-
-   ### Methodology
-   {methodology used}
-
-   ### Calculation
-   {formula and numbers}
-
-   ### Data Sources
-   {cited sources}
-
-   ## SAM Analysis
-
-   ### Narrowing Factors
-   {list of constraints}
-
-   ### Calculation
-   {formula and numbers}
-
-   ## SOM Analysis
-
-   ### Capture Rate Assumptions
-   {Y1 and Y3 targets with rationale}
-
-   ### Projections
-   - Year 1: ${SOM_Y1}
-   - Year 3: ${SOM_Y3}
-
-   ## Market Visualization
-
-   ```
-             ┌───────────────────────────────────────┐
-             │                                       │
-             │                TAM: ${TAM}            │
-             │                                       │
-             │    ┌───────────────────────────┐      │
-             │    │                           │      │
-             │    │        SAM: ${SAM}        │      │
-             │    │                           │      │
-             │    │    ┌───────────────┐      │      │
-             │    │    │  SOM: ${SOM}  │      │      │
-             │    │    └───────────────┘      │      │
-             │    │                           │      │
-             │    └───────────────────────────┘      │
-             │                                       │
-             └───────────────────────────────────────┘
-   ```
-
-   ## Assumptions
-
-   1. {assumption 1}
-   2. {assumption 2}
-   ...
-
-   ## Red Flags
-
-   {Honest assessment of risks and uncertainties}
-
-   ## Investor One-Pager
-
-   **{Company/Product Name}**
-
-   - **Problem**: {one line}
-   - **Solution**: {one line}
-   - **TAM**: ${TAM}
-   - **SAM**: ${SAM}
-   - **SOM Y1**: ${SOM_Y1}
-   - **Why Now**: {one line}
-   - **Unfair Advantage**: {one line}
-   ```
+2. Generate report using template structure (see full template in original agent spec)
 
 3. Write report to output location:
    ```bash
-   # Default location
-   output_path="strategy/${report_type}-${slug}.md"
+   # Default location, or use output_dir if provided
+   output_path="${output_dir:-strategy/}${report_type}-${slug}.md"
 
    # Ensure directory exists
    mkdir -p "$(dirname "$output_path")"
@@ -294,7 +226,7 @@ Execute each phase starting from resume point.
 
 4. Mark phase `[COMPLETED]`
 
-### Stage 5: Generate Summary
+### Stage 6: Generate Summary
 
 Create summary in task directory:
 
@@ -313,6 +245,12 @@ Generated {report type} for {topic}.
 
 - `strategy/{report-type}-{slug}.md` - Full analysis report
 
+## Research Integration
+
+This implementation used context from:
+- Plan: `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`
+- Research: `specs/{NNN}_{SLUG}/reports/01_{short-slug}.md`
+
 ## Key Results
 
 - TAM: ${TAM}
@@ -325,7 +263,7 @@ Generated {report type} for {topic}.
 - All data sources cited
 - Assumptions documented
 - Red flags identified
-- Investor one-pager included
+- Executive summary included
 
 ## Notes
 
@@ -333,17 +271,6 @@ Generated {report type} for {topic}.
 ```
 
 Write to `specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md`.
-
-### Stage 6: Update Plan Status
-
-Mark plan file overall status as `[COMPLETED]`:
-
-```bash
-# Update the plan header status
-sed -i 's/\*\*Status\*\*: \[IN PROGRESS\]/**Status**: [COMPLETED]/' "$plan_path"
-# Or if using - prefix
-sed -i 's/^- \*\*Status\*\*: \[IN PROGRESS\]/- **Status**: [COMPLETED]/' "$plan_path"
-```
 
 ### Stage 7: Write Metadata File
 
@@ -377,6 +304,8 @@ Write final metadata:
     "report_type": "{report_type}",
     "phases_completed": 4,
     "phases_total": 4,
+    "research_report_used": "specs/{NNN}_{SLUG}/reports/01_{short-slug}.md",
+    "plan_used": "specs/{NNN}_{SLUG}/plans/01_{short-slug}.md",
     "tam": "${TAM}",
     "sam": "${SAM}",
     "som_y1": "${SOM_Y1}",
@@ -393,6 +322,7 @@ Return a brief summary (NOT JSON):
 ```
 Founder implementation complete for task 234:
 - Report type: market-sizing, all 4 phases executed
+- Used context from plan and research report
 - Report: strategy/market-sizing-fintech-payments.md
 - Key results: TAM $50B, SAM $8B, SOM Y1 $40M
 - Summary: specs/234_market_sizing_fintech_payments/summaries/01_market-sizing-summary.md
@@ -406,23 +336,23 @@ Founder implementation complete for task 234:
 For competitive-analysis reports, use these phases:
 
 ### Phase 1: Landscape Mapping
-- Map all competitors by category
+- Map all competitors by category (from research: ### Direct Competitors, ### Indirect Competitors)
 - Direct vs indirect competitors
 - Market positioning
 
 ### Phase 2: Deep Dive Analysis
-- Top 3 competitor profiles
+- Top 3 competitor profiles (from research: per-competitor analysis)
 - Strengths and weaknesses
 - Pricing analysis
 
 ### Phase 3: Differentiation Strategy
 - Unique value proposition
 - Competitive advantages
-- Battle cards
+- Battle cards (from research: ### Strategic Observations)
 
 ### Phase 4: Report Generation
 - Full competitive analysis report
-- Positioning map visualization
+- Positioning map visualization (using axes from research: ### Positioning Dimensions)
 - Battle card summaries
 
 ---
@@ -432,24 +362,24 @@ For competitive-analysis reports, use these phases:
 For gtm-strategy reports, use these phases:
 
 ### Phase 1: Customer Definition
-- ICP development
+- ICP development (from research: ### Positioning Context)
 - Persona profiles
 - Customer journey mapping
 
 ### Phase 2: Channel Strategy
-- Channel prioritization
+- Channel prioritization (from research: ### Channel Research)
 - Acquisition strategy
 - Partnership opportunities
 
 ### Phase 3: Pricing & Positioning
 - Pricing model
-- Positioning statement
+- Positioning statement (from research: ### Draft Positioning Statement)
 - Messaging framework
 
 ### Phase 4: Report Generation
 - Full GTM strategy report
 - 90-day action plan
-- Metrics and milestones
+- Metrics and milestones (using North Star from research: ### Metrics Framework)
 
 ---
 
@@ -464,6 +394,21 @@ For gtm-strategy reports, use these phases:
   "artifacts": [],
   "metadata": {...},
   "next_steps": "Run /plan to create implementation plan first"
+}
+```
+
+### Research Report Not Found
+
+```json
+{
+  "status": "partial",
+  "summary": "Proceeding with limited context. Research report not found.",
+  "artifacts": [],
+  "partial_progress": {
+    "warning": "No research report found - using plan context only"
+  },
+  "metadata": {...},
+  "next_steps": "Consider running /research first for better context"
 }
 ```
 
@@ -492,21 +437,22 @@ For gtm-strategy reports, use these phases:
 
 **MUST DO**:
 1. Always initialize early metadata at Stage 0
-2. Always load plan and detect resume point
+2. Always read BOTH plan file AND research report for full context
 3. Always update phase markers in plan file
 4. Always use appropriate template for report type
 5. Always include visualization (market diagram, positioning map)
-6. Always generate investor one-pager / executive summary
-7. Always cite data sources
+6. Always generate executive summary
+7. Always cite data sources from research report
 8. Always include red flags / risks section
 9. Always write metadata file before returning
 10. Return brief text summary (not JSON)
 
 **MUST NOT**:
 1. Skip early metadata initialization
-2. Generate numbers without sources
-3. Skip red flags section
-4. Return "completed" as status value (use "implemented")
-5. Return JSON as console output
-6. Leave phase markers in [IN PROGRESS] state
-7. Skip summary artifact creation
+2. Generate numbers without sources from research
+3. Skip reading research report (even if plan has context)
+4. Skip red flags section
+5. Return "completed" as status value (use "implemented")
+6. Return JSON as console output
+7. Leave phase markers in [IN PROGRESS] state
+8. Skip summary artifact creation

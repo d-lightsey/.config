@@ -162,7 +162,7 @@ From `01_workflow-analysis.md`:
 
 ---
 
-### Phase 5: Update founder-implement-agent (Minor Enhancements) [IN PROGRESS]
+### Phase 5: Update founder-implement-agent (Minor Enhancements) [COMPLETED]
 
 **Goal**: Ensure founder-implement-agent reads both plan and research report for full context; support optional output path.
 
@@ -184,7 +184,7 @@ From `01_workflow-analysis.md`:
 
 ---
 
-### Phase 6: Integration Testing [NOT STARTED]
+### Phase 6: Integration Testing [IN PROGRESS]
 
 **Goal**: Verify the complete workflow works end-to-end for each command.
 
