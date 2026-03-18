@@ -5,12 +5,14 @@
     {
       "project_number": 233,
       "project_name": "research_gstack_founder_extension",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
+      "effort": "6-8 hours",
       "created": "2026-03-18T17:01:41Z",
-      "last_updated": "2026-03-18T17:22:40Z",
-      "session_id": "sess_1773854219_d5b7c9",
+      "last_updated": "2026-03-18T18:15:00Z",
+      "session_id": "sess_1773856261_35732a",
       "researched": "2026-03-18T17:22:40Z",
+      "planned": "2026-03-18T18:15:00Z",
       "artifacts": [
         {
           "path": "specs/233_research_gstack_founder_extension/reports/01_gstack-founder-integration.md",
@@ -21,6 +23,11 @@
           "path": "specs/233_research_gstack_founder_extension/reports/02_founder-skills-deep-dive.md",
           "type": "research",
           "summary": "Deep dive into gstack's /office-hours, /plan-ceo-review, /retro skills with designs for 4 new business-focused skills (market sizing, business model, GTM, competitive analysis)"
+        },
+        {
+          "path": "specs/233_research_gstack_founder_extension/plans/01_founder-extension-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for founder extension with /market, /analyze, /strategy commands"
         }
       ]
     },
