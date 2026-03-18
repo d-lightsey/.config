@@ -86,6 +86,7 @@ Extract from input:
   "source_path": "/optional/path/to/file.md",
   "output_path": "/path/to/output.typ",
   "theme": "simple",
+  "palette": "professional-blue",
   "slide_count": 10,
   "metadata": {
     "session_id": "sess_...",
@@ -108,6 +109,7 @@ Extract from input:
 
 3. **Set defaults**
    - theme: "simple" if not specified
+   - palette: "professional-blue" if not specified
    - slide_count: 10 if not specified
    - output_path: Generate from source basename or use "pitch-deck.typ"
 
@@ -151,10 +153,27 @@ Reference `@context/project/present/patterns/touying-pitch-deck-template.md` for
 
 Generate a complete `.typ` file with:
 
-1. **Imports and theme setup**
+1. **Imports and theme setup with palette colors**
+
+   **Palette Color Definitions**:
+
+   | Palette | Primary | Secondary | Accent | Background | Text |
+   |---------|---------|-----------|--------|------------|------|
+   | professional-blue | #1a365d | #2c5282 | #4299e1 | #ffffff | #1a202c |
+   | premium-dark | #1a1a2e | #16213e | #d4a574 | #0f0f1a | #e2e8f0 |
+   | minimal-light | #2d3748 | #4a5568 | #3182ce | #f7fafc | #1a202c |
+   | growth-green | #047857 | #065f46 | #34d399 | #f0fdf4 | #1a202c |
+
    ```typst
    #import "@preview/touying:0.6.3": *
    #import themes.simple: *
+
+   // Palette colors (selected: professional-blue)
+   #let palette-primary = rgb("#1a365d")
+   #let palette-secondary = rgb("#2c5282")
+   #let palette-accent = rgb("#4299e1")
+   #let palette-background = rgb("#ffffff")
+   #let palette-text = rgb("#1a202c")
 
    #show: simple-theme.with(
      aspect-ratio: "16-9",
@@ -164,12 +183,19 @@ Generate a complete `.typ` file with:
        author: [Founder Name],
        date: datetime.today(),
      ),
+     config-colors(
+       primary: palette-primary,
+       secondary: palette-secondary,
+       tertiary: palette-accent,
+     ),
    )
 
-   #set text(size: 30pt)
-   #show heading.where(level: 1): set text(size: 48pt, weight: "bold")
-   #show heading.where(level: 2): set text(size: 40pt, weight: "bold")
+   #set text(size: 30pt, fill: palette-text)
+   #show heading.where(level: 1): set text(size: 48pt, weight: "bold", fill: palette-primary)
+   #show heading.where(level: 2): set text(size: 40pt, weight: "bold", fill: palette-primary)
    ```
+
+   **Note**: Replace the palette color values based on the `palette` parameter from delegation context. The example above shows `professional-blue`; use the appropriate colors from the table above for other palettes.
 
 2. **Title slide**
    ```typst
@@ -209,7 +235,7 @@ Generate a complete `.typ` file with:
 ```json
 {
   "status": "generated",
-  "summary": "Generated 10-slide pitch deck for [Company Name] in Typst format. 3 slides have TODO placeholders.",
+  "summary": "Generated 10-slide pitch deck for [Company Name] in Typst format with professional-blue palette. 3 slides have TODO placeholders.",
   "artifacts": [
     {
       "type": "implementation",
@@ -224,6 +250,7 @@ Generate a complete `.typ` file with:
     "delegation_depth": 2,
     "delegation_path": ["orchestrator", "deck", "skill-deck", "deck-agent"],
     "theme": "simple",
+    "palette": "professional-blue",
     "slide_count": 10,
     "slides_with_todos": 3,
     "input_type": "prompt_only|file_only|prompt_and_file"
@@ -305,6 +332,19 @@ The agent supports touying's built-in themes:
 | dewdrop | Light, airy | Creative pitches |
 | university | Academic style | Research presentations |
 | stargazer | Dark mode | Evening presentations |
+
+## Palette Options
+
+The agent supports four color palettes that integrate with any theme:
+
+| Palette | Description | Use Case |
+|---------|-------------|----------|
+| professional-blue | Navy tones | Fintech, enterprise B2B (default) |
+| premium-dark | Dark + gold | Luxury, premium tech |
+| minimal-light | Charcoal/gray | Data, analytics |
+| growth-green | Emerald tones | Sustainability, health |
+
+Each palette defines 5 colors (primary, secondary, accent, background, text) that are applied via touying's `config-colors()` function.
 
 ## Content Extraction Patterns
 

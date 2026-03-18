@@ -67,6 +67,7 @@ Validate required inputs:
 - At least one of: `prompt` (text description) OR `source_path` (file path)
 - `output_path` - Optional, defaults based on input
 - `theme` - Optional, defaults to "simple"
+- `palette` - Optional, defaults to "professional-blue"
 - `slide_count` - Optional, defaults to 10
 
 ```bash
@@ -112,6 +113,7 @@ Prepare delegation context:
   "source_path": "/absolute/path/to/startup-info.md",
   "output_path": "/absolute/path/to/pitch-deck.typ",
   "theme": "simple",
+  "palette": "professional-blue",
   "slide_count": 10,
   "metadata": {
     "session_id": "sess_{timestamp}_{random}",
@@ -130,7 +132,7 @@ Prepare delegation context:
 Tool: Task (NOT Skill)
 Parameters:
   - subagent_type: "deck-agent"
-  - prompt: [Include prompt, source_path, output_path, theme, slide_count, metadata]
+  - prompt: [Include prompt, source_path, output_path, theme, palette, slide_count, metadata]
   - description: "Generate pitch deck from input"
 ```
 
@@ -162,7 +164,7 @@ Expected successful return:
 ```json
 {
   "status": "generated",
-  "summary": "Generated 10-slide pitch deck for Acme AI in Typst format. 2 slides have TODO placeholders.",
+  "summary": "Generated 10-slide pitch deck for Acme AI in Typst format with professional-blue palette. 2 slides have TODO placeholders.",
   "artifacts": [
     {
       "type": "implementation",
@@ -175,6 +177,7 @@ Expected successful return:
     "agent_type": "deck-agent",
     "delegation_depth": 2,
     "theme": "simple",
+    "palette": "professional-blue",
     "slide_count": 10,
     "slides_with_todos": 2,
     "input_type": "prompt_and_file"

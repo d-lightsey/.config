@@ -1,7 +1,7 @@
 ---
 description: Generate YC-style investor pitch decks in Typst
-allowed-tools: Skill, Bash(test:*), Bash(dirname:*), Bash(basename:*), Bash(pwd:*), Read
-argument-hint: PROMPT_OR_PATH [OUTPUT_PATH] [--theme simple|metropolis|stargazer] [--slides N]
+allowed-tools: Skill, Bash(test:*), Bash(dirname:*), Bash(basename:*), Bash(pwd:*), Read, AskUserQuestion
+argument-hint: PROMPT_OR_PATH [OUTPUT_PATH] [--theme simple|metropolis|stargazer] [--palette professional-blue|premium-dark|minimal-light|growth-green] [--slides N]
 ---
 
 # /deck Command
@@ -13,6 +13,7 @@ Generate 10-slide investor pitch decks in Typst format using YC best practices a
 - `$1` - Prompt or source file path (required): Either a text description of your startup OR a path to a file containing startup information
 - `$2` - Output file path (optional, defaults to pitch-deck.typ or derived from source)
 - `--theme` - Touying theme: `simple` (default), `metropolis`, `dewdrop`, `university`, `stargazer`
+- `--palette` - Color palette: `professional-blue` (default), `premium-dark`, `minimal-light`, `growth-green`
 - `--slides` - Number of slides (optional, default 10)
 
 ## Usage Examples
@@ -76,7 +77,8 @@ Generates a `.typ` file with:
    ```bash
    input=""
    output_path=""
-   theme="simple"
+   theme=""
+   palette=""
    slide_count="10"
 
    # First positional argument is input (prompt or path)
@@ -88,6 +90,10 @@ Generates a `.typ` file with:
      case "$1" in
        --theme)
          theme="$2"
+         shift 2
+         ;;
+       --palette)
+         palette="$2"
          shift 2
          ;;
        --slides)
@@ -106,7 +112,7 @@ Generates a `.typ` file with:
    # Validate input provided
    if [ -z "$input" ]; then
      echo "Error: Input required (prompt or file path)"
-     echo "Usage: /deck PROMPT_OR_PATH [OUTPUT_PATH] [--theme NAME] [--slides N]"
+     echo "Usage: /deck PROMPT_OR_PATH [OUTPUT_PATH] [--theme NAME] [--palette NAME] [--slides N]"
      exit 1
    fi
    ```
@@ -147,20 +153,104 @@ Generates a `.typ` file with:
    fi
    ```
 
-5. **Validate Theme**
+5. **Validate Theme** (if provided)
    ```bash
-   case "$theme" in
-     simple|metropolis|dewdrop|university|stargazer)
-       ;; # Valid
-     *)
-       echo "Error: Unknown theme: $theme"
-       echo "Supported themes: simple, metropolis, dewdrop, university, stargazer"
-       exit 1
-       ;;
-   esac
+   if [ -n "$theme" ]; then
+     case "$theme" in
+       simple|metropolis|dewdrop|university|stargazer)
+         ;; # Valid
+       *)
+         echo "Error: Unknown theme: $theme"
+         echo "Supported themes: simple, metropolis, dewdrop, university, stargazer"
+         exit 1
+         ;;
+     esac
+   fi
    ```
 
-6. **Validate Slide Count**
+6. **Validate Palette** (if provided)
+   ```bash
+   if [ -n "$palette" ]; then
+     case "$palette" in
+       professional-blue|premium-dark|minimal-light|growth-green)
+         ;; # Valid
+       *)
+         echo "Error: Unknown palette: $palette"
+         echo "Supported palettes: professional-blue, premium-dark, minimal-light, growth-green"
+         exit 1
+         ;;
+     esac
+   fi
+   ```
+
+7. **Interactive Style Selection** (when theme or palette not provided)
+
+   If `--theme` AND `--palette` are both provided, skip the picker. Otherwise, show the interactive picker.
+
+   ```
+   # Show interactive picker if theme or palette not specified
+   if [ -z "$theme" ] || [ -z "$palette" ]; then
+     # Use AskUserQuestion to prompt for style selection
+   fi
+   ```
+
+   **Use AskUserQuestion** with the following picker:
+
+   ```json
+   {
+     "question": "Select a visual style for your pitch deck:",
+     "header": "Deck Style",
+     "multiSelect": false,
+     "options": [
+       {"label": "Simple + Professional Blue", "description": "Minimal layout, navy tones | Fintech, enterprise B2B"},
+       {"label": "Simple + Premium Dark", "description": "Minimal layout, dark + gold | Luxury, premium tech"},
+       {"label": "Simple + Minimal Light", "description": "Minimal layout, charcoal/gray | Data, analytics"},
+       {"label": "Simple + Growth Green", "description": "Minimal layout, emerald | Sustainability, health"},
+       {"label": "Metropolis + Professional Blue", "description": "Modern professional, navy | Corporate presentations"},
+       {"label": "Metropolis + Premium Dark", "description": "Modern professional, dark + gold | Evening events"},
+       {"label": "Metropolis + Minimal Light", "description": "Modern professional, gray | Versatile corporate"},
+       {"label": "Metropolis + Growth Green", "description": "Modern professional, emerald | Environmental tech"},
+       {"label": "Dewdrop + Professional Blue", "description": "Light airy layout, navy | Creative tech"},
+       {"label": "Dewdrop + Premium Dark", "description": "Light airy layout, dark + gold | Creative luxury"},
+       {"label": "Dewdrop + Minimal Light", "description": "Light airy layout, gray | Startup pitches"},
+       {"label": "Dewdrop + Growth Green", "description": "Light airy layout, emerald | Health startups"},
+       {"label": "University + Professional Blue", "description": "Academic style, navy | Research presentations"},
+       {"label": "University + Premium Dark", "description": "Academic style, dark + gold | Evening lectures"},
+       {"label": "University + Minimal Light", "description": "Academic style, gray | Conference talks"},
+       {"label": "University + Growth Green", "description": "Academic style, emerald | Environmental research"},
+       {"label": "Stargazer + Professional Blue", "description": "Dark mode, navy accents | Tech demos"},
+       {"label": "Stargazer + Premium Dark", "description": "Dark mode, gold accents | VIP presentations"},
+       {"label": "Stargazer + Minimal Light", "description": "Dark mode, blue accents | Technical talks"},
+       {"label": "Stargazer + Growth Green", "description": "Dark mode, green accents | Sustainability demos"}
+     ]
+   }
+   ```
+
+   **Parse the selection** to extract theme and palette:
+   - Selection format: `"Theme + Palette"` (e.g., "Simple + Professional Blue")
+   - Extract theme: lowercase first word (e.g., "simple")
+   - Extract palette: lowercase remaining words with spaces replaced by hyphens (e.g., "professional-blue")
+
+   ```bash
+   # Parse selection: "Simple + Professional Blue" -> theme=simple, palette=professional-blue
+   selected="$selection"
+   theme_part=$(echo "$selected" | sed 's/ + .*//' | tr '[:upper:]' '[:lower:]')
+   palette_part=$(echo "$selected" | sed 's/.* + //' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+   # Override only if not already set via CLI flags
+   if [ -z "$theme" ]; then
+     theme="$theme_part"
+   fi
+   if [ -z "$palette" ]; then
+     palette="$palette_part"
+   fi
+   ```
+
+   **Note**: If only `--theme` was provided, the picker can be skipped and palette defaults to "professional-blue". If only `--palette` was provided, show a simplified theme-only picker or default theme to "simple".
+
+   For simplicity, if EITHER is missing, show the full picker and let the user choose both, then use CLI-provided values to override where applicable.
+
+8. **Validate Slide Count**
    ```bash
    if ! [[ "$slide_count" =~ ^[0-9]+$ ]] || [ "$slide_count" -lt 5 ] || [ "$slide_count" -gt 20 ]; then
      echo "Error: Slide count must be between 5 and 20"
@@ -179,7 +269,7 @@ Generates a `.typ` file with:
 **Invoke the Skill tool NOW** with:
 ```
 skill: "skill-deck"
-args: "prompt={prompt} source_path={source_path} output_path={output_path} theme={theme} slide_count={slide_count} session_id={session_id}"
+args: "prompt={prompt} source_path={source_path} output_path={output_path} theme={theme} palette={palette} slide_count={slide_count} session_id={session_id}"
 ```
 
 The skill will spawn the deck-agent to generate the pitch deck.
@@ -243,12 +333,13 @@ Commit failure is non-blocking (log and continue).
 ```
 Pitch deck generated!
 
-Output: {output_path}
-Theme:  {theme}
-Slides: {slide_count}
-TODOs:  {slides_with_todos} slides need content
+Output:  {output_path}
+Theme:   {theme}
+Palette: {palette}
+Slides:  {slide_count}
+TODOs:   {slides_with_todos} slides need content
 
-Input:  {input_type: prompt_only|file_only|prompt_and_file}
+Input:   {input_type: prompt_only|file_only|prompt_and_file}
 
 Compile with: typst compile {output_path}
 
