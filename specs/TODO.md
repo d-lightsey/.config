@@ -8,12 +8,15 @@ next_project_number: 226
 
 ### 225. Enforce postflight boundary after agent delegation in skills
 - **Effort**: 3-5 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-17
 - **Research Completed**: 2026-03-17
+- **Planning Started**: 2026-03-17
+- **Planning Completed**: 2026-03-17
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_postflight-boundary.md](225_enforce_postflight_boundary_after_agent_delegation/reports/01_postflight-boundary.md)
+- **Plan**: [02_implementation-plan.md](225_enforce_postflight_boundary_after_agent_delegation/plans/02_implementation-plan.md)
 
 **Description**: Skills that delegate to subagents via the Task tool are violating the "thin wrapper" pattern by continuing to make implementation changes after the agent returns. Evidence from `/implement 982` output shows skill-lean-implementation: (1) Agent completed at line 68 ("Done - 87 tool uses"), (2) Skill then ran git status, lake build, lean_goal MCP tool, and made Edit calls to DovetailedBuild.lean (lines 74-133). This violates the architectural boundary where skills should only do postflight operations (read metadata, update status, link artifacts, git commit) after agent return - NOT continue implementation.
 

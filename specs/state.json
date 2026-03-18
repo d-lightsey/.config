@@ -5,20 +5,26 @@
     {
       "project_number": 225,
       "project_name": "enforce_postflight_boundary_after_agent_delegation",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-18T00:53:42Z",
-      "last_updated": "2026-03-18T01:05:40Z",
+      "last_updated": "2026-03-18T01:16:39Z",
       "dependencies": [],
-      "session_id": "sess_1773795330_ea607f",
+      "session_id": "sess_1773796141_0abb03",
       "researched": "2026-03-18T01:05:40Z",
       "artifacts": [
         {
           "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/reports/01_postflight-boundary.md",
           "type": "research",
           "summary": "Research report identifying postflight boundary violations in skills with 6 concrete recommendations"
+        },
+        {
+          "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "7-phase plan to enforce postflight boundary: create standard, update agents, add MUST NOT sections, create lint script"
         }
-      ]
+      ],
+      "planned": "2026-03-18T01:16:39Z"
     },
     {
       "project_number": 224,
