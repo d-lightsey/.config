@@ -8,7 +8,7 @@ next_project_number: 234
 
 ### 233. Research gstack for founder extension integration
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Language**: meta
 
 **Description**: Research https://github.com/garrytan/gstack to see what elements would make sense to integrate into my agent system as a new founder/ extension.
@@ -20,7 +20,9 @@ next_project_number: 234
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #229, Task #230, Task #231
-- **Research**: [01_meta-research.md](232_example_templates_yc_compliance/reports/01_meta-research.md)
+- **Research**:
+  - [01_meta-research.md](232_example_templates_yc_compliance/reports/01_meta-research.md)
+  - [02_example-analysis.md](232_example_templates_yc_compliance/reports/02_example-analysis.md)
 
 **Description**: Simplify all 4 example pitch deck files in `.claude/extensions/present/examples/` to demonstrate YC-compliant design. Remove complex panel layouts, use larger fonts (28pt+ body, 44pt+ titles), and ensure each slide shows one-idea-per-slide principle. Files: professional-blue-pitch.typ, premium-dark-pitch.typ, minimal-light-pitch.typ, growth-green-pitch.typ.
 

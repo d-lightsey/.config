@@ -5,10 +5,11 @@
     {
       "project_number": 233,
       "project_name": "research_gstack_founder_extension",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-18T17:01:41Z",
-      "last_updated": "2026-03-18T17:01:41Z"
+      "last_updated": "2026-03-18T17:03:44Z",
+      "session_id": "sess_1773853402_372cc4"
     },
     {
       "project_number": 228,
@@ -169,19 +170,24 @@
       "language": "meta",
       "effort": "3-4 hours",
       "created": "2026-03-18T16:30:00Z",
-      "last_updated": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T17:06:29Z",
       "dependencies": [
         229,
         230,
         231
       ],
-      "session_id": "sess_meta_present_extension",
-      "researched": "2026-03-18T16:30:00Z",
+      "session_id": "sess_1773853396_d8bdad",
+      "researched": "2026-03-18T17:06:29Z",
       "artifacts": [
         {
           "path": "specs/232_example_templates_yc_compliance/reports/01_meta-research.md",
           "type": "research",
           "summary": "Example file simplification requirements for YC compliance"
+        },
+        {
+          "path": "specs/232_example_templates_yc_compliance/reports/02_example-analysis.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of 4 example pitch deck files identifying YC compliance gaps: font sizes below 28pt, 3-4 column grids, decorative panels, and nested TAM/SAM/SOM circles"
         }
       ]
     },
