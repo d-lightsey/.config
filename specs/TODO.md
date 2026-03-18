@@ -8,10 +8,11 @@ next_project_number: 236
 
 ### 235. Research and integrate MCP tools for founder extension
 - **Effort**: 2-3 hours
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: None
 - **Started**: 2026-03-18
+- **Completed**: 2026-03-18
 - **Research**:
   - [01_meta-research.md](235_research_integrate_mcp_founder/reports/01_meta-research.md)
   - [02_mcp-tools-research.md](235_research_integrate_mcp_founder/reports/02_mcp-tools-research.md)
@@ -19,6 +20,7 @@ next_project_number: 236
   - [01_mcp-tools-integration.md](235_research_integrate_mcp_founder/plans/01_mcp-tools-integration.md)
   - [02_mcp-tools-integration-revised.md](235_research_integrate_mcp_founder/plans/02_mcp-tools-integration-revised.md)
   - [03_mcp-tools-final.md](235_research_integrate_mcp_founder/plans/03_mcp-tools-final.md)
+- **Summary**: [01_mcp-integration-summary.md](235_research_integrate_mcp_founder/summaries/01_mcp-integration-summary.md)
 
 **Description**: Research and integrate MCP (Model Context Protocol) tools to enhance founder extension agent capabilities for market research and business strategy. Includes: (1) Research MCP tools for market research - market data APIs, industry reports, company information; (2) Research MCP tools for business strategy - competitive intelligence, trend analysis, financial data; (3) Evaluate and integrate best tools into founder extension manifest.json and agent definitions.
 
