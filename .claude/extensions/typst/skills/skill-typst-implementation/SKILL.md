@@ -54,6 +54,27 @@ Keep status as "implementing", report error.
 ### Git Commit Failure
 Non-blocking: Log failure but continue.
 
+## MUST NOT (Postflight Boundary)
+
+After the agent returns, this skill MUST NOT:
+
+1. **Edit .typ files** - All Typst work is done by agent
+2. **Run typst compile** - Compilation is done by agent
+3. **Analyze or grep source** - Analysis is agent work
+4. **Write summary/reports** - Artifact creation is agent work
+
+The postflight phase is LIMITED TO:
+- Reading agent metadata file
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md
+
+---
+
 ## Return Format
 
 Brief text summary (NOT JSON).

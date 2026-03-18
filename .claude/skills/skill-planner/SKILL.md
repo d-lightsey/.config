@@ -315,6 +315,28 @@ Keep status as "planning" for resume.
 
 ---
 
+## MUST NOT (Postflight Boundary)
+
+After the agent returns, this skill MUST NOT:
+
+1. **Edit source files** - All planning work is done by agent
+2. **Run build/test commands** - Verification is done by agent
+3. **Use research tools** - Web/codebase search is for agent use only
+4. **Analyze task requirements** - Analysis is agent work
+5. **Write plan files** - Artifact creation is agent work
+
+The postflight phase is LIMITED TO:
+- Reading agent metadata file
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md
+
+---
+
 ## Return Format
 
 This skill returns a **brief text summary** (NOT JSON). The JSON metadata is written to the file and processed internally.

@@ -210,3 +210,21 @@ Return completed status (not failed) when user explicitly cancels at confirmatio
 
 ### Timeout
 Return partial status if subagent times out (default 7200s for interactive sessions).
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After the agent returns, this skill MUST NOT:
+
+1. **Edit .claude/ files** - All system building is done by agent
+2. **Create task directories** - Task creation is done by agent
+3. **Run analysis commands** - Analysis is agent work
+4. **Write documentation** - Artifact creation is agent work
+5. **Use AskUserQuestion** - User interaction is agent work
+
+The postflight phase is LIMITED TO:
+- Reading agent return
+- Git commit (if tasks were created)
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

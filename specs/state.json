@@ -5,12 +5,12 @@
     {
       "project_number": 225,
       "project_name": "enforce_postflight_boundary_after_agent_delegation",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-18T00:53:42Z",
-      "last_updated": "2026-03-18T01:16:39Z",
+      "last_updated": "2026-03-18T01:56:01Z",
       "dependencies": [],
-      "session_id": "sess_1773796141_0abb03",
+      "session_id": "sess_1773796826_c80851",
       "researched": "2026-03-18T01:05:40Z",
       "artifacts": [
         {
@@ -22,9 +22,18 @@
           "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/plans/02_implementation-plan.md",
           "type": "plan",
           "summary": "7-phase plan to enforce postflight boundary: create standard, update agents, add MUST NOT sections, create lint script"
+        },
+        {
+          "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/summaries/03_postflight-boundary-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all files modified"
         }
       ],
-      "planned": "2026-03-18T01:16:39Z"
+      "planned": "2026-03-18T01:16:39Z",
+      "started": "2026-03-18T01:21:29Z",
+      "completed": "2026-03-18T01:56:01Z",
+      "completion_summary": "Created postflight-tool-restrictions.md standard, updated lean-implementation-agent verification, added MUST NOT sections to 17 skills (8 core + 9 extension), and created lint-postflight-boundary.sh for automated enforcement.",
+      "claudemd_suggestions": "Created .claude/context/core/standards/postflight-tool-restrictions.md, updated index.json, updated 17 skill files with MUST NOT sections, created .claude/scripts/lint/lint-postflight-boundary.sh, updated thin-wrapper-skill.md and skill-lifecycle.md references"
     },
     {
       "project_number": 224,

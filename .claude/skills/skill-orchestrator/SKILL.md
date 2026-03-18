@@ -109,3 +109,21 @@ Prepare context package for delegated skill:
 - Task not found: Return clear error with suggestions
 - Invalid status: Return error with current status and allowed operations
 - Skill invocation failure: Return partial result with error details
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After routing to a skill, this skill MUST NOT:
+
+1. **Edit source files** - All work is done by routed skills/agents
+2. **Run build/test commands** - Verification is done by routed skills/agents
+3. **Update task status** - Status updates are done by routed skills
+4. **Create artifacts** - Artifact creation is done by routed skills/agents
+
+The orchestrator is a **routing-only** skill. It:
+- Looks up task context
+- Routes to appropriate skill based on language
+- Passes through the routed skill's return
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

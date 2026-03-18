@@ -149,8 +149,17 @@ These skills are intentionally excluded:
 - skill-orchestrator: Routes to workflow skills which handle state
 - skill-meta: Creates tasks via interview, no transitions
 
+## Postflight Boundary Restrictions
+
+After agent delegation completes, skills must respect postflight boundary restrictions:
+- **Allowed**: Read metadata, jq state updates, Edit TODO.md/state.json, git commit
+- **Prohibited**: Edit source files, build/test commands, MCP tools, analysis
+
+All agent-delegating skills must include a MUST NOT section. See @.claude/context/core/standards/postflight-tool-restrictions.md for complete rules.
+
 ## References
 
 - Inline patterns: `@.claude/context/core/patterns/inline-status-update.md`
 - Anti-stop patterns: `@.claude/context/core/patterns/anti-stop-patterns.md`
 - Subagent return format: `@.claude/context/core/formats/subagent-return.md`
+- Postflight restrictions: `@.claude/context/core/standards/postflight-tool-restrictions.md`

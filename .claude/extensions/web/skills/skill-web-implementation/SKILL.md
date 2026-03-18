@@ -359,3 +359,24 @@ Pass through the subagent's error return verbatim.
 
 ### Timeout
 Return partial status if subagent times out (default 3600s).
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After the agent returns, this skill MUST NOT:
+
+1. **Edit .astro/.tsx/.ts files** - All web implementation is done by agent
+2. **Run pnpm build/check** - Build verification is done by agent
+3. **Analyze or grep source** - Analysis is agent work
+4. **Write summary/reports** - Artifact creation is agent work
+
+The postflight phase is LIMITED TO:
+- Reading agent metadata file
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

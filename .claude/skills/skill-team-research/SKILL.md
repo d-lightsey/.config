@@ -544,3 +544,25 @@ Team research completed for task 412:
 - Status updated to [RESEARCHED]
 - Changes committed with session sess_...
 ```
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After teammates complete and findings are synthesized, this skill MUST NOT:
+
+1. **Edit source files** - All research work is done by teammates
+2. **Run build/test commands** - Verification is done by teammates
+3. **Use WebSearch/WebFetch** - Research tools are for teammate use only
+4. **Analyze or grep source** - Analysis is teammate work
+5. **Write reports** - Artifact creation is done during synthesis, not postflight
+
+The postflight phase is LIMITED TO:
+- Reading teammate metadata files
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

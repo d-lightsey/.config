@@ -557,3 +557,25 @@ Team implementation partially completed for task 412:
 - Status remains [IMPLEMENTING]
 - Run /implement 412 to resume after fixing Phase 3
 ```
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After teammates complete phase execution, this skill MUST NOT:
+
+1. **Edit source files** - All implementation work is done by teammates
+2. **Run build/test commands** - Verification is done by teammates
+3. **Use MCP tools** - Domain tools are for teammate use only
+4. **Analyze or grep source** - Analysis is teammate work
+5. **Write summary/reports** - Artifact creation is done by teammates
+
+The postflight phase is LIMITED TO:
+- Reading teammate metadata files
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

@@ -176,6 +176,33 @@
       }
     },
     {
+      "path": "core/standards/postflight-tool-restrictions.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "topics": [
+        "postflight",
+        "tool-restrictions",
+        "skill-boundary"
+      ],
+      "keywords": [
+        "postflight",
+        "boundary",
+        "allowed-tools",
+        "prohibited",
+        "delegation"
+      ],
+      "summary": "Defines allowed vs prohibited operations during skill postflight phase",
+      "line_count": 200,
+      "load_when": {
+        "agents": [
+          "meta-builder-agent"
+        ],
+        "languages": [
+          "meta"
+        ]
+      }
+    },
+    {
       "path": "core/orchestration/routing.md",
       "domain": "core",
       "subdomain": "orchestration",

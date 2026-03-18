@@ -135,40 +135,23 @@ if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
     artifact_path=$(jq -r '.artifacts[0].path // ""' "$metadata_file")
     phases_completed=$(jq -r '.metadata.phases_completed // 0' "$metadata_file")
     phases_total=$(jq -r '.metadata.phases_total // 0' "$metadata_file")
+
+    # Read verification results (agent is responsible for verification)
+    verification_passed=$(jq -r '.verification.verification_passed // false' "$metadata_file")
 else
     echo "Error: Invalid or missing metadata file"
     status="failed"
+    verification_passed="false"
 fi
 ```
 
----
-
-### Stage 6: Zero-Debt Verification Gate (MANDATORY)
-
-**CRITICAL**: Before proceeding to status update, verify the zero-debt completion gate.
-
-If status from metadata is "implemented":
-
-```bash
-# Check for sorries in modified files
-sorry_count=$(grep -r "\bsorry\b" Theories/ 2>/dev/null | grep -v "^[[:space:]]*--" | wc -l)
-
-# Verify build passes
-if ! lake build 2>/dev/null; then
-    build_failed=true
-fi
-
-if [ "$sorry_count" -gt 0 ] || [ "$build_failed" = true ]; then
-    echo "Zero-debt gate FAILED"
-    status="partial"
-fi
-```
+**Note**: The agent performs all verification (sorry check, axiom check, lake build) and records results in metadata. This skill reads those results - it does NOT re-verify.
 
 ---
 
-### Stage 7: Update Task Status (Postflight)
+### Stage 6: Update Task Status (Postflight)
 
-**If status is "implemented"** (verified by Stage 6):
+**If status is "implemented" AND verification_passed is true**:
 
 Update state.json to "completed":
 ```bash
@@ -190,7 +173,7 @@ TODO.md stays as `[IMPLEMENTING]`.
 
 ---
 
-### Stage 8: Link Artifacts
+### Stage 7: Link Artifacts
 
 Add summary artifact to state.json.
 
@@ -205,7 +188,7 @@ fi
 
 ---
 
-### Stage 9: Git Commit
+### Stage 8: Git Commit
 
 Commit changes with session ID:
 
@@ -225,7 +208,7 @@ Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 
 ---
 
-### Stage 10: Return Brief Summary
+### Stage 9: Return Brief Summary
 
 Return a brief text summary (NOT JSON). Example:
 
@@ -257,6 +240,28 @@ Non-blocking: Log failure but continue with success response.
 ### Subagent Timeout
 Return partial status if subagent times out (default 7200s).
 Keep status as "implementing" for resume.
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After the agent returns, this skill MUST NOT:
+
+1. **Edit source files** - All Lean proof work is done by agent
+2. **Run lake build** - Build verification is done by agent
+3. **Use MCP tools** - lean-lsp tools are for agent use only
+4. **Grep for sorries** - Debt analysis is agent work
+5. **Write summary/reports** - Artifact creation is agent work
+
+The postflight phase is LIMITED TO:
+- Reading agent metadata file
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md
 
 ---
 

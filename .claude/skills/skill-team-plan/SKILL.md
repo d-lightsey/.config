@@ -539,3 +539,25 @@ Team planning completed for task 412:
 - Status updated to [PLANNED]
 - Changes committed with session sess_...
 ```
+
+---
+
+## MUST NOT (Postflight Boundary)
+
+After teammates complete and plans are synthesized, this skill MUST NOT:
+
+1. **Edit source files** - All planning work is done by teammates
+2. **Run build/test commands** - Verification is done by teammates
+3. **Analyze task requirements** - Analysis is teammate work
+4. **Write plan files** - Artifact creation is done during synthesis, not postflight
+5. **Use research tools** - Research is for teammate use only
+
+The postflight phase is LIMITED TO:
+- Reading teammate metadata files
+- Updating state.json via jq
+- Updating TODO.md status marker via Edit
+- Linking artifacts in state.json
+- Git commit
+- Cleanup of temp/marker files
+
+Reference: @.claude/context/core/standards/postflight-tool-restrictions.md

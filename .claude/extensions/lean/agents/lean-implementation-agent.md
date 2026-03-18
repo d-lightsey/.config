@@ -115,37 +115,73 @@ Edit:
    }
    ```
 
-## Zero-Debt Completion Gate (MANDATORY)
+## Final Verification Stage (MANDATORY)
 
-Before returning "implemented" status, you MUST verify zero proof debt:
+**CRITICAL**: Before writing final metadata, you MUST run the complete verification suite and record results.
+
+This verification happens at the END of implementation, after all phases are complete but BEFORE writing final metadata. The results are recorded in metadata so the skill can propagate status without re-verifying.
 
 ### Verification Steps
 
 1. **Check for sorries in modified files**:
    ```bash
-   grep -n "\bsorry\b" <file> | grep -v "^[[:space:]]*--" | grep -v "/--"
+   grep -rn "\bsorry\b" Theories/ | grep -v "^[[:space:]]*--" | grep -v "/--" | wc -l
    ```
-   If ANY match: Cannot return "implemented" status
+   Record: `sorry_count` (must be 0 for implemented status)
 
 2. **Check for new axioms**:
    ```bash
-   grep -n "^axiom " <file>
+   grep -rn "^axiom " Theories/ | wc -l
    ```
-   If count increased: Cannot return "implemented" status
+   Record: `axiom_count` (compare to baseline, must not increase)
 
 3. **Verify build passes**:
    ```bash
-   lake build
+   lake build 2>&1
    ```
-   If build fails: Cannot return "implemented" status
+   Record: `build_passed` (true/false), `build_output` (if failed)
+
+### Recording Verification Results
+
+The verification results MUST be included in the final metadata:
+
+```json
+{
+  "status": "implemented",
+  "verification": {
+    "verification_passed": true,
+    "sorry_count": 0,
+    "axiom_count": 0,
+    "build_passed": true
+  },
+  "artifacts": [...],
+  "metadata": {...}
+}
+```
 
 ### On Verification Failure
 
 If any check fails:
-1. Do NOT return "implemented" status
+1. Set `verification.verification_passed: false`
 2. Set `status: "partial"` with `requires_user_review: true`
 3. Include `review_reason` explaining what failed
-4. Document the blocking issue in metadata
+4. Document specific failures:
+   ```json
+   {
+     "status": "partial",
+     "verification": {
+       "verification_passed": false,
+       "sorry_count": 2,
+       "axiom_count": 0,
+       "build_passed": false,
+       "build_output": "Error message here"
+     },
+     "requires_user_review": true,
+     "review_reason": "2 sorries remain, build fails"
+   }
+   ```
+
+**Note**: The skill postflight reads `verification.verification_passed` from metadata to determine final task status. The skill does NOT re-run verification.
 
 ## Error Handling
 
