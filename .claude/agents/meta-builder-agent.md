@@ -377,6 +377,159 @@ for task_idx, ext_deps in external_dependencies:
 - `dependency_map{}`: Map of task index -> [dependency indices] (internal)
 - `external_dependencies{}`: Map of task index -> [existing task numbers] (external)
 
+### Interview Stage 3.5: AnalyzeTopics (Topic Clustering)
+
+**Skip Condition**: Execute ONLY when:
+- User provided task_list with 2+ items (single task needs no consolidation)
+- At least 2 items share topic indicators (otherwise no groupings to suggest)
+
+**Purpose**: Proactively analyze user-provided task breakdown for opportunities to consolidate related items into fewer, more coherent tasks. This follows the "minimize tasks" principle - fewer, well-scoped tasks are better than many fragmented ones.
+
+**3.5.1: Extract Topic Indicators**
+
+For each task in task_list, extract:
+- **Key Terms**: Significant words (nouns, verbs) from title/description, ignoring stop words (a, the, in, on, for, to, and, or)
+- **Component Type**: Identify component (command, skill, agent, rule, context, documentation)
+- **Affected Area**: Parse for directory mentions (.claude/commands/, .claude/skills/, .claude/agents/, etc.)
+- **Action Type**: Categorize by action (create, modify, fix, document, refactor, test)
+
+**Example Extraction**:
+```
+Task: "Create a new /export command for documentation"
+  -> key_terms: ["export", "command", "documentation"]
+  -> component_type: "command"
+  -> affected_area: ".claude/commands/"
+  -> action_type: "create"
+
+Task: "Add export skill to handle PDF generation"
+  -> key_terms: ["export", "skill", "PDF", "generation"]
+  -> component_type: "skill"
+  -> affected_area: ".claude/skills/"
+  -> action_type: "create"
+```
+
+**3.5.2: Cluster Tasks by Shared Indicators**
+
+Apply clustering algorithm (matches /fix-it pattern):
+
+```python
+groups = []
+
+for task in task_list:
+  matched = False
+
+  # Primary match: same component_type AND same affected_area
+  for group in groups:
+    if task.component_type == group.component_type and task.affected_area == group.affected_area:
+      group.items.append(task)
+      group.key_terms = union(group.key_terms, task.key_terms)
+      matched = True
+      break
+
+  # Secondary match: 2+ shared key_terms
+  if not matched:
+    for group in groups:
+      shared = intersection(task.key_terms, group.key_terms)
+      if len(shared) >= 2:
+        group.items.append(task)
+        group.key_terms = union(group.key_terms, task.key_terms)
+        matched = True
+        break
+
+  # No match: create new group
+  if not matched:
+    groups.append(Group(items=[task], key_terms=task.key_terms,
+                        component_type=task.component_type,
+                        affected_area=task.affected_area))
+```
+
+**3.5.3: Generate Topic Labels**
+
+For each group with 2+ items, generate label from:
+- Most common key terms (up to 3)
+- Component type (e.g., "Command Changes", "Skill Updates")
+- Example: "Export Functionality (command + skill)" for two export-related tasks
+
+**3.5.4: Check Skip Condition**
+
+If no groups have 2+ items (all tasks are independent):
+- Skip to Stage 4 (no consolidation benefit)
+- Set: `topic_consolidation_skipped = true`
+
+**3.5.5: Present Topic Consolidation Picker**
+
+**Question** (via AskUserQuestion):
+```json
+{
+  "question": "I found related tasks that could be consolidated. How should they be grouped?",
+  "header": "Topic Consolidation",
+  "multiSelect": false,
+  "options": [
+    {
+      "label": "Accept suggested groups",
+      "description": "Creates {N} consolidated tasks: {group_summaries}"
+    },
+    {
+      "label": "Keep as separate tasks",
+      "description": "Creates {M} individual tasks (as you provided)"
+    },
+    {
+      "label": "Customize groupings",
+      "description": "I'll specify which items to combine"
+    }
+  ]
+}
+```
+
+**Where**:
+- `{N}` = Number of groups after consolidation
+- `{M}` = Original number of individual tasks
+- `{group_summaries}` = Brief list like "Export (2 items), Testing (2 items)"
+
+**3.5.6: Handle User Response**
+
+**If "Accept suggested groups"**:
+- Replace task_list with consolidated groups
+- Each group becomes one task with combined description
+- Apply effort scaling: `base_effort + (30 min * (item_count - 1))`
+
+**If "Keep as separate tasks"**:
+- Proceed with original task_list unchanged
+
+**If "Customize groupings"**:
+- Present Tier 2 multiSelect picker:
+```json
+{
+  "question": "Select items to combine into a single task:",
+  "header": "Custom Grouping",
+  "multiSelect": true,
+  "options": [
+    {"label": "{task_1_title}", "description": "Item 1"},
+    {"label": "{task_2_title}", "description": "Item 2"},
+    ...
+  ]
+}
+```
+- Selected items become one consolidated task
+- Remaining items stay as individual tasks
+- Repeat until user confirms groupings are complete
+
+**Effort Scaling Formula** (for consolidated tasks):
+```
+base_effort = original task effort (or 1 hour default)
+scaled_effort = base_effort + (30 min * (item_count - 1))
+
+Examples:
+  1 item  -> 1 hour
+  2 items -> 1.5 hours
+  3 items -> 2 hours
+  4 items -> 2.5 hours
+```
+
+**Capture**: Updated task_list (may be consolidated), consolidation_mode
+
+---
+
 ### Interview Stage 4: AssessComplexity
 
 **Question 6** (via AskUserQuestion):
