@@ -1,10 +1,21 @@
 ---
-next_project_number: 236
+next_project_number: 237
 ---
 
 # TODO
 
 ## Tasks
+
+### 236. Refactor founder extension commands to research-stop workflow
+- **Effort**: 4-6 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_workflow-analysis.md](236_refactor_founder_commands/reports/01_workflow-analysis.md)
+
+**Description**: Refactor `/market`, `/analyze`, and `/strategy` commands so each stops after producing a research report (status [RESEARCHED]) rather than auto-proceeding through plan+implement. Forcing questions happen at research time; plan reads the report; implement generates the final `strategy/` output. Applies uniformly across all three commands, their skills, and their agents. Also updates `founder-plan-agent` to read the research report instead of asking redundant questions, and `founder-implement-agent` to support an optional output path argument.
+
+---
 
 ### 235. Research and integrate MCP tools for founder extension
 - **Effort**: 2-3 hours

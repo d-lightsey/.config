@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 236,
+  "next_project_number": 237,
   "active_projects": [
     {
       "project_number": 234,
@@ -1172,6 +1172,23 @@
       "completed": "2026-03-18T20:37:31Z",
       "completion_summary": "Integrated SEC EDGAR and Firecrawl MCP tools into founder extension with lazy loading per agent. market-agent gets SEC EDGAR for public company financials, analyze-agent gets Firecrawl for competitor website scraping.",
       "claudemd_suggestions": "Updated founder extension manifest.json, market-agent.md, analyze-agent.md, README.md, and EXTENSION.md with MCP tool integration and documentation"
+    },
+    {
+      "project_number": 236,
+      "project_name": "refactor_founder_commands",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-18T21:44:00Z",
+      "last_updated": "2026-03-18T21:44:00Z",
+      "researched": "2026-03-18T21:44:00Z",
+      "session_id": "sess_1742316200_f6g7h8",
+      "artifacts": [
+        {
+          "path": "specs/236_refactor_founder_commands/reports/01_workflow-analysis.md",
+          "type": "research",
+          "summary": "Workflow analysis: commands auto-proceed through plan+implement; fix requires splitting into research-only phase"
+        }
+      ]
     }
   ],
   "completed_projects": [],
