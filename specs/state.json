@@ -16,19 +16,25 @@
     {
       "project_number": 226,
       "project_name": "multiline_artifact_linking",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-18T02:30:00Z",
-      "last_updated": "2026-03-18T16:05:00Z",
+      "last_updated": "2026-03-18T15:48:26Z",
       "dependencies": [],
       "artifacts": [
         {
           "path": "specs/226_multiline_artifact_linking/reports/01_artifact-linking-audit.md",
           "type": "research",
           "summary": "Audit of all files defining or implementing artifact linking in TODO.md, with current format analysis, full file inventory, and proposed multi-line standard with before/after examples"
+        },
+        {
+          "path": "specs/226_multiline_artifact_linking/plans/02_multiline-linking-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for count-aware multi-line artifact linking"
         }
       ],
-      "session_id": "sess_1773797900_b2c3d4"
+      "session_id": "sess_1773797900_b2c3d4",
+      "planned": "2026-03-18T15:48:26Z"
     },
     {
       "project_number": 225,
