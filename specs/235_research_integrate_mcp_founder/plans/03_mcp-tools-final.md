@@ -145,7 +145,7 @@ mcp-servers:
 
 ---
 
-### Phase 3: Create Setup Documentation [NOT STARTED]
+### Phase 3: Create Setup Documentation [COMPLETED]
 
 **Goal**: Document API key setup for Firecrawl.
 

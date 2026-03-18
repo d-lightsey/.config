@@ -69,6 +69,19 @@ Tasks with `language: founder` route to founder-specific skills:
 | `context/project/founder/templates/competitive-analysis.md` | Competitor analysis template |
 | `context/project/founder/templates/gtm-strategy.md` | Go-to-market template |
 
+### MCP Tool Integration
+
+Founder extension integrates external MCP tools for enhanced data gathering:
+
+| MCP Server | Agent | Purpose | Setup |
+|------------|-------|---------|-------|
+| sec-edgar | market-agent | Public company SEC filings (10-K, 10-Q, 8-K) | None required |
+| firecrawl | analyze-agent | Full page web scraping, competitor analysis | Requires FIRECRAWL_API_KEY |
+
+**Lazy Loading**: MCP servers only start when their assigned agent is invoked. Other agents (strategy-agent, founder-plan-agent, founder-implement-agent) do not load any MCP servers.
+
+**Setup**: See README.md for Firecrawl API key configuration.
+
 ### Key Patterns
 
 **Forcing Questions**: One question per AskUserQuestion, explicit push-back on vague answers. Specificity is the only currency.
