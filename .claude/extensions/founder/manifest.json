@@ -1,0 +1,36 @@
+{
+  "name": "founder",
+  "version": "1.0.0",
+  "description": "Strategic business analysis for founders: market sizing, competitive analysis, and go-to-market strategy",
+  "language": "founder",
+  "dependencies": [],
+  "provides": {
+    "agents": ["market-agent.md", "analyze-agent.md", "strategy-agent.md"],
+    "skills": ["skill-market", "skill-analyze", "skill-strategy"],
+    "commands": ["market.md", "analyze.md", "strategy.md"],
+    "rules": [],
+    "context": ["project/founder"],
+    "scripts": [],
+    "hooks": []
+  },
+  "routing": {
+    "research": {
+      "founder": "skill-market"
+    },
+    "implement": {
+      "founder": "skill-strategy"
+    }
+  },
+  "merge_targets": {
+    "claudemd": {
+      "source": "EXTENSION.md",
+      "target": ".claude/CLAUDE.md",
+      "section_id": "extension_founder"
+    },
+    "index": {
+      "source": "index-entries.json",
+      "target": ".claude/context/index.json"
+    }
+  },
+  "mcp_servers": {}
+}
