@@ -28,7 +28,7 @@
 #set page(fill: rgb("#f7fafc"))
 
 // Typography settings
-#set text(font: "Inter", size: 30pt, fill: rgb("#1a202c"))
+#set text(font: "Inter", size: 32pt, fill: rgb("#1a202c"))
 #show heading.where(level: 1): set text(font: "Montserrat", size: 48pt, weight: "bold", fill: rgb("#2d3748"))
 #show heading.where(level: 2): set text(font: "Montserrat", size: 40pt, weight: "bold", fill: rgb("#2d3748"))
 
@@ -51,7 +51,7 @@
 
   #v(2em)
 
-  #text(size: 24pt, fill: rgb("#718096"))[
+  #text(size: 28pt, fill: rgb("#718096"))[
     Seed Round | Q1 2026
   ]
 ]
@@ -75,31 +75,9 @@
 
 #v(1.5em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 2em,
-  align(center)[
-    #text(size: 56pt, weight: "bold", fill: blue)[68%]
-    #v(0.3em)
-    #text(size: 20pt, fill: gray)[
-      of startups don't know their real-time burn rate
-    ]
-  ],
-  align(center)[
-    #text(size: 56pt, weight: "bold", fill: blue)[3 weeks]
-    #v(0.3em)
-    #text(size: 20pt, fill: gray)[
-      average lag in financial reporting
-    ]
-  ],
-  align(center)[
-    #text(size: 56pt, weight: "bold", fill: blue)[42%]
-    #v(0.3em)
-    #text(size: 20pt, fill: gray)[
-      of Series A fails cite metrics blindspots
-    ]
-  ],
-)
+- #text(size: 40pt, weight: "bold", fill: blue)[68%] of startups don't know their real-time burn rate
+- #text(size: 40pt, weight: "bold", fill: blue)[3 weeks] average lag in financial reporting
+- #text(size: 40pt, weight: "bold", fill: blue)[42%] of Series A fails cite metrics blindspots
 
 #speaker-note[
   "Here's the problem: 68 percent of startups don't know their real-time burn rate.
@@ -127,7 +105,7 @@
   [
     #text(fill: blue, weight: "bold")[Connect]
     #v(0.5em)
-    #text(size: 26pt)[
+    #text(size: 28pt)[
       Integrates with your existing tools in minutes:
       Stripe, QuickBooks, HubSpot, Mixpanel, and 50+ more
     ]
@@ -136,7 +114,7 @@
 
     #text(fill: blue, weight: "bold")[Automate]
     #v(0.5em)
-    #text(size: 26pt)[
+    #text(size: 28pt)[
       No manual data entry. Metrics update automatically
       as transactions occur.
     ]
@@ -144,7 +122,7 @@
   [
     #text(fill: blue, weight: "bold")[Analyze]
     #v(0.5em)
-    #text(size: 26pt)[
+    #text(size: 28pt)[
       Pre-built dashboards for MRR, CAC, LTV,
       runway, and cohort analysis
     ]
@@ -153,7 +131,7 @@
 
     #text(fill: blue, weight: "bold")[Alert]
     #v(0.5em)
-    #text(size: 26pt)[
+    #text(size: 28pt)[
       Proactive notifications when metrics trend
       outside healthy ranges
     ]
@@ -172,36 +150,7 @@
 // ============================================================================
 == Traction
 
-#v(0.5em)
-
-#grid(
-  columns: (1fr, 1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  align(center)[
-    #text(size: 44pt, weight: "bold", fill: blue)[\$420K]
-    #v(0.3em)
-    #text(size: 18pt, fill: gray)[ARR]
-  ],
-  align(center)[
-    #text(size: 44pt, weight: "bold", fill: blue)[180]
-    #v(0.3em)
-    #text(size: 18pt, fill: gray)[Customers]
-  ],
-  align(center)[
-    #text(size: 44pt, weight: "bold", fill: blue)[15%]
-    #v(0.3em)
-    #text(size: 18pt, fill: gray)[MoM Growth]
-  ],
-  align(center)[
-    #text(size: 44pt, weight: "bold", fill: blue)[92%]
-    #v(0.3em)
-    #text(size: 18pt, fill: gray)[Retention]
-  ],
-)
-
-#v(1.5em)
-
-#line(length: 100%, stroke: 0.5pt + rgb("#e2e8f0"))
+#text(size: 40pt, weight: "bold", fill: blue)[\$420K ARR] | #text(size: 40pt, weight: "bold", fill: blue)[180 Customers] | #text(size: 40pt, weight: "bold", fill: blue)[15% MoM Growth] | #text(size: 40pt, weight: "bold", fill: blue)[92% Retention]
 
 #v(1em)
 
@@ -314,66 +263,15 @@
 // ============================================================================
 == Market Opportunity
 
-#v(0.5em)
+*Total Addressable Market (TAM)*: \$8.2B -- Business Intelligence
 
-#align(center)[
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    gutter: 2em,
-    [
-      #block(
-        width: 100%,
-        inset: 20pt,
-      )[
-        #align(center)[
-          #text(size: 44pt, weight: "bold", fill: blue)[\$8.2B]
-          #v(0.3em)
-          #text(size: 18pt, fill: charcoal)[*TAM*]
-          #v(0.2em)
-          #text(size: 14pt, fill: gray)[Business Intelligence]
-        ]
-      ]
-    ],
-    [
-      #block(
-        width: 100%,
-        inset: 20pt,
-      )[
-        #align(center)[
-          #text(size: 44pt, weight: "bold", fill: blue)[\$1.8B]
-          #v(0.3em)
-          #text(size: 18pt, fill: charcoal)[*SAM*]
-          #v(0.2em)
-          #text(size: 14pt, fill: gray)[SMB/Startup segment]
-        ]
-      ]
-    ],
-    [
-      #block(
-        width: 100%,
-        inset: 20pt,
-      )[
-        #align(center)[
-          #text(size: 44pt, weight: "bold", fill: blue)[\$180M]
-          #v(0.3em)
-          #text(size: 18pt, fill: charcoal)[*SOM*]
-          #v(0.2em)
-          #text(size: 14pt, fill: gray)[5-year target]
-        ]
-      ]
-    ],
-  )
-]
+*Serviceable Addressable Market (SAM)*: \$1.8B -- SMB/Startup segment
+
+*Serviceable Obtainable Market (SOM)*: \$180M -- 5-year target
 
 #v(1em)
 
-#line(length: 100%, stroke: 0.5pt + rgb("#e2e8f0"))
-
-#v(0.5em)
-
-#text(size: 22pt)[
-  *Calculation*: 600K funded startups globally x 30% addressable x \$1,000 avg spend = \$180M
-]
+Bottom-up calculation: 600K funded startups globally x 30% addressable x \$1,000 avg spend = \$180M
 
 #speaker-note[
   "Business intelligence is an 8 billion dollar market.
@@ -398,7 +296,7 @@
 
     #v(0.5em)
 
-    #text(size: 22pt, fill: text-color)[
+    #text(size: 28pt, fill: text-color)[
       - Product Lead, Stripe Dashboard (4 years)
       - Built metrics used by 100K+ businesses
       - Stanford MBA, Berkeley CS undergrad
@@ -412,7 +310,7 @@
 
     #v(0.5em)
 
-    #text(size: 22pt, fill: text-color)[
+    #text(size: 28pt, fill: text-color)[
       - Staff Engineer, Stripe Data (5 years)
       - Architected real-time analytics pipeline
       - MS Computer Science, MIT
@@ -451,7 +349,7 @@
   columns: (1fr, 1fr),
   gutter: 3em,
   [
-    #text(fill: blue, weight: "bold", size: 26pt)[Use of Funds]
+    #text(fill: blue, weight: "bold", size: 28pt)[Use of Funds]
 
     #v(0.5em)
 
@@ -465,7 +363,7 @@
     )
   ],
   [
-    #text(fill: blue, weight: "bold", size: 26pt)[18-Month Milestones]
+    #text(fill: blue, weight: "bold", size: 28pt)[18-Month Milestones]
 
     #v(0.5em)
 
@@ -479,7 +377,7 @@
 #v(1em)
 
 #align(center)[
-  #text(size: 22pt, fill: gray)[
+  #text(size: 28pt, fill: gray)[
     *Committed*: \$1.2M from Y Combinator, FundersClub, angel syndicate
   ]
 ]
@@ -519,7 +417,7 @@
 
   #v(1em)
 
-  #text(size: 20pt, fill: rgb("#718096"))[
+  #text(size: 28pt, fill: rgb("#718096"))[
     Demo available | Product roadmap in appendix
   ]
 ]

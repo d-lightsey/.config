@@ -8,14 +8,19 @@
       "status": "researched",
       "language": "meta",
       "created": "2026-03-18T17:01:41Z",
-      "last_updated": "2026-03-18T17:07:53Z",
-      "session_id": "sess_1773853402_372cc4",
-      "researched": "2026-03-18T17:07:53Z",
+      "last_updated": "2026-03-18T17:22:40Z",
+      "session_id": "sess_1773854219_d5b7c9",
+      "researched": "2026-03-18T17:22:40Z",
       "artifacts": [
         {
           "path": "specs/233_research_gstack_founder_extension/reports/01_gstack-founder-integration.md",
           "type": "research",
           "summary": "Comprehensive analysis of gstack with recommendations for founder/ extension focusing on office-hours, ceo-review, and retro skills"
+        },
+        {
+          "path": "specs/233_research_gstack_founder_extension/reports/02_founder-skills-deep-dive.md",
+          "type": "research",
+          "summary": "Deep dive into gstack's /office-hours, /plan-ceo-review, /retro skills with designs for 4 new business-focused skills (market sizing, business model, GTM, competitive analysis)"
         }
       ]
     },
@@ -174,17 +179,17 @@
     {
       "project_number": 232,
       "project_name": "example_templates_yc_compliance",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "effort": "3-4 hours",
       "created": "2026-03-18T16:30:00Z",
-      "last_updated": "2026-03-18T17:10:53Z",
+      "last_updated": "2026-03-18T17:22:25Z",
       "dependencies": [
         229,
         230,
         231
       ],
-      "session_id": "sess_1773853655_b75196",
+      "session_id": "sess_1773853907_91af2c",
       "researched": "2026-03-18T17:06:29Z",
       "artifacts": [
         {
@@ -201,9 +206,18 @@
           "path": "specs/232_example_templates_yc_compliance/plans/01_yc-compliance-plan.md",
           "type": "plan",
           "summary": "5-phase implementation plan for YC compliance updates across 4 example pitch deck files"
+        },
+        {
+          "path": "specs/232_example_templates_yc_compliance/summaries/02_yc-compliance-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results for YC compliance updates"
         }
       ],
-      "planned": "2026-03-18T17:10:53Z"
+      "planned": "2026-03-18T17:10:53Z",
+      "started": "2026-03-18T17:12:09Z",
+      "completed": "2026-03-18T17:22:25Z",
+      "completion_summary": "Updated all 4 example pitch deck files to YC compliance: increased fonts to 28pt+ minimum, removed decorative blocks and 3+ column grids, replaced nested TAM/SAM/SOM circles with plain text, preserved theme color identities.",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 227,

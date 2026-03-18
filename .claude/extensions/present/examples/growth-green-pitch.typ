@@ -28,7 +28,7 @@
 #set page(fill: rgb("#f0fdf4"))
 
 // Typography settings
-#set text(font: "Inter", size: 30pt, fill: rgb("#1a202c"))
+#set text(font: "Inter", size: 32pt, fill: rgb("#1a202c"))
 #show heading.where(level: 1): set text(font: "Montserrat", size: 48pt, weight: "bold", fill: rgb("#047857"))
 #show heading.where(level: 2): set text(font: "Montserrat", size: 40pt, weight: "bold", fill: rgb("#047857"))
 
@@ -51,7 +51,7 @@
 
   #v(2em)
 
-  #text(size: 24pt, fill: rgb("#6b7280"))[
+  #text(size: 28pt, fill: rgb("#6b7280"))[
     Series A | Q1 2026
   ]
 ]
@@ -75,55 +75,13 @@
 
 #v(1em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: emerald)[\$62B]
-      #v(0.3em)
-      #text(size: 18pt, fill: dark-green)[
-        lost annually to curtailment
-      ]
-    ]
-  ],
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: emerald)[340M]
-      #v(0.3em)
-      #text(size: 18pt, fill: dark-green)[
-        tons CO2 from backup generation
-      ]
-    ]
-  ],
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: emerald)[1970s]
-      #v(0.3em)
-      #text(size: 18pt, fill: dark-green)[
-        era grid management tech
-      ]
-    ]
-  ],
-)
+- #text(size: 40pt, weight: "bold", fill: emerald)[\$62B] lost annually to curtailment
+- #text(size: 40pt, weight: "bold", fill: emerald)[340M] tons CO2 from backup generation
+- #text(size: 40pt, weight: "bold", fill: emerald)[1970s] era grid management tech
 
 #v(1em)
 
-#text(size: 26pt, fill: text-color)[
-  *The irony*: We're building clean energy faster than grids can use it efficiently.
-]
+*The irony*: We're building clean energy faster than grids can use it efficiently.
 
 #speaker-note[
   "Here's the challenge: 30 percent of renewable energy is wasted.
@@ -145,52 +103,9 @@
 
 #v(1em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 2pt + emerald,
-  )[
-    #align(center)[
-      #text(size: 32pt, fill: emerald)[Predict]
-      #v(0.5em)
-      #text(size: 22pt, fill: text-color)[
-        ML models forecast solar/wind generation 24 hours ahead with 97% accuracy
-      ]
-    ]
-  ],
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 2pt + emerald,
-  )[
-    #align(center)[
-      #text(size: 32pt, fill: emerald)[Optimize]
-      #v(0.5em)
-      #text(size: 22pt, fill: text-color)[
-        Dynamic routing algorithms maximize clean energy utilization
-      ]
-    ]
-  ],
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 2pt + emerald,
-  )[
-    #align(center)[
-      #text(size: 32pt, fill: emerald)[Store]
-      #v(0.5em)
-      #text(size: 22pt, fill: text-color)[
-        Smart battery orchestration for peak demand and backup
-      ]
-    ]
-  ],
-)
++ #text(fill: emerald)[*Predict*] -- ML models forecast solar/wind generation 24 hours ahead with 97% accuracy
++ #text(fill: emerald)[*Optimize*] -- Dynamic routing algorithms maximize clean energy utilization
++ #text(fill: emerald)[*Store*] -- Smart battery orchestration for peak demand and backup
 
 #speaker-note[
   "GreenPath has three components. First, we predict solar and wind generation
@@ -204,56 +119,7 @@
 // ============================================================================
 == Traction
 
-#v(0.5em)
-
-#grid(
-  columns: (1fr, 1fr, 1fr, 1fr),
-  gutter: 1em,
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 12pt,
-  )[
-    #align(center)[
-      #text(size: 40pt, weight: "bold", fill: emerald)[\$3.2M]
-      #v(0.3em)
-      #text(size: 16pt, fill: dark-green)[ARR]
-    ]
-  ],
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 12pt,
-  )[
-    #align(center)[
-      #text(size: 40pt, weight: "bold", fill: emerald)[12]
-      #v(0.3em)
-      #text(size: 16pt, fill: dark-green)[Utility Partners]
-    ]
-  ],
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 12pt,
-  )[
-    #align(center)[
-      #text(size: 40pt, weight: "bold", fill: emerald)[8.4GW]
-      #v(0.3em)
-      #text(size: 16pt, fill: dark-green)[Managed Capacity]
-    ]
-  ],
-  block(
-    fill: emerald.lighten(85%),
-    radius: 8pt,
-    inset: 12pt,
-  )[
-    #align(center)[
-      #text(size: 40pt, weight: "bold", fill: emerald)[18%]
-      #v(0.3em)
-      #text(size: 16pt, fill: dark-green)[Avg Efficiency Gain]
-    ]
-  ],
-)
+#text(size: 40pt, weight: "bold", fill: emerald)[\$3.2M ARR] | #text(size: 40pt, weight: "bold", fill: emerald)[12 Utility Partners] | #text(size: 40pt, weight: "bold", fill: emerald)[8.4GW Managed] | #text(size: 40pt, weight: "bold", fill: emerald)[18% Efficiency Gain]
 
 #v(1em)
 
@@ -280,12 +146,7 @@
 #grid(
   columns: (1fr, 1fr),
   gutter: 2em,
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 20pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
+  [
     #text(fill: emerald, weight: "bold", size: 28pt)[Why Now]
 
     #v(0.5em)
@@ -295,12 +156,7 @@
     - Grid modernization mandates in 30 states
     - Battery costs down 90% in 10 years
   ],
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 20pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
+  [
     #text(fill: emerald, weight: "bold", size: 28pt)[Why Us]
 
     #v(0.5em)
@@ -375,59 +231,15 @@
 // ============================================================================
 == Market Opportunity
 
-#v(0.5em)
+*Total Addressable Market (TAM)*: \$124B -- Global Grid Modernization
 
-#align(center)[
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    gutter: 1.5em,
-    block(
-      fill: emerald.lighten(80%),
-      radius: 12pt,
-      inset: 20pt,
-    )[
-      #align(center)[
-        #text(size: 40pt, weight: "bold", fill: emerald)[\$124B]
-        #v(0.3em)
-        #text(size: 18pt, fill: dark-green)[*TAM*]
-        #v(0.2em)
-        #text(size: 14pt, fill: rgb("#6b7280"))[Global Grid Modernization]
-      ]
-    ],
-    block(
-      fill: emerald.lighten(75%),
-      radius: 12pt,
-      inset: 20pt,
-    )[
-      #align(center)[
-        #text(size: 40pt, weight: "bold", fill: emerald)[\$28B]
-        #v(0.3em)
-        #text(size: 18pt, fill: dark-green)[*SAM*]
-        #v(0.2em)
-        #text(size: 14pt, fill: rgb("#6b7280"))[Renewable Grid Software]
-      ]
-    ],
-    block(
-      fill: emerald.lighten(70%),
-      radius: 12pt,
-      inset: 20pt,
-    )[
-      #align(center)[
-        #text(size: 40pt, weight: "bold", fill: emerald)[\$4.2B]
-        #v(0.3em)
-        #text(size: 18pt, fill: dark-green)[*SOM*]
-        #v(0.2em)
-        #text(size: 14pt, fill: rgb("#6b7280"))[5-Year Target]
-      ]
-    ],
-  )
-]
+*Serviceable Addressable Market (SAM)*: \$28B -- Renewable Grid Software
+
+*Serviceable Obtainable Market (SOM)*: \$4.2B -- 5-Year Target
 
 #v(1em)
 
-#text(size: 22pt)[
-  *Bottom-up*: 3,000 utilities globally x 15% adopting AI x \$940K avg spend = \$4.2B
-]
+Bottom-up calculation: 3,000 utilities globally x 15% adopting AI x \$940K avg spend = \$4.2B
 
 #speaker-note[
   "Grid modernization is a 124 billion dollar market.
@@ -445,43 +257,25 @@
 #grid(
   columns: (1fr, 1fr),
   gutter: 2em,
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
-    #text(fill: emerald, weight: "bold", size: 26pt)[Dr. Maya Okonkwo]
+  [
+    #text(fill: emerald, weight: "bold", size: 28pt)[Dr. Maya Okonkwo]
 
     CEO & Co-founder
 
-    #v(0.3em)
-
-    #text(size: 20pt, fill: text-color)[
-      - Director of Grid Software, Tesla Energy (5 years)
-      - PhD Electrical Engineering, Stanford
-      - Led Powerwall fleet optimization
-      - Board member, Clean Energy Council
-    ]
+    - Director of Grid Software, Tesla Energy (5 years)
+    - PhD Electrical Engineering, Stanford
+    - Led Powerwall fleet optimization
+    - Board member, Clean Energy Council
   ],
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
-    #text(fill: emerald, weight: "bold", size: 26pt)[David Chen]
+  [
+    #text(fill: emerald, weight: "bold", size: 28pt)[David Chen]
 
     CTO & Co-founder
 
-    #v(0.3em)
-
-    #text(size: 20pt, fill: text-color)[
-      - Principal ML Engineer, Tesla Autopilot
-      - MS Computer Science, MIT
-      - Built real-time prediction systems at scale
-      - 15 patents in energy optimization
-    ]
+    - Principal ML Engineer, Tesla Autopilot
+    - MS Computer Science, MIT
+    - Built real-time prediction systems at scale
+    - 15 patents in energy optimization
   ],
 )
 
@@ -514,13 +308,8 @@
 #grid(
   columns: (1fr, 1fr),
   gutter: 2em,
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
-    #text(fill: emerald, weight: "bold", size: 24pt)[Use of Funds]
+  [
+    #text(fill: emerald, weight: "bold", size: 28pt)[Use of Funds]
 
     #v(0.5em)
 
@@ -529,13 +318,8 @@
     - 15% Deployments & success
     - 10% Operations
   ],
-  block(
-    fill: white,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + emerald.lighten(60%),
-  )[
-    #text(fill: emerald, weight: "bold", size: 24pt)[18-Month Milestones]
+  [
+    #text(fill: emerald, weight: "bold", size: 28pt)[18-Month Milestones]
 
     #v(0.5em)
 
@@ -548,17 +332,7 @@
 
 #v(1em)
 
-#align(center)[
-  #block(
-    fill: emerald.lighten(90%),
-    radius: 8pt,
-    inset: 12pt,
-  )[
-    #text(size: 22pt, fill: dark-green)[
-      *Lead investor*: Breakthrough Energy Ventures | *Existing*: Lowercarbon Capital
-    ]
-  ]
-]
+*Lead investor*: Breakthrough Energy Ventures | *Existing*: Lowercarbon Capital
 
 #speaker-note[
   "We're raising 18 million at Series A to scale deployment.
@@ -595,7 +369,7 @@
 
   #v(1em)
 
-  #text(size: 20pt, fill: rgb("#6b7280"))[
+  #text(size: 28pt, fill: rgb("#6b7280"))[
     Impact metrics and technical architecture in appendix
   ]
 ]

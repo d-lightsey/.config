@@ -10,7 +10,9 @@ next_project_number: 234
 - **Effort**: TBD
 - **Status**: [RESEARCHED]
 - **Language**: meta
-- **Research**: [01_gstack-founder-integration.md](233_research_gstack_founder_extension/reports/01_gstack-founder-integration.md)
+- **Research**:
+  - [01_gstack-founder-integration.md](233_research_gstack_founder_extension/reports/01_gstack-founder-integration.md)
+  - [02_founder-skills-deep-dive.md](233_research_gstack_founder_extension/reports/02_founder-skills-deep-dive.md)
 
 **Description**: Research https://github.com/garrytan/gstack to see what elements would make sense to integrate into my agent system as a new founder/ extension.
 
@@ -18,13 +20,15 @@ next_project_number: 234
 
 ### 232. Update example templates to be YC compliant
 - **Effort**: 3-4 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-03-18
 - **Language**: meta
 - **Dependencies**: Task #229, Task #230, Task #231
 - **Research**:
   - [01_meta-research.md](232_example_templates_yc_compliance/reports/01_meta-research.md)
   - [02_example-analysis.md](232_example_templates_yc_compliance/reports/02_example-analysis.md)
 - **Plan**: [01_yc-compliance-plan.md](232_example_templates_yc_compliance/plans/01_yc-compliance-plan.md)
+- **Summary**: [02_yc-compliance-summary.md](232_example_templates_yc_compliance/summaries/02_yc-compliance-summary.md)
 
 **Description**: Simplify all 4 example pitch deck files in `.claude/extensions/present/examples/` to demonstrate YC-compliant design. Remove complex panel layouts, use larger fonts (28pt+ body, 44pt+ titles), and ensure each slide shows one-idea-per-slide principle. Files: professional-blue-pitch.typ, premium-dark-pitch.typ, minimal-light-pitch.typ, growth-green-pitch.typ.
 

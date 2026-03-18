@@ -25,7 +25,7 @@
 )
 
 // Typography settings
-#set text(font: "Inter", size: 30pt, fill: rgb("#1a202c"))
+#set text(font: "Inter", size: 32pt, fill: rgb("#1a202c"))
 #show heading.where(level: 1): set text(font: "Montserrat", size: 48pt, weight: "bold", fill: rgb("#1a365d"))
 #show heading.where(level: 2): set text(font: "Montserrat", size: 40pt, weight: "bold", fill: rgb("#1a365d"))
 
@@ -46,7 +46,7 @@
 
   #v(2em)
 
-  #text(size: 24pt, fill: rgb("#64748b"))[
+  #text(size: 28pt, fill: rgb("#64748b"))[
     Seed Round | Q1 2026
   ]
 ]
@@ -74,17 +74,7 @@
 
 #v(1em)
 
-#block(
-  fill: rgb("#fef3c7"),
-  radius: 8pt,
-  inset: 16pt,
-  width: 100%,
-)[
-  #text(size: 24pt, fill: rgb("#92400e"))[
-    *Real Example*: A major hospital's AI diagnostic system misclassified
-    23 critical cases in one week, causing \$12M in liability exposure.
-  ]
-]
+*Real Example*: A major hospital's AI diagnostic system misclassified 23 critical cases in one week, causing \$12M in liability exposure.
 
 #speaker-note[
   "Here's the core problem: AI systems are powerful but unpredictable.
@@ -104,55 +94,9 @@
 
 #v(1em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: accent.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 36pt)[1]
-      #v(0.5em)
-      *Monitor*
-      #v(0.3em)
-      #text(size: 22pt)[
-        Real-time anomaly detection across model outputs
-      ]
-    ]
-  ],
-  block(
-    fill: accent.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 36pt)[2]
-      #v(0.5em)
-      *Verify*
-      #v(0.3em)
-      #text(size: 22pt)[
-        Formal safety bounds with mathematical guarantees
-      ]
-    ]
-  ],
-  block(
-    fill: accent.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 36pt)[3]
-      #v(0.5em)
-      *Intervene*
-      #v(0.3em)
-      #text(size: 22pt)[
-        Automatic fallback when confidence drops
-      ]
-    ]
-  ],
-)
++ *Monitor* -- Real-time anomaly detection across model outputs
++ *Verify* -- Formal safety bounds with mathematical guarantees
++ *Intervene* -- Automatic fallback when confidence drops
 
 #speaker-note[
   "SafeGuard is a three-part system. First, we monitor AI outputs in real-time.
@@ -166,43 +110,7 @@
 // ============================================================================
 == Traction
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: primary.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: primary)[\$1.2M]
-      #v(0.5em)
-      #text(size: 20pt, fill: secondary)[ARR]
-    ]
-  ],
-  block(
-    fill: primary.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: primary)[8]
-      #v(0.5em)
-      #text(size: 20pt, fill: secondary)[Enterprise Customers]
-    ]
-  ],
-  block(
-    fill: primary.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: primary)[340%]
-      #v(0.5em)
-      #text(size: 20pt, fill: secondary)[YoY Growth]
-    ]
-  ],
-)
+#text(size: 40pt, weight: "bold", fill: primary)[\$1.2M ARR] | #text(size: 40pt, weight: "bold", fill: primary)[8 Enterprise Customers] | #text(size: 40pt, weight: "bold", fill: primary)[340% YoY Growth]
 
 #v(1em)
 
@@ -304,60 +212,15 @@
 // ============================================================================
 == Market Opportunity
 
-#align(center)[
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    gutter: 2em,
-    block(
-      fill: primary.lighten(85%),
-      radius: 50%,
-      width: 200pt,
-      height: 200pt,
-    )[
-      #align(center + horizon)[
-        #text(size: 32pt, weight: "bold", fill: primary)[\$48B]
-        #v(0.3em)
-        #text(size: 18pt, fill: secondary)[TAM]
-        #v(0.2em)
-        #text(size: 14pt, fill: rgb("#64748b"))[Enterprise AI Market]
-      ]
-    ],
-    block(
-      fill: secondary.lighten(80%),
-      radius: 50%,
-      width: 160pt,
-      height: 160pt,
-    )[
-      #align(center + horizon)[
-        #text(size: 28pt, weight: "bold", fill: primary)[\$12B]
-        #v(0.3em)
-        #text(size: 16pt, fill: secondary)[SAM]
-        #v(0.2em)
-        #text(size: 13pt, fill: rgb("#64748b"))[High-risk AI systems]
-      ]
-    ],
-    block(
-      fill: accent.lighten(75%),
-      radius: 50%,
-      width: 120pt,
-      height: 120pt,
-    )[
-      #align(center + horizon)[
-        #text(size: 24pt, weight: "bold", fill: primary)[\$2.4B]
-        #v(0.3em)
-        #text(size: 14pt, fill: secondary)[SOM]
-        #v(0.2em)
-        #text(size: 12pt, fill: rgb("#64748b"))[5-year target]
-      ]
-    ],
-  )
-]
+*Total Addressable Market (TAM)*: \$48B -- Enterprise AI Market
+
+*Serviceable Addressable Market (SAM)*: \$12B -- High-risk AI systems
+
+*Serviceable Obtainable Market (SOM)*: \$2.4B -- 5-year target
 
 #v(1em)
 
-#text(size: 24pt)[
-  *Bottom-up*: 50K enterprises deploying high-risk AI x \$48K average safety spend = \$2.4B SOM
-]
+Bottom-up calculation: 50K enterprises deploying high-risk AI x \$48K average safety spend = \$2.4B SOM
 
 #speaker-note[
   "The enterprise AI market is 48 billion dollars.
@@ -379,7 +242,7 @@
 
     CEO & Co-founder
 
-    #text(size: 22pt)[
+    #text(size: 28pt)[
       - Former AI Safety Lead, DeepMind (6 years)
       - PhD in Formal Methods, MIT
       - Published 40+ papers on AI verification
@@ -391,7 +254,7 @@
 
     CTO & Co-founder
 
-    #text(size: 22pt)[
+    #text(size: 28pt)[
       - Former Principal Engineer, Anthropic
       - MSc Computer Science, Stanford
       - Built monitoring systems at scale (10B+ events/day)
@@ -451,17 +314,7 @@
 
 #v(1em)
 
-#align(center)[
-  #block(
-    fill: accent.lighten(90%),
-    radius: 8pt,
-    inset: 16pt,
-  )[
-    #text(size: 24pt, fill: primary)[
-      *Current investors*: Sequoia Scout, Quiet Capital, AI Grant
-    ]
-  ]
-]
+*Current investors*: Sequoia Scout, Quiet Capital, AI Grant
 
 #speaker-note[
   "We're raising 8 million dollars to scale the team and expand go-to-market.
@@ -498,7 +351,7 @@
 
   #v(1em)
 
-  #text(size: 22pt, fill: rgb("#64748b"))[
+  #text(size: 28pt, fill: rgb("#64748b"))[
     Appendix slides available for deep dives
   ]
 ]

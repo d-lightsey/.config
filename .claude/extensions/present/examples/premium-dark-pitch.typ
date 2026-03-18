@@ -28,7 +28,7 @@
 #set page(fill: rgb("#0f0f1a"))
 
 // Typography settings - light text on dark background
-#set text(font: "Inter", size: 30pt, fill: rgb("#e2e8f0"))
+#set text(font: "Inter", size: 32pt, fill: rgb("#e2e8f0"))
 #show heading.where(level: 1): set text(font: "Montserrat", size: 48pt, weight: "bold", fill: rgb("#d4a574"))
 #show heading.where(level: 2): set text(font: "Montserrat", size: 40pt, weight: "bold", fill: rgb("#d4a574"))
 
@@ -51,7 +51,7 @@
 
   #v(2em)
 
-  #text(size: 24pt, fill: rgb("#94a3b8"))[
+  #text(size: 28pt, fill: rgb("#94a3b8"))[
     Series A | Q1 2026
   ]
 ]
@@ -80,17 +80,7 @@
 
 #v(1em)
 
-#block(
-  fill: secondary-bg,
-  radius: 8pt,
-  inset: 16pt,
-  width: 100%,
-)[
-  #text(size: 24pt, fill: rgb("#fbbf24"))[
-    *Recent Headlines*: Fortune 100 breached via AI-crafted spear phishing.
-    Attackers used deepfake audio to authorize \$25M wire transfer.
-  ]
-]
+*Recent Headlines*: Fortune 100 breached via AI-crafted spear phishing. Attackers used deepfake audio to authorize \$25M wire transfer.
 
 #speaker-note[
   "The threat landscape has fundamentally changed. AI-generated attacks are up
@@ -110,58 +100,9 @@
 
 #v(1em)
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(60%),
-  )[
-    #align(center)[
-      #text(size: 36pt, fill: gold)[1]
-      #v(0.5em)
-      #text(fill: gold)[*Detect*]
-      #v(0.3em)
-      #text(size: 22pt, fill: light-text)[
-        Real-time analysis of network behavior
-      ]
-    ]
-  ],
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(60%),
-  )[
-    #align(center)[
-      #text(size: 36pt, fill: gold)[2]
-      #v(0.5em)
-      #text(fill: gold)[*Predict*]
-      #v(0.3em)
-      #text(size: 22pt, fill: light-text)[
-        AI models anticipate attack patterns
-      ]
-    ]
-  ],
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(60%),
-  )[
-    #align(center)[
-      #text(size: 36pt, fill: gold)[3]
-      #v(0.5em)
-      #text(fill: gold)[*Neutralize*]
-      #v(0.3em)
-      #text(size: 22pt, fill: light-text)[
-        Automated response in milliseconds
-      ]
-    ]
-  ],
-)
++ #text(fill: gold)[*Detect*] -- Real-time analysis of network behavior
++ #text(fill: gold)[*Predict*] -- AI models anticipate attack patterns
++ #text(fill: gold)[*Neutralize*] -- Automated response in milliseconds
 
 #speaker-note[
   "NeuralShield fights AI with AI. Our platform has three components:
@@ -176,46 +117,7 @@
 // ============================================================================
 == Traction
 
-#grid(
-  columns: (1fr, 1fr, 1fr),
-  gutter: 1.5em,
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(70%),
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: gold)[\$4.8M]
-      #v(0.5em)
-      #text(size: 20pt, fill: light-text)[ARR]
-    ]
-  ],
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(70%),
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: gold)[23]
-      #v(0.5em)
-      #text(size: 20pt, fill: light-text)[Enterprise Customers]
-    ]
-  ],
-  block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(70%),
-  )[
-    #align(center)[
-      #text(size: 48pt, weight: "bold", fill: gold)[99.7%]
-      #v(0.5em)
-      #text(size: 20pt, fill: light-text)[Detection Rate]
-    ]
-  ],
-)
+#text(size: 40pt, weight: "bold", fill: gold)[\$4.8M ARR] | #text(size: 40pt, weight: "bold", fill: gold)[23 Enterprise Customers] | #text(size: 40pt, weight: "bold", fill: gold)[99.7% Detection Rate]
 
 #v(1em)
 
@@ -317,63 +219,15 @@
 // ============================================================================
 == Market Opportunity
 
-#align(center)[
-  #grid(
-    columns: (1fr, 1fr, 1fr),
-    gutter: 2em,
-    block(
-      fill: card-bg,
-      radius: 50%,
-      width: 200pt,
-      height: 200pt,
-      stroke: 2pt + gold,
-    )[
-      #align(center + horizon)[
-        #text(size: 32pt, weight: "bold", fill: gold)[\$156B]
-        #v(0.3em)
-        #text(size: 18pt, fill: light-text)[TAM]
-        #v(0.2em)
-        #text(size: 14pt, fill: rgb("#94a3b8"))[Global Cybersecurity]
-      ]
-    ],
-    block(
-      fill: card-bg,
-      radius: 50%,
-      width: 160pt,
-      height: 160pt,
-      stroke: 2pt + gold.lighten(30%),
-    )[
-      #align(center + horizon)[
-        #text(size: 28pt, weight: "bold", fill: gold)[\$42B]
-        #v(0.3em)
-        #text(size: 16pt, fill: light-text)[SAM]
-        #v(0.2em)
-        #text(size: 13pt, fill: rgb("#94a3b8"))[AI-powered security]
-      ]
-    ],
-    block(
-      fill: card-bg,
-      radius: 50%,
-      width: 120pt,
-      height: 120pt,
-      stroke: 2pt + gold.lighten(50%),
-    )[
-      #align(center + horizon)[
-        #text(size: 24pt, weight: "bold", fill: gold)[\$8B]
-        #v(0.3em)
-        #text(size: 14pt, fill: light-text)[SOM]
-        #v(0.2em)
-        #text(size: 12pt, fill: rgb("#94a3b8"))[5-year target]
-      ]
-    ],
-  )
-]
+*Total Addressable Market (TAM)*: \$156B -- Global Cybersecurity
+
+*Serviceable Addressable Market (SAM)*: \$42B -- AI-powered security
+
+*Serviceable Obtainable Market (SOM)*: \$8B -- 5-year target
 
 #v(1em)
 
-#text(size: 24pt)[
-  *Bottom-up*: 20K large enterprises x \$400K avg security AI spend = \$8B SOM
-]
+Bottom-up calculation: 20K large enterprises x \$400K avg security AI spend = \$8B SOM
 
 #speaker-note[
   "Global cybersecurity is 156 billion dollars.
@@ -394,7 +248,7 @@
 
     CEO & Co-founder
 
-    #text(size: 22pt)[
+    #text(size: 28pt)[
       - VP Threat Intelligence, CrowdStrike (7 years)
       - Built Falcon threat detection engine
       - Previously: NSA Cyber Command
@@ -406,7 +260,7 @@
 
     CTO & Co-founder
 
-    #text(size: 22pt)[
+    #text(size: 28pt)[
       - PhD ML/Adversarial Networks, Stanford
       - Research Scientist, Google Brain (4 years)
       - 25+ papers, 8,000+ citations
@@ -466,18 +320,7 @@
 
 #v(1em)
 
-#align(center)[
-  #block(
-    fill: card-bg,
-    radius: 8pt,
-    inset: 16pt,
-    stroke: 1pt + gold.lighten(70%),
-  )[
-    #text(size: 24pt, fill: light-text)[
-      *Lead investor*: Andreessen Horowitz | *Existing*: Lightspeed, Greylock
-    ]
-  ]
-]
+*Lead investor*: Andreessen Horowitz | *Existing*: Lightspeed, Greylock
 
 #speaker-note[
   "We're raising 25 million at Series A to accelerate growth.
@@ -514,7 +357,7 @@
 
   #v(1em)
 
-  #text(size: 22pt, fill: rgb("#94a3b8"))[
+  #text(size: 28pt, fill: rgb("#94a3b8"))[
     Technical deep-dive and competitive analysis in appendix
   ]
 ]
