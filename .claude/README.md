@@ -353,7 +353,7 @@ All returns validated against subagent-return-format.md:
 
 **Purpose**: User-facing task list with status markers
 
-**Format**:
+**Format** (single artifact per type - inline):
 ```markdown
 ### 191. Fix subagent delegation hang
 - **Effort**: 14 hours
@@ -365,6 +365,20 @@ All returns validated against subagent-return-format.md:
 - **Plan**: [02_implementation-plan.md](191_fix_subagent_delegation_hang/plans/02_implementation-plan.md)
 - **Research**: [01_research-findings.md](191_fix_subagent_delegation_hang/reports/01_research-findings.md)
 ```
+
+**Format** (multiple artifacts per type - multi-line list):
+```markdown
+### 226. Implement multi-line artifact linking
+- **Effort**: 3-4 hours
+- **Status**: [COMPLETED]
+- **Language**: meta
+- **Research**:
+  - [01_artifact-linking-audit.md](226_multiline_artifact_linking/reports/01_artifact-linking-audit.md)
+  - [02_supplemental-findings.md](226_multiline_artifact_linking/reports/02_supplemental-findings.md)
+- **Plan**: [02_multiline-linking-plan.md](226_multiline_artifact_linking/plans/02_multiline-linking-plan.md)
+```
+
+**Note**: Use inline format for 1 artifact, multi-line list for 2+. See `.claude/rules/state-management.md` "Artifact Linking Format".
 
 **Status Markers**:
 - `[NOT STARTED]`: Task created but not started

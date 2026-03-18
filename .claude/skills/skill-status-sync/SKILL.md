@@ -204,9 +204,11 @@ jq --arg path "{artifact_path}" \
 
 | Type | Format in TODO.md |
 |------|-------------------|
-| research | `- **Research**: [MM_{short-slug}.md]({path})` |
-| plan | `- **Plan**: [MM_{short-slug}.md]({path})` |
-| summary | `- **Summary**: [MM_{short-slug}-summary.md]({path})` |
+| research | Count-aware format (see "Artifact Linking Format" in state-management.md) |
+| plan | Count-aware format (see "Artifact Linking Format" in state-management.md) |
+| summary | Count-aware format (see "Artifact Linking Format" in state-management.md) |
+
+**Count-Aware Logic**: Use inline format for 1 artifact, multi-line list for 2+. See state-management.md for detection patterns and insertion examples.
 
 **Insertion order**:
 - research: after Language line

@@ -182,13 +182,11 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add research artifact link.
+**Update TODO.md**: Add research artifact link using count-aware format.
 
 **Strip specs/ prefix for TODO.md** (TODO.md is inside specs/): `todo_link_path="${artifact_path#specs/}"`
 
-```markdown
-- **Research**: [MM_{short-slug}.md]({todo_link_path})
-```
+Use count-aware artifact linking format per `.claude/rules/state-management.md` "Artifact Linking Format".
 
 ---
 

@@ -246,6 +246,38 @@ When creating artifacts, update TODO.md with links:
 - **Summary**: [03_execution-summary.md]({NNN}_{SLUG}/summaries/03_execution-summary.md)
 ```
 
+### Artifact Linking Format
+
+**Rule**: Use inline format when there is exactly 1 artifact of a given type. Use multi-line list format when there are 2 or more artifacts of the same type.
+
+#### Single artifact (inline):
+```markdown
+- **Research**: [01_research-findings.md]({NNN}_{SLUG}/reports/01_research-findings.md)
+```
+
+#### Multiple artifacts (multi-line list):
+```markdown
+- **Research**:
+  - [01_research-findings.md]({NNN}_{SLUG}/reports/01_research-findings.md)
+  - [02_supplemental.md]({NNN}_{SLUG}/reports/02_supplemental.md)
+```
+
+The label line (`- **Research**:`) ends with a colon and no link when multi-line. Each artifact gets its own `  - [filename](path)` line indented with 2 spaces.
+
+#### Count-Aware Insertion Logic
+
+When adding a new artifact link:
+
+1. **No existing line**: Insert inline format `- **Type**: [file](path)`
+2. **Existing inline (1 artifact)**: Convert to multi-line, adding both old and new links
+3. **Existing multi-line (2+ artifacts)**: Append new `  - [file](path)` item
+
+#### Detection Patterns
+
+- **No existing line**: `- **{Type}**:` not found in task entry
+- **Existing inline**: Line matches `- **{Type}**: \[.*\]\(.*\)` (has link on same line)
+- **Existing multi-line**: Line matches `- **{Type}**:$` (ends with colon, no link)
+
 ## Directory Creation
 
 ### Lazy Directory Creation Rule

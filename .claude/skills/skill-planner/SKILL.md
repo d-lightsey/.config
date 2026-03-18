@@ -225,10 +225,30 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add plan artifact link:
-```markdown
-- **Plan**: [MM_{short-slug}.md]({artifact_path})
-```
+**Update TODO.md**: Add plan artifact link using count-aware format.
+
+See `.claude/rules/state-management.md` "Artifact Linking Format" for canonical rules. Use Edit tool:
+
+1. **Read existing task entry** to detect current plan links
+2. **If no `- **Plan**:` line exists**: Insert inline format:
+   ```markdown
+   - **Plan**: [MM_{short-slug}.md]({artifact_path})
+   ```
+3. **If existing inline (single link)**: Convert to multi-line:
+   ```markdown
+   old_string: - **Plan**: [existing.md](existing/path)
+   new_string: - **Plan**:
+     - [existing.md](existing/path)
+     - [MM_{short-slug}.md]({artifact_path})
+   ```
+4. **If existing multi-line**: Append new item before next field:
+   ```markdown
+   old_string:   - [last-item.md](last/path)
+   **Description**:
+   new_string:   - [last-item.md](last/path)
+     - [MM_{short-slug}.md]({artifact_path})
+   **Description**:
+   ```
 
 ---
 

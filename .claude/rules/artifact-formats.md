@@ -268,3 +268,9 @@ Use sequential numbering with `-summary` suffix:
 - One per completion
 - Includes all phases
 - Placed after plan files in sequence
+
+## Artifact Linking in TODO.md
+
+**Note**: When linking artifacts in TODO.md, use count-aware format defined in `.claude/rules/state-management.md` "Artifact Linking Format" section:
+- Single artifact (1): Use inline format `- **Type**: [file](path)`
+- Multiple artifacts (2+): Use multi-line list format with 2-space indentation

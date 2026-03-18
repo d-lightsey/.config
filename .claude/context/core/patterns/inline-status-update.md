@@ -183,6 +183,17 @@ line=$(grep -n "^### $task_number\." specs/TODO.md | cut -d: -f1)
 
 ### Adding Artifact Links
 
+Use count-aware artifact linking format per `.claude/rules/state-management.md` "Artifact Linking Format".
+
+**Detection and insertion logic**:
+
+1. **Read existing task entry** to detect current artifact links
+2. **If no `- **{Type}**:` line exists**: Insert inline format
+3. **If existing inline (single link)**: Convert to multi-line with both old and new
+4. **If existing multi-line (2+ links)**: Append new item to list
+
+#### Single Artifact (inline format)
+
 Research artifact:
 ```markdown
 - **Research**: [01_research-findings.md]({NNN}_{SLUG}/reports/01_research-findings.md)
@@ -196,6 +207,39 @@ Plan artifact:
 Summary artifact:
 ```markdown
 - **Summary**: [MM_{short-slug}-summary.md]({NNN}_{SLUG}/summaries/MM_{short-slug}-summary.md)
+```
+
+#### Multiple Artifacts (multi-line list format)
+
+Research artifacts (2+):
+```markdown
+- **Research**:
+  - [01_research-findings.md]({NNN}_{SLUG}/reports/01_research-findings.md)
+  - [02_supplemental.md]({NNN}_{SLUG}/reports/02_supplemental.md)
+```
+
+Plan artifacts (2+):
+```markdown
+- **Plan**:
+  - [01_initial-plan.md]({NNN}_{SLUG}/plans/01_initial-plan.md)
+  - [02_revised-plan.md]({NNN}_{SLUG}/plans/02_revised-plan.md)
+```
+
+Summary artifacts (2+):
+```markdown
+- **Summary**:
+  - [01_phase1-summary.md]({NNN}_{SLUG}/summaries/01_phase1-summary.md)
+  - [02_final-summary.md]({NNN}_{SLUG}/summaries/02_final-summary.md)
+```
+
+#### Conversion Example (inline to multi-line)
+
+When adding second artifact to existing inline:
+```
+old_string: - **Research**: [01_findings.md](path/01_findings.md)
+new_string: - **Research**:
+  - [01_findings.md](path/01_findings.md)
+  - [02_supplemental.md](path/02_supplemental.md)
 ```
 
 ---

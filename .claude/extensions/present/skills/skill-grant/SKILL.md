@@ -449,12 +449,14 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add artifact link based on workflow type:
-- funder_research: `- **Research**: [{filename}]({artifact_path})`
-- proposal_draft: `- **Draft**: [{filename}]({artifact_path})`
-- budget_develop: `- **Budget**: [{filename}]({artifact_path})`
-- progress_track: `- **Progress**: [{filename}]({artifact_path})`
-- assemble: `- **Grant**: [{directory}](grants/{N}_{slug}/)`
+**Update TODO.md**: Add artifact link based on workflow type using count-aware format per `.claude/rules/state-management.md` "Artifact Linking Format".
+
+Artifact type labels:
+- funder_research: `**Research**`
+- proposal_draft: `**Draft**`
+- budget_develop: `**Budget**`
+- progress_track: `**Progress**`
+- assemble: `**Grant**`
 
 ---
 

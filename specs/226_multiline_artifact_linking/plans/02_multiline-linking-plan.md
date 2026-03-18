@@ -1,7 +1,7 @@
 # Implementation Plan: Task #226
 
 - **Task**: 226 - Implement multi-line artifact linking in TODO.md for 2+ artifacts
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3-4 hours
 - **Dependencies**: None
 - **Research Inputs**: [01_artifact-linking-audit.md](../reports/01_artifact-linking-audit.md)
@@ -45,7 +45,7 @@ The research report identified 14 files across standards (5), core skills (4), e
 
 ## Implementation Phases
 
-### Phase 1: Update Canonical Standards [NOT STARTED]
+### Phase 1: Update Canonical Standards [COMPLETED]
 
 **Goal**: Establish the authoritative definition of the multi-line artifact linking format.
 
@@ -102,7 +102,7 @@ When adding a new artifact link:
 
 ---
 
-### Phase 2: Update Inline Status Update Patterns [NOT STARTED]
+### Phase 2: Update Inline Status Update Patterns [COMPLETED]
 
 **Goal**: Update the reusable inline-status-update pattern document to show both single and multi-line formats.
 
@@ -129,7 +129,7 @@ new_string: (expanded content with both formats per type)
 
 ---
 
-### Phase 3: Update Core Skills [NOT STARTED]
+### Phase 3: Update Core Skills [COMPLETED]
 
 **Goal**: Implement count-aware artifact linking logic in all four core skills.
 
@@ -205,7 +205,7 @@ new_string:
 
 ---
 
-### Phase 4: Update Extension Skills [NOT STARTED]
+### Phase 4: Update Extension Skills [COMPLETED]
 
 **Goal**: Update extension skills that write artifact links to use count-aware format.
 
@@ -239,7 +239,7 @@ Each extension skill should reference the canonical standard rather than duplica
 
 ---
 
-### Phase 5: Update Process Documentation [NOT STARTED]
+### Phase 5: Update Process Documentation [COMPLETED]
 
 **Goal**: Update workflow process documentation to reflect the new format.
 
@@ -274,7 +274,7 @@ For artifact-formats.md, add a note in the relevant section:
 
 ---
 
-### Phase 6: Update README Example [NOT STARTED]
+### Phase 6: Update README Example [IN PROGRESS]
 
 **Goal**: Update the README example task entry to demonstrate multi-line format.
 
