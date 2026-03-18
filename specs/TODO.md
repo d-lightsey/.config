@@ -6,9 +6,24 @@ next_project_number: 227
 
 ## Tasks
 
+### 227. Enhance /meta with topic consolidation and embedded research
+- **Effort**: 4-6 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Modify /meta command behavior to (1) actively consolidate related items into minimal topic-based tasks using aggressive grouping, and (2) generate research report artifacts during task creation so tasks start in RESEARCHED status. Changes affect meta-builder-agent.md interview stages, skill-meta postflight, and state.json artifact linking.
+
+**Scope**:
+- meta-builder-agent.md: Add consolidation logic in Stage 3 (IdentifyUseCases), add research artifact generation in Stage 6 (CreateTasks)
+- skill-meta.md: Update to handle RESEARCHED status and artifact linking in postflight
+- multi-task-creation-standard.md: Document the "minimize tasks" principle
+
+---
+
 ### 226. Implement multi-line artifact linking in TODO.md for 2+ artifacts
 - **Effort**: 4-6 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_artifact-linking-audit.md](226_multiline_artifact_linking/reports/01_artifact-linking-audit.md)

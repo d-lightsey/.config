@@ -1,14 +1,25 @@
 {
   "version": "1.0.0",
-  "next_project_number": 227,
+  "next_project_number": 228,
   "active_projects": [
+    {
+      "project_number": 227,
+      "project_name": "enhance_meta_topic_consolidation",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "4-6 hours",
+      "created": "2026-03-18T16:00:00Z",
+      "last_updated": "2026-03-18T16:00:00Z",
+      "dependencies": [],
+      "session_id": "sess_1742328000_a7c3e9"
+    },
     {
       "project_number": 226,
       "project_name": "multiline_artifact_linking",
-      "status": "researched",
+      "status": "planning",
       "language": "meta",
       "created": "2026-03-18T02:30:00Z",
-      "last_updated": "2026-03-18T02:30:00Z",
+      "last_updated": "2026-03-18T15:45:55Z",
       "dependencies": [],
       "artifacts": [
         {
@@ -16,7 +27,8 @@
           "type": "research",
           "summary": "Audit of all files defining or implementing artifact linking in TODO.md, with current format analysis, full file inventory, and proposed multi-line standard with before/after examples"
         }
-      ]
+      ],
+      "session_id": "sess_1773797900_b2c3d4"
     },
     {
       "project_number": 225,
