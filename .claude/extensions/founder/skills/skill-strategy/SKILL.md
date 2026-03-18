@@ -1,12 +1,15 @@
 ---
 name: skill-strategy
-description: Go-to-market strategy development with positioning and channels
-allowed-tools: Task
+description: Go-to-market strategy research with positioning and channels
+allowed-tools: Task, Bash, Edit, Read, Write
 ---
 
 # Strategy Skill
 
-Thin wrapper that routes GTM strategy requests to the `strategy-agent`.
+Thin wrapper that routes GTM strategy research requests to the `strategy-agent`.
+
+**IMPORTANT**: This skill implements the skill-internal postflight pattern. After the subagent returns,
+this skill handles all postflight operations (status update, artifact linking, git commit) before returning.
 
 ## Context Pointers
 
@@ -53,20 +56,31 @@ Do not invoke for:
 
 ---
 
-## Execution
+## Execution Flow
 
-### 1. Input Validation
+### Stage 1: Input Validation
 
-Validate inputs:
+Validate required inputs:
+- `task_number` - Must be provided and exist in state.json
 - `topic` - Optional, string context hint
 - `mode` - Optional, one of: LAUNCH, SCALE, PIVOT, EXPAND
-- `session_id` - Required, string
 
 ```bash
-# Validate session_id is present
-if [ -z "$session_id" ]; then
-  return error "session_id is required"
+# Lookup task
+task_data=$(jq -r --argjson num "$task_number" \
+  '.active_projects[] | select(.project_number == $num)' \
+  specs/state.json)
+
+# Validate exists
+if [ -z "$task_data" ]; then
+  return error "Task $task_number not found"
 fi
+
+# Extract fields
+language=$(echo "$task_data" | jq -r '.language // "founder"')
+status=$(echo "$task_data" | jq -r '.status')
+project_name=$(echo "$task_data" | jq -r '.project_name')
+description=$(echo "$task_data" | jq -r '.description // ""')
 
 # Validate mode if provided
 if [ -n "$mode" ]; then
@@ -77,15 +91,61 @@ if [ -n "$mode" ]; then
 fi
 ```
 
-### 2. Context Preparation
+---
 
-Prepare delegation context:
+### Stage 2: Preflight Status Update
+
+Update task status to "researching" BEFORE invoking subagent.
+
+**Update state.json**:
+```bash
+jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+   --arg status "researching" \
+   --arg sid "$session_id" \
+  '(.active_projects[] | select(.project_number == '$task_number')) |= . + {
+    status: $status,
+    last_updated: $ts,
+    session_id: $sid
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+```
+
+**Update TODO.md**: Use Edit tool to change status marker to `[RESEARCHING]`.
+
+---
+
+### Stage 3: Create Postflight Marker
+
+```bash
+padded_num=$(printf "%03d" "$task_number")
+mkdir -p "specs/${padded_num}_${project_name}"
+
+cat > "specs/${padded_num}_${project_name}/.postflight-pending" << EOF
+{
+  "session_id": "${session_id}",
+  "skill": "skill-strategy",
+  "task_number": ${task_number},
+  "operation": "research",
+  "reason": "Postflight pending: status update, artifact linking, git commit",
+  "created": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
+```
+
+---
+
+### Stage 4: Prepare Delegation Context
 
 ```json
 {
+  "task_context": {
+    "task_number": N,
+    "project_name": "{project_name}",
+    "description": "{description}",
+    "language": "founder"
+  },
   "topic": "optional context hint",
   "mode": "LAUNCH|SCALE|PIVOT|EXPAND or null",
-  "output_dir": "founder/",
+  "metadata_file_path": "specs/{NNN}_{SLUG}/.return-meta.json",
   "metadata": {
     "session_id": "sess_{timestamp}_{random}",
     "delegation_depth": 1,
@@ -94,7 +154,9 @@ Prepare delegation context:
 }
 ```
 
-### 3. Invoke Agent
+---
+
+### Stage 5: Invoke Agent
 
 **CRITICAL**: You MUST use the **Task** tool to spawn the agent.
 
@@ -103,68 +165,157 @@ Prepare delegation context:
 Tool: Task (NOT Skill)
 Parameters:
   - subagent_type: "strategy-agent"
-  - prompt: [Include topic, mode, output_dir, metadata]
-  - description: "GTM strategy development with positioning and channels"
+  - prompt: [Include task_context, topic, mode, metadata_file_path, metadata]
+  - description: "GTM strategy research with positioning and channels"
 ```
 
 The agent will:
 - Present mode selection if not pre-selected
-- Use forcing questions for positioning
-- Analyze and prioritize channels
-- Create 90-day launch plan
-- Define metrics and milestones
-- Return standardized JSON result
+- Use forcing questions for positioning context
+- Gather channel data with evidence
+- Collect launch timing and metrics data
+- Create research report at specs/{NNN}_{SLUG}/reports/
+- Write metadata file
+- Return brief text summary
 
-### 4. Return Validation
+---
 
-Validate return matches `subagent-return.md` schema:
-- Status is one of: generated, partial, failed
-- Summary is non-empty and <100 tokens
-- Artifacts array present with output file path
-- Metadata contains mode and channel count
+### Stage 6: Parse Subagent Return
 
-### 5. Return Propagation
+```bash
+padded_num=$(printf "%03d" "$task_number")
+metadata_file="specs/${padded_num}_${project_name}/.return-meta.json"
 
-Return validated result to caller without modification.
+if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
+    status=$(jq -r '.status' "$metadata_file")
+    artifact_path=$(jq -r '.artifacts[0].path // ""' "$metadata_file")
+    artifact_type=$(jq -r '.artifacts[0].type // ""' "$metadata_file")
+    artifact_summary=$(jq -r '.artifacts[0].summary // ""' "$metadata_file")
+else
+    status="failed"
+fi
+```
+
+---
+
+### Stage 7: Update Task Status (Postflight)
+
+If status is "researched", update state.json and TODO.md.
+
+**Update state.json**:
+```bash
+jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+   --arg status "researched" \
+  '(.active_projects[] | select(.project_number == '$task_number')) |= . + {
+    status: $status,
+    last_updated: $ts
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+```
+
+**Update TODO.md**: Use Edit tool to change status marker to `[RESEARCHED]`.
+
+---
+
+### Stage 8: Link Artifacts
+
+Add artifact to state.json with summary.
+
+**IMPORTANT**: Use two-step jq pattern to avoid escaping issues.
+
+```bash
+if [ -n "$artifact_path" ]; then
+    # Step 1: Filter out existing research artifacts (use "| not" pattern)
+    jq '(.active_projects[] | select(.project_number == '$task_number')).artifacts =
+        [(.active_projects[] | select(.project_number == '$task_number')).artifacts // [] | .[] | select(.type == "research" | not)]' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+
+    # Step 2: Add new research artifact
+    jq --arg path "$artifact_path" \
+       --arg type "$artifact_type" \
+       --arg summary "$artifact_summary" \
+      '(.active_projects[] | select(.project_number == '$task_number')).artifacts += [{"path": $path, "type": $type, "summary": $summary}]' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+fi
+```
+
+**Update TODO.md**: Add research artifact link using count-aware format.
+
+**Strip specs/ prefix for TODO.md** (TODO.md is inside specs/): `todo_link_path="${artifact_path#specs/}"`
+
+Use count-aware artifact linking format per `.claude/rules/state-management.md` "Artifact Linking Format".
+
+---
+
+### Stage 9: Git Commit
+
+```bash
+git add -A
+git commit -m "task ${task_number}: complete research
+
+Session: ${session_id}
+
+Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+```
+
+---
+
+### Stage 10: Cleanup
+
+```bash
+rm -f "specs/${padded_num}_${project_name}/.postflight-pending"
+rm -f "specs/${padded_num}_${project_name}/.postflight-loop-guard"
+rm -f "specs/${padded_num}_${project_name}/.return-meta.json"
+```
+
+---
+
+### Stage 11: Return Brief Summary
+
+```
+GTM strategy research completed for task {N}:
+- Mode: {mode}, {questions_asked} forcing questions completed
+- Target: {brief target customer}
+- Key benefit: {brief benefit}
+- Top channels: {list}
+- Launch recommendation: {type}
+- Research report: specs/{NNN}_{SLUG}/reports/01_{short-slug}.md
+- Status updated to [RESEARCHED]
+- Changes committed
+- Next: Run /plan {N} to create implementation plan
+```
 
 ---
 
 ## Return Format
 
+Brief text summary (NOT JSON).
+
 Expected successful return:
-```json
-{
-  "status": "generated",
-  "summary": "Generated GTM strategy for B2B SaaS launch. Primary channel: Content/SEO. 90-day plan with 12 milestones.",
-  "artifacts": [
-    {
-      "type": "implementation",
-      "path": "/absolute/path/to/founder/gtm-strategy-20260318.md",
-      "summary": "GTM strategy with positioning, channel prioritization, and 90-day plan"
-    }
-  ],
-  "metadata": {
-    "session_id": "sess_...",
-    "agent_type": "strategy-agent",
-    "delegation_depth": 2,
-    "mode": "LAUNCH",
-    "channels_evaluated": 9,
-    "channels_prioritized": 3,
-    "milestones_defined": 12
-  },
-  "next_steps": "Review 90-day plan and assign owners. Consider /market for market sizing context."
-}
+```
+GTM strategy research completed for task 234:
+- Mode: LAUNCH, 10 forcing questions completed
+- Target: VP Engineering at Series A-C SaaS, 50-200 employees
+- Key benefit: Cut deploy time by 80%
+- Top channels: Hacker News, DevOps meetups, Twitter
+- Launch recommendation: Beta (2K waitlist with 40% engagement)
+- Research report: specs/234_gtm_strategy_b2b_saas/reports/01_gtm-strategy.md
+- Status updated to [RESEARCHED]
+- Changes committed with session sess_1736700000_abc123
+- Next: Run /plan 234 to create implementation plan
 ```
 
 ---
 
 ## Error Handling
 
-### Session ID Missing
-Return immediately with failed status.
+### Input Validation Errors
+Return immediately if task not found.
 
-### Agent Errors
-Pass through the agent's error return verbatim.
+### Metadata File Missing
+Keep status as "researching" for resume.
 
 ### User Abandonment
 Return partial status with progress made.
+
+### Git Commit Failure
+Non-blocking: Log failure but continue.

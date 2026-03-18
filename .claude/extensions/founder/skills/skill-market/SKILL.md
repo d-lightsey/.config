@@ -1,12 +1,15 @@
 ---
 name: skill-market
-description: Market sizing analysis with TAM/SAM/SOM framework
-allowed-tools: Task
+description: Market sizing research with TAM/SAM/SOM framework
+allowed-tools: Task, Bash, Edit, Read, Write
 ---
 
 # Market Skill
 
-Thin wrapper that routes market sizing requests to the `market-agent`.
+Thin wrapper that routes market sizing research requests to the `market-agent`.
+
+**IMPORTANT**: This skill implements the skill-internal postflight pattern. After the subagent returns,
+this skill handles all postflight operations (status update, artifact linking, git commit) before returning.
 
 ## Context Pointers
 
@@ -51,21 +54,32 @@ Do not invoke for:
 
 ---
 
-## Execution
+## Execution Flow
 
-### 1. Input Validation
+### Stage 1: Input Validation
 
-Validate inputs:
+Validate required inputs:
+- `task_number` - Must be provided and exist in state.json
 - `industry` - Optional, string
 - `segment` - Optional, string
 - `mode` - Optional, one of: VALIDATE, SIZE, SEGMENT, DEFEND
-- `session_id` - Required, string
 
 ```bash
-# Validate session_id is present
-if [ -z "$session_id" ]; then
-  return error "session_id is required"
+# Lookup task
+task_data=$(jq -r --argjson num "$task_number" \
+  '.active_projects[] | select(.project_number == $num)' \
+  specs/state.json)
+
+# Validate exists
+if [ -z "$task_data" ]; then
+  return error "Task $task_number not found"
 fi
+
+# Extract fields
+language=$(echo "$task_data" | jq -r '.language // "founder"')
+status=$(echo "$task_data" | jq -r '.status')
+project_name=$(echo "$task_data" | jq -r '.project_name')
+description=$(echo "$task_data" | jq -r '.description // ""')
 
 # Validate mode if provided
 if [ -n "$mode" ]; then
@@ -76,16 +90,62 @@ if [ -n "$mode" ]; then
 fi
 ```
 
-### 2. Context Preparation
+---
 
-Prepare delegation context:
+### Stage 2: Preflight Status Update
+
+Update task status to "researching" BEFORE invoking subagent.
+
+**Update state.json**:
+```bash
+jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+   --arg status "researching" \
+   --arg sid "$session_id" \
+  '(.active_projects[] | select(.project_number == '$task_number')) |= . + {
+    status: $status,
+    last_updated: $ts,
+    session_id: $sid
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+```
+
+**Update TODO.md**: Use Edit tool to change status marker to `[RESEARCHING]`.
+
+---
+
+### Stage 3: Create Postflight Marker
+
+```bash
+padded_num=$(printf "%03d" "$task_number")
+mkdir -p "specs/${padded_num}_${project_name}"
+
+cat > "specs/${padded_num}_${project_name}/.postflight-pending" << EOF
+{
+  "session_id": "${session_id}",
+  "skill": "skill-market",
+  "task_number": ${task_number},
+  "operation": "research",
+  "reason": "Postflight pending: status update, artifact linking, git commit",
+  "created": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
+```
+
+---
+
+### Stage 4: Prepare Delegation Context
 
 ```json
 {
+  "task_context": {
+    "task_number": N,
+    "project_name": "{project_name}",
+    "description": "{description}",
+    "language": "founder"
+  },
   "industry": "optional industry hint",
   "segment": "optional segment hint",
   "mode": "VALIDATE|SIZE|SEGMENT|DEFEND or null",
-  "output_dir": "founder/",
+  "metadata_file_path": "specs/{NNN}_{SLUG}/.return-meta.json",
   "metadata": {
     "session_id": "sess_{timestamp}_{random}",
     "delegation_depth": 1,
@@ -94,7 +154,9 @@ Prepare delegation context:
 }
 ```
 
-### 3. Invoke Agent
+---
+
+### Stage 5: Invoke Agent
 
 **CRITICAL**: You MUST use the **Task** tool to spawn the agent.
 
@@ -103,67 +165,151 @@ Prepare delegation context:
 Tool: Task (NOT Skill)
 Parameters:
   - subagent_type: "market-agent"
-  - prompt: [Include industry, segment, mode, output_dir, metadata]
-  - description: "Market sizing analysis with TAM/SAM/SOM"
+  - prompt: [Include task_context, industry, segment, mode, metadata_file_path, metadata]
+  - description: "Market sizing research with TAM/SAM/SOM"
 ```
 
 The agent will:
 - Present mode selection if not pre-selected
 - Use forcing questions to gather market data
-- Calculate TAM/SAM/SOM using appropriate methodology
-- Generate market sizing artifact
-- Return standardized JSON result
+- Create research report at specs/{NNN}_{SLUG}/reports/
+- Write metadata file
+- Return brief text summary
 
-### 4. Return Validation
+---
 
-Validate return matches `subagent-return.md` schema:
-- Status is one of: generated, partial, failed
-- Summary is non-empty and <100 tokens
-- Artifacts array present with output file path
-- Metadata contains mode and methodology used
+### Stage 6: Parse Subagent Return
 
-### 5. Return Propagation
+```bash
+padded_num=$(printf "%03d" "$task_number")
+metadata_file="specs/${padded_num}_${project_name}/.return-meta.json"
 
-Return validated result to caller without modification.
+if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
+    status=$(jq -r '.status' "$metadata_file")
+    artifact_path=$(jq -r '.artifacts[0].path // ""' "$metadata_file")
+    artifact_type=$(jq -r '.artifacts[0].type // ""' "$metadata_file")
+    artifact_summary=$(jq -r '.artifacts[0].summary // ""' "$metadata_file")
+else
+    status="failed"
+fi
+```
+
+---
+
+### Stage 7: Update Task Status (Postflight)
+
+If status is "researched", update state.json and TODO.md.
+
+**Update state.json**:
+```bash
+jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+   --arg status "researched" \
+  '(.active_projects[] | select(.project_number == '$task_number')) |= . + {
+    status: $status,
+    last_updated: $ts
+  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+```
+
+**Update TODO.md**: Use Edit tool to change status marker to `[RESEARCHED]`.
+
+---
+
+### Stage 8: Link Artifacts
+
+Add artifact to state.json with summary.
+
+**IMPORTANT**: Use two-step jq pattern to avoid escaping issues.
+
+```bash
+if [ -n "$artifact_path" ]; then
+    # Step 1: Filter out existing research artifacts (use "| not" pattern)
+    jq '(.active_projects[] | select(.project_number == '$task_number')).artifacts =
+        [(.active_projects[] | select(.project_number == '$task_number')).artifacts // [] | .[] | select(.type == "research" | not)]' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+
+    # Step 2: Add new research artifact
+    jq --arg path "$artifact_path" \
+       --arg type "$artifact_type" \
+       --arg summary "$artifact_summary" \
+      '(.active_projects[] | select(.project_number == '$task_number')).artifacts += [{"path": $path, "type": $type, "summary": $summary}]' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+fi
+```
+
+**Update TODO.md**: Add research artifact link using count-aware format.
+
+**Strip specs/ prefix for TODO.md** (TODO.md is inside specs/): `todo_link_path="${artifact_path#specs/}"`
+
+Use count-aware artifact linking format per `.claude/rules/state-management.md` "Artifact Linking Format".
+
+---
+
+### Stage 9: Git Commit
+
+```bash
+git add -A
+git commit -m "task ${task_number}: complete research
+
+Session: ${session_id}
+
+Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+```
+
+---
+
+### Stage 10: Cleanup
+
+```bash
+rm -f "specs/${padded_num}_${project_name}/.postflight-pending"
+rm -f "specs/${padded_num}_${project_name}/.postflight-loop-guard"
+rm -f "specs/${padded_num}_${project_name}/.return-meta.json"
+```
+
+---
+
+### Stage 11: Return Brief Summary
+
+```
+Market sizing research completed for task {N}:
+- Mode: {mode}, {questions_asked} forcing questions completed
+- Problem: {brief problem statement}
+- Entity count: {value} from {source}
+- Research report: specs/{NNN}_{SLUG}/reports/01_{short-slug}.md
+- Status updated to [RESEARCHED]
+- Changes committed
+- Next: Run /plan {N} to create implementation plan
+```
 
 ---
 
 ## Return Format
 
+Brief text summary (NOT JSON).
+
 Expected successful return:
-```json
-{
-  "status": "generated",
-  "summary": "Generated TAM/SAM/SOM analysis for fintech payments segment. TAM: $50B, SAM: $8B, SOM Y1: $40M.",
-  "artifacts": [
-    {
-      "type": "implementation",
-      "path": "/absolute/path/to/founder/market-sizing-20260318.md",
-      "summary": "Market sizing analysis with bottom-up methodology"
-    }
-  ],
-  "metadata": {
-    "session_id": "sess_...",
-    "agent_type": "market-agent",
-    "delegation_depth": 2,
-    "mode": "SIZE",
-    "methodology": "bottom_up",
-    "questions_asked": 6,
-    "data_sources": 4
-  },
-  "next_steps": "Review assumptions and validate data sources. Consider running /analyze for competitive context."
-}
+```
+Market sizing research completed for task 234:
+- Mode: SIZE, 8 forcing questions completed
+- Problem: Streamline deploy coordination for mid-market SaaS
+- Entity count: 500,000 mid-market SaaS companies globally (Gartner)
+- Research report: specs/234_market_sizing_fintech/reports/01_market-sizing.md
+- Status updated to [RESEARCHED]
+- Changes committed with session sess_1736700000_abc123
+- Next: Run /plan 234 to create implementation plan
 ```
 
 ---
 
 ## Error Handling
 
-### Session ID Missing
-Return immediately with failed status.
+### Input Validation Errors
+Return immediately if task not found.
 
-### Agent Errors
-Pass through the agent's error return verbatim.
+### Metadata File Missing
+Keep status as "researching" for resume.
 
 ### User Abandonment
 Return partial status with progress made.
+
+### Git Commit Failure
+Non-blocking: Log failure but continue.

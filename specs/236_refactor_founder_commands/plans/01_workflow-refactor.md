@@ -80,7 +80,7 @@ From `01_workflow-analysis.md`:
 
 ---
 
-### Phase 2: Refactor Skills (Researcher Pattern) [IN PROGRESS]
+### Phase 2: Refactor Skills (Researcher Pattern) [COMPLETED]
 
 **Goal**: Rewrite skill-market, skill-analyze, and skill-strategy to follow the skill-researcher pattern.
 
@@ -108,7 +108,7 @@ From `01_workflow-analysis.md`:
 
 ---
 
-### Phase 3: Refactor Commands (Remove Auto-Proceed) [NOT STARTED]
+### Phase 3: Refactor Commands (Remove Auto-Proceed) [IN PROGRESS]
 
 **Goal**: Remove auto-plan+implement stages from market.md, analyze.md, and strategy.md commands.
 
