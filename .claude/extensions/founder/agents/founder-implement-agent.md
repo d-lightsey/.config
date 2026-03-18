@@ -7,7 +7,7 @@ description: Execute founder plans and generate strategy reports using plan and 
 
 ## Overview
 
-Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy) in the specified output location. Uses phased execution with resume support, reading both the plan file and the original research report for full context.
+Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy) in both markdown and professional PDF format. Uses phased execution with resume support, reading both the plan file and the original research report for full context. Phase 5 generates typst documents and compiles them to PDF in the `founder/` directory.
 
 ## Agent Metadata
 
@@ -38,6 +38,12 @@ Load these on-demand using @-references:
 - `@.claude/extensions/founder/context/project/founder/templates/market-sizing.md` - Market sizing template
 - `@.claude/extensions/founder/context/project/founder/templates/competitive-analysis.md` - Competitive analysis template
 - `@.claude/extensions/founder/context/project/founder/templates/gtm-strategy.md` - GTM strategy template
+
+**Load for Typst Generation (Phase 5)**:
+- `@.claude/extensions/founder/context/project/founder/templates/typst/strategy-template.typ` - Base typst template
+- `@.claude/extensions/founder/context/project/founder/templates/typst/market-sizing.typ` - Market sizing typst template
+- `@.claude/extensions/founder/context/project/founder/templates/typst/competitive-analysis.typ` - Competitive analysis typst template
+- `@.claude/extensions/founder/context/project/founder/templates/typst/gtm-strategy.typ` - GTM strategy typst template
 
 **Load for Output**:
 - `@.claude/context/core/formats/return-metadata-file.md` - Metadata file schema
@@ -226,6 +232,111 @@ Execute each phase starting from resume point. Use context from BOTH plan and re
 
 4. Mark phase `[COMPLETED]`
 
+#### Phase 5: Typst Document Generation
+
+**For all report types**, generate professional PDF output:
+
+1. Mark phase `[IN PROGRESS]` in plan file
+
+2. **Check typst availability**:
+   ```bash
+   if ! command -v typst &> /dev/null; then
+     echo "WARNING: typst not installed, skipping PDF generation"
+     # Mark phase as [PARTIAL] and continue
+     return
+   fi
+   ```
+
+3. **Select typst template** based on report type:
+   | Report Type | Template Path |
+   |-------------|---------------|
+   | market-sizing | `.claude/extensions/founder/context/project/founder/templates/typst/market-sizing.typ` |
+   | competitive-analysis | `.claude/extensions/founder/context/project/founder/templates/typst/competitive-analysis.typ` |
+   | gtm-strategy | `.claude/extensions/founder/context/project/founder/templates/typst/gtm-strategy.typ` |
+
+4. **Generate typst content** directly from gathered context:
+   - Extract key data from research report and plan
+   - Populate template function parameters
+   - Generate complete .typ file with all sections
+
+5. **Write typst file** to founder directory:
+   ```bash
+   # Create founder directory at repository root
+   mkdir -p "founder"
+
+   # Write typst file
+   typst_file="founder/${report_type}-${slug}.typ"
+   write "$typst_file" "$typst_content"
+
+   # Verify file was written
+   [ -s "$typst_file" ] || return error "Failed to write typst file"
+   ```
+
+6. **Compile to PDF**:
+   ```bash
+   # Get template directory for imports
+   template_dir=".claude/extensions/founder/context/project/founder/templates/typst"
+
+   # Compile typst to PDF (imports resolved relative to template dir)
+   cd "$template_dir"
+   typst compile "$(pwd)/$typst_file" "founder/${report_type}-${slug}.pdf" 2>&1
+
+   if [ $? -ne 0 ]; then
+     echo "ERROR: Typst compilation failed"
+     # Keep .typ file for debugging, mark phase [PARTIAL]
+     return
+   fi
+
+   # Verify PDF exists and is non-empty
+   [ -s "founder/${report_type}-${slug}.pdf" ] || return error "PDF generation failed"
+   ```
+
+7. Mark phase `[COMPLETED]`
+
+**Typst Content Generation Pattern**:
+
+For each report type, generate a complete typst file that imports the template and calls the document wrapper function with all gathered data. Example for market-sizing:
+
+```typst
+#import "strategy-template.typ": *
+
+#show: market-sizing-doc.with(
+  project: "{project_name}",
+  date: "{ISO_DATE}",
+  mode: "{mode}",
+  summary: [{executive_summary}],
+  problem-statement: [{problem}],
+  target-customer: [{target}],
+  customer-dimensions: ({dimensions_array}),
+  tam-value: "{tam}",
+  tam-methodology: "{methodology}",
+  tam-calculation: [{calculation}],
+  tam-sources: ({sources_array}),
+  sam-value: "{sam}",
+  sam-percent: "{sam_percent}",
+  narrowing-factors: ({factors_array}),
+  sam-calculation: [{sam_calculation}],
+  som-values: ({som_array}),
+  competitors: ({competitors_array}),
+  assumptions: ({assumptions_array}),
+  vc-checks: ({vc_checks_array}),
+  validation-steps: ({validation_array}),
+  opportunity-summary: [{opportunity}],
+  why-now: ({why_now_array}),
+)
+```
+
+**Error Handling for Phase 5**:
+
+| Error | Action | Status |
+|-------|--------|--------|
+| Typst not installed | Skip Phase 5, log warning | [PARTIAL] |
+| Template not found | Skip Phase 5, log error | [PARTIAL] |
+| Compilation error | Keep .typ file, log error | [PARTIAL] |
+| PDF empty | Keep .typ file, log error | [PARTIAL] |
+
+Phase 5 failures do NOT block task completion. The markdown report (Phase 4) is the primary output.
+
 ### Stage 6: Generate Summary
 
 Create summary in task directory:
@@ -243,7 +354,9 @@ Generated {report type} for {topic}.
 
 ## Files Created
 
-- `strategy/{report-type}-{slug}.md` - Full analysis report
+- `strategy/{report-type}-{slug}.md` - Full analysis report (markdown)
+- `founder/{report-type}-{slug}.pdf` - Professional PDF report (if typst available)
+- `founder/{report-type}-{slug}.typ` - Typst source file (if typst available)
 
 ## Research Integration
 
@@ -287,6 +400,11 @@ Write final metadata:
       "summary": "Full {report_type} report with analysis"
     },
     {
+      "type": "implementation",
+      "path": "founder/{report-type}-{slug}.pdf",
+      "summary": "Professional PDF report (if typst available)"
+    },
+    {
       "type": "summary",
       "path": "specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md",
       "summary": "Implementation summary with key results"
@@ -302,8 +420,10 @@ Write final metadata:
     "delegation_depth": 2,
     "delegation_path": ["orchestrator", "implement", "skill-founder-implement", "founder-implement-agent"],
     "report_type": "{report_type}",
-    "phases_completed": 4,
-    "phases_total": 4,
+    "phases_completed": 5,
+    "phases_total": 5,
+    "typst_generated": true,
+    "pdf_path": "founder/{report-type}-{slug}.pdf",
     "research_report_used": "specs/{NNN}_{SLUG}/reports/01_{short-slug}.md",
     "plan_used": "specs/{NNN}_{SLUG}/plans/01_{short-slug}.md",
     "tam": "${TAM}",
@@ -321,9 +441,10 @@ Return a brief summary (NOT JSON):
 
 ```
 Founder implementation complete for task 234:
-- Report type: market-sizing, all 4 phases executed
+- Report type: market-sizing, all 5 phases executed
 - Used context from plan and research report
-- Report: strategy/market-sizing-fintech-payments.md
+- Markdown report: strategy/market-sizing-fintech-payments.md
+- PDF report: founder/market-sizing-fintech-payments.pdf
 - Key results: TAM $50B, SAM $8B, SOM Y1 $40M
 - Summary: specs/234_market_sizing_fintech_payments/summaries/01_market-sizing-summary.md
 - Metadata written for skill postflight
@@ -355,6 +476,11 @@ For competitive-analysis reports, use these phases:
 - Positioning map visualization (using axes from research: ### Positioning Dimensions)
 - Battle card summaries
 
+### Phase 5: Typst Document Generation
+- Generate typst file using competitive-analysis.typ template
+- Compile to PDF in founder/ directory
+- Include positioning map, competitor cards, battle cards
+
 ---
 
 ## GTM Strategy Phase Flow
@@ -380,6 +506,11 @@ For gtm-strategy reports, use these phases:
 - Full GTM strategy report
 - 90-day action plan
 - Metrics and milestones (using North Star from research: ### Metrics Framework)
+
+### Phase 5: Typst Document Generation
+- Generate typst file using gtm-strategy.typ template
+- Compile to PDF in founder/ directory
+- Include 90-day timeline, metrics dashboard, channel strategy
 
 ---
 
@@ -417,11 +548,11 @@ For gtm-strategy reports, use these phases:
 ```json
 {
   "status": "partial",
-  "summary": "Completed phases 1-2 of 4. Phase 3 (SOM Projection) failed due to missing capture rate data.",
+  "summary": "Completed phases 1-2 of 5. Phase 3 (SOM Projection) failed due to missing capture rate data.",
   "artifacts": [],
   "partial_progress": {
     "phases_completed": 2,
-    "phases_total": 4,
+    "phases_total": 5,
     "resume_phase": 3,
     "data_gathered": ["TAM: $50B", "SAM: $8B"],
     "missing": ["Capture rate assumptions"]

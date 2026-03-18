@@ -5,14 +5,14 @@
     {
       "project_number": 237,
       "project_name": "add_typst_output_founder_implementation",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-18T21:49:51Z",
-      "last_updated": "2026-03-18T22:16:56Z",
+      "last_updated": "2026-03-18T22:29:23Z",
       "dependencies": [
         236
       ],
-      "session_id": "sess_1773872059_0c01ea",
+      "session_id": "sess_1773872339_9ff171",
       "researched": "2026-03-18T22:12:38Z",
       "artifacts": [
         {
@@ -24,9 +24,18 @@
           "path": "specs/237_add_typst_output_founder_implementation/plans/01_typst-output-implementation.md",
           "type": "plan",
           "summary": "5-phase implementation plan for adding typst PDF output to founder extension"
+        },
+        {
+          "path": "specs/237_add_typst_output_founder_implementation/summaries/01_typst-output-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "planned": "2026-03-18T22:16:56Z"
+      "planned": "2026-03-18T22:16:56Z",
+      "started": "2026-03-18T22:19:20Z",
+      "completed": "2026-03-18T22:29:23Z",
+      "completion_summary": "Enhanced founder extension with professional typst PDF generation. Created 4 typst templates (base + 3 report types) and updated founder-implement-agent and founder-plan-agent to include Phase 5 for document generation.",
+      "claudemd_suggestions": "Added typst templates to .claude/extensions/founder/, updated founder-implement-agent.md with Phase 5, updated founder-plan-agent.md with Phase 5 structure, updated manifest.json and index-entries.json with template entries"
     },
     {
       "project_number": 234,

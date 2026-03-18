@@ -79,6 +79,46 @@
         "languages": ["founder"],
         "commands": ["/strategy", "/implement"]
       }
+    },
+    {
+      "path": ".claude/extensions/founder/context/project/founder/templates/typst/strategy-template.typ",
+      "summary": "Base Typst template with shared styles, callouts, tables, and visualizations for all founder reports",
+      "line_count": 400,
+      "load_when": {
+        "agents": ["founder-implement-agent"],
+        "languages": ["founder"],
+        "commands": ["/implement"]
+      }
+    },
+    {
+      "path": ".claude/extensions/founder/context/project/founder/templates/typst/market-sizing.typ",
+      "summary": "Typst template for market sizing PDF reports with TAM/SAM/SOM visualization",
+      "line_count": 200,
+      "load_when": {
+        "agents": ["founder-implement-agent"],
+        "languages": ["founder"],
+        "commands": ["/implement"]
+      }
+    },
+    {
+      "path": ".claude/extensions/founder/context/project/founder/templates/typst/competitive-analysis.typ",
+      "summary": "Typst template for competitive analysis PDF reports with positioning maps and battle cards",
+      "line_count": 220,
+      "load_when": {
+        "agents": ["founder-implement-agent"],
+        "languages": ["founder"],
+        "commands": ["/implement"]
+      }
+    },
+    {
+      "path": ".claude/extensions/founder/context/project/founder/templates/typst/gtm-strategy.typ",
+      "summary": "Typst template for GTM strategy PDF reports with 90-day plan timeline and metrics dashboard",
+      "line_count": 250,
+      "load_when": {
+        "agents": ["founder-implement-agent"],
+        "languages": ["founder"],
+        "commands": ["/implement"]
+      }
     }
   ]
 }

@@ -246,10 +246,29 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 **Outputs**:
 - strategy/{report-type}-{slug}.md
 
+### Phase 5: Typst Document Generation [NOT STARTED]
+
+**Objectives**:
+1. Generate typst document from gathered context
+2. Compile to professional PDF format
+
+**Template**: .claude/extensions/founder/context/project/founder/templates/typst/{report-type}.typ
+
+**Outputs**:
+- founder/{report-type}-{slug}.typ - Typst source file
+- founder/{report-type}-{slug}.pdf - Professional PDF document
+
+**Notes**:
+- Requires typst to be installed on the system
+- If typst unavailable, phase is skipped with warning
+- Markdown report from Phase 4 is the primary output
+
 ## Report Output
 
-- **Location**: strategy/{report-type}-{slug}.md
-- **Template**: {template-file}
+- **Markdown Location**: strategy/{report-type}-{slug}.md
+- **PDF Location**: founder/{report-type}-{slug}.pdf
+- **Template (Markdown)**: {template-file}
+- **Template (Typst)**: .claude/extensions/founder/context/project/founder/templates/typst/{report-type}.typ
 
 ## Success Criteria
 
@@ -264,18 +283,21 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 - Phase 2: SAM Narrowing
 - Phase 3: SOM Projection
 - Phase 4: Report Generation
+- Phase 5: Typst Document Generation
 
 **Competitive Analysis:**
 - Phase 1: Landscape Mapping
 - Phase 2: Deep Dive Analysis
 - Phase 3: Differentiation Strategy
 - Phase 4: Report Generation
+- Phase 5: Typst Document Generation
 
 **GTM Strategy:**
 - Phase 1: Customer Definition
 - Phase 2: Channel Strategy
 - Phase 3: Pricing & Positioning
 - Phase 4: Report Generation
+- Phase 5: Typst Document Generation
 
 ### Stage 6: Write Plan File
 
@@ -317,7 +339,7 @@ Write final metadata to specified path:
     "delegation_path": ["orchestrator", "plan", "skill-founder-plan", "founder-plan-agent"],
     "report_type": "{market-sizing|competitive-analysis|gtm-strategy}",
     "mode": "{mode from research}",
-    "phase_count": 4,
+    "phase_count": 5,
     "research_report": "{path to research report}",
     "estimated_hours": "2-4 hours"
   },
@@ -335,7 +357,7 @@ Founder plan created for task 234:
 - Read research report: specs/234_market_sizing_fintech_payments/reports/01_market-sizing.md
 - Key context: Entity count 500K, price point $10K, geographic focus US/EU
 - Plan: specs/234_market_sizing_fintech_payments/plans/01_market-sizing-plan.md
-- 4 phases defined: TAM, SAM, SOM, Report Generation
+- 5 phases defined: TAM, SAM, SOM, Report Generation, Typst Document Generation
 - Metadata written for skill postflight
 ```
 
