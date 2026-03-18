@@ -1,10 +1,65 @@
 ---
-next_project_number: 228
+next_project_number: 233
 ---
 
 # TODO
 
 ## Tasks
+
+### 232. Update example templates to be YC compliant
+- **Effort**: 3-4 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #229, Task #230, Task #231
+- **Research**: [01_meta-research.md](232_example_templates_yc_compliance/reports/01_meta-research.md)
+
+**Description**: Simplify all 4 example pitch deck files in `.claude/extensions/present/examples/` to demonstrate YC-compliant design. Remove complex panel layouts, use larger fonts (28pt+ body, 44pt+ titles), and ensure each slide shows one-idea-per-slide principle. Files: professional-blue-pitch.typ, premium-dark-pitch.typ, minimal-light-pitch.typ, growth-green-pitch.typ.
+
+---
+
+### 231. Update pitch-deck-structure with stricter guidelines
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #228
+- **Research**: [01_meta-research.md](231_pitch_deck_structure_update/reports/01_meta-research.md)
+
+**Description**: Update `.claude/extensions/present/context/project/present/patterns/pitch-deck-structure.md` with mandatory enforcement language. Add "Content Density Rules" section (max 1 idea per slide, max 5 bullets), "Typography Enforcement" section (min 24pt body, min 40pt titles), strengthen anti-patterns from advisory to PROHIBITED, and add validation checklist with pass/fail criteria.
+
+---
+
+### 230. Update touying-pitch-deck-template with simpler layouts
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #228
+- **Research**: [01_meta-research.md](230_touying_template_simplification/reports/01_meta-research.md)
+
+**Description**: Update `.claude/extensions/present/context/project/present/patterns/touying-pitch-deck-template.md` to remove complex layout patterns. Replace multi-column grid examples with single-column layouts, increase default font sizes (32pt body, 48pt titles), remove panel/card helper patterns, and add explicit "DO NOT USE" section documenting prohibited layout patterns.
+
+---
+
+### 229. Update deck-agent with strict YC enforcement
+- **Effort**: 3-4 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #228
+- **Research**: [01_meta-research.md](229_deck_agent_enforcement/reports/01_meta-research.md)
+
+**Description**: Update `.claude/extensions/present/agents/deck-agent.md` to enforce YC compliance. Add hard limit of 10 slides max, enforce minimum font sizes (24pt body, 40pt titles) in generated Typst, add content density validation (one idea per slide), simplify default layouts by removing multi-column grids, and add YC compliance validation before returning with compliance_passed boolean in metadata.
+
+---
+
+### 228. Add YC Compliance Checklist context file
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_meta-research.md](228_yc_compliance_checklist/reports/01_meta-research.md)
+
+**Description**: Create `.claude/extensions/present/context/project/present/patterns/yc-compliance-checklist.md` with hard enforcement rules for YC-style pitch decks. Include: max 10 slides, min 24pt body font, min 40pt titles, one idea per slide, max 5 bullets per slide. Document prohibited patterns (screenshots, complex grids, nested panels, small fonts). Provide pass/fail validation criteria and pre-flight checklist.
+
+---
 
 ### 227. Enhance /meta with topic consolidation and embedded research
 - **Effort**: 4-6 hours

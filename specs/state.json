@@ -1,7 +1,112 @@
 {
   "version": "1.0.0",
-  "next_project_number": 228,
+  "next_project_number": 233,
   "active_projects": [
+    {
+      "project_number": 228,
+      "project_name": "yc_compliance_checklist",
+      "status": "researched",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:30:00Z",
+      "dependencies": [],
+      "session_id": "sess_meta_present_extension",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/228_yc_compliance_checklist/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "YC pitch deck compliance rules analysis with measurable enforcement criteria"
+        }
+      ]
+    },
+    {
+      "project_number": 229,
+      "project_name": "deck_agent_enforcement",
+      "status": "researched",
+      "language": "meta",
+      "effort": "3-4 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:30:00Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_meta_present_extension",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/229_deck_agent_enforcement/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Agent modification requirements for YC compliance enforcement"
+        }
+      ]
+    },
+    {
+      "project_number": 230,
+      "project_name": "touying_template_simplification",
+      "status": "researched",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:30:00Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_meta_present_extension",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/230_touying_template_simplification/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Template simplification patterns for YC-compliant layouts"
+        }
+      ]
+    },
+    {
+      "project_number": 231,
+      "project_name": "pitch_deck_structure_update",
+      "status": "researched",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:30:00Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_meta_present_extension",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/231_pitch_deck_structure_update/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Content density and typography enforcement guidelines"
+        }
+      ]
+    },
+    {
+      "project_number": 232,
+      "project_name": "example_templates_yc_compliance",
+      "status": "researched",
+      "language": "meta",
+      "effort": "3-4 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:30:00Z",
+      "dependencies": [
+        229,
+        230,
+        231
+      ],
+      "session_id": "sess_meta_present_extension",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/232_example_templates_yc_compliance/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Example file simplification requirements for YC compliance"
+        }
+      ]
+    },
     {
       "project_number": 227,
       "project_name": "enhance_meta_topic_consolidation",
