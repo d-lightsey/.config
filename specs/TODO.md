@@ -8,9 +8,10 @@ next_project_number: 235
 
 ### 234. Upgrade founder/ extension to task-based workflow with forcing questions
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #233
+- **Research**: [01_task-integration-research.md](234_upgrade_founder_extension_workflow/reports/01_task-integration-research.md)
 
 **Description**: Overhaul the founder/ extension so that /market, /analyze, and /strategy commands: (1) create tasks in the task system and produce detailed report artifacts rather than console-only output; (2) accept a file path, task number, or no argument; (3) implement a three-phase forcing questions workflow — initial research phase (reads context/input), interactive forcing questions round (questions informed by initial research), and a final research/synthesis phase that produces the detailed report artifact. Update commands, skills, agents, and context files accordingly.
 

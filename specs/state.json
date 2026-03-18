@@ -5,10 +5,19 @@
     {
       "project_number": 234,
       "project_name": "upgrade_founder_extension_workflow",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-18T18:54:28Z",
-      "last_updated": "2026-03-18T18:54:28Z"
+      "last_updated": "2026-03-18T19:06:11Z",
+      "session_id": "sess_1773860513_ab7806",
+      "researched": "2026-03-18T19:06:11Z",
+      "artifacts": [
+        {
+          "path": "specs/234_upgrade_founder_extension_workflow/reports/01_task-integration-research.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of task system integration patterns, three-phase forcing questions workflow design, and flexible input handling for founder extension upgrade"
+        }
+      ]
     },
     {
       "project_number": 233,
