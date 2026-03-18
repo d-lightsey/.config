@@ -91,16 +91,44 @@ If `team_mode == true`:
 - Route to `skill-team-plan`
 - Pass `team_size` parameter
 
-**Default Routing** (when `--team` flag NOT present):
+**Extension Routing** (when `--team` flag NOT present):
 
-Route to `skill-planner` (single-agent).
+Check extension manifests for language-specific plan routing:
+
+```bash
+# Get task language
+language=$(echo "$task_data" | jq -r '.language // "general"')
+
+# Check extension routing for plan (skill_name starts empty)
+skill_name=""
+for manifest in .claude/extensions/*/manifest.json; do
+  if [ -f "$manifest" ]; then
+    ext_skill=$(jq -r --arg lang "$language" \
+      '.routing.plan[$lang] // empty' "$manifest")
+    if [ -n "$ext_skill" ]; then
+      skill_name="$ext_skill"
+      break
+    fi
+  fi
+done
+
+# Fallback to default planner if no extension routing found
+skill_name=${skill_name:-"skill-planner"}
+```
+
+**Extension-Based Routing Table**:
+
+| Language | Skill to Invoke |
+|----------|-----------------|
+| `founder` | `skill-founder-plan` (from founder extension) |
+| Other | `skill-planner` (default) |
 
 **Skill Selection Logic**:
 ```
 if team_mode:
   skill_name = "skill-team-plan"
 else:
-  skill_name = "skill-planner"
+  skill_name = {extension routing lookup} OR "skill-planner"
 ```
 
 **Invoke the Skill tool NOW** with:
@@ -109,7 +137,11 @@ else:
 skill: "skill-team-plan"
 args: "task_number={N} research_path={path to research report if exists} team_size={team_size} session_id={session_id}"
 
-# For single-agent mode:
+# For extension-routed skill (e.g., skill-founder-plan):
+skill: "{skill_name from extension routing}"
+args: "task_number={N} research_path={path to research report if exists} session_id={session_id}"
+
+# For default single-agent mode:
 skill: "skill-planner"
 args: "task_number={N} research_path={path to research report if exists} session_id={session_id}"
 ```

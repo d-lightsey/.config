@@ -134,7 +134,7 @@ Key findings integrated from research reports:
 
 ---
 
-### Phase 4: Update /plan Command for Extension Routing [NOT STARTED]
+### Phase 4: Update /plan Command for Extension Routing [COMPLETED]
 
 **Goal**: Modify the core `/plan` command to check extension routing before defaulting to skill-planner.
 
