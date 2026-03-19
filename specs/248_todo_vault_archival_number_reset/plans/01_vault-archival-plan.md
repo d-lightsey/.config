@@ -1,7 +1,7 @@
 # Implementation Plan: Task #248
 
 - **Task**: 248 - Implement vault archival and number reset in /todo when tasks exceed 1000
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4-6 hours
 - **Dependencies**: None
 - **Research Inputs**: [02_vault-renumbering-research.md](../reports/02_vault-renumbering-research.md)

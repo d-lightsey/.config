@@ -1539,10 +1539,10 @@
     {
       "project_number": 248,
       "project_name": "todo_vault_archival_number_reset",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-19T00:00:00Z",
-      "last_updated": "2026-03-19T22:49:32Z",
+      "last_updated": "2026-03-19T23:06:54Z",
       "effort": "3-5 hours",
       "dependencies": [],
       "artifacts": [
@@ -1560,11 +1560,20 @@
           "type": "plan",
           "path": "specs/248_todo_vault_archival_number_reset/plans/01_vault-archival-plan.md",
           "summary": "7-phase implementation plan for vault archival and task renumbering"
+        },
+        {
+          "type": "summary",
+          "path": "specs/248_todo_vault_archival_number_reset/summaries/01_vault-archival-summary.md",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "session_id": "sess_1773960401_65f1f9",
+      "session_id": "sess_1773960613_2ce3f6",
       "researched": "2026-03-19T22:41:15Z",
-      "planned": "2026-03-19T22:49:32Z"
+      "planned": "2026-03-19T22:49:32Z",
+      "started": "2026-03-19T22:50:41Z",
+      "completed": "2026-03-19T23:06:54Z",
+      "completion_summary": "Implemented vault archival functionality in /todo command with 5 new stages for detecting threshold (>1000), user confirmation, vault creation, task renumbering, and state reset. Updated schema templates, documentation, and CLAUDE.md.",
+      "claudemd_suggestions": "Added vault_count/vault_history to state-template.json, added Vault Fields section to state-json-schema.md, added 5 stages (10.5-10.9) to skill-todo/SKILL.md, added Step 5.8 to todo.md command, added Vault Fields Schema to state-management.md rules, added Vault Operation subsection to CLAUDE.md"
     }
   ],
   "completed_projects": [],
