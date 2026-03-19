@@ -5,19 +5,25 @@
     {
       "project_number": 242,
       "project_name": "add_leader_am_model_picker_for_claude_code",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-03-19T18:33:49Z",
-      "last_updated": "2026-03-19T18:39:06Z",
-      "session_id": "sess_1773945334_589682",
+      "last_updated": "2026-03-19T18:42:36Z",
+      "session_id": "sess_1773945613_49518b",
       "researched": "2026-03-19T18:39:06Z",
       "artifacts": [
         {
           "path": "specs/242_add_leader_am_model_picker_for_claude_code/reports/01_model-picker-research.md",
           "type": "research",
           "summary": "Research report with implementation patterns for model picker keymap"
+        },
+        {
+          "path": "specs/242_add_leader_am_model_picker_for_claude_code/plans/01_model-picker-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for Claude Code model picker keymap"
         }
-      ]
+      ],
+      "planned": "2026-03-19T18:42:36Z"
     },
     {
       "project_number": 241,
