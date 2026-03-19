@@ -910,6 +910,130 @@ Track for output:
 - `metrics_build_errors`: Current build errors
 - `metrics_synced`: true/false indicating if sync was performed
 
+### 5.8. Vault Operation (when next_project_number > 1000)
+
+When `next_project_number` exceeds 1000, initiate vault archival operation to reset task numbering.
+
+**Step 5.8.1: Detect vault threshold**:
+```bash
+next_num=$(jq -r '.next_project_number' specs/state.json)
+if [ "$next_num" -gt 1000 ]; then
+  vault_needed=true
+fi
+```
+
+**Step 5.8.2: Identify tasks to renumber**:
+```bash
+# Find active tasks with project_number > 1000
+tasks_to_renumber=$(jq -r '
+  .active_projects[] |
+  select(.project_number > 1000) |
+  {
+    old_number: .project_number,
+    new_number: (.project_number - 1000),
+    project_name: .project_name
+  }
+' specs/state.json)
+
+renumber_count=$(echo "$tasks_to_renumber" | jq -s 'length')
+```
+
+**Step 5.8.3: User confirmation**:
+
+Use AskUserQuestion with vault operation details:
+```json
+{
+  "question": "Task numbering has exceeded 1000. Initiate vault archival?",
+  "header": "Vault Operation",
+  "description": "Current next_project_number: {next_num}\nActive tasks to renumber: {renumber_count}\n\nThis will:\n1. Move specs/archive/ to specs/vault/{NN-vault}/\n2. Renumber tasks > 1000 by subtracting 1000\n3. Reset next_project_number",
+  "options": [
+    {"label": "Yes, proceed with vault operation", "value": "proceed"},
+    {"label": "No, skip vault this time", "value": "skip"}
+  ]
+}
+```
+
+If user selects "skip", proceed to Step 6 (Git Commit).
+
+**Step 5.8.4: Create vault directory**:
+```bash
+vault_count=$(jq -r '.vault_count // 0' specs/state.json)
+new_vault_num=$((vault_count + 1))
+vault_dir_name=$(printf "%02d-vault" "$new_vault_num")
+vault_path="specs/vault/${vault_dir_name}"
+
+mkdir -p "$vault_path"
+mv "specs/archive" "${vault_path}/archive"
+mv "${vault_path}/archive/state.json" "${vault_path}/state.json"
+```
+
+**Step 5.8.5: Create vault meta.json**:
+```bash
+current_timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+archived_count=$(jq -r '.completed_projects | length' "${vault_path}/state.json" 2>/dev/null || echo "0")
+
+jq -n \
+  --arg vault_num "$new_vault_num" \
+  --arg created_at "$current_timestamp" \
+  --argjson archived_count "$archived_count" \
+  --argjson final_task_num "$next_num" \
+  '{
+    vault_number: ($vault_num | tonumber),
+    created_at: $created_at,
+    archived_count: $archived_count,
+    final_task_number: $final_task_num
+  }' > "${vault_path}/meta.json"
+```
+
+**Step 5.8.6: Reinitialize archive**:
+```bash
+mkdir -p "specs/archive"
+jq -n '{ "completed_projects": [] }' > "specs/archive/state.json"
+```
+
+**Step 5.8.7: Renumber tasks > 1000**:
+
+For each task with project_number > 1000:
+1. Update state.json project_number (subtract 1000)
+2. Update artifact paths (4-digit dir -> 3-digit dir)
+3. Update dependencies arrays
+4. Rename task directories
+5. Update TODO.md entries
+
+**Step 5.8.8: Reset state**:
+```bash
+# Calculate new next_project_number
+max_active=$(jq -r '[.active_projects[].project_number] | max // 0' specs/state.json)
+new_next_num=$((max_active + 1))
+
+# Update state.json
+jq --argjson new_next "$new_next_num" \
+   --argjson vault_num "$new_vault_num" \
+   --arg vault_path "$vault_path/" \
+   --arg created "$current_timestamp" \
+   '.next_project_number = $new_next |
+    .vault_count = (.vault_count // 0) + 1 |
+    .vault_history = (.vault_history // []) + [{
+      vault_number: $vault_num,
+      vault_dir: $vault_path,
+      created_at: $created
+    }]' specs/state.json > specs/state.json.tmp
+mv specs/state.json.tmp specs/state.json
+```
+
+**Step 5.8.9: Add transition comment to TODO.md**:
+```bash
+current_date=$(date +"%Y-%m-%d")
+comment="<!-- Vault transition: ${current_date} - Archived to ${vault_path}/ -->"
+# Insert after frontmatter
+```
+
+Track vault operations for output:
+- `vault_created`: true/false
+- `vault_path`: path to new vault
+- `tasks_renumbered`: count of tasks renumbered
+- `new_next_project_number`: reset value
+
 ### 6. Git Commit
 
 ```bash

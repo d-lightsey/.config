@@ -128,6 +128,22 @@ TODO.md and state.json must stay synchronized. Update state.json first (machine 
 - Non-meta tasks: `completion_summary` + optional `roadmap_items` -> /todo annotates ROAD_MAP.md
 - Meta tasks: `completion_summary` + `claudemd_suggestions` -> /todo displays for user review
 
+### Vault Operation (Task Number Reset)
+
+When `next_project_number` exceeds 1000, the `/todo` command initiates vault archival:
+
+1. **Trigger**: `next_project_number > 1000` detected during /todo execution
+2. **User Confirmation**: AskUserQuestion with renumbering preview
+3. **Vault Creation**: Move `specs/archive/` to `specs/vault/{NN-vault}/`
+4. **Renumbering**: Tasks > 1000 renumbered by subtracting 1000 (e.g., 1003 -> 3)
+5. **State Reset**: `next_project_number` set to max(renumbered) + 1
+
+**Vault Fields** in state.json:
+- `vault_count`: Number of completed vault operations
+- `vault_history`: Array of vault metadata entries
+
+See `.claude/rules/state-management.md` for complete vault schema documentation.
+
 ## Git Commit Conventions
 
 Format: `task {N}: {action}` with session ID in body.

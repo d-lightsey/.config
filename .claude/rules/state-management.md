@@ -161,6 +161,59 @@ The `repository_health` section tracks repository-wide technical debt metrics:
 
 **Update Mechanism**: The `/todo` command updates `repository_health` during postflight (Section 5.7). Values are computed via grep and synced to both state.json and TODO.md frontmatter.
 
+### Vault Fields Schema
+
+The vault system manages task number cycling when `next_project_number` exceeds 1000.
+
+```json
+{
+  "vault_count": 0,
+  "vault_history": [
+    {
+      "vault_number": 1,
+      "vault_dir": "specs/vault/01-vault/",
+      "created_at": "2026-03-19T12:00:00Z",
+      "task_range": "1-999",
+      "archived_count": 150,
+      "final_task_number": 1003
+    }
+  ]
+}
+```
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `vault_count` | number | Number of completed vault archival operations (0 initially) |
+| `vault_history` | array | History of vault operations with metadata |
+
+**Vault History Entry Fields**:
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `vault_number` | number | Sequential vault number (1-indexed) |
+| `vault_dir` | string | Path to vault directory (e.g., `specs/vault/01-vault/`) |
+| `created_at` | string | ISO8601 timestamp when vault was created |
+| `task_range` | string | Range of task numbers archived (e.g., `1-999`) |
+| `archived_count` | number | Number of tasks archived to vault |
+| `final_task_number` | number | Last task number before reset |
+
+**Vault Trigger Condition**: When `next_project_number > 1000`, the `/todo` command initiates vault operation (with user confirmation).
+
+**Vault Operation Steps**:
+1. Move `specs/archive/` to `specs/vault/{NN-vault}/archive/`
+2. Create `specs/vault/{NN-vault}/meta.json` with vault metadata
+3. Reinitialize empty `specs/archive/` with fresh state.json
+4. Renumber active tasks > 1000 by subtracting 1000
+5. Rename task directories from 4-digit to 3-digit format
+6. Update all artifact paths and dependencies
+7. Reset `next_project_number` to max(renumbered tasks) + 1
+8. Increment `vault_count` and add entry to `vault_history`
+
+**Edge Cases**:
+- **No tasks > 1000**: Vault operation proceeds without renumbering
+- **Gaps in numbering**: Only existing tasks > 1000 are renumbered
+- **OpenCode prefix handling**: Both `OC_1001_` and `1001_` directory formats are supported
+
 ### Completion Fields Schema
 
 When a task transitions to `status: "completed"`, these fields are populated:
