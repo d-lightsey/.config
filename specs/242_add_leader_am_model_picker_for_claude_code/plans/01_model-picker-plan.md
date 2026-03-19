@@ -1,7 +1,7 @@
 # Implementation Plan: Task #242
 
 - **Task**: 242 - add_leader_am_model_picker_for_claude_code
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1-2 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/242_add_leader_am_model_picker_for_claude_code/reports/01_model-picker-research.md
@@ -46,7 +46,7 @@ Implement a `<leader>am` keymap that opens a model picker for Claude Code using 
 
 ## Implementation Phases
 
-### Phase 1: Update Default Model [NOT STARTED]
+### Phase 1: Update Default Model [COMPLETED]
 
 **Goal**: Change default model from `sonnet` to `opus` in settings.local.json
 
@@ -66,7 +66,7 @@ Implement a `<leader>am` keymap that opens a model picker for Claude Code using 
 
 ---
 
-### Phase 2: Add Model Picker Keymap [NOT STARTED]
+### Phase 2: Add Model Picker Keymap [COMPLETED]
 
 **Goal**: Implement `<leader>am` keymap with vim.ui.select picker
 
@@ -160,7 +160,7 @@ end, desc = "model (claude)", icon = "󰘦" },
 
 ---
 
-### Phase 3: Final Verification [NOT STARTED]
+### Phase 3: Final Verification [COMPLETED]
 
 **Goal**: End-to-end testing of the implementation
 

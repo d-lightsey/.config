@@ -8,11 +8,14 @@ next_project_number: 243
 
 ### 242. Add <leader>am model picker for Claude Code with Opus as default
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Started**: 2026-03-19
+- **Completed**: 2026-03-19
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [01_model-picker-research.md](242_add_leader_am_model_picker_for_claude_code/reports/01_model-picker-research.md)
 - **Plan**: [01_model-picker-plan.md](242_add_leader_am_model_picker_for_claude_code/plans/01_model-picker-plan.md)
+- **Summary**: [01_model-picker-summary.md](242_add_leader_am_model_picker_for_claude_code/summaries/01_model-picker-summary.md)
 
 **Description**: Add a `<leader>am` keymap that opens a Telescope picker listing the three Anthropic Claude models (Opus 4.6 first, then Sonnet 4.6, then Haiku 4.5). Selecting a model updates `~/.config/.claude/settings.local.json` with the chosen model value and notifies the user that a restart is required. Follow the same file-modification pattern used by `<leader>ay` (yolo mode toggle): read the JSON file, update the `"model"` field, write back. Also update the global default from `"sonnet"` to `"opus"` in `settings.local.json` as part of this task. The picker should use `vim.ui.select` or a lightweight Telescope dropdown (not the full session picker complexity), display the three options with model IDs and human-readable labels, and show the currently active model visually. Add the keymap entry in `which-key.lua` under the `<leader>a` (AI) group with icon and desc `"model (claude)"`.
 

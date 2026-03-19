@@ -362,6 +362,71 @@ return {
           { config_path = config_path, yolo_enabled = yolo_enabled }
         )
       end, desc = "toggle yolo mode", icon = "󰒓" },
+
+      -- Model picker - select Claude Code model
+      { "<leader>am", function()
+        local config_path = vim.fn.expand("~/.config/.claude/settings.local.json")
+
+        -- Model definitions (Opus first per task description)
+        local models = {
+          { id = "opus", label = "Opus 4.6", desc = "Most powerful - complex reasoning" },
+          { id = "sonnet", label = "Sonnet 4.6", desc = "Balanced - everyday coding" },
+          { id = "haiku", label = "Haiku 4.5", desc = "Fastest - quick tasks" },
+        }
+
+        -- Read current settings
+        local current_model = "sonnet"  -- default fallback
+        local file = io.open(config_path, "r")
+        if file then
+          local content = file:read("*all")
+          file:close()
+          local ok, settings = pcall(vim.fn.json_decode, content)
+          if ok and settings and settings.model then
+            current_model = settings.model
+          end
+        end
+
+        -- Show picker
+        vim.ui.select(models, {
+          prompt = "Select Claude model:",
+          format_item = function(item)
+            local marker = (item.id == current_model) and " [*]" or ""
+            return string.format("%s - %s%s", item.label, item.desc, marker)
+          end,
+        }, function(choice)
+          if not choice then return end
+
+          -- Read current settings (re-read for freshness)
+          local settings = {}
+          local read_file = io.open(config_path, "r")
+          if read_file then
+            local content = read_file:read("*all")
+            read_file:close()
+            local ok, data = pcall(vim.fn.json_decode, content)
+            if ok and data then settings = data end
+          end
+
+          settings.model = choice.id
+
+          local write_ok, write_err = pcall(function()
+            local write_file = io.open(config_path, "w")
+            if not write_file then error("Cannot open file for writing") end
+            write_file:write(vim.fn.json_encode(settings))
+            write_file:close()
+          end)
+
+          if not write_ok then
+            notify.editor("Failed to write settings: " .. tostring(write_err), notify.categories.ERROR)
+            return
+          end
+
+          notify.editor(
+            string.format("Model set to %s (restart required)", choice.label),
+            notify.categories.USER_ACTION,
+            { model = choice.id }
+          )
+        end)
+      end, desc = "model (claude)", icon = "󰘦" },
     })
 
     -- ============================================================================
