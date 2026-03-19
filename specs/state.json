@@ -5,13 +5,13 @@
     {
       "project_number": 243,
       "project_name": "create_recommended_order_utility",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "description": "Create .claude/scripts/update-recommended-order.sh with three functions: (1) add_to_recommended_order TASK_NUM - insert task into Recommended Order section based on dependency position, (2) remove_from_recommended_order TASK_NUM - remove task entry from section, (3) refresh_recommended_order - regenerate entire section from state.json dependency graph using topological sort. The section format is: numbered list with bold task numbers, arrow separator, action hints, and parenthetical dependency notes. Also update .claude/rules/state-management.md to document the Recommended Order section format and conventions.",
       "effort": "2-3 hours",
       "dependencies": [],
       "created": "2026-03-19T19:00:36Z",
-      "last_updated": "2026-03-19T19:05:07Z",
+      "last_updated": "2026-03-19T19:18:16Z",
       "artifacts": [
         {
           "type": "research",
@@ -22,10 +22,19 @@
           "path": "specs/243_recommended_order_integration/plans/01_recommended-order-utility.md",
           "type": "plan",
           "summary": "5-phase implementation plan for Recommended Order utility script"
+        },
+        {
+          "path": "specs/243_recommended_order_integration/summaries/01_recommended-order-utility-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
         }
       ],
-      "session_id": "sess_1773946960_2285a5",
-      "planned": "2026-03-19T19:05:07Z"
+      "session_id": "sess_1773951200_a7c2b1",
+      "planned": "2026-03-19T19:05:07Z",
+      "started": "2026-03-19T19:11:20Z",
+      "completed": "2026-03-19T19:18:16Z",
+      "completion_summary": "Created update-recommended-order.sh utility with three functions (add, remove, refresh) for maintaining topologically-sorted task recommendations in TODO.md. Added documentation to state-management.md.",
+      "claudemd_suggestions": "Added Recommended Order Section to .claude/rules/state-management.md with format specification, utility script usage, and integration points documentation"
     },
     {
       "project_number": 244,

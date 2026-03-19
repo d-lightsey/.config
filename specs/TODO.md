@@ -20,12 +20,14 @@ next_project_number: 245
 
 ### 243. Create Recommended Order helper utility script
 - **Effort**: 2-3 hours
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Started**: 2026-03-19
+- **Completed**: 2026-03-19
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_recommended-order-research.md](243_recommended_order_integration/reports/01_recommended-order-research.md)
 - **Plan**: [01_recommended-order-utility.md](243_recommended_order_integration/plans/01_recommended-order-utility.md)
+- **Summary**: [01_recommended-order-utility-summary.md](243_recommended_order_integration/summaries/01_recommended-order-utility-summary.md)
 
 **Description**: Create .claude/scripts/update-recommended-order.sh with three functions: (1) add_to_recommended_order TASK_NUM - insert task into Recommended Order section based on dependency position, (2) remove_from_recommended_order TASK_NUM - remove task entry from section, (3) refresh_recommended_order - regenerate entire section from state.json dependency graph using topological sort. The section format is: numbered list with bold task numbers, arrow separator, action hints, and parenthetical dependency notes. Also update .claude/rules/state-management.md to document the Recommended Order section format and conventions.
 
@@ -691,7 +693,6 @@ next_project_number: 245
 
 ## Recommended Order
 
-1. **243** -> implement (unblocks 244)
-2. **87** -> plan (independent)
-3. **78** -> implement (independent)
-4. **244** -> plan (independent)
+1. **87** -> plan (independent)
+2. **78** -> implement (independent)
+3. **244** -> plan (independent)

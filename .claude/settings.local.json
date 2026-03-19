@@ -1,14 +1,1 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(echo:*)"
-    ]
-  },
-  "model": "sonnet",
-  "enableAllProjectMcpServers": true,
-  "enabledMcpjsonServers": [
-    "lean-lsp"
-  ],
-  "_comment": "Personal project overrides - not committed to git",
-  "outputStyle": "default"
-}
+{"enableAllProjectMcpServers": true, "_comment": "Personal project overrides - not committed to git", "model": "opus", "permissions": {"allow": ["Bash(echo:*)"]}, "outputStyle": "default", "enabledMcpjsonServers": ["lean-lsp"]}

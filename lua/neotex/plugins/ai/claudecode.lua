@@ -34,8 +34,21 @@ return {
       popd_cmd = "popd >/dev/null 2>&1",    -- Suppress popd output
     },
 
-    -- Base command
-    command = "claude --dangerously-skip-permissions",
+    -- Base command (model read from ~/.claude/settings.local.json at startup)
+    command = (function()
+      local model = "sonnet"
+      local path = vim.fn.expand("~/.claude/settings.local.json")
+      local f = io.open(path, "r")
+      if f then
+        local content = f:read("*all")
+        f:close()
+        local ok, data = pcall(vim.fn.json_decode, content)
+        if ok and data and data.model then
+          model = data.model
+        end
+      end
+      return "claude --dangerously-skip-permissions --model " .. model
+    end)(),
 
     -- Command variants for different modes
     command_variants = {
