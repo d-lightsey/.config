@@ -385,7 +385,7 @@ return {
 
         -- Model definitions (Opus first per task description)
         local models = {
-          { id = "opus[1m]", label = "Opus 4.6 (1M)", desc = "Most powerful - 1M context" },
+          { id = "opus", label = "Opus 4.6 (1M)", desc = "Most powerful - 1M context" },
           { id = "sonnet", label = "Sonnet 4.6", desc = "Balanced - everyday coding" },
           { id = "haiku", label = "Haiku 4.5", desc = "Fastest - quick tasks" },
         }

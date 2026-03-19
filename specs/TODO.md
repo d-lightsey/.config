@@ -11,7 +11,9 @@ next_project_number: 249
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [01_meta-research.md](248_todo_vault_archival_number_reset/reports/01_meta-research.md)
+- **Research**:
+  - [01_meta-research.md](248_todo_vault_archival_number_reset/reports/01_meta-research.md)
+  - [02_vault-renumbering-research.md](248_todo_vault_archival_number_reset/reports/02_vault-renumbering-research.md)
 
 **Description**: When `next_project_number` exceeds 1000, the /todo command initiates a vault operation: moves `specs/archive/` into `specs/vault/{NN-vault}/`, reinitializes a fresh archive, and resets `next_project_number` to 1. Encompasses vault state schema design (vault_count and vault_history fields in state.json), the vault archival operation in /todo (threshold detection, user confirmation, directory moves), and task number reset logic.
 
