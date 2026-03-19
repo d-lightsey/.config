@@ -456,13 +456,17 @@ count_entries() {
     local section_end
     section_end=$(get_section_end "$section_start")
 
+    local count
     if [[ "$section_end" -eq 0 ]]; then
-        # Section goes to EOF
-        grep -c "^[0-9]\+\. \*\*" "$TODO_FILE" 2>/dev/null || echo "0"
+        # Section goes to EOF - count from section_start to end
+        count=$(tail -n +"$((section_start + 1))" "$TODO_FILE" | grep -c "^[0-9]\+\. \*\*" 2>/dev/null)
     else
         # Count entries between section_start and section_end
-        sed -n "$((section_start + 1)),$((section_end - 1))p" "$TODO_FILE" | grep -c "^[0-9]\+\. \*\*" 2>/dev/null || echo "0"
+        count=$(sed -n "$((section_start + 1)),$((section_end - 1))p" "$TODO_FILE" 2>/dev/null | grep -c "^[0-9]\+\. \*\*" 2>/dev/null)
     fi
+
+    # Ensure we return a valid number
+    echo "${count:-0}"
 }
 
 add_to_recommended_order() {
