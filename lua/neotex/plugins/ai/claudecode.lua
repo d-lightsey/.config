@@ -36,7 +36,7 @@ return {
 
     -- Base command (model read from ~/.claude/settings.local.json at startup)
     command = (function()
-      local model = "sonnet"
+      local model = "claude-sonnet-4-6"
       local path = vim.fn.expand("~/.claude/settings.local.json")
       local f = io.open(path, "r")
       if f then

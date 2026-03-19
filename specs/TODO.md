@@ -8,9 +8,10 @@ next_project_number: 247
 
 ### 246. Upgrade founder extension typst templates to professional styling
 - **Effort**: 4-6 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [01_typst-template-upgrade.md](246_upgrade_founder_typst_templates_professional/reports/01_typst-template-upgrade.md)
 
 **Description**: Extract the professional typst template design from /home/benjamin/Projects/Logos/Vision/strategy/market-sizing-condensed.typ and use it as the basis for the typst templates in the founder extension, enabling /plan + /implement on founder tasks (market, analyze, strategy) to produce professional PDF reports.
 
