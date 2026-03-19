@@ -421,12 +421,240 @@ refresh_recommended_order() {
 }
 
 # ============================================================================
-# add_to_recommended_order (placeholder - implemented in Phase 3)
+# add_to_recommended_order - Insert task based on dependency position
 # ============================================================================
 
+# Get the position (line number within entries) of a task in Recommended Order
+# Returns 0 if task not found
+get_entry_position() {
+    local task_num="$1"
+
+    local section_start
+    section_start=$(get_section_start)
+
+    if [[ "$section_start" -eq 0 ]]; then
+        echo "0"
+        return
+    fi
+
+    # Find the line with this task and extract its position number
+    local pos
+    pos=$(grep "^[0-9]\+\. \*\*${task_num}\*\*" "$TODO_FILE" 2>/dev/null | sed 's/\. .*//')
+    echo "${pos:-0}"
+}
+
+# Count entries in Recommended Order section
+count_entries() {
+    local section_start
+    section_start=$(get_section_start)
+
+    if [[ "$section_start" -eq 0 ]]; then
+        echo "0"
+        return
+    fi
+
+    local section_end
+    section_end=$(get_section_end "$section_start")
+
+    if [[ "$section_end" -eq 0 ]]; then
+        # Section goes to EOF
+        grep -c "^[0-9]\+\. \*\*" "$TODO_FILE" 2>/dev/null || echo "0"
+    else
+        # Count entries between section_start and section_end
+        sed -n "$((section_start + 1)),$((section_end - 1))p" "$TODO_FILE" | grep -c "^[0-9]\+\. \*\*" 2>/dev/null || echo "0"
+    fi
+}
+
 add_to_recommended_order() {
-    echo "ERROR: add_to_recommended_order not yet implemented"
-    return 1
+    local task_num="$1"
+
+    check_todo_exists || return 1
+    check_state_exists || return 1
+
+    # Check if task exists in state.json
+    local task_exists
+    task_exists=$(jq --arg tn "$task_num" '.active_projects[] | select(.project_number == ($tn | tonumber))' "$STATE_FILE" 2>/dev/null)
+
+    if [[ -z "$task_exists" ]]; then
+        echo "ERROR: Task $task_num not found in state.json" >&2
+        return 1
+    fi
+
+    # Check if section exists - create if not
+    local section_start
+    section_start=$(get_section_start)
+
+    if [[ "$section_start" -eq 0 ]]; then
+        # Create empty section first, then add
+        local insert_line
+        insert_line=$(find_tasks_section_end)
+
+        local tmp_file
+        tmp_file=$(mktemp)
+
+        head -n "$insert_line" "$TODO_FILE" > "$tmp_file"
+        echo "" >> "$tmp_file"
+        echo "## Recommended Order" >> "$tmp_file"
+        echo "" >> "$tmp_file"
+        tail -n +"$((insert_line + 1))" "$TODO_FILE" >> "$tmp_file"
+
+        mv "$tmp_file" "$TODO_FILE"
+        section_start=$(get_section_start)
+    fi
+
+    # Check if task already in section (idempotent)
+    if grep -q "^[0-9]\+\. \*\*${task_num}\*\*" "$TODO_FILE" 2>/dev/null; then
+        echo "INFO: Task $task_num already in Recommended Order section"
+        return 0
+    fi
+
+    # Get task's dependencies
+    local -a deps
+    mapfile -t deps < <(jq -r --arg tn "$task_num" '.active_projects[] |
+        select(.project_number == ($tn | tonumber)) |
+        .dependencies // [] | .[]' "$STATE_FILE" 2>/dev/null)
+
+    # Find the latest position of any dependency in the section
+    local max_dep_pos=0
+    for dep in "${deps[@]}"; do
+        [[ -z "$dep" ]] && continue
+        local dep_pos
+        dep_pos=$(get_entry_position "$dep")
+        if [[ "$dep_pos" -gt "$max_dep_pos" ]]; then
+            max_dep_pos=$dep_pos
+        fi
+    done
+
+    # Determine insert position
+    local insert_pos
+    if [[ "$max_dep_pos" -gt 0 ]]; then
+        # Insert after the last dependency
+        insert_pos=$((max_dep_pos + 1))
+    else
+        # No dependencies in section, append to end
+        local entry_count
+        entry_count=$(count_entries)
+        insert_pos=$((entry_count + 1))
+    fi
+
+    # Generate the entry
+    local entry
+    entry=$(generate_entry "$insert_pos" "$task_num")
+
+    # Insert at the correct position
+    local section_end
+    section_end=$(get_section_end "$section_start")
+
+    local tmp_file
+    tmp_file=$(mktemp)
+
+    local line_num=0
+    local entry_num=0
+    local in_section=0
+    local inserted=0
+
+    while IFS= read -r line; do
+        line_num=$((line_num + 1))
+
+        # Check if we're entering the section
+        if [[ "$line_num" -eq "$section_start" ]]; then
+            in_section=1
+            echo "$line" >> "$tmp_file"
+            continue
+        fi
+
+        # Check if we're leaving the section
+        if [[ "$section_end" -ne 0 && "$line_num" -ge "$section_end" ]]; then
+            # Before leaving, check if we need to insert at end
+            if [[ "$in_section" -eq 1 && "$inserted" -eq 0 ]]; then
+                echo "$entry" >> "$tmp_file"
+                inserted=1
+            fi
+            in_section=0
+        fi
+
+        if [[ "$in_section" -eq 1 && "$line" =~ ^[0-9]+\.\  ]]; then
+            entry_num=$((entry_num + 1))
+
+            # If this is the insert position, insert before
+            if [[ "$entry_num" -eq "$insert_pos" && "$inserted" -eq 0 ]]; then
+                echo "$entry" >> "$tmp_file"
+                inserted=1
+            fi
+
+            # Renumber this entry (it shifts by 1 after insert)
+            local rest
+            rest=$(echo "$line" | sed 's/^[0-9]\+\. //')
+            if [[ "$inserted" -eq 1 ]]; then
+                echo "$((entry_num + 1)). ${rest}" >> "$tmp_file"
+            else
+                echo "${entry_num}. ${rest}" >> "$tmp_file"
+            fi
+        else
+            echo "$line" >> "$tmp_file"
+        fi
+    done < "$TODO_FILE"
+
+    # If we never inserted (appending to end of empty or end of section)
+    if [[ "$inserted" -eq 0 ]]; then
+        # Insert before the last line if section goes to EOF
+        # Need to handle this specially
+        # Actually, we need to insert at the end of the section
+        mv "$tmp_file" "$TODO_FILE"
+
+        # Re-read and insert at end of section content (before empty lines or next section)
+        section_start=$(get_section_start)
+        section_end=$(get_section_end "$section_start")
+
+        tmp_file=$(mktemp)
+        line_num=0
+        in_section=0
+        inserted=0
+        local last_entry_line=0
+
+        while IFS= read -r line; do
+            line_num=$((line_num + 1))
+
+            if [[ "$line_num" -eq "$section_start" ]]; then
+                in_section=1
+            fi
+
+            if [[ "$section_end" -ne 0 && "$line_num" -ge "$section_end" ]]; then
+                in_section=0
+            fi
+
+            if [[ "$in_section" -eq 1 && "$line" =~ ^[0-9]+\.\  ]]; then
+                last_entry_line=$line_num
+            fi
+
+            echo "$line" >> "$tmp_file"
+        done < "$TODO_FILE"
+
+        # Insert after last entry
+        if [[ "$last_entry_line" -gt 0 ]]; then
+            local tmp_file2
+            tmp_file2=$(mktemp)
+            head -n "$last_entry_line" "$tmp_file" > "$tmp_file2"
+            echo "$entry" >> "$tmp_file2"
+            tail -n +"$((last_entry_line + 1))" "$tmp_file" >> "$tmp_file2"
+            mv "$tmp_file2" "$TODO_FILE"
+            rm -f "$tmp_file"
+        else
+            # No entries yet, insert after section header + blank line
+            local tmp_file2
+            tmp_file2=$(mktemp)
+            head -n "$((section_start + 1))" "$tmp_file" > "$tmp_file2"
+            echo "$entry" >> "$tmp_file2"
+            tail -n +"$((section_start + 2))" "$tmp_file" >> "$tmp_file2"
+            mv "$tmp_file2" "$TODO_FILE"
+            rm -f "$tmp_file"
+        fi
+    else
+        mv "$tmp_file" "$TODO_FILE"
+    fi
+
+    echo "Added task $task_num to Recommended Order at position $insert_pos"
+    return 0
 }
 
 # ============================================================================
