@@ -1,10 +1,34 @@
 ---
-next_project_number: 243
+next_project_number: 245
 ---
 
 # TODO
 
 ## Tasks
+
+### 244. Integrate Recommended Order utility into workflow commands
+- **Effort**: 3-4 hours
+- **Status**: [RESEARCHED]
+- **Started**: 2026-03-19
+- **Language**: meta
+- **Dependencies**: Task #243
+- **Research**: [01_recommended-order-research.md](243_recommended_order_integration/reports/01_recommended-order-research.md)
+
+**Description**: Integrate the Recommended Order utility into 4 workflow components: (1) /task command - call add_to_recommended_order after creating task entry (Step 7), (2) skill-implementer - call remove_from_recommended_order in Stage 7 postflight after completion, (3) skill-spawn - call refresh_recommended_order in Stage 12 after creating spawned tasks, (4) skill-todo - call remove_from_recommended_order in Stage 10 for each archived task. Ensure graceful handling when Recommended Order section does not exist (skip, do not fail).
+
+---
+
+### 243. Create Recommended Order helper utility script
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Started**: 2026-03-19
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_recommended-order-research.md](243_recommended_order_integration/reports/01_recommended-order-research.md)
+
+**Description**: Create .claude/scripts/update-recommended-order.sh with three functions: (1) add_to_recommended_order TASK_NUM - insert task into Recommended Order section based on dependency position, (2) remove_from_recommended_order TASK_NUM - remove task entry from section, (3) refresh_recommended_order - regenerate entire section from state.json dependency graph using topological sort. The section format is: numbered list with bold task numbers, arrow separator, action hints, and parenthetical dependency notes. Also update .claude/rules/state-management.md to document the Recommended Order section format and conventions.
+
+---
 
 ### 242. Add <leader>am model picker for Claude Code with Opus as default
 - **Effort**: 2-3 hours
