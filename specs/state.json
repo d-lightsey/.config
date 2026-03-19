@@ -5,10 +5,10 @@
     {
       "project_number": 240,
       "project_name": "fix_market_command_forcing_questions_workflow",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-18T23:37:02Z",
-      "last_updated": "2026-03-18T23:50:11Z",
+      "last_updated": "2026-03-19T00:08:35Z",
       "session_id": "sess_1773877789_2642a8",
       "researched": "2026-03-18T23:43:33Z",
       "artifacts": [
@@ -21,10 +21,18 @@
           "path": "specs/240_fix_market_command_forcing_questions_workflow/plans/01_founder-workflow-plan.md",
           "type": "plan",
           "summary": "7-phase implementation plan for restructuring founder extension commands to ask forcing questions before task creation"
+        },
+        {
+          "path": "specs/240_fix_market_command_forcing_questions_workflow/summaries/01_founder-workflow-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results and new workflow documentation"
         }
       ],
       "planned": "2026-03-18T23:48:37Z",
-      "implementing": "2026-03-18T23:50:11Z"
+      "implementing": "2026-03-18T23:50:11Z",
+      "completed": "2026-03-19T00:08:35Z",
+      "completion_summary": "Restructured /market, /analyze, /strategy commands to ask forcing questions BEFORE task creation. Added task_type field for finer-grained routing in /research. All commands now store forcing_data in task metadata for use by research agents.",
+      "claudemd_suggestions": "Added task_type field schema to state-management.md, updated research.md with composite key routing, updated founder extension EXTENSION.md to v2.1"
     },
     {
       "project_number": 238,

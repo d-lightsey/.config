@@ -1,7 +1,7 @@
 # Implementation Plan: Task #240
 
 - **Task**: 240 - Fix /market command forcing questions workflow
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4-6 hours
 - **Dependencies**: None
 - **Research Inputs**: [01_market-workflow-research.md](../reports/01_market-workflow-research.md)
