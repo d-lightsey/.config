@@ -5,10 +5,10 @@
     {
       "project_number": 245,
       "project_name": "fix_plan_status_update_script_arguments",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-19T19:27:32Z",
-      "last_updated": "2026-03-19T19:27:32Z",
+      "last_updated": "2026-03-19T19:46:57Z",
       "effort": "30 minutes",
       "dependencies": [],
       "artifacts": [
@@ -16,8 +16,15 @@
           "type": "research",
           "path": "specs/245_fix_plan_status_update_script_arguments/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview identifying argument mismatch bug"
+        },
+        {
+          "path": "specs/245_fix_plan_status_update_script_arguments/plans/01_fix-script-args.md",
+          "type": "plan",
+          "summary": "2-phase implementation plan to fix update-plan-status.sh argument mismatch in skill-implementer and skill-grant"
         }
-      ]
+      ],
+      "session_id": "sess_1773954000_d1a5g4",
+      "planned": "2026-03-19T19:46:57Z"
     },
     {
       "project_number": 243,
