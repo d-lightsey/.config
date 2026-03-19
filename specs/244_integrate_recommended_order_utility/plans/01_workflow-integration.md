@@ -1,7 +1,7 @@
 # Implementation Plan: Integrate Recommended Order utility into workflow commands
 
 - **Task**: 244 - Integrate Recommended Order utility into workflow commands
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2-3 hours
 - **Dependencies**: Task #243 (completed)
 - **Research Inputs**: [01_recommended-order-research.md](../reports/01_recommended-order-research.md)
@@ -47,7 +47,7 @@ From the research report (task 243):
 
 ## Implementation Phases
 
-### Phase 1: Integrate into /task command [NOT STARTED]
+### Phase 1: Integrate into /task command [COMPLETED]
 
 **Goal**: Add call to `add_to_recommended_order` after creating a new task entry.
 
@@ -76,7 +76,7 @@ fi
 
 ---
 
-### Phase 2: Integrate into skill-implementer [NOT STARTED]
+### Phase 2: Integrate into skill-implementer [COMPLETED]
 
 **Goal**: Add call to `remove_from_recommended_order` in Stage 7 postflight after task completion.
 
@@ -105,7 +105,7 @@ fi
 
 ---
 
-### Phase 3: Integrate into skill-spawn [NOT STARTED]
+### Phase 3: Integrate into skill-spawn [COMPLETED]
 
 **Goal**: Add call to `refresh_recommended_order` in Stage 12 after creating spawned tasks.
 
@@ -134,7 +134,7 @@ fi
 
 ---
 
-### Phase 4: Integrate into skill-todo [NOT STARTED]
+### Phase 4: Integrate into skill-todo [COMPLETED]
 
 **Goal**: Add call to `remove_from_recommended_order` in Stage 10 for each archived task.
 
@@ -163,7 +163,7 @@ fi
 
 ---
 
-### Phase 5: Verify all integrations [NOT STARTED]
+### Phase 5: Verify all integrations [COMPLETED]
 
 **Goal**: Test all integration points together in a realistic workflow.
 

@@ -264,6 +264,14 @@ Update TODO.md: Change status marker from `[IMPLEMENTING]` to `[COMPLETED]`.
 .claude/scripts/update-plan-status.sh "$task_number" "$padded_num" "$project_name" "COMPLETED"
 ```
 
+**Remove from Recommended Order section** (non-blocking):
+```bash
+# Remove completed task from Recommended Order section (non-blocking)
+if source "$PROJECT_ROOT/.claude/scripts/update-recommended-order.sh" 2>/dev/null; then
+    remove_from_recommended_order "$task_number" || echo "Note: Failed to update Recommended Order"
+fi
+```
+
 **If status is "partial"**:
 
 Keep status as "implementing" but update resume point:
