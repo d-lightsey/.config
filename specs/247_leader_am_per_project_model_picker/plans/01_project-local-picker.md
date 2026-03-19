@@ -1,7 +1,7 @@
 # Implementation Plan: Task #247
 
 - **Task**: 247 - Make leader-am model picker write to project-level .claude/settings.local.json
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1-1.5 hours
 - **Dependencies**: None
 - **Research Inputs**: [01_project-local-model-picker.md](../reports/01_project-local-model-picker.md)
@@ -47,7 +47,7 @@ Integrated findings from 01_project-local-model-picker.md:
 
 ## Implementation Phases
 
-### Phase 1: Add path determination helper function [NOT STARTED]
+### Phase 1: Add path determination helper function [COMPLETED]
 
 **Goal**: Create a local helper function that determines the appropriate settings path (project-local or global) based on git repository detection.
 
@@ -72,7 +72,7 @@ Integrated findings from 01_project-local-model-picker.md:
 
 ---
 
-### Phase 2: Update config path usage [NOT STARTED]
+### Phase 2: Update config path usage [IN PROGRESS]
 
 **Goal**: Replace the hardcoded global path with calls to the new helper function throughout the picker handler.
 

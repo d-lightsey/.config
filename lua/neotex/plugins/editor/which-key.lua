@@ -365,7 +365,23 @@ return {
 
       -- Model picker - select Claude Code model
       { "<leader>am", function()
-        local config_path = vim.fn.expand("~/.claude/settings.local.json")
+        -- Determine settings path (project-local or global)
+        local function get_claude_settings_path()
+          local git = require("neotex.plugins.ai.claude.claude-session.git")
+          if git.is_git_repo() then
+            local git_root = git.get_git_root()
+            if git_root and git_root ~= "" then
+              local claude_dir = git_root .. "/.claude"
+              if vim.fn.isdirectory(claude_dir) == 0 then
+                vim.fn.mkdir(claude_dir, "p")
+              end
+              return claude_dir .. "/settings.local.json", "project"
+            end
+          end
+          return vim.fn.expand("~/.claude/settings.local.json"), "global"
+        end
+
+        local config_path, config_scope = get_claude_settings_path()
 
         -- Model definitions (Opus first per task description)
         local models = {
