@@ -8,14 +8,19 @@
       "status": "researched",
       "language": "meta",
       "created": "2026-03-20T01:46:33Z",
-      "last_updated": "2026-03-20T01:51:44Z",
-      "session_id": "sess_1773971251_a9f32e",
-      "researched": "2026-03-20T01:51:44Z",
+      "last_updated": "2026-03-20T02:05:27Z",
+      "session_id": "sess_1773971923_eb390f",
+      "researched": "2026-03-20T02:05:27Z",
       "artifacts": [
         {
           "path": "specs/250_embed_vault_detection_in_archive_stage/reports/01_vault-embedding-strategy.md",
           "type": "research",
           "summary": "Research report analyzing LLM stage-skipping behavior and recommending embedded vault detection with bash enforcement"
+        },
+        {
+          "path": "specs/250_embed_vault_detection_in_archive_stage/reports/02_team-research.md",
+          "type": "research",
+          "summary": "Team research with 2 teammates: best practices for vault embedding"
         }
       ]
     },
