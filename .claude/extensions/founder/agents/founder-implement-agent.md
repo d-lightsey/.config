@@ -123,6 +123,25 @@ fi
 - Research report contains the raw data gathered through forcing questions
 - Both are needed for complete context during implementation
 
+### Stage 2.5: Detect Typst Availability
+
+Before proceeding with phase execution, check whether the `typst` CLI is available. This determines whether Phase 5 (Typst Document Generation) can execute or must be skipped.
+
+```bash
+typst_available=false
+if command -v typst &> /dev/null; then
+  typst_available=true
+fi
+```
+
+**If typst is not available**, log a warning:
+```
+WARNING: typst not installed. Phase 5 (PDF generation) will be skipped.
+Install with: nix profile install nixpkgs#typst
+```
+
+The `typst_available` flag is referenced later in Stage 5 (Phase 5 execution) to determine whether to attempt typst compilation or skip with a warning. Phase 5 skipping does NOT block task completion -- the markdown report from Phase 4 is the primary deliverable.
+
 ### Stage 3: Detect Resume Point
 
 Scan phases for first incomplete:
@@ -131,6 +150,27 @@ Scan phases for first incomplete:
 - `[NOT STARTED]` -> Start here
 
 If all phases `[COMPLETED]`: Task already done, return implemented status.
+
+### Stage 3.5: Ensure Typst Phase Exists
+
+After detecting the resume point, verify the plan includes Phase 5 (Typst Document Generation). Plans created after Task #253 always include this phase, but legacy plans may lack it.
+
+**Check for Phase 5 heading in plan file**:
+```bash
+if ! grep -q "Phase 5.*Typst" "$plan_path"; then
+  echo "INFO: Plan lacks Phase 5 (Typst Document Generation). Treating as implicit."
+  # Proceed as if Phase 5 exists after Phase 4
+  implicit_typst_phase=true
+fi
+```
+
+**Backward compatibility behavior**:
+- If the plan contains a "Phase 5: Typst Document Generation" heading: execute it normally
+- If the plan lacks Phase 5: agent proceeds as if Phase 5 exists after Phase 4, using the standard Phase 5 execution logic from this agent specification
+- The `implicit_typst_phase` flag indicates the phase was injected rather than planned
+- Phase markers for injected phases are not written back to the plan file (no heading to update)
+
+This ensures all founder reports attempt typst generation regardless of when the plan was created.
 
 ### Stage 4: Load Report Template
 
@@ -236,16 +276,20 @@ Execute each phase starting from resume point. Use context from BOTH plan and re
 
 **For all report types**, generate professional PDF output using **self-contained typst files** (no external imports).
 
-1. Mark phase `[IN PROGRESS]` in plan file
+**Non-blocking**: Phase 5 failure does NOT block task completion. The markdown report from Phase 4 is the primary deliverable. If Phase 5 fails for any reason, mark it `[PARTIAL]` and proceed to Stage 6.
 
-2. **Check typst availability**:
+1. Mark phase `[IN PROGRESS]` in plan file (or skip marker update if `implicit_typst_phase=true`)
+
+2. **Check typst_available flag** (set in Stage 2.5):
    ```bash
-   if ! command -v typst &> /dev/null; then
-     echo "WARNING: typst not installed. Install with: nix profile install nixpkgs#typst"
-     echo "Phase 5 skipped - markdown report available at ${output_path}"
-     # Mark phase as [PARTIAL] and continue
+   if [ "$typst_available" = "false" ]; then
+     echo "WARNING: typst not installed. Phase 5 skipped."
+     echo "Markdown report available at ${output_path}"
+     # Mark phase [PARTIAL] (unless implicit) and continue to Stage 6
+     typst_skipped=true
      return
    fi
+   typst_skipped=false
    ```
 
 3. **Create founder directory**:
@@ -291,7 +335,13 @@ Execute each phase starting from resume point. Use context from BOTH plan and re
    fi
    ```
 
-7. Mark phase `[COMPLETED]`
+7. **Mark phase status**:
+   - If PDF generated successfully: mark `[COMPLETED]`
+   - If typst compilation failed but .typ preserved: mark `[PARTIAL]`
+   - If typst not available (skipped): mark `[PARTIAL]`
+   - If `implicit_typst_phase=true`: skip phase marker update (no heading in plan file)
+
+   In all cases, proceed to Stage 6. Phase 5 status does not affect the overall task status -- if Phases 1-4 succeeded, the task is `implemented`.
 
 **Self-Contained Typst Content Generation Pattern**:
 
@@ -589,6 +639,13 @@ This implementation used context from:
 - SOM Y1: ${SOM_Y1}
 - SOM Y3: ${SOM_Y3}
 
+## Typst Generation
+
+- Typst available: {yes|no}
+- Typst skipped: {yes|no}
+- PDF generated: {yes|no|skipped}
+- Typst source: {path or "N/A"}
+
 ## Verification
 
 - All data sources cited
@@ -620,7 +677,12 @@ Write final metadata:
     {
       "type": "implementation",
       "path": "founder/{report-type}-{slug}.pdf",
-      "summary": "Professional PDF report (if typst available)"
+      "summary": "Professional PDF report (conditional on typst_available)"
+    },
+    {
+      "type": "implementation",
+      "path": "founder/{report-type}-{slug}.typ",
+      "summary": "Typst source file (conditional on typst_available)"
     },
     {
       "type": "summary",
@@ -640,6 +702,8 @@ Write final metadata:
     "report_type": "{report_type}",
     "phases_completed": 5,
     "phases_total": 5,
+    "typst_available": true,
+    "typst_skipped": false,
     "typst_generated": true,
     "pdf_path": "founder/{report-type}-{slug}.pdf",
     "research_report_used": "specs/{NNN}_{SLUG}/reports/01_{short-slug}.md",

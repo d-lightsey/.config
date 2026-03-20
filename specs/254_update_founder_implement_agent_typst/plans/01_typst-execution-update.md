@@ -1,7 +1,7 @@
 # Implementation Plan: Task #254
 
 - **Task**: 254 - Update founder-implement-agent for typst output generation
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: Task #253 (completed)
 - **Research Inputs**: specs/254_update_founder_implement_agent_typst/reports/01_meta-research.md
@@ -45,7 +45,7 @@ From the research report:
 
 ## Implementation Phases
 
-### Phase 1: Add Typst Availability Check Section [NOT STARTED]
+### Phase 1: Add Typst Availability Check Section [COMPLETED]
 
 **Goal**: Create a reusable typst availability check pattern at Stage 2 level
 
@@ -66,7 +66,7 @@ From the research report:
 
 ---
 
-### Phase 2: Add Dynamic Phase Injection Logic [NOT STARTED]
+### Phase 2: Add Dynamic Phase Injection Logic [COMPLETED]
 
 **Goal**: Add backward compatibility for plans that lack Phase 5
 
@@ -87,7 +87,7 @@ From the research report:
 
 ---
 
-### Phase 3: Enhance Phase 5 Execution Instructions [NOT STARTED]
+### Phase 3: Enhance Phase 5 Execution Instructions [COMPLETED]
 
 **Goal**: Ensure Phase 5 produces typst files and handles errors gracefully
 
@@ -110,7 +110,7 @@ From the research report:
 
 ---
 
-### Phase 4: Update Summary and Metadata Templates [NOT STARTED]
+### Phase 4: Update Summary and Metadata Templates [COMPLETED]
 
 **Goal**: Ensure summary correctly reports typst generation status
 
@@ -131,7 +131,7 @@ From the research report:
 
 ---
 
-### Phase 5: Verification and Testing [NOT STARTED]
+### Phase 5: Verification and Testing [COMPLETED]
 
 **Goal**: Verify the updated agent specification is complete and coherent
 
