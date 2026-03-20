@@ -130,7 +130,7 @@ Key findings integrated from team research:
 
 ---
 
-### Phase 4: Externalize Worktree Metadata Header [NOT STARTED]
+### Phase 4: Externalize Worktree Metadata Header [COMPLETED]
 
 **Goal**: Move the worktree task metadata header out of always-loaded CLAUDE.md context.
 
