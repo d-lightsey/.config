@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 249,
+  "next_project_number": 250,
   "active_projects": [
+    {
+      "project_number": 249,
+      "project_name": "fix_skill_todo_vault_stage_numbering",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-20T00:31:30Z",
+      "last_updated": "2026-03-20T00:31:30Z"
+    },
     {
       "project_number": 247,
       "project_name": "leader_am_per_project_model_picker",
