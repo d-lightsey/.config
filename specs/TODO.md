@@ -1,10 +1,32 @@
 ---
-next_project_number: 253
+next_project_number: 255
 ---
 
 # TODO
 
 ## Tasks
+
+### 253. Fix founder-plan-agent to enforce typst generation phase
+- **Effort**: 1-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_meta-research.md](253_fix_founder_plan_agent_typst_phase/reports/01_meta-research.md)
+
+**Description**: Fix the founder-plan-agent.md specification to always include a typst document generation phase (Phase 5) in generated plans. Currently the agent generates plans with varying phase structures that omit typst output, causing the implement agent to never produce typst files.
+
+---
+
+### 254. Update founder-implement-agent for typst output generation
+- **Effort**: 1-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #253
+- **Research**: [01_meta-research.md](254_update_founder_implement_agent_typst/reports/01_meta-research.md)
+
+**Description**: Update the founder-implement-agent.md to correctly execute the typst generation phase and produce typst files as output. Add graceful degradation if typst is not installed, and fallback logic to dynamically add typst phase if missing from plan (backward compatibility).
+
+---
 
 ### 252. Add /legal command-skill-agent to founder extension
 - **Effort**: 9-12 hours

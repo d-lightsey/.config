@@ -1,7 +1,39 @@
 {
   "version": "1.0.0",
-  "next_project_number": 253,
+  "next_project_number": 255,
   "active_projects": [
+    {
+      "project_number": 253,
+      "project_name": "fix_founder_plan_agent_typst_phase",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-20T12:00:00Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/253_fix_founder_plan_agent_typst_phase/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
+    {
+      "project_number": 254,
+      "project_name": "update_founder_implement_agent_typst",
+      "status": "researched",
+      "language": "meta",
+      "created": "2026-03-20T12:00:00Z",
+      "dependencies": [
+        253
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/254_update_founder_implement_agent_typst/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
     {
       "project_number": 251,
       "project_name": "improve_context_efficiency_progressive_disclosure",
