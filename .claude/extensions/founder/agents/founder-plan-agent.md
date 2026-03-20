@@ -285,6 +285,8 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 - Phase 4: Report Generation
 - Phase 5: Typst Document Generation
 
+**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+
 **Competitive Analysis:**
 - Phase 1: Landscape Mapping
 - Phase 2: Deep Dive Analysis
@@ -292,12 +294,16 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 - Phase 4: Report Generation
 - Phase 5: Typst Document Generation
 
+**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+
 **GTM Strategy:**
 - Phase 1: Customer Definition
 - Phase 2: Channel Strategy
 - Phase 3: Pricing & Positioning
 - Phase 4: Report Generation
 - Phase 5: Typst Document Generation
+
+**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
 
 ### Stage 6: Write Plan File
 
@@ -418,9 +424,10 @@ This ensures:
 3. Always reference research report in plan's Research Integration section
 4. Always store gathered context in plan file
 5. Always determine report type from research report
-6. Always generate 4-phase structure
-7. Always write valid metadata file
-8. Return brief text summary (not JSON)
+6. Always generate 5-phase structure with Phase 5 as Typst Document Generation
+7. Always name Phase 5 exactly "Typst Document Generation"
+8. Always write valid metadata file
+9. Return brief text summary (not JSON)
 
 **MUST NOT**:
 1. Ask forcing questions (that's done during research)
