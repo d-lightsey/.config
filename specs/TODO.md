@@ -8,12 +8,13 @@ next_project_number: 251
 
 ### 250. Embed vault detection as inline check within skill-todo archive stage
 - **Effort**: 2-4 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: Task #249
 - **Research**:
   - [01_vault-embedding-strategy.md](250_embed_vault_detection_in_archive_stage/reports/01_vault-embedding-strategy.md)
   - [02_team-research.md](250_embed_vault_detection_in_archive_stage/reports/02_team-research.md) (team: 2 teammates, best practices)
+- **Plan**: [01_vault-embedding-plan.md](250_embed_vault_detection_in_archive_stage/plans/01_vault-embedding-plan.md)
 
 **Description**: Task 249 renumbered vault stages from fractional IDs (10.5-10.9) to integers (11-15) and added a transition directive at Stage 10's exit. Testing in the ProofChecker repo (next_project_number=1007) confirmed the model still skips vault detection entirely. Root cause analysis reveals the problem is architectural, not syntactic: the model does not execute skill stages sequentially like a program. It reads the skill file holistically, plans its approach as "scan, archive, commit", and cherry-picks stages it deems relevant. Separate vault stages (even with integer IDs and transition directives) are skipped because the model pre-evaluates conditions and decides vault is not part of its planned execution path.
 
