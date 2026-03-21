@@ -383,15 +383,15 @@ return {
 
         local config_path, config_scope = get_claude_settings_path()
 
-        -- Model definitions (Opus first per task description)
+        -- Model definitions
         local models = {
-          { id = "opus", label = "Opus 4.6 (1M)", desc = "Most powerful - 1M context" },
-          { id = "sonnet", label = "Sonnet 4.6", desc = "Balanced - everyday coding" },
-          { id = "haiku", label = "Haiku 4.5", desc = "Fastest - quick tasks" },
+          { id = "opus", label = "Opus 4.6 (1M)" },
+          { id = "sonnet", label = "Sonnet 4.6" },
+          { id = "haiku", label = "Haiku 4.5" },
         }
 
-        -- Read current settings
-        local current_model = "sonnet"  -- default fallback
+        -- Read current settings (nil = no override / plan default)
+        local current_model = nil
         local file = io.open(config_path, "r")
         if file then
           local content = file:read("*all")
@@ -407,7 +407,7 @@ return {
           prompt = "Select Claude model:",
           format_item = function(item)
             local marker = (item.id == current_model) and " [*]" or ""
-            return string.format("%s - %s%s", item.label, item.desc, marker)
+            return string.format("%s%s", item.label, marker)
           end,
         }, function(choice)
           if not choice then return end
@@ -422,7 +422,11 @@ return {
             if ok and data then settings = data end
           end
 
-          settings.model = choice.id
+          if choice.id then
+            settings.model = choice.id
+          else
+            settings.model = nil  -- remove override, use plan default
+          end
 
           local write_ok, write_err = pcall(function()
             local write_file = io.open(config_path, "w")
