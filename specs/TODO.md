@@ -49,9 +49,10 @@ next_project_number: 262
 
 ### 257. Create project-timeline.typ Typst template
 - **Effort**: 2-3 hours
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [01_typst-template-research.md](257_project_timeline_typst_template/reports/01_typst-template-research.md)
 
 **Description**: Create self-contained Typst template for project timelines following founder extension typst patterns. Include: color palette (reuse navy theme), page setup, Gantt chart visualization (milestone markers, dependency arrows, critical path highlighting), resource allocation tables, three-point estimation display (optimistic/likely/pessimistic with expected value), WBS hierarchy, and risk matrix visualization.
 
@@ -59,7 +60,7 @@ next_project_number: 262
 
 ### 256. Create timeline-frameworks.md context file
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_timeline-frameworks.md](256_project_timeline_context/reports/01_timeline-frameworks.md)
