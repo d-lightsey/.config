@@ -5,11 +5,11 @@
     {
       "project_number": 256,
       "project_name": "project_timeline_context",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-23T12:37:00Z",
-      "last_updated": "2026-03-23T19:57:08Z",
-      "session_id": "sess_1774295551_477af1",
+      "last_updated": "2026-03-23T20:00:26Z",
+      "session_id": "sess_1774295871_877345",
       "dependencies": [],
       "researched": "2026-03-23T19:57:08Z",
       "artifacts": [
@@ -17,17 +17,23 @@
           "path": "specs/256_project_timeline_context/reports/01_timeline-frameworks.md",
           "type": "research",
           "summary": "Research report with 7 PM domain areas: WBS, milestones, dependencies, PERT, CPM, resources, risk matrices"
+        },
+        {
+          "path": "specs/256_project_timeline_context/plans/01_timeline-frameworks-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for timeline-frameworks.md domain knowledge file"
         }
-      ]
+      ],
+      "planned": "2026-03-23T20:00:26Z"
     },
     {
       "project_number": 257,
       "project_name": "project_timeline_typst_template",
-      "status": "not_started",
+      "status": "researching",
       "language": "meta",
       "created": "2026-03-23T12:37:00Z",
-      "last_updated": "2026-03-23T12:37:00Z",
-      "session_id": "sess_1774294671_a66f55",
+      "last_updated": "2026-03-23T19:59:29Z",
+      "session_id": "sess_1774295940_7e24ca",
       "dependencies": []
     },
     {

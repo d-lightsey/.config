@@ -49,7 +49,7 @@ next_project_number: 262
 
 ### 257. Create project-timeline.typ Typst template
 - **Effort**: 2-3 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Language**: meta
 - **Dependencies**: None
 
@@ -59,10 +59,11 @@ next_project_number: 262
 
 ### 256. Create timeline-frameworks.md context file
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_timeline-frameworks.md](256_project_timeline_context/reports/01_timeline-frameworks.md)
+- **Plan**: [01_timeline-frameworks-plan.md](256_project_timeline_context/plans/01_timeline-frameworks-plan.md)
 
 **Description**: Create context/project/founder/domain/timeline-frameworks.md documenting project management best practices: WBS structure, milestone types (initiation/approval/execution/delivery/review), dependency mapping, resource allocation patterns, three-point estimation (PERT formula), critical path analysis, and risk assessment matrices. This provides domain knowledge for project-agent.
 
