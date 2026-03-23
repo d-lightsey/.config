@@ -6139,6 +6139,2396 @@
       "completion_summary": "Implemented manifest-based blocklist filtering for core sync operations, preventing extension artifacts from leaking into synced projects. Created shared extension picker eliminating 490 lines of duplication. Added self-loading guard and cleaned leftover symlinks.",
       "claudemd_suggestions": "none",
       "archived": "2026-03-12T00:30:07Z"
+    },
+    {
+      "project_number": 256,
+      "project_name": "project_timeline_context",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T20:06:49Z",
+      "session_id": "sess_1774296099_8263bd",
+      "dependencies": [],
+      "researched": "2026-03-23T19:57:08Z",
+      "artifacts": [
+        {
+          "path": "specs/256_project_timeline_context/reports/01_timeline-frameworks.md",
+          "type": "research",
+          "summary": "Research report with 7 PM domain areas: WBS, milestones, dependencies, PERT, CPM, resources, risk matrices"
+        },
+        {
+          "path": "specs/256_project_timeline_context/plans/01_timeline-frameworks-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for timeline-frameworks.md domain knowledge file"
+        },
+        {
+          "path": "specs/256_project_timeline_context/summaries/01_timeline-frameworks-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T20:00:26Z",
+      "started": "2026-03-23T20:02:06Z",
+      "completed": "2026-03-23T20:06:49Z",
+      "completion_summary": "Created timeline-frameworks.md with 7 PM domain areas (WBS, milestones, dependencies, PERT, CPM, resources, risk) for project-agent context discovery.",
+      "claudemd_suggestions": "Added timeline-frameworks.md entry to founder extension index-entries.json"
+    },
+    {
+      "project_number": 257,
+      "project_name": "project_timeline_typst_template",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T20:12:38Z",
+      "session_id": "sess_1774296422_d33813",
+      "dependencies": [],
+      "researched": "2026-03-23T20:02:33Z",
+      "artifacts": [
+        {
+          "path": "specs/257_project_timeline_typst_template/reports/01_typst-template-research.md",
+          "type": "research",
+          "summary": "Research report with Typst Gantt packages, PERT estimation patterns, WBS visualization approaches, and navy palette integration"
+        },
+        {
+          "path": "specs/257_project_timeline_typst_template/plans/01_typst-template-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for Typst project timeline template with Gantt chart, PERT estimation, resource allocation, WBS hierarchy, and risk matrix components"
+        },
+        {
+          "path": "specs/257_project_timeline_typst_template/summaries/01_typst-template-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T20:06:04Z",
+      "started": "2026-03-23T20:07:24Z",
+      "completed": "2026-03-23T20:12:38Z",
+      "completion_summary": "Created project-timeline.typ Typst template with Gantt charts, PERT estimation, resource allocation, WBS hierarchy, and risk matrix components extending founder extension patterns."
+    },
+    {
+      "project_number": 258,
+      "project_name": "project_agent",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T20:29:51Z",
+      "session_id": "sess_1774297476_c20513",
+      "dependencies": [
+        256,
+        257
+      ],
+      "researched": "2026-03-23T20:18:00Z",
+      "artifacts": [
+        {
+          "path": "specs/258_project_agent/reports/01_project-agent-research.md",
+          "type": "research",
+          "summary": "Comprehensive research on founder agent patterns, mode selection, forcing questions integration for PERT estimation, WBS generation, and self-contained Typst output"
+        },
+        {
+          "path": "specs/258_project_agent/plans/01_project-agent-plan.md",
+          "type": "plan",
+          "summary": "8-phase implementation plan for project-agent with PLAN/TRACK/REPORT modes, forcing questions, and Typst generation"
+        },
+        {
+          "path": "specs/258_project_agent/summaries/01_project-agent-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T20:23:28Z",
+      "started": "2026-03-23T20:24:57Z",
+      "completed": "2026-03-23T20:29:51Z",
+      "completion_summary": "Created project-agent.md (912 lines) with PLAN/TRACK/REPORT modes, forcing questions for WBS and PERT estimation, resource allocation, and self-contained Typst generation.",
+      "claudemd_suggestions": "Add project-agent to founder extension agent list; may need skill-project wrapper in future task"
+    },
+    {
+      "project_number": 259,
+      "project_name": "skill_project",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T20:42:16Z",
+      "session_id": "sess_1774298258_95de2d",
+      "dependencies": [
+        258
+      ],
+      "researched": "2026-03-23T20:33:36Z",
+      "artifacts": [
+        {
+          "path": "specs/259_skill_project/reports/01_skill-project-research.md",
+          "type": "research",
+          "summary": "Research report identifying 11-stage thin wrapper pattern, mode-specific status values, strategy/timelines/ output directory, and artifact linking differences from research skills"
+        },
+        {
+          "path": "specs/259_skill_project/plans/01_skill-project-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for skill-project thin wrapper following 11-stage pattern"
+        },
+        {
+          "path": "specs/259_skill_project/summaries/01_skill-project-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T20:36:54Z",
+      "started": "2026-03-23T20:37:59Z",
+      "completed": "2026-03-23T20:42:16Z",
+      "completion_summary": "Created skill-project as thin wrapper for project-agent with 11-stage execution flow, mode-specific status values (planned/tracked/reported), and strategy/timelines/ artifact paths.",
+      "claudemd_suggestions": "Added skill-project to founder extension skills directory. Consider updating EXTENSION.md to add skill-to-agent mapping entry."
+    },
+    {
+      "project_number": 260,
+      "project_name": "project_command",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T20:56:03Z",
+      "session_id": "sess_1774299025_9c4999",
+      "dependencies": [
+        259
+      ],
+      "researched": "2026-03-23T20:46:16Z",
+      "artifacts": [
+        {
+          "path": "specs/260_project_command/reports/01_project-command-research.md",
+          "type": "research",
+          "summary": "Research report with command structure analysis, 7 forcing questions design, routing pattern, and implementation recommendations"
+        },
+        {
+          "path": "specs/260_project_command/plans/01_project-command-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for /project command with forcing questions"
+        },
+        {
+          "path": "specs/260_project_command/summaries/01_project-command-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T20:49:09Z",
+      "started": "2026-03-23T20:50:43Z",
+      "completed": "2026-03-23T20:56:03Z",
+      "completion_summary": "Created /project command following founder extension patterns with 7 forcing questions covering project scope, team allocation, timeline constraints, resources, dependencies, and risks. Command routes to skill-project with task_type=\"project\" and supports PLAN/TRACK/REPORT modes.",
+      "claudemd_suggestions": "Added /project command to founder extension (commands/project.md), updated EXTENSION.md routing tables, updated index-entries.json context discovery entries"
+    },
+    {
+      "project_number": 261,
+      "project_name": "project_manifest_update",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T21:07:52Z",
+      "session_id": "sess_1774299888_bb7884",
+      "dependencies": [
+        260
+      ],
+      "researched": "2026-03-23T21:00:15Z",
+      "artifacts": [
+        {
+          "path": "specs/261_project_manifest_update/reports/01_manifest-update-research.md",
+          "type": "research",
+          "summary": "Research report with 5 exact manifest changes identified and index-entries.json update"
+        },
+        {
+          "path": "specs/261_project_manifest_update/plans/01_manifest-update-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for manifest.json and index-entries.json updates"
+        },
+        {
+          "path": "specs/261_project_manifest_update/summaries/01_manifest-update-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-23T21:04:13Z",
+      "started": "2026-03-23T21:05:08Z",
+      "completed": "2026-03-23T21:07:52Z",
+      "completion_summary": "Updated founder extension manifest with project-agent, skill-project, project.md command, and routing entry. Added project-timeline.typ to index-entries.json.",
+      "claudemd_suggestions": "Updated manifest.json (4 entries) and index-entries.json (1 entry) in .claude/extensions/founder/"
+    },
+    {
+      "project_number": 255,
+      "project_name": "tts_worktree_worker_announcement",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-21T19:05:16Z",
+      "last_updated": "2026-03-21T19:37:20Z",
+      "session_id": "sess_1774121403_3d4534",
+      "researched": "2026-03-21T19:19:02Z",
+      "artifacts": [
+        {
+          "path": "specs/255_tts_worktree_worker_announcement/reports/01_worktree-detection.md",
+          "type": "research",
+          "summary": "Research report with 3 worktree detection methods and implementation recommendation"
+        },
+        {
+          "path": "specs/255_tts_worktree_worker_announcement/plans/01_worktree-announcement.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for worktree-aware TTS announcements"
+        },
+        {
+          "path": "specs/255_tts_worktree_worker_announcement/summaries/01_worktree-announcement-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-21T19:23:05Z",
+      "started": "2026-03-21T19:30:27Z",
+      "completed": "2026-03-21T19:37:20Z",
+      "completion_summary": "Added worktree detection to tts-notify.sh using git rev-parse; sub-agent sessions now announce 'Tab N worker' for auditory distinction."
+    },
+    {
+      "project_number": 253,
+      "project_name": "fix_founder_plan_agent_typst_phase",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T12:00:00Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/253_fix_founder_plan_agent_typst_phase/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        },
+        {
+          "path": "specs/253_fix_founder_plan_agent_typst_phase/plans/01_enforce-typst-phase.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan to enforce typst generation phase in founder-plan-agent"
+        },
+        {
+          "path": "specs/253_fix_founder_plan_agent_typst_phase/summaries/01_enforce-typst-phase-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "last_updated": "2026-03-20T19:32:16Z",
+      "session_id": "sess_1774034938_b00272",
+      "planned": "2026-03-20T19:27:57Z",
+      "started": "2026-03-20T19:29:12Z",
+      "completed": "2026-03-20T19:32:16Z",
+      "completion_summary": "Fixed founder-plan-agent.md specification to always require 5-phase structure with Phase 5 named exactly Typst Document Generation. Changed Critical Requirements from 4-phase to 5-phase and added enforcement notes per report type.",
+      "claudemd_suggestions": "Updated founder-plan-agent.md Critical Requirements (items 6-7) and Phase Structure section with enforcement notes"
+    },
+    {
+      "project_number": 254,
+      "project_name": "update_founder_implement_agent_typst",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T12:00:00Z",
+      "dependencies": [
+        253
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/254_update_founder_implement_agent_typst/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        },
+        {
+          "path": "specs/254_update_founder_implement_agent_typst/plans/01_typst-execution-update.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for founder-implement-agent typst enhancements"
+        },
+        {
+          "path": "specs/254_update_founder_implement_agent_typst/summaries/01_typst-execution-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "last_updated": "2026-03-20T21:48:19Z",
+      "session_id": "sess_1774042896_138752",
+      "planned": "2026-03-20T19:38:41Z",
+      "started": "2026-03-20T21:41:58Z",
+      "completed": "2026-03-20T21:48:19Z",
+      "completion_summary": "Added Stage 2.5 (Detect Typst Availability), Stage 3.5 (Ensure Typst Phase Exists), enhanced Phase 5 with non-blocking behavior and typst_available flag reference, updated Stage 6/7 templates with typst status fields.",
+      "claudemd_suggestions": "Updated founder-implement-agent.md with 4 new sections (Stage 2.5, Stage 3.5, enhanced Phase 5, updated Stage 6/7 templates)"
+    },
+    {
+      "project_number": 251,
+      "project_name": "improve_context_efficiency_progressive_disclosure",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T02:17:51Z",
+      "last_updated": "2026-03-20T07:00:00Z",
+      "session_id": "sess_1773986001_b36233",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/251_improve_context_efficiency_progressive_disclosure/reports/01_teammate-a-findings.md",
+          "summary": "Teammate A: token measurements, QR bloat analysis, duplication detection"
+        },
+        {
+          "type": "research",
+          "path": "specs/251_improve_context_efficiency_progressive_disclosure/reports/02_teammate-b-findings.md",
+          "summary": "Teammate B: content taxonomy, schema duplication, alternative approaches"
+        },
+        {
+          "type": "research",
+          "path": "specs/251_improve_context_efficiency_progressive_disclosure/reports/01_team-research.md",
+          "summary": "Team research synthesis: 5 prioritized recommendations, ~9,346 token savings (38% reduction)"
+        },
+        {
+          "type": "plan",
+          "path": "specs/251_improve_context_efficiency_progressive_disclosure/plans/01_context-efficiency-plan.md",
+          "summary": "5-phase implementation plan for context efficiency improvements with ~9,346 token savings potential"
+        },
+        {
+          "type": "summary",
+          "path": "specs/251_improve_context_efficiency_progressive_disclosure/summaries/01_context-efficiency-summary.md",
+          "summary": "Implementation summary with token reduction metrics"
+        }
+      ],
+      "planned": "2026-03-20T04:55:24Z",
+      "started": "2026-03-20T05:53:47Z",
+      "completed": "2026-03-20T07:00:00Z",
+      "completion_summary": "Implemented progressive disclosure pattern across agent system - stripped Quick Reference sections from CLAUDE.md, split rules files into behavioral constraints (auto-loaded) and reference schemas (on-demand), consolidated legacy files. Reduced always-loaded context by ~1,272 lines (33-40% reduction).",
+      "claudemd_suggestions": "Modified state-management.md, artifact-formats.md, workflows.md rules; created state-management-schema.md, artifact-templates.md, workflow-diagrams.md context files; updated index.json"
+    },
+    {
+      "project_number": 250,
+      "project_name": "embed_vault_detection_in_archive_stage",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T01:46:33Z",
+      "last_updated": "2026-03-20T02:22:06Z",
+      "session_id": "sess_1773972809_768a3d",
+      "researched": "2026-03-20T02:05:27Z",
+      "artifacts": [
+        {
+          "path": "specs/250_embed_vault_detection_in_archive_stage/reports/01_vault-embedding-strategy.md",
+          "type": "research",
+          "summary": "Research report analyzing LLM stage-skipping behavior and recommending embedded vault detection with bash enforcement"
+        },
+        {
+          "path": "specs/250_embed_vault_detection_in_archive_stage/reports/02_team-research.md",
+          "type": "research",
+          "summary": "Team research with 2 teammates: best practices for vault embedding"
+        },
+        {
+          "path": "specs/250_embed_vault_detection_in_archive_stage/plans/01_vault-embedding-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for embedding vault detection in archive stage"
+        },
+        {
+          "path": "specs/250_embed_vault_detection_in_archive_stage/summaries/01_vault-embedding-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-20T02:10:34Z",
+      "started": "2026-03-20T02:13:46Z",
+      "completed": "2026-03-20T02:22:06Z",
+      "completion_summary": "Embedded vault detection as mandatory inline check in Stage 10 of skill-todo with CRITICAL annotation and unconditional bash output. Consolidated vault operations as sub-steps 9.1-9.4. Added pre-commit safety net to GitCommit stage. Reduced skill from 21 to 16 stages.",
+      "claudemd_suggestions": "Updated skill-todo/SKILL.md with embedded vault detection pattern. Created check-vault-threshold.sh utility script."
+    },
+    {
+      "project_number": 249,
+      "project_name": "fix_skill_todo_vault_stage_numbering",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T00:31:30Z",
+      "last_updated": "2026-03-20T01:23:06Z",
+      "session_id": "sess_1773967945_f6a506",
+      "researched": "2026-03-20T00:36:00Z",
+      "artifacts": [
+        {
+          "path": "specs/249_fix_skill_todo_vault_stage_numbering/reports/01_vault-stage-numbering.md",
+          "type": "research",
+          "summary": "Research report analyzing vault stage numbering issue with root cause and fix recommendations"
+        },
+        {
+          "path": "specs/249_fix_skill_todo_vault_stage_numbering/plans/01_vault-stage-renumbering.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for renumbering vault stages to integers"
+        },
+        {
+          "path": "specs/249_fix_skill_todo_vault_stage_numbering/summaries/01_vault-stage-renumbering-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with stage renumbering details and verification results"
+        }
+      ],
+      "planned": "2026-03-20T00:45:54Z",
+      "started": "2026-03-20T00:52:52Z",
+      "completed": "2026-03-20T01:23:06Z",
+      "completion_summary": "Fixed vault detection stages in skill-todo by renumbering fractional IDs (10.5-10.9) to integers (11-15), shifting post-vault stages to (16-21), and adding explicit transition directive at Stage 10.",
+      "claudemd_suggestions": "Updated .claude/skills/skill-todo/SKILL.md with complete stage renumbering and transition reference updates"
+    },
+    {
+      "project_number": 247,
+      "project_name": "leader_am_per_project_model_picker",
+      "status": "completed",
+      "language": "neovim",
+      "created": "2026-03-19T21:36:38Z",
+      "last_updated": "2026-03-19T22:27:56Z",
+      "session_id": "sess_1773959016_eade21",
+      "researched": "2026-03-19T21:56:20Z",
+      "artifacts": [
+        {
+          "path": "specs/247_leader_am_per_project_model_picker/reports/01_project-local-model-picker.md",
+          "type": "research",
+          "summary": "Research report covering git root detection, directory creation patterns, Claude Code settings priority hierarchy, and implementation recommendations for project-local model picker"
+        },
+        {
+          "path": "specs/247_leader_am_per_project_model_picker/plans/01_project-local-picker.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan for project-local model picker settings"
+        },
+        {
+          "path": "specs/247_leader_am_per_project_model_picker/summaries/01_project-local-picker-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-19T22:01:01Z",
+      "started": "2026-03-19T22:24:26Z",
+      "completed": "2026-03-19T22:27:56Z",
+      "completion_summary": "Modified <leader>am model picker to write Claude Code model selection to project-local .claude/settings.local.json using git root detection, with automatic directory creation and graceful fallback to global settings."
+    },
+    {
+      "project_number": 246,
+      "project_name": "upgrade_founder_typst_templates_professional",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-19T20:55:04Z",
+      "last_updated": "2026-03-19T21:26:45Z",
+      "effort": "4-6 hours",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/246_upgrade_founder_typst_templates_professional/reports/01_typst-template-upgrade.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of professional Typst template styling with complete color palette, typography, helper functions, and implementation strategy"
+        },
+        {
+          "path": "specs/246_upgrade_founder_typst_templates_professional/plans/01_professional-typst-templates.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan to upgrade founder typst templates with professional navy styling"
+        },
+        {
+          "path": "specs/246_upgrade_founder_typst_templates_professional/summaries/01_professional-typst-templates-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all changes and verification results"
+        }
+      ],
+      "session_id": "sess_1773954631_98ab16",
+      "researched": "2026-03-19T21:01:27Z",
+      "planned": "2026-03-19T21:06:22Z",
+      "started": "2026-03-19T21:10:57Z",
+      "completed": "2026-03-19T21:26:45Z",
+      "completion_summary": "Upgraded founder typst templates to professional styling with navy color palette, Libertinus Serif typography, colored heading underlines, and new helper functions (metric pill, callout, nested-market-diagram). All templates compile successfully.",
+      "claudemd_suggestions": "Modified .claude/extensions/founder/ templates and founder-implement-agent.md with professional typst styling"
+    },
+    {
+      "project_number": 245,
+      "project_name": "fix_plan_status_update_script_arguments",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-19T19:27:32Z",
+      "last_updated": "2026-03-19T20:43:14Z",
+      "effort": "30 minutes",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/245_fix_plan_status_update_script_arguments/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview identifying argument mismatch bug"
+        },
+        {
+          "path": "specs/245_fix_plan_status_update_script_arguments/plans/01_fix-script-args.md",
+          "type": "plan",
+          "summary": "2-phase implementation plan to fix update-plan-status.sh argument mismatch in skill-implementer and skill-grant"
+        },
+        {
+          "path": "specs/245_fix_plan_status_update_script_arguments/summaries/01_fix-script-args-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773954300_e2b6h5",
+      "planned": "2026-03-19T19:46:57Z",
+      "started": "2026-03-19T20:40:52Z",
+      "completed": "2026-03-19T20:43:14Z",
+      "completion_summary": "Fixed argument mismatch between update-plan-status.sh script (expects 3 args) and skill invocations (were passing 4 args with extraneous $padded_num). Corrected 6 invocations across skill-implementer and skill-grant.",
+      "claudemd_suggestions": "Modified skill-implementer/SKILL.md (3 locations) and extensions/present/skills/skill-grant/SKILL.md (3 locations) to remove $padded_num from update-plan-status.sh calls"
+    },
+    {
+      "project_number": 243,
+      "project_name": "create_recommended_order_utility",
+      "status": "completed",
+      "language": "meta",
+      "description": "Create .claude/scripts/update-recommended-order.sh with three functions: (1) add_to_recommended_order TASK_NUM - insert task into Recommended Order section based on dependency position, (2) remove_from_recommended_order TASK_NUM - remove task entry from section, (3) refresh_recommended_order - regenerate entire section from state.json dependency graph using topological sort. The section format is: numbered list with bold task numbers, arrow separator, action hints, and parenthetical dependency notes. Also update .claude/rules/state-management.md to document the Recommended Order section format and conventions.",
+      "effort": "2-3 hours",
+      "dependencies": [],
+      "created": "2026-03-19T19:00:36Z",
+      "last_updated": "2026-03-19T19:18:16Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/243_recommended_order_integration/reports/01_recommended-order-research.md",
+          "summary": "Analysis of workflow commands and proposed utility design"
+        },
+        {
+          "path": "specs/243_recommended_order_integration/plans/01_recommended-order-utility.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for Recommended Order utility script"
+        },
+        {
+          "path": "specs/243_recommended_order_integration/summaries/01_recommended-order-utility-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773951200_a7c2b1",
+      "planned": "2026-03-19T19:05:07Z",
+      "started": "2026-03-19T19:11:20Z",
+      "completed": "2026-03-19T19:18:16Z",
+      "completion_summary": "Created update-recommended-order.sh utility with three functions (add, remove, refresh) for maintaining topologically-sorted task recommendations in TODO.md. Added documentation to state-management.md.",
+      "claudemd_suggestions": "Added Recommended Order Section to .claude/rules/state-management.md with format specification, utility script usage, and integration points documentation"
+    },
+    {
+      "project_number": 244,
+      "project_name": "integrate_recommended_order_utility",
+      "status": "completed",
+      "language": "meta",
+      "description": "Integrate the Recommended Order utility into 4 workflow components: (1) /task command - call add_to_recommended_order after creating task entry (Step 7), (2) skill-implementer - call remove_from_recommended_order in Stage 7 postflight after completion, (3) skill-spawn - call refresh_recommended_order in Stage 12 after creating spawned tasks, (4) skill-todo - call remove_from_recommended_order in Stage 10 for each archived task. Ensure graceful handling when Recommended Order section does not exist (skip, do not fail).",
+      "effort": "3-4 hours",
+      "dependencies": [
+        243
+      ],
+      "created": "2026-03-19T19:00:36Z",
+      "last_updated": "2026-03-19T19:30:11Z",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/243_recommended_order_integration/reports/01_recommended-order-research.md",
+          "summary": "Analysis of workflow commands and integration points"
+        },
+        {
+          "path": "specs/244_integrate_recommended_order_utility/plans/01_workflow-integration.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for integrating Recommended Order utility into workflow commands"
+        },
+        {
+          "path": "specs/244_integrate_recommended_order_utility/summaries/02_workflow-integration-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results and integration table"
+        }
+      ],
+      "session_id": "sess_1773953500_c9e4f3",
+      "planned": "2026-03-19T19:26:25Z",
+      "started": "2026-03-19T19:27:26Z",
+      "completed": "2026-03-19T19:30:11Z",
+      "completion_summary": "Integrated Recommended Order utility into 4 workflow components (/task, skill-implementer, skill-spawn, skill-todo) using non-blocking sourcing pattern to automatically maintain the Recommended Order section in TODO.md.",
+      "claudemd_suggestions": "Updated .claude/commands/task.md (add call), .claude/skills/skill-implementer/SKILL.md (remove call), .claude/skills/skill-spawn/SKILL.md (refresh call), .claude/skills/skill-todo/SKILL.md (remove call)"
+    },
+    {
+      "project_number": 242,
+      "project_name": "add_leader_am_model_picker_for_claude_code",
+      "status": "completed",
+      "language": "neovim",
+      "created": "2026-03-19T18:33:49Z",
+      "last_updated": "2026-03-19T18:53:27Z",
+      "session_id": "sess_1773946089_b049e7",
+      "researched": "2026-03-19T18:39:06Z",
+      "artifacts": [
+        {
+          "path": "specs/242_add_leader_am_model_picker_for_claude_code/reports/01_model-picker-research.md",
+          "type": "research",
+          "summary": "Research report with implementation patterns for model picker keymap"
+        },
+        {
+          "path": "specs/242_add_leader_am_model_picker_for_claude_code/plans/01_model-picker-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for Claude Code model picker keymap"
+        },
+        {
+          "path": "specs/242_add_leader_am_model_picker_for_claude_code/summaries/01_model-picker-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-19T18:42:36Z",
+      "started": "2026-03-19T18:48:24Z",
+      "completed": "2026-03-19T18:53:27Z",
+      "completion_summary": "Added <leader>am model picker for Claude Code with Opus/Sonnet/Haiku selection and updated default model to opus"
+    },
+    {
+      "project_number": 241,
+      "project_name": "add_spawn_command_skill_agent",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-19T18:09:49Z",
+      "last_updated": "2026-03-19T18:32:27Z",
+      "session_id": "sess_1742398200_c9e5f3",
+      "researched": "2026-03-19T18:09:49Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/241_add_spawn_command_skill_agent/reports/01_meta-research.md",
+          "summary": "Auto-generated research covering /spawn command, skill-spawn wrapper, and spawn-agent design with all component interfaces, behaviors, and interactions"
+        },
+        {
+          "path": "specs/241_add_spawn_command_skill_agent/plans/01_spawn-workflow.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for /spawn command, skill-spawn wrapper, and spawn-agent"
+        },
+        {
+          "path": "specs/241_add_spawn_command_skill_agent/summaries/01_spawn-workflow-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results and design decisions"
+        }
+      ],
+      "planned": "2026-03-19T18:20:55Z",
+      "implementing": "2026-03-19T18:23:03Z",
+      "completed": "2026-03-19T18:32:27Z",
+      "completion_summary": "Created /spawn workflow with three components: spawn-agent for blocker analysis, skill-spawn for state management, and /spawn command for user entry. Updated CLAUDE.md with new entries.",
+      "claudemd_suggestions": "Added /spawn to Command Reference, skill-spawn to Skill-to-Agent Mapping, spawn-agent to Agents table in .claude/CLAUDE.md"
+    },
+    {
+      "project_number": 240,
+      "project_name": "fix_market_command_forcing_questions_workflow",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T23:37:02Z",
+      "last_updated": "2026-03-19T00:08:35Z",
+      "session_id": "sess_1773877789_2642a8",
+      "researched": "2026-03-18T23:43:33Z",
+      "artifacts": [
+        {
+          "path": "specs/240_fix_market_command_forcing_questions_workflow/reports/01_market-workflow-research.md",
+          "type": "research",
+          "summary": "Analysis of current founder extension implementation showing forcing questions workflow already exists"
+        },
+        {
+          "path": "specs/240_fix_market_command_forcing_questions_workflow/plans/01_founder-workflow-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for restructuring founder extension commands to ask forcing questions before task creation"
+        },
+        {
+          "path": "specs/240_fix_market_command_forcing_questions_workflow/summaries/01_founder-workflow-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results and new workflow documentation"
+        }
+      ],
+      "planned": "2026-03-18T23:48:37Z",
+      "implementing": "2026-03-18T23:50:11Z",
+      "completed": "2026-03-19T00:08:35Z",
+      "completion_summary": "Restructured /market, /analyze, /strategy commands to ask forcing questions BEFORE task creation. Added task_type field for finer-grained routing in /research. All commands now store forcing_data in task metadata for use by research agents.",
+      "claudemd_suggestions": "Added task_type field schema to state-management.md, updated research.md with composite key routing, updated founder extension EXTENSION.md to v2.1"
+    },
+    {
+      "project_number": 238,
+      "project_name": "fix_founder_implement_typst_output",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T22:59:04Z",
+      "last_updated": "2026-03-18T23:17:55Z",
+      "session_id": "sess_1773875603_10e0b1",
+      "researched": "2026-03-18T23:06:56Z",
+      "artifacts": [
+        {
+          "path": "specs/238_fix_founder_implement_typst_output/reports/01_founder-typst-fix.md",
+          "type": "research",
+          "summary": "Identified Phase 5 execution issues: template import paths, missing directory creation, and compilation command errors prevent typst output"
+        },
+        {
+          "path": "specs/238_fix_founder_implement_typst_output/plans/01_founder-typst-fix-plan.md",
+          "type": "plan",
+          "summary": "5-phase plan to fix founder extension typst output by generating self-contained .typ files"
+        },
+        {
+          "type": "summary",
+          "path": "specs/238_fix_founder_implement_typst_output/summaries/01_founder-typst-fix-summary.md",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T23:11:11Z",
+      "implementing": "2026-03-18T23:13:58Z",
+      "completed": "2026-03-18T23:17:55Z",
+      "completion_summary": "Fixed founder extension /implement to generate self-contained typst files instead of files with broken relative imports. Updated agent spec with inline template pattern and fixed compilation command.",
+      "claudemd_suggestions": "Updated .claude/extensions/founder/agents/founder-implement-agent.md (Phase 5 typst generation) and .claude/extensions/founder/skills/skill-founder-implement/SKILL.md (typst artifact handling)"
+    },
+    {
+      "project_number": 237,
+      "project_name": "add_typst_output_founder_implementation",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T21:49:51Z",
+      "last_updated": "2026-03-18T22:29:23Z",
+      "dependencies": [
+        236
+      ],
+      "session_id": "sess_1773872339_9ff171",
+      "researched": "2026-03-18T22:12:38Z",
+      "artifacts": [
+        {
+          "path": "specs/237_add_typst_output_founder_implementation/reports/01_typst-output-research.md",
+          "type": "research",
+          "summary": "Comprehensive research on adding typst output to founder-implement-agent, including template structure, phase addition, and output directory conventions"
+        },
+        {
+          "path": "specs/237_add_typst_output_founder_implementation/plans/01_typst-output-implementation.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for adding typst PDF output to founder extension"
+        },
+        {
+          "path": "specs/237_add_typst_output_founder_implementation/summaries/01_typst-output-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T22:16:56Z",
+      "started": "2026-03-18T22:19:20Z",
+      "completed": "2026-03-18T22:29:23Z",
+      "completion_summary": "Enhanced founder extension with professional typst PDF generation. Created 4 typst templates (base + 3 report types) and updated founder-implement-agent and founder-plan-agent to include Phase 5 for document generation.",
+      "claudemd_suggestions": "Added typst templates to .claude/extensions/founder/, updated founder-implement-agent.md with Phase 5, updated founder-plan-agent.md with Phase 5 structure, updated manifest.json and index-entries.json with template entries"
+    },
+    {
+      "project_number": 234,
+      "project_name": "upgrade_founder_extension_workflow",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T18:54:28Z",
+      "last_updated": "2026-03-18T19:40:52Z",
+      "session_id": "sess_1774048800_a9c3f1",
+      "researched": "2026-03-18T19:19:28Z",
+      "artifacts": [
+        {
+          "path": "specs/234_upgrade_founder_extension_workflow/reports/01_task-integration-research.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of task system integration patterns, three-phase forcing questions workflow design, and flexible input handling for founder extension upgrade"
+        },
+        {
+          "path": "specs/234_upgrade_founder_extension_workflow/reports/02_plan-implement-workflow.md",
+          "type": "research",
+          "summary": "Complete workflow design for integrating founder tasks with /plan and /implement commands, including language-based routing, forcing questions during planning, and report output handling"
+        },
+        {
+          "path": "specs/234_upgrade_founder_extension_workflow/plans/01_founder-workflow-upgrade.md",
+          "type": "plan",
+          "summary": "8-phase implementation plan for upgrading founder extension with task integration and three-phase forcing questions workflow"
+        },
+        {
+          "path": "specs/234_upgrade_founder_extension_workflow/summaries/01_founder-workflow-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all files created/modified"
+        }
+      ],
+      "planned": "2026-03-18T19:24:48Z",
+      "started": "2026-03-18T19:27:54Z",
+      "completed": "2026-03-18T19:40:52Z",
+      "completion_summary": "Upgraded founder/ extension to v2.0 with full task system integration. Created 2 new skills (skill-founder-plan, skill-founder-implement) and 2 new agents (founder-plan-agent, founder-implement-agent). Updated all 3 commands to support task workflow with --quick legacy mode. Added extension routing to /plan and /implement commands.",
+      "claudemd_suggestions": "Updated .claude/commands/plan.md with extension routing lookup, updated .claude/commands/implement.md with enhanced extension routing, created 4 new files in .claude/extensions/founder/ (2 skills, 2 agents), updated founder extension manifest and documentation"
+    },
+    {
+      "project_number": 233,
+      "project_name": "research_gstack_founder_extension",
+      "status": "completed",
+      "language": "meta",
+      "effort": "6-8 hours",
+      "created": "2026-03-18T17:01:41Z",
+      "last_updated": "2026-03-18T18:10:52Z",
+      "session_id": "sess_1773856528_53ec40",
+      "researched": "2026-03-18T17:22:40Z",
+      "planned": "2026-03-18T18:15:00Z",
+      "artifacts": [
+        {
+          "path": "specs/233_research_gstack_founder_extension/reports/01_gstack-founder-integration.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of gstack with recommendations for founder/ extension focusing on office-hours, ceo-review, and retro skills"
+        },
+        {
+          "path": "specs/233_research_gstack_founder_extension/reports/02_founder-skills-deep-dive.md",
+          "type": "research",
+          "summary": "Deep dive into gstack's /office-hours, /plan-ceo-review, /retro skills with designs for 4 new business-focused skills (market sizing, business model, GTM, competitive analysis)"
+        },
+        {
+          "path": "specs/233_research_gstack_founder_extension/plans/01_founder-extension-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for founder extension with /market, /analyze, /strategy commands"
+        },
+        {
+          "path": "specs/233_research_gstack_founder_extension/summaries/01_founder-extension-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "started": "2026-03-18T17:56:09Z",
+      "completed": "2026-03-18T18:10:52Z",
+      "completion_summary": "Created founder/ extension implementing TAM/SAM/SOM market sizing, competitive analysis with positioning maps, and GTM strategy commands. Integrated gstack's forcing questions pattern, mode-based operation, and YC office hours methodology across 3 command stacks with 8 context files.",
+      "claudemd_suggestions": "Added .claude/extensions/founder/ with manifest.json, EXTENSION.md (CLAUDE.md merge content), 3 commands, 3 skills, 3 agents, and 8 context files for strategic business analysis"
+    },
+    {
+      "project_number": 228,
+      "project_name": "yc_compliance_checklist",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:45:19Z",
+      "dependencies": [],
+      "session_id": "sess_1773851969_891f46",
+      "researched": "2026-03-18T16:31:53Z",
+      "artifacts": [
+        {
+          "path": "specs/228_yc_compliance_checklist/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "YC pitch deck compliance rules analysis with measurable enforcement criteria"
+        },
+        {
+          "path": "specs/228_yc_compliance_checklist/reports/02_yc-compliance-research.md",
+          "type": "research",
+          "summary": "Comprehensive research on present extension structure, YC pitch deck guidelines, and enforcement rule patterns for compliance checklist"
+        },
+        {
+          "path": "specs/228_yc_compliance_checklist/plans/01_yc-compliance-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for YC compliance checklist context file"
+        },
+        {
+          "path": "specs/228_yc_compliance_checklist/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results and design decisions"
+        }
+      ],
+      "planned": "2026-03-18T16:36:11Z",
+      "started": "2026-03-18T16:39:58Z",
+      "completed": "2026-03-18T16:45:19Z",
+      "completion_summary": "Created comprehensive YC compliance checklist context file with 8 sections including hard/soft limits tables, anti-pattern catalog, Typst code examples, and pre/post validation checklists. Updated index-entries.json for automatic context discovery.",
+      "claudemd_suggestions": "Added yc-compliance-checklist.md to present extension context (new file), updated index-entries.json with new entry for deck-agent/deck language/deck command routing"
+    },
+    {
+      "project_number": 229,
+      "project_name": "deck_agent_enforcement",
+      "status": "completed",
+      "language": "meta",
+      "effort": "3-4 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T17:01:06Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_1773852975_2dde1d",
+      "researched": "2026-03-18T16:50:28Z",
+      "artifacts": [
+        {
+          "path": "specs/229_deck_agent_enforcement/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Agent modification requirements for YC compliance enforcement"
+        },
+        {
+          "path": "specs/229_deck_agent_enforcement/reports/02_deck-agent-research.md",
+          "type": "research",
+          "summary": "Detailed deck-agent modification points with exact line numbers, code changes, and compliance validation approach"
+        },
+        {
+          "path": "specs/229_deck_agent_enforcement/plans/01_deck-agent-enforcement.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for adding YC compliance enforcement to deck-agent"
+        },
+        {
+          "path": "specs/229_deck_agent_enforcement/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T16:55:15Z",
+      "started": "2026-03-18T16:56:51Z",
+      "completed": "2026-03-18T17:01:06Z",
+      "completion_summary": "Added YC compliance enforcement to deck-agent.md: Stage 4.5 (10-slide max with merge priority), Stage 6.5 (compliance validation), font size rules (40pt titles, 24pt body), layout rules (2-column max, 5-bullet max), yc_compliance object in return JSON, and 10 new critical requirement items.",
+      "claudemd_suggestions": "Updated .claude/extensions/present/agents/deck-agent.md with 2 new stages, font/layout rules, and compliance metadata schema"
+    },
+    {
+      "project_number": 230,
+      "project_name": "touying_template_simplification",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:58:01Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_1742320100_d5e6f7",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/230_touying_template_simplification/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Template simplification patterns for YC-compliant layouts"
+        },
+        {
+          "path": "specs/230_touying_template_simplification/plans/01_template-simplification.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for simplifying touying pitch deck template"
+        },
+        {
+          "path": "specs/230_touying_template_simplification/summaries/02_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting all changes and verification results"
+        }
+      ],
+      "planned": "2026-03-18T16:51:19Z",
+      "started": "2026-03-18T16:52:39Z",
+      "completed": "2026-03-18T16:58:01Z",
+      "completion_summary": "Updated touying-pitch-deck-template.md to enforce YC design principles with 32pt body text, single-column layouts, and comprehensive DO NOT USE section documenting 6 prohibited patterns.",
+      "claudemd_suggestions": "Updated .claude/extensions/present/context/project/present/patterns/touying-pitch-deck-template.md with simplified layouts, increased font sizes, and prohibited patterns section"
+    },
+    {
+      "project_number": 231,
+      "project_name": "pitch_deck_structure_update",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T16:56:55Z",
+      "dependencies": [
+        228
+      ],
+      "session_id": "sess_1710778200_f6g7h8",
+      "researched": "2026-03-18T16:30:00Z",
+      "artifacts": [
+        {
+          "path": "specs/231_pitch_deck_structure_update/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Content density and typography enforcement guidelines"
+        },
+        {
+          "path": "specs/231_pitch_deck_structure_update/plans/01_pitch-deck-enforcement.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for adding mandatory enforcement to pitch-deck-structure.md"
+        },
+        {
+          "path": "specs/231_pitch_deck_structure_update/summaries/02_pitch-deck-enforcement-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T16:50:51Z",
+      "started": "2026-03-18T16:52:35Z",
+      "completed": "2026-03-18T16:56:55Z",
+      "completion_summary": "Added mandatory enforcement language to pitch-deck-structure.md: Content Density Rules (1 idea, 5 bullets, 30 words limits), Typography Enforcement (40pt titles, 24pt body minimums), PROHIBITED anti-patterns with MUST NOT language, and Validation Checklist with pass/fail criteria.",
+      "claudemd_suggestions": "Updated .claude/extensions/present/context/project/present/patterns/pitch-deck-structure.md with 4 new enforcement sections"
+    },
+    {
+      "project_number": 232,
+      "project_name": "example_templates_yc_compliance",
+      "status": "completed",
+      "language": "meta",
+      "effort": "3-4 hours",
+      "created": "2026-03-18T16:30:00Z",
+      "last_updated": "2026-03-18T17:22:25Z",
+      "dependencies": [
+        229,
+        230,
+        231
+      ],
+      "session_id": "sess_1773853907_91af2c",
+      "researched": "2026-03-18T17:06:29Z",
+      "artifacts": [
+        {
+          "path": "specs/232_example_templates_yc_compliance/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Example file simplification requirements for YC compliance"
+        },
+        {
+          "path": "specs/232_example_templates_yc_compliance/reports/02_example-analysis.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of 4 example pitch deck files identifying YC compliance gaps: font sizes below 28pt, 3-4 column grids, decorative panels, and nested TAM/SAM/SOM circles"
+        },
+        {
+          "path": "specs/232_example_templates_yc_compliance/plans/01_yc-compliance-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for YC compliance updates across 4 example pitch deck files"
+        },
+        {
+          "path": "specs/232_example_templates_yc_compliance/summaries/02_yc-compliance-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results for YC compliance updates"
+        }
+      ],
+      "planned": "2026-03-18T17:10:53Z",
+      "started": "2026-03-18T17:12:09Z",
+      "completed": "2026-03-18T17:22:25Z",
+      "completion_summary": "Updated all 4 example pitch deck files to YC compliance: increased fonts to 28pt+ minimum, removed decorative blocks and 3+ column grids, replaced nested TAM/SAM/SOM circles with plain text, preserved theme color identities.",
+      "claudemd_suggestions": "none"
+    },
+    {
+      "project_number": 227,
+      "project_name": "enhance_meta_topic_consolidation",
+      "status": "completed",
+      "language": "meta",
+      "effort": "4-6 hours",
+      "created": "2026-03-18T16:00:00Z",
+      "last_updated": "2026-03-18T16:11:35Z",
+      "dependencies": [],
+      "session_id": "sess_1773849901_6e4a07",
+      "researched": "2026-03-18T15:58:52Z",
+      "artifacts": [
+        {
+          "path": "specs/227_enhance_meta_topic_consolidation/reports/01_meta-enhancement-patterns.md",
+          "type": "research",
+          "summary": "Comprehensive research report with topic consolidation patterns from /fix-it, integration points for meta-builder-agent, and 3-phase implementation approach"
+        },
+        {
+          "path": "specs/227_enhance_meta_topic_consolidation/plans/02_meta-enhancement-plan.md",
+          "type": "plan",
+          "summary": "6-phase plan covering topic clustering, consolidation picker, research artifact generation, status updates, skill postflight, and documentation"
+        },
+        {
+          "path": "specs/227_enhance_meta_topic_consolidation/summaries/03_meta-enhancement-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T16:03:39Z",
+      "started": "2026-03-18T16:05:26Z",
+      "completed": "2026-03-18T16:11:35Z",
+      "completion_summary": "Enhanced /meta with automatic topic clustering (Stage 3.5) for proactive task consolidation, and embedded research artifact generation (Stage 5.5) so tasks start in RESEARCHED status. Added Task Minimization Principle to multi-task creation standard.",
+      "claudemd_suggestions": "Updated meta-builder-agent.md with Stages 3.5 and 5.5, updated skill-meta/SKILL.md return format, added Task Minimization Principle to multi-task-creation-standard.md"
+    },
+    {
+      "project_number": 226,
+      "project_name": "multiline_artifact_linking",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T02:30:00Z",
+      "last_updated": "2026-03-18T16:00:33Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/226_multiline_artifact_linking/reports/01_artifact-linking-audit.md",
+          "type": "research",
+          "summary": "Audit of all files defining or implementing artifact linking in TODO.md, with current format analysis, full file inventory, and proposed multi-line standard with before/after examples"
+        },
+        {
+          "path": "specs/226_multiline_artifact_linking/plans/02_multiline-linking-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for count-aware multi-line artifact linking"
+        },
+        {
+          "path": "specs/226_multiline_artifact_linking/summaries/03_multiline-linking-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting all 14 modified files"
+        }
+      ],
+      "session_id": "sess_1773849500_e7f8a9",
+      "planned": "2026-03-18T15:48:26Z",
+      "started": "2026-03-18T15:56:06Z",
+      "completed": "2026-03-18T16:00:33Z",
+      "completion_summary": "Added count-aware artifact linking format to state-management.md and propagated to 4 core skills, 4 extension skills, and 5 documentation files. Format uses inline for single artifacts, multi-line list for 2+ artifacts of same type.",
+      "claudemd_suggestions": "Added 'Artifact Linking Format' subsection to state-management.md, updated README.md with multi-line example, updated artifact-formats.md with cross-reference"
+    },
+    {
+      "project_number": 225,
+      "project_name": "enforce_postflight_boundary_after_agent_delegation",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T00:53:42Z",
+      "last_updated": "2026-03-18T01:56:01Z",
+      "dependencies": [],
+      "session_id": "sess_1773796826_c80851",
+      "researched": "2026-03-18T01:05:40Z",
+      "artifacts": [
+        {
+          "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/reports/01_postflight-boundary.md",
+          "type": "research",
+          "summary": "Research report identifying postflight boundary violations in skills with 6 concrete recommendations"
+        },
+        {
+          "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "7-phase plan to enforce postflight boundary: create standard, update agents, add MUST NOT sections, create lint script"
+        },
+        {
+          "path": "specs/225_enforce_postflight_boundary_after_agent_delegation/summaries/03_postflight-boundary-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all files modified"
+        }
+      ],
+      "planned": "2026-03-18T01:16:39Z",
+      "started": "2026-03-18T01:21:29Z",
+      "completed": "2026-03-18T01:56:01Z",
+      "completion_summary": "Created postflight-tool-restrictions.md standard, updated lean-implementation-agent verification, added MUST NOT sections to 17 skills (8 core + 9 extension), and created lint-postflight-boundary.sh for automated enforcement.",
+      "claudemd_suggestions": "Created .claude/context/core/standards/postflight-tool-restrictions.md, updated index.json, updated 17 skill files with MUST NOT sections, created .claude/scripts/lint/lint-postflight-boundary.sh, updated thin-wrapper-skill.md and skill-lifecycle.md references"
+    },
+    {
+      "project_number": 224,
+      "project_name": "add_interactive_theme_palette_picker_to_deck",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T00:40:21Z",
+      "last_updated": "2026-03-18T00:55:29Z",
+      "session_id": "sess_1773795009_77c09c",
+      "researched": "2026-03-18T00:44:22Z",
+      "artifacts": [
+        {
+          "path": "specs/224_add_interactive_theme_palette_picker_to_deck/reports/01_interactive-picker-patterns.md",
+          "type": "research",
+          "summary": "Research report analyzing AskUserQuestion patterns, current theme handling, palette options, and recommended UX design"
+        },
+        {
+          "path": "specs/224_add_interactive_theme_palette_picker_to_deck/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan for interactive theme and palette picker"
+        },
+        {
+          "path": "specs/224_add_interactive_theme_palette_picker_to_deck/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all changes documented"
+        }
+      ],
+      "planned": "2026-03-18T00:49:06Z",
+      "started": "2026-03-18T00:50:32Z",
+      "completed": "2026-03-18T00:55:29Z",
+      "completion_summary": "Implemented interactive theme and palette picker for /deck command using AskUserQuestion with 20 combined options. Updated command, skill, and agent to support palette parameter and apply colors via touying's config-colors().",
+      "claudemd_suggestions": "Updated deck.md command with AskUserQuestion picker and --palette flag, updated skill-deck/SKILL.md with palette parameter, updated deck-agent.md with palette color definitions and Typst generation"
+    },
+    {
+      "project_number": 223,
+      "project_name": "improve_deck_themes_examples_documentation",
+      "status": "completed",
+      "language": "general",
+      "effort": "6-9 hours",
+      "created": "2026-03-17T16:50:06-07:00",
+      "last_updated": "2026-03-18T00:30:47Z",
+      "session_id": "sess_1773792900_d3c57d",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/223_improve_deck_themes_examples_documentation/reports/01_investor-pitch-themes.md",
+          "type": "research",
+          "summary": "Research report with design trends, color palettes, typography guidelines, Touying theme comparison, and implementation recommendations"
+        },
+        {
+          "path": "specs/223_improve_deck_themes_examples_documentation/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "7-phase plan covering 4 theme examples and comprehensive README documentation"
+        },
+        {
+          "path": "specs/223_improve_deck_themes_examples_documentation/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "researched": "2026-03-18T00:08:42Z",
+      "planned": "2026-03-18T00:13:43Z",
+      "started": "2026-03-18T00:15:25Z",
+      "completed": "2026-03-18T00:30:47Z",
+      "completion_summary": "Created 4 polished investor pitch deck theme examples with full 10-slide YC structure, speaker notes, and comprehensive documentation. Examples feature Professional Blue, Premium Dark, Minimal Light, and Growth Green themes with realistic mock startup content."
+    },
+    {
+      "project_number": 222,
+      "project_name": "document_memory_extension_usage",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-17T23:01:29Z",
+      "last_updated": "2026-03-17T23:17:35Z",
+      "session_id": "sess_1742252900_c9e6f3",
+      "researched": "2026-03-17T23:04:51Z",
+      "artifacts": [
+        {
+          "path": "specs/222_document_memory_extension_usage/reports/01_memory-extension-analysis.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of memory extension architecture, components, usage patterns, MCP integration, and recommendations for documentation"
+        },
+        {
+          "path": "specs/222_document_memory_extension_usage/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for memory extension README.md documentation"
+        },
+        {
+          "path": "specs/222_document_memory_extension_usage/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-17T23:12:02Z",
+      "started": "2026-03-17T23:13:37Z",
+      "completed": "2026-03-17T23:17:35Z",
+      "completion_summary": "Created comprehensive user-facing documentation for the memory extension explaining vault storage structure, the three-operation model (UPDATE/EXTEND/CREATE), MCP configuration, and troubleshooting guidance.",
+      "claudemd_suggestions": "Added comprehensive README.md to .claude/extensions/memory/ with Quick Start, Storage, Usage, Configuration, Troubleshooting, and Best Practices sections"
+    },
+    {
+      "project_number": 221,
+      "project_name": "fix_phase_status_markers_implementation_agents",
+      "status": "completed",
+      "language": "meta",
+      "description": "Fix phase status marker updates across implementation agents in the Vision repository. Three issues to address: (1) grant-agent lacks Phase Checkpoint Protocol - does not update plan-level or phase-level status markers ([NOT STARTED] -> [IN PROGRESS] -> [COMPLETED]) during the assemble workflow, unlike general-implementation-agent which has Stage 4A (mark phase in progress) and Stage 4D (mark phase complete) with per-phase git commits; (2) skill-grant lacks calls to update-plan-status.sh at preflight and postflight, unlike skill-implementer which calls this script; (3) latex-implementation-agent and typst-implementation-agent have incomplete phase marker instructions - they mention updates but lack detailed Edit tool patterns and a Phase Checkpoint Protocol section. Fix all three by: adding a Phase Checkpoint Protocol section to grant-agent mirroring general-implementation-agent, adding update-plan-status.sh calls to skill-grant, and expanding phase marker instructions in latex/typst implementation agents. All agents should update TODO.md, state.json, plan file phase headers, and plan metadata consistently.",
+      "created": "2026-03-17T21:52:08Z",
+      "last_updated": "2026-03-17T22:19:42Z",
+      "artifacts": [
+        {
+          "path": "specs/221_fix_phase_status_markers_implementation_agents/reports/01_phase-status-markers.md",
+          "type": "research",
+          "summary": "Research report documenting phase status marker gaps in grant-agent, skill-grant, latex-implementation-agent, and typst-implementation-agent with specific recommendations for fixes"
+        },
+        {
+          "path": "specs/221_fix_phase_status_markers_implementation_agents/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for fixing phase status markers across grant-agent, skill-grant, latex, and typst implementation agents"
+        },
+        {
+          "path": "specs/221_fix_phase_status_markers_implementation_agents/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773785597_f6aac4",
+      "researched": "2026-03-17T22:00:54Z",
+      "planned": "2026-03-17T22:09:21Z",
+      "started": "2026-03-17T22:13:53Z",
+      "completed": "2026-03-17T22:19:42Z",
+      "completion_summary": "Fixed phase status marker handling across 4 implementation agents (grant-agent, latex-implementation-agent, typst-implementation-agent) and skill-grant to match general-implementation-agent reference. All agents now have Phase Checkpoint Protocol sections with Edit tool patterns.",
+      "claudemd_suggestions": "Modified 4 agent files in .claude/extensions/ (grant-agent, latex-implementation-agent, typst-implementation-agent) and skill-grant SKILL.md. All changes are in extension directories, not core .claude/ files."
+    },
+    {
+      "project_number": 220,
+      "project_name": "add_fix_it_flag_to_grant_command",
+      "status": "completed",
+      "language": "meta",
+      "effort": "3-5 hours",
+      "created": "2026-03-17T02:00:22Z",
+      "last_updated": "2026-03-17T02:21:33Z",
+      "dependencies": [],
+      "session_id": "sess_1773713647_d55804",
+      "researched": "2026-03-17T02:05:29Z",
+      "artifacts": [
+        {
+          "path": "specs/220_add_fix_it_flag_to_grant_command/reports/01_fix-it-flag-research.md",
+          "type": "research",
+          "summary": "Research report covering /fix-it patterns, /grant structure, and recommended implementation approach using fix_it_scan workflow"
+        },
+        {
+          "path": "specs/220_add_fix_it_flag_to_grant_command/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for adding --fix-it flag to /grant command"
+        },
+        {
+          "path": "specs/220_add_fix_it_flag_to_grant_command/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-17T02:13:13Z",
+      "started": "2026-03-17T02:14:34Z",
+      "completed": "2026-03-17T02:21:33Z",
+      "completion_summary": "Added --fix-it flag to /grant command enabling interactive tag scanning (FIX:, TODO:, NOTE:, QUESTION:) in grant directories (.tex, .md, .bib files) with task creation following the /fix-it pattern.",
+      "claudemd_suggestions": "Updated grant.md command with Fix-It mode, updated skill-grant SKILL.md with fix_it_scan workflow type and 13-step direct execution section"
+    },
+    {
+      "project_number": 219,
+      "project_name": "incorporate_proofchecker_docs_and_patterns",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-17T00:41:13Z",
+      "last_updated": "2026-03-17T01:07:27Z",
+      "session_id": "sess_1773709105_2af108",
+      "researched": "2026-03-17T00:49:18Z",
+      "artifacts": [
+        {
+          "path": "specs/219_incorporate_proofchecker_docs_and_patterns/reports/01_proofchecker-integration.md",
+          "type": "research",
+          "summary": "Research report covering 6 files to port from ProofChecker, /merge command design with GitHub/GitLab detection, and index.json entries"
+        },
+        {
+          "path": "specs/219_incorporate_proofchecker_docs_and_patterns/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for porting ProofChecker documentation, patterns, and /merge command"
+        },
+        {
+          "path": "specs/219_incorporate_proofchecker_docs_and_patterns/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-17T00:57:06Z",
+      "started": "2026-03-17T00:59:00Z",
+      "completed": "2026-03-17T01:07:27Z",
+      "completion_summary": "Incorporated 6 documentation files from ProofChecker, created skill-agent-mapping.md reference, and built unified /merge command with GitHub/GitLab platform auto-detection. All content generalized for extension architecture.",
+      "claudemd_suggestions": "Added core/reference/ directory with state-json-schema.md and skill-agent-mapping.md. Created mcp-tool-recovery.md pattern, handoff-artifact.md and progress-file.md formats. Added /merge command. Updated index.json with 5 new entries and lean extension index-entries.json with 2 entries."
+    },
+    {
+      "project_number": 218,
+      "project_name": "implement_team_flag_for_research_command",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-16T23:56:00Z",
+      "last_updated": "2026-03-17T00:23:35Z",
+      "session_id": "sess_1773706296_c87690",
+      "researched": "2026-03-17T00:02:39Z",
+      "artifacts": [
+        {
+          "path": "specs/218_implement_team_flag_for_research_command/reports/01_team-flag-research.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of --team flag implementation with ProofChecker reference, 5-phase implementation approach, and 8-12 hour estimate"
+        },
+        {
+          "path": "specs/218_implement_team_flag_for_research_command/plans/02_team-flag-implementation.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for --team flag across /research, /plan, /implement commands"
+        },
+        {
+          "path": "specs/218_implement_team_flag_for_research_command/summaries/03_team-flag-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-17T00:10:10Z",
+      "started": "2026-03-17T00:12:03Z",
+      "completed": "2026-03-17T00:23:35Z",
+      "completion_summary": "Implemented --team flag for /research, /plan, and /implement commands. Created 3 team skills (research, plan, implement), added supporting infrastructure (wave helpers, orchestration docs, metadata schema), and updated CLAUDE.md with team skill mappings and command syntax.",
+      "claudemd_suggestions": "Added 3 team skills to Skill-to-Agent Mapping table (skill-team-research, skill-team-plan, skill-team-implement). Updated command syntax to show --team flag. Added Team Mode Skills section documenting environment requirement and token usage."
+    },
+    {
+      "project_number": 217,
+      "project_name": "revise_grant_workflow_order_draft_budget_before_plan",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-16T00:00:00Z",
+      "last_updated": "2026-03-16T23:40:57Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/217_revise_grant_workflow_order_draft_budget_before_plan/reports/01_grant-improvements.md",
+          "type": "report",
+          "summary": "Research report identifying 9 issues: workflow order (3 locations), consistency, missing features, documentation gaps, error handling, UX"
+        },
+        {
+          "path": "specs/217_revise_grant_workflow_order_draft_budget_before_plan/plans/02_workflow-improvements.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan to correct grant workflow order and improve documentation"
+        },
+        {
+          "path": "specs/217_revise_grant_workflow_order_draft_budget_before_plan/summaries/03_workflow-improvements-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773704188_0f90b8",
+      "researched": "2026-03-16T23:30:14Z",
+      "planned": "2026-03-16T23:33:54Z",
+      "started": "2026-03-16T23:36:41Z",
+      "completed": "2026-03-16T23:40:57Z",
+      "completion_summary": "Corrected grant workflow order documentation across 4 extension files to show draft/budget as exploratory phases before planning. Updated routing tables, Next step guidance, and prerequisite validation notes.",
+      "claudemd_suggestions": "Updated present extension workflow documentation in commands/grant.md, EXTENSION.md, skills/skill-grant/SKILL.md, and agents/grant-agent.md"
+    },
+    {
+      "project_number": 216,
+      "project_name": "refactor_grant_implement_output_to_grants_dir",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-16T00:00:00Z",
+      "last_updated": "2026-03-16T23:21:12Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/216_refactor_grant_implement_output_to_grants_dir/reports/01_grant-implement-routing.md",
+          "type": "report",
+          "summary": "Research report analyzing /implement routing for grant tasks, identifying all files needing modification, and recommending assemble workflow pattern"
+        },
+        {
+          "path": "specs/216_refactor_grant_implement_output_to_grants_dir/reports/03_grant-revise-flag.md",
+          "type": "report",
+          "summary": "Supplemental research for --revise flag: grant numbering, parent_grant field, revision workflow pattern"
+        },
+        {
+          "path": "specs/216_refactor_grant_implement_output_to_grants_dir/plans/04_grant-refactor-revised.md",
+          "type": "plan",
+          "summary": "9-phase implementation plan (revised): remove --finish, add assemble workflow, add --revise flag"
+        },
+        {
+          "path": "specs/216_refactor_grant_implement_output_to_grants_dir/summaries/05_grant-refactor-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773702632_bbfe3a",
+      "researched": "2026-03-16T22:57:10Z",
+      "planned": "2026-03-16T23:08:15Z",
+      "started": "2026-03-16T23:10:47Z",
+      "completed": "2026-03-16T23:21:12Z",
+      "completion_summary": "Refactored grant workflow to remove --finish flag and route implementation through /implement N with assemble workflow. Added --revise flag for creating grant revision tasks. Final output is assembled to grants/{N}_{slug}/ directory.",
+      "claudemd_suggestions": "Modified present extension files only (.claude/extensions/present/). No changes to core CLAUDE.md needed - extension documentation self-contained in EXTENSION.md."
+    },
+    {
+      "project_number": 215,
+      "project_name": "revise_grant_command_design",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-16T21:56:27Z",
+      "last_updated": "2026-03-16T22:42:08Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/215_revise_grant_command_design/reports/01_grant-command-design.md",
+          "type": "research",
+          "summary": "Comprehensive analysis recommending Option C (Hybrid) design for /grant command"
+        },
+        {
+          "path": "specs/215_revise_grant_command_design/plans/03_grant-command-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan with optional prompt parameter for --draft, --budget, --finish flags"
+        },
+        {
+          "path": "specs/215_revise_grant_command_design/summaries/04_grant-command-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1741905300_g9h3i7",
+      "researched": "2026-03-16T22:09:04Z",
+      "planned": "2026-03-16T22:22:33Z",
+      "started": "2026-03-16T22:36:04Z",
+      "completed": "2026-03-16T22:42:08Z",
+      "completion_summary": "Implemented hybrid /grant command design with task creation mode (/grant \"Description\") and grant-specific flags (--draft, --budget, --finish) that accept optional prompts for contextual guidance. Updated skill-grant to handle new finish workflow and optional focus parameters. Core routing via /research and /plan preserved through language-based routing.",
+      "claudemd_suggestions": "Updated present extension files: grant.md command with hybrid design, skill-grant SKILL.md with finish workflow and prompt support, EXTENSION.md with complete documentation"
+    },
+    {
+      "project_number": 210,
+      "project_name": "rename_grant_extension_to_present",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T20:38:01Z",
+      "session_id": "sess_1741899600_b3c4d5",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/210_rename_grant_extension_to_present/plans/01_rename-extension-dir.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for renaming grant extension to present"
+        },
+        {
+          "path": "specs/210_rename_grant_extension_to_present/summaries/01_rename-extension-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-16T20:30:58Z",
+      "started": "2026-03-16T20:35:43Z",
+      "completed": "2026-03-16T20:38:01Z",
+      "completion_summary": "Renamed grant extension directory to present using git mv, and updated manifest.json core fields (name, language, merge_targets.claudemd.section_id) from 'grant' to 'present'. Git history preserved.",
+      "claudemd_suggestions": "Renamed .claude/extensions/grant/ to .claude/extensions/present/, updated manifest.json with new extension name fields"
+    },
+    {
+      "project_number": 211,
+      "project_name": "move_deck_elements_to_present",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T20:46:22Z",
+      "session_id": "sess_1741900400_d5e6f7",
+      "dependencies": [
+        210
+      ],
+      "artifacts": [
+        {
+          "path": "specs/211_move_deck_elements_to_present/plans/01_move-deck-files.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for moving deck files from filetypes/ to present/ extension"
+        },
+        {
+          "path": "specs/211_move_deck_elements_to_present/summaries/01_move-deck-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-16T20:41:23Z",
+      "started": "2026-03-16T20:43:23Z",
+      "completed": "2026-03-16T20:46:22Z",
+      "completion_summary": "Moved 5 deck-related files from filetypes/ to present/ extension using git mv, preserving git history. Created patterns/ directory structure. All moves verified and staged.",
+      "claudemd_suggestions": "Moved deck-agent.md, deck.md, skill-deck/, and 2 pattern files to .claude/extensions/present/. No CLAUDE.md updates needed - internal reference updates in tasks 212-213."
+    },
+    {
+      "project_number": 212,
+      "project_name": "update_present_extension_metadata_for_deck",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T20:53:00Z",
+      "session_id": "sess_1741901400_f7g8h9",
+      "dependencies": [
+        211
+      ],
+      "artifacts": [
+        {
+          "path": "specs/212_update_present_extension_metadata_for_deck/plans/01_update-metadata.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan for updating present extension metadata"
+        },
+        {
+          "path": "specs/212_update_present_extension_metadata_for_deck/summaries/01_update-metadata-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-16T20:49:19Z",
+      "started": "2026-03-16T20:50:05Z",
+      "completed": "2026-03-16T20:53:00Z",
+      "completion_summary": "Updated present/ extension to register deck components: added deck-agent, skill-deck, and /deck command to manifest.json; added deck context entries to index-entries.json; updated deck-agent context paths; revised EXTENSION.md documentation.",
+      "claudemd_suggestions": "Updated manifest.json, index-entries.json, deck-agent.md, and EXTENSION.md in .claude/extensions/present/"
+    },
+    {
+      "project_number": 213,
+      "project_name": "cleanup_filetypes_extension_after_deck_migration",
+      "status": "completed",
+      "language": "meta",
+      "effort": "30 min",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T21:15:25Z",
+      "session_id": "sess_1741903500_c5d9e3",
+      "dependencies": [
+        211
+      ],
+      "artifacts": [
+        {
+          "path": "specs/213_cleanup_filetypes_extension_after_deck_migration/reports/01_filetypes-cleanup-research.md",
+          "type": "research",
+          "summary": "Identified 3 manifest.json entries, 65+ lines in EXTENSION.md, and 2 index-entries.json entries to remove"
+        },
+        {
+          "path": "specs/213_cleanup_filetypes_extension_after_deck_migration/plans/02_cleanup-filetypes-plan.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan for removing deck references from filetypes extension"
+        },
+        {
+          "path": "specs/213_cleanup_filetypes_extension_after_deck_migration/summaries/03_cleanup-filetypes-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "researched": "2026-03-16T20:57:02Z",
+      "planned": "2026-03-16T20:59:52Z",
+      "started": "2026-03-16T21:11:27Z",
+      "completed": "2026-03-16T21:15:25Z",
+      "completion_summary": "Cleaned up filetypes extension by removing all deck-related references (4 files modified) after deck components were migrated to present/ extension in task 212.",
+      "claudemd_suggestions": "Removed deck entries from filetypes extension manifest.json, EXTENSION.md, index-entries.json, and opencode-agents.json"
+    },
+    {
+      "project_number": 214,
+      "project_name": "restructure_context_grant_to_present",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-16T14:00:00Z",
+      "last_updated": "2026-03-16T21:15:12Z",
+      "session_id": "sess_1742073200_f6g2b4",
+      "dependencies": [
+        212
+      ],
+      "artifacts": [
+        {
+          "path": "specs/214_restructure_context_grant_to_present/reports/01_context-restructure-research.md",
+          "type": "research",
+          "summary": "Research report documenting 16 index-entries.json paths, 6 grant-agent.md references, 4 EXTENSION.md references, 1 manifest.json entry, and 1 SKILL.md reference"
+        },
+        {
+          "path": "specs/214_restructure_context_grant_to_present/plans/01_context-restructure-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for restructuring grant context to present"
+        },
+        {
+          "path": "specs/214_restructure_context_grant_to_present/summaries/01_context-restructure-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with full change log and verification results"
+        }
+      ],
+      "researched": "2026-03-16T20:57:40Z",
+      "planned": "2026-03-16T21:01:01Z",
+      "started": "2026-03-16T21:11:36Z",
+      "completed": "2026-03-16T21:15:12Z",
+      "completion_summary": "Restructured present extension context by renaming project/grant/ to project/present/, moving 16 files to merge with existing deck content. Updated 28 path references across index-entries.json, grant-agent.md, EXTENSION.md, manifest.json, and skill-grant SKILL.md, including 2 typo fixes.",
+      "claudemd_suggestions": "Modified .claude/extensions/present/ structure: consolidated context/project/grant/ into context/project/present/, updated index-entries.json paths and subdomains, updated agent and skill @-references"
+    },
+    {
+      "project_number": 204,
+      "project_name": "create_grant_extension_scaffold",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T03:32:42Z",
+      "session_id": "sess_1773631682_3e5dae",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/204_create_grant_extension_scaffold/reports/01_extension-scaffold-patterns.md",
+          "summary": "Comprehensive research report documenting extension directory structure, manifest.json schema, index-entries.json format, and recommended grant extension structure"
+        },
+        {
+          "type": "research",
+          "path": "specs/204_create_grant_extension_scaffold/reports/02_grant-best-practices.md",
+          "summary": "Supplemental research on grant application best practices, SFF structure analysis, and context file recommendations"
+        },
+        {
+          "type": "plan",
+          "path": "specs/204_create_grant_extension_scaffold/plans/01_extension-scaffold-plan.md",
+          "summary": "7-phase implementation plan for grant extension scaffold with manifest.json and placeholder files"
+        },
+        {
+          "type": "summary",
+          "path": "specs/204_create_grant_extension_scaffold/summaries/01_extension-scaffold-summary.md",
+          "summary": "Implementation summary for grant extension scaffold"
+        }
+      ],
+      "researched": "2026-03-16T02:22:03Z",
+      "planned": "2026-03-16T02:37:09Z",
+      "started": "2026-03-16T03:28:21Z",
+      "completed": "2026-03-16T03:32:42Z",
+      "completion_summary": "Created grant extension scaffold with 6 configuration files following nvim/lean extension patterns. Directory structure includes agents/, commands/, skills/, and context/project/grant/ with subdirectories for domain, patterns, templates, tools, and standards.",
+      "claudemd_suggestions": "Created .claude/extensions/grant/ directory with manifest.json, EXTENSION.md, index-entries.json, opencode-agents.json, context README, and skill placeholder"
+    },
+    {
+      "project_number": 205,
+      "project_name": "create_grant_agent",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T04:59:10Z",
+      "session_id": "sess_1773636847_c35353",
+      "dependencies": [
+        204
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/205_create_grant_agent/reports/01_grant-agent-patterns.md",
+          "summary": "Research report covering agent frontmatter standards, execution stages, context loading patterns, workflow routing, and integration with skill-grant"
+        },
+        {
+          "type": "plan",
+          "path": "specs/205_create_grant_agent/plans/01_grant-agent-plan.md",
+          "summary": "6-phase implementation plan for grant-agent with 4 workflow types"
+        },
+        {
+          "type": "summary",
+          "path": "specs/205_create_grant_agent/summaries/01_grant-agent-summary.md",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "researched": "2026-03-16T04:39:51Z",
+      "planned": "2026-03-16T04:48:19Z",
+      "started": "2026-03-16T04:54:27Z",
+      "completed": "2026-03-16T04:59:10Z",
+      "completion_summary": "Created grant-agent.md with comprehensive agent specification supporting funder research, proposal drafting, budget development, and progress tracking workflows. Agent follows established subagent pattern with 8-stage execution flow, progressive context loading, and early metadata pattern for interruption recovery.",
+      "claudemd_suggestions": "Created .claude/extensions/grant/agents/grant-agent.md with full agent definition including frontmatter, tools, context discovery, execution stages, error handling, and critical requirements."
+    },
+    {
+      "project_number": 206,
+      "project_name": "create_skill_grant_wrapper",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T05:26:40Z",
+      "session_id": "sess_1773638543_254c7a",
+      "dependencies": [
+        205
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/206_create_skill_grant_wrapper/reports/01_skill-wrapper-patterns.md",
+          "summary": "Comprehensive research report documenting skill wrapper patterns, 11-stage execution flow, delegation context structure, and implementation recommendations"
+        },
+        {
+          "type": "plan",
+          "path": "specs/206_create_skill_grant_wrapper/plans/01_skill-grant-plan.md",
+          "summary": "Implementation plan for skill-grant thin wrapper with workflow type routing and skill-internal postflight pattern"
+        },
+        {
+          "path": "specs/206_create_skill_grant_wrapper/summaries/01_skill-grant-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for skill-grant wrapper with verification results"
+        }
+      ],
+      "researched": "2026-03-16T05:13:15Z",
+      "planned": "2026-03-16T05:18:24Z",
+      "started": "2026-03-16T05:22:43Z",
+      "completed": "2026-03-16T05:26:40Z",
+      "completion_summary": "Created skill-grant thin wrapper implementing 11-stage execution flow with workflow type routing for four grant workflows (funder_research, proposal_draft, budget_develop, progress_track). Follows skill-researcher pattern with internal postflight for status updates, artifact linking, and git commits.",
+      "claudemd_suggestions": "Created .claude/extensions/grant/skills/skill-grant/SKILL.md with complete skill implementation. This is part of the grant extension and does not require CLAUDE.md updates (extension skills are documented via manifest.json)."
+    },
+    {
+      "project_number": 207,
+      "project_name": "create_grant_command",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T05:41:26Z",
+      "session_id": "sess_1742008800_d8e5b2",
+      "dependencies": [
+        206
+      ],
+      "artifacts": [
+        {
+          "path": "specs/207_create_grant_command/reports/01_grant-command-research.md",
+          "type": "research",
+          "summary": "Research report with command structure patterns, argument parsing approaches, skill invocation patterns, postflight verification, and implementation recommendations"
+        },
+        {
+          "path": "specs/207_create_grant_command/plans/02_grant-command-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for /grant command following checkpoint-based execution pattern"
+        },
+        {
+          "path": "specs/207_create_grant_command/summaries/03_grant-command-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "researched": "2026-03-16T05:31:25Z",
+      "planned": "2026-03-16T05:35:29Z",
+      "started": "2026-03-16T05:37:32Z",
+      "completed": "2026-03-16T05:41:26Z",
+      "completion_summary": "Created /grant command for the grant extension following existing command patterns. Command supports four workflow types (funder_research, proposal_draft, budget_develop, progress_track) and delegates to skill-grant for execution.",
+      "claudemd_suggestions": "Added .claude/extensions/grant/commands/grant.md command, updated .claude/extensions/grant/manifest.json to register command"
+    },
+    {
+      "project_number": 208,
+      "project_name": "create_grant_context_files",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T05:11:52Z",
+      "session_id": "sess_1773637124_d61fed",
+      "dependencies": [
+        204
+      ],
+      "artifacts": [
+        {
+          "path": "specs/208_create_grant_context_files/reports/01_grant-context-patterns.md",
+          "type": "research",
+          "summary": "Research report identifying 14 context files for grant extension across domain, patterns, standards, templates, and tools directories with progressive loading strategy"
+        },
+        {
+          "path": "specs/208_create_grant_context_files/plans/01_grant-context-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for creating 14 grant writing context files"
+        },
+        {
+          "path": "specs/208_create_grant_context_files/summaries/01_grant-context-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with file list and verification"
+        }
+      ],
+      "researched": "2026-03-16T04:50:22Z",
+      "planned": "2026-03-16T04:56:41Z",
+      "started": "2026-03-16T04:59:08Z",
+      "completed": "2026-03-16T05:11:52Z",
+      "completion_summary": "Created 14 grant writing context files (domain, patterns, standards, templates, tools) with ~1,990 lines total. Updated README navigation and index-entries.json with 15 indexed entries for grant-agent discovery.",
+      "claudemd_suggestions": "Added 15 context files to .claude/extensions/grant/context/project/grant/, updated index-entries.json with grant-agent and grant language load_when configuration"
+    },
+    {
+      "project_number": 209,
+      "project_name": "create_extension_metadata",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-15T12:00:00Z",
+      "last_updated": "2026-03-16T05:58:30Z",
+      "session_id": "sess_1742049600_g2b8c6",
+      "dependencies": [
+        207,
+        208
+      ],
+      "artifacts": [
+        {
+          "path": "specs/209_create_extension_metadata/reports/01_extension-metadata-research.md",
+          "type": "research",
+          "summary": "Research findings showing existing metadata files are complete with proper structure"
+        },
+        {
+          "path": "specs/209_create_extension_metadata/plans/02_extension-metadata-plan.md",
+          "type": "plan",
+          "summary": "4-phase verification plan for grant extension metadata files"
+        },
+        {
+          "path": "specs/209_create_extension_metadata/summaries/03_extension-metadata-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary documenting verification of all grant extension metadata files"
+        }
+      ],
+      "researched": "2026-03-16T05:46:19Z",
+      "planned": "2026-03-16T05:53:01Z",
+      "started": "2026-03-16T05:55:44Z",
+      "completed": "2026-03-16T05:58:30Z",
+      "completion_summary": "Verified grant extension metadata files for schema compliance and integration readiness. EXTENSION.md, index-entries.json (16 entries), and manifest.json all correctly structured. Extension ready for <leader>ac loader; context files pending Tasks 204-208.",
+      "claudemd_suggestions": "none"
+    },
+    {
+      "project_number": 235,
+      "project_name": "research_integrate_mcp_founder",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T20:17:00Z",
+      "last_updated": "2026-03-18T20:37:31Z",
+      "session_id": "sess_1742315500_e5f6g7",
+      "researched": "2026-03-18T20:16:26Z",
+      "artifacts": [
+        {
+          "path": "specs/235_research_integrate_mcp_founder/reports/01_meta-research.md",
+          "type": "research",
+          "summary": "Auto-generated research from /meta interview covering MCP tools for market research and business strategy"
+        },
+        {
+          "path": "specs/235_research_integrate_mcp_founder/plans/01_mcp-tools-integration.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for MCP tool research and founder extension integration"
+        },
+        {
+          "path": "specs/235_research_integrate_mcp_founder/reports/02_mcp-tools-research.md",
+          "type": "research",
+          "summary": "Comprehensive MCP tools research with 25+ servers evaluated, 8 high-priority recommendations"
+        },
+        {
+          "path": "specs/235_research_integrate_mcp_founder/plans/02_mcp-tools-integration-revised.md",
+          "type": "plan",
+          "summary": "Revised 4-phase plan: free-tier tools only, lazy loading via agent mcp-servers field"
+        },
+        {
+          "path": "specs/235_research_integrate_mcp_founder/plans/03_mcp-tools-final.md",
+          "type": "plan",
+          "summary": "Final 4-phase plan: SEC EDGAR + Firecrawl only, lazy loading, 2-3 hours"
+        },
+        {
+          "path": "specs/235_research_integrate_mcp_founder/summaries/01_mcp-integration-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T20:30:02Z",
+      "started": "2026-03-18T20:31:54Z",
+      "completed": "2026-03-18T20:37:31Z",
+      "completion_summary": "Integrated SEC EDGAR and Firecrawl MCP tools into founder extension with lazy loading per agent. market-agent gets SEC EDGAR for public company financials, analyze-agent gets Firecrawl for competitor website scraping.",
+      "claudemd_suggestions": "Updated founder extension manifest.json, market-agent.md, analyze-agent.md, README.md, and EXTENSION.md with MCP tool integration and documentation"
+    },
+    {
+      "project_number": 236,
+      "project_name": "refactor_founder_commands",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-18T21:44:00Z",
+      "last_updated": "2026-03-18T22:04:24Z",
+      "researched": "2026-03-18T21:44:00Z",
+      "session_id": "sess_1773870689_230d4f",
+      "artifacts": [
+        {
+          "path": "specs/236_refactor_founder_commands/reports/01_workflow-analysis.md",
+          "type": "research",
+          "summary": "Workflow analysis: commands auto-proceed through plan+implement; fix requires splitting into research-only phase"
+        },
+        {
+          "path": "specs/236_refactor_founder_commands/plans/01_workflow-refactor.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for refactoring founder commands to stop at research stage"
+        },
+        {
+          "path": "specs/236_refactor_founder_commands/summaries/01_workflow-refactor-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-18T21:48:30Z",
+      "started": "2026-03-18T21:51:42Z",
+      "completed": "2026-03-18T22:04:24Z",
+      "completion_summary": "Refactored founder extension workflow from auto-proceed to three-stage pattern. Modified 11 files: 5 agents, 3 skills, 3 commands. Forcing questions now happen once during research phase, with answers captured in research reports.",
+      "claudemd_suggestions": "Modified .claude/extensions/founder/ directory: 5 agents (market, analyze, strategy, founder-plan, founder-implement), 3 skills (skill-market, skill-analyze, skill-strategy), 3 commands (market, analyze, strategy)"
+    },
+    {
+      "project_number": 248,
+      "project_name": "todo_vault_archival_number_reset",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-19T00:00:00Z",
+      "last_updated": "2026-03-19T23:06:54Z",
+      "effort": "3-5 hours",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/248_todo_vault_archival_number_reset/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview covering vault state schema, /todo archival operation, and number reset logic"
+        },
+        {
+          "type": "research",
+          "path": "specs/248_todo_vault_archival_number_reset/reports/02_vault-renumbering-research.md",
+          "summary": "Comprehensive research report covering vault operation flow, state schema extensions, directory renaming, artifact path updates, and 5-file modification list"
+        },
+        {
+          "type": "plan",
+          "path": "specs/248_todo_vault_archival_number_reset/plans/01_vault-archival-plan.md",
+          "summary": "7-phase implementation plan for vault archival and task renumbering"
+        },
+        {
+          "type": "summary",
+          "path": "specs/248_todo_vault_archival_number_reset/summaries/01_vault-archival-summary.md",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "session_id": "sess_1773960613_2ce3f6",
+      "researched": "2026-03-19T22:41:15Z",
+      "planned": "2026-03-19T22:49:32Z",
+      "started": "2026-03-19T22:50:41Z",
+      "completed": "2026-03-19T23:06:54Z",
+      "completion_summary": "Implemented vault archival functionality in /todo command with 5 new stages for detecting threshold (>1000), user confirmation, vault creation, task renumbering, and state reset. Updated schema templates, documentation, and CLAUDE.md.",
+      "claudemd_suggestions": "Added vault_count/vault_history to state-template.json, added Vault Fields section to state-json-schema.md, added 5 stages (10.5-10.9) to skill-todo/SKILL.md, added Step 5.8 to todo.md command, added Vault Fields Schema to state-management.md rules, added Vault Operation subsection to CLAUDE.md"
+    },
+    {
+      "project_number": 252,
+      "project_name": "add_legal_to_founder_extension",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-20T16:25:53Z",
+      "last_updated": "2026-03-20T17:19:23Z",
+      "session_id": "sess_1774026400_8019d4",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/252_add_legal_to_founder_extension/reports/01_meta-research.md",
+          "summary": "Consolidated research from /meta interview (tasks 252-257 merged)"
+        },
+        {
+          "path": "specs/252_add_legal_to_founder_extension/reports/02_team-research.md",
+          "type": "research",
+          "summary": "Team research with 2 teammates: implementation patterns + legal domain content"
+        },
+        {
+          "path": "specs/252_add_legal_to_founder_extension/plans/02_implementation-plan.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for adding /legal command-skill-agent to founder extension"
+        },
+        {
+          "path": "specs/252_add_legal_to_founder_extension/summaries/03_execution-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "researched": "2026-03-20T16:54:02Z",
+      "planned": "2026-03-20T16:59:06Z",
+      "started": "2026-03-20T17:06:58Z",
+      "completed": "2026-03-20T17:19:23Z",
+      "completion_summary": "Added /legal command, skill-legal, and legal-council-agent to founder extension with 4 context files and Typst template. Complete command-skill-agent stack following established patterns.",
+      "claudemd_suggestions": "Updated manifest.json (version 2.1.0, added legal routing), index-entries.json (5 new entries), EXTENSION.md (v2.2 with legal docs)"
+    },
+    {
+      "project_number": 101,
+      "project_name": "add_contents_to_language_extensions",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 102,
+      "project_name": "review_extensions_populate_missing_resources",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 103,
+      "project_name": "compare_opencode_agent_systems_against_claude",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 104,
+      "project_name": "fix_implement_phase_status_live_updates",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 105,
+      "project_name": "create_web_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 106,
+      "project_name": "review_dotfiles_claude_nix_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 107,
+      "project_name": "port_tts_notification_hooks",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 108,
+      "project_name": "extension_asterisk_indicator",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 109,
+      "project_name": "generic_agent_system_portability",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 110,
+      "project_name": "separate_extension_files_from_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 111,
+      "project_name": "compare_opencode_agent_systems",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 112,
+      "project_name": "fix_leader_ac_artifact_loader_project_overview",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 113,
+      "project_name": "review_proofchecker_opencode_virtues",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 114,
+      "project_name": "make_leader_ao_identical_to_leader_ac",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 115,
+      "project_name": "investigate_leader_ao_load_all_feature_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 116,
+      "project_name": "verify_opencode_implement_extension_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 117,
+      "project_name": "study_core_artifacts_extension_overlap",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 118,
+      "project_name": "redesign_leader_ao_load_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 119,
+      "project_name": "fix_hardcoded_paths_in_picker",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 120,
+      "project_name": "fix_pretooluse_hook_picker_display",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 121,
+      "project_name": "clean_up_core_skills_directories",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 122,
+      "project_name": "expand_document_converter_to_filetypes",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 123,
+      "project_name": "fix_nonatomic_extension_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 124,
+      "project_name": "limit_docs_section_in_pickers",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 125,
+      "project_name": "epidemiology_r_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 126,
+      "project_name": "fix_ao_picker_extension_loading_path",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 127,
+      "project_name": "migrate_opencode_md_to_readme_and_rename_quick_start_to_installation",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 128,
+      "project_name": "ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 129,
+      "project_name": "fix_plan_format_in_implementation_001_md",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 130,
+      "project_name": "make_opencode_self_contained",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 132,
+      "project_name": "create_context_loading_best_practices_guide",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 145,
+      "project_name": "restore_settings_json_and_state_sync",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 160,
+      "project_name": "fix_load_core_agent_system_missing_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 161,
+      "project_name": "fix_opencode_source_missing_files_and_scan_bugs",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 162,
+      "project_name": "deck_command_skill_agent_typst_pitchdeck",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 163,
+      "project_name": "review_extension_language_routing",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 164,
+      "project_name": "include_tag_command_skill_web_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 165,
+      "project_name": "review_opencode_extension_language_routing",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 166,
+      "project_name": "move_neovim_elements_to_nvim_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 167,
+      "project_name": "verify_revise_agent_system_loaders",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 168,
+      "project_name": "verify_core_agent_system_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 169,
+      "project_name": "verify_agent_systems_wired_after_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 170,
+      "project_name": "audit_agent_systems_wiring_correctness",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 171,
+      "project_name": "re_audit_agent_systems_post_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 172,
+      "project_name": "investigate_opencode_core_content_loss_on_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 173,
+      "project_name": "rename_learn_command_to_fix_it",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 174,
+      "project_name": "study_opencode_memory_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 177,
+      "project_name": "remove_model_preferences_from_opencode",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 178,
+      "project_name": "fix_memory_extension_mcp_port",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 179,
+      "project_name": "fix_memory_extension_data_directory_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 179,
+      "project_name": "investigate_opencode_claude_dependency_ORPHAN",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 180,
+      "project_name": "investigate_opencode_claude_dependency",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 181,
+      "project_name": "fix_website_opencode_missing_agent_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 182,
+      "project_name": "fix_website_opencode_multi_extension_agent_dependency",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 183,
+      "project_name": "manage_opencode_json_via_extension_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 184,
+      "project_name": "revise_learn_command_input_modes",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 185,
+      "project_name": "remove_extension_commands_from_core_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 186,
+      "project_name": "filter_extension_artifacts_from_core_sync",
+      "status": "orphan_archived",
+      "archived": "2026-03-23T21:14:18Z",
+      "source": "orphan_recovery"
     }
   ],
   "abandoned_projects": []
