@@ -176,11 +176,11 @@
     {
       "project_number": 261,
       "project_name": "project_manifest_update",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-23T12:37:00Z",
-      "last_updated": "2026-03-23T21:00:15Z",
-      "session_id": "sess_1774299457_d8d8ee",
+      "last_updated": "2026-03-23T21:04:13Z",
+      "session_id": "sess_1774299683_4249f3",
       "dependencies": [
         260
       ],
@@ -190,8 +190,14 @@
           "path": "specs/261_project_manifest_update/reports/01_manifest-update-research.md",
           "type": "research",
           "summary": "Research report with 5 exact manifest changes identified and index-entries.json update"
+        },
+        {
+          "path": "specs/261_project_manifest_update/plans/01_manifest-update-plan.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for manifest.json and index-entries.json updates"
         }
-      ]
+      ],
+      "planned": "2026-03-23T21:04:13Z"
     },
     {
       "project_number": 255,
