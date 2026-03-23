@@ -1,7 +1,76 @@
 {
   "version": "1.0.0",
-  "next_project_number": 256,
+  "next_project_number": 262,
   "active_projects": [
+    {
+      "project_number": 256,
+      "project_name": "project_timeline_context",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": []
+    },
+    {
+      "project_number": 257,
+      "project_name": "project_timeline_typst_template",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": []
+    },
+    {
+      "project_number": 258,
+      "project_name": "project_agent",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": [
+        256,
+        257
+      ]
+    },
+    {
+      "project_number": 259,
+      "project_name": "skill_project",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": [
+        258
+      ]
+    },
+    {
+      "project_number": 260,
+      "project_name": "project_command",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": [
+        259
+      ]
+    },
+    {
+      "project_number": 261,
+      "project_name": "project_manifest_update",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-23T12:37:00Z",
+      "last_updated": "2026-03-23T12:37:00Z",
+      "session_id": "sess_1774294671_a66f55",
+      "dependencies": [
+        260
+      ]
+    },
     {
       "project_number": 255,
       "project_name": "tts_worktree_worker_announcement",

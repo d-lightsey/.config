@@ -1,11 +1,71 @@
 ---
-next_project_number: 256
+next_project_number: 262
 ---
 
 # TODO
 
 ## Tasks
 
+
+### 261. Update founder manifest with /project routing
+- **Effort**: 30 minutes
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #260
+
+**Description**: Update manifest.json to add project-agent.md to agents array, skill-project to skills array, project.md to commands array, and routing entries for "founder:project" in research/plan/implement sections.
+
+---
+
+### 260. Create /project command for timeline generation
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #259
+
+**Description**: Create `/project` command following founder extension patterns with forcing questions: project name, goals/deliverables, team members (roles + allocation %), timeline constraints (start/end dates, milestones), resource needs (compute, budget, equipment), external dependencies, and risk factors. Routes to skill-project with task_type="project" in state.json.
+
+---
+
+### 259. Create skill-project wrapper
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #258
+
+**Description**: Create skill-project following founder extension skill patterns with preflight/postflight status updates, agent delegation via Task tool (NOT Skill), metadata file handling, artifact linking, and git commit. Output goes to strategy/timelines/ directory.
+
+---
+
+### 258. Create project-agent for timeline generation
+- **Effort**: 3-4 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #256, Task #257
+
+**Description**: Create project-agent.md following founder agent patterns with early metadata initialization, mode selection (PLAN/TRACK/REPORT), forcing questions integration for three-point estimation, WBS generation, Gantt timeline creation, and resource allocation. Generates self-contained Typst files (no imports) to strategy/timelines/{project-slug}.typ with PDF compilation.
+
+---
+
+### 257. Create project-timeline.typ Typst template
+- **Effort**: 2-3 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Create self-contained Typst template for project timelines following founder extension typst patterns. Include: color palette (reuse navy theme), page setup, Gantt chart visualization (milestone markers, dependency arrows, critical path highlighting), resource allocation tables, three-point estimation display (optimistic/likely/pessimistic with expected value), WBS hierarchy, and risk matrix visualization.
+
+---
+
+### 256. Create timeline-frameworks.md context file
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Create context/project/founder/domain/timeline-frameworks.md documenting project management best practices: WBS structure, milestone types (initiation/approval/execution/delivery/review), dependency mapping, resource allocation patterns, three-point estimation (PERT formula), critical path analysis, and risk assessment matrices. This provides domain knowledge for project-agent.
+
+---
 ### 255. Announce "Tab N worker" from worktree sessions in tts-notify.sh
 - **Effort**: 30 minutes
 - **Status**: [COMPLETED]
