@@ -59,9 +59,10 @@ next_project_number: 262
 
 ### 256. Create timeline-frameworks.md context file
 - **Effort**: 1-2 hours
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
+- **Research**: [01_timeline-frameworks.md](256_project_timeline_context/reports/01_timeline-frameworks.md)
 
 **Description**: Create context/project/founder/domain/timeline-frameworks.md documenting project management best practices: WBS structure, milestone types (initiation/approval/execution/delivery/review), dependency mapping, resource allocation patterns, three-point estimation (PERT formula), critical path analysis, and risk assessment matrices. This provides domain knowledge for project-agent.
 

@@ -5,12 +5,20 @@
     {
       "project_number": 256,
       "project_name": "project_timeline_context",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-23T12:37:00Z",
-      "last_updated": "2026-03-23T12:37:00Z",
-      "session_id": "sess_1774294671_a66f55",
-      "dependencies": []
+      "last_updated": "2026-03-23T19:57:08Z",
+      "session_id": "sess_1774295551_477af1",
+      "dependencies": [],
+      "researched": "2026-03-23T19:57:08Z",
+      "artifacts": [
+        {
+          "path": "specs/256_project_timeline_context/reports/01_timeline-frameworks.md",
+          "type": "research",
+          "summary": "Research report with 7 PM domain areas: WBS, milestones, dependencies, PERT, CPM, resources, risk matrices"
+        }
+      ]
     },
     {
       "project_number": 257,

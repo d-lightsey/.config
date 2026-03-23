@@ -520,3 +520,7 @@
 [2026-03-21T12:23:31-07:00] Notification sent: Tab 5
 [2026-03-21T12:24:32-07:00] Notification sent: Tab 5
 [2026-03-21T12:31:27-07:00] Notification sent: Tab 5
+[2026-03-21T12:37:52-07:00] Notification sent: Tab 5 (worktree=false)
+[2026-03-23T12:29:59-07:00] Notification sent: Tab 5 (worktree=false)
+[2026-03-23T12:38:53-07:00] Notification sent: Tab 5 (worktree=false)
+[2026-03-23T12:39:54-07:00] Notification sent: Tab 5 (worktree=false)
