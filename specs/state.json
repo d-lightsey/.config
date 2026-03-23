@@ -70,14 +70,22 @@
     {
       "project_number": 258,
       "project_name": "project_agent",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-03-23T12:37:00Z",
-      "last_updated": "2026-03-23T12:37:00Z",
-      "session_id": "sess_1774294671_a66f55",
+      "last_updated": "2026-03-23T20:18:00Z",
+      "session_id": "sess_1774296872_a9334a",
       "dependencies": [
         256,
         257
+      ],
+      "researched": "2026-03-23T20:18:00Z",
+      "artifacts": [
+        {
+          "path": "specs/258_project_agent/reports/01_project-agent-research.md",
+          "type": "research",
+          "summary": "Comprehensive research on founder agent patterns, mode selection, forcing questions integration for PERT estimation, WBS generation, and self-contained Typst output"
+        }
       ]
     },
     {
