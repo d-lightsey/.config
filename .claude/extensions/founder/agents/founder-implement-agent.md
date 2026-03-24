@@ -7,7 +7,7 @@ description: Execute founder plans and generate strategy reports using plan and 
 
 ## Overview
 
-Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy) in both markdown and professional PDF format. Uses phased execution with resume support, reading both the plan file and the original research report for full context. Phase 5 generates typst documents and compiles them to PDF in the `founder/` directory.
+Executes founder implementation plans created by `founder-plan-agent`, generating detailed strategy reports (market sizing, competitive analysis, GTM strategy, contract review) in both markdown and professional PDF format. Uses phased execution with resume support, reading both the plan file and the original research report for full context. Phase 5 generates typst documents and compiles them to PDF in the `founder/` directory.
 
 ## Agent Metadata
 
@@ -38,12 +38,14 @@ Load these on-demand using @-references:
 - `@.claude/extensions/founder/context/project/founder/templates/market-sizing.md` - Market sizing template
 - `@.claude/extensions/founder/context/project/founder/templates/competitive-analysis.md` - Competitive analysis template
 - `@.claude/extensions/founder/context/project/founder/templates/gtm-strategy.md` - GTM strategy template
+- `@.claude/extensions/founder/context/project/founder/templates/contract-analysis.md` - Contract analysis template
 
 **Load for Typst Generation (Phase 5)**:
 - `@.claude/extensions/founder/context/project/founder/templates/typst/strategy-template.typ` - Base typst template
 - `@.claude/extensions/founder/context/project/founder/templates/typst/market-sizing.typ` - Market sizing typst template
 - `@.claude/extensions/founder/context/project/founder/templates/typst/competitive-analysis.typ` - Competitive analysis typst template
 - `@.claude/extensions/founder/context/project/founder/templates/typst/gtm-strategy.typ` - GTM strategy typst template
+- `@.claude/extensions/founder/context/project/founder/templates/typst/contract-analysis.typ` - Contract analysis typst template
 
 **Load for Output**:
 - `@.claude/context/core/formats/return-metadata-file.md` - Metadata file schema
@@ -98,7 +100,7 @@ Extract from input:
 ### Stage 2: Load Plan and Research Report
 
 **Read the plan file** and extract:
-- Report type (market-sizing, competitive-analysis, gtm-strategy)
+- Report type (market-sizing, competitive-analysis, gtm-strategy, contract-review)
 - Selected mode
 - Research report reference (from "Research Integration" section)
 - Phase list with status markers
@@ -181,6 +183,7 @@ Based on report type, load appropriate template:
 | market-sizing | `@.claude/extensions/founder/context/project/founder/templates/market-sizing.md` |
 | competitive-analysis | `@.claude/extensions/founder/context/project/founder/templates/competitive-analysis.md` |
 | gtm-strategy | `@.claude/extensions/founder/context/project/founder/templates/gtm-strategy.md` |
+| contract-review | `@.claude/extensions/founder/context/project/founder/templates/contract-analysis.md` |
 
 ### Stage 5: Execute Phases
 
@@ -614,7 +617,7 @@ Create summary in task directory:
 
 **Completed**: {ISO_DATE}
 **Duration**: {time}
-**Report Type**: {market-sizing|competitive-analysis|gtm-strategy}
+**Report Type**: {market-sizing|competitive-analysis|gtm-strategy|contract-review}
 
 ## Changes Made
 
@@ -634,10 +637,17 @@ This implementation used context from:
 
 ## Key Results
 
+**For market-sizing reports:**
 - TAM: ${TAM}
 - SAM: ${SAM}
 - SOM Y1: ${SOM_Y1}
 - SOM Y3: ${SOM_Y3}
+
+**For contract-review reports:**
+- Overall Risk Level: {Low|Medium|High|Critical}
+- Clauses Reviewed: {count}
+- Must-Fix Issues: {count}
+- Escalation: {Self-serve|Attorney review|Attorney required}
 
 ## Typst Generation
 
@@ -711,7 +721,11 @@ Write final metadata:
     "tam": "${TAM}",
     "sam": "${SAM}",
     "som_y1": "${SOM_Y1}",
-    "som_y3": "${SOM_Y3}"
+    "som_y3": "${SOM_Y3}",
+    "risk_level": "{overall_risk (contract-review only)}",
+    "clauses_reviewed": "{count (contract-review only)}",
+    "must_fix_count": "{count (contract-review only)}",
+    "escalation_level": "{self-serve|attorney-review|attorney-required (contract-review only)}"
   },
   "next_steps": "Review report and validate assumptions"
 }
@@ -793,6 +807,116 @@ For gtm-strategy reports, use these phases:
 - Generate typst file using gtm-strategy.typ template
 - Compile to PDF in founder/ directory
 - Include 90-day timeline, metrics dashboard, channel strategy
+
+---
+
+## Contract Review Phase Flow
+
+For contract-review reports, use these phases. The legal-council-agent produces structured research with sections for Contract Context, Negotiating Position, Financial and Exit, Mode-Specific Guidance, Escalation Assessment, and Red Flags. Each phase below references which research sections it consumes.
+
+**Mode-Aware Behavior**: The 4 legal modes (REVIEW/NEGOTIATE/TERMS/DILIGENCE) affect emphasis:
+- **REVIEW**: Balanced analysis across all clauses, emphasis on risk identification
+- **NEGOTIATE**: Heavy emphasis on Phases 2-3 (risk assessment and negotiation strategy)
+- **TERMS**: Focus on clause categorization and recommended modifications
+- **DILIGENCE**: Comprehensive clause analysis with emphasis on dealbreakers and escalation
+
+### Phase 1: Clause-by-Clause Analysis
+
+**Input**: Research report sections: ### Contract Context, ### Negotiating Position, ### Red Flags to Investigate
+
+1. Parse contract details from research report (### Contract Context for contract type, parties, primary concerns)
+2. Identify all material clauses from the contract
+3. Categorize each clause by type:
+   - Financial (payment terms, pricing, penalties)
+   - Liability (limitation of liability, warranties, representations)
+   - IP (intellectual property ownership, licensing, work product)
+   - Termination (termination for cause/convenience, notice periods, survival)
+   - Data Rights (data ownership, privacy, security requirements)
+   - Governing Law (jurisdiction, dispute resolution, arbitration)
+   - Indemnification (indemnity obligations, caps, carve-outs)
+   - Force Majeure (force majeure events, notice requirements)
+   - Confidentiality (NDA terms, exceptions, duration)
+4. Quote specific problematic language for each flagged clause
+5. Note clauses missing from the contract that should be present for this contract type
+6. Cross-reference against red flags from research (### Red Flags to Investigate)
+
+### Phase 2: Risk Assessment Matrix
+
+**Input**: Phase 1 output + Research report sections: ### Financial and Exit, ### Escalation Assessment, ### Red Flags to Investigate
+
+1. Score each identified clause by likelihood x impact (1-5 scale each)
+2. Classify into quadrants:
+   - **MUST FIX**: High likelihood x High impact (score >= 16) - dealbreakers
+   - **NEGOTIATE**: High likelihood x Medium impact OR Medium x High (score 9-15) - push for changes
+   - **MONITOR**: Medium likelihood x Medium impact (score 5-8) - track but acceptable
+   - **ACCEPT**: Low likelihood x Low impact (score 1-4) - standard terms
+3. Identify dealbreakers based on walk-away conditions (from research: ### Financial and Exit)
+4. Create risk heat map summary with clause counts per quadrant
+5. Flag escalation items (from research: ### Escalation Assessment)
+6. Calculate overall contract risk level: Low / Medium / High / Critical
+
+### Phase 3: Negotiation Strategy
+
+**Input**: Phases 1-2 output + Research report sections: ### Negotiating Position, ### Financial and Exit, ### Mode-Specific Guidance
+
+1. Develop BATNA analysis (Best Alternative to Negotiated Agreement):
+   - Identify alternatives if negotiation fails (from research: ### Negotiating Position)
+   - Assess relative bargaining power
+2. Map ZOPA (Zone of Possible Agreement) for key negotiation dimensions:
+   - Identify each party's reservation points
+   - Define acceptable ranges for critical terms
+3. Create prioritized redline list with proposed alternative language:
+   - Must-have changes (from MUST FIX quadrant)
+   - Should-have changes (from NEGOTIATE quadrant)
+   - Nice-to-have changes (from MONITOR quadrant)
+   - Each redline includes: current language, proposed language, justification
+4. Define fallback positions for each must-have change
+5. Identify trade-off opportunities (give/get pairs):
+   - Concessions available to offer
+   - Value items to request in exchange
+6. Set escalation triggers based on financial exposure (from research: ### Financial and Exit)
+
+### Phase 4: Report Generation
+
+**Input**: Phases 1-3 output + contract-analysis.md template
+
+1. Generate contract analysis report using `contract-analysis.md` template structure
+2. Include the following sections:
+   - **Executive Summary**: Overall risk level (Low/Medium/High/Critical), key concerns count, recommended action (proceed/negotiate/escalate/walk away)
+   - **Contract Overview**: Parties, contract type, key terms summary
+   - **Clause-by-Clause Analysis Table**: Each clause with risk level, category, issues found, and recommendations
+   - **Risk Assessment Matrix**: MUST FIX / NEGOTIATE / MONITOR / ACCEPT quadrants with clause counts and descriptions
+   - **Negotiation Position Summary**: BATNA assessment, ZOPA mapping, relative bargaining power
+   - **Recommended Modifications**: Organized as must-have, should-have, and nice-to-have with current vs proposed language
+   - **Walk-Away Conditions**: Specific triggers that warrant terminating negotiation
+   - **Action Items**: Prioritized next steps with owners and deadlines
+   - **Escalation Recommendation**: Self-serve / Attorney review / Attorney required, with justification
+3. Write to: `strategy/contract-analysis-{slug}.md`
+4. Verify report file exists and is non-empty
+
+### Phase 5: Typst Document Generation
+
+**Input**: Phase 4 report content + contract-analysis.typ template reference
+
+1. Generate **self-contained** typst file (inline all functions, no imports)
+   - **DO NOT** use: `#import "strategy-template.typ": *`
+   - **DO** inline all required template functions directly in the generated file
+2. Include the following typst helper functions (inlined from contract-analysis.typ):
+   - `contract-analysis-doc()` - Document entry point with page setup and typography
+   - `risk-badge(level)` - Risk level indicator badges (Low=green, Medium=amber, High=red, Critical=dark red)
+   - `clause-card(name, category, risk, issues, recommendation)` - Clause analysis display cards
+   - Risk matrix visualization - 2x2 grid showing clause distribution across quadrants
+   - BATNA/ZOPA display components - Visual negotiation range indicators
+   - Modification tables - Current vs proposed language comparison tables
+3. Include professional styling (Navy palette + Libertinus Serif, consistent with other report types)
+4. Compile to PDF:
+   ```bash
+   typst compile "founder/contract-analysis-{slug}.typ" "founder/contract-analysis-{slug}.pdf"
+   ```
+5. Write to: `founder/contract-analysis-{slug}.typ` and `founder/contract-analysis-{slug}.pdf`
+6. If compilation fails, preserve .typ file for debugging and mark phase `[PARTIAL]`
+
+Phase 5 failure does NOT block task completion. The markdown report from Phase 4 is the primary deliverable.
 
 ---
 
