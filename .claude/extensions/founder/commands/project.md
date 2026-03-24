@@ -15,7 +15,7 @@ This command initiates project planning through structured forcing questions. It
 ## Syntax
 
 - `/project "Mobile App Redesign"` - Ask forcing questions, create task with gathered data
-- `/project 234` - Resume project planning on existing task
+- `/project 234` - Resume research on existing task
 - `/project /path/to/project-brief.md` - Use file as context, ask questions, create task
 - `/project --quick PLAN` - Legacy standalone mode (no task creation)
 
@@ -24,7 +24,7 @@ This command initiates project planning through structured forcing questions. It
 | Input | Behavior |
 |-------|----------|
 | Description string | Ask forcing questions, create task with forcing_data, stop at [NOT STARTED] |
-| Task number | Load existing task, run project planning, stop at [PLANNED] |
+| Task number | Load existing task, run research, stop at [RESEARCHED] |
 | File path | Read file for context, ask questions, create task |
 | `--quick [mode]` | Legacy standalone mode (skip task creation) |
 
@@ -262,11 +262,10 @@ if [ -z "$task_data" ]; then
   exit 1
 fi
 
-# Validate task type is project
-task_type=$(echo "$task_data" | jq -r '.task_type // ""')
-if [ "$task_type" != "project" ]; then
-  echo "Error: Task $task_number is not a project task (task_type: $task_type)"
-  echo "Run /project with a description to create a new project task"
+# Validate language is founder
+task_lang=$(echo "$task_data" | jq -r '.language')
+if [ "$task_lang" != "founder" ]; then
+  echo "Error: Task $task_number is not a founder task (language: $task_lang)"
   exit 1
 fi
 ```
@@ -369,9 +368,9 @@ Forcing Data Gathered:
 Status: [NOT STARTED]
 
 Next Steps:
-- Run /research {N} to create project timeline with WBS and PERT estimates
-- Run /plan {N} to create implementation plan
-- Run /implement {N} to generate final timeline artifacts
+- Run /research {N} to gather WBS/PERT data and create research report
+- Run /plan {N} to create implementation plan for timeline generation
+- Run /implement {N} to generate final Typst timeline and PDF
 ```
 
 **STOP HERE for new tasks.** Do not auto-invoke research.
@@ -397,7 +396,7 @@ Skip to CHECKPOINT 2 (Legacy).
 
 ### STAGE 2B: Task Workflow Mode (existing task)
 
-**Run project planning via skill-project**:
+**Run research via skill-project**:
 
 ```
 skill: "skill-project"
@@ -405,11 +404,11 @@ args: "task_number={task_number} session_id={session_id}"
 ```
 
 The skill workflow:
-1. Updates status to [PLANNING] (preflight)
+1. Updates status to [RESEARCHING] (preflight)
 2. Invokes project-agent, passing forcing_data from task metadata
-3. Agent uses pre-gathered data, asks follow-up questions as needed
-4. Agent creates timeline at `strategy/timelines/{project-slug}.typ`
-5. Updates status to [PLANNED], [TRACKED], or [REPORTED] based on mode (postflight)
+3. Agent uses pre-gathered data to research WBS structure, PERT estimates, and resource allocation
+4. Agent creates research report at `specs/{NNN}_{SLUG}/reports/01_{short-slug}.md`
+5. Updates status to [RESEARCHED] (postflight)
 6. Links artifact and commits
 
 ---
@@ -418,105 +417,46 @@ The skill workflow:
 
 ### For Task Workflow Mode (existing task)
 
-1. **Verify Project Planning Completed**
+1. **Verify Research Completed**
    ```bash
    status=$(jq -r --argjson num "$task_number" \
      '.active_projects[] | select(.project_number == $num) | .status' \
      specs/state.json)
 
-   # Status depends on mode used
-   if [ "$status" != "planned" ] && [ "$status" != "tracked" ] && [ "$status" != "reported" ]; then
-     echo "Project planning incomplete. Status: [$status]"
+   if [ "$status" != "researched" ]; then
+     echo "Research incomplete. Status: [$status]"
      echo "Resume: /project $task_number"
      exit 1
    fi
    ```
 
-2. **Get Timeline Artifact**
+2. **Get Research Artifact**
    ```bash
-   timeline_path=$(jq -r --argjson num "$task_number" \
-     '.active_projects[] | select(.project_number == $num) | .artifacts[] | select(.type == "timeline") | .path' \
+   research_path=$(jq -r --argjson num "$task_number" \
+     '.active_projects[] | select(.project_number == $num) | .artifacts[] | select(.type == "research") | .path' \
      specs/state.json)
    ```
 
-3. **Display Result (PLAN mode)**
+3. **Display Result**
    ```
-   Project timeline created for Task #{N}
+   Project research complete for Task #{N}
 
-   Timeline: {timeline_path}
+   Research Report: {research_path}
 
-   Project: {project_name}
-   Completion Criteria: {completion_criteria}
+   Data Gathered:
+   - WBS structure: {captured}
+   - PERT estimates: {captured}
+   - Resource allocation: {captured}
+   - Critical path: {captured}
+   - Risk factors: {captured}
+   - External dependencies: {captured}
 
-   WBS Summary:
-   - Phases: {phase_count}
-   - Tasks: {task_count}
-   - Total Duration: {duration} (PERT estimate)
-   - Critical Path: {critical_path_summary}
-
-   Team Allocation:
-   - {member_1}: {role}, {allocation}
-   - {member_2}: {role}, {allocation}
-
-   Key Milestones:
-   - {milestone_1}: {date}
-   - {milestone_2}: {date}
-
-   Status: [PLANNED]
+   Status: [RESEARCHED]
 
    Next Steps:
-   - Review timeline for accuracy
-   - Use /project {N} with TRACK mode to update progress
-   - Use /project {N} with REPORT mode for status summary
-   ```
-
-4. **Display Result (TRACK mode)**
-   ```
-   Project timeline updated for Task #{N}
-
-   Timeline: {timeline_path} (updated)
-
-   Progress Summary:
-   - Overall: {percent}% complete
-   - On Track: {on_track_count} tasks
-   - At Risk: {at_risk_count} tasks
-   - Completed: {completed_count} / {total_count} tasks
-
-   Variance Analysis:
-   - Schedule Variance: {sv_description}
-   - Scope Changes: {scope_change_count}
-
-   Status: [TRACKED]
-
-   Next Steps:
-   - Address at-risk items
-   - Generate REPORT for stakeholders
-   ```
-
-5. **Display Result (REPORT mode)**
-   ```
-   Status report generated for Task #{N}
-
-   Report: {report_path}
-
-   Executive Summary:
-   - Project: {project_name}
-   - Status: {On Track|At Risk|Delayed}
-   - Progress: {percent}% complete
-   - Target Date: {target_date}
-
-   Key Decisions Needed:
-   - {decision_1}
-   - {decision_2}
-
-   Risk Assessment:
-   - {risk_summary}
-
-   Status: [REPORTED]
-
-   Next Steps:
-   - Share report with stakeholders
-   - Schedule review meeting if At Risk
+   - Review research report for accuracy
+   - Run /plan {N} to create implementation plan
+   - Run /implement {N} to generate final Typst timeline and PDF
    ```
 
 ### For Legacy Mode (--quick)
@@ -550,10 +490,10 @@ Error: Task {N} not found in state.json
 Run /project "description" to create a new project task
 ```
 
-### Task Type Mismatch
+### Task Language Mismatch
 
 ```
-Error: Task {N} is not a project task (task_type: {actual_type})
+Error: Task {N} is not a founder task (language: {actual_language})
 Run /project with a description to create a new project task
 ```
 
@@ -564,20 +504,12 @@ Error: File not found: {path}
 Verify the file path and try again
 ```
 
-### Project Planning Incomplete
+### Research Incomplete
 
 ```
-Project planning incomplete for Task #{N}
+Research incomplete for Task #{N}
 Status: [{current_status}]
 Resume: /project {N}
-```
-
-### No Existing Timeline (TRACK/REPORT modes)
-
-```
-Error: No existing timeline found for Task #{N}
-Use PLAN mode first to create the initial timeline:
-/project {N}  (select PLAN mode)
 ```
 
 ### User Abandons Forcing Questions (STAGE 0)
@@ -589,14 +521,14 @@ Project timeline task creation cancelled.
 No task was created. Re-run /project with your description to start again.
 ```
 
-### User Abandons Project Planning (STAGE 2)
+### User Abandons Research (STAGE 2)
 
-Return partial status, task remains in [PLANNING]:
+Return partial status, task remains in [RESEARCHING]:
 ```
-Project planning partially completed.
+Project research partially completed.
 
 Completed: {steps_completed}/{steps_total} steps
-Task: #{N} - Status: [PLANNING]
+Task: #{N} - Status: [RESEARCHING]
 
 Resume: /project {N}
 ```
@@ -609,11 +541,9 @@ Resume: /project {N}
 
 | Artifact | Location |
 |----------|----------|
-| Project timeline (PLAN) | `strategy/timelines/{project-slug}.typ` |
-| Updated timeline (TRACK) | `strategy/timelines/{project-slug}.typ` |
-| Status report (REPORT) | `strategy/timelines/{project-slug}-report.typ` |
+| Research report | `specs/{NNN}_{SLUG}/reports/01_{short-slug}.md` |
 
-**Note**: Timelines are generated in Typst format for high-quality PDF output.
+**Note**: Final timeline artifacts (`strategy/timelines/{project-slug}.typ`) are generated by `/implement`, not `/project`.
 
 ### Legacy Mode (--quick)
 
@@ -628,20 +558,15 @@ Resume: /project {N}
 The standard workflow (with pre-task forcing questions):
 
 ```
-/project "description" -> Asks forcing questions, creates task with data, stops at [NOT STARTED]
-/research {N}          -> Routes to skill-project, creates timeline, stops at [PLANNED]
-/project {N} (TRACK)   -> Updates timeline with progress, stops at [TRACKED]
-/project {N} (REPORT)  -> Generates status report, stops at [REPORTED]
+/project "description"  -> Asks forcing questions, creates task with data, stops at [NOT STARTED]
+/research {N}           -> Uses forcing_data, completes research, stops at [RESEARCHED]
+/plan {N}               -> Reads research report, creates implementation plan
+/implement {N}          -> Executes plan, generates strategy/timelines/{slug}.typ
 ```
 
 Alternative: Resume existing task:
 ```
-/project {N}           -> Runs project planning on existing task
-```
-
-Alternative: Legacy standalone mode:
-```
-/project --quick PLAN  -> Creates timeline without task creation
+/project {N}            -> Runs research on existing task, stops at [RESEARCHED]
 ```
 
 ---
@@ -649,22 +574,14 @@ Alternative: Legacy standalone mode:
 ## Examples
 
 ```bash
-# Create new project task with description - asks forcing questions first
+# Create new task with description - asks forcing questions first
 /project "Mobile App Redesign"
 
-# Resume project planning on existing task (uses stored forcing_data)
+# Resume research on existing task (uses stored forcing_data)
 /project 234
 
 # Use file as context - asks forcing questions, creates task
 /project ~/startup/project-brief.md
-
-# Update progress on existing timeline
-/project 234
-# (select TRACK mode when prompted)
-
-# Generate status report
-/project 234
-# (select REPORT mode when prompted)
 
 # Legacy standalone mode (generates timeline immediately, no task)
 /project --quick PLAN

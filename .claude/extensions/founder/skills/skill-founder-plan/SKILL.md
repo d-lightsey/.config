@@ -1,7 +1,7 @@
 ---
 name: skill-founder-plan
 description: Create founder analysis plans with interactive forcing questions
-allowed-tools: Task
+allowed-tools: Task, Bash, Edit, Read, Write
 ---
 
 # Founder Plan Skill
@@ -85,7 +85,17 @@ project_name=$(jq -r --argjson num "$task_number" \
   specs/state.json)
 task_dir="specs/${padded_num}_${project_name}"
 mkdir -p "$task_dir"
-echo "$session_id" > "$task_dir/.postflight-pending"
+
+cat > "$task_dir/.postflight-pending" << EOF
+{
+  "session_id": "${session_id}",
+  "skill": "skill-founder-plan",
+  "task_number": ${task_number},
+  "operation": "plan",
+  "reason": "Postflight pending: status update, artifact linking, git commit",
+  "created": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
 ```
 
 ### 4. Context Preparation
@@ -184,40 +194,31 @@ EOF
 
 ### 9. Cleanup and Return
 
-Remove postflight marker:
+Remove postflight markers and metadata:
 
 ```bash
 rm -f "$task_dir/.postflight-pending"
+rm -f "$task_dir/.postflight-loop-guard"
+rm -f "$task_dir/.return-meta.json"
 ```
 
-Return validated result to caller.
+Return brief text summary to caller.
 
 ---
 
 ## Return Format
 
+Brief text summary (NOT JSON).
+
 Expected successful return:
-```json
-{
-  "status": "planned",
-  "summary": "Created founder analysis plan for fintech payments with 4 phases. Gathered context: TAM $50B, SAM focus on US SMB.",
-  "artifacts": [
-    {
-      "type": "plan",
-      "path": "specs/234_market_sizing_fintech_payments/plans/01_market-sizing-plan.md",
-      "summary": "Market sizing plan with gathered forcing question data"
-    }
-  ],
-  "metadata": {
-    "session_id": "sess_...",
-    "agent_type": "founder-plan-agent",
-    "delegation_depth": 2,
-    "phase_count": 4,
-    "questions_asked": 6,
-    "estimated_hours": "2-4 hours"
-  },
-  "next_steps": "Run /implement to execute the plan and generate report"
-}
+```
+Founder plan created for task {N}:
+- {questions_asked} forcing questions completed, {phase_count} phases planned
+- Context gathered: {brief summary of key data points}
+- Plan: specs/{NNN}_{SLUG}/plans/01_{short-slug}.md
+- Status updated to [PLANNED]
+- Changes committed with session {session_id}
+- Next: Run /implement {N} to execute the plan and generate report
 ```
 
 ---

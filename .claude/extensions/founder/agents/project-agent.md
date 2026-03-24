@@ -1,26 +1,20 @@
 ---
 name: project-agent
-description: Project timeline generation with WBS, PERT estimation, Gantt charts, and resource allocation
+description: Project research with WBS, PERT estimation, and resource analysis
 ---
 
 # Project Agent
 
 ## Overview
 
-Creates project timelines with Work Breakdown Structure (WBS), three-point PERT estimation, Gantt charts, and resource allocation matrices. Operates in three modes:
-
-- **PLAN**: Create new project timeline from scratch
-- **TRACK**: Update existing timeline with progress
-- **REPORT**: Generate executive status report
-
-Uses forcing questions to extract specific project data, calculates critical path, and generates self-contained Typst files for professional PDF output.
+Gathers project data through structured forcing questions and outputs a research report containing Work Breakdown Structure (WBS), three-point PERT estimates, resource allocation, and critical path analysis. This is a research-only agent -- it produces a structured report for downstream planning and implementation.
 
 ## Agent Metadata
 
 - **Name**: project-agent
-- **Purpose**: Project timeline generation with PM artifacts
+- **Purpose**: Project research with WBS and PERT estimation
 - **Invoked By**: skill-project (via Task tool)
-- **Return Format**: JSON metadata file + brief text summary
+- **Return Format**: Brief text summary + metadata file
 
 ## Allowed Tools
 
@@ -30,11 +24,10 @@ This agent has access to:
 - AskUserQuestion - For forcing questions (one at a time)
 
 ### File Operations
-- Read - Read existing timelines, context files
-- Write - Create timeline artifacts, Typst files
-- Edit - Update existing timelines
+- Read - Read existing files, context files
+- Write - Create research report artifact
+- Edit - Update existing files
 - Glob - Find relevant files
-- Bash - File verification, Typst compilation
 
 ## Context References
 
@@ -43,11 +36,9 @@ Load these on-demand using @-references:
 **Always Load**:
 - `@.claude/extensions/founder/context/project/founder/domain/timeline-frameworks.md` - WBS, PERT, CPM methodology
 - `@.claude/extensions/founder/context/project/founder/patterns/forcing-questions.md` - Question framework
-- `@.claude/extensions/founder/context/project/founder/patterns/mode-selection.md` - Mode patterns
 
 **Load for Output**:
 - `@.claude/context/core/formats/return-metadata-file.md` - Metadata file schema
-- `@.claude/extensions/founder/context/project/founder/templates/typst/project-timeline.typ` - Typst components
 
 ---
 
@@ -83,50 +74,18 @@ Extract from input:
     "description": "Project timeline: Product launch Q2",
     "language": "founder"
   },
-  "mode": "PLAN|TRACK|REPORT or null",
   "metadata_file_path": "specs/234_product_launch_timeline/.return-meta.json",
   "metadata": {
     "session_id": "sess_...",
-    "delegation_depth": 2,
+    "delegation_depth": 1,
     "delegation_path": ["orchestrator", "project", "skill-project"]
   }
 }
 ```
 
-### Stage 2: Mode Selection
-
-If mode is null, present mode selection via AskUserQuestion:
-
-```
-Before we create your project timeline, select your mode:
-
-A) PLAN - "Build timeline" - Create new project timeline from scratch
-   Use when: Starting a new project, no existing timeline
-
-B) TRACK - "Update progress" - Update existing timeline with actual progress
-   Use when: Project underway, need to record actual dates and status
-
-C) REPORT - "Status snapshot" - Generate executive summary from existing timeline
-   Use when: Need status update for stakeholders
-
-Which mode best describes what you need?
-```
-
-Confirm mode selection:
-```
-You selected {MODE} mode. This means:
-- [Mode-specific implications]
-
-Is this correct?
-```
-
-Route to appropriate execution flow based on mode.
-
 ---
 
-## PLAN Mode Execution
-
-### Stage 3a: Project Definition Questions
+### Stage 2: Project Definition Questions
 
 **Q1: Project Name and Scope**
 ```
@@ -157,7 +116,7 @@ Example good answer: "Sarah (VP Product) approves scope, Mike (CTO) approves arc
 
 Record project definition data.
 
-### Stage 3b: Phase Elicitation Questions
+### Stage 3: Phase Elicitation Questions
 
 **Q4: Major Phases**
 ```
@@ -193,7 +152,7 @@ Phase 2 ({phase_name}): What deliverable?
 
 Record phase data.
 
-### Stage 3c: Task Decomposition Questions
+### Stage 4: Task Decomposition Questions
 
 **Q7: Tasks Within Each Phase**
 ```
@@ -250,7 +209,7 @@ Store gathered data in this structure:
 
 ---
 
-### Stage 4: Three-Point Estimation Questions
+### Stage 5: Three-Point Estimation Questions
 
 For each task in the WBS, gather three-point estimates.
 
@@ -320,7 +279,7 @@ Project 95% CI = Total Expected +/- 2*Total SD
 
 ---
 
-### Stage 5a: Resource Allocation Questions
+### Stage 6: Resource Allocation Questions
 
 **Q1: Team Members**
 ```
@@ -346,7 +305,7 @@ Who is responsible for each task?
 For task "{task_name}": Who is the owner?
 ```
 
-### Stage 5b: Schedule Calculation Logic
+### Stage 7: Schedule Calculation Logic
 
 **Forward Pass (Early Dates):**
 ```
@@ -398,402 +357,125 @@ For each period:
 
 ---
 
-## TRACK Mode Execution
+### Stage 8: Generate Research Report
 
-### Stage 3T: Locate Existing Timeline
+Write a structured research report to `specs/{NNN}_{SLUG}/reports/01_{short-slug}.md`.
 
-```bash
-timeline_path="strategy/timelines/${project_slug}.typ"
-if [ ! -f "$timeline_path" ]; then
-  echo "Error: No existing timeline found at $timeline_path"
-  echo "Use PLAN mode to create a new timeline first."
-  exit 1
-fi
+The report must contain these sections:
+
+**1. Project Definition**
+- Project name, completion criteria, target date
+- Key stakeholders and their roles
+- Source: Q1-Q3 data
+
+**2. Work Breakdown Structure**
+- Hierarchical list of phases and tasks
+- Dependencies between phases and tasks
+- Deliverables per phase
+- Source: Stages 2-4 data
+
+**3. PERT Estimates**
+
+| Phase | Task | O | M | P | Expected | StdDev |
+|-------|------|---|---|---|----------|--------|
+| {phase} | {task} | {O} | {M} | {P} | {E} | {SD} |
+
+Project totals:
+- Expected duration: {total_expected} {unit}
+- 95% confidence interval: {ci_low} - {ci_high} {unit}
+- Source: Stage 5 data
+
+**4. Resource Allocation**
+
+| Team Member | Role | Availability | Assigned Tasks |
+|-------------|------|-------------|----------------|
+| {name} | {role} | {%} | {tasks} |
+
+- Source: Stage 6 data
+
+**5. Critical Path Analysis**
+- Critical path tasks (Float = 0)
+- Total critical path duration
+- Non-critical tasks with float values
+- Source: Stage 7 calculation
+
+**6. Overallocation Warnings**
+- Any team members allocated > 100% in any period
+- Suggested resolution approaches
+- Source: Stage 7 detection
+
+**7. Risk Register**
+- Risks derived from: tight estimates (high P/O ratio), resource overallocations, long dependency chains, single points of failure
+- Each risk: description, likelihood, impact, mitigation
+
+**8. Raw Data**
+
+Include fenced JSON code blocks for downstream planner-agent consumption:
+
+````markdown
+```json:wbs
+{WBS data structure from Stage 4}
 ```
 
-Read and parse existing timeline to extract current task list and status.
-
-### Stage 4T: Progress Update Questions
-
-For each task in the timeline:
-
-**Q1: Task Status**
-```
-Task: "{task_name}" (currently: {current_status})
-
-What is the current status?
-A) Not Started
-B) In Progress
-C) Completed
-D) Blocked
+```json:pert
+{PERT data structure from Stage 5}
 ```
 
-**Q2: Actual Dates (if applicable)**
+```json:resources
+{Resource data structure from Stage 6-7}
 ```
-Task: "{task_name}"
+````
 
-Actual start date? (or "not started yet")
-Actual end date? (or "still in progress")
-```
-
-**Q3: Remaining Effort**
-```
-Task: "{task_name}" (estimated: {original_estimate} {unit})
-
-How much effort remains? (in {unit})
-```
-
-**Q4: Blockers or Risks**
-```
-Task: "{task_name}"
-
-Any blockers or risks to flag?
-(Enter to skip if none)
-```
-
-### Stage 5T: Schedule Recalculation
-
-Recalculate:
-- Update task statuses and actual dates
-- Recalculate early/late dates for remaining tasks
-- Update critical path
-- Calculate schedule variance (planned vs actual)
-- Update percent complete for project
-
-### Stage 6T: Updated Typst Generation
-
-Update the existing timeline file with:
-- Current status badges
-- Actual dates where available
-- Updated Gantt chart with progress bars
-- Variance indicators
+Use the Write tool to create the report file. Ensure the directory exists first.
 
 ---
 
-## REPORT Mode Execution
-
-### Stage 3R: Locate Existing Timeline
-
-Same as Stage 3T - locate and parse existing timeline.
-
-### Stage 4R: Status Data Extraction
-
-Extract from timeline:
-- Overall progress percentage
-- Tasks on critical path and their status
-- Upcoming milestones (next 2 weeks)
-- Overdue tasks
-- Active blockers
-
-### Stage 5R: Executive Summary Generation
-
-Generate report sections:
-
-**Overall Progress:**
-```
-Project: {name}
-Status: {On Track / At Risk / Delayed}
-Progress: {X}% complete
-Timeline: {expected_end_date} ({variance} from baseline)
-```
-
-**Critical Path Status:**
-```
-Critical tasks: {N} total
-  - Completed: {X}
-  - In Progress: {Y}
-  - Not Started: {Z}
-  - Blocked: {W}
-```
-
-**Key Risks and Blockers:**
-```
-- {blocker_1}
-- {blocker_2}
-```
-
-**Upcoming Milestones (Next 14 Days):**
-```
-- {milestone_1}: {date}
-- {milestone_2}: {date}
-```
-
-### Stage 6R: Report Typst Generation
-
-Create `strategy/timelines/{project-slug}-report.typ` with:
-- project-summary card
-- Critical path Gantt (filtered)
-- Risk matrix (if risks identified)
-- Milestone timeline
-
----
-
-## Stage 6/6T/6R: Typst Generation
-
-Generate self-contained Typst file. Do NOT use imports - inline all required functions.
-
-### Self-Contained Template Structure
-
-```typst
-// Project Timeline: {project_name}
-// Generated: {ISO_DATE}
-// Mode: {PLAN|TRACK|REPORT}
-
-// ============================================================================
-// Inlined Colors (from strategy-template.typ)
-// ============================================================================
-
-#let navy-dark = rgb("#1e3a5f")
-#let navy-medium = rgb("#2d5a87")
-#let navy-light = rgb("#4a7db8")
-#let accent-gold = rgb("#c9a962")
-#let accent-gold-light = rgb("#f5ecd7")
-#let text-dark = rgb("#1a1a1a")
-#let text-muted = rgb("#64748b")
-#let text-light = rgb("#94a3b8")
-#let fill-header = rgb("#f1f5f9")
-#let fill-alt-row = rgb("#f8fafc")
-#let fill-callout = rgb("#e0f2fe")
-#let border-light = rgb("#e2e8f0")
-#let border-warning = rgb("#fbbf24")
-#let critical-path = rgb("#dc2626")
-#let critical-path-light = rgb("#fef2f2")
-#let milestone-marker = navy-dark
-#let progress-complete = rgb("#16a34a")
-#let progress-complete-light = rgb("#f0fdf4")
-#let progress-remaining = rgb("#94a3b8")
-#let overallocation = rgb("#ea580c")
-#let overallocation-light = rgb("#fff7ed")
-
-// ============================================================================
-// Document Setup
-// ============================================================================
-
-#set document(title: "{project_name}", author: "Project Agent")
-#set page(paper: "a4", margin: (x: 2cm, y: 2cm))
-#set text(font: "Linux Libertine", size: 11pt, fill: text-dark)
-#set heading(numbering: "1.1")
-
-// ============================================================================
-// Inlined Components (from project-timeline.typ)
-// ============================================================================
-
-// [Inline required components: project-summary, wbs-boxes, pert-table, resource-matrix]
-// Only include components actually used in this document
-
-// ============================================================================
-// Document Content
-// ============================================================================
-
-= {project_name}
-
-#text(fill: text-muted)[
-  Generated: {date} | Mode: {mode}
-]
-
-== Project Summary
-
-// project-summary component call
-
-== Work Breakdown Structure
-
-// wbs-boxes or wbs-tree component call
-
-== Schedule Estimates (PERT)
-
-// pert-table component call
-
-== Resource Allocation
-
-// resource-matrix component call
-
-== Gantt Chart
-
-// project-gantt component call (if gantty available)
-// Otherwise, text-based timeline
-
-== Risks and Dependencies
-
-// dependency-list or project-risk-matrix component call
-```
-
-### Function Inlining Strategy
-
-Only inline functions that are actually used:
-
-| Mode | Required Functions |
-|------|-------------------|
-| PLAN | project-summary, wbs-boxes, pert-table, resource-matrix, project-gantt |
-| TRACK | project-summary, project-gantt (with progress), dependency-list |
-| REPORT | project-summary, milestone-badge, project-risk-matrix |
-
-### Output Path Conventions
-
-| Mode | Output Path |
-|------|-------------|
-| PLAN | `strategy/timelines/{project-slug}.typ` |
-| TRACK | Updates existing `strategy/timelines/{project-slug}.typ` |
-| REPORT | `strategy/timelines/{project-slug}-report.typ` |
-
----
-
-## Stage 7: PDF Compilation
-
-**Check Typst Availability:**
-```bash
-if ! command -v typst &> /dev/null; then
-  echo "Warning: typst not installed. Skipping PDF compilation."
-  echo "Install typst to generate PDFs: https://typst.app"
-  # Continue without blocking
-fi
-```
-
-**Compile PDF:**
-```bash
-typst compile "strategy/timelines/${project_slug}.typ" "strategy/timelines/${project_slug}.pdf"
-if [ $? -eq 0 ]; then
-  echo "PDF generated: strategy/timelines/${project_slug}.pdf"
-else
-  echo "Warning: Typst compilation failed. Check .typ file for errors."
-  # Continue without blocking - Typst file is still valid
-fi
-```
-
-**Error Handling:**
-- Missing typst: Log warning, skip PDF, continue
-- Compilation error: Log warning, preserve .typ file, continue
-- Success: Note PDF path in artifacts
-
----
-
-## Stage 8: Write Metadata File
+## Stage 9: Write Metadata File
 
 Write final metadata to specified path:
 
-**For PLAN Mode:**
 ```json
 {
-  "status": "planned",
-  "summary": "Created project timeline for {project_name} with {phase_count} phases, {task_count} tasks, and {team_size} team members.",
+  "status": "researched",
+  "summary": "Project research complete for {project_name}: {phase_count} phases, {task_count} tasks, {team_size} team members. Expected duration: {expected} {unit} (95% CI: {ci_low}-{ci_high}).",
   "artifacts": [
     {
-      "type": "timeline",
-      "path": "strategy/timelines/{project-slug}.typ",
-      "summary": "Project timeline with WBS, PERT estimates, and resource allocation"
-    },
-    {
-      "type": "pdf",
-      "path": "strategy/timelines/{project-slug}.pdf",
-      "summary": "Compiled PDF timeline document"
+      "type": "research",
+      "path": "specs/{NNN}_{SLUG}/reports/01_{short-slug}.md",
+      "summary": "Project research report with WBS, PERT estimates, resource allocation, and critical path analysis"
     }
   ],
   "metadata": {
     "session_id": "{from delegation context}",
     "duration_seconds": 600,
     "agent_type": "project-agent",
-    "delegation_depth": 2,
+    "delegation_depth": 1,
     "delegation_path": ["orchestrator", "project", "skill-project", "project-agent"],
-    "mode": "PLAN",
     "phase_count": 5,
     "task_count": 23,
     "team_size": 4,
     "project_duration_expected": "45.5 days",
     "critical_path_length": 6
   },
-  "next_steps": "Review timeline and use TRACK mode to update progress"
-}
-```
-
-**For TRACK Mode:**
-```json
-{
-  "status": "tracked",
-  "summary": "Updated timeline for {project_name}. Progress: {percent}% complete. {variance} from baseline.",
-  "artifacts": [
-    {
-      "type": "timeline",
-      "path": "strategy/timelines/{project-slug}.typ",
-      "summary": "Updated project timeline with current progress"
-    }
-  ],
-  "metadata": {
-    "session_id": "{from delegation context}",
-    "agent_type": "project-agent",
-    "mode": "TRACK",
-    "progress_percent": 45,
-    "tasks_completed": 12,
-    "tasks_remaining": 11,
-    "schedule_variance": "+3 days"
-  },
-  "next_steps": "Review updated timeline or generate REPORT for stakeholders"
-}
-```
-
-**For REPORT Mode:**
-```json
-{
-  "status": "reported",
-  "summary": "Generated status report for {project_name}. Status: {On Track|At Risk|Delayed}.",
-  "artifacts": [
-    {
-      "type": "report",
-      "path": "strategy/timelines/{project-slug}-report.typ",
-      "summary": "Executive status report"
-    }
-  ],
-  "metadata": {
-    "session_id": "{from delegation context}",
-    "agent_type": "project-agent",
-    "mode": "REPORT",
-    "project_status": "At Risk",
-    "blockers_count": 2,
-    "upcoming_milestones": 3
-  },
-  "next_steps": "Share report with stakeholders"
+  "next_steps": "Run /plan {N} to create implementation plan"
 }
 ```
 
 ---
 
-## Stage 9: Return Brief Text Summary
+## Stage 10: Return Brief Text Summary
 
 Return a brief summary (NOT JSON):
 
-**PLAN Mode Example:**
 ```
-Project timeline created for task 234:
-- Mode: PLAN, 12 forcing questions completed
-- Project: Mobile App Redesign (target: March 15)
-- WBS: 5 phases, 23 tasks, follows 100% rule
-- Estimates: 45.5 days expected (95% CI: 37-54 days)
-- Team: 4 members, no overallocations detected
-- Critical path: 6 tasks (Design -> Dev -> Launch)
-- Timeline: strategy/timelines/mobile-app-redesign.typ
-- PDF: strategy/timelines/mobile-app-redesign.pdf
-- Metadata written for skill postflight
-```
-
-**TRACK Mode Example:**
-```
-Project timeline updated for task 234:
-- Mode: TRACK, progress recorded for 8 tasks
-- Project: Mobile App Redesign
-- Progress: 45% complete (12 of 23 tasks done)
-- Variance: +3 days behind schedule
-- Blockers: 1 (waiting for API docs)
-- Timeline: strategy/timelines/mobile-app-redesign.typ (updated)
-- Metadata written for skill postflight
-```
-
-**REPORT Mode Example:**
-```
-Status report generated for task 234:
-- Mode: REPORT
-- Project: Mobile App Redesign
-- Status: At Risk (3 days behind)
-- Critical tasks: 2 in progress, 1 blocked
-- Upcoming milestones: Beta release (Mar 1), Launch (Mar 15)
-- Report: strategy/timelines/mobile-app-redesign-report.typ
+Project research complete for task {N}:
+- Questions: {count} forcing questions completed
+- Project: {project_name} (target: {target_date})
+- WBS: {phase_count} phases, {task_count} tasks, follows 100% rule
+- Estimates: {expected} {unit} expected (95% CI: {ci_low}-{ci_high} {unit})
+- Team: {team_size} members, {overallocation_count} overallocations detected
+- Critical path: {cp_length} tasks ({cp_summary})
+- Report: specs/{NNN}_{SLUG}/reports/01_{short-slug}.md
 - Metadata written for skill postflight
 ```
 
@@ -806,60 +488,15 @@ Status report generated for task 234:
 ```json
 {
   "status": "failed",
-  "summary": "Project timeline failed. Task not found or invalid.",
+  "summary": "Project research failed. Task not found or invalid.",
   "artifacts": [],
   "metadata": {...},
   "errors": [
     {
       "type": "validation",
-      "message": "Task 234 not found in state.json",
+      "message": "Task {N} not found in state.json",
       "recoverable": false,
       "recommendation": "Verify task number and try again"
-    }
-  ]
-}
-```
-
-### No Existing Timeline (TRACK/REPORT modes)
-
-```json
-{
-  "status": "failed",
-  "summary": "No existing timeline found. Use PLAN mode first.",
-  "artifacts": [],
-  "metadata": {...},
-  "errors": [
-    {
-      "type": "validation",
-      "message": "Timeline not found at strategy/timelines/{slug}.typ",
-      "recoverable": true,
-      "recommendation": "Use PLAN mode to create timeline first"
-    }
-  ],
-  "next_steps": "Run with mode=PLAN to create new timeline"
-}
-```
-
-### Typst Compilation Failure
-
-```json
-{
-  "status": "partial",
-  "summary": "Timeline created but PDF compilation failed.",
-  "artifacts": [
-    {
-      "type": "timeline",
-      "path": "strategy/timelines/{slug}.typ",
-      "summary": "Typst source (PDF compilation failed)"
-    }
-  ],
-  "metadata": {...},
-  "errors": [
-    {
-      "type": "compilation",
-      "message": "Typst compilation error: {error_message}",
-      "recoverable": true,
-      "recommendation": "Review .typ file and run 'typst compile' manually"
     }
   ]
 }
@@ -870,7 +507,7 @@ Status report generated for task 234:
 ```json
 {
   "status": "partial",
-  "summary": "Project timeline partially completed. Missing estimation data.",
+  "summary": "Project research partially completed. Missing estimation data.",
   "artifacts": [],
   "partial_progress": {
     "stage": "estimation",
@@ -879,7 +516,26 @@ Status report generated for task 234:
     "questions_total": 20
   },
   "metadata": {...},
-  "next_steps": "Resume with /project to complete estimation"
+  "next_steps": "Resume with /research {N} to complete estimation"
+}
+```
+
+### File Operation Failure
+
+```json
+{
+  "status": "partial",
+  "summary": "Project research complete but report write failed.",
+  "artifacts": [],
+  "metadata": {...},
+  "errors": [
+    {
+      "type": "file_operation",
+      "message": "Failed to write research report: {error}",
+      "recoverable": true,
+      "recommendation": "Check directory permissions and try again"
+    }
+  ]
 }
 ```
 
@@ -894,19 +550,19 @@ Status report generated for task 234:
 4. Always gather three-point estimates (O, M, P) for each task
 5. Always calculate PERT expected values and confidence intervals
 6. Always check for resource overallocation
-7. Always generate self-contained Typst (no imports)
-8. Always attempt PDF compilation if typst is available
-9. Always return valid metadata file
+7. Always generate research report with Raw Data section (JSON code blocks)
+8. Always verify report file exists after writing
+9. Always return valid metadata file with status "researched"
 10. Return brief text summary (not JSON) to console
 
 **MUST NOT**:
 1. Accept vague estimates ("a few weeks" without specifics)
 2. Accept phases without deliverables (nouns, not verbs)
 3. Skip three-point estimation (single estimates are not acceptable)
-4. Generate Typst files with external imports
-5. Block on Typst compilation failure (continue with .typ file)
-6. Return "completed" as status value (use mode-specific: planned/tracked/reported)
-7. Skip early metadata initialization
-8. Modify existing timeline in REPORT mode (create new report file)
-9. Start TRACK/REPORT without existing timeline (fail with guidance)
-10. Accept tasks without clear owners in resource allocation
+4. Generate Typst files or compile PDFs (deferred to implementation phase)
+5. Return "planned", "tracked", or "reported" as status (always use "researched")
+6. Skip early metadata initialization
+7. Skip the Raw Data section in the research report
+8. Accept tasks without clear owners in resource allocation
+9. Present mode selection (PLAN/TRACK/REPORT) -- this agent is research-only
+10. Write to strategy/ directory (output goes to specs/{NNN}/reports/ only)

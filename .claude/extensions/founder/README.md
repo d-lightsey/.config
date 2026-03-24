@@ -1,24 +1,25 @@
-# Founder Extension (v2.0)
+# Founder Extension (v3.0)
 
 Strategic business analysis tools for founders and entrepreneurs. Integrates forcing question patterns and decision frameworks inspired by Y Combinator office hours methodology and gstack.
 
-## What's New in v2.0
+## What's New in v3.0
 
-- **Task Integration**: Commands now create tasks and use `/plan` + `/implement` workflow
-- **Three-Phase Workflow**: Context gathering, forcing questions, synthesis
-- **Language-Based Routing**: `/plan` and `/implement` route to founder-specific skills
-- **Report Output**: Strategy reports go to `strategy/` directory
-- **Legacy Mode**: `--quick` flag preserves standalone behavior
+- **Unified Phased Workflow**: All 5 commands (market, analyze, strategy, legal, project) follow the same `/research -> /plan -> /implement` lifecycle
+- **Project Command Updated**: `/project` now creates research reports instead of generating timelines directly
+- **Per-Type Routing**: Complete routing table with 5 types across 3 phases (research, plan, implement)
+- **Breaking Changes**: project-agent is now research-only; TRACK/REPORT modes move to `/implement`
 
 ## Overview
 
-This extension provides three commands for strategic business analysis:
+This extension provides five commands for strategic business analysis:
 
 | Command | Purpose | Output |
 |---------|---------|--------|
 | `/market` | TAM/SAM/SOM market sizing | Market sizing report |
 | `/analyze` | Competitive landscape analysis | Competitive analysis with positioning map |
 | `/strategy` | Go-to-market strategy | GTM strategy with 90-day plan |
+| `/legal` | Contract review and legal counsel | Risk assessment, negotiation strategy |
+| `/project` | Project timeline management | WBS, PERT estimates, Gantt timeline |
 
 ## Installation
 
@@ -69,23 +70,14 @@ Market sizing analysis using TAM/SAM/SOM framework with forcing questions.
 **Syntax**:
 ```bash
 # Task workflow (default)
-/market "fintech payments app"    # Create task and run workflow
-/market 234                       # Operate on existing task
-/market /path/to/context.md       # Use file as context
+/market "fintech payments app"    # Create task and gather data
+/market 234                       # Run research on existing task
 
 # Legacy standalone mode
 /market --quick fintech payments  # No task creation
 ```
 
-**Modes**:
-- `VALIDATE`: Test assumptions with evidence gathering
-- `SIZE`: Comprehensive TAM/SAM/SOM analysis
-- `SEGMENT`: Deep dive into specific segments
-- `DEFEND`: Investor-ready with conservative estimates
-
-**Output**:
-- Task mode: `strategy/market-sizing-{slug}.md`
-- Legacy mode: `founder/market-sizing-{datetime}.md`
+**Modes**: VALIDATE, SIZE, SEGMENT, DEFEND
 
 ### /analyze
 
@@ -94,22 +86,14 @@ Competitive landscape analysis with positioning maps and battle cards.
 **Syntax**:
 ```bash
 # Task workflow (default)
-/analyze "fintech competitors"    # Create task and run workflow
-/analyze 234                      # Operate on existing task
+/analyze "fintech competitors"    # Create task and gather data
+/analyze 234                      # Run research on existing task
 
 # Legacy standalone mode
 /analyze --quick stripe,square    # No task creation
 ```
 
-**Modes**:
-- `LANDSCAPE`: Map all competitors (direct, indirect, potential)
-- `DEEP`: Detailed analysis of top 3-5 competitors
-- `POSITION`: Find white space with 2x2 positioning map
-- `BATTLE`: Generate battle cards for sales
-
-**Output**:
-- Task mode: `strategy/competitive-analysis-{slug}.md`
-- Legacy mode: `founder/competitive-analysis-{datetime}.md`
+**Modes**: LANDSCAPE, DEEP, POSITION, BATTLE
 
 ### /strategy
 
@@ -118,28 +102,52 @@ Go-to-market strategy development with positioning and channel analysis.
 **Syntax**:
 ```bash
 # Task workflow (default)
-/strategy "B2B SaaS launch"       # Create task and run workflow
-/strategy 234                     # Operate on existing task
+/strategy "B2B SaaS launch"       # Create task and gather data
+/strategy 234                     # Run research on existing task
 
 # Legacy standalone mode
 /strategy --quick B2B launch      # No task creation
 ```
 
-**Modes**:
-- `LAUNCH`: Maximize splash for new product
-- `SCALE`: Optimize engine for growth
-- `PIVOT`: Find new wedge when current approach isn't working
-- `EXPAND`: Enter adjacent markets
+**Modes**: LAUNCH, SCALE, PIVOT, EXPAND
 
-**Output**:
-- Task mode: `strategy/gtm-strategy-{slug}.md`
-- Legacy mode: `founder/gtm-strategy-{datetime}.md`
+### /legal
+
+Contract review and legal counsel with risk assessment and negotiation strategy.
+
+**Syntax**:
+```bash
+# Task workflow (default)
+/legal "SaaS vendor agreement"    # Create task and gather data
+/legal 256                        # Run research on existing task
+
+# Legacy standalone mode
+/legal --quick "contract.pdf"     # No task creation
+```
+
+**Modes**: REVIEW, NEGOTIATE, TERMS, DILIGENCE
+
+### /project
+
+Project timeline management with WBS, PERT estimation, and resource allocation.
+
+**Syntax**:
+```bash
+# Task workflow (default)
+/project "Mobile App Redesign"    # Create task and gather data
+/project 234                      # Run research on existing task
+
+# Legacy standalone mode
+/project --quick PLAN             # No task creation
+```
+
+**Modes**: PLAN, TRACK, REPORT
 
 ## Architecture
 
 ```
 founder/
-├── manifest.json              # Extension configuration (v2.0)
+├── manifest.json              # Extension configuration (v3.0)
 ├── EXTENSION.md               # CLAUDE.md merge content
 ├── index-entries.json         # Context discovery entries
 ├── README.md                  # This file
@@ -147,26 +155,34 @@ founder/
 ├── commands/                  # Slash commands
 │   ├── market.md             # /market command (task-integrated)
 │   ├── analyze.md            # /analyze command (task-integrated)
-│   └── strategy.md           # /strategy command (task-integrated)
+│   ├── strategy.md           # /strategy command (task-integrated)
+│   ├── legal.md              # /legal command (task-integrated)
+│   └── project.md            # /project command (task-integrated)
 │
 ├── skills/                    # Skill wrappers
-│   ├── skill-market/         # Standalone market sizing
+│   ├── skill-market/         # Market sizing research
 │   │   └── SKILL.md
-│   ├── skill-analyze/        # Standalone competitive analysis
+│   ├── skill-analyze/        # Competitive analysis research
 │   │   └── SKILL.md
-│   ├── skill-strategy/       # Standalone GTM strategy
+│   ├── skill-strategy/       # GTM strategy research
 │   │   └── SKILL.md
-│   ├── skill-founder-plan/   # Task planning with forcing questions
+│   ├── skill-legal/          # Contract review research
 │   │   └── SKILL.md
-│   └── skill-founder-implement/  # Execute plan and generate report
+│   ├── skill-project/        # Project timeline research
+│   │   └── SKILL.md
+│   ├── skill-founder-plan/   # Shared task planning
+│   │   └── SKILL.md
+│   └── skill-founder-implement/  # Shared task implementation
 │       └── SKILL.md
 │
 ├── agents/                    # Agent definitions
-│   ├── market-agent.md       # Standalone market sizing agent
-│   ├── analyze-agent.md      # Standalone competitive analysis agent
-│   ├── strategy-agent.md     # Standalone GTM strategy agent
-│   ├── founder-plan-agent.md     # Task planning agent
-│   └── founder-implement-agent.md # Task implementation agent
+│   ├── market-agent.md       # Market sizing research agent
+│   ├── analyze-agent.md      # Competitive analysis research agent
+│   ├── strategy-agent.md     # GTM strategy research agent
+│   ├── legal-council-agent.md    # Contract review research agent
+│   ├── project-agent.md      # Project timeline research agent
+│   ├── founder-plan-agent.md     # Shared planning agent
+│   └── founder-implement-agent.md # Shared implementation agent
 │
 └── context/                   # Domain knowledge
     └── project/
@@ -174,55 +190,75 @@ founder/
             ├── README.md
             ├── domain/        # Business frameworks
             │   ├── business-frameworks.md
-            │   └── strategic-thinking.md
+            │   ├── strategic-thinking.md
+            │   └── legal-frameworks.md
             ├── patterns/      # Analysis patterns
             │   ├── forcing-questions.md
             │   ├── decision-making.md
-            │   └── mode-selection.md
+            │   ├── mode-selection.md
+            │   └── contract-review.md
             └── templates/     # Output templates
                 ├── market-sizing.md
                 ├── competitive-analysis.md
-                └── gtm-strategy.md
+                ├── gtm-strategy.md
+                └── contract-analysis.md
 ```
 
 ## Workflow
 
-### Task Workflow (Default)
+### Standard Phased Workflow (All Commands)
+
+All 5 commands follow the same lifecycle:
 
 ```
-/market "fintech payments"
+/{command} "description"
     |
     v
-[1] Create task in state.json/TODO.md
+[1] Ask forcing questions, create task with forcing_data
+    |  Status: [NOT STARTED]
+    v
+/research {N}
     |
     v
-[2] Run /plan (routes to skill-founder-plan)
-    ├── Mode selection
-    ├── Forcing questions (6-8 questions)
-    └── Generate plan with gathered context
+[2] Domain-specific research agent gathers data
+    |  Status: [RESEARCHED]
+    v
+/plan {N}
     |
     v
-[3] Run /implement (routes to skill-founder-implement)
-    ├── Load plan with context
-    ├── Execute phases (TAM/SAM/SOM/Report)
-    └── Generate report artifact
+[3] Shared planner creates implementation plan
+    |  Status: [PLANNED]
+    v
+/implement {N}
     |
     v
-[4] Task completed
-    ├── Report: strategy/market-sizing-{slug}.md
-    └── Summary: specs/{NNN}_{SLUG}/summaries/
+[4] Shared implementer generates final artifact
+    |  Status: [COMPLETED]
+    v
+Report in strategy/{type}-{slug}.md
+Summary in specs/{NNN}_{SLUG}/summaries/
 ```
+
+### Per-Type Research Agents
+
+| Command | Research Agent | Specialization |
+|---------|---------------|----------------|
+| /market | market-agent | SEC EDGAR, TAM/SAM/SOM, bottom-up sizing |
+| /analyze | analyze-agent | Firecrawl, competitor websites, positioning |
+| /strategy | strategy-agent | Channel analysis, positioning, GTM |
+| /legal | legal-council-agent | Contract review, risk assessment, escalation |
+| /project | project-agent | WBS, PERT estimation, resource allocation |
 
 ### Legacy Workflow (--quick)
 
 ```
-/market --quick fintech payments
+/{command} --quick [args]
     |
     v
-skill-market -> market-agent
+skill-{type} -> {type}-agent
     |
     v
-founder/market-sizing-{datetime}.md
+founder/{report-type}-{datetime}.md
 ```
 
 ## Key Patterns
@@ -239,12 +275,6 @@ Every command uses forcing questions to extract specific, evidence-based informa
 ### Mode-Based Operation
 
 Each command offers 3-4 operational modes that give users explicit scope control. Mode selection happens early and affects all subsequent analysis.
-
-### Three-Phase Workflow (v2.0)
-
-1. **Context Gathering**: Load file, task artifacts, or ask initial question
-2. **Interactive Questions**: Forcing questions tailored to gathered context
-3. **Synthesis**: Generate report using template
 
 ### Completeness Principle
 
@@ -268,6 +298,8 @@ All commands evaluate multiple scenarios, not just the optimistic one.
 | /market | `strategy/market-sizing-{slug}.md` | `specs/{NNN}_{SLUG}/` |
 | /analyze | `strategy/competitive-analysis-{slug}.md` | `specs/{NNN}_{SLUG}/` |
 | /strategy | `strategy/gtm-strategy-{slug}.md` | `specs/{NNN}_{SLUG}/` |
+| /legal | `strategy/contract-analysis-{slug}.md` | `specs/{NNN}_{SLUG}/` |
+| /project | `strategy/timelines/{slug}.typ` | `specs/{NNN}_{SLUG}/` |
 
 ### Legacy Mode (--quick)
 
@@ -276,21 +308,8 @@ All commands evaluate multiple scenarios, not just the optimistic one.
 | /market --quick | `founder/market-sizing-{datetime}.md` |
 | /analyze --quick | `founder/competitive-analysis-{datetime}.md` |
 | /strategy --quick | `founder/gtm-strategy-{datetime}.md` |
-
-## Migration from v1.0
-
-| v1.0 Command | v2.0 Equivalent |
-|--------------|-----------------|
-| `/market fintech` | `/market --quick fintech` (standalone) |
-| | `/market "fintech analysis"` (task workflow) |
-| `/analyze stripe` | `/analyze --quick stripe` (standalone) |
-| `/strategy launch` | `/strategy --quick launch` (standalone) |
-
-**Key Changes**:
-- Default behavior now creates tasks
-- Use `--quick` for v1.0 behavior
-- Reports go to `strategy/` (task) or `founder/` (--quick)
-- Task tracking with status updates
+| /legal --quick | `founder/contract-analysis-{datetime}.md` |
+| /project --quick | `founder/project-timeline-{datetime}.typ` |
 
 ## References
 

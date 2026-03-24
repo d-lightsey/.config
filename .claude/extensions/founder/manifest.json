@@ -1,7 +1,7 @@
 {
   "name": "founder",
-  "version": "2.1.0",
-  "description": "Strategic business analysis for founders with task integration: market sizing, competitive analysis, go-to-market strategy, and contract review",
+  "version": "3.0.0",
+  "description": "Strategic business analysis for founders with task integration: market sizing, competitive analysis, go-to-market strategy, contract review, and project timeline management",
   "language": "founder",
   "dependencies": [],
   "provides": {
@@ -39,10 +39,20 @@
       "founder:project": "skill-project"
     },
     "plan": {
-      "founder": "skill-founder-plan"
+      "founder": "skill-founder-plan",
+      "founder:market": "skill-founder-plan",
+      "founder:analyze": "skill-founder-plan",
+      "founder:strategy": "skill-founder-plan",
+      "founder:legal": "skill-founder-plan",
+      "founder:project": "skill-founder-plan"
     },
     "implement": {
-      "founder": "skill-founder-implement"
+      "founder": "skill-founder-implement",
+      "founder:market": "skill-founder-implement",
+      "founder:analyze": "skill-founder-implement",
+      "founder:strategy": "skill-founder-implement",
+      "founder:legal": "skill-founder-implement",
+      "founder:project": "skill-founder-implement"
     }
   },
   "merge_targets": {

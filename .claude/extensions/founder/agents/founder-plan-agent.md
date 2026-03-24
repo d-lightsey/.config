@@ -7,7 +7,7 @@ description: Create founder analysis plans by reading research reports
 
 ## Overview
 
-Creates implementation plans for founder tasks (market sizing, competitive analysis, GTM strategy) by reading research reports from the research phase. Uses the context gathered through forcing questions (already captured in the research report) to generate actionable implementation plans.
+Creates implementation plans for founder tasks (market sizing, competitive analysis, GTM strategy, contract review, project timelines) by reading research reports from the research phase. Uses the context gathered through forcing questions (already captured in the research report) to generate actionable implementation plans.
 
 ## Agent Metadata
 
@@ -33,6 +33,8 @@ Load these on-demand using @-references:
 **Always Load**:
 - `@.claude/extensions/founder/context/project/founder/domain/business-frameworks.md` - TAM/SAM/SOM methodology
 - `@.claude/extensions/founder/context/project/founder/patterns/mode-selection.md` - Mode patterns
+- `@.claude/extensions/founder/context/project/founder/patterns/legal-planning.md` - Contract analysis planning guidance
+- `@.claude/extensions/founder/context/project/founder/patterns/project-planning.md` - Project management reference (WBS, PERT, CPM)
 
 **Load for Output**:
 - `@.claude/context/core/formats/return-metadata-file.md` - Metadata file schema
@@ -100,7 +102,7 @@ fi
 ```
 
 Read the research report and extract:
-- Report type (market-sizing, competitive-analysis, gtm-strategy)
+- Report type (market-sizing, competitive-analysis, gtm-strategy, project-timeline)
 - Selected mode (from ## Summary or ## Findings section)
 - All gathered context (problem definition, market data, competitors, positioning, etc.)
 
@@ -172,6 +174,65 @@ Extract key data from the research report structure:
 - **North Star Metric**: {extract}
 ```
 
+**For contract-review reports:**
+```markdown
+## Findings
+
+### Contract Context
+- **Contract Type**: {extract}
+- **Parties**: {extract}
+- **Primary Concerns**: {extract}
+
+### Negotiating Position
+- **Position Assessment**: {extract}
+- **Specific Focus Areas**: {extract}
+
+### Financial and Exit
+- **Financial Exposure**: {extract}
+- **Walk-Away Conditions**: {extract}
+- **Governing Law**: {extract}
+- **Precedent/Standard**: {extract}
+
+### Escalation Assessment
+- **Financial Threshold**: {extract}
+- **Recommended Escalation**: {extract}
+
+### Red Flags to Investigate
+{extract list}
+```
+
+**For project-timeline reports:**
+```markdown
+## Findings
+
+### Project Scope
+- **Project Name**: {extract}
+- **Completion Criteria**: {extract}
+- **Target Date**: {extract}
+
+### Stakeholders
+- **Names/Roles**: {extract}
+- **Approval Authority**: {extract}
+
+### Work Breakdown Structure
+{extract hierarchical phases and tasks with deliverables}
+
+### PERT Estimates
+- **Per-Task Values**: {extract O/M/P values and calculated expected durations}
+
+### Resource Data
+- **Team Members**: {extract}
+- **Availability Percentages**: {extract}
+- **Task Assignments**: {extract}
+
+### Dependencies
+- **Inter-Phase**: {extract}
+- **Intra-Phase**: {extract}
+
+### Risk Register
+- **Identified Risks**: {extract severity and mitigations}
+```
+
 ### Stage 4: Determine Report Type
 
 Identify report type from research report header or content:
@@ -181,6 +242,8 @@ Identify report type from research report header or content:
 | market, sizing, TAM, SAM, SOM | market-sizing | market-sizing.md |
 | competitive, competitor, analysis | competitive-analysis | competitive-analysis.md |
 | GTM, go-to-market, strategy, launch | gtm-strategy | gtm-strategy.md |
+| contract, legal, review, clause, liability, indemnification, negotiat | contract-review | contract-analysis.md |
+| project, timeline, WBS, PERT, milestone, Gantt, deliverable, schedule, critical path | project-timeline | project-timeline.md |
 
 Default to market-sizing if unclear.
 
@@ -195,7 +258,7 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 **Version**: 01
 **Created**: {ISO_DATE}
 **Language**: founder
-**Report Type**: {market-sizing|competitive-analysis|gtm-strategy}
+**Report Type**: {market-sizing|competitive-analysis|gtm-strategy|contract-review|project-timeline}
 **Mode**: {mode from research report}
 
 ## Overview
@@ -270,6 +333,11 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 - **Template (Markdown)**: {template-file}
 - **Template (Typst)**: .claude/extensions/founder/context/project/founder/templates/typst/{report-type}.typ
 
+**Project-timeline output paths** (override defaults above):
+- **Typst Location**: strategy/timelines/{project-slug}.typ
+- **PDF Location**: strategy/timelines/{project-slug}.pdf
+- **Template (Typst)**: .claude/extensions/founder/context/project/founder/templates/typst/project-timeline.typ
+
 ## Success Criteria
 
 - [ ] {Criterion based on research data}
@@ -304,6 +372,53 @@ Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
 - Phase 5: Typst Document Generation
 
 **Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+
+**Contract Review:**
+- Phase 1: Clause-by-Clause Analysis
+  - Inputs: Contract Context (Type, Parties, Primary Concerns), Specific Focus Areas from research
+  - Objectives: Identify all material clauses, categorize by type (IP, liability, termination, data rights, non-compete), map each clause to stated concerns
+  - Outputs: Categorized clause inventory
+- Phase 2: Risk Assessment Matrix
+  - Inputs: Clause inventory, Financial Exposure, Walk-Away Conditions, Red Flags to Investigate
+  - Objectives: Score each clause by likelihood x impact, identify dealbreakers based on walk-away conditions, flag clauses exceeding financial exposure threshold
+  - Outputs: Risk matrix with severity ratings
+- Phase 3: Negotiation Strategy
+  - Inputs: Negotiating Position, Mode-Specific Guidance, Escalation Assessment
+  - Objectives: BATNA/ZOPA analysis based on position assessment, define redline priorities (non-negotiable items), establish fallback positions for negotiable items
+  - Outputs: Negotiation playbook with BATNA/ZOPA analysis
+- Phase 4: Report Generation
+- Phase 5: Typst Document Generation
+
+**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+
+**Project Timeline:**
+- Phase 1: Timeline Structure and WBS Validation
+  - Inputs: WBS data, project scope from research report
+  - Objectives: Organize WBS into timeline format, validate completeness (100% rule - all deliverables accounted for), establish phase boundaries and milestones
+  - Outputs: Validated WBS structure, milestone list
+  - Verification: WBS covers all project scope items, milestones have target dates
+- Phase 2: PERT Calculations and Critical Path Analysis
+  - Inputs: PERT estimates (O/M/P values), task dependencies from research report
+  - Objectives: Calculate expected durations using formula E = (O + 4M + P) / 6, run forward pass (early start/finish) and backward pass (late start/finish), identify critical path, compute float/slack for non-critical tasks
+  - Outputs: Critical path identification, schedule with float values for all tasks
+  - Verification: Critical path has zero float, all task durations calculated
+- Phase 3: Resource Allocation Matrix
+  - Inputs: Resource data from research, schedule from Phase 2
+  - Objectives: Map team members to tasks based on research data, check for overallocation conflicts (>100% utilization), validate availability against schedule
+  - Outputs: Resource allocation matrix, overallocation warnings (if any)
+  - Verification: No unassigned critical-path tasks, overallocation conflicts flagged
+- Phase 4: Gantt Chart and Typst Visualization
+  - Inputs: All data from Phases 1-3
+  - Objectives: Generate Typst timeline document including WBS table, PERT estimates table, resource matrix, and Gantt chart visualization
+  - Outputs: `strategy/timelines/{slug}.typ`
+  - Verification: Typst file compiles without errors, all phases represented in Gantt chart
+- Phase 5: PDF Compilation and Deliverables
+  - Inputs: Typst file from Phase 4
+  - Objectives: Compile Typst to PDF, generate executive status summary if needed
+  - Outputs: `strategy/timelines/{slug}.pdf`, optional executive summary
+  - Verification: PDF generated successfully, all visualizations render correctly
+
+**Note on Phase 5 naming for project-timeline**: Unlike other report types where Phase 5 is "Typst Document Generation", the project-timeline type names Phase 5 "PDF Compilation and Deliverables" because Typst generation happens in Phase 4 -- the Gantt chart and timeline visualizations ARE the primary Typst output. Phase 5 handles only the compilation step.
 
 ### Stage 6: Write Plan File
 
@@ -343,7 +458,7 @@ Write final metadata to specified path:
     "agent_type": "founder-plan-agent",
     "delegation_depth": 2,
     "delegation_path": ["orchestrator", "plan", "skill-founder-plan", "founder-plan-agent"],
-    "report_type": "{market-sizing|competitive-analysis|gtm-strategy}",
+    "report_type": "{market-sizing|competitive-analysis|gtm-strategy|contract-review|project-timeline}",
     "mode": "{mode from research}",
     "phase_count": 5,
     "research_report": "{path to research report}",
@@ -424,8 +539,8 @@ This ensures:
 3. Always reference research report in plan's Research Integration section
 4. Always store gathered context in plan file
 5. Always determine report type from research report
-6. Always generate 5-phase structure with Phase 5 as Typst Document Generation
-7. Always name Phase 5 exactly "Typst Document Generation"
+6. Always generate 5-phase structure with Phase 5 as Typst Document Generation (except project-timeline)
+7. Always name Phase 5 exactly "Typst Document Generation" (except project-timeline, which uses "PDF Compilation and Deliverables")
 8. Always write valid metadata file
 9. Return brief text summary (not JSON)
 

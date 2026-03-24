@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 271,
+  "next_project_number": 272,
   "active_projects": [
     {
       "project_number": 87,
@@ -252,11 +252,11 @@
     {
       "project_number": 267,
       "project_name": "project_implement_agent_support",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "task_type": "founder-extension",
       "created": "2026-03-24T18:00:00Z",
-      "last_updated": "2026-03-24T19:00:00Z",
+      "last_updated": "2026-03-24T23:30:00Z",
       "dependencies": [
         263,
         266
@@ -271,6 +271,11 @@
           "type": "plan",
           "path": "specs/267_project_implement_agent_support/plans/01_project-implement-support.md",
           "summary": "5-phase plan: type detection, phase flow, mode handling, resume/error, Typst example"
+        },
+        {
+          "type": "summary",
+          "path": "specs/267_project_implement_agent_support/summaries/01_project-implement-support-summary.md",
+          "summary": "Implementation summary documenting all 5 phases and verification results"
         }
       ],
       "effort": "2.5 hours",
@@ -287,16 +292,18 @@
             "integrated_date": "2026-03-24"
           }
         ]
-      }
+      },
+      "completion_summary": "Added project-timeline as fifth report type to founder-implement-agent with 5-phase flow (WBS, PERT/CPM, resource allocation, Gantt/Typst, PDF), PLAN/TRACK/REPORT mode handling, self-contained Typst example, and project-specific error handling.",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 268,
       "project_name": "founder_manifest_routing",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "task_type": "founder-extension",
       "created": "2026-03-24T18:00:00Z",
-      "last_updated": "2026-03-24T19:00:00Z",
+      "last_updated": "2026-03-24T20:00:00Z",
       "dependencies": [
         264,
         265,
@@ -313,17 +320,24 @@
           "type": "plan",
           "path": "specs/268_founder_manifest_routing/plans/01_manifest-routing.md",
           "summary": "2-phase plan: update manifest.json routing + EXTENSION.md documentation"
+        },
+        {
+          "type": "summary",
+          "path": "specs/268_founder_manifest_routing/summaries/01_manifest-routing-summary.md",
+          "summary": "Implementation summary for manifest routing update"
         }
-      ]
+      ],
+      "completion_summary": "Added per-type routing keys to manifest.json plan and implement sections. All 5 task types now have explicit routing entries in all 3 phases. Updated EXTENSION.md routing documentation.",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 269,
       "project_name": "founder_skill_consistency",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "task_type": "founder-extension",
       "created": "2026-03-24T18:00:00Z",
-      "last_updated": "2026-03-24T19:00:00Z",
+      "last_updated": "2026-03-24T18:46:23Z",
       "dependencies": [
         263
       ],
@@ -337,17 +351,24 @@
           "type": "plan",
           "path": "specs/269_founder_skill_consistency/plans/01_skill-consistency.md",
           "summary": "2-phase plan to normalize skill-founder-plan and skill-founder-implement patterns"
+        },
+        {
+          "type": "summary",
+          "path": "specs/269_founder_skill_consistency/summaries/01_skill-consistency-summary.md",
+          "summary": "Implementation summary documenting 4 pattern alignments across 2 skill files"
         }
-      ]
+      ],
+      "completion_summary": "Normalized skill-founder-plan and skill-founder-implement to match research skill patterns: aligned allowed-tools, postflight marker format, cleanup completeness, and return format across all 7 founder skills.",
+      "claudemd_suggestions": "Updated 2 SKILL.md files in .claude/extensions/founder/skills/ (skill-founder-plan, skill-founder-implement) to align with research skill patterns"
     },
     {
       "project_number": 270,
       "project_name": "founder_extension_documentation",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "task_type": "founder-extension",
       "created": "2026-03-24T18:00:00Z",
-      "last_updated": "2026-03-24T19:00:00Z",
+      "last_updated": "2026-03-24T20:00:00Z",
       "dependencies": [
         262,
         263,
@@ -368,6 +389,11 @@
           "type": "plan",
           "path": "specs/270_founder_extension_documentation/plans/01_extension-documentation.md",
           "summary": "4-phase implementation plan for updating founder extension documentation to v3.0"
+        },
+        {
+          "type": "summary",
+          "path": "specs/270_founder_extension_documentation/summaries/01_extension-documentation-summary.md",
+          "summary": "Implementation summary for founder extension v3.0 documentation update"
         }
       ],
       "plan_metadata": {
@@ -383,7 +409,28 @@
             "integrated_date": "2026-03-24"
           }
         ]
-      }
+      },
+      "completion_summary": "Updated all founder extension documentation to v3.0: rewrote /project command for phased workflow, updated EXTENSION.md with unified workflow and breaking changes, updated README.md with all 5 commands, bumped manifest.json to 3.0.0",
+      "claudemd_suggestions": "Updated .claude/extensions/founder/EXTENSION.md (merged into CLAUDE.md), routing table and workflow docs now reflect v3.0 phased architecture"
+    },
+    {
+      "project_number": 271,
+      "project_name": "add_model_checker_context_to_python_extension",
+      "status": "planned",
+      "language": "meta",
+      "effort": "30 minutes",
+      "created": "2026-03-24T23:00:00Z",
+      "last_updated": "2026-03-24T22:39:57Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/271_add_model_checker_context_to_python_extension/plans/01_model-checker-context.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for replacing Python extension domain files with ModelChecker context"
+        }
+      ],
+      "session_id": "sess_1774391804_7b7921",
+      "planned": "2026-03-24T22:39:57Z"
     }
   ],
   "completed_projects": [],

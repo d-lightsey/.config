@@ -5,9 +5,19 @@
       "summary": "WBS structure, milestone types, PERT estimation, critical path, resource allocation, risk matrices",
       "line_count": 329,
       "load_when": {
-        "agents": ["project-agent", "founder-plan-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/project", "/plan", "/implement"]
+        "agents": [
+          "project-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/project",
+          "/plan",
+          "/implement"
+        ]
       }
     },
     {
@@ -15,9 +25,23 @@
       "summary": "TAM/SAM/SOM market sizing frameworks, business model canvas, unit economics",
       "line_count": 240,
       "load_when": {
-        "agents": ["market-agent", "analyze-agent", "strategy-agent", "founder-plan-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/analyze", "/strategy", "/plan", "/implement"]
+        "agents": [
+          "market-agent",
+          "analyze-agent",
+          "strategy-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/analyze",
+          "/strategy",
+          "/plan",
+          "/implement"
+        ]
       }
     },
     {
@@ -25,9 +49,19 @@
       "summary": "IP assignment, indemnification, data rights, non-compete, R&W for AI startups",
       "line_count": 245,
       "load_when": {
-        "agents": ["legal-council-agent", "founder-plan-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/legal", "/plan", "/implement"]
+        "agents": [
+          "legal-council-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/legal",
+          "/plan",
+          "/implement"
+        ]
       }
     },
     {
@@ -35,9 +69,23 @@
       "summary": "CEO cognitive patterns, YC principles, completeness principle",
       "line_count": 214,
       "load_when": {
-        "agents": ["market-agent", "analyze-agent", "strategy-agent", "founder-plan-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/analyze", "/strategy", "/plan", "/implement"]
+        "agents": [
+          "market-agent",
+          "analyze-agent",
+          "strategy-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/analyze",
+          "/strategy",
+          "/plan",
+          "/implement"
+        ]
       }
     },
     {
@@ -45,9 +93,25 @@
       "summary": "Forcing question framework for specificity, anti-patterns to detect",
       "line_count": 221,
       "load_when": {
-        "agents": ["market-agent", "analyze-agent", "strategy-agent", "legal-council-agent", "project-agent", "founder-plan-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/analyze", "/strategy", "/legal", "/project", "/plan"]
+        "agents": [
+          "market-agent",
+          "analyze-agent",
+          "strategy-agent",
+          "legal-council-agent",
+          "project-agent",
+          "founder-plan-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/analyze",
+          "/strategy",
+          "/legal",
+          "/project",
+          "/plan"
+        ]
       }
     },
     {
@@ -55,9 +119,15 @@
       "summary": "Contract review methodology, red flags checklist, attorney escalation guide",
       "line_count": 215,
       "load_when": {
-        "agents": ["legal-council-agent"],
-        "languages": ["founder"],
-        "commands": ["/legal"]
+        "agents": [
+          "legal-council-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/legal"
+        ]
       }
     },
     {
@@ -65,9 +135,23 @@
       "summary": "Two-way doors, inversion, focus as subtraction decision frameworks",
       "line_count": 276,
       "load_when": {
-        "agents": ["market-agent", "analyze-agent", "strategy-agent", "founder-plan-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/analyze", "/strategy", "/plan", "/implement"]
+        "agents": [
+          "market-agent",
+          "analyze-agent",
+          "strategy-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/analyze",
+          "/strategy",
+          "/plan",
+          "/implement"
+        ]
       }
     },
     {
@@ -75,9 +159,23 @@
       "summary": "Operational modes pattern for scope control (LAUNCH, SCALE, PIVOT, EXPAND, PLAN, TRACK, REPORT)",
       "line_count": 239,
       "load_when": {
-        "agents": ["market-agent", "analyze-agent", "strategy-agent", "project-agent", "founder-plan-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/analyze", "/strategy", "/project", "/plan"]
+        "agents": [
+          "market-agent",
+          "analyze-agent",
+          "strategy-agent",
+          "project-agent",
+          "founder-plan-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/analyze",
+          "/strategy",
+          "/project",
+          "/plan"
+        ]
       }
     },
     {
@@ -85,9 +183,17 @@
       "summary": "TAM/SAM/SOM market sizing artifact template with concentric circles diagram",
       "line_count": 250,
       "load_when": {
-        "agents": ["market-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/market", "/implement"]
+        "agents": [
+          "market-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/market",
+          "/implement"
+        ]
       }
     },
     {
@@ -95,9 +201,17 @@
       "summary": "Competitive analysis template with 2x2 positioning map, battle cards",
       "line_count": 273,
       "load_when": {
-        "agents": ["analyze-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/analyze", "/implement"]
+        "agents": [
+          "analyze-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/analyze",
+          "/implement"
+        ]
       }
     },
     {
@@ -105,9 +219,17 @@
       "summary": "Go-to-market strategy template with positioning, channels, 90-day plan",
       "line_count": 303,
       "load_when": {
-        "agents": ["strategy-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/strategy", "/implement"]
+        "agents": [
+          "strategy-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/strategy",
+          "/implement"
+        ]
       }
     },
     {
@@ -115,9 +237,17 @@
       "summary": "Contract analysis report template with clause review, risk matrix, BATNA/ZOPA",
       "line_count": 347,
       "load_when": {
-        "agents": ["legal-council-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/legal", "/implement"]
+        "agents": [
+          "legal-council-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/legal",
+          "/implement"
+        ]
       }
     },
     {
@@ -125,9 +255,15 @@
       "summary": "Base Typst template with shared styles, callouts, tables, and visualizations for all founder reports",
       "line_count": 400,
       "load_when": {
-        "agents": ["founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/implement"]
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/implement"
+        ]
       }
     },
     {
@@ -135,9 +271,15 @@
       "summary": "Typst template for market sizing PDF reports with TAM/SAM/SOM visualization",
       "line_count": 200,
       "load_when": {
-        "agents": ["founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/implement"]
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/implement"
+        ]
       }
     },
     {
@@ -145,9 +287,15 @@
       "summary": "Typst template for competitive analysis PDF reports with positioning maps and battle cards",
       "line_count": 220,
       "load_when": {
-        "agents": ["founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/implement"]
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/implement"
+        ]
       }
     },
     {
@@ -155,9 +303,15 @@
       "summary": "Typst template for GTM strategy PDF reports with 90-day plan timeline and metrics dashboard",
       "line_count": 250,
       "load_when": {
-        "agents": ["founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/implement"]
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/implement"
+        ]
       }
     },
     {
@@ -165,9 +319,15 @@
       "summary": "Typst template for contract analysis PDF reports with risk matrix, clause tables, BATNA blocks",
       "line_count": 392,
       "load_when": {
-        "agents": ["founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/implement"]
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/implement"
+        ]
       }
     },
     {
@@ -175,9 +335,58 @@
       "summary": "Typst template for project timeline PDF reports with WBS, Gantt charts, PERT diagrams, and risk matrices",
       "line_count": 833,
       "load_when": {
-        "agents": ["project-agent", "founder-implement-agent"],
-        "languages": ["founder"],
-        "commands": ["/project", "/implement"]
+        "agents": [
+          "project-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "commands": [
+          "/project",
+          "/implement"
+        ]
+      }
+    },
+    {
+      "path": "project/founder/patterns/legal-planning.md",
+      "summary": "Contract analysis methodology, BATNA/ZOPA frameworks, risk scoring, escalation thresholds, clause categorization",
+      "line_count": 113,
+      "load_when": {
+        "agents": [
+          "founder-plan-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "task_types": [
+          "contract-review",
+          "legal"
+        ],
+        "commands": [
+          "/plan"
+        ]
+      }
+    },
+    {
+      "path": "project/founder/patterns/project-planning.md",
+      "summary": "Project management reference: WBS validation (100% rule), PERT formulas, critical path method, resource leveling",
+      "line_count": 120,
+      "load_when": {
+        "agents": [
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "task_types": [
+          "project-timeline"
+        ],
+        "commands": [
+          "/plan",
+          "/implement"
+        ]
       }
     }
   ]

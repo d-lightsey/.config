@@ -1,10 +1,38 @@
 ---
-next_project_number: 271
+next_project_number: 272
 ---
 
 # TODO
 
 ## Tasks
+
+### 271. Add ModelChecker domain context files to Python extension
+- **Effort**: 30 minutes
+- **Status**: [PLANNED]
+- **Language**: meta
+- **Dependencies**: None
+- **Plan**: [01_model-checker-context.md](271_add_model_checker_context_to_python_extension/plans/01_model-checker-context.md)
+
+**Description**: Replace the generic placeholder files in the Python extension with the project-specific ModelChecker context files, and update the extension's index entries accordingly.
+
+**Source files** (restored in ModelChecker repo):
+- `~/Projects/Logos/ModelChecker/.claude/context/project/python/domain/model-checker-api.md` — Package structure, key classes (SemanticDefaults, PropositionDefaults, ModelDefaults), import patterns, Z3 utilities, protocols
+- `~/Projects/Logos/ModelChecker/.claude/context/project/python/domain/theory-lib-patterns.md` — Theory library directory structure, semantic/operator/example patterns, subtheory integration, settings dictionary
+
+**Target location** (Python extension):
+- `~/.config/nvim/.claude/extensions/python/context/project/python/domain/`
+
+**Steps**:
+1. Copy `model-checker-api.md` and `theory-lib-patterns.md` into the extension's domain directory, replacing `application-api-patterns.md` and `library-patterns.md`
+2. Remove the old generic files (`application-api-patterns.md`, `library-patterns.md`)
+3. Update `~/.config/nvim/.claude/extensions/python/index-entries.json` — replace the two domain entries:
+   - `application-api-patterns.md` -> `model-checker-api.md` with description "ModelChecker package structure, key classes, import patterns, and Z3 utilities" and tags `["python", "model-checker", "api", "semantics"]`
+   - `library-patterns.md` -> `theory-lib-patterns.md` with description "Theory library directory structure, semantic/operator/example patterns, subtheory integration" and tags `["python", "theory-lib", "patterns", "semantics"]`
+4. Update the extension's `context/project/python/README.md` key files and loading sections to reference the new filenames
+
+**Note**: After updating the extension source, any repo that loads the python extension via `<leader>ac` will get the ModelChecker-specific context files merged into its `.claude/context/index.json` automatically.
+
+---
 
 
 ### 262. Refactor project-agent to generate research report instead of timeline
@@ -61,11 +89,12 @@ next_project_number: 271
 
 ### 266. Add project support to founder-plan-agent
 - **Effort**: 1.5 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: Task #262
 - **Research**: [01_meta-research.md](266_project_command_documentation/reports/01_meta-research.md)
 - **Plan**: [01_project-plan-support.md](266_project_command_documentation/plans/01_project-plan-support.md)
+- **Summary**: [01_project-plan-support-summary.md](266_project_command_documentation/summaries/01_project-plan-support-summary.md)
 
 **Description**: Extend founder-plan-agent to handle project-timeline report type. Add keyword detection for project/timeline/WBS/PERT/milestone/Gantt/deliverable. Add 5-phase project-timeline plan structure: Timeline Structure, PERT Calculations, Resource Allocation, Gantt Visualization, PDF Compilation. Depends on task 262 refactoring project-agent to produce research reports.
 
@@ -73,11 +102,12 @@ next_project_number: 271
 
 ### 267. Add project support to founder-implement-agent
 - **Effort**: 2.5 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: Task #263, Task #266
 - **Research**: [01_meta-research.md](267_project_implement_agent_support/reports/01_meta-research.md)
 - **Plan**: [01_project-implement-support.md](267_project_implement_agent_support/plans/01_project-implement-support.md)
+- **Summary**: [01_project-implement-support-summary.md](267_project_implement_agent_support/summaries/01_project-implement-support-summary.md)
 
 **Description**: Move Typst timeline generation from project-agent to founder-implement-agent. Add project-timeline type detection and 5-phase flow: Timeline Structure & WBS Generation, PERT Calculations & Critical Path, Resource Allocation Matrix, Gantt Chart & Typst Visualization, PDF Compilation. Handle PLAN/TRACK/REPORT modes during implementation.
 
@@ -85,11 +115,12 @@ next_project_number: 271
 
 ### 268. Update manifest.json routing table with per-type keys
 - **Effort**: 30 min
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: Task #264, Task #265, Task #266, Task #267
 - **Research**: [01_meta-research.md](268_founder_manifest_routing/reports/01_meta-research.md)
 - **Plan**: [01_manifest-routing.md](268_founder_manifest_routing/plans/01_manifest-routing.md)
+- **Summary**: [01_manifest-routing-summary.md](268_founder_manifest_routing/summaries/01_manifest-routing-summary.md)
 
 **Description**: Add per-type routing keys to manifest.json for plan and implement phases. Currently only research has per-type keys (founder:market, founder:analyze, etc.). Plan and implement use a single "founder" key. Add explicit keys for all 5 task types in plan and implement sections to enable proper routing.
 
@@ -97,11 +128,13 @@ next_project_number: 271
 
 ### 269. Normalize skill consistency across founder extension
 - **Effort**: 1 hour
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-03-24
 - **Language**: meta
 - **Dependencies**: Task #263
 - **Research**: [01_meta-research.md](269_founder_skill_consistency/reports/01_meta-research.md)
 - **Plan**: [01_skill-consistency.md](269_founder_skill_consistency/plans/01_skill-consistency.md)
+- **Summary**: [01_skill-consistency-summary.md](269_founder_skill_consistency/summaries/01_skill-consistency-summary.md)
 
 **Description**: Fix inconsistencies between research skills and plan/implement skills: return format (JSON vs text), postflight marker format (JSON object vs string), cleanup completeness (.return-meta.json, .postflight-loop-guard), delegation_depth values. Align all 7 skills to a consistent pattern.
 
@@ -109,11 +142,12 @@ next_project_number: 271
 
 ### 270. Update founder extension documentation for phased workflow
 - **Effort**: 1 hour
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: Task #262, Task #263, Task #264, Task #265, Task #266, Task #267, Task #268, Task #269
 - **Research**: [01_meta-research.md](270_founder_extension_documentation/reports/01_meta-research.md)
 - **Plan**: [01_extension-documentation.md](270_founder_extension_documentation/plans/01_extension-documentation.md)
+- **Summary**: [01_extension-documentation-summary.md](270_founder_extension_documentation/summaries/01_extension-documentation-summary.md)
 
 **Description**: Update /project command, README.md, EXTENSION.md, and manifest documentation to reflect the new standard phased workflow for all commands. Document that all 5 task types (market, analyze, strategy, legal, project) follow /research -> /plan -> /implement lifecycle with proper per-type routing.
 

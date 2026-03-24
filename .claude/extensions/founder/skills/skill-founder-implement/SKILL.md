@@ -1,7 +1,7 @@
 ---
 name: skill-founder-implement
 description: Execute founder plans and generate strategy reports
-allowed-tools: Task
+allowed-tools: Task, Bash, Edit, Read, Write
 ---
 
 # Founder Implement Skill
@@ -92,7 +92,17 @@ project_name=$(jq -r --argjson num "$task_number" \
   specs/state.json)
 task_dir="specs/${padded_num}_${project_name}"
 mkdir -p "$task_dir"
-echo "$session_id" > "$task_dir/.postflight-pending"
+
+cat > "$task_dir/.postflight-pending" << EOF
+{
+  "session_id": "${session_id}",
+  "skill": "skill-founder-implement",
+  "task_number": ${task_number},
+  "operation": "implement",
+  "reason": "Postflight pending: status update, artifact linking, git commit",
+  "created": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
 ```
 
 ### 4. Context Preparation
@@ -207,112 +217,59 @@ EOF
 
 ### 9. Cleanup and Return
 
-Remove postflight marker:
+Remove postflight markers and metadata:
 
 ```bash
 rm -f "$task_dir/.postflight-pending"
+rm -f "$task_dir/.postflight-loop-guard"
+rm -f "$task_dir/.return-meta.json"
 ```
 
-Return validated result to caller.
+Return brief text summary to caller.
 
 ---
 
 ## Return Format
 
+Brief text summary (NOT JSON).
+
 Expected successful return (with typst/PDF):
-```json
-{
-  "status": "implemented",
-  "summary": "Generated market sizing report for fintech payments. TAM: $50B, SAM: $8B, SOM Y1: $40M.",
-  "artifacts": [
-    {
-      "type": "implementation",
-      "path": "strategy/market-sizing-fintech-payments.md",
-      "summary": "Full market sizing report with TAM/SAM/SOM analysis"
-    },
-    {
-      "type": "implementation",
-      "path": "founder/market-sizing-fintech-payments.typ",
-      "summary": "Self-contained typst source file"
-    },
-    {
-      "type": "implementation",
-      "path": "founder/market-sizing-fintech-payments.pdf",
-      "summary": "Professional PDF report"
-    },
-    {
-      "type": "summary",
-      "path": "specs/234_market_sizing_fintech_payments/summaries/01_market-sizing-summary.md",
-      "summary": "Implementation summary with key results"
-    }
-  ],
-  "metadata": {
-    "session_id": "sess_...",
-    "agent_type": "founder-implement-agent",
-    "delegation_depth": 2,
-    "phases_completed": 5,
-    "phases_total": 5,
-    "typst_generated": true,
-    "pdf_path": "founder/market-sizing-fintech-payments.pdf",
-    "tam": "$50B",
-    "sam": "$8B",
-    "som_y1": "$40M"
-  },
-  "next_steps": "Review report and validate assumptions"
-}
+```
+Founder implementation completed for task {N}:
+- Phases {phases_completed}/{phases_total} executed
+- TAM: {tam}, SAM: {sam}, SOM Y1: {som_y1}
+- Report: strategy/{slug}.md
+- Typst/PDF: founder/{slug}.pdf
+- Summary: specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md
+- Status updated to [COMPLETED]
+- Changes committed with session {session_id}
+- Next: Review report and validate assumptions
 ```
 
 Expected successful return (without typst - Phase 5 partial):
-```json
-{
-  "status": "implemented",
-  "summary": "Generated market sizing report for fintech payments. TAM: $50B, SAM: $8B, SOM Y1: $40M. PDF skipped (typst not installed).",
-  "artifacts": [
-    {
-      "type": "implementation",
-      "path": "strategy/market-sizing-fintech-payments.md",
-      "summary": "Full market sizing report with TAM/SAM/SOM analysis"
-    },
-    {
-      "type": "summary",
-      "path": "specs/234_market_sizing_fintech_payments/summaries/01_market-sizing-summary.md",
-      "summary": "Implementation summary with key results"
-    }
-  ],
-  "metadata": {
-    "session_id": "sess_...",
-    "agent_type": "founder-implement-agent",
-    "delegation_depth": 2,
-    "phases_completed": 4,
-    "phases_total": 5,
-    "typst_generated": false,
-    "tam": "$50B",
-    "sam": "$8B",
-    "som_y1": "$40M"
-  },
-  "next_steps": "Install typst for PDF output, or review markdown report"
-}
+```
+Founder implementation completed for task {N}:
+- Phases {phases_completed}/{phases_total} executed (typst/PDF skipped - not installed)
+- TAM: {tam}, SAM: {sam}, SOM Y1: {som_y1}
+- Report: strategy/{slug}.md
+- Summary: specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md
+- Status updated to [COMPLETED]
+- Changes committed with session {session_id}
+- Next: Install typst for PDF output, or review markdown report
 ```
 
-**Note**: Task is considered successfully completed (`status: "implemented"`) as long as
+**Note**: Task is considered successfully completed as long as
 Phases 1-4 complete. Phase 5 (typst/PDF) is optional - if it fails or typst is not
 installed, the task still completes successfully with just the markdown output.
 
 Expected partial return (core phase failure):
-```json
-{
-  "status": "partial",
-  "summary": "Completed phases 1-2 of 5. TAM and SAM calculated.",
-  "artifacts": [],
-  "partial_progress": {
-    "phases_completed": 2,
-    "phases_total": 5,
-    "resume_phase": 3,
-    "data_gathered": ["TAM: $50B", "SAM: $8B"]
-  },
-  "metadata": {...},
-  "next_steps": "Run /implement to resume from phase 3 (SOM calculation)"
-}
+```
+Founder implementation partially completed for task {N}:
+- Phases {phases_completed}/{phases_total} executed
+- Data gathered: {brief summary of progress}
+- Resume phase: {resume_phase}
+- Status remains [IMPLEMENTING]
+- Next: Run /implement {N} to resume from phase {resume_phase}
 ```
 
 ---

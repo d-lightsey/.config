@@ -1,10 +1,10 @@
-## Founder Extension (v2.2)
+## Founder Extension (v3.0)
 
-Strategic business analysis tools for founders and entrepreneurs. Integrates forcing question patterns and decision frameworks inspired by Y Combinator office hours methodology. Now includes contract review and legal counsel capabilities.
+Strategic business analysis tools for founders and entrepreneurs. Integrates forcing question patterns and decision frameworks inspired by Y Combinator office hours methodology. Includes market sizing, competitive analysis, go-to-market strategy, contract review, and project timeline management -- all following the standard phased workflow.
 
-### Pre-Task Forcing Questions (v2.1 NEW)
+### Pre-Task Forcing Questions
 
-Commands now ask essential forcing questions BEFORE creating tasks:
+Commands ask essential forcing questions BEFORE creating tasks:
 
 ```
 /market "fintech payments"
@@ -16,7 +16,7 @@ Commands now ask essential forcing questions BEFORE creating tasks:
   -> Task created with forcing_data stored
 ```
 
-This workflow reverses the previous pattern (task first, questions during research) to gather essential data upfront, creating richer task entries and enabling more focused research.
+This workflow gathers essential data upfront, creating richer task entries and enabling more focused research.
 
 ```
 /legal "SaaS vendor agreement"
@@ -29,16 +29,18 @@ This workflow reverses the previous pattern (task first, questions during resear
   -> Escalation assessment (self-serve / attorney review)
 ```
 
-### Task Integration (v2.0+)
+### Unified Phased Workflow (v3.0)
 
-Commands integrate with the task system by default:
-- Ask forcing questions BEFORE task creation (new in v2.1)
-- Create tasks with `task_type` field for type-based routing
-- Store forcing_data in task metadata
-- Use `/research`, `/plan`, and `/implement` workflow with founder-specific routing
-- Store artifacts in `specs/{NNN}_{SLUG}/` for tracking
-- Reports output to `strategy/` directory
-- Support `--quick` flag for legacy standalone mode
+All 5 commands follow the same standard lifecycle:
+
+```
+/{command} "description"   -> Asks forcing questions, creates task, stops at [NOT STARTED]
+/research {N}              -> Domain-specific research agent, stops at [RESEARCHED]
+/plan {N}                  -> Shared planner (content-aware), creates plan
+/implement {N}             -> Shared implementer (type-aware), generates final artifact
+```
+
+The differentiation is at the **research** phase where each command has a specialized agent. Planning and implementation use shared agents that detect the task type from the research report content.
 
 ### Commands
 
@@ -53,7 +55,7 @@ Commands integrate with the task system by default:
 | `/legal` | `/legal 256` | Run research on existing task |
 | `/legal` | `/legal --quick [args]` | Legacy standalone mode |
 | `/project` | `/project "Mobile App Redesign"` | Ask forcing questions, create task (stops at [NOT STARTED]) |
-| `/project` | `/project 234` | Run project planning on existing task |
+| `/project` | `/project 234` | Run research on existing task |
 | `/project` | `/project --quick [mode]` | Legacy standalone mode |
 
 ### Input Types
@@ -74,23 +76,7 @@ Commands integrate with the task system by default:
 | **TERMS** | Term sheet review | Key terms, market benchmarks, standard vs non-standard |
 | **DILIGENCE** | Due diligence | Comprehensive review for transaction, IP, liability, R&W |
 
-### Workflow (v2.1)
-
-The standard four-stage workflow:
-
-```
-/market "description"   -> Asks forcing questions, creates task with data, stops at [NOT STARTED]
-/research {N}           -> Uses forcing_data, completes research, stops at [RESEARCHED]
-/plan {N}               -> Reads research report, creates implementation plan
-/implement {N}          -> Executes plan, generates strategy/market-sizing-*.md
-```
-
-Alternative: Resume existing task (skips STAGE 0 forcing questions):
-```
-/market {N}             -> Runs research on existing task, stops at [RESEARCHED]
-```
-
-### task_type Field (v2.1+)
+### task_type Field
 
 Tasks created by founder commands include a `task_type` field for finer-grained routing:
 
@@ -103,6 +89,31 @@ Tasks created by founder commands include a `task_type` field for finer-grained 
 | /project | project | skill-project |
 
 When `/research {N}` is invoked on a founder task with `task_type` set, routing uses the composite key `founder:{task_type}` to select the appropriate skill.
+
+### Language-Based Routing
+
+Tasks with `language: founder` route to founder-specific skills:
+
+| Workflow | Routing Key | Skill | Agent |
+|----------|-------------|-------|-------|
+| `/research` (task_type: market) | founder:market | skill-market | market-agent |
+| `/research` (task_type: analyze) | founder:analyze | skill-analyze | analyze-agent |
+| `/research` (task_type: strategy) | founder:strategy | skill-strategy | strategy-agent |
+| `/research` (task_type: legal) | founder:legal | skill-legal | legal-council-agent |
+| `/research` (task_type: project) | founder:project | skill-project | project-agent |
+| `/research` (no task_type) | founder | skill-market | market-agent |
+| `/plan` (task_type: market) | founder:market | skill-founder-plan | founder-plan-agent |
+| `/plan` (task_type: analyze) | founder:analyze | skill-founder-plan | founder-plan-agent |
+| `/plan` (task_type: strategy) | founder:strategy | skill-founder-plan | founder-plan-agent |
+| `/plan` (task_type: legal) | founder:legal | skill-founder-plan | founder-plan-agent |
+| `/plan` (task_type: project) | founder:project | skill-founder-plan | founder-plan-agent |
+| `/plan` (no task_type) | founder | skill-founder-plan | founder-plan-agent |
+| `/implement` (task_type: market) | founder:market | skill-founder-implement | founder-implement-agent |
+| `/implement` (task_type: analyze) | founder:analyze | skill-founder-implement | founder-implement-agent |
+| `/implement` (task_type: strategy) | founder:strategy | skill-founder-implement | founder-implement-agent |
+| `/implement` (task_type: legal) | founder:legal | skill-founder-implement | founder-implement-agent |
+| `/implement` (task_type: project) | founder:project | skill-founder-implement | founder-implement-agent |
+| `/implement` (no task_type) | founder | skill-founder-implement | founder-implement-agent |
 
 ### Forcing Data Storage
 
@@ -129,27 +140,12 @@ Research agents use this data and only ask follow-up questions for missing detai
 | Skill | Agent | Purpose |
 |-------|-------|---------|
 | skill-market | market-agent | Market sizing research (uses forcing_data) |
-| skill-analyze | analyze-agent | Competitive analysis (uses forcing_data) |
-| skill-strategy | strategy-agent | GTM strategy (uses forcing_data) |
+| skill-analyze | analyze-agent | Competitive analysis research (uses forcing_data) |
+| skill-strategy | strategy-agent | GTM strategy research (uses forcing_data) |
 | skill-legal | legal-council-agent | Contract review research (uses forcing_data) |
-| skill-project | project-agent | Project timeline management (uses forcing_data) |
-| skill-founder-plan | founder-plan-agent | Task planning with forcing questions |
-| skill-founder-implement | founder-implement-agent | Execute plan and generate report |
-
-### Language-Based Routing
-
-Tasks with `language: founder` route to founder-specific skills:
-
-| Workflow | Routing Key | Skill | Agent |
-|----------|-------------|-------|-------|
-| `/research` (task_type: market) | founder:market | skill-market | market-agent |
-| `/research` (task_type: analyze) | founder:analyze | skill-analyze | analyze-agent |
-| `/research` (task_type: strategy) | founder:strategy | skill-strategy | strategy-agent |
-| `/research` (task_type: legal) | founder:legal | skill-legal | legal-council-agent |
-| `/research` (task_type: project) | founder:project | skill-project | project-agent |
-| `/research` (no task_type) | founder | skill-market | market-agent |
-| `/plan` | founder | skill-founder-plan | founder-plan-agent |
-| `/implement` | founder | skill-founder-implement | founder-implement-agent |
+| skill-project | project-agent | Project timeline research: WBS, PERT, resources (uses forcing_data) |
+| skill-founder-plan | founder-plan-agent | Shared task planning (content-aware) |
+| skill-founder-implement | founder-implement-agent | Shared task implementation (type-aware) |
 
 ### Output Locations
 
@@ -183,19 +179,17 @@ Founder extension integrates external MCP tools for enhanced data gathering:
 | sec-edgar | market-agent | Public company SEC filings (10-K, 10-Q, 8-K) | None required |
 | firecrawl | analyze-agent | Full page web scraping, competitor analysis | Requires FIRECRAWL_API_KEY |
 
-**Lazy Loading**: MCP servers only start when their assigned agent is invoked. Other agents (strategy-agent, founder-plan-agent, founder-implement-agent) do not load any MCP servers.
+**Lazy Loading**: MCP servers only start when their assigned agent is invoked. Other agents (strategy-agent, legal-council-agent, project-agent, founder-plan-agent, founder-implement-agent) do not load any MCP servers.
 
 **Setup**: See README.md for Firecrawl API key configuration.
 
 ### Key Patterns
 
-**Pre-Task Forcing Questions** (v2.1): Essential questions asked BEFORE task creation, storing data in task metadata for use during research.
+**Pre-Task Forcing Questions**: Essential questions asked BEFORE task creation, storing data in task metadata for use during research.
 
 **Forcing Questions**: One question per AskUserQuestion, explicit push-back on vague answers. Specificity is the only currency.
 
 **Mode-Based Operation**: Commands offer 3-4 operational modes giving user explicit scope control (e.g., LAUNCH, SCALE, PIVOT, EXPAND).
-
-**Three-Phase Workflow**: (1) Context gathering, (2) Interactive forcing questions, (3) Synthesis/Report generation.
 
 **Completeness Principle**: Always model multiple scenarios/options. AI makes marginal cost of completeness near-zero.
 
@@ -205,18 +199,34 @@ Founder extension integrates external MCP tools for enhanced data gathering:
 - Inversion: Also ask "What makes us fail?"
 - Focus as subtraction: Explicitly document what NOT to do
 
+### Breaking Changes from v2.x
+
+1. **`/project` no longer generates timelines directly** - Use `/research N -> /plan N -> /implement N` for the full lifecycle. The `/project` command now creates a task and optionally runs research only.
+2. **TRACK and REPORT modes move to `/implement` phase** - These modes are now handled during implementation, not directly by the `/project` command.
+3. **project-agent output is now a research report** - Previously generated a Typst timeline file directly. Now creates a research report at `specs/{NNN}_{SLUG}/reports/01_{short-slug}.md`.
+4. **skill-project sets `researched` status** - Previously set `planned`. Now follows the standard research -> plan -> implement lifecycle.
+
+### Migration from v2.1
+
+| v2.1 Pattern | v3.0 Equivalent |
+|--------------|-----------------|
+| `/project 234` -> generates timeline directly | `/project 234` -> research only, then `/plan 234` -> `/implement 234` |
+| project-agent creates Typst file | project-agent creates research report |
+| TRACK/REPORT via `/project {N}` | TRACK/REPORT via `/implement {N}` |
+| skill-project -> status: planned | skill-project -> status: researched |
+
 ### Migration from v2.0
 
-| v2.0 Pattern | v2.1 Equivalent |
+| v2.0 Pattern | v3.0 Equivalent |
 |--------------|-----------------|
 | `/market "fintech"` -> task created -> /research asks questions | `/market "fintech"` -> questions asked -> task created with data |
-| No task_type field | task_type: "market", "analyze", or "strategy" |
+| No task_type field | task_type: "market", "analyze", "strategy", "legal", or "project" |
 | `/research` uses language routing | `/research` uses task_type routing when available |
 | forcing_data gathered during research | forcing_data gathered at command invocation (STAGE 0) |
 
 ### Migration from v1.0
 
-| v1.0 Pattern | v2.1 Equivalent |
+| v1.0 Pattern | v3.0 Equivalent |
 |--------------|-----------------|
 | `/market fintech` | `/market --quick fintech` (standalone) |
 | | `/market "fintech analysis"` (task workflow with pre-task questions) |
