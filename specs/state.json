@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 262,
+  "next_project_number": 267,
   "active_projects": [
     {
       "project_number": 87,
@@ -41,6 +41,103 @@
       ],
       "session_id": "sess_1771006114_e73864",
       "planned": "2026-02-13T18:10:48Z"
+    },
+    {
+      "project_number": 262,
+      "project_name": "refactor_project_agent_research_report",
+      "status": "researched",
+      "language": "meta",
+      "task_type": "founder-extension",
+      "created": "2026-03-24T12:00:00Z",
+      "last_updated": "2026-03-24T12:00:00Z",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/262_refactor_project_agent_research_report/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
+    {
+      "project_number": 263,
+      "project_name": "skill_project_research_workflow",
+      "status": "researched",
+      "language": "meta",
+      "task_type": "founder-extension",
+      "created": "2026-03-24T12:00:00Z",
+      "last_updated": "2026-03-24T12:00:00Z",
+      "dependencies": [
+        262
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/263_skill_project_research_workflow/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
+    {
+      "project_number": 264,
+      "project_name": "project_planning_context",
+      "status": "researched",
+      "language": "meta",
+      "task_type": "founder-extension",
+      "created": "2026-03-24T12:00:00Z",
+      "last_updated": "2026-03-24T12:00:00Z",
+      "dependencies": [
+        262
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/264_project_planning_context/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
+    {
+      "project_number": 265,
+      "project_name": "founder_implement_project_timeline",
+      "status": "researched",
+      "language": "meta",
+      "task_type": "founder-extension",
+      "created": "2026-03-24T12:00:00Z",
+      "last_updated": "2026-03-24T12:00:00Z",
+      "dependencies": [
+        263,
+        264
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/265_founder_implement_project_timeline/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
+    },
+    {
+      "project_number": 266,
+      "project_name": "project_command_documentation",
+      "status": "researched",
+      "language": "meta",
+      "task_type": "founder-extension",
+      "created": "2026-03-24T12:00:00Z",
+      "last_updated": "2026-03-24T12:00:00Z",
+      "dependencies": [
+        262,
+        263,
+        264,
+        265
+      ],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/266_project_command_documentation/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        }
+      ]
     }
   ],
   "completed_projects": [],

@@ -1,11 +1,66 @@
 ---
-next_project_number: 262
+next_project_number: 267
 ---
 
 # TODO
 
 ## Tasks
 
+
+### 262. Refactor project-agent to generate research report instead of timeline
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_meta-research.md](262_refactor_project_agent_research_report/reports/01_meta-research.md)
+
+**Description**: Refactor project-agent to follow the standard research agent pattern. Currently it directly generates the timeline Typst file; refactor to gather project data through forcing questions and output a research report containing WBS data, PERT estimates, and resource allocation data in a format for planner-agent consumption.
+
+---
+
+### 263. Update skill-project for research-only workflow
+- **Effort**: 1-2 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #262
+- **Research**: [01_meta-research.md](263_skill_project_research_workflow/reports/01_meta-research.md)
+
+**Description**: Modify skill-project to route to project-agent for research only, creating a research report at specs/{NNN}_{SLUG}/reports/ and stopping at [RESEARCHED] status. Remove timeline generation and PLANNED/TRACKED/REPORTED status handling.
+
+---
+
+### 264. Create project-specific planning context for planner-agent
+- **Effort**: 1 hour
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #262
+- **Research**: [01_meta-research.md](264_project_planning_context/reports/01_meta-research.md)
+
+**Description**: Create context file teaching planner-agent to create implementation plans for project timeline tasks. Define standard phases for: timeline structure generation, PERT calculations and critical path, resource allocation matrix, and Gantt chart visualization.
+
+---
+
+### 265. Extend founder-implement-agent for project timeline generation
+- **Effort**: 2-3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #263, Task #264
+- **Research**: [01_meta-research.md](265_founder_implement_project_timeline/reports/01_meta-research.md)
+
+**Description**: Add project timeline generation capability to founder-implement-agent. Read implementation plan, use research data, and generate final Typst timeline file at strategy/timelines/{project-slug}.typ. Handle PLAN/TRACK/REPORT modes during implementation.
+
+---
+
+### 266. Update /project command documentation and workflow
+- **Effort**: 30 min
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #262, Task #263, Task #264, Task #265
+- **Research**: [01_meta-research.md](266_project_command_documentation/reports/01_meta-research.md)
+
+**Description**: Update project.md command to reflect the new standard workflow: create task -> /research -> /plan -> /implement. Update Workflow Summary section, STAGE 2 delegation, CHECKPOINT 2 output, and examples.
+
+---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
@@ -38,5 +93,13 @@ next_project_number: 262
 
 ## Recommended Order
 
-1. **87** -> plan (independent)
-2. **78** -> implement (independent)
+### Founder Extension Refactoring (dependency chain)
+1. **262** -> plan -> implement (foundational - refactor project-agent)
+2. **263** -> plan -> implement (after #262 - update skill-project)
+3. **264** -> plan -> implement (after #262, parallel with #263 - planning context)
+4. **265** -> plan -> implement (after #263, #264 - implementation agent)
+5. **266** -> plan -> implement (after all above - documentation)
+
+### Other Tasks
+6. **87** -> plan (independent)
+7. **78** -> implement (independent)
