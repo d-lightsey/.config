@@ -1,10 +1,84 @@
 ---
-next_project_number: 272
+next_project_number: 277
 ---
 
 # TODO
 
+## Task Order
+
+*Updated 2026-03-24. Created 5 tasks for /review Task Order management feature.*
+
+**Goal**: Add Task Order section management to /review command.
+
+### 1. Task Order Feature (dependency chain)
+
+```
+272 → 273 → 274 ─┐
+           └ 275 ┴→ 276
+```
+
+1. **272** [NOT STARTED] — Define Task Order schema and format specification
+2. **273** [NOT STARTED] — Add Task Order parsing to /review command (depends: 272)
+3. **274** [NOT STARTED] — Add Task Order pruning for completed/abandoned tasks (depends: 273)
+4. **275** [NOT STARTED] — Add Task Order insertion for newly created tasks (depends: 273)
+5. **276** [NOT STARTED] — Add interactive category placement and dependency management (depends: 274, 275)
+
+### 2. Other Tasks
+
+- **87** [RESEARCHED] — Investigate terminal directory change in wezterm
+- **78** [PLANNED] — Fix Himalaya SMTP authentication failure
+
 ## Tasks
+
+### 276. Add interactive Task Order management to /review
+- **Effort**: 2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Tasks #274, #275
+
+**Description**: Add AskUserQuestion prompts to /review for interactive Task Order management. When creating new tasks, prompt user for category placement (Critical Path, Code Cleanup, Experimental, Deferred, Backlog). When updating existing tasks, prompt for dependency chain updates. Include option to skip Task Order updates for quick reviews.
+
+---
+
+### 275. Add Task Order insertion for newly created review tasks
+- **Effort**: 1.5 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #273
+
+**Description**: Extend /review to add newly created tasks to the Task Order section. After task creation (Section 5.6), insert new task numbers into appropriate Task Order categories based on severity and grouping. Update dependency chains if new tasks relate to existing ones. Maintain Task Order timestamp and goal statement.
+
+---
+
+### 274. Add Task Order pruning to /review
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #273
+
+**Description**: Extend /review to remove completed, abandoned, and superseded tasks from the Task Order section. During review postflight, scan Task Order for task numbers whose status is [COMPLETED], [ABANDONED], or [EXPANDED], and remove them from category lists and dependency chains. Recompute dependency arrows after removal.
+
+---
+
+### 273. Add Task Order parsing to /review command
+- **Effort**: 1.5 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #272
+
+**Description**: Add Task Order section parsing to /review command. Read TODO.md and extract: update timestamp, goal statement, category sections (Critical Path, Code Cleanup, Experimental, Deferred, Backlog), dependency chains (arrow syntax), and per-task status markers. Store parsed data in `task_order_state` structure for manipulation by subsequent phases.
+
+---
+
+### 272. Define Task Order schema and format specification
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Create a context file defining the Task Order markdown format for TODO.md. Specify: section header format (`## Task Order`), update timestamp line, goal statement, category subsections (numbered headers), dependency chain syntax (arrow `→` notation), status markers, and task number references. Include parsing patterns and generation templates. Model after ProofChecker's TODO.md Task Order section.
+
+---
 
 ### 271. Add ModelChecker domain context files to Python extension
 - **Effort**: 30 minutes
@@ -183,15 +257,3 @@ next_project_number: 272
 
 ---
 
-## Recommended Order
-
-### Founder Extension Refactoring (dependency chain)
-1. **262** -> plan -> implement (foundational - refactor project-agent)
-2. **263** -> plan -> implement (after #262 - update skill-project)
-3. **264** -> plan -> implement (independent - legal support for plan agent)
-4. **265** -> plan -> implement (after #263, #264 - implementation agent)
-5. **266** -> plan -> implement (after #262 - plan agent project support)
-
-### Other Tasks
-6. **87** -> plan (independent)
-7. **78** -> implement (independent)

@@ -1,7 +1,66 @@
 {
   "version": "1.0.0",
-  "next_project_number": 272,
+  "next_project_number": 277,
   "active_projects": [
+    {
+      "project_number": 272,
+      "project_name": "task_order_schema_format",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-25T05:44:46Z",
+      "last_updated": "2026-03-25T05:44:46Z",
+      "dependencies": []
+    },
+    {
+      "project_number": 273,
+      "project_name": "task_order_parsing",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1.5 hours",
+      "created": "2026-03-25T05:44:46Z",
+      "last_updated": "2026-03-25T05:44:46Z",
+      "dependencies": [
+        272
+      ]
+    },
+    {
+      "project_number": 274,
+      "project_name": "task_order_pruning",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-25T05:44:46Z",
+      "last_updated": "2026-03-25T05:44:46Z",
+      "dependencies": [
+        273
+      ]
+    },
+    {
+      "project_number": 275,
+      "project_name": "task_order_insertion",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1.5 hours",
+      "created": "2026-03-25T05:44:46Z",
+      "last_updated": "2026-03-25T05:44:46Z",
+      "dependencies": [
+        273
+      ]
+    },
+    {
+      "project_number": 276,
+      "project_name": "task_order_interactive_management",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "2 hours",
+      "created": "2026-03-25T05:44:46Z",
+      "last_updated": "2026-03-25T05:44:46Z",
+      "dependencies": [
+        274,
+        275
+      ]
+    },
     {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",
