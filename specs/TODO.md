@@ -1,19 +1,29 @@
 ---
-next_project_number: 308
+next_project_number: 309
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-26. 2 active tasks remaining.*
+*Updated 2026-03-26. 3 active tasks remaining.*
 
 ### Pending
 
+- **308** [NOT STARTED] -- Implement adaptive context loading by extension and language
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 308. Implement adaptive context loading by extension and language
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Implement adaptive context loading that filters by loaded extensions and task language. Currently, empty load_when conditions (empty arrays for agents/languages/commands) cause ALL context files to load unconditionally, regardless of task language. In the Vision project, a typst task loads ~24,444 lines of unrelated context (business-frameworks.md, legal-frameworks.md, pitch-deck-templates, etc.) because 74 core files have empty load_when. Fix this by: (1) Changing empty-array semantics so empty = never-load instead of always-load, requiring explicit 'always: true' for universal files; (2) Adding language-gate validation to the extension loader that warns when entries lack language filtering; (3) Adding a context budget system that caps total loaded lines and prioritizes by relevance (always > agent-match > language-match > command-match); (4) Making the skill/agent context loading queries filter OUT entries that don't match any active dimension rather than loading everything unfiltered. This is a meta task affecting .claude/context/, .claude/extensions/, .claude/agents/, and .claude/skills/.
+
+---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
