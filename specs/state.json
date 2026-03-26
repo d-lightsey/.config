@@ -5,12 +5,13 @@
     {
       "project_number": 299,
       "project_name": "index_unindexed_context",
-      "status": "researched",
+      "status": "completed",
       "language": "meta",
       "effort": "1-2 hours",
       "description": "Add index.json entries for 75 context files that exist on disk but aren't indexed in Website .claude/context/",
+      "completion_summary": "Added 75 new index.json entries for unindexed .md files under .claude/context/. All entries use domain='core', subdomain derived from directory name, summary=null, empty keywords/topics/load_when. Total entries: 329 (was 254). Zero unindexed files remain.",
       "created": "2026-03-26T20:00:00Z",
-      "last_updated": "2026-03-26T20:00:00Z",
+      "last_updated": "2026-03-26T21:45:00Z",
       "dependencies": [
         298
       ],
@@ -18,6 +19,10 @@
         {
           "type": "research",
           "path": "specs/299_index_unindexed_context/reports/01_unindexed-context.md"
+        },
+        {
+          "type": "plan",
+          "path": "specs/299_index_unindexed_context/plans/02_unindexed-context.md"
         }
       ]
     },
@@ -46,12 +51,12 @@
     {
       "project_number": 300,
       "project_name": "add_index_summaries",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "effort": "30-45 minutes",
       "description": "Add missing summary fields to 67 index.json entries in Website .claude/context/",
       "created": "2026-03-26T20:00:00Z",
-      "last_updated": "2026-03-26T20:00:00Z",
+      "last_updated": "2026-03-26T22:00:00Z",
       "dependencies": [
         298
       ],
@@ -59,6 +64,10 @@
         {
           "type": "research",
           "path": "specs/300_add_index_summaries/reports/01_index-summaries.md"
+        },
+        {
+          "type": "plan",
+          "path": "specs/300_add_index_summaries/plans/02_index-summaries.md"
         }
       ]
     },
