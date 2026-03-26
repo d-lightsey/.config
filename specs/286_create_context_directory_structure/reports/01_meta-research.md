@@ -2,37 +2,46 @@
 
 **Task**: 286 - Create .context/ directory structure and index.json schema
 **Generated**: 2026-03-25
-**Source**: /meta interview (auto-generated)
-**Status**: Pre-populated from interview context
+**Updated**: 2026-03-25
+**Source**: /meta interview (auto-generated), revised after project context audit
+**Status**: Pre-populated from interview context, revised
 
 ---
 
 ## Context Summary
 
-**Purpose**: Establish protected project context directory separate from .claude/ agent system
-**Scope**: Create new .context/ directory at project root with index.json schema
+**Purpose**: Create a lightweight .context/ directory for user-defined project conventions
+**Scope**: New .context/ directory at project root with index.json schema
 **Affected Components**: New directory structure, index schema design
 **Domain**: meta
 **Language**: meta
 
 ## Task Requirements
 
-Create the `.context/` directory structure that will hold project-specific context files protected from `.claude/` reloads. This includes:
+Create the `.context/` directory for **user-defined project conventions only**. This directory does NOT receive files migrated from `.claude/context/project/` — those files belong to either the core agent system or specific extensions (see task 287 audit).
 
-1. Directory structure mirroring relevant parts of current `.claude/context/project/`
-2. `index.json` schema compatible with existing context discovery patterns
-3. README.md documenting the directory's purpose and usage
+### What .context/ Is For
 
-### Directory Structure to Create
+- Project-specific conventions (e.g., "we use 4-space indent", "our API naming conventions")
+- Domain knowledge specific to THIS project that no extension covers
+- User-managed, persistent, not rebuilt by any loader
+
+### What .context/ Is NOT For
+
+- Agent system patterns → `.claude/context/`
+- Extension-specific domain knowledge → `.claude/extensions/*/context/`
+- Learned facts from work → `.memory/`
+- User preferences → Claude auto-memory
+
+### Directory Structure
 
 ```
 .context/
-├── index.json              # Discovery index for project context
-├── README.md               # Documentation
-├── repo/                   # Repository-specific information
-├── processes/              # Project workflows
-└── hooks/                  # Project-specific hooks context
+├── index.json              # Discovery index for project conventions
+└── README.md               # Documents purpose and usage
 ```
+
+The directory starts essentially **empty** (just the schema and README). Content is added by the user as needed.
 
 ### index.json Schema Design
 
@@ -41,25 +50,15 @@ Create the `.context/` directory structure that will hold project-specific conte
   "version": "1.0",
   "generated": "ISO8601",
   "scope": "project",
-  "entries": [
-    {
-      "path": "repo/project-overview.md",
-      "topics": ["project-structure", "technology-stack"],
-      "keywords": ["neovim", "lua", "lazy.nvim"],
-      "summary": "Repository overview and structure",
-      "line_count": 145,
-      "load_when": {
-        "always": true
-      }
-    }
-  ]
+  "entries": []
 }
 ```
 
-Key differences from `.claude/context/index.json`:
-- `scope: "project"` field to distinguish from core context
-- Simpler structure (no domain/subdomain fields needed)
-- Paths are relative to `.context/` directory
+Key design points:
+- `scope: "project"` to distinguish from core context
+- Simpler than `.claude/context/index.json` — no domain/subdomain fields
+- Paths are relative to `.context/`
+- Agents query this alongside `.memory/` for project-specific knowledge (both independent systems, loaded in parallel)
 
 ## Integration Points
 
@@ -72,18 +71,19 @@ Key differences from `.claude/context/index.json`:
 
 ## Dependencies
 
-None - this task is foundational.
+None — this task is foundational.
 
 ## Interview Context
 
 ### User-Provided Information
-User wants to separate project context from agent system context to prevent overwrites when reloading `.claude/` directory. The `.context/` directory should be protected and permanent.
+Audit of `.claude/context/project/` revealed that all 17 files belong to either the core agent system (12 files) or the nvim extension (5 files). Zero files are truly project conventions. Therefore `.context/` starts empty and exists for future user-defined conventions. It is loaded alongside `.memory/` — both are independent systems providing project-specific knowledge in parallel.
 
 ### Effort Assessment
-- **Estimated Effort**: 2 hours
-- **Complexity Notes**: Straightforward directory creation and schema design. Main work is ensuring compatibility with existing discovery patterns.
+- **Estimated Effort**: 1 hour (reduced — simpler than originally scoped)
+- **Complexity Notes**: Straightforward directory and schema creation. No file migration involved.
 
 ---
 
 *This research report was auto-generated during task creation via /meta command.*
+*Revised 2026-03-25 after audit showed no project files need migration to .context/.*
 *For deeper investigation, run `/research 286 [focus]` with a specific focus prompt.*

@@ -279,7 +279,7 @@
       "language": "meta",
       "effort": "2 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [],
       "session_id": "sess_1742929200_meta01",
       "artifacts": [
@@ -288,16 +288,17 @@
           "path": "specs/286_create_context_directory_structure/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Create lightweight .context/ directory with index.json schema for user-defined project conventions. Starts empty — no files migrate here. Loaded alongside .memory/ as independent systems."
     },
     {
       "project_number": 287,
-      "project_name": "migrate_project_context_files",
+      "project_name": "reassign_project_context_files",
       "status": "researched",
       "language": "meta",
       "effort": "3 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         286
       ],
@@ -308,7 +309,8 @@
           "path": "specs/287_migrate_project_context_files/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Reassign all 17 files in .claude/context/project/ to correct owners: 12 core files (meta, processes, repo) promoted to .claude/context/ peers; 5 neovim files moved to nvim extension. Nothing migrates to .context/."
     },
     {
       "project_number": 288,
@@ -317,7 +319,7 @@
       "language": "meta",
       "effort": "2 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         287
       ],
@@ -328,7 +330,8 @@
           "path": "specs/288_flatten_claude_context_structure/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Flatten .claude/context/ after task 287 empties project/ and promotes core files. Move core/ contents to root level, remove empty core/ and project/ directories, update index.json and @-references."
     },
     {
       "project_number": 289,
@@ -337,7 +340,7 @@
       "language": "meta",
       "effort": "3 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-26T15:39:41Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         288
       ],
@@ -358,7 +361,7 @@
       "language": "meta",
       "effort": "2 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         288,
         289
@@ -370,7 +373,8 @@
           "path": "specs/290_update_context_discovery_patterns/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Update context discovery for three-layer architecture: .claude/context/index.json (agent + extensions merged by loader), .context/index.json (user conventions, may be empty), .memory/ (independent, loaded in parallel)."
     },
     {
       "project_number": 291,
@@ -379,7 +383,7 @@
       "language": "meta",
       "effort": "1 hour",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         290
       ],
@@ -390,7 +394,8 @@
           "path": "specs/291_update_claudemd_references/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Search-and-replace all @.claude/context/core/ and @.claude/context/project/ references for new paths after flatten and reassignment."
     },
     {
       "project_number": 292,
@@ -399,7 +404,7 @@
       "language": "meta",
       "effort": "1 hour",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-25T17:40:00Z",
+      "last_updated": "2026-03-26T16:12:33Z",
       "dependencies": [
         291
       ],
@@ -410,7 +415,8 @@
           "path": "specs/292_document_role_boundaries/reports/01_meta-research.md",
           "summary": "Auto-generated research from /meta interview"
         }
-      ]
+      ],
+      "description": "Document four-layer context architecture: extensions own domain knowledge, .claude/context/ holds core agent patterns, .context/ for user conventions, .memory/ for learned facts (independent, parallel). Include decision tree."
     }
   ],
   "completed_projects": [],

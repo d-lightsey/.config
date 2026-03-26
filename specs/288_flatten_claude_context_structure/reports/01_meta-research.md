@@ -1,29 +1,30 @@
 # Research Report: Task #288
 
-**Task**: 288 - Update .claude/context/ to contain only core/ files (flatten structure)
+**Task**: 288 - Flatten .claude/context/ structure after file reassignment
 **Generated**: 2026-03-25
-**Source**: /meta interview (auto-generated)
-**Status**: Pre-populated from interview context
+**Updated**: 2026-03-25
+**Source**: /meta interview (auto-generated), revised after project context audit
+**Status**: Pre-populated from interview context, revised
 
 ---
 
 ## Context Summary
 
-**Purpose**: Simplify .claude/context/ to contain only core agent system files
-**Scope**: Flatten structure by removing project/ subdirectory, keeping only core/
+**Purpose**: Simplify .claude/context/ by removing the core/ and project/ nesting levels
+**Scope**: Flatten directory structure, update all paths
 **Affected Components**: .claude/context/ directory structure, index.json
 **Domain**: meta
 **Language**: meta
 
 ## Task Requirements
 
-After project files are migrated to `.context/`, restructure `.claude/context/` to contain only core agent system patterns. The `core/` subdirectory becomes the root.
+After task 287 reassigns project/ files (core files promoted, nvim files moved to extension), flatten the remaining structure by removing the `core/` subdirectory.
 
-### Current Structure
+### Current Structure (after task 287)
 
 ```
 .claude/context/
-├── core/                   # Agent system patterns
+├── core/                   # Agent system patterns (to flatten)
 │   ├── orchestration/
 │   ├── formats/
 │   ├── standards/
@@ -36,9 +37,9 @@ After project files are migrated to `.context/`, restructure `.claude/context/` 
 │   ├── reference/
 │   ├── architecture/
 │   └── troubleshooting/
-├── project/                # To be removed (migrated to .context/)
-│   ├── meta/              # KEEP - move to core level
-│   └── [others migrated]
+├── meta/                   # Promoted from project/meta/ by task 287
+├── processes/              # Promoted from project/processes/ by task 287
+├── repo/                   # Promoted from project/repo/ by task 287
 ├── index.json
 ├── index.schema.json
 └── README.md
@@ -60,7 +61,9 @@ After project files are migrated to `.context/`, restructure `.claude/context/` 
 ├── reference/
 ├── architecture/
 ├── troubleshooting/
-├── meta/                   # Moved from project/meta/ (agent system context)
+├── meta/                   # Already at correct level from task 287
+├── processes/              # Already at correct level from task 287
+├── repo/                   # Already at correct level from task 287
 ├── index.json              # Updated paths
 ├── index.schema.json
 └── README.md
@@ -69,11 +72,10 @@ After project files are migrated to `.context/`, restructure `.claude/context/` 
 ### Update Requirements
 
 1. Move contents of `core/` to `.claude/context/` root
-2. Move `project/meta/` to `.claude/context/meta/` (agent system patterns)
-3. Remove empty `core/` and `project/` directories
-4. Update all paths in `index.json` (remove `core/` prefix)
-5. Update all @-references in agents, skills, commands
-6. Update README.md to reflect new structure
+2. Remove empty `core/` directory
+3. Update all paths in `index.json` (remove `core/` prefix)
+4. Update all @-references in agents, skills, commands
+5. Update README.md to reflect new structure
 
 ### Path Changes
 
@@ -81,8 +83,10 @@ After project files are migrated to `.context/`, restructure `.claude/context/` 
 |----------|----------|
 | `core/orchestration/` | `orchestration/` |
 | `core/formats/` | `formats/` |
-| `project/meta/` | `meta/` |
+| `core/patterns/` | `patterns/` |
 | etc. | etc. |
+
+Note: `meta/`, `processes/`, `repo/` are already at the correct level after task 287's promotion step.
 
 ## Integration Points
 
@@ -90,18 +94,18 @@ After project files are migrated to `.context/`, restructure `.claude/context/` 
 - **Affected Area**: .claude/context/
 - **Action Type**: refactor
 - **Related Files**:
-  - All files in .claude/context/
+  - All files in .claude/context/core/ (moving up)
   - .claude/context/index.json
   - All agents, skills, commands with @-references
 
 ## Dependencies
 
-- Task #287: Migrate project context files (must complete first to avoid moving files that should go to .context/)
+- Task #287: Reassign project context files (project/ must be emptied first)
 
 ## Interview Context
 
 ### User-Provided Information
-The flattening removes the now-unnecessary `core/` subdirectory since all remaining content is core agent system context. The `project/meta/` content stays because it's agent system patterns (meta-builder context), not project-specific information.
+The flattening removes the now-unnecessary `core/` subdirectory since all remaining content is core agent system context. The `project/` directory is already gone after task 287's reassignment.
 
 ### Effort Assessment
 - **Estimated Effort**: 2 hours
@@ -110,4 +114,5 @@ The flattening removes the now-unnecessary `core/` subdirectory since all remain
 ---
 
 *This research report was auto-generated during task creation via /meta command.*
+*Revised 2026-03-25 to reflect updated task 287 (reassignment instead of migration).*
 *For deeper investigation, run `/research 288 [focus]` with a specific focus prompt.*

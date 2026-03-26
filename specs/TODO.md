@@ -8,17 +8,17 @@ next_project_number: 293
 
 *Updated 2026-03-25. 18 active tasks remaining.*
 
-**Goal**: Refactor context system to separate project context from agent system context.
+**Goal**: Refactor context system — reassign project/ files to core or extensions, create .context/ for user conventions, flatten .claude/context/.
 
 ### 1. Context System Refactor (Tasks 286-292)
 
-- **286** [RESEARCHED] -- Create .context/ directory structure and index.json schema
-- **287** [RESEARCHED] -- Migrate project context files to .context/ (depends on #286)
+- **286** [RESEARCHED] -- Create .context/ directory for user project conventions (depends on nothing)
+- **287** [RESEARCHED] -- Reassign project context files to correct owners (depends on #286)
 - **288** [RESEARCHED] -- Flatten .claude/context/ structure (depends on #287)
 - **289** [RESEARCHED] -- Scope extension loader and project context boundaries (depends on #288)
-- **290** [RESEARCHED] -- Update context discovery patterns (depends on #288, #289)
-- **291** [RESEARCHED] -- Update CLAUDE.md and agent references (depends on #290)
-- **292** [RESEARCHED] -- Document role boundaries for .context/, .memory/, auto-memory (depends on #291)
+- **290** [RESEARCHED] -- Update context discovery for three-layer architecture (depends on #288, #289)
+- **291** [RESEARCHED] -- Update CLAUDE.md and agent references for new paths (depends on #290)
+- **292** [RESEARCHED] -- Document role boundaries for .context/, .memory/, extensions, auto-memory (depends on #291)
 
 ### 2. Previously Completed
 
@@ -39,36 +39,36 @@ next_project_number: 293
 
 ## Tasks
 
-### 286. Create .context/ directory structure and index.json schema
-- **Effort**: 2 hours
+### 286. Create .context/ directory for user project conventions
+- **Effort**: 1 hour
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_meta-research.md](286_create_context_directory_structure/reports/01_meta-research.md)
 
-**Description**: Create the `.context/` directory structure at project root with index.json schema for project-specific context files. This directory is protected from `.claude/` reloads and holds repository-specific information, workflows, and hooks documentation.
+**Description**: Create a lightweight `.context/` directory at project root with `index.json` schema. This directory starts empty and is for user-defined project conventions only — not for files migrated from `.claude/context/project/` (those belong to core or extensions). Loaded alongside `.memory/` as independent systems for project knowledge.
 
 ---
 
-### 287. Migrate project context files from .claude/context/project/ to .context/
-- **Effort**: 3 hours
+### 287. Reassign project context files to correct owners
+- **Effort**: 2 hours
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #286
 - **Research**: [01_meta-research.md](287_migrate_project_context_files/reports/01_meta-research.md)
 
-**Description**: Move project-specific context files (repo/, processes/, hooks/) from `.claude/context/project/` to the new `.context/` directory. Keep meta-builder context in `.claude/` as it's agent system context. Update both index files.
+**Description**: Audit showed all 17 files in `.claude/context/project/` belong to either core or extensions — none are true project conventions. Move 12 core files (meta/, processes/, repo/) up to `.claude/context/` peers. Move 5 neovim files (standards + hooks) to the nvim extension's context directory. Nothing migrates to `.context/`.
 
 ---
 
-### 288. Update .claude/context/ to contain only core/ files (flatten structure)
+### 288. Flatten .claude/context/ structure
 - **Effort**: 2 hours
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #287
 - **Research**: [01_meta-research.md](288_flatten_claude_context_structure/reports/01_meta-research.md)
 
-**Description**: Flatten `.claude/context/` by moving contents of `core/` to root level and moving `project/meta/` to `meta/`. Remove empty `core/` and `project/` directories. Update all paths in index.json and @-references.
+**Description**: After task 287 empties `project/` and promotes core files, flatten by moving contents of `core/` to root level. Remove empty `core/` and `project/` directories. Update all paths in index.json and @-references.
 
 ---
 
@@ -79,18 +79,18 @@ next_project_number: 293
 - **Dependencies**: Task #288
 - **Research**: [01_meta-research.md](289_update_extension_loader/reports/01_meta-research.md)
 
-**Description**: Extension loader copies core and extension context files into `.claude/context/`; project-level `.context/` files are not managed by the extension loader but instead use a separate `index.json` for discovery and loaded alongside `.memory/` for project knowledge.
+**Description**: Verify extension loader correctly copies core + extension context to `.claude/context/` and does not touch `.context/`. Document the three-layer architecture: agent context (loader-managed), project context (user-managed via `.context/index.json`), and project memory (`.memory/`, independent, loaded in parallel).
 
 ---
 
-### 290. Update context discovery patterns (index.json queries)
+### 290. Update context discovery for three-layer architecture
 - **Effort**: 2 hours
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #288, Task #289
 - **Research**: [01_meta-research.md](290_update_context_discovery_patterns/reports/01_meta-research.md)
 
-**Description**: Update jq query patterns to query multiple context sources: `.claude/context/index.json` (core), `.context/index.json` (project), and extension paths. Document new discovery patterns.
+**Description**: Update jq query patterns for three-layer discovery: `.claude/context/index.json` (agent context, includes extensions merged by loader), `.context/index.json` (user project conventions, may be empty), and `.memory/` (loaded in parallel, independent). Extension context is merged into the main index by the loader, so no separate extension query needed.
 
 ---
 
@@ -101,18 +101,18 @@ next_project_number: 293
 - **Dependencies**: Task #290
 - **Research**: [01_meta-research.md](291_update_claudemd_references/reports/01_meta-research.md)
 
-**Description**: Update all documentation and code references throughout `.claude/` to use new context paths. Search for `@.claude/context/core/` and `@.claude/context/project/` patterns and update to new locations.
+**Description**: Search-and-replace all `@.claude/context/core/` and `@.claude/context/project/` references. Core paths drop the `core/` prefix (flattened). Neovim standards now come from the nvim extension. Meta/processes/repo paths drop the `project/` prefix (promoted to core).
 
 ---
 
-### 292. Document role boundaries for .context/, .memory/, Claude auto-memory
+### 292. Document role boundaries for .context/, .memory/, extensions, auto-memory
 - **Effort**: 1 hour
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: Task #291
 - **Research**: [01_meta-research.md](292_document_role_boundaries/reports/01_meta-research.md)
 
-**Description**: Create clear documentation defining purpose and boundaries: `.context/` for project reference docs, `.memory/` for domain facts, `.claude/context/` for agent system patterns, Claude auto-memory for small gaps. Include decision tree for where to store new content.
+**Description**: Create documentation defining the four-layer context architecture: extensions own domain-specific knowledge (nvim standards, lean4 patterns), `.claude/context/` holds core agent system patterns, `.context/` is for user project conventions not covered by extensions, `.memory/` stores learned facts (independent, loaded in parallel with `.context/`), and Claude auto-memory handles small behavioral gaps. Include decision tree.
 
 ---
 

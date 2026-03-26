@@ -2,8 +2,9 @@
 
 **Task**: 291 - Update CLAUDE.md and agent references for new paths
 **Generated**: 2026-03-25
-**Source**: /meta interview (auto-generated)
-**Status**: Pre-populated from interview context
+**Updated**: 2026-03-25
+**Source**: /meta interview (auto-generated), revised after project context audit
+**Status**: Pre-populated from interview context, revised
 
 ---
 
@@ -21,20 +22,20 @@ After restructuring, update all references to context files throughout the codeb
 
 ### Path Changes Summary
 
-| Old Path | New Path |
-|----------|----------|
-| `.claude/context/core/*` | `.claude/context/*` |
-| `.claude/context/project/repo/*` | `.context/repo/*` |
-| `.claude/context/project/processes/*` | `.context/processes/*` |
-| `.claude/context/project/hooks/*` | `.context/hooks/*` |
-| `.claude/context/project/meta/*` | `.claude/context/meta/*` |
-| `.claude/context/project/{ext}/*` | `.claude/extensions/{ext}/context/*` |
+| Old Path | New Path | Reason |
+|----------|----------|--------|
+| `.claude/context/core/*` | `.claude/context/*` | Flattened (task 288) |
+| `.claude/context/project/meta/*` | `.claude/context/meta/*` | Promoted to core (task 287) |
+| `.claude/context/project/processes/*` | `.claude/context/processes/*` | Promoted to core (task 287) |
+| `.claude/context/project/repo/*` | `.claude/context/repo/*` | Promoted to core (task 287) |
+| `.claude/context/project/neovim/*` | `.claude/extensions/nvim/context/...` | Moved to nvim extension (task 287) |
+| `.claude/context/project/hooks/*` | `.claude/extensions/nvim/context/...` | Moved to nvim extension (task 287) |
 
 ### Files to Update
 
 1. **CLAUDE.md files**:
-   - `~/.config/nvim/.claude/CLAUDE.md` - Context Discovery, Context Imports sections
-   - `~/.config/nvim/CLAUDE.md` - Related Documentation section
+   - `~/.config/nvim/.claude/CLAUDE.md` — Context Discovery, Context Imports sections
+   - `~/.config/nvim/CLAUDE.md` — Related Documentation section, references to standards
 
 2. **Agent definitions** (`.claude/agents/*.md`):
    - Update all @-reference paths
@@ -50,7 +51,11 @@ After restructuring, update all references to context files throughout the codeb
    - Update context path references
 
 6. **Context README**:
-   - `.claude/context/README.md` - Complete rewrite for new structure
+   - `.claude/context/README.md` — Rewrite for new structure
+
+7. **Root CLAUDE.md references to neovim standards**:
+   - Box-drawing, emoji-policy, documentation-policy, lua-assertion-patterns
+   - These now come from the nvim extension, not `.claude/context/project/neovim/`
 
 ### Search and Replace Patterns
 
@@ -64,9 +69,8 @@ grep -r ".claude/context/project/" .claude/
 
 ### Verification
 
-After updates, run:
+After updates:
 ```bash
-# Verify no broken @-references remain
 .claude/scripts/validate-wiring.sh --all
 ```
 
@@ -85,7 +89,7 @@ After updates, run:
 ## Interview Context
 
 ### User-Provided Information
-This is a cleanup task to ensure all references use the new paths. Should be done systematically with grep to find all occurrences.
+Systematic search-and-replace task. The key difference from the original plan is that neovim standards files now live in the nvim extension rather than `.context/`, so references point to extension paths instead.
 
 ### Effort Assessment
 - **Estimated Effort**: 1 hour
@@ -94,4 +98,5 @@ This is a cleanup task to ensure all references use the new paths. Should be don
 ---
 
 *This research report was auto-generated during task creation via /meta command.*
+*Revised 2026-03-25 to reflect updated path changes after project context audit.*
 *For deeper investigation, run `/research 291 [focus]` with a specific focus prompt.*
