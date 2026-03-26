@@ -40,12 +40,12 @@ Load these on-demand using @-references:
 - `@.claude/context/repo/project-overview.md` - Project context
 
 **Load For Neovim Code**:
-- `@.claude/context/project/neovim/standards/lua-style-guide.md` - Lua style guide
-- `@.claude/context/project/neovim/lua-patterns.md` - Lua patterns
+- `@.claude/extensions/nvim/context/project/neovim/standards/lua-style-guide.md` - Lua style guide
+- `@.claude/extensions/nvim/context/project/neovim/domain/lua-patterns.md` - Lua patterns
 
 **Load For Web Code**:
-- `@.claude/context/project/web/standards/web-style-guide.md` - Web style guide
-- `@.claude/context/project/web/astro-framework.md` - Astro patterns
+- `@.claude/extensions/web/context/project/web/standards/web-style-guide.md` - Web style guide
+- `@.claude/extensions/web/context/project/web/astro-framework.md` - Astro patterns
 
 ## Review Checklist
 

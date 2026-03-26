@@ -13,7 +13,7 @@ next_project_number: 297
 ### 1. Post-Refactor Cleanup (Tasks 293-296)
 
 - **293** [COMPLETED] -- Fix stale context/core/ references in docs
-- **294** [RESEARCHED] -- Fix extension-dependent @-references in root CLAUDE.md and code-reviewer agent
+- **294** [COMPLETED] -- Fix extension-dependent @-references in root CLAUDE.md and code-reviewer agent
 - **295** [RESEARCHED] -- Fix .memory/README.md OpenCode references
 - **296** [RESEARCHED] -- Verify index.json domain/subdomain field semantics
 
@@ -137,12 +137,13 @@ next_project_number: 297
 
 ### 294. Fix extension-dependent @-references in root CLAUDE.md and code-reviewer agent
 - **Effort**: 1 hour
-- **Status**: [RESEARCHED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_extension-refs.md](294_fix_extension_dependent_refs/reports/01_extension-refs.md)
+- **Plan**: [02_extension-refs.md](294_fix_extension_dependent_refs/plans/02_extension-refs.md)
 
-**Description**: Root CLAUDE.md (lines 34, 37, 40, 63) references 4 neovim standards files that only exist when the nvim extension is loaded. `code-reviewer-agent.md` (lines 43, 44, 47, 48) has 4 @-references to nvim/web extension paths that fail without extensions. Move neovim standards refs to nvim EXTENSION.md; add conditional handling or index-based discovery for the code-reviewer agent.
+**Description**: Fixed 8 extension-dependent references (4 in CLAUDE.md, 4 in code-reviewer-agent.md) by pointing to canonical extension source paths instead of loader-copied paths that only exist when extensions are loaded.
 
 ---
 

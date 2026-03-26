@@ -457,7 +457,7 @@
     {
       "project_number": 294,
       "project_name": "fix_extension_dependent_refs",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "effort": "1 hour",
       "description": "Fix 8 extension-dependent @-references in root CLAUDE.md (4) and code-reviewer-agent.md (4) that break when extensions are not loaded",
@@ -475,25 +475,34 @@
           "path": "specs/294_fix_extension_dependent_refs/plans/02_extension-refs.md",
           "summary": "2-phase plan to fix 8 extension-dependent references in CLAUDE.md and code-reviewer-agent.md"
         }
-      ]
+      ],
+      "completion_summary": "Fixed 8 extension-dependent references: 4 in CLAUDE.md and 4 in code-reviewer-agent.md. Changed paths from .claude/context/project/{domain}/ to .claude/extensions/{ext}/context/project/{domain}/ so references resolve without extension loading. Also corrected lua-patterns.md path to include domain/ subdirectory.",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 295,
       "project_name": "fix_memory_readme_opencode",
-      "status": "researched",
+      "status": "completed",
       "language": "meta",
       "effort": "15 minutes",
       "description": "Replace 7 OpenCode references in .memory/README.md with correct Claude Code system names and paths",
       "created": "2026-03-26T17:02:03Z",
-      "last_updated": "2026-03-26T17:02:03Z",
+      "last_updated": "2026-03-26T18:00:00Z",
       "dependencies": [],
       "session_id": "sess_1742932800_audit01",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/295_fix_memory_readme_opencode/reports/01_memory-readme.md"
+        },
+        {
+          "type": "plan",
+          "path": "specs/295_fix_memory_readme_opencode/plans/02_memory-readme.md",
+          "summary": "1-phase plan to fix 7 OpenCode references in .memory/README.md"
         }
-      ]
+      ],
+      "completion_summary": "Replaced 7 OpenCode references in .memory/README.md: 3 name changes (OpenCode->Claude Code), 2 path fixes (.opencode/memory/-> .memory/), 1 docs path fix (.opencode/docs/-> extension context path). Kept /learn command reference (valid memory extension command).",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 296,
