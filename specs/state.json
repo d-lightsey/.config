@@ -5,12 +5,13 @@
     {
       "project_number": 306,
       "project_name": "persist_core_index_entries",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "effort": "2-3 hours",
       "description": "Persist core context index entries across extension reloads by creating core-index-entries.json and modifying the loader to always include it",
+      "completion_summary": "Created core-index-entries.json with 95 entries for all core context .md files (orchestration, standards, patterns, formats, templates, etc.). Added 13 lines to the extension loader (init.lua) to always load core entries before processing extension merge targets. Uses pcall for safety and append_index_entries for deduplication.",
       "created": "2026-03-26T23:00:00Z",
-      "last_updated": "2026-03-27T00:30:00Z",
+      "last_updated": "2026-03-27T01:00:00Z",
       "dependencies": [301],
       "artifacts": [
         {

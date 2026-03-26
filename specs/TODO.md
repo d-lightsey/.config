@@ -10,7 +10,7 @@ next_project_number: 307
 
 ### Pending
 
-- **306** [PLANNED] -- Persist core context index entries across reloads (depends on 301)
+- **306** [COMPLETED] -- Persist core context index entries across reloads (depends on 301)
 - **305** [COMPLETED] -- Persist metadata in extension source index-entries.json files (depends on 303)
 - **304** [COMPLETED] -- Fix malformed @-references in extension rule source files
 - **303** [COMPLETED] -- Fix filetypes extension source index-entries.json (verified no-op)
@@ -27,9 +27,10 @@ next_project_number: 307
 
 ### 306. Persist core context index entries across reloads
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-03-26
 - **Research Completed**: 2026-03-26
+- **Completed**: 2026-03-27
 - **Language**: neovim
 - **Dependencies**: 301
 - **Research**: [01_persist-core-entries.md](306_persist_core_index_entries/reports/01_persist-core-entries.md)

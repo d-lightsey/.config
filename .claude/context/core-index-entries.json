@@ -1,0 +1,1334 @@
+{
+  "entries": [
+    {
+      "path": "architecture/component-checklist.md",
+      "domain": "core",
+      "subdomain": "architecture",
+      "summary": null,
+      "line_count": 363,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "architecture/context-layers.md",
+      "domain": "core",
+      "subdomain": "architecture",
+      "summary": null,
+      "line_count": 54,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "architecture/generation-guidelines.md",
+      "domain": "core",
+      "subdomain": "architecture",
+      "summary": null,
+      "line_count": 454,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "architecture/system-overview.md",
+      "domain": "core",
+      "subdomain": "architecture",
+      "summary": null,
+      "line_count": 492,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "checkpoints/checkpoint-commit.md",
+      "domain": "core",
+      "subdomain": "checkpoints",
+      "summary": null,
+      "line_count": 116,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "checkpoints/checkpoint-gate-in.md",
+      "domain": "core",
+      "subdomain": "checkpoints",
+      "summary": null,
+      "line_count": 84,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "checkpoints/checkpoint-gate-out.md",
+      "domain": "core",
+      "subdomain": "checkpoints",
+      "summary": null,
+      "line_count": 101,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "checkpoints/README.md",
+      "domain": "core",
+      "subdomain": "checkpoints",
+      "summary": null,
+      "line_count": 100,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/command-output.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 467,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/command-structure.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 965,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/frontmatter.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 705,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/handoff-artifact.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 188,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/plan-format.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 136,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/progress-file.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 250,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/report-format.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 131,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/return-metadata-file.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 502,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/roadmap-format.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 65,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/subagent-return.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 323,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/summary-format.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 59,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/task-order-format.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 296,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "formats/team-metadata-extension.md",
+      "domain": "core",
+      "subdomain": "formats",
+      "summary": null,
+      "line_count": 111,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "guides/extension-development.md",
+      "domain": "core",
+      "subdomain": "guides",
+      "summary": null,
+      "line_count": 191,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/architecture-principles.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 270,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/context-revision-guide.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 323,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/domain-patterns.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 259,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/interview-patterns.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 224,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/meta-guide.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 462,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "meta/standards-checklist.md",
+      "domain": "core",
+      "subdomain": "meta",
+      "summary": null,
+      "line_count": 379,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/architecture.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 757,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/delegation.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 859,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/orchestration-core.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 248,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/orchestration-reference.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 309,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/orchestration-validation.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 233,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/orchestrator.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 876,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/postflight-pattern.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 336,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/preflight-pattern.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 217,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/routing.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 777,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/sessions.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 166,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/state-management.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 337,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/subagent-validation.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 313,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "orchestration/validation.md",
+      "domain": "core",
+      "subdomain": "orchestration",
+      "summary": null,
+      "line_count": 699,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/anti-stop-patterns.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 174,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/checkpoint-execution.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 254,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/context-discovery.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 209,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/early-metadata-pattern.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 260,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/file-metadata-exchange.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 301,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/inline-status-update.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 278,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/jq-escaping-workarounds.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 262,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/mcp-tool-recovery.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 254,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/metadata-file-return.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 147,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/postflight-control.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 265,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/roadmap-update.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 100,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/skill-lifecycle.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 165,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/team-orchestration.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 146,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "patterns/thin-wrapper-skill.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": null,
+      "line_count": 184,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "processes/implementation-workflow.md",
+      "domain": "core",
+      "subdomain": "processes",
+      "summary": null,
+      "line_count": 576,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "processes/planning-workflow.md",
+      "domain": "core",
+      "subdomain": "processes",
+      "summary": null,
+      "line_count": 540,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "processes/research-workflow.md",
+      "domain": "core",
+      "subdomain": "processes",
+      "summary": null,
+      "line_count": 628,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "README.md",
+      "domain": "core",
+      "subdomain": "root",
+      "summary": null,
+      "line_count": 202,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "reference/artifact-templates.md",
+      "domain": "core",
+      "subdomain": "reference",
+      "summary": null,
+      "line_count": 179,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "reference/README.md",
+      "domain": "core",
+      "subdomain": "reference",
+      "summary": null,
+      "line_count": 29,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "reference/skill-agent-mapping.md",
+      "domain": "core",
+      "subdomain": "reference",
+      "summary": null,
+      "line_count": 156,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "reference/state-management-schema.md",
+      "domain": "core",
+      "subdomain": "reference",
+      "summary": null,
+      "line_count": 352,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "reference/workflow-diagrams.md",
+      "domain": "core",
+      "subdomain": "reference",
+      "summary": null,
+      "line_count": 197,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "repo/project-overview.md",
+      "domain": "core",
+      "subdomain": "repo",
+      "summary": null,
+      "line_count": 144,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "repo/self-healing-implementation-details.md",
+      "domain": "core",
+      "subdomain": "repo",
+      "summary": null,
+      "line_count": 599,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "repo/update-project.md",
+      "domain": "core",
+      "subdomain": "repo",
+      "summary": null,
+      "line_count": 142,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "routing.md",
+      "domain": "core",
+      "subdomain": "root",
+      "summary": null,
+      "line_count": 43,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/analysis-framework.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 152,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/ci-workflow.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 144,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/code-patterns.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 377,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/documentation.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 315,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/documentation-standards.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 241,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/error-handling.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 1056,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/git-integration.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 212,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/git-safety.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 571,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/interactive-selection.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 272,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/postflight-tool-restrictions.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 202,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/status-markers.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 373,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/task-management.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 375,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/testing.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 127,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "standards/xml-structure.md",
+      "domain": "core",
+      "subdomain": "standards",
+      "summary": null,
+      "line_count": 709,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/agent-template.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 334,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/command-template.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 135,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/delegation-context.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 82,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/orchestrator-template.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 273,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/subagent-template.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 223,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "templates/thin-wrapper-skill.md",
+      "domain": "core",
+      "subdomain": "templates",
+      "summary": null,
+      "line_count": 273,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "troubleshooting/workflow-interruptions.md",
+      "domain": "core",
+      "subdomain": "troubleshooting",
+      "summary": null,
+      "line_count": 337,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "validation.md",
+      "domain": "core",
+      "subdomain": "root",
+      "summary": null,
+      "line_count": 46,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "workflows/command-lifecycle.md",
+      "domain": "core",
+      "subdomain": "workflows",
+      "summary": null,
+      "line_count": 452,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "workflows/preflight-postflight.md",
+      "domain": "core",
+      "subdomain": "workflows",
+      "summary": null,
+      "line_count": 589,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "workflows/review-process.md",
+      "domain": "core",
+      "subdomain": "workflows",
+      "summary": null,
+      "line_count": 164,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "workflows/status-transitions.md",
+      "domain": "core",
+      "subdomain": "workflows",
+      "summary": null,
+      "line_count": 86,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    },
+    {
+      "path": "workflows/task-breakdown.md",
+      "domain": "core",
+      "subdomain": "workflows",
+      "summary": null,
+      "line_count": 270,
+      "keywords": [],
+      "topics": [],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": []
+      }
+    }
+  ]
+}
