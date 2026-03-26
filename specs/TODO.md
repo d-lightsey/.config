@@ -79,7 +79,7 @@ next_project_number: 293
 - **Dependencies**: Task #288
 - **Research**: [01_meta-research.md](289_update_extension_loader/reports/01_meta-research.md)
 
-**Description**: Extension loader copies core and extension context files into `.claude/context/`; project-level `.context/` files are not managed by the extension loader but instead use a separate `index.json` for discovery and integrate with `.memory/` for project knowledge.
+**Description**: Extension loader copies core and extension context files into `.claude/context/`; project-level `.context/` files are not managed by the extension loader but instead use a separate `index.json` for discovery and loaded alongside `.memory/` for project knowledge.
 
 ---
 

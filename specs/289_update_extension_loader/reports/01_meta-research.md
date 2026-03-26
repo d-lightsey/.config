@@ -39,9 +39,9 @@ Project-specific context lives in a top-level `.context/` directory, **outside**
 
 A `.context/index.json` file manages these entries. The core agent system references this index to discover and load project-specific context as needed.
 
-### 3. Project Memory (.memory/) — Complementary to .context/
+### 3. Project Memory (.memory/) — Independent, Loaded Alongside .context/
 
-The `.memory/` directory stores persistent information about the project that agents have learned over time. The `.context/index.json` can reference `.memory/` files, creating a unified discovery mechanism for both static project context and dynamic project memory.
+The `.memory/` directory stores persistent information about the project that agents have learned over time. `.context/` and `.memory/` are independent systems — neither manages nor references the other. Instead, both are loaded in parallel when agents need project-specific knowledge: `.context/` provides static conventions and domain standards, while `.memory/` provides dynamic learned information.
 
 ### Key Distinction
 
@@ -51,7 +51,7 @@ The `.memory/` directory stores persistent information about the project that ag
 | Managed by | Extension loader | `index.json` |
 | Contains | Core + extension agent files | Project conventions, domain knowledge |
 | Lifecycle | Rebuilt on extension load | Persistent, user-managed |
-| Memory integration | None | Keys into `.memory/` files |
+| Memory integration | None | `.memory/` loaded alongside for project knowledge |
 
 ### Changes Required
 
@@ -67,13 +67,12 @@ The `.memory/` directory stores persistent information about the project that ag
 
 3. **index.json schema**:
    - Entries for project context files in `.context/`
-   - Entries that reference `.memory/` files for dynamic project knowledge
    - Query patterns for agents to discover project-specific context
 
 4. **Agent context discovery**:
    - Core + extension context: read from `.claude/context/` (as today)
    - Project context: query `.context/index.json`
-   - Project memory: follow references from index.json to `.memory/`
+   - Project memory: load `.memory/` files alongside `.context/` (independent systems, loaded in parallel)
 
 ## Integration Points
 
@@ -84,7 +83,7 @@ The `.memory/` directory stores persistent information about the project that ag
   - Extension loader (Lua code — no changes needed)
   - `.context/index.json` (new)
   - `.context/` directory (new, receives migrated project files)
-  - `.memory/` directory (referenced by index.json)
+  - `.memory/` directory (independent, loaded alongside .context/)
   - `.claude/context/index.json` (existing, for agent context)
 
 ## Dependencies
@@ -94,7 +93,7 @@ The `.memory/` directory stores persistent information about the project that ag
 ## Interview Context
 
 ### User-Provided Information
-The key insight is that context has two audiences: the agent system (core + extensions, managed by the loader) and the project (conventions, domain knowledge, managed by index.json). The extension loader should continue copying/merging — the change is clarifying that project context lives separately in .context/ with its own index.json, and that this index can reference .memory/ for project-specific learned information.
+The key insight is that context has two audiences: the agent system (core + extensions, managed by the loader) and the project (conventions, domain knowledge, managed by index.json). The extension loader should continue copying/merging — the change is clarifying that project context lives separately in .context/ with its own index.json. Separately, .memory/ provides dynamic project knowledge. These two project-level systems (.context/ and .memory/) are independent and loaded in parallel — neither manages the other.
 
 ### Effort Assessment
 - **Estimated Effort**: 3 hours

@@ -337,7 +337,7 @@
       "language": "meta",
       "effort": "3 hours",
       "created": "2026-03-25T17:40:00Z",
-      "last_updated": "2026-03-26T15:29:28Z",
+      "last_updated": "2026-03-26T15:39:41Z",
       "dependencies": [
         288
       ],
@@ -349,7 +349,7 @@
           "summary": "Auto-generated research from /meta interview"
         }
       ],
-      "description": "Extension loader copies core and extension context files into .claude/context/; project-level .context/ files are not managed by the extension loader but instead use a separate index.json for discovery and integrate with .memory/ for project knowledge"
+      "description": "Extension loader copies core and extension context files into .claude/context/; project-level .context/ files are not managed by the extension loader but instead use a separate index.json for discovery and loaded alongside .memory/ for project knowledge"
     },
     {
       "project_number": 290,
