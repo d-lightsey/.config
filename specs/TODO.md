@@ -107,14 +107,16 @@ next_project_number: 307
 
 ### 302. Clean orphaned index entries from Website index.json
 - **Effort**: 15 minutes
-- **Status**: [RESEARCHED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-03-26
 - **Research Completed**: 2026-03-26
+- **Completed**: 2026-03-26
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_website-index-orphans.md](302_clean_website_index_orphans/reports/01_website-index-orphans.md)
+- **Plan**: [02_website-index-orphans.md](302_clean_website_index_orphans/plans/02_website-index-orphans.md)
 
-**Description**: Remove 26 orphaned entries from Website `.claude/context/index.json` that reference files not on disk. 24 entries are from the unloaded lean4 extension, 2 are leftover pitch-deck duplicates. Total entries will drop from 83 to 57. Related to task 301 (loader fix for root cause).
+**Description**: Removed 2 orphaned pitch-deck entries from Website `.claude/context/index.json` (256 -> 254 entries). The 24 lean4 orphans from the original research had already been removed by prior tasks. Zero orphans remain.
 
 ---
 
