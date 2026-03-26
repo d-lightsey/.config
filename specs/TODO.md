@@ -34,7 +34,7 @@ next_project_number: 301
 
 ### 298. Add missing domain/subdomain metadata to index.json entries
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-03-26
 - **Research Completed**: 2026-03-26
 - **Language**: meta
