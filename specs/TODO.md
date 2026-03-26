@@ -15,7 +15,7 @@ next_project_number: 293
 - **286** [RESEARCHED] -- Create .context/ directory structure and index.json schema
 - **287** [RESEARCHED] -- Migrate project context files to .context/ (depends on #286)
 - **288** [RESEARCHED] -- Flatten .claude/context/ structure (depends on #287)
-- **289** [RESEARCHED] -- Clarify context architecture: extension loader copies core + extension context to .claude/context/; project-level .context/ managed via index.json for conventions and .memory/ integration (depends on #288)
+- **289** [RESEARCHED] -- Extension loader copies core and extension context files into .claude/context/; project-level .context/ files are not managed by the extension loader but instead use a separate index.json for discovery and integrate with .memory/ for project knowledge (depends on #288)
 - **290** [RESEARCHED] -- Update context discovery patterns (depends on #288, #289)
 - **291** [RESEARCHED] -- Update CLAUDE.md and agent references (depends on #290)
 - **292** [RESEARCHED] -- Document role boundaries for .context/, .memory/, auto-memory (depends on #291)
