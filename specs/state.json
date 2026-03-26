@@ -5,19 +5,25 @@
     {
       "project_number": 308,
       "project_name": "adaptive_context_loading_by_extension_and_language",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-26T20:38:11Z",
-      "last_updated": "2026-03-26T20:48:01Z",
-      "session_id": "sess_1774557833_79d61f",
+      "last_updated": "2026-03-26T20:53:10Z",
+      "session_id": "sess_1774558244_fea0fc",
       "researched": "2026-03-26T20:48:01Z",
       "artifacts": [
         {
           "path": "specs/308_adaptive_context_loading_by_extension_and_language/reports/01_context-loading-research.md",
           "type": "research",
           "summary": "Research report with findings on index.json structure, empty load_when semantics, and implementation recommendations"
+        },
+        {
+          "path": "specs/308_adaptive_context_loading_by_extension_and_language/plans/01_adaptive-context-loading.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for adaptive context loading with load_when classification"
         }
-      ]
+      ],
+      "planned": "2026-03-26T20:53:10Z"
     },
     {
       "project_number": 87,
