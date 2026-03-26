@@ -83,29 +83,35 @@
     {
       "project_number": 301,
       "project_name": "fix_loader_orphan_cleanup",
-      "status": "researched",
+      "status": "completed",
       "language": "neovim",
       "effort": "2-3 hours",
       "description": "Fix extension loader to clean orphaned index.json entries when doing sparse extension reloads",
+      "completion_summary": "Added remove_index_entries_by_prefix() to merge.lua and integrated it into the unload flow in init.lua. After tracked entry removal, the loader now scans remaining entries and removes any whose path matches the unloaded extension's provides.context prefixes. Uses trailing-slash normalization for safe prefix matching.",
       "created": "2026-03-26T21:00:00Z",
-      "last_updated": "2026-03-26T21:00:00Z",
+      "last_updated": "2026-03-27T00:00:00Z",
       "dependencies": [],
       "artifacts": [
         {
           "type": "research",
           "path": "specs/301_fix_loader_orphan_cleanup/reports/01_loader-orphan-cleanup.md"
+        },
+        {
+          "type": "plan",
+          "path": "specs/301_fix_loader_orphan_cleanup/plans/02_loader-orphan-cleanup.md"
         }
       ]
     },
     {
       "project_number": 302,
       "project_name": "clean_website_index_orphans",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "effort": "15 minutes",
       "description": "Remove 2 orphaned index.json entries from Website .claude/context/ that reference non-existent pitch-deck files",
+      "completion_summary": "Removed 2 orphaned pitch-deck entries from Website index.json (256 -> 254 entries). The 24 lean4 orphans from the original research were already gone. Zero orphans remain.",
       "created": "2026-03-26T21:00:00Z",
-      "last_updated": "2026-03-26T23:45:00Z",
+      "last_updated": "2026-03-26T23:50:00Z",
       "dependencies": [],
       "artifacts": [
         {

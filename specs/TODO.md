@@ -15,7 +15,7 @@ next_project_number: 307
 - **304** [COMPLETED] -- Fix malformed @-references in extension rule source files
 - **303** [COMPLETED] -- Fix filetypes extension source index-entries.json (verified no-op)
 - **301** [RESEARCHED] -- Fix extension loader orphaned index entry cleanup (root cause)
-- **302** [RESEARCHED] -- Clean orphaned index entries from Website index.json
+- **302** [COMPLETED] -- Clean orphaned index entries from Website index.json
 - **298** [COMPLETED] -- Add missing domain/subdomain metadata to index.json entries
 - **299** [COMPLETED] -- Index 75 unindexed context files (depends on 298)
 - **300** [COMPLETED] -- Add missing summaries to index.json entries (depends on 298)
@@ -53,14 +53,19 @@ next_project_number: 307
 
 ### 304. Fix malformed @-references in extension rule source files
 - **Effort**: 30 minutes
-- **Status**: [RESEARCHED]
+- **Status**: [COMPLETED]
 - **Research Started**: 2026-03-26
 - **Research Completed**: 2026-03-26
+- **Completed**: 2026-03-26
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [01_rule-source-refs.md](304_fix_rule_source_refs/reports/01_rule-source-refs.md)
+- **Artifacts**:
+  - **Research**: [01_rule-source-refs.md](304_fix_rule_source_refs/reports/01_rule-source-refs.md)
+  - **Plan**: [02_rule-source-refs.md](304_fix_rule_source_refs/plans/02_rule-source-refs.md)
 
 **Description**: Fix 13 malformed @-references in 2 extension rule source files. `nix.md` (8 refs) and `web-astro.md` (5 refs) use `@.claude/extensions/{ext}/context/project/...` but should use `@.claude/context/project/...` (the installed path after extension loader copies context files). The 3 refs in `neovim-lua.md` already use the correct pattern.
+
+**Completion**: Fixed 13 @-references in 2 files: nix.md (8 refs) and web-astro.md (5 refs). Replaced `extensions/{ext}/context/` prefix with `context/` to point to installed paths.
 
 ---
 
