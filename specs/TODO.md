@@ -1,15 +1,21 @@
 ---
-next_project_number: 313
+next_project_number: 319
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-27. 7 active tasks remaining.*
+*Updated 2026-03-27. 13 active tasks remaining.*
 
 ### Pending
 
+- **313** [RESEARCHED] -- Create spreadsheet domain context (foundational)
+- **314** [RESEARCHED] -- Create spreadsheet-agent (blocked by 313)
+- **315** [RESEARCHED] -- Create skill-spreadsheet (blocked by 314)
+- **316** [RESEARCHED] -- Create /sheet command (blocked by 315)
+- **317** [RESEARCHED] -- Update founder manifest.json routing (blocked by 315)
+- **318** [RESEARCHED] -- Create Typst spreadsheet template (blocked by 313)
 - **309** [COMPLETED] -- Research unified artifact numbering system
 - **310** [NOT STARTED] -- Update state.json schema (blocked by 309)
 - **311** [NOT STARTED] -- Update artifact-formats.md rule (blocked by 309)
@@ -19,6 +25,72 @@ next_project_number: 313
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 313. Create spreadsheet domain context
+- **Effort**: 2 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_meta-research.md](313_spreadsheet_domain_context/reports/01_meta-research.md)
+
+**Description**: Create spreadsheet-frameworks.md domain context file with cost category taxonomies, burn rate patterns, range-based financial modeling, and dependency patterns for the founder extension.
+
+---
+
+### 314. Create spreadsheet-agent
+- **Effort**: 3 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #313
+- **Research**: [01_meta-research.md](314_spreadsheet_agent/reports/01_meta-research.md)
+
+**Description**: Create spreadsheet-agent.md research agent that parses cost breakdown files, extracts structured financial data via forcing questions, and generates research reports with raw JSON data blocks.
+
+---
+
+### 315. Create skill-spreadsheet
+- **Effort**: 1 hour
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #314
+- **Research**: [01_meta-research.md](315_skill_spreadsheet/reports/01_meta-research.md)
+
+**Description**: Create skill-spreadsheet/SKILL.md thin wrapper that routes to spreadsheet-agent with proper preflight/postflight handling.
+
+---
+
+### 316. Create /sheet command
+- **Effort**: 1 hour
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #315
+- **Research**: [01_meta-research.md](316_sheet_command/reports/01_meta-research.md)
+
+**Description**: Create sheet.md command that accepts file path argument, creates task with founder:sheet language, and invokes skill-spreadsheet for research/plan/implement workflow.
+
+---
+
+### 317. Update founder manifest.json routing
+- **Effort**: 30 min
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #315
+- **Research**: [01_meta-research.md](317_founder_manifest_routing/reports/01_meta-research.md)
+
+**Description**: Add 'sheet' task type routing entries to manifest.json for research, plan, and implement operations. Update provides arrays and index-entries.json.
+
+---
+
+### 318. Create Typst spreadsheet template
+- **Effort**: 2 hours
+- **Status**: [RESEARCHED]
+- **Language**: meta
+- **Dependencies**: Task #313
+- **Research**: [01_meta-research.md](318_typst_spreadsheet_template/reports/01_meta-research.md)
+
+**Description**: Create spreadsheet-template.typ with cost category tables, calculated totals, monthly projections, and auto-updating formulas using Typst state.
+
+---
 
 ### 309. Research unified artifact numbering system
 - **Effort**: 2-3 hours
