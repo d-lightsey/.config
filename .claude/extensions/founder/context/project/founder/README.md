@@ -13,15 +13,20 @@ founder/
 ├── README.md              (this file)
 ├── domain/                Domain knowledge and frameworks
 │   ├── business-frameworks.md    TAM/SAM/SOM, business model canvas
-│   └── strategic-thinking.md     CEO patterns, YC principles
+│   ├── strategic-thinking.md     CEO patterns, YC principles
+│   └── spreadsheet-frameworks.md Cost structure, formulas, JSON export
 ├── patterns/              Reusable analysis patterns
 │   ├── forcing-questions.md      Question framework for specificity
 │   ├── decision-making.md        Two-way doors, inversion, focus
-│   └── mode-selection.md         Operational modes pattern
+│   ├── mode-selection.md         Operational modes pattern
+│   └── cost-forcing-questions.md Cost-specific forcing questions
 └── templates/             Artifact templates
     ├── market-sizing.md          TAM/SAM/SOM analysis template
     ├── competitive-analysis.md   Competitor landscape template
-    └── gtm-strategy.md           Go-to-market strategy template
+    ├── gtm-strategy.md           Go-to-market strategy template
+    └── typst/                    Typst PDF templates
+        ├── strategy-template.typ Base styles and components
+        └── cost-breakdown.typ    Cost analysis PDF template
 ```
 
 ## Key Concepts
@@ -59,6 +64,7 @@ Commands offer 3-4 modes giving users explicit scope control:
 | `/market` | domain/, patterns/forcing-questions, templates/market-sizing | Market sizing analysis |
 | `/analyze` | domain/, patterns/forcing-questions, templates/competitive-analysis | Competitive analysis |
 | `/strategy` | domain/, patterns/, templates/gtm-strategy | GTM strategy development |
+| `/sheet` | domain/spreadsheet-frameworks, patterns/cost-forcing-questions | Cost breakdown spreadsheet |
 
 ## Usage
 

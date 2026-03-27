@@ -470,6 +470,75 @@
       },
       "domain": "project",
       "subdomain": "founder"
+    },
+    {
+      "path": "project/founder/domain/spreadsheet-frameworks.md",
+      "summary": "Cost breakdown structure, financial modeling conventions, formula patterns, openpyxl generation, JSON export schema",
+      "line_count": 288,
+      "load_when": {
+        "agents": [
+          "spreadsheet-agent",
+          "founder-plan-agent",
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "task_types": [
+          "sheet"
+        ],
+        "commands": [
+          "/sheet",
+          "/plan",
+          "/implement"
+        ]
+      },
+      "domain": "project",
+      "subdomain": "founder"
+    },
+    {
+      "path": "project/founder/patterns/cost-forcing-questions.md",
+      "summary": "Cost forcing question framework: mode selection, scope, personnel, infrastructure, marketing, operations, contingency",
+      "line_count": 315,
+      "load_when": {
+        "agents": [
+          "spreadsheet-agent",
+          "founder-plan-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "task_types": [
+          "sheet"
+        ],
+        "commands": [
+          "/sheet",
+          "/plan"
+        ]
+      },
+      "domain": "project",
+      "subdomain": "founder"
+    },
+    {
+      "path": "project/founder/templates/typst/cost-breakdown.typ",
+      "summary": "Typst template for cost breakdown PDF reports with JSON data loading, category bars, contingency blocks, runway calculator",
+      "line_count": 414,
+      "load_when": {
+        "agents": [
+          "founder-implement-agent"
+        ],
+        "languages": [
+          "founder"
+        ],
+        "task_types": [
+          "sheet"
+        ],
+        "commands": [
+          "/implement"
+        ]
+      },
+      "domain": "project",
+      "subdomain": "founder"
     }
   ]
 }

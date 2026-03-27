@@ -12,7 +12,8 @@
       "founder-plan-agent.md",
       "founder-implement-agent.md",
       "legal-council-agent.md",
-      "project-agent.md"
+      "project-agent.md",
+      "spreadsheet-agent.md"
     ],
     "skills": [
       "skill-market",
@@ -21,9 +22,10 @@
       "skill-founder-plan",
       "skill-founder-implement",
       "skill-legal",
-      "skill-project"
+      "skill-project",
+      "skill-spreadsheet"
     ],
-    "commands": ["market.md", "analyze.md", "strategy.md", "legal.md", "project.md"],
+    "commands": ["market.md", "analyze.md", "strategy.md", "legal.md", "project.md", "sheet.md"],
     "rules": [],
     "context": ["project/founder"],
     "scripts": [],
@@ -36,7 +38,8 @@
       "founder:analyze": "skill-analyze",
       "founder:strategy": "skill-strategy",
       "founder:legal": "skill-legal",
-      "founder:project": "skill-project"
+      "founder:project": "skill-project",
+      "founder:sheet": "skill-spreadsheet"
     },
     "plan": {
       "founder": "skill-founder-plan",
@@ -44,7 +47,8 @@
       "founder:analyze": "skill-founder-plan",
       "founder:strategy": "skill-founder-plan",
       "founder:legal": "skill-founder-plan",
-      "founder:project": "skill-founder-plan"
+      "founder:project": "skill-founder-plan",
+      "founder:sheet": "skill-founder-plan"
     },
     "implement": {
       "founder": "skill-founder-implement",
@@ -52,7 +56,8 @@
       "founder:analyze": "skill-founder-implement",
       "founder:strategy": "skill-founder-implement",
       "founder:legal": "skill-founder-implement",
-      "founder:project": "skill-founder-implement"
+      "founder:project": "skill-founder-implement",
+      "founder:sheet": "skill-founder-implement"
     }
   },
   "merge_targets": {
