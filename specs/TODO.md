@@ -1,20 +1,64 @@
 ---
-next_project_number: 309
+next_project_number: 313
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-26. 3 active tasks remaining.*
+*Updated 2026-03-27. 7 active tasks remaining.*
 
 ### Pending
 
+- **309** [NOT STARTED] -- Research unified artifact numbering system
+- **310** [NOT STARTED] -- Update state.json schema (blocked by 309)
+- **311** [NOT STARTED] -- Update artifact-formats.md rule (blocked by 309)
+- **312** [NOT STARTED] -- Update skills/agents unified numbering (blocked by 310, 311)
 - **308** [COMPLETED] -- Implement adaptive context loading by extension and language
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 309. Research unified artifact numbering system
+- **Effort**: 2-3 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Analyze current artifact numbering patterns across all skills/agents, document how next_artifact_number should be tracked in state.json, and design the unified sequencing logic where research drives numbering and plan/summary inherit the current number. Review ProofChecker task 058 as an example of desired behavior.
+
+---
+
+### 310. Update state.json schema with next_artifact_number field
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #309
+
+**Description**: Add next_artifact_number field to task entries in state.json schema. Update state-management-schema.md documentation. Handle backward compatibility for existing tasks without the field.
+
+---
+
+### 311. Update artifact-formats.md rule for unified numbering
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #309
+
+**Description**: Change "Per-Type Sequential Numbering" to "Unified Sequential Numbering" with new semantics: research increments, plan/summary inherit current max. Document the research-driven pattern.
+
+---
+
+### 312. Update all skills and agents for unified numbering
+- **Effort**: 3-4 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: Task #310, Task #311
+
+**Description**: Modify all artifact-producing components to use unified numbering. Research skill/agent increments next_artifact_number. Planning and implementation skills/agents inherit the current max number from existing artifacts. Also update extension agents that produce artifacts.
+
+---
 
 ### 308. Implement adaptive context loading by extension and language
 - **Effort**: TBD

@@ -1,7 +1,62 @@
 {
   "version": "1.0.0",
-  "next_project_number": 309,
+  "next_project_number": 313,
   "active_projects": [
+    {
+      "project_number": 309,
+      "project_name": "unified_artifact_numbering_research",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-27T17:26:39Z",
+      "last_updated": "2026-03-27T17:26:39Z",
+      "session_id": "sess_1774632399_14d5b9",
+      "dependencies": [],
+      "artifacts": []
+    },
+    {
+      "project_number": 310,
+      "project_name": "state_json_schema_next_artifact_number",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-27T17:26:39Z",
+      "last_updated": "2026-03-27T17:26:39Z",
+      "session_id": "sess_1774632399_14d5b9",
+      "dependencies": [
+        309
+      ],
+      "artifacts": []
+    },
+    {
+      "project_number": 311,
+      "project_name": "artifact_formats_unified_numbering_rule",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "1 hour",
+      "created": "2026-03-27T17:26:39Z",
+      "last_updated": "2026-03-27T17:26:39Z",
+      "session_id": "sess_1774632399_14d5b9",
+      "dependencies": [
+        309
+      ],
+      "artifacts": []
+    },
+    {
+      "project_number": 312,
+      "project_name": "update_skills_agents_unified_numbering",
+      "status": "not_started",
+      "language": "meta",
+      "effort": "3-4 hours",
+      "created": "2026-03-27T17:26:39Z",
+      "last_updated": "2026-03-27T17:26:39Z",
+      "session_id": "sess_1774632399_14d5b9",
+      "dependencies": [
+        310,
+        311
+      ],
+      "artifacts": []
+    },
     {
       "project_number": 308,
       "project_name": "adaptive_context_loading_by_extension_and_language",
