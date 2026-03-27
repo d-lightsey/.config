@@ -31,7 +31,9 @@ next_project_number: 319
 - **Status**: [RESEARCHED]
 - **Language**: meta
 - **Dependencies**: None
-- **Research**: [01_meta-research.md](313_spreadsheet_domain_context/reports/01_meta-research.md)
+- **Research**:
+  - [01_meta-research.md](313_spreadsheet_domain_context/reports/01_meta-research.md)
+  - [02_team-research.md](313_spreadsheet_domain_context/reports/02_team-research.md)
 
 **Description**: Create spreadsheet-frameworks.md domain context file with cost category taxonomies, burn rate patterns, range-based financial modeling, and dependency patterns for the founder extension.
 
