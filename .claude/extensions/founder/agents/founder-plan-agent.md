@@ -31,6 +31,7 @@ This agent has access to:
 Load these on-demand using @-references:
 
 **Always Load**:
+- `@.claude/context/formats/plan-format.md` - Standard plan format (required metadata and sections)
 - `@.claude/extensions/founder/context/project/founder/domain/business-frameworks.md` - TAM/SAM/SOM methodology
 - `@.claude/extensions/founder/context/project/founder/patterns/mode-selection.md` - Mode patterns
 - `@.claude/extensions/founder/context/project/founder/patterns/legal-planning.md` - Contract analysis planning guidance
@@ -249,174 +250,359 @@ Default to market-sizing if unclear.
 
 ### Stage 5: Generate Plan Artifact
 
-Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md`:
+Create plan in `specs/{NNN}_{SLUG}/plans/01_{short-slug}.md` conforming to plan-format.md standard:
 
 ```markdown
-# Implementation Plan: Task #{N}
+# Implementation Plan: {description}
 
-**Task**: {description}
-**Version**: 01
-**Created**: {ISO_DATE}
-**Language**: founder
-**Report Type**: {market-sizing|competitive-analysis|gtm-strategy|contract-review|project-timeline}
-**Mode**: {mode from research report}
+- **Task**: {N} - {description}
+- **Status**: [NOT STARTED]
+- **Effort**: {estimate based on report type: market-sizing=4h, competitive-analysis=3h, gtm-strategy=4h, contract-review=3h, project-timeline=5h}
+- **Dependencies**: None
+- **Research Inputs**: reports/{MM}_{short-slug}.md
+- **Artifacts**: plans/{MM}_{short-slug}.md (this file)
+- **Standards**: plan-format.md, status-markers.md, artifact-management.md, tasks.md
+- **Type**: founder ({report-type})
 
 ## Overview
 
-{Report type} implementation plan based on research report findings.
+{Report type} implementation plan based on research report findings. Mode: {mode from research report}.
 
-## Research Integration
+### Research Integration
 
 **Research Report**: [{report_filename}]({relative_path_to_report})
 
-### Key Findings Summary
+**Key Findings Summary**: {Summarize the main findings from the research report}
 
-{Summarize the main findings from the research report}
+**Gathered Context**: {Copy relevant context from research report, organized by section}
 
-### Gathered Context
+## Goals & Non-Goals
 
-{Copy relevant context from research report, organized by section}
+**Goals**:
+- Generate {report-type} analysis with all required sections
+- Produce professional Typst PDF output
+- {Report-type-specific goal}
 
-## Phases
+**Non-Goals**:
+- {Scope boundaries based on mode}
+
+## Risks & Mitigations
+
+| Risk | Impact | Likelihood | Mitigation |
+|------|--------|------------|------------|
+| Incomplete research data | Medium | Low | Flag missing sections, proceed with available data |
+| Typst compilation failure | Low | Low | Markdown report is primary output |
+| {Report-type-specific risk} | {Impact} | {Likelihood} | {Mitigation} |
+
+## Implementation Phases
 
 ### Phase 1: {First Phase Name} [NOT STARTED]
 
-**Objectives**:
-1. {Objective based on research findings}
-2. {Additional objectives}
+**Goal**: {Single statement based on research findings}
 
-**Inputs** (from research):
-- {Key data point from research}
-- {Additional inputs}
+**Tasks**:
+- [ ] {Task based on research findings}
+- [ ] {Additional task}
 
-**Outputs**:
-- {Expected deliverable}
+**Timing**: 45 minutes
 
 ### Phase 2: {Second Phase Name} [NOT STARTED]
 
-{Similar structure}
+**Goal**: {Single statement}
+
+**Tasks**:
+- [ ] {Task}
+
+**Timing**: 45 minutes
 
 ### Phase 3: {Third Phase Name} [NOT STARTED]
 
-{Similar structure}
+**Goal**: {Single statement}
+
+**Tasks**:
+- [ ] {Task}
+
+**Timing**: 30 minutes
 
 ### Phase 4: Report Generation [NOT STARTED]
 
-**Objectives**:
-1. Synthesize all findings into final report
-2. Generate executive summary / investor one-pager
+**Goal**: Synthesize all findings into final markdown report
 
-**Outputs**:
-- strategy/{report-type}-{slug}.md
+**Tasks**:
+- [ ] Compile analysis sections into strategy/{report-type}-{slug}.md
+- [ ] Generate executive summary / investor one-pager
+- [ ] Validate all required sections present
+
+**Timing**: 30 minutes
 
 ### Phase 5: Typst Document Generation [NOT STARTED]
 
-**Objectives**:
-1. Generate typst document from gathered context
-2. Compile to professional PDF format
+**Goal**: Generate professional PDF from gathered context
+
+**Tasks**:
+- [ ] Generate typst document using template
+- [ ] Compile to PDF format
+- [ ] Verify output quality
+
+**Timing**: 30 minutes
 
 **Template**: .claude/extensions/founder/context/project/founder/templates/typst/{report-type}.typ
-
-**Outputs**:
-- founder/{report-type}-{slug}.typ - Typst source file
-- founder/{report-type}-{slug}.pdf - Professional PDF document
 
 **Notes**:
 - Requires typst to be installed on the system
 - If typst unavailable, phase is skipped with warning
 - Markdown report from Phase 4 is the primary output
 
-## Report Output
+## Testing & Validation
 
-- **Markdown Location**: strategy/{report-type}-{slug}.md
-- **PDF Location**: founder/{report-type}-{slug}.pdf
-- **Template (Markdown)**: {template-file}
-- **Template (Typst)**: .claude/extensions/founder/context/project/founder/templates/typst/{report-type}.typ
+- [ ] All research data integrated into analysis
+- [ ] Report contains all required sections for {report-type}
+- [ ] PDF compiles without errors (if typst available)
+- [ ] {Report-type-specific validation}
+
+## Artifacts & Outputs
+
+- plans/{MM}_{short-slug}.md (this plan)
+- strategy/{report-type}-{slug}.md (markdown report)
+- founder/{report-type}-{slug}.typ (typst source, if generated)
+- founder/{report-type}-{slug}.pdf (PDF output, if compiled)
 
 **Project-timeline output paths** (override defaults above):
-- **Typst Location**: strategy/timelines/{project-slug}.typ
-- **PDF Location**: strategy/timelines/{project-slug}.pdf
-- **Template (Typst)**: .claude/extensions/founder/context/project/founder/templates/typst/project-timeline.typ
+- strategy/timelines/{project-slug}.typ
+- strategy/timelines/{project-slug}.pdf
 
-## Success Criteria
+## Rollback/Contingency
 
-- [ ] {Criterion based on research data}
-- [ ] {Additional criteria}
+If implementation fails:
+1. Preserve partial outputs in strategy/ directory
+2. Flag incomplete sections in markdown report
+3. Skip Typst generation if compilation fails repeatedly
+4. Document blockers in plan file for next attempt
 ```
 
-**Phase Structure by Report Type:**
+**Phase Structure by Report Type** (using Goal/Tasks/Timing format per plan-format.md):
 
 **Market Sizing:**
-- Phase 1: TAM Calculation
-- Phase 2: SAM Narrowing
-- Phase 3: SOM Projection
-- Phase 4: Report Generation
-- Phase 5: Typst Document Generation
 
-**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+### Phase 1: TAM Calculation [NOT STARTED]
+**Goal**: Calculate Total Addressable Market from research inputs
+**Tasks**:
+- [ ] Apply entity count and price point from research
+- [ ] Document data sources and assumptions
+- [ ] Calculate annual TAM value
+**Timing**: 45 minutes
+
+### Phase 2: SAM Narrowing [NOT STARTED]
+**Goal**: Narrow to Serviceable Addressable Market based on geographic/segment filters
+**Tasks**:
+- [ ] Apply geographic scope exclusions from research
+- [ ] Calculate percentage of TAM that is serviceable
+- [ ] Document filtering rationale
+**Timing**: 45 minutes
+
+### Phase 3: SOM Projection [NOT STARTED]
+**Goal**: Project Serviceable Obtainable Market based on capture assumptions
+**Tasks**:
+- [ ] Apply Year 1 and Year 3 targets from research
+- [ ] Model realistic market capture rates
+- [ ] Generate multi-year SOM projections
+**Timing**: 30 minutes
+
+### Phase 4: Report Generation [NOT STARTED]
+**Goal**: Synthesize all findings into final markdown report
+**Tasks**:
+- [ ] Compile TAM/SAM/SOM analysis into strategy/{report-type}-{slug}.md
+- [ ] Generate executive summary with key numbers
+- [ ] Include concentric circles visualization description
+**Timing**: 30 minutes
+
+### Phase 5: Typst Document Generation [NOT STARTED]
+**Goal**: Generate professional PDF with visualizations
+**Tasks**:
+- [ ] Generate typst document using market-sizing.typ template
+- [ ] Compile to PDF format
+- [ ] Verify TAM/SAM/SOM diagram renders correctly
+**Timing**: 30 minutes
+
+---
 
 **Competitive Analysis:**
-- Phase 1: Landscape Mapping
-- Phase 2: Deep Dive Analysis
-- Phase 3: Differentiation Strategy
-- Phase 4: Report Generation
-- Phase 5: Typst Document Generation
 
-**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+### Phase 1: Landscape Mapping [NOT STARTED]
+**Goal**: Map all competitors from research into structured inventory
+**Tasks**:
+- [ ] Categorize direct vs indirect competitors
+- [ ] Document key attributes per competitor
+- [ ] Identify positioning dimensions from research
+**Timing**: 45 minutes
+
+### Phase 2: Deep Dive Analysis [NOT STARTED]
+**Goal**: Analyze top competitors in detail
+**Tasks**:
+- [ ] Research pricing, features, strengths, weaknesses
+- [ ] Document competitive moats and vulnerabilities
+- [ ] Identify market gaps and opportunities
+**Timing**: 45 minutes
+
+### Phase 3: Differentiation Strategy [NOT STARTED]
+**Goal**: Define positioning based on competitive landscape
+**Tasks**:
+- [ ] Generate 2x2 positioning map using research dimensions
+- [ ] Draft battle cards for top 3 competitors
+- [ ] Articulate differentiation narrative
+**Timing**: 30 minutes
+
+### Phase 4: Report Generation [NOT STARTED]
+**Goal**: Compile analysis into final markdown report
+**Tasks**:
+- [ ] Generate competitive-analysis report with all sections
+- [ ] Include positioning map and battle cards
+- [ ] Write strategic recommendations
+**Timing**: 30 minutes
+
+### Phase 5: Typst Document Generation [NOT STARTED]
+**Goal**: Generate professional PDF with visualizations
+**Tasks**:
+- [ ] Generate typst document using competitive-analysis.typ template
+- [ ] Compile to PDF format
+- [ ] Verify positioning map and tables render correctly
+**Timing**: 30 minutes
+
+---
 
 **GTM Strategy:**
-- Phase 1: Customer Definition
-- Phase 2: Channel Strategy
-- Phase 3: Pricing & Positioning
-- Phase 4: Report Generation
-- Phase 5: Typst Document Generation
 
-**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+### Phase 1: Customer Definition [NOT STARTED]
+**Goal**: Define target customer profile from research inputs
+**Tasks**:
+- [ ] Document ideal customer profile (ICP)
+- [ ] Define problem/need and key benefit
+- [ ] Articulate differentiator positioning
+**Timing**: 45 minutes
+
+### Phase 2: Channel Strategy [NOT STARTED]
+**Goal**: Define go-to-market channels based on research
+**Tasks**:
+- [ ] Evaluate channel options from research data
+- [ ] Prioritize channels by cost/reach/fit
+- [ ] Document channel-specific tactics
+**Timing**: 45 minutes
+
+### Phase 3: Pricing & Positioning [NOT STARTED]
+**Goal**: Define pricing strategy and market positioning
+**Tasks**:
+- [ ] Set pricing based on competitive analysis
+- [ ] Define north star metric from research
+- [ ] Create 90-day launch timeline
+**Timing**: 30 minutes
+
+### Phase 4: Report Generation [NOT STARTED]
+**Goal**: Compile GTM strategy into final markdown report
+**Tasks**:
+- [ ] Generate gtm-strategy report with all sections
+- [ ] Include 90-day action plan
+- [ ] Document success metrics
+**Timing**: 30 minutes
+
+### Phase 5: Typst Document Generation [NOT STARTED]
+**Goal**: Generate professional PDF with timeline
+**Tasks**:
+- [ ] Generate typst document using gtm-strategy.typ template
+- [ ] Compile to PDF format
+- [ ] Verify timeline and metrics dashboard render correctly
+**Timing**: 30 minutes
+
+---
 
 **Contract Review:**
-- Phase 1: Clause-by-Clause Analysis
-  - Inputs: Contract Context (Type, Parties, Primary Concerns), Specific Focus Areas from research
-  - Objectives: Identify all material clauses, categorize by type (IP, liability, termination, data rights, non-compete), map each clause to stated concerns
-  - Outputs: Categorized clause inventory
-- Phase 2: Risk Assessment Matrix
-  - Inputs: Clause inventory, Financial Exposure, Walk-Away Conditions, Red Flags to Investigate
-  - Objectives: Score each clause by likelihood x impact, identify dealbreakers based on walk-away conditions, flag clauses exceeding financial exposure threshold
-  - Outputs: Risk matrix with severity ratings
-- Phase 3: Negotiation Strategy
-  - Inputs: Negotiating Position, Mode-Specific Guidance, Escalation Assessment
-  - Objectives: BATNA/ZOPA analysis based on position assessment, define redline priorities (non-negotiable items), establish fallback positions for negotiable items
-  - Outputs: Negotiation playbook with BATNA/ZOPA analysis
-- Phase 4: Report Generation
-- Phase 5: Typst Document Generation
 
-**Phase 5 MUST be named exactly "Typst Document Generation" -- do not use variant names like "Documentation and Output" or "Report Generation".**
+### Phase 1: Clause-by-Clause Analysis [NOT STARTED]
+**Goal**: Identify and categorize all material clauses using research context
+**Tasks**:
+- [ ] Apply Contract Context (Type, Parties, Primary Concerns) from research
+- [ ] Categorize clauses by type (IP, liability, termination, data rights, non-compete)
+- [ ] Map each clause to stated concerns from research
+**Timing**: 45 minutes
+
+### Phase 2: Risk Assessment Matrix [NOT STARTED]
+**Goal**: Score clauses by risk using Financial Exposure and Walk-Away Conditions
+**Tasks**:
+- [ ] Score each clause by likelihood x impact
+- [ ] Identify dealbreakers based on walk-away conditions from research
+- [ ] Flag clauses exceeding financial exposure threshold
+- [ ] Investigate red flags identified in research
+**Timing**: 45 minutes
+
+### Phase 3: Negotiation Strategy [NOT STARTED]
+**Goal**: Define negotiation approach based on position assessment
+**Tasks**:
+- [ ] Conduct BATNA/ZOPA analysis using Negotiating Position from research
+- [ ] Define redline priorities (non-negotiable items)
+- [ ] Establish fallback positions for negotiable items
+- [ ] Apply Escalation Assessment recommendations
+**Timing**: 45 minutes
+
+### Phase 4: Report Generation [NOT STARTED]
+**Goal**: Compile contract analysis into final markdown report
+**Tasks**:
+- [ ] Generate contract-analysis report with risk matrix
+- [ ] Include BATNA/ZOPA analysis and negotiation playbook
+- [ ] Document escalation recommendations
+**Timing**: 30 minutes
+
+### Phase 5: Typst Document Generation [NOT STARTED]
+**Goal**: Generate professional PDF with risk matrix
+**Tasks**:
+- [ ] Generate typst document using contract-analysis.typ template
+- [ ] Compile to PDF format
+- [ ] Verify risk matrix and clause tables render correctly
+**Timing**: 30 minutes
+
+---
 
 **Project Timeline:**
-- Phase 1: Timeline Structure and WBS Validation
-  - Inputs: WBS data, project scope from research report
-  - Objectives: Organize WBS into timeline format, validate completeness (100% rule - all deliverables accounted for), establish phase boundaries and milestones
-  - Outputs: Validated WBS structure, milestone list
-  - Verification: WBS covers all project scope items, milestones have target dates
-- Phase 2: PERT Calculations and Critical Path Analysis
-  - Inputs: PERT estimates (O/M/P values), task dependencies from research report
-  - Objectives: Calculate expected durations using formula E = (O + 4M + P) / 6, run forward pass (early start/finish) and backward pass (late start/finish), identify critical path, compute float/slack for non-critical tasks
-  - Outputs: Critical path identification, schedule with float values for all tasks
-  - Verification: Critical path has zero float, all task durations calculated
-- Phase 3: Resource Allocation Matrix
-  - Inputs: Resource data from research, schedule from Phase 2
-  - Objectives: Map team members to tasks based on research data, check for overallocation conflicts (>100% utilization), validate availability against schedule
-  - Outputs: Resource allocation matrix, overallocation warnings (if any)
-  - Verification: No unassigned critical-path tasks, overallocation conflicts flagged
-- Phase 4: Gantt Chart and Typst Visualization
-  - Inputs: All data from Phases 1-3
-  - Objectives: Generate Typst timeline document including WBS table, PERT estimates table, resource matrix, and Gantt chart visualization
-  - Outputs: `strategy/timelines/{slug}.typ`
-  - Verification: Typst file compiles without errors, all phases represented in Gantt chart
-- Phase 5: PDF Compilation and Deliverables
-  - Inputs: Typst file from Phase 4
-  - Objectives: Compile Typst to PDF, generate executive status summary if needed
-  - Outputs: `strategy/timelines/{slug}.pdf`, optional executive summary
-  - Verification: PDF generated successfully, all visualizations render correctly
+
+### Phase 1: Timeline Structure and WBS Validation [NOT STARTED]
+**Goal**: Validate WBS completeness and establish milestone structure
+**Tasks**:
+- [ ] Organize WBS data from research into timeline format
+- [ ] Validate completeness (100% rule - all deliverables accounted for)
+- [ ] Establish phase boundaries and milestones with target dates
+**Timing**: 45 minutes
+
+### Phase 2: PERT Calculations and Critical Path Analysis [NOT STARTED]
+**Goal**: Calculate expected durations and identify critical path
+**Tasks**:
+- [ ] Apply PERT formula E = (O + 4M + P) / 6 to estimates from research
+- [ ] Run forward pass (early start/finish) and backward pass (late start/finish)
+- [ ] Identify critical path (zero float tasks)
+- [ ] Compute float/slack for non-critical tasks
+**Timing**: 60 minutes
+
+### Phase 3: Resource Allocation Matrix [NOT STARTED]
+**Goal**: Map resources to tasks and identify conflicts
+**Tasks**:
+- [ ] Map team members to tasks using resource data from research
+- [ ] Check for overallocation conflicts (>100% utilization)
+- [ ] Validate availability against schedule
+- [ ] Flag any unassigned critical-path tasks
+**Timing**: 45 minutes
+
+### Phase 4: Gantt Chart and Typst Visualization [NOT STARTED]
+**Goal**: Generate Typst timeline document with all visualizations
+**Tasks**:
+- [ ] Generate WBS table, PERT estimates table, resource matrix
+- [ ] Create Gantt chart visualization showing all phases
+- [ ] Write to strategy/timelines/{slug}.typ
+**Timing**: 45 minutes
+
+### Phase 5: PDF Compilation and Deliverables [NOT STARTED]
+**Goal**: Compile Typst to PDF and generate executive summary
+**Tasks**:
+- [ ] Compile Typst to PDF at strategy/timelines/{slug}.pdf
+- [ ] Generate executive status summary if needed
+- [ ] Verify all visualizations render correctly
+**Timing**: 30 minutes
 
 **Note on Phase 5 naming for project-timeline**: Unlike other report types where Phase 5 is "Typst Document Generation", the project-timeline type names Phase 5 "PDF Compilation and Deliverables" because Typst generation happens in Phase 4 -- the Gantt chart and timeline visualizations ARE the primary Typst output. Phase 5 handles only the compilation step.
 
