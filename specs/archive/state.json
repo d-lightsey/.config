@@ -1,6 +1,194 @@
 {
   "completed_projects": [
     {
+      "project_number": 308,
+      "project_name": "adaptive_context_loading_by_extension_and_language",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-26T20:38:11Z",
+      "last_updated": "2026-03-26T21:30:33Z",
+      "session_id": "sess_1774560088_ddefbb",
+      "researched": "2026-03-26T20:48:01Z",
+      "artifacts": [
+        {
+          "path": "specs/308_adaptive_context_loading_by_extension_and_language/reports/01_context-loading-research.md",
+          "type": "research",
+          "summary": "Research report with findings on index.json structure, empty load_when semantics, and implementation recommendations"
+        },
+        {
+          "path": "specs/308_adaptive_context_loading_by_extension_and_language/plans/01_adaptive-context-loading.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for adaptive context loading with load_when classification"
+        },
+        {
+          "path": "specs/308_adaptive_context_loading_by_extension_and_language/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "planned": "2026-03-26T20:53:10Z",
+      "started": "2026-03-26T21:21:50Z",
+      "completed": "2026-03-26T21:30:33Z",
+      "completion_summary": "Classified 95 core context entries with proper load_when conditions, created validate-index.sh script, updated agent discovery queries to use combined OR pattern, and documented adaptive context loading semantics.",
+      "claudemd_suggestions": "Updated .claude/CLAUDE.md Context Discovery section with combined query pattern and empty array semantics. Updated context-discovery.md with Adaptive Context Loading pattern. Modified 3 agent files with new query patterns.",
+      "archived": "2026-03-29T06:48:18Z"
+    },
+    {
+      "project_number": 309,
+      "project_name": "unified_artifact_numbering_research",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2-3 hours",
+      "created": "2026-03-27T17:26:39Z",
+      "last_updated": "2026-03-27T18:16:46Z",
+      "session_id": "sess_1774634714_c7ff56",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/309_unified_artifact_numbering_research/reports/01_unified-numbering-research.md",
+          "type": "research",
+          "summary": "Research report analyzing current artifact numbering patterns and designing unified sequencing with next_artifact_number field"
+        },
+        {
+          "path": "specs/309_unified_artifact_numbering_research/plans/02_unified-numbering-with-teams.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for unified artifact numbering with team mode support"
+        },
+        {
+          "path": "specs/309_unified_artifact_numbering_research/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all files modified"
+        }
+      ],
+      "researched": "2026-03-27T17:32:46Z",
+      "planned": "2026-03-27T17:40:08Z",
+      "started": "2026-03-27T18:05:45Z",
+      "completed": "2026-03-27T18:16:46Z",
+      "completion_summary": "Implemented unified artifact numbering where research advances sequence and plan/implement stay in same round. Updated 3 single-agent skills, 3 team skills, 4 agents, 1 command, and 2 documentation files. Added team mode naming with letter suffixes (a, b, c, d) for parallel teammates.",
+      "claudemd_suggestions": "Added next_artifact_number field to state-management-schema.md, updated artifact-formats.md with unified numbering, modified all research/plan/implement skills to pass artifact_number, updated all agents to use passed artifact_number, added team-wave-helpers.md artifact numbering section",
+      "archived": "2026-03-29T06:48:18Z"
+    },
+    {
+      "project_number": 313,
+      "project_name": "spreadsheet_domain_context",
+      "status": "completed",
+      "language": "meta",
+      "effort": "2 hours",
+      "created": "2026-03-27T19:50:00Z",
+      "last_updated": "2026-03-27T23:09:30Z",
+      "session_id": "sess_1774668600_a7e4c3",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/313_spreadsheet_domain_context/reports/01_meta-research.md",
+          "summary": "Auto-generated research from /meta interview"
+        },
+        {
+          "type": "research",
+          "path": "specs/313_spreadsheet_domain_context/reports/02_teammate-a-findings.md",
+          "summary": "Teammate A findings on spreadsheet generation best practices"
+        },
+        {
+          "type": "research",
+          "path": "specs/313_spreadsheet_domain_context/reports/02_teammate-b-findings.md",
+          "summary": "Teammate B findings on Typst spreadsheet value import"
+        },
+        {
+          "type": "research",
+          "path": "specs/313_spreadsheet_domain_context/reports/02_team-research.md",
+          "summary": "Synthesized team research on spreadsheet generation and Typst integration"
+        },
+        {
+          "path": "specs/313_spreadsheet_domain_context/plans/02_sheet-system-plan.md",
+          "type": "plan",
+          "summary": "7-phase implementation plan for /sheet command-skill-agent system with context files, Typst template, and manifest integration"
+        },
+        {
+          "path": "specs/313_spreadsheet_domain_context/summaries/02_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all changes and verification results"
+        }
+      ],
+      "researched": "2026-03-27T22:40:48Z",
+      "next_artifact_number": 3,
+      "planned": "2026-03-27T22:47:12Z",
+      "started": "2026-03-27T22:50:05Z",
+      "completed": "2026-03-27T23:09:30Z",
+      "completion_summary": "Created /sheet command-skill-agent system for cost breakdown spreadsheet generation. Added spreadsheet-agent, skill-spreadsheet, and /sheet command with domain context files for financial modeling and Typst template for PDF output.",
+      "claudemd_suggestions": "Updated founder extension manifest.json with sheet routing, index-entries.json with 3 new context entries, EXTENSION.md with /sheet documentation",
+      "archived": "2026-03-29T06:48:18Z"
+    },
+    {
+      "project_number": 319,
+      "project_name": "founder_plan_format_conformance",
+      "status": "completed",
+      "language": "meta",
+      "effort": "1-2 hours",
+      "created": "2026-03-27T23:56:55Z",
+      "last_updated": "2026-03-28T00:12:58Z",
+      "session_id": "sess_1774656126_0d8b14",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/319_founder_plan_format_conformance/reports/01_meta-research.md",
+          "summary": "Investigation of plan format non-conformance in founder-plan-agent"
+        },
+        {
+          "path": "specs/319_founder_plan_format_conformance/plans/01_plan-format-fix.md",
+          "type": "plan",
+          "summary": "4-phase implementation plan to fix founder-plan-agent plan format conformance"
+        },
+        {
+          "path": "specs/319_founder_plan_format_conformance/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with verification results"
+        }
+      ],
+      "next_artifact_number": 2,
+      "planned": "2026-03-27T23:59:59Z",
+      "started": "2026-03-28T00:02:52Z",
+      "completed": "2026-03-28T00:12:58Z",
+      "completion_summary": "Fixed founder-plan-agent to generate plans conforming to plan-format.md standard. Added all 8 required metadata fields, 7 required sections, and converted phase structures to Goal/Tasks/Timing format across all 5 report types.",
+      "claudemd_suggestions": "Updated founder-plan-agent.md with plan-format.md context reference and standard-conforming template. Updated index.json to include founder-plan-agent in plan-format.md agents list.",
+      "archived": "2026-03-29T06:48:18Z"
+    },
+    {
+      "project_number": 321,
+      "project_name": "review_revise_claude_readme_docs",
+      "status": "completed",
+      "language": "meta",
+      "created": "2026-03-29T06:08:00Z",
+      "last_updated": "2026-03-29T06:40:08Z",
+      "session_id": "sess_1743231200_i321doc",
+      "researched": "2026-03-29T06:13:37Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/321_review_revise_claude_readme_docs/reports/01_documentation-audit.md",
+          "type": "research",
+          "summary": "Documentation audit with 6 missing file references, outdated agent names, ProofChecker references in wrong project, and restructuring recommendations"
+        },
+        {
+          "path": "specs/321_review_revise_claude_readme_docs/plans/01_documentation-revision.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan to restructure README.md as navigation hub and fix documentation issues"
+        },
+        {
+          "path": "specs/321_review_revise_claude_readme_docs/summaries/01_documentation-revision-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary with all modified files and verification results"
+        }
+      ],
+      "planned": "2026-03-29T06:19:09Z",
+      "started": "2026-03-29T06:20:59Z",
+      "completed": "2026-03-29T06:40:08Z",
+      "completion_summary": "Restructured .claude/README.md from 1038 to 244 lines as navigation hub, fixed broken references to non-existent files across 30+ documentation files, replaced ProofChecker terminology with Neovim Configuration, and updated outdated agent names.",
+      "claudemd_suggestions": "Updated .claude/README.md as navigation hub (v3.0), fixed paths in context/, docs/, rules/ files, removed ProofChecker references system-wide",
+      "archived": "2026-03-29T06:48:18Z"
+    },
+    {
       "project_number": 320,
       "project_name": "study_personal_ai_infrastructure",
       "status": "abandoned",
@@ -9882,6 +10070,1140 @@
         }
       ],
       "archived": "2026-03-26T19:12:46Z"
+    },
+    {
+      "project_number": 101,
+      "project_name": "add_contents_to_language_extensions",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 102,
+      "project_name": "review_extensions_populate_missing_resources",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 103,
+      "project_name": "compare_opencode_agent_systems_against_claude",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 104,
+      "project_name": "fix_implement_phase_status_live_updates",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 105,
+      "project_name": "create_web_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 106,
+      "project_name": "review_dotfiles_claude_nix_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 107,
+      "project_name": "port_tts_notification_hooks",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 108,
+      "project_name": "extension_asterisk_indicator",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 109,
+      "project_name": "generic_agent_system_portability",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 110,
+      "project_name": "separate_extension_files_from_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 111,
+      "project_name": "compare_opencode_agent_systems",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 112,
+      "project_name": "fix_leader_ac_artifact_loader_project_overview",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 113,
+      "project_name": "review_proofchecker_opencode_virtues",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 114,
+      "project_name": "make_leader_ao_identical_to_leader_ac",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 115,
+      "project_name": "investigate_leader_ao_load_all_feature_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 116,
+      "project_name": "verify_opencode_implement_extension_parity",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 117,
+      "project_name": "study_core_artifacts_extension_overlap",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 118,
+      "project_name": "redesign_leader_ao_load_core_agent_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 119,
+      "project_name": "fix_hardcoded_paths_in_picker",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 120,
+      "project_name": "fix_pretooluse_hook_picker_display",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 121,
+      "project_name": "clean_up_core_skills_directories",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 122,
+      "project_name": "expand_document_converter_to_filetypes",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 123,
+      "project_name": "fix_nonatomic_extension_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 124,
+      "project_name": "limit_docs_section_in_pickers",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 125,
+      "project_name": "epidemiology_r_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 126,
+      "project_name": "fix_ao_picker_extension_loading_path",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 127,
+      "project_name": "migrate_opencode_md_to_readme_and_rename_quick_start_to_installation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 128,
+      "project_name": "ensure_task_command_only_creates_tasks_and_never_implements_solutions_automatically",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 129,
+      "project_name": "fix_plan_format_in_implementation_001_md",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 130,
+      "project_name": "make_opencode_self_contained",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 132,
+      "project_name": "create_context_loading_best_practices_guide",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 145,
+      "project_name": "restore_settings_json_and_state_sync",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 160,
+      "project_name": "fix_load_core_agent_system_missing_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 161,
+      "project_name": "fix_opencode_source_missing_files_and_scan_bugs",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 162,
+      "project_name": "deck_command_skill_agent_typst_pitchdeck",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 163,
+      "project_name": "review_extension_language_routing",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 164,
+      "project_name": "include_tag_command_skill_web_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 165,
+      "project_name": "review_opencode_extension_language_routing",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 166,
+      "project_name": "move_neovim_elements_to_nvim_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 167,
+      "project_name": "verify_revise_agent_system_loaders",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 168,
+      "project_name": "verify_core_agent_system_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 169,
+      "project_name": "verify_agent_systems_wired_after_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 170,
+      "project_name": "audit_agent_systems_wiring_correctness",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 171,
+      "project_name": "re_audit_agent_systems_post_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 172,
+      "project_name": "investigate_opencode_core_content_loss_on_reload",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 173,
+      "project_name": "rename_learn_command_to_fix_it",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 174,
+      "project_name": "study_opencode_memory_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 177,
+      "project_name": "remove_model_preferences_from_opencode",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 178,
+      "project_name": "fix_memory_extension_mcp_port",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 179,
+      "project_name": "fix_memory_extension_data_directory_loading",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 179,
+      "project_name": "investigate_opencode_claude_dependency_ORPHAN",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 180,
+      "project_name": "investigate_opencode_claude_dependency",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 181,
+      "project_name": "fix_website_opencode_missing_agent_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 182,
+      "project_name": "fix_website_opencode_multi_extension_agent_dependency",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 183,
+      "project_name": "manage_opencode_json_via_extension_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 184,
+      "project_name": "revise_learn_command_input_modes",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 185,
+      "project_name": "remove_extension_commands_from_core_system",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 186,
+      "project_name": "filter_extension_artifacts_from_core_sync",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 204,
+      "project_name": "create_grant_extension_scaffold",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 205,
+      "project_name": "create_grant_agent",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 206,
+      "project_name": "create_skill_grant_wrapper",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 207,
+      "project_name": "create_grant_command",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 208,
+      "project_name": "create_grant_context_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 209,
+      "project_name": "create_extension_metadata",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 210,
+      "project_name": "rename_grant_extension_to_present",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 211,
+      "project_name": "move_deck_elements_to_present",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 212,
+      "project_name": "update_present_extension_metadata_for_deck",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 213,
+      "project_name": "cleanup_filetypes_extension_after_deck_migration",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 214,
+      "project_name": "restructure_context_grant_to_present",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 215,
+      "project_name": "revise_grant_command_design",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 216,
+      "project_name": "refactor_grant_implement_output_to_grants_dir",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 217,
+      "project_name": "revise_grant_workflow_order_draft_budget_before_plan",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 218,
+      "project_name": "implement_team_flag_for_research_command",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 219,
+      "project_name": "incorporate_proofchecker_docs_and_patterns",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 220,
+      "project_name": "add_fix_it_flag_to_grant_command",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 221,
+      "project_name": "fix_phase_status_markers_implementation_agents",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 222,
+      "project_name": "document_memory_extension_usage",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 223,
+      "project_name": "improve_deck_themes_examples_documentation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 224,
+      "project_name": "add_interactive_theme_palette_picker_to_deck",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 225,
+      "project_name": "enforce_postflight_boundary_after_agent_delegation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 226,
+      "project_name": "multiline_artifact_linking",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 227,
+      "project_name": "enhance_meta_topic_consolidation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 228,
+      "project_name": "yc_compliance_checklist",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 229,
+      "project_name": "deck_agent_enforcement",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 230,
+      "project_name": "touying_template_simplification",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 231,
+      "project_name": "pitch_deck_structure_update",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 232,
+      "project_name": "example_templates_yc_compliance",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 233,
+      "project_name": "research_gstack_founder_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 234,
+      "project_name": "upgrade_founder_extension_workflow",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 235,
+      "project_name": "research_integrate_mcp_founder",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 236,
+      "project_name": "refactor_founder_commands",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 237,
+      "project_name": "add_typst_output_founder_implementation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 238,
+      "project_name": "fix_founder_implement_typst_output",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 240,
+      "project_name": "fix_market_command_forcing_questions_workflow",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 241,
+      "project_name": "add_spawn_command_skill_agent",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 242,
+      "project_name": "add_leader_am_model_picker_for_claude_code",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 243,
+      "project_name": "recommended_order_integration",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 244,
+      "project_name": "integrate_recommended_order_utility",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 245,
+      "project_name": "fix_plan_status_update_script_arguments",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 246,
+      "project_name": "upgrade_founder_typst_templates_professional",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 247,
+      "project_name": "leader_am_per_project_model_picker",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 248,
+      "project_name": "todo_vault_archival_number_reset",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 249,
+      "project_name": "fix_skill_todo_vault_stage_numbering",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 250,
+      "project_name": "embed_vault_detection_in_archive_stage",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 251,
+      "project_name": "improve_context_efficiency_progressive_disclosure",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 252,
+      "project_name": "add_legal_to_founder_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 253,
+      "project_name": "fix_founder_plan_agent_typst_phase",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 254,
+      "project_name": "founder_typst_output_refactor",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 254,
+      "project_name": "update_founder_implement_agent_typst",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 255,
+      "project_name": "tts_worktree_worker_announcement",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 256,
+      "project_name": "project_timeline_context",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 257,
+      "project_name": "project_timeline_typst_template",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 258,
+      "project_name": "project_agent",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 259,
+      "project_name": "skill_project",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 260,
+      "project_name": "project_command",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 261,
+      "project_name": "project_manifest_update",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 262,
+      "project_name": "refactor_project_agent_research_report",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 263,
+      "project_name": "skill_project_research_workflow",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 264,
+      "project_name": "project_planning_context",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 265,
+      "project_name": "founder_implement_project_timeline",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 266,
+      "project_name": "project_command_documentation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 267,
+      "project_name": "project_implement_agent_support",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 268,
+      "project_name": "founder_manifest_routing",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 269,
+      "project_name": "founder_skill_consistency",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 270,
+      "project_name": "founder_extension_documentation",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 271,
+      "project_name": "add_model_checker_context_to_python_extension",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 272,
+      "project_name": "task_order_schema_format",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 273,
+      "project_name": "task_order_parsing",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 274,
+      "project_name": "task_order_pruning",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 275,
+      "project_name": "task_order_insertion",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 276,
+      "project_name": "task_order_interactive_management",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 277,
+      "project_name": "research_pdf_annotation_tools",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 278,
+      "project_name": "create_scrape_agent",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 279,
+      "project_name": "create_skill_scrape_command",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 280,
+      "project_name": "update_filetypes_extension_manifest",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 281,
+      "project_name": "scope_unscoped_rules",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 282,
+      "project_name": "slim_nvim_claudemd",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 283,
+      "project_name": "extension_slim_standard",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 284,
+      "project_name": "migrate_large_extensions",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 285,
+      "project_name": "slim_parent_claudemd",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 286,
+      "project_name": "create_context_directory_structure",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 287,
+      "project_name": "migrate_project_context_files",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 288,
+      "project_name": "flatten_claude_context_structure",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 289,
+      "project_name": "update_extension_loader",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 290,
+      "project_name": "update_context_discovery_patterns",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 291,
+      "project_name": "update_claudemd_references",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 292,
+      "project_name": "document_role_boundaries",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 293,
+      "project_name": "fix_stale_doc_references",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 294,
+      "project_name": "fix_extension_dependent_refs",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 295,
+      "project_name": "fix_memory_readme_opencode",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 296,
+      "project_name": "fix_index_domain_semantics",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 297,
+      "project_name": "create_pitch_deck_context",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 298,
+      "project_name": "add_index_metadata",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 299,
+      "project_name": "index_unindexed_context",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 300,
+      "project_name": "add_index_summaries",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 301,
+      "project_name": "fix_loader_orphan_cleanup",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 302,
+      "project_name": "clean_website_index_orphans",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 303,
+      "project_name": "fix_filetypes_index_source",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 304,
+      "project_name": "fix_rule_source_refs",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 305,
+      "project_name": "persist_extension_metadata",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 306,
+      "project_name": "persist_core_index_entries",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
+    },
+    {
+      "project_number": 307,
+      "project_name": "post_load_index_cleanup",
+      "status": "orphan_archived",
+      "archived": "2026-03-29T06:49:36Z",
+      "source": "orphan_recovery"
     }
   ],
   "abandoned_projects": []

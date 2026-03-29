@@ -3,107 +3,6 @@
   "next_project_number": 322,
   "active_projects": [
     {
-      "project_number": 321,
-      "project_name": "review_revise_claude_readme_docs",
-      "status": "completed",
-      "language": "meta",
-      "created": "2026-03-29T06:08:00Z",
-      "last_updated": "2026-03-29T06:40:08Z",
-      "session_id": "sess_1743231200_i321doc",
-      "researched": "2026-03-29T06:13:37Z",
-      "next_artifact_number": 2,
-      "artifacts": [
-        {
-          "path": "specs/321_review_revise_claude_readme_docs/reports/01_documentation-audit.md",
-          "type": "research",
-          "summary": "Documentation audit with 6 missing file references, outdated agent names, ProofChecker references in wrong project, and restructuring recommendations"
-        },
-        {
-          "path": "specs/321_review_revise_claude_readme_docs/plans/01_documentation-revision.md",
-          "type": "plan",
-          "summary": "6-phase implementation plan to restructure README.md as navigation hub and fix documentation issues"
-        },
-        {
-          "path": "specs/321_review_revise_claude_readme_docs/summaries/01_documentation-revision-summary.md",
-          "type": "summary",
-          "summary": "Implementation summary with all modified files and verification results"
-        }
-      ],
-      "planned": "2026-03-29T06:19:09Z",
-      "started": "2026-03-29T06:20:59Z",
-      "completed": "2026-03-29T06:40:08Z",
-      "completion_summary": "Restructured .claude/README.md from 1038 to 244 lines as navigation hub, fixed broken references to non-existent files across 30+ documentation files, replaced ProofChecker terminology with Neovim Configuration, and updated outdated agent names.",
-      "claudemd_suggestions": "Updated .claude/README.md as navigation hub (v3.0), fixed paths in context/, docs/, rules/ files, removed ProofChecker references system-wide"
-    },
-    {
-      "project_number": 319,
-      "project_name": "founder_plan_format_conformance",
-      "status": "completed",
-      "language": "meta",
-      "effort": "1-2 hours",
-      "created": "2026-03-27T23:56:55Z",
-      "last_updated": "2026-03-28T00:12:58Z",
-      "session_id": "sess_1774656126_0d8b14",
-      "dependencies": [],
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/319_founder_plan_format_conformance/reports/01_meta-research.md",
-          "summary": "Investigation of plan format non-conformance in founder-plan-agent"
-        },
-        {
-          "path": "specs/319_founder_plan_format_conformance/plans/01_plan-format-fix.md",
-          "type": "plan",
-          "summary": "4-phase implementation plan to fix founder-plan-agent plan format conformance"
-        },
-        {
-          "path": "specs/319_founder_plan_format_conformance/summaries/01_implementation-summary.md",
-          "type": "summary",
-          "summary": "Implementation summary with verification results"
-        }
-      ],
-      "next_artifact_number": 2,
-      "planned": "2026-03-27T23:59:59Z",
-      "started": "2026-03-28T00:02:52Z",
-      "completed": "2026-03-28T00:12:58Z",
-      "completion_summary": "Fixed founder-plan-agent to generate plans conforming to plan-format.md standard. Added all 8 required metadata fields, 7 required sections, and converted phase structures to Goal/Tasks/Timing format across all 5 report types.",
-      "claudemd_suggestions": "Updated founder-plan-agent.md with plan-format.md context reference and standard-conforming template. Updated index.json to include founder-plan-agent in plan-format.md agents list."
-    },
-    {
-      "project_number": 309,
-      "project_name": "unified_artifact_numbering_research",
-      "status": "completed",
-      "language": "meta",
-      "effort": "2-3 hours",
-      "created": "2026-03-27T17:26:39Z",
-      "last_updated": "2026-03-27T18:16:46Z",
-      "session_id": "sess_1774634714_c7ff56",
-      "dependencies": [],
-      "artifacts": [
-        {
-          "path": "specs/309_unified_artifact_numbering_research/reports/01_unified-numbering-research.md",
-          "type": "research",
-          "summary": "Research report analyzing current artifact numbering patterns and designing unified sequencing with next_artifact_number field"
-        },
-        {
-          "path": "specs/309_unified_artifact_numbering_research/plans/02_unified-numbering-with-teams.md",
-          "type": "plan",
-          "summary": "6-phase implementation plan for unified artifact numbering with team mode support"
-        },
-        {
-          "path": "specs/309_unified_artifact_numbering_research/summaries/01_implementation-summary.md",
-          "type": "summary",
-          "summary": "Implementation summary with all files modified"
-        }
-      ],
-      "researched": "2026-03-27T17:32:46Z",
-      "planned": "2026-03-27T17:40:08Z",
-      "started": "2026-03-27T18:05:45Z",
-      "completed": "2026-03-27T18:16:46Z",
-      "completion_summary": "Implemented unified artifact numbering where research advances sequence and plan/implement stay in same round. Updated 3 single-agent skills, 3 team skills, 4 agents, 1 command, and 2 documentation files. Added team mode naming with letter suffixes (a, b, c, d) for parallel teammates.",
-      "claudemd_suggestions": "Added next_artifact_number field to state-management-schema.md, updated artifact-formats.md with unified numbering, modified all research/plan/implement skills to pass artifact_number, updated all agents to use passed artifact_number, added team-wave-helpers.md artifact numbering section"
-    },
-    {
       "project_number": 310,
       "project_name": "state_json_schema_next_artifact_number",
       "status": "not_started",
@@ -147,38 +46,6 @@
       "artifacts": []
     },
     {
-      "project_number": 308,
-      "project_name": "adaptive_context_loading_by_extension_and_language",
-      "status": "completed",
-      "language": "meta",
-      "created": "2026-03-26T20:38:11Z",
-      "last_updated": "2026-03-26T21:30:33Z",
-      "session_id": "sess_1774560088_ddefbb",
-      "researched": "2026-03-26T20:48:01Z",
-      "artifacts": [
-        {
-          "path": "specs/308_adaptive_context_loading_by_extension_and_language/reports/01_context-loading-research.md",
-          "type": "research",
-          "summary": "Research report with findings on index.json structure, empty load_when semantics, and implementation recommendations"
-        },
-        {
-          "path": "specs/308_adaptive_context_loading_by_extension_and_language/plans/01_adaptive-context-loading.md",
-          "type": "plan",
-          "summary": "5-phase implementation plan for adaptive context loading with load_when classification"
-        },
-        {
-          "path": "specs/308_adaptive_context_loading_by_extension_and_language/summaries/01_implementation-summary.md",
-          "type": "summary",
-          "summary": "Implementation summary with verification results"
-        }
-      ],
-      "planned": "2026-03-26T20:53:10Z",
-      "started": "2026-03-26T21:21:50Z",
-      "completed": "2026-03-26T21:30:33Z",
-      "completion_summary": "Classified 95 core context entries with proper load_when conditions, created validate-index.sh script, updated agent discovery queries to use combined OR pattern, and documented adaptive context loading semantics.",
-      "claudemd_suggestions": "Updated .claude/CLAUDE.md Context Discovery section with combined query pattern and empty array semantics. Updated context-discovery.md with Adaptive Context Loading pattern. Modified 3 agent files with new query patterns."
-    },
-    {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",
       "status": "researched",
@@ -217,56 +84,6 @@
       ],
       "session_id": "sess_1771006114_e73864",
       "planned": "2026-02-13T18:10:48Z"
-    },
-    {
-      "project_number": 313,
-      "project_name": "spreadsheet_domain_context",
-      "status": "completed",
-      "language": "meta",
-      "effort": "2 hours",
-      "created": "2026-03-27T19:50:00Z",
-      "last_updated": "2026-03-27T23:09:30Z",
-      "session_id": "sess_1774668600_a7e4c3",
-      "dependencies": [],
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/313_spreadsheet_domain_context/reports/01_meta-research.md",
-          "summary": "Auto-generated research from /meta interview"
-        },
-        {
-          "type": "research",
-          "path": "specs/313_spreadsheet_domain_context/reports/02_teammate-a-findings.md",
-          "summary": "Teammate A findings on spreadsheet generation best practices"
-        },
-        {
-          "type": "research",
-          "path": "specs/313_spreadsheet_domain_context/reports/02_teammate-b-findings.md",
-          "summary": "Teammate B findings on Typst spreadsheet value import"
-        },
-        {
-          "type": "research",
-          "path": "specs/313_spreadsheet_domain_context/reports/02_team-research.md",
-          "summary": "Synthesized team research on spreadsheet generation and Typst integration"
-        },
-        {
-          "path": "specs/313_spreadsheet_domain_context/plans/02_sheet-system-plan.md",
-          "type": "plan",
-          "summary": "7-phase implementation plan for /sheet command-skill-agent system with context files, Typst template, and manifest integration"
-        },
-        {
-          "path": "specs/313_spreadsheet_domain_context/summaries/02_implementation-summary.md",
-          "type": "summary",
-          "summary": "Implementation summary with all changes and verification results"
-        }
-      ],
-      "researched": "2026-03-27T22:40:48Z",
-      "next_artifact_number": 3,
-      "planned": "2026-03-27T22:47:12Z",
-      "started": "2026-03-27T22:50:05Z",
-      "completed": "2026-03-27T23:09:30Z",
-      "completion_summary": "Created /sheet command-skill-agent system for cost breakdown spreadsheet generation. Added spreadsheet-agent, skill-spreadsheet, and /sheet command with domain context files for financial modeling and Typst template for PDF output.",
-      "claudemd_suggestions": "Updated founder extension manifest.json with sheet routing, index-entries.json with 3 new context entries, EXTENSION.md with /sheet documentation"
     },
     {
       "project_number": 314,

@@ -6,68 +6,22 @@ next_project_number: 322
 
 ## Task Order
 
-*Updated 2026-03-29. 15 active tasks remaining.*
+*Updated 2026-03-29. 10 active tasks remaining.*
 
 ### Pending
 
-- **321** [COMPLETED] -- Review and revise .claude/README.md and agent system documentation
-- **319** [COMPLETED] -- Fix founder-plan-agent plan format conformance
-- **313** [COMPLETED] -- Create spreadsheet domain context (foundational)
-- **314** [RESEARCHED] -- Create spreadsheet-agent (blocked by 313)
-- **315** [RESEARCHED] -- Create skill-spreadsheet (blocked by 314)
-- **316** [RESEARCHED] -- Create /sheet command (blocked by 315)
-- **317** [RESEARCHED] -- Update founder manifest.json routing (blocked by 315)
-- **318** [RESEARCHED] -- Create Typst spreadsheet template (blocked by 313)
-- **309** [COMPLETED] -- Research unified artifact numbering system
-- **310** [NOT STARTED] -- Update state.json schema (blocked by 309)
-- **311** [NOT STARTED] -- Update artifact-formats.md rule (blocked by 309)
-- **312** [NOT STARTED] -- Update skills/agents unified numbering (blocked by 310, 311)
-- **308** [COMPLETED] -- Implement adaptive context loading by extension and language
+- **314** [RESEARCHED] -- Create spreadsheet-agent
+- **315** [RESEARCHED] -- Create skill-spreadsheet
+- **316** [RESEARCHED] -- Create /sheet command
+- **317** [RESEARCHED] -- Update founder manifest.json routing
+- **318** [RESEARCHED] -- Create Typst spreadsheet template
+- **310** [NOT STARTED] -- Update state.json schema
+- **311** [NOT STARTED] -- Update artifact-formats.md rule
+- **312** [NOT STARTED] -- Update skills/agents unified numbering
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
-
-### 321. Review and revise .claude/README.md and agent system documentation
-- **Effort**: 4 hours
-- **Status**: [COMPLETED]
-- **Completed**: 2026-03-29
-- **Language**: meta
-- **Research**: [01_documentation-audit.md](321_review_revise_claude_readme_docs/reports/01_documentation-audit.md)
-- **Plan**: [01_documentation-revision.md](321_review_revise_claude_readme_docs/plans/01_documentation-revision.md)
-- **Summary**: [01_documentation-revision-summary.md](321_review_revise_claude_readme_docs/summaries/01_documentation-revision-summary.md)
-
-**Description**: Review and revise .claude/README.md and all subsequent documentation to be complete, accurate, and up to date, providing a clear and concise introduction to the core agent system, its architecture, and the extensions available with the neovim loader. The .claude/README.md should link to more detailed documents elsewhere deeper in the .claude/ directory as appropriate.
-
----
-
-### 319. Fix founder-plan-agent plan format conformance
-- **Effort**: 1-2 hours
-- **Status**: [COMPLETED]
-- **Language**: meta
-- **Dependencies**: None
-- **Research**: [01_meta-research.md](319_founder_plan_format_conformance/reports/01_meta-research.md)
-- **Plan**: [01_plan-format-fix.md](319_founder_plan_format_conformance/plans/01_plan-format-fix.md)
-- **Summary**: [01_implementation-summary.md](319_founder_plan_format_conformance/summaries/01_implementation-summary.md)
-
-**Description**: Fix founder-plan-agent to load plan-format.md and generate plans conforming to the standard structure. Currently the agent defines its own plan structure with missing required sections (Goals & Non-Goals, Rollback/Contingency) and non-standard metadata format. Update agent context references and rewrite Stage 5 template.
-
----
-
-### 313. Create spreadsheet domain context
-- **Effort**: 2 hours
-- **Status**: [COMPLETED]
-- **Language**: meta
-- **Dependencies**: None
-- **Research**:
-  - [01_meta-research.md](313_spreadsheet_domain_context/reports/01_meta-research.md)
-  - [02_team-research.md](313_spreadsheet_domain_context/reports/02_team-research.md)
-- **Plan**: [02_sheet-system-plan.md](313_spreadsheet_domain_context/plans/02_sheet-system-plan.md)
-- **Summary**: [02_implementation-summary.md](313_spreadsheet_domain_context/summaries/02_implementation-summary.md)
-
-**Description**: Create spreadsheet-frameworks.md domain context file with cost category taxonomies, burn rate patterns, range-based financial modeling, and dependency patterns for the founder extension.
-
----
 
 ### 314. Create spreadsheet-agent
 - **Effort**: 3 hours
@@ -124,25 +78,6 @@ next_project_number: 322
 
 ---
 
-### 309. Research unified artifact numbering system
-- **Effort**: 2-3 hours
-- **Status**: [COMPLETED]
-- **Research Started**: 2026-03-27
-- **Research Completed**: 2026-03-27
-- **Planning Started**: 2026-03-27
-- **Planning Completed**: 2026-03-27
-- **Implementation Started**: 2026-03-27
-- **Implementation Completed**: 2026-03-27
-- **Language**: meta
-- **Research**: [01_unified-numbering-research.md](309_unified_artifact_numbering_research/reports/01_unified-numbering-research.md)
-- **Plan**: [02_unified-numbering-with-teams.md](309_unified_artifact_numbering_research/plans/02_unified-numbering-with-teams.md)
-- **Summary**: [01_implementation-summary.md](309_unified_artifact_numbering_research/summaries/01_implementation-summary.md)
-- **Dependencies**: None
-
-**Description**: Analyze current artifact numbering patterns across all skills/agents, document how next_artifact_number should be tracked in state.json, and design the unified sequencing logic where research drives numbering and plan/summary inherit the current number. Review ProofChecker task 058 as an example of desired behavior.
-
----
-
 ### 310. Update state.json schema with next_artifact_number field
 - **Effort**: 1 hour
 - **Status**: [NOT STARTED]
@@ -170,24 +105,6 @@ next_project_number: 322
 - **Dependencies**: Task #310, Task #311
 
 **Description**: Modify all artifact-producing components to use unified numbering. Research skill/agent increments next_artifact_number. Planning and implementation skills/agents inherit the current max number from existing artifacts. Also update extension agents that produce artifacts.
-
----
-
-### 308. Implement adaptive context loading by extension and language
-- **Effort**: TBD
-- **Status**: [COMPLETED]
-- **Research Started**: 2026-03-26
-- **Research Completed**: 2026-03-26
-- **Planning Started**: 2026-03-26
-- **Planning Completed**: 2026-03-26
-- **Implementation Started**: 2026-03-26
-- **Implementation Completed**: 2026-03-26
-- **Language**: meta
-- **Summary**: [01_implementation-summary.md](308_adaptive_context_loading_by_extension_and_language/summaries/01_implementation-summary.md)
-- **Research**: [01_context-loading-research.md](308_adaptive_context_loading_by_extension_and_language/reports/01_context-loading-research.md)
-- **Plan**: [01_adaptive-context-loading.md](308_adaptive_context_loading_by_extension_and_language/plans/01_adaptive-context-loading.md)
-
-**Description**: Implement adaptive context loading that filters by loaded extensions and task language. Currently, empty load_when conditions (empty arrays for agents/languages/commands) cause ALL context files to load unconditionally, regardless of task language. In the Vision project, a typst task loads ~24,444 lines of unrelated context (business-frameworks.md, legal-frameworks.md, pitch-deck-templates, etc.) because 74 core files have empty load_when. Fix this by: (1) Changing empty-array semantics so empty = never-load instead of always-load, requiring explicit 'always: true' for universal files; (2) Adding language-gate validation to the extension loader that warns when entries lack language filtering; (3) Adding a context budget system that caps total loaded lines and prioritizes by relevance (always > agent-match > language-match > command-match); (4) Making the skill/agent context loading queries filter OUT entries that don't match any active dimension rather than loading everything unfiltered. This is a meta task affecting .claude/context/, .claude/extensions/, .claude/agents/, and .claude/skills/.
 
 ---
 
