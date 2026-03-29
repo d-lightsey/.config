@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 320,
+  "next_project_number": 321,
   "active_projects": [
+    {
+      "project_number": 320,
+      "project_name": "study_personal_ai_infrastructure",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-03-29T00:15:39Z",
+      "last_updated": "2026-03-29T00:15:39Z"
+    },
     {
       "project_number": 319,
       "project_name": "founder_plan_format_conformance",

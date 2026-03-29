@@ -1,15 +1,16 @@
 ---
-next_project_number: 320
+next_project_number: 321
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-27. 14 active tasks remaining.*
+*Updated 2026-03-28. 15 active tasks remaining.*
 
 ### Pending
 
+- **320** [NOT STARTED] -- Study Personal AI Infrastructure for agent system improvements
 - **319** [COMPLETED] -- Fix founder-plan-agent plan format conformance
 - **313** [COMPLETED] -- Create spreadsheet domain context (foundational)
 - **314** [RESEARCHED] -- Create spreadsheet-agent (blocked by 313)
@@ -26,6 +27,15 @@ next_project_number: 320
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 320. Study Personal AI Infrastructure for agent system improvements
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Clone https://github.com/danielmiessler/Personal_AI_Infrastructure.git into a temp folder and study what this platform offers in order to identify what elements make sense to incorporate into the current agent system.
+
+---
 
 ### 319. Fix founder-plan-agent plan format conformance
 - **Effort**: 1-2 hours
