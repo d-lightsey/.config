@@ -5,18 +5,13 @@
     {
       "project_number": 320,
       "project_name": "study_personal_ai_infrastructure",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-29T00:15:39Z",
-      "last_updated": "2026-03-29T00:43:55Z",
-      "session_id": "sess_1743121000_tr320",
+      "last_updated": "2026-03-29T00:50:07Z",
+      "session_id": "sess_1743122000_p320r2",
       "researched": "2026-03-29T00:43:55Z",
       "artifacts": [
-        {
-          "path": "specs/320_study_personal_ai_infrastructure/plans/01_pai-improvements.md",
-          "type": "plan",
-          "summary": "5-phase implementation plan for PAI-inspired improvements"
-        },
         {
           "path": "specs/320_study_personal_ai_infrastructure/reports/01_personal-ai-research.md",
           "type": "research",
@@ -26,10 +21,15 @@
           "path": "specs/320_study_personal_ai_infrastructure/reports/02_team-research.md",
           "type": "research",
           "summary": "Team research: 10 integrable skills and utilities with priority matrix"
+        },
+        {
+          "path": "specs/320_study_personal_ai_infrastructure/plans/02_pai-integration.md",
+          "type": "plan",
+          "summary": "9-phase implementation plan for integrating PAI components"
         }
       ],
       "next_artifact_number": 3,
-      "planned": "2026-03-29T00:32:33Z"
+      "planned": "2026-03-29T00:50:07Z"
     },
     {
       "project_number": 319,
