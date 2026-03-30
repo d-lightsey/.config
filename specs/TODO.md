@@ -10,7 +10,7 @@ next_project_number: 323
 
 ### Pending
 
-- **322** [RESEARCHED] -- Add REVIEW mode to /project command
+- **322** [PLANNED] -- Add REVIEW mode to /project command
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
@@ -18,12 +18,14 @@ next_project_number: 323
 
 ### 322. Add REVIEW mode to /project command for timeline analysis
 - **Effort**: 2-3 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Started**: 2026-03-30
 - **Research Completed**: 2026-03-30
+- **Planning Completed**: 2026-03-30
 - **Research**: [01_review-mode-design.md](322_add_review_mode_to_project_command/reports/01_review-mode-design.md)
+- **Plan**: [01_implementation-plan.md](322_add_review_mode_to_project_command/plans/01_implementation-plan.md)
 
 **Description**: Add a fourth REVIEW mode to the `/project` command that critically analyzes project timelines for gaps, issues, weaknesses, and improvement opportunities. Must support both external timeline files (e.g., `.typ`, `.md`) and existing task artifacts (research/plan reports). Analysis should cover: timeline gaps, feasibility issues, risk weaknesses, resource concerns, critical path vulnerabilities, missing dependencies, and unrealistic estimates. Update `project.md` command, `project-agent.md` agent, and create review-specific context/criteria as needed.
 

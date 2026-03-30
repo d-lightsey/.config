@@ -5,18 +5,23 @@
     {
       "project_number": 322,
       "project_name": "add_review_mode_to_project_command",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-03-30T16:36:04Z",
-      "last_updated": "2026-03-30T16:48:00Z",
+      "last_updated": "2026-03-30T17:10:00Z",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/322_add_review_mode_to_project_command/reports/01_review-mode-design.md",
           "summary": "REVIEW mode design: 7-category analysis framework, 5 forcing questions, 4-tier severity output"
+        },
+        {
+          "type": "plan",
+          "path": "specs/322_add_review_mode_to_project_command/plans/01_implementation-plan.md",
+          "summary": "3-phase implementation plan for REVIEW mode: project.md updates, agent stages, integration testing"
         }
       ],
-      "session_id": "sess_1774888923_d147e8"
+      "session_id": "sess_1774889715_c80f76"
     },
     {
       "project_number": 87,
