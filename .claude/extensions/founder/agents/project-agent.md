@@ -481,6 +481,300 @@ Project research complete for task {N}:
 
 ---
 
+## REVIEW Mode Stages
+
+When invoked with mode=REVIEW, execute these stages instead of research stages.
+
+### Stage R1: Parse Timeline Input
+
+Based on input type and format, extract timeline data:
+
+**For Typst files** (`.typ`):
+- Read file content
+- Extract `project-gantt()` task definitions via regex
+- Extract `pert-table()` estimate data
+- Extract `resource-matrix()` allocations
+- Extract `risk-register()` risk items
+
+**For Markdown files** (`.md`):
+- Parse structured sections (## Work Breakdown Structure, ## PERT Estimates, ## Resource Allocation)
+- Extract JSON code blocks tagged `json:wbs`, `json:pert`, `json:resources`
+- Build internal data structures
+
+**For Task artifacts** (task number input):
+- Read research report from `specs/{NNN}_{SLUG}/reports/01_*.md`
+- Read plan report from `specs/{NNN}_{SLUG}/plans/` if exists
+- Extract Raw Data JSON blocks
+
+**Data Structures** (internal representation):
+```json
+{
+  "source": "{file path or task number}",
+  "parse_mode": "{typst|markdown|json|artifact}",
+  "wbs": { ... },
+  "pert": { ... },
+  "resources": { ... },
+  "risks": { ... }
+}
+```
+
+### Stage R2: Execute Analysis Framework
+
+Run all 7 category analyses, weighted by importance:
+
+| Category | Weight | Focus |
+|----------|--------|-------|
+| Timeline Gaps | 15% | Missing phases, orphan tasks, implicit dependencies |
+| Feasibility Issues | 20% | Unrealistic estimates, PERT outliers, duration problems |
+| Resource Concerns | 15% | Overallocations, bottlenecks, skill gaps |
+| Risk Assessment | 15% | Unmitigated risks, missing owners, unquantified risks |
+| Critical Path Vulnerabilities | 15% | Long chains, no slack, brittleness |
+| Dependency Issues | 10% | Circular, missing, implicit dependencies |
+| Methodology Compliance | 10% | WBS 100% rule, PERT validity, milestone types |
+
+**Severity Classification**:
+
+| Severity | Definition | Response Required |
+|----------|------------|-------------------|
+| **Critical** | Project likely to fail without immediate action | Stop, address before proceeding |
+| **High** | Significant risk to project success | Address within current planning cycle |
+| **Medium** | Moderate risk or inefficiency | Address when convenient |
+| **Low** | Minor issue or style concern | Optional improvement |
+
+**Detection Rules** (per category):
+
+**Timeline Gaps**:
+- Missing phase: Common phase absent (e.g., no Testing phase) -> High
+- Orphan task: Task with no deps and no dependents (not start/end) -> Medium
+- Implicit dependency: Task B starts after A ends but no explicit FS link -> Medium
+- Missing milestone: No milestone for major deliverable -> Low
+- Phase without deliverable: Phase exists but no deliverable defined -> High
+
+**Feasibility Issues**:
+- High uncertainty: (P - O) / M > 2.0 -> High
+- Optimism bias: O / M < 0.5 -> Medium
+- Pessimism outlier: P / M > 4.0 -> Medium
+- Invalid PERT order: O > M or M > P -> Critical
+- Heroic estimate: Single task > 20 days expected -> High
+- Duration implausible: Project 95% CI > 2x target date -> Critical
+
+**Resource Concerns**:
+- Critical overallocation: Sum of concurrent allocations > 150% -> Critical
+- Overallocation: Sum of concurrent allocations 100-150% -> High
+- Unassigned task: Task has no resource owner -> Medium
+- Single-person dependency: One person owns all critical path tasks -> High
+- Skill gap: Task requires skill not present in team -> High
+
+**Risk Assessment**:
+- No mitigation for critical risk: Risk score >= 15, no mitigation listed -> Critical
+- Missing risk owner: Risk has no assigned owner -> High
+- Unquantified risk: Risk has no probability/impact assessment -> Medium
+- Insufficient contingency: No buffer for high-uncertainty tasks -> High
+
+**Critical Path Vulnerabilities**:
+- Long critical chain: > 10 sequential critical tasks -> High
+- No parallel paths: All tasks on critical path -> Critical
+- Zero slack throughout: Average float < 1 day across project -> High
+- Critical path resource: Single person owns > 50% of critical path -> High
+
+**Dependency Issues**:
+- Circular dependency: Topological sort fails -> Critical
+- Missing dependency: Task B uses output of A but no link -> High
+- Long dependency chain: > 7 sequential dependencies -> Medium
+- External dependency without buffer: External dep has no lag time -> High
+
+**Methodology Compliance**:
+- 100% rule violation: Child sum != parent -> High
+- Missing three-point estimate: Only single estimate provided -> Medium
+- PERT formula not used: Expected != (O + 4M + P) / 6 -> Medium
+- Milestone has duration: Milestone > 0 days -> Low
+
+Collect all findings with severity classifications.
+
+### Stage R3: Generate Review Report
+
+Write review artifact to appropriate location:
+- Task-based input: `specs/{NNN}_{SLUG}/reports/02_timeline-review.md`
+- File-based input: `strategy/reviews/timeline-review-{YYYYMMDD-HHMMSS}.md`
+
+**Report Structure**:
+
+```markdown
+# Timeline Review Report
+
+**Reviewed**: {source - file path or task number}
+**Date**: {ISO date}
+**Reviewer**: Claude Code (project-agent)
+**Risk Tolerance**: {conservative/balanced/aggressive}
+**Review Depth**: {quick/standard/deep}
+
+---
+
+## Executive Assessment
+
+**Overall Health**: {Healthy / At Risk / Critical}
+**Confidence Level**: {High / Medium / Low}
+**Recommended Action**: {Proceed / Address Issues / Major Revision Required}
+
+### Key Findings (Top 3)
+
+1. {Critical or highest-severity finding with location}
+2. {Second finding}
+3. {Third finding}
+
+---
+
+## Category Analysis
+
+### Timeline Gaps
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {phase/task} | {severity} | {action} |
+
+### Feasibility Issues
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {phase/task} | {severity} | {action} |
+
+### Resource Concerns
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {person/period} | {severity} | {action} |
+
+### Risk Assessment
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {risk item} | {severity} | {action} |
+
+### Critical Path Vulnerabilities
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {path segment} | {severity} | {action} |
+
+### Dependency Issues
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {dependency} | {severity} | {action} |
+
+### Methodology Compliance
+
+| Issue | Location | Severity | Recommendation |
+|-------|----------|----------|----------------|
+| {issue} | {element} | {severity} | {action} |
+
+---
+
+## Summary Statistics
+
+| Category | Critical | High | Medium | Low | Total |
+|----------|----------|------|--------|-----|-------|
+| Timeline Gaps | {n} | {n} | {n} | {n} | {n} |
+| Feasibility Issues | {n} | {n} | {n} | {n} | {n} |
+| Resource Concerns | {n} | {n} | {n} | {n} | {n} |
+| Risk Assessment | {n} | {n} | {n} | {n} | {n} |
+| Critical Path | {n} | {n} | {n} | {n} | {n} |
+| Dependency Issues | {n} | {n} | {n} | {n} | {n} |
+| Methodology | {n} | {n} | {n} | {n} | {n} |
+| **Total** | **{n}** | **{n}** | **{n}** | **{n}** | **{n}** |
+
+---
+
+## Recommendations
+
+### Must Address (Critical/High)
+
+1. {Actionable recommendation with specific steps}
+2. {Actionable recommendation with specific steps}
+
+### Should Consider (Medium)
+
+1. {Recommendation}
+2. {Recommendation}
+
+### Nice to Have (Low)
+
+1. {Suggestion}
+
+---
+
+## Raw Data
+
+```json:review_findings
+{
+  "source": "{file path or task number}",
+  "reviewed_at": "{ISO timestamp}",
+  "review_depth": "{quick|standard|deep}",
+  "risk_tolerance": "{conservative|balanced|aggressive}",
+  "overall_health": "{healthy|at_risk|critical}",
+  "confidence_level": "{high|medium|low}",
+  "findings": [
+    {
+      "category": "{category}",
+      "issue": "{description}",
+      "location": "{phase/task/resource}",
+      "severity": "{critical|high|medium|low}",
+      "recommendation": "{action}"
+    }
+  ],
+  "statistics": {
+    "critical": {n},
+    "high": {n},
+    "medium": {n},
+    "low": {n},
+    "total": {n}
+  }
+}
+```
+```
+
+Use Write tool to create the report file.
+
+### Stage R4: Write Metadata File
+
+Write final metadata to specified path:
+
+```json
+{
+  "status": "reviewed",
+  "summary": "Timeline review complete: {critical} critical, {high} high, {medium} medium, {low} low issues found.",
+  "artifacts": [
+    {
+      "type": "review",
+      "path": "{artifact_path}",
+      "summary": "Timeline review with {total} findings"
+    }
+  ],
+  "metadata": {
+    "session_id": "{session_id}",
+    "review_depth": "{quick|standard|deep}",
+    "overall_health": "{healthy|at_risk|critical}",
+    "findings_count": {total}
+  }
+}
+```
+
+### Stage R5: Return Brief Text Summary
+
+Return a brief summary (NOT JSON):
+
+```
+Timeline review complete for {source}:
+- Overall Health: {healthy|at_risk|critical}
+- Confidence: {high|medium|low}
+- Issues Found: {critical} critical, {high} high, {medium} medium, {low} low
+- Top Concern: {highest severity finding}
+- Review Report: {artifact path}
+- Metadata written for skill postflight
+```
+
+---
+
 ## Error Handling
 
 ### Invalid Task or Plan
