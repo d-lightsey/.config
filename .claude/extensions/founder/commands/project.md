@@ -35,6 +35,7 @@ This command initiates project planning through structured forcing questions. It
 | **PLAN** | Create timeline | WBS structure, PERT estimates, resource allocation, critical path |
 | **TRACK** | Update progress | Task completion %, milestone status, variance analysis |
 | **REPORT** | Executive summary | Status dashboard, risk assessment, key decisions needed |
+| **REVIEW** | Critical analysis | Gaps, feasibility, risks, vulnerabilities, recommendations |
 
 ---
 
@@ -54,6 +55,7 @@ What type of project management do you need?
 - PLAN: Create new project timeline from scratch
 - TRACK: Update existing timeline with progress
 - REPORT: Generate executive status summary
+- REVIEW: Critically analyze timeline for gaps and issues
 ```
 
 Store response as `selected_mode`.
@@ -162,7 +164,70 @@ Store as `forcing_data.risk_factors` (array).
 - "Things might go wrong" -> "Name 2-3 specific risks with likelihood and impact."
 - No impact assessment -> "What is the impact if this risk materializes?"
 
-### Step 0.3: Store Forcing Data
+### Step 0.3: REVIEW Mode Forcing Questions (if mode == REVIEW)
+
+**Question R1: Primary Concern**
+```
+What aspect of this timeline concerns you most?
+
+Push for: Specific area of doubt or uncertainty
+Reject: "Everything" or "I don't know"
+Examples:
+- "The development estimates seem too optimistic"
+- "I'm worried about resource availability in month 2"
+- "The external dependencies are unclear"
+```
+Store as `review_context.primary_concern`.
+
+**Question R2: Changed Constraints**
+```
+Have any constraints changed since this timeline was created?
+
+Push for: Specific changes in scope, resources, deadlines, or external factors
+Accept: "No changes" if genuinely unchanged
+Examples:
+- "Budget was cut by 20%"
+- "Key developer is leaving in April"
+- "Deadline moved up by 2 weeks"
+```
+Store as `review_context.changed_constraints`.
+
+**Question R3: Timeline Validity Window**
+```
+When does this timeline need to be valid until?
+
+Push for: Specific date or milestone
+Context: Short-term reviews focus on immediate issues; long-term reviews examine sustainability
+Examples:
+- "Through end of Q2"
+- "Until product launch on June 15"
+- "For investor presentation next week"
+```
+Store as `review_context.validity_window`.
+
+**Question R4: Risk Tolerance**
+```
+What is your risk tolerance for this project?
+
+Options:
+- Conservative (prefer buffer time over speed)
+- Balanced (accept normal project risk)
+- Aggressive (willing to take schedule risk for speed)
+```
+Store as `review_context.risk_tolerance`.
+
+**Question R5: Review Depth**
+```
+What depth of review do you need?
+
+Options:
+- Quick (high-level issues only, 5-10 minutes)
+- Standard (all categories, 15-30 minutes)
+- Deep (methodology audit + recommendations, 30-60 minutes)
+```
+Store as `review_context.review_depth`.
+
+### Step 0.4: Store Forcing Data
 
 Capture all responses in a forcing_data object:
 ```json
@@ -273,6 +338,48 @@ Skip STAGE 0, go directly to STAGE 2B.
 
 **If description (new task)**:
 Proceed to STAGE 0 for forcing questions, then Step 4.
+
+### Step 3.REVIEW: Handle REVIEW Mode Input
+
+**If mode == REVIEW and file path**:
+```bash
+# Validate file exists
+file_path=$(eval echo "$file_path")
+if [ ! -f "$file_path" ]; then
+  echo "Error: File not found: $file_path"
+  exit 1
+fi
+
+# Detect format
+file_ext="${file_path##*.}"
+case "$file_ext" in
+  typ) parse_mode="typst" ;;
+  md)  parse_mode="markdown" ;;
+  json) parse_mode="json" ;;
+  *)   echo "Error: Unsupported format: .$file_ext"; exit 1 ;;
+esac
+```
+
+**If mode == REVIEW and task number**:
+```bash
+# Load task and locate artifacts
+task_data=$(jq -r --argjson num "$task_number" \
+  '.active_projects[] | select(.project_number == $num)' \
+  specs/state.json)
+
+# Find research/plan artifacts
+padded_num=$(printf '%03d' $task_number)
+artifacts_base="specs/${padded_num}_*/reports/"
+```
+
+**Supported Formats**:
+
+| Format | Extension | Extraction Method |
+|--------|-----------|-------------------|
+| Typst Timeline | `.typ` | Parse `project-gantt()`, `pert-table()`, `resource-matrix()` calls |
+| Markdown | `.md` | Parse tables, JSON code blocks, structured sections |
+| JSON | `.json` | Direct parse of WBS, PERT, resource structures |
+| Task Artifacts | (via task number) | Read from `specs/{NNN}_{SLUG}/reports/` |
 
 ### Step 4: Create Task (if needed)
 
@@ -569,6 +676,13 @@ Alternative: Resume existing task:
 /project {N}            -> Runs research on existing task, stops at [RESEARCHED]
 ```
 
+Alternative: Review existing timeline:
+```
+/project REVIEW "description"  -> Asks review questions, creates task, stops at [NOT STARTED]
+/project 234                   -> Runs review on task 234's artifacts
+/project /path/to/timeline.typ -> Reviews external timeline file
+```
+
 ---
 
 ## Examples
@@ -585,4 +699,9 @@ Alternative: Resume existing task:
 
 # Legacy standalone mode (generates timeline immediately, no task)
 /project --quick PLAN
+
+# Review mode examples
+/project REVIEW 234              # Review existing task's timeline artifacts
+/project ~/projects/timeline.typ # Review external Typst timeline
+/project ~/projects/plan.md      # Review external Markdown timeline
 ```
