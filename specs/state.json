@@ -8,7 +8,7 @@
       "status": "planned",
       "language": "meta",
       "created": "2026-03-30T16:36:04Z",
-      "last_updated": "2026-03-30T17:10:00Z",
+      "last_updated": "2026-03-30T16:57:00Z",
       "artifacts": [
         {
           "type": "research",
@@ -19,6 +19,11 @@
           "type": "plan",
           "path": "specs/322_add_review_mode_to_project_command/plans/01_implementation-plan.md",
           "summary": "3-phase implementation plan for REVIEW mode: project.md updates, agent stages, integration testing"
+        },
+        {
+          "type": "plan",
+          "path": "specs/322_add_review_mode_to_project_command/plans/01_implementation-plan.md",
+          "summary": "3-phase plan: update project.md, add REVIEW stages to project-agent.md, integration testing"
         }
       ],
       "session_id": "sess_1774889715_c80f76"
