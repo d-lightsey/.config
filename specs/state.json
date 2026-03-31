@@ -92,11 +92,11 @@
     {
       "project_number": 340,
       "project_name": "create_typst_deck_templates",
-      "status": "planned",
+      "status": "implementing",
       "language": "meta",
       "task_type": "deck",
       "created": "2026-03-31T05:00:00Z",
-      "last_updated": "2026-03-31T21:27:31Z",
+      "last_updated": "2026-03-31T21:30:26Z",
       "dependencies": [],
       "researched": "2026-03-31T21:21:27Z",
       "next_artifact_number": 3,
@@ -112,17 +112,18 @@
           "summary": "5-phase implementation plan: dark-blue primary template, minimal-light, premium-dark, growth-green, professional-blue with cross-validation"
         }
       ],
-      "session_id": "sess_1774992247_3nj",
-      "planned": "2026-03-31T21:27:31Z"
+      "session_id": "sess_1774992613_ni3h",
+      "planned": "2026-03-31T21:27:31Z",
+      "started": "2026-03-31T21:30:26Z"
     },
     {
       "project_number": 341,
       "project_name": "deck_command_and_research_agent",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "task_type": "deck",
       "created": "2026-03-31T05:00:00Z",
-      "last_updated": "2026-03-31T21:12:24Z",
+      "last_updated": "2026-03-31T21:31:03Z",
       "dependencies": [],
       "session_id": "sess_1774991514_ec78KIP",
       "researched": "2026-03-31T21:00:50Z",
@@ -137,10 +138,18 @@
           "path": "specs/341_deck_command_and_research_agent/plans/01_deck-command-plan.md",
           "type": "plan",
           "summary": "4-phase implementation plan for /deck command, deck-research-agent, and skill-deck-research in the founder extension"
+        },
+        {
+          "path": "specs/341_deck_command_and_research_agent/summaries/01_deck-command-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for /deck command, deck-research-agent, and skill-deck-research"
         }
       ],
       "planned": "2026-03-31T21:07:12Z",
-      "started": "2026-03-31T21:12:24Z"
+      "started": "2026-03-31T21:12:24Z",
+      "completed": "2026-03-31T21:31:03Z",
+      "completion_summary": "Created /deck command, deck-research-agent, and skill-deck-research in founder extension. Registered founder:deck routing in manifest.json, added 3 deck context entries to index-entries.json, updated EXTENSION.md tables.",
+      "claudemd_suggestions": "Added deck-research-agent.md, skill-deck-research, deck.md to founder extension; added founder:deck routing and 3 deck context index entries"
     },
     {
       "project_number": 342,
