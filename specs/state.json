@@ -161,16 +161,25 @@
     {
       "project_number": 342,
       "project_name": "deck_planner_interactive_questions",
-      "status": "researching",
+      "status": "researched",
       "language": "meta",
       "task_type": "deck",
       "created": "2026-03-31T05:00:00Z",
-      "last_updated": "2026-03-31T21:57:55Z",
+      "last_updated": "2026-03-31T22:03:09Z",
       "dependencies": [
         340,
         341
       ],
-      "session_id": "sess_1774994251_8afdf427d47d"
+      "session_id": "sess_1774994251_8afdf427d47d",
+      "researched": "2026-03-31T22:03:09Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/342_deck_planner_interactive_questions/reports/01_deck-planner-research.md",
+          "type": "research",
+          "summary": "Research on existing deck system (templates, research agent, command), planner agent patterns, AskUserQuestion interactive flows, and recommended implementation approach for deck-planner-agent and skill-deck-plan"
+        }
+      ]
     },
     {
       "project_number": 343,
