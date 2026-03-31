@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 340,
+  "next_project_number": 345,
   "active_projects": [
     {
       "project_number": 87,
@@ -55,13 +55,16 @@
     {
       "project_number": 337,
       "project_name": "condense_skill_implementer",
-      "status": "not_started",
+      "status": "completed",
       "language": "meta",
       "created": "2026-03-31T00:00:00Z",
-      "last_updated": "2026-03-31T00:00:00Z",
+      "last_updated": "2026-03-31T20:39:07Z",
       "dependencies": [
         336
-      ]
+      ],
+      "completed": "2026-03-31T20:39:07Z",
+      "completion_summary": "Condensed 3 verbose skill files: skill-implementer 509->450 (12%), skill-fix-it 1005->549 (45%), skill-todo 926->672 (27%). Total 769 lines saved (31% reduction). Replaced duplicated error handling, tag extraction, topic grouping algorithms, and verbose examples with cross-references to canonical rules files.",
+      "claudemd_suggestions": "Condensed skill-implementer, skill-fix-it, and skill-todo SKILL.md files with cross-references to rules/error-handling.md"
     },
     {
       "project_number": 338,
@@ -85,6 +88,56 @@
         338
       ],
       "completion_summary": "Removed 387 lines (30% reduction) across 4 agent files by eliminating redundant Agent Metadata sections, Allowed Tools sections, verbose Stage 1 JSON schemas, and repetitive Stage 7/8 return instructions. Total: 1311 -> 924 lines."
+    },
+    {
+      "project_number": 340,
+      "project_name": "create_typst_deck_templates",
+      "status": "not_started",
+      "language": "meta",
+      "task_type": "deck",
+      "created": "2026-03-31T05:00:00Z",
+      "last_updated": "2026-03-31T05:00:00Z",
+      "dependencies": []
+    },
+    {
+      "project_number": 341,
+      "project_name": "deck_command_and_research_agent",
+      "status": "not_started",
+      "language": "meta",
+      "task_type": "deck",
+      "created": "2026-03-31T05:00:00Z",
+      "last_updated": "2026-03-31T05:00:00Z",
+      "dependencies": []
+    },
+    {
+      "project_number": 342,
+      "project_name": "deck_planner_interactive_questions",
+      "status": "not_started",
+      "language": "meta",
+      "task_type": "deck",
+      "created": "2026-03-31T05:00:00Z",
+      "last_updated": "2026-03-31T05:00:00Z",
+      "dependencies": [340, 341]
+    },
+    {
+      "project_number": 343,
+      "project_name": "deck_builder_typst_agent",
+      "status": "not_started",
+      "language": "meta",
+      "task_type": "deck",
+      "created": "2026-03-31T05:00:00Z",
+      "last_updated": "2026-03-31T05:00:00Z",
+      "dependencies": [340, 342]
+    },
+    {
+      "project_number": 344,
+      "project_name": "migrate_deck_present_to_founder",
+      "status": "not_started",
+      "language": "meta",
+      "task_type": "deck",
+      "created": "2026-03-31T05:00:00Z",
+      "last_updated": "2026-03-31T05:00:00Z",
+      "dependencies": [341, 342, 343]
     }
   ],
   "completed_projects": [],

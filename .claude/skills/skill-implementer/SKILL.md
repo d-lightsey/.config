@@ -215,25 +215,7 @@ The subagent will:
 
 ### Stage 5a: Validate Subagent Return Format
 
-**IMPORTANT**: Check if subagent accidentally returned JSON to console (v1 pattern) instead of writing to file (v2 pattern).
-
-If the subagent's text return parses as valid JSON, log a warning:
-
-```bash
-# Check if subagent return looks like JSON (starts with { and is valid JSON)
-subagent_return="$SUBAGENT_TEXT_RETURN"
-if echo "$subagent_return" | grep -q '^{' && echo "$subagent_return" | jq empty 2>/dev/null; then
-    echo "WARNING: Subagent returned JSON to console instead of writing metadata file."
-    echo "This indicates the agent may have outdated instructions (v1 pattern instead of v2)."
-    echo "The skill will continue by reading the metadata file, but this should be fixed."
-fi
-```
-
-This validation:
-- Does NOT fail the operation (continues to read metadata file)
-- Logs a warning for debugging
-- Indicates the subagent instructions need updating
-- Allows graceful handling of mixed v1/v2 agents
+If the subagent's text return parses as valid JSON, log a warning (v1 pattern instead of v2 file-based pattern). Non-blocking -- continue to read metadata file regardless.
 
 ---
 
@@ -445,65 +427,24 @@ Implementation completed for task {N}:
 
 ## Error Handling
 
-### Input Validation Errors
-Return immediately with error message if task not found or status invalid.
+See `rules/error-handling.md` for general patterns. Skill-specific behaviors:
 
-### Metadata File Missing
-If subagent didn't write metadata file:
-1. Keep status as "implementing"
-2. Do not cleanup postflight marker
-3. Report error to user
+- **Input validation errors**: Return immediately with error message
+- **Metadata file missing**: Keep status as "implementing", do not cleanup marker, report to user
+- **Git commit failure**: Non-blocking (log and continue)
+- **Subagent timeout**: Return partial status, keep "implementing" for resume
 
-### Git Commit Failure
-Non-blocking: Log failure but continue with success response.
+## Postflight Boundary
 
-### Subagent Timeout
-Return partial status if subagent times out (default 7200s).
-Keep status as "implementing" for resume.
-
----
-
-## MUST NOT (Postflight Boundary)
-
-After the agent returns, this skill MUST NOT:
-
-1. **Edit source files** - All implementation work is done by agent
-2. **Run build/test commands** - Verification is done by agent
-3. **Use MCP tools** - Domain tools are for agent use only
-4. **Analyze or grep source** - Analysis is agent work
-5. **Write summary/reports** - Artifact creation is agent work
-
-The postflight phase is LIMITED TO:
-- Reading agent metadata file
-- Updating state.json via jq
-- Updating TODO.md status marker via Edit
-- Linking artifacts in state.json
-- Git commit
-- Cleanup of temp/marker files
-
-Reference: @.claude/context/standards/postflight-tool-restrictions.md
-
----
+After the agent returns, this skill is LIMITED TO: reading metadata, updating state.json/TODO.md, linking artifacts, git commit, cleanup. No source edits, builds, MCP tools, or analysis. See `@.claude/context/standards/postflight-tool-restrictions.md`.
 
 ## Return Format
 
-This skill returns a **brief text summary** (NOT JSON). The JSON metadata is written to the file and processed internally.
-
-Example successful return:
+Brief text summary (NOT JSON). Example:
 ```
 Implementation completed for task 350:
 - All 5 phases executed successfully
-- Created new feature component with tests
 - Created summary at specs/350_feature/summaries/MM_{short-slug}-summary.md
 - Status updated to [COMPLETED]
-- Changes committed with session sess_1736700000_abc123
-```
-
-Example partial return:
-```
-Implementation partially completed for task 350:
-- Phases 1-3 of 5 executed
-- Phase 4 failed: TypeScript compilation error
-- Partial summary at specs/350_feature/summaries/MM_{short-slug}-summary.md
-- Status remains [IMPLEMENTING] - run /implement 350 to resume
+- Changes committed
 ```
