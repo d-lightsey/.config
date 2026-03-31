@@ -3,45 +3,6 @@
   "next_project_number": 336,
   "active_projects": [
     {
-      "project_number": 330,
-      "project_name": "create_finance_command_skill_agent",
-      "status": "completed",
-      "language": "meta",
-      "description": "Create /finance command (finance.md), research skill (skill-finance/SKILL.md), and research agent (finance-agent.md) for the founder extension. Command uses AUDIT/MODEL/FORECAST/VALIDATE modes with 5 forcing questions. Skill follows 11-stage execution pattern. Agent analyzes existing financial documents, extracts numbers, and creates verification spreadsheets (.xlsx) to confirm/improve calculations.",
-      "created": "2026-03-31T04:00:00Z",
-      "last_updated": "2026-03-31T05:00:00Z",
-      "dependencies": [],
-      "next_artifact_number": 2,
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/330_create_finance_command_skill_agent/reports/01_finance-command-research.md",
-          "summary": "Research on existing founder extension patterns for finance command design"
-        },
-        {
-          "type": "plan",
-          "path": "specs/330_create_finance_command_skill_agent/plans/01_finance-command-plan.md",
-          "summary": "3-phase plan: create core files, update integration files, verify"
-        }
-      ],
-      "completion_summary": "Created /finance command, skill-finance, and finance-agent for founder extension. Updated manifest.json, EXTENSION.md, and index-entries.json.",
-      "claudemd_suggestions": "Added finance-agent.md, skill-finance, /finance command to founder extension with full routing and context integration."
-    },
-    {
-      "project_number": 332,
-      "project_name": "integrate_finance_into_founder",
-      "status": "completed",
-      "language": "meta",
-      "description": "Wire /finance into the founder extension: add finance-agent, skill-finance, and /finance command to manifest.json routing tables. Add context entries to index-entries.json. Update EXTENSION.md documentation. Optionally add financial-analysis.typ Typst template.",
-      "created": "2026-03-31T04:00:00Z",
-      "last_updated": "2026-03-31T05:00:00Z",
-      "dependencies": [
-        330,
-        331
-      ],
-      "completion_summary": "Integration work was completed as part of task 330 Phase 2. manifest.json updated with finance routing, EXTENSION.md updated with /finance docs, index-entries.json updated with 3 new finance context entries and finance-agent added to 3 existing entries."
-    },
-    {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",
       "status": "researched",
@@ -80,86 +41,11 @@
       ],
       "session_id": "sess_1771006114_e73864",
       "planned": "2026-02-13T18:10:48Z"
-    },
-    {
-      "project_number": 333,
-      "project_name": "add_plan_format_verification_to_founder_plan_agent",
-      "status": "completed",
-      "language": "meta",
-      "description": "Add Stage 6a verification checklist to founder-plan-agent.md mirroring planner-agent's pattern. Verify all 7 required metadata fields (Status, Task, Effort, Dependencies, Research Inputs, Artifacts, Standards, Type), all 7 required sections, phase heading format (### under ## Implementation Phases), and per-phase fields (Goal, Tasks checklist, Timing).",
-      "created": "2026-03-31T06:00:00Z",
-      "last_updated": "2026-03-30T12:20:00Z",
-      "dependencies": [],
-      "next_artifact_number": 2,
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/333_add_plan_format_verification_to_founder_plan_agent/reports/01_format-verification.md",
-          "summary": "Analysis of planner-agent Stage 6a pattern and plan-format.md requirements"
-        },
-        {
-          "type": "plan",
-          "path": "specs/333_add_plan_format_verification_to_founder_plan_agent/plans/01_format-verification.md",
-          "summary": "2-phase plan: add Stage 6a verification section, update Critical Requirements"
-        }
-      ],
-      "completion_summary": "Added Stage 6a plan format verification to founder-plan-agent.md. Verifies all 8 required metadata fields, all 7 required sections, phase heading format, and per-phase fields before writing success metadata.",
-      "claudemd_suggestions": "Added Stage 6a verification section and updated Critical Requirements in founder-plan-agent.md"
-    },
-    {
-      "project_number": 334,
-      "project_name": "add_generic_edit_task_type_to_founder_plan_agent",
-      "status": "completed",
-      "language": "meta",
-      "description": "Add generic/edit task_type fallback path to founder-plan-agent.md Stage 4 and Stage 5. When task doesn't fit specialized templates (market-sizing, competitive-analysis, gtm-strategy, contract-review, project-timeline, cost-breakdown), fall back to standard plan-format.md template structure instead of improvising.",
-      "created": "2026-03-31T06:00:00Z",
-      "last_updated": "2026-03-30T12:50:00Z",
-      "completion_summary": "Added generic/edit task_type fallback to founder-plan-agent.md. Stage 4 now routes unrecognized task types to generic instead of market-sizing. Stage 5 includes Generic/Edit phase structure with variable phase counts (1-5) and conditional report/PDF phases.",
-      "claudemd_suggestions": "Updated founder-plan-agent.md Stage 4 routing, Stage 5 phase structures, and Critical Requirements to support generic task type",
-      "dependencies": [],
-      "next_artifact_number": 2,
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/334_add_generic_edit_task_type_to_founder_plan_agent/reports/01_generic-fallback.md",
-          "summary": "Analysis of coverage gap in founder-plan-agent and design for generic fallback"
-        },
-        {
-          "type": "plan",
-          "path": "specs/334_add_generic_edit_task_type_to_founder_plan_agent/plans/01_generic-fallback.md",
-          "summary": "3-phase plan: update Stage 4 routing, add generic phase structure to Stage 5, update critical requirements"
-        }
-      ]
-    },
-    {
-      "project_number": 335,
-      "project_name": "create_plan_format_enforcement_rule",
-      "status": "completed",
-      "language": "meta",
-      "description": "Create .claude/rules/plan-format-enforcement.md with path glob specs/**/plans/**. Lists required metadata fields and section headings as a checklist reminder for any agent writing plan files. Defense-in-depth to catch format violations regardless of which agent creates the plan.",
-      "created": "2026-03-31T06:00:00Z",
-      "last_updated": "2026-03-30T12:30:00Z",
-      "dependencies": [],
-      "next_artifact_number": 2,
-      "artifacts": [
-        {
-          "type": "research",
-          "path": "specs/335_create_plan_format_enforcement_rule/reports/01_enforcement-rule.md",
-          "summary": "Analysis of existing rule patterns and plan format requirements"
-        },
-        {
-          "type": "plan",
-          "path": "specs/335_create_plan_format_enforcement_rule/plans/01_enforcement-rule.md",
-          "summary": "2-phase plan to create plan-format enforcement rule"
-        }
-      ],
-      "completion_summary": "Created .claude/rules/plan-format-enforcement.md with paths: specs/**/plans/** frontmatter. Concise checklist of 8 required metadata fields, 7 required sections, and phase format requirements. References plan-format.md for full specification.",
-      "claudemd_suggestions": "Added plan-format-enforcement.md rule to .claude/rules/ with auto-apply path glob for plan files."
     }
   ],
   "completed_projects": [],
   "repository_health": {
-    "last_assessed": "2026-03-31T03:58:43Z",
+    "last_assessed": "2026-03-31T04:46:20Z",
     "todo_count": 44,
     "fixme_count": 2,
     "build_errors": 0,
