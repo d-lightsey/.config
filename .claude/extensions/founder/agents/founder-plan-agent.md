@@ -247,6 +247,7 @@ Extract key data from the research report structure:
 | legal | contract-review | contract-analysis.md |
 | project | project-timeline | project-timeline.md |
 | sheet | cost-breakdown | cost-breakdown.md |
+| generic | generic | (none -- uses plan-format.md directly) |
 
 **Fallback** (when task_type is null -- legacy tasks): Identify report type from research report header or content:
 
@@ -257,8 +258,9 @@ Extract key data from the research report structure:
 | GTM, go-to-market, strategy, launch | gtm-strategy | gtm-strategy.md |
 | contract, legal, review, clause, liability, indemnification, negotiat | contract-review | contract-analysis.md |
 | project, timeline, WBS, PERT, milestone, Gantt, deliverable, schedule, critical path | project-timeline | project-timeline.md |
+| edit, update, fix, configure, replace, rename, refactor, maintain, cleanup, setup | generic | (none) |
 
-Default to market-sizing if unclear.
+Default to generic if no keywords match.
 
 ### Stage 5: Generate Plan Artifact
 
@@ -618,6 +620,67 @@ If implementation fails:
 
 **Note on Phase 5 naming for project-timeline**: All report types now use Phase 5 for PDF compilation only (Typst generation happens in Phase 4). The project-timeline type names Phase 5 "PDF Compilation and Deliverables" (includes executive summary generation), while other types use "PDF Compilation".
 
+---
+
+**Generic/Edit:**
+
+Use this structure when task_type is `generic` or when no specialized template matches. The generic type uses plan-format.md directly without domain-specific phase names. Phase count is variable (1-5) based on task scope.
+
+**Phase generation rules**:
+- Derive phases from the research report findings and task description
+- Use 1-3 phases for the core work (named after the actual task steps, not TAM/SAM/SOM etc.)
+- Include Phase N-1 (Report and Typst Generation) and Phase N (PDF Compilation) ONLY when the task produces a deliverable report or document
+- For edit/maintenance/configuration tasks, omit report generation phases entirely
+
+**Example for a report-producing generic task (4 phases):**
+
+### Phase 1: {Task-Specific Analysis} [NOT STARTED]
+**Goal**: {Derived from research report findings}
+**Tasks**:
+- [ ] {Task derived from research context}
+- [ ] {Additional task}
+**Timing**: 45 minutes
+
+### Phase 2: {Task-Specific Synthesis} [NOT STARTED]
+**Goal**: {Derived from research report findings}
+**Tasks**:
+- [ ] {Task derived from research context}
+**Timing**: 45 minutes
+
+### Phase 3: Report and Typst Generation [NOT STARTED]
+**Goal**: Generate Typst document as primary output and markdown report as fallback
+**Tasks**:
+- [ ] Generate self-contained typst document at founder/{slug}.typ
+- [ ] Generate markdown report at strategy/{slug}.md (fallback)
+- [ ] Validate all required sections present
+**Timing**: 45 minutes
+
+### Phase 4: PDF Compilation [NOT STARTED]
+**Goal**: Compile Typst document to professional PDF
+**Tasks**:
+- [ ] Compile typst to PDF at founder/{slug}.pdf
+- [ ] Verify output renders correctly
+**Timing**: 15 minutes
+
+**Example for an edit/maintenance task (2 phases, no report):**
+
+### Phase 1: {Edit/Update Description} [NOT STARTED]
+**Goal**: {Specific edit goal from research}
+**Tasks**:
+- [ ] Read target file(s)
+- [ ] Apply required changes
+- [ ] Verify changes applied correctly
+**Timing**: 30 minutes
+
+### Phase 2: Validation [NOT STARTED]
+**Goal**: Verify all changes are correct and consistent
+**Tasks**:
+- [ ] Review modified files for correctness
+- [ ] Check for unintended side effects
+**Timing**: 15 minutes
+
+**Effort estimates for generic type**: Scale with phase count: 1-2 phases = 1h, 3 phases = 2h, 4-5 phases = 3h.
+
 ### Stage 6: Write Plan File
 
 ```bash
@@ -634,6 +697,69 @@ write "$plan_file" "$plan_content"
 # Verify
 [ -s "$plan_file" ] || return error "Failed to write plan file"
 ```
+
+### Stage 6a: Verify Plan Format
+
+**CRITICAL**: Before writing success metadata, re-read the plan file and verify it contains all required fields and sections per plan-format.md.
+
+#### Required Metadata Fields (8)
+
+Verify these fields exist in the plan header:
+
+1. `- **Status**: [NOT STARTED]` - Must be present
+2. `- **Task**: {N} - {title}` - Task identifier
+3. `- **Effort**:` - Time estimate
+4. `- **Dependencies**:` - Task dependencies
+5. `- **Research Inputs**:` - Research report references
+6. `- **Artifacts**:` - Plan file path
+7. `- **Standards**:` - Referenced standards
+8. `- **Type**:` - Language/report type
+
+#### Required Sections (7)
+
+Verify these section headings exist:
+
+1. `## Overview`
+2. `## Goals & Non-Goals`
+3. `## Risks & Mitigations`
+4. `## Implementation Phases`
+5. `## Testing & Validation`
+6. `## Artifacts & Outputs`
+7. `## Rollback/Contingency`
+
+#### Phase Format Verification
+
+Under `## Implementation Phases`, verify:
+
+- Each phase heading matches: `### Phase N: {name} [STATUS]`
+- Each phase contains:
+  - `**Goal**:` - Single statement
+  - `**Tasks**:` - Bullet checklist
+  - `**Timing**:` - Duration estimate
+
+#### Verification Procedure
+
+```bash
+plan_file="$task_dir/plans/01_${short_slug}.md"
+
+# Check required metadata fields
+for field in "Status" "Task" "Effort" "Dependencies" "Research Inputs" "Artifacts" "Standards" "Type"; do
+  grep -q "^\- \*\*${field}\*\*:" "$plan_file" || echo "ERROR: Missing ${field} field"
+done
+
+# Check required sections
+for section in "## Overview" "## Goals & Non-Goals" "## Risks & Mitigations" "## Implementation Phases" "## Testing & Validation" "## Artifacts & Outputs" "## Rollback/Contingency"; do
+  grep -q "^${section}" "$plan_file" || echo "ERROR: Missing section: ${section}"
+done
+
+# Check phase format
+grep -q "^### Phase [0-9]" "$plan_file" || echo "ERROR: No phase headings found"
+```
+
+**If any required field or section is missing**:
+1. Edit the plan file to add the missing field or section
+2. Re-read the plan file to confirm the addition
+3. Only proceed to write success metadata after all requirements are met
 
 ### Stage 7: Write Metadata File
 
@@ -739,8 +865,9 @@ This ensures:
 5. Always determine report type from research report
 6. Always generate 5-phase structure with Phase 4 generating Typst as primary output and Phase 5 as PDF Compilation
 7. Always name Phase 5 "PDF Compilation" (project-timeline uses "PDF Compilation and Deliverables")
-8. Always write valid metadata file
-9. Return brief text summary (not JSON)
+8. Always verify plan format at Stage 6a before writing metadata (all 8 metadata fields, all 7 sections, phase format)
+9. Always write valid metadata file
+10. Return brief text summary (not JSON)
 
 **MUST NOT**:
 1. Ask forcing questions (that's done during research)
@@ -748,4 +875,5 @@ This ensures:
 3. Generate plan without research context
 4. Return "completed" as status value (use "planned")
 5. Skip metadata file creation
-6. Return JSON as console output
+6. Skip plan format verification (Stage 6a)
+7. Return JSON as console output

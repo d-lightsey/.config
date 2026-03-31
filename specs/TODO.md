@@ -1,15 +1,24 @@
 ---
-next_project_number: 333
+next_project_number: 336
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-31. 4 active tasks remaining.*
+*Updated 2026-03-31. 7 active tasks remaining.*
 
 ### Pending
 
+- **333** [COMPLETED] -- Add plan format verification to founder-plan-agent
+  - **Research**: [01_format-verification.md](333_add_plan_format_verification_to_founder_plan_agent/reports/01_format-verification.md)
+  - **Plan**: [01_format-verification.md](333_add_plan_format_verification_to_founder_plan_agent/plans/01_format-verification.md)
+- **334** [IMPLEMENTING] -- Add generic/edit task_type fallback to founder-plan-agent
+  - **Research**: [01_generic-fallback.md](334_add_generic_edit_task_type_to_founder_plan_agent/reports/01_generic-fallback.md)
+  - **Plan**: [01_generic-fallback.md](334_add_generic_edit_task_type_to_founder_plan_agent/plans/01_generic-fallback.md)
+- **335** [IMPLEMENTING] -- Create plan-format enforcement rule
+  - **Research**: [01_enforcement-rule.md](335_create_plan_format_enforcement_rule/reports/01_enforcement-rule.md)
+  - **Plan**: [01_enforcement-rule.md](335_create_plan_format_enforcement_rule/plans/01_enforcement-rule.md)
 - **330** [COMPLETED] -- Create /finance command, skill, and agent
   - **Research**: [01_finance-command-research.md](330_create_finance_command_skill_agent/reports/01_finance-command-research.md)
   - **Plan**: [01_finance-command-plan.md](330_create_finance_command_skill_agent/plans/01_finance-command-plan.md)
@@ -18,6 +27,39 @@ next_project_number: 333
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 333. Add plan format verification to founder-plan-agent
+- **Effort**: 1 hour
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+- **Created**: 2026-03-31
+
+**Description**: Add Stage 6a verification checklist to founder-plan-agent.md mirroring planner-agent's pattern. Verify all 7 required metadata fields (Status, Task, Effort, Dependencies, Research Inputs, Artifacts, Standards, Type), all 7 required sections, phase heading format, and per-phase fields.
+
+---
+
+### 334. Add generic/edit task_type fallback to founder-plan-agent
+- **Effort**: 1 hour
+- **Status**: [RESEARCHING]
+- **Language**: meta
+- **Dependencies**: None
+- **Created**: 2026-03-31
+
+**Description**: Add generic/edit task_type fallback path to founder-plan-agent.md. When task doesn't fit specialized templates (market-sizing, competitive-analysis, etc.), fall back to standard plan-format.md template instead of improvising.
+
+---
+
+### 335. Create plan-format enforcement rule
+- **Effort**: 30 minutes
+- **Status**: [IMPLEMENTING]
+- **Language**: meta
+- **Dependencies**: None
+- **Created**: 2026-03-31
+
+**Description**: Create .claude/rules/plan-format-enforcement.md with path glob specs/**/plans/**. Lists required metadata fields and section headings as a checklist for any agent writing plans. Defense-in-depth enforcement.
+
+---
 
 ### 332. Integrate finance into founder extension
 - **Effort**: 1-2 hours
