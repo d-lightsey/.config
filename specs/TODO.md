@@ -1,15 +1,20 @@
 ---
-next_project_number: 340
+next_project_number: 345
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-31. 6 active tasks remaining.*
+*Updated 2026-03-31. 11 active tasks remaining.*
 
 ### Pending
 
+- **340** [NOT STARTED] -- Create reusable typst slide deck templates
+- **341** [NOT STARTED] -- /deck command and deck-research-agent integration
+- **342** [NOT STARTED] -- Deck planner with interactive style/content questions (depends: 340, 341)
+- **343** [NOT STARTED] -- Deck builder typst agent (depends: 340, 342)
+- **344** [NOT STARTED] -- Migrate deck from present/ to founder/ extension (depends: 341, 342, 343)
 - **336** [COMPLETED] -- Fix TODO.md status update bug in skill-implementer
 - **338** [COMPLETED] -- Consolidate duplicated references across .claude/ files
 - **337** [COMPLETED] -- Condense skill-implementer verbosity (depends: 336)
@@ -18,6 +23,56 @@ next_project_number: 340
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 340. Create reusable typst slide deck templates
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Create 3-4 reusable typst slide deck templates in `founder/context/project/founder/templates/typst/` for the deck workflow. Templates should use touying 0.6.3 with different visual styles (minimal, professional, dark, startup). Each template defines: slide structure (10 main slides + appendix), color palettes, typography (24pt+ body, 40pt+ titles per YC compliance), and 16:9 aspect ratio. Reference `/home/benjamin/Projects/Logos/Vision/strategy/02-deck/deck-source.typ` as the basic/minimal template. Templates must be self-contained and parameterizable for the deck-planner to reference during planning.
+
+---
+
+### 341. /deck command and deck-research-agent integration
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: None
+
+**Description**: Create the `/deck` command in `founder/commands/deck.md` that accepts a path, prompt, or task number. When given a description or path, it creates a task with `language: founder, task_type: deck` and generates a research report from the provided materials. Create `deck-research-agent` in `founder/agents/` and `skill-deck-research` in `founder/skills/` for researching deck content. Add `founder:deck` research routing to `founder/manifest.json`. Add deck-specific index entries to `founder/index-entries.json`. The research agent should synthesize input materials (files, prompts, task references) into a structured research report suitable for the deck-planner to consume.
+
+---
+
+### 342. Deck planner with interactive style/content questions
+- **Effort**: Large
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: 340, 341
+
+**Description**: Create `deck-planner-agent` in `founder/agents/` and `skill-deck-plan` in `founder/skills/`. The planner begins with interactive AskUserQuestion flow: (1) select a visual style from available templates, (2) choose which slide contents to include in the main 10 slides vs appendix slides from research findings, (3) select slide ordering from a few different arrangement options. After questions, generate a plan conforming to `plan-format.md` that specifies the typst template to use, slide-by-slide content assignments, and appendix contents. Add `founder:deck` plan routing to `founder/manifest.json` (overriding the shared `skill-founder-plan` for deck type).
+
+---
+
+### 343. Deck builder typst agent
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: 340, 342
+
+**Description**: Create `deck-builder-agent` in `founder/agents/` and `skill-deck-implement` in `founder/skills/`. The builder reads the plan, selects the specified typst template, and generates a complete `.typ` file with 10 main slides and optional appendix slides. Compiles to PDF via `typst compile`. Add `founder:deck` implement routing to `founder/manifest.json` (overriding the shared `skill-founder-implement` for deck type). Output goes to `strategy/{slug}-deck.typ` and `strategy/{slug}-deck.pdf`.
+
+---
+
+### 344. Migrate deck from present/ to founder/ extension
+- **Effort**: Small
+- **Status**: [NOT STARTED]
+- **Language**: meta
+- **Dependencies**: 341, 342, 343
+
+**Description**: Remove deck functionality from `present/` extension and finalize founder integration. Remove `skill-deck`, `deck-agent`, and `deck.md` command from `present/`. Move relevant context files (pitch-deck-structure.md, touying-pitch-deck-template.md, yc-compliance-checklist.md) to `founder/context/`. Update `present/EXTENSION.md` to remove deck routing and skill-agent mapping. Update `present/manifest.json` to remove deck references. Update `present/index-entries.json` to remove deck entries. Update `founder/EXTENSION.md` to add deck command documentation and routing table entries.
+
+---
 
 ### 336. Fix TODO.md status update bug in skill-implementer
 - **Effort**: Small
