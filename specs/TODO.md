@@ -10,8 +10,9 @@ next_project_number: 333
 
 ### Pending
 
-- **330** [RESEARCHED] -- Create /finance command, skill, and agent
+- **330** [PLANNED] -- Create /finance command, skill, and agent
   - **Research**: [01_finance-command-research.md](330_create_finance_command_skill_agent/reports/01_finance-command-research.md)
+  - **Plan**: [01_finance-command-plan.md](330_create_finance_command_skill_agent/plans/01_finance-command-plan.md)
 - **331** [PLANNED] -- Create finance context and templates
 - **332** [NOT STARTED] -- Integrate finance into founder extension (depends on 330, 331)
 - **327** [COMPLETED] -- Pass task_type through founder delegation pipeline
