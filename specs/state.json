@@ -5,11 +5,11 @@
     {
       "project_number": 348,
       "project_name": "fix_plan_interactive_questions_founder_deck",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-01T21:07:53Z",
-      "last_updated": "2026-04-01T21:29:04Z",
-      "session_id": "sess_1743544380_r348r2",
+      "last_updated": "2026-04-01T21:35:47Z",
+      "session_id": "sess_1775079171_41602e",
       "researched": "2026-04-01T21:29:04Z",
       "next_artifact_number": 3,
       "artifacts": [
@@ -17,8 +17,14 @@
           "path": "specs/348_fix_plan_interactive_questions_founder_deck/reports/02_interactive-picker-pattern.md",
           "type": "research",
           "summary": "Root cause: skill-deck-plan lacks AskUserQuestion in allowed-tools; interactive questions are incorrectly placed in deck-planner-agent instead of skill layer. Fix: add AskUserQuestion to skill, move 4 interactive stages from agent to skill, pass selections to agent."
+        },
+        {
+          "path": "specs/348_fix_plan_interactive_questions_founder_deck/plans/02_interactive-picker-fix.md",
+          "type": "plan",
+          "summary": "3-phase plan to move AskUserQuestion interactive pickers from deck-planner-agent into skill-deck-plan, matching the skill-fix-it pattern"
         }
-      ]
+      ],
+      "planned": "2026-04-01T21:35:47Z"
     },
     {
       "project_number": 347,
