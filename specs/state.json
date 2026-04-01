@@ -5,11 +5,11 @@
     {
       "project_number": 345,
       "project_name": "port_deck_typst_to_slidev",
-      "status": "implementing",
+      "status": "researched",
       "language": "founder:deck",
       "created": "2026-03-31T00:00:00Z",
-      "last_updated": "2026-04-01T03:06:58Z",
-      "session_id": "sess_1775012791_1d29ef",
+      "last_updated": "2026-04-01T17:30:00Z",
+      "session_id": "sess_1775060162_ue2czr",
       "artifacts": [
         {
           "type": "research",
@@ -35,6 +35,11 @@
           "type": "research",
           "path": "specs/345_port_deck_typst_to_slidev/reports/05_deck-library-system.md",
           "summary": "Team research (3 teammates): reusable deck library system with 12 protocols, animation library, styling presets, JSON index schema, 6-step planner workflow, and deck summary format"
+        },
+        {
+          "type": "research",
+          "path": "specs/345_port_deck_typst_to_slidev/reports/03_slidev-system-design.md",
+          "summary": "Complete Slidev system design: .context/deck/ library architecture, index.json schema, 5-step planner workflow, content library with slot syntax and write-back, builder assembly flow, agent/skill change specs"
         }
       ],
       "researched": "2026-04-01T02:45:24Z",
