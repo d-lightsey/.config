@@ -28,5 +28,243 @@
       "directory": "components/"
     }
   },
-  "entries": []
+  "entries": [
+    {
+      "id": "theme-dark-blue",
+      "category": "theme",
+      "name": "Dark Blue (AI Startup)",
+      "path": "themes/dark-blue.json",
+      "description": "Deep navy background with blue accents. Default for tech/AI presentations.",
+      "tags": { "color_schema": "dark", "mood": ["professional", "technical", "modern"], "base_theme": "seriph" },
+      "preview": { "primary": "#60a5fa", "background": "#1e293b", "text": "#e2e8f0" }
+    },
+    {
+      "id": "theme-minimal-light",
+      "category": "theme",
+      "name": "Minimal Light",
+      "path": "themes/minimal-light.json",
+      "description": "Clean white background with blue accent. Best for data-heavy presentations.",
+      "tags": { "color_schema": "light", "mood": ["clean", "minimal", "data-focused"], "base_theme": "seriph" },
+      "preview": { "primary": "#3182ce", "background": "#ffffff", "text": "#2d3748" }
+    },
+    {
+      "id": "theme-premium-dark",
+      "category": "theme",
+      "name": "Premium Dark (Gold)",
+      "path": "themes/premium-dark.json",
+      "description": "Near-black background with gold accents. Luxury/fintech positioning.",
+      "tags": { "color_schema": "dark", "mood": ["luxury", "premium", "fintech"], "base_theme": "seriph" },
+      "preview": { "primary": "#d4a574", "background": "#0f0f1a", "text": "#e8e0d4" }
+    },
+    {
+      "id": "theme-growth-green",
+      "category": "theme",
+      "name": "Growth Green",
+      "path": "themes/growth-green.json",
+      "description": "Mint/white background with green accents. Sustainability, biotech, climate.",
+      "tags": { "color_schema": "light", "mood": ["fresh", "sustainability", "biotech"], "base_theme": "seriph" },
+      "preview": { "primary": "#38a169", "background": "#f0fdf4", "text": "#047857" }
+    },
+    {
+      "id": "theme-professional-blue",
+      "category": "theme",
+      "name": "Professional Blue",
+      "path": "themes/professional-blue.json",
+      "description": "White background with navy/blue accents. Corporate, enterprise B2B.",
+      "tags": { "color_schema": "light", "mood": ["corporate", "enterprise", "trustworthy"], "base_theme": "seriph" },
+      "preview": { "primary": "#2b6cb0", "background": "#ffffff", "text": "#1a365d" }
+    },
+    {
+      "id": "pattern-yc-10-slide",
+      "category": "pattern",
+      "name": "YC 10-Slide Investor Pitch",
+      "path": "patterns/yc-10-slide.json",
+      "description": "Standard Y Combinator 10-slide format: Title, Problem, Solution, Traction, Why Us/Now, Business Model, Market, Team, Ask, Closing.",
+      "tags": { "deck_mode": ["INVESTOR"], "audience": ["investors", "VCs"], "slide_count": 10 }
+    },
+    {
+      "id": "pattern-lightning-5",
+      "category": "pattern",
+      "name": "Lightning Talk (5 slides)",
+      "path": "patterns/lightning-5-slide.json",
+      "description": "5-minute lightning talk: Cover, Problem+Solution, Traction, Demo, Ask.",
+      "tags": { "deck_mode": ["LIGHTNING"], "audience": ["general", "conference"], "slide_count": 5 }
+    },
+    {
+      "id": "pattern-product-demo",
+      "category": "pattern",
+      "name": "Product Demo (8-12 slides)",
+      "path": "patterns/product-demo.json",
+      "description": "Product demonstration deck with screenshots, code, and live demo embeds.",
+      "tags": { "deck_mode": ["DEMO"], "audience": ["technical", "product"], "slide_count": 10 }
+    },
+    {
+      "id": "pattern-investor-update",
+      "category": "pattern",
+      "name": "Investor Update",
+      "path": "patterns/investor-update.json",
+      "description": "Quarterly investor update: Highlights, Metrics, Financials, Runway, Priorities.",
+      "tags": { "deck_mode": ["UPDATE"], "audience": ["existing-investors"], "slide_count": 8 }
+    },
+    {
+      "id": "pattern-partnership",
+      "category": "pattern",
+      "name": "Partnership Proposal",
+      "path": "patterns/partnership-proposal.json",
+      "description": "Business partnership pitch: Mutual value, problem/solution, market fit.",
+      "tags": { "deck_mode": ["PARTNERSHIP"], "audience": ["partners", "enterprise"], "slide_count": 8 }
+    },
+    {
+      "id": "anim-fade-in",
+      "category": "animation",
+      "name": "Fade In",
+      "path": "animations/fade-in.md",
+      "description": "CSS fade entrance via v-click opacity transition.",
+      "tags": { "complexity": "low", "trigger": "v-click" }
+    },
+    {
+      "id": "anim-slide-in-below",
+      "category": "animation",
+      "name": "Slide In Below",
+      "path": "animations/slide-in-below.md",
+      "description": "v-motion y-axis entrance with optional spring physics.",
+      "tags": { "complexity": "medium", "trigger": "v-motion" }
+    },
+    {
+      "id": "anim-metric-cascade",
+      "category": "animation",
+      "name": "Metric Cascade",
+      "path": "animations/metric-cascade.md",
+      "description": "Staggered v-motion entrance for KPI slides with scale and opacity.",
+      "tags": { "complexity": "high", "trigger": "v-motion" }
+    },
+    {
+      "id": "anim-rough-marks",
+      "category": "animation",
+      "name": "Rough Marks",
+      "path": "animations/rough-marks.md",
+      "description": "v-mark emphasis patterns for hand-drawn style text highlighting.",
+      "tags": { "complexity": "medium", "trigger": "v-mark" }
+    },
+    {
+      "id": "anim-staggered-list",
+      "category": "animation",
+      "name": "Staggered List",
+      "path": "animations/staggered-list.md",
+      "description": "v-clicks with depth and every parameters for progressive list reveal.",
+      "tags": { "complexity": "low", "trigger": "v-clicks" }
+    },
+    {
+      "id": "anim-scale-in-pop",
+      "category": "animation",
+      "name": "Scale In Pop",
+      "path": "animations/scale-in-pop.md",
+      "description": "v-motion spring scale entrance for CTAs and emphasis elements.",
+      "tags": { "complexity": "medium", "trigger": "v-motion" }
+    },
+    {
+      "id": "style-dark-blue-navy",
+      "category": "style",
+      "name": "Dark Blue Navy Colors",
+      "path": "styles/colors/dark-blue-navy.css",
+      "description": "Navy background with blue accents color variables.",
+      "tags": { "style_type": "colors", "color_schema": "dark" }
+    },
+    {
+      "id": "style-dark-gold-premium",
+      "category": "style",
+      "name": "Dark Gold Premium Colors",
+      "path": "styles/colors/dark-gold-premium.css",
+      "description": "Near-black background with gold accents color variables.",
+      "tags": { "style_type": "colors", "color_schema": "dark" }
+    },
+    {
+      "id": "style-light-green-growth",
+      "category": "style",
+      "name": "Light Green Growth Colors",
+      "path": "styles/colors/light-green-growth.css",
+      "description": "Mint/white background with green accents color variables.",
+      "tags": { "style_type": "colors", "color_schema": "light" }
+    },
+    {
+      "id": "style-light-blue-corp",
+      "category": "style",
+      "name": "Light Blue Corporate Colors",
+      "path": "styles/colors/light-blue-corp.css",
+      "description": "White background with blue/navy accents color variables.",
+      "tags": { "style_type": "colors", "color_schema": "light" }
+    },
+    {
+      "id": "style-montserrat-inter",
+      "category": "style",
+      "name": "Montserrat + Inter Typography",
+      "path": "styles/typography/montserrat-inter.css",
+      "description": "Montserrat headings with Inter body text.",
+      "tags": { "style_type": "typography" }
+    },
+    {
+      "id": "style-playfair-inter",
+      "category": "style",
+      "name": "Playfair + Inter Typography",
+      "path": "styles/typography/playfair-inter.css",
+      "description": "Playfair Display serif headings with Inter body text.",
+      "tags": { "style_type": "typography" }
+    },
+    {
+      "id": "style-inter-only",
+      "category": "style",
+      "name": "Inter Only Typography",
+      "path": "styles/typography/inter-only.css",
+      "description": "All-sans clean look using Inter for everything.",
+      "tags": { "style_type": "typography" }
+    },
+    {
+      "id": "style-grid-overlay",
+      "category": "style",
+      "name": "Grid Overlay Texture",
+      "path": "styles/textures/grid-overlay.css",
+      "description": "Subtle grid background for technical/structured feel.",
+      "tags": { "style_type": "texture" }
+    },
+    {
+      "id": "style-noise-grain",
+      "category": "style",
+      "name": "Noise Grain Texture",
+      "path": "styles/textures/noise-grain.css",
+      "description": "Film grain SVG overlay for premium/editorial feel.",
+      "tags": { "style_type": "texture" }
+    },
+    {
+      "id": "comp-metric-card",
+      "category": "component",
+      "name": "MetricCard",
+      "path": "components/MetricCard.vue",
+      "description": "Single KPI metric display with animated entrance.",
+      "tags": { "props": ["value", "label", "delay", "color"] }
+    },
+    {
+      "id": "comp-team-member",
+      "category": "component",
+      "name": "TeamMember",
+      "path": "components/TeamMember.vue",
+      "description": "Team member card with photo, name, role, and bio.",
+      "tags": { "props": ["name", "role", "bio", "photo", "delay"] }
+    },
+    {
+      "id": "comp-timeline-item",
+      "category": "component",
+      "name": "TimelineItem",
+      "path": "components/TimelineItem.vue",
+      "description": "Milestone on a timeline with date, label, and status.",
+      "tags": { "props": ["date", "label", "description", "status"] }
+    },
+    {
+      "id": "comp-comparison-col",
+      "category": "component",
+      "name": "ComparisonCol",
+      "path": "components/ComparisonCol.vue",
+      "description": "Column for side-by-side comparison layouts.",
+      "tags": { "props": ["title", "points", "color", "highlight"] }
+    }
+  ]
 }
