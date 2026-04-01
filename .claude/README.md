@@ -14,17 +14,19 @@ For quick reference loaded every session, see [CLAUDE.md](CLAUDE.md).
 | Command | Usage | Purpose |
 |---------|-------|---------|
 | `/task` | `/task "Description"` | Create new task |
-| `/research` | `/research N [focus]` | Research task N |
-| `/plan` | `/plan N` | Create implementation plan |
-| `/implement` | `/implement N` | Execute implementation |
+| `/research` | `/research N [focus] [--team]` | Research task N |
+| `/plan` | `/plan N [--team]` | Create implementation plan |
+| `/implement` | `/implement N [--team]` | Execute implementation |
 | `/revise` | `/revise N` | Revise existing plan |
 | `/review` | `/review` | Analyze codebase |
 | `/todo` | `/todo` | Archive completed tasks |
 | `/errors` | `/errors` | Analyze error patterns |
 | `/meta` | `/meta` | System builder for .claude/ |
-| `/fix-it` | `/fix-it [PATH...]` | Scan for FIX:/TODO: tags |
+| `/fix-it` | `/fix-it [PATH...]` | Scan for FIX:/NOTE:/TODO:/QUESTION: tags |
 | `/refresh` | `/refresh` | Clean orphaned processes |
 | `/spawn` | `/spawn N` | Spawn tasks to unblock |
+| `/merge` | `/merge` | Create pull/merge request |
+| `/tag` | `/tag [--patch\|--minor\|--major]` | Create semantic version tag |
 
 Full command documentation: [docs/guides/user-guide.md](docs/guides/user-guide.md)
 
@@ -90,6 +92,8 @@ User-invocable operations with checkpoint-based execution:
 | skill-meta | meta-builder-agent | System building |
 | skill-status-sync | (direct) | Atomic status updates |
 
+**Note**: This is a subset of core skills. See [CLAUDE.md](CLAUDE.md) for the complete skill-to-agent mapping including team mode, git workflow, and orchestrator skills.
+
 ### Agents (`.claude/agents/`)
 
 | Agent | Purpose |
@@ -111,13 +115,20 @@ The extension system provides language-specific support. Extensions are loaded v
 
 | Extension | Domain | Provides |
 |-----------|--------|----------|
-| neovim | Neovim/Lua | neovim-research-agent, neovim-implementation-agent |
-| lean4 | Theorem proving | lean4-research-agent, MCP integration |
+| nvim | Neovim/Lua | neovim-research-agent, neovim-implementation-agent |
+| lean | Theorem proving | lean4-research-agent, MCP integration |
 | latex | LaTeX documents | latex-research-agent |
 | typst | Typst documents | typst-research-agent |
 | python | Python development | Python patterns, tools |
 | nix | Nix expressions | Nix patterns |
 | web | Web development | Web standards |
+| z3 | SMT solving | Z3 patterns |
+| epidemiology | Epidemiology | R-based research patterns |
+| formal | Formal verification | Logic, math, physics domains |
+| filetypes | File conversion | Format conversion utilities |
+| founder | Business strategy | Market, analyze, strategy, legal, project, deck, finance, sheet |
+| present | Grant writing | Grant proposal development |
+| memory | Knowledge management | Learning and memory patterns |
 
 **Extension documentation**: [docs/architecture/extension-system.md](docs/architecture/extension-system.md)
 
@@ -159,6 +170,9 @@ Context files are discovered via `.claude/context/index.json`:
 | `context/patterns/` | Reusable patterns |
 | `context/processes/` | Workflow documentation |
 | `context/reference/` | Schema references |
+| `context/architecture/` | Architecture documentation (for agents) |
+| `context/meta/` | Meta-system guides |
+| `context/repo/` | Repository-specific context |
 
 **Context discovery patterns**: [context/patterns/context-discovery.md](context/patterns/context-discovery.md)
 
