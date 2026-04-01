@@ -10,7 +10,7 @@ next_project_number: 346
 
 ### Pending
 
-- **345** [RESEARCHED] -- Port /deck command-skill-agent from Typst to Slidev
+- **345** [PLANNED] -- Port /deck command-skill-agent from Typst to Slidev
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
@@ -18,9 +18,11 @@ next_project_number: 346
 
 ### 345. Port /deck command-skill-agent from Typst to Slidev
 - **Effort**: 6 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research Started**: 2026-03-31
 - **Research Completed**: 2026-04-01
+- **Planning Started**: 2026-04-01
+- **Planning Completed**: 2026-04-01
 - **Language**: founder:deck
 - **Dependencies**: None
 - **Research**:
@@ -29,7 +31,9 @@ next_project_number: 346
   - [03_refactor-analysis.md](345_port_deck_typst_to_slidev/reports/03_refactor-analysis.md)
   - [05_deck-library-system.md](345_port_deck_typst_to_slidev/reports/05_deck-library-system.md)
   - [03_slidev-system-design.md](345_port_deck_typst_to_slidev/reports/03_slidev-system-design.md)
-- **Plan**: [02_implementation-plan.md](345_port_deck_typst_to_slidev/plans/02_implementation-plan.md)
+- **Plan**:
+  - [02_implementation-plan.md](345_port_deck_typst_to_slidev/plans/02_implementation-plan.md)
+  - [03_slidev-system-plan.md](345_port_deck_typst_to_slidev/plans/03_slidev-system-plan.md)
 
 **Description**: Port the /deck command-skill-agent system from generating Typst/Touying pitch decks to Slidev markdown-based presentations. Replace 5 .typ templates with Slidev .md templates using themes and scoped CSS. Update deck-builder-agent to emit Slidev markdown and run `slidev export` instead of `typst compile`. Update deck-planner-agent template selection for Slidev themes. Update context patterns from Touying to Slidev conventions. Preserve: YC 10-slide structure, forcing questions workflow, material synthesis pattern, early metadata, non-blocking compilation, 4 deck modes, 3-question planning flow.
 
