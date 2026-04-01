@@ -32,7 +32,8 @@
       "planned": "2026-04-01T18:57:50Z",
       "started": "2026-04-01T19:02:59Z",
       "completed": "2026-04-01T19:06:50Z",
-      "completion_summary": "Fixed routing gap preventing deck-planner-agent invocation by adding compound key fallback to /plan, /implement, /research commands and founder sub-type detection to /task."
+      "completion_summary": "Fixed routing gap preventing deck-planner-agent invocation by adding compound key fallback to /plan, /implement, /research commands and founder sub-type detection to /task.",
+      "claudemd_suggestions": "Updated 4 command files in .claude/commands/ (plan.md, implement.md, research.md, task.md) with compound key routing support"
     },
     {
       "project_number": 345,

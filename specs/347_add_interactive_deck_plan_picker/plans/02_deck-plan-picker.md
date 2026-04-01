@@ -1,7 +1,7 @@
 # Implementation Plan: Add Interactive Deck Plan Picker
 
 - **Task**: 347 - Add interactive deck plan picker
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: Task 346 (deck library refactor -- completed)
 - **Research Inputs**: reports/01_deck-plan-picker.md, reports/02_team-research.md
