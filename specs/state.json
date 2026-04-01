@@ -1,7 +1,30 @@
 {
   "version": "1.0.0",
-  "next_project_number": 345,
+  "next_project_number": 346,
   "active_projects": [
+    {
+      "project_number": 345,
+      "project_name": "port_deck_typst_to_slidev",
+      "status": "researched",
+      "language": "founder:deck",
+      "created": "2026-03-31T00:00:00Z",
+      "last_updated": "2026-04-01T02:14:04Z",
+      "session_id": "sess_1775008765_d4ec56",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/345_port_deck_typst_to_slidev/reports/01_slidev-port-research.md",
+          "summary": "Comprehensive analysis of current Typst deck system and Slidev documentation with port strategy"
+        },
+        {
+          "type": "research",
+          "path": "specs/345_port_deck_typst_to_slidev/reports/02_slidev-standards.md",
+          "summary": "Consolidated Slidev standards and best practices for AI-driven slide generation"
+        }
+      ],
+      "researched": "2026-04-01T02:14:04Z",
+      "next_artifact_number": 2
+    },
     {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",

@@ -1,19 +1,35 @@
 ---
-next_project_number: 345
+next_project_number: 346
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-03-31. 2 active tasks remaining.*
+*Updated 2026-03-31. 3 active tasks remaining.*
 
 ### Pending
 
+- **345** [RESEARCHED] -- Port /deck command-skill-agent from Typst to Slidev
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 345. Port /deck command-skill-agent from Typst to Slidev
+- **Effort**: Medium-high
+- **Status**: [RESEARCHED]
+- **Research Started**: 2026-03-31
+- **Research Completed**: 2026-03-31
+- **Language**: founder:deck
+- **Dependencies**: None
+- **Research**:
+  - [01_slidev-port-research.md](345_port_deck_typst_to_slidev/reports/01_slidev-port-research.md)
+  - [02_slidev-standards.md](345_port_deck_typst_to_slidev/reports/02_slidev-standards.md)
+
+**Description**: Port the /deck command-skill-agent system from generating Typst/Touying pitch decks to Slidev markdown-based presentations. Replace 5 .typ templates with Slidev .md templates using themes and scoped CSS. Update deck-builder-agent to emit Slidev markdown and run `slidev export` instead of `typst compile`. Update deck-planner-agent template selection for Slidev themes. Update context patterns from Touying to Slidev conventions. Preserve: YC 10-slide structure, forcing questions workflow, material synthesis pattern, early metadata, non-blocking compilation, 4 deck modes, 3-question planning flow.
+
+---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
