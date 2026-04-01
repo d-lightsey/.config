@@ -11,7 +11,7 @@ This checklist provides:
 - **Typst code examples** showing violations and corrections
 - **Pre-flight and post-audit checklists** for validation
 
-Use this alongside `pitch-deck-structure.md` for content guidance and `touying-pitch-deck-template.md` for Typst implementation patterns.
+Use this alongside `pitch-deck-structure.md` for content guidance and `slidev-deck-template.md` for Slidev implementation patterns.
 
 ---
 
@@ -286,4 +286,4 @@ For each slide:
 ## Related Context
 
 - [pitch-deck-structure.md](pitch-deck-structure.md) - YC 9+1 slide structure and content guidelines
-- [touying-pitch-deck-template.md](touying-pitch-deck-template.md) - Typst implementation patterns and theme configuration
+- [slidev-deck-template.md](slidev-deck-template.md) - Slidev implementation patterns and library integration

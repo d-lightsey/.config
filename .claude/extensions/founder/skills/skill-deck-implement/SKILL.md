@@ -1,12 +1,12 @@
 ---
 name: skill-deck-implement
-description: Route deck implementation to deck-builder-agent for typst pitch deck generation
+description: Route deck implementation to deck-builder-agent for Slidev pitch deck generation
 allowed-tools: Task, Bash, Edit, Read, Write
 ---
 
 # Deck Implement Skill
 
-Routes deck-specific implementation requests to the `deck-builder-agent`, generating typst pitch decks from plans created by `skill-founder-plan` and research from `skill-deck-research`.
+Routes deck-specific implementation requests to the `deck-builder-agent`, generating Slidev pitch decks from plans created by `skill-deck-plan` and research from `skill-deck-research`.
 
 ## Context Pointers
 
@@ -159,20 +159,22 @@ Tool: Task (NOT Skill)
 Parameters:
   - subagent_type: "deck-builder-agent"
   - prompt: [Include task_context, plan_path, resume_phase, output_dir, template_palette, forcing_data, metadata]
-  - description: "Generate typst pitch deck from plan and research"
+  - description: "Generate Slidev pitch deck from plan and research"
 ```
 
 The agent will:
 - Load plan and research report
-- Select the specified typst template
-- Generate complete `.typ` file with populated slide content
-- Attempt non-blocking `typst compile` for PDF
+- Load theme config from `.context/deck/themes/`
+- Assemble `slides.md` from library content with slot filling
+- Compose CSS styles and copy Vue components
+- Attempt non-blocking `slidev export` for PDF
+- Write-back new content to library
 - Create summary in task directory
 - Write metadata file for postflight consumption
 - Return brief text summary
 
-**Note**: Typst compilation (PDF generation) is optional. Task completes successfully
-even if typst is not installed or PDF generation fails. The `.typ` source is preserved.
+**Note**: Slidev export (PDF generation) is optional. Task completes successfully
+even if slidev is not installed or PDF generation fails. The `slides.md` source is preserved.
 
 ### 6. Read Metadata File
 
@@ -256,10 +258,10 @@ Brief text summary (NOT JSON).
 Expected successful return (with PDF):
 ```
 Deck implementation completed for task {N}:
-- Template: deck-{palette}.typ
-- Slides populated: {M}/10 from research
-- Typst source: strategy/{slug}-deck.typ
-- PDF: strategy/{slug}-deck.pdf
+- Theme: {theme_name}, Pattern: {pattern_name}
+- Slides populated: {M}/{total} from research
+- Slidev source: strategy/{slug}-deck/slides.md
+- PDF: strategy/{slug}-deck/{slug}-deck.pdf
 - Summary: specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed with session {session_id}
@@ -269,14 +271,14 @@ Deck implementation completed for task {N}:
 Expected successful return (without PDF):
 ```
 Deck implementation completed for task {N}:
-- Template: deck-{palette}.typ
-- Slides populated: {M}/10 from research
-- Typst source: strategy/{slug}-deck.typ
-- PDF: skipped (typst not installed)
+- Theme: {theme_name}, Pattern: {pattern_name}
+- Slides populated: {M}/{total} from research
+- Slidev source: strategy/{slug}-deck/slides.md
+- PDF: skipped (slidev not installed)
 - Summary: specs/{NNN}_{SLUG}/summaries/01_{short-slug}-summary.md
 - Status updated to [COMPLETED]
 - Changes committed with session {session_id}
-- Next: Install typst for PDF output, or review .typ source
+- Next: Install slidev for PDF export, or review slides.md source
 ```
 
 Expected partial return:
@@ -304,10 +306,10 @@ Return error with guidance to check task number.
 ### Agent Errors
 Pass through the agent's error return verbatim.
 
-### Typst/PDF Errors
-Phase 5 failures do NOT block task completion:
-- **Typst not installed**: Task completes with `.typ` source only
-- **Compilation error**: Keep `.typ` file for debugging, task completes
-- **PDF empty**: Keep `.typ` file, task completes
+### Slidev/PDF Errors
+PDF export failures do NOT block task completion:
+- **Slidev not installed**: Task completes with `slides.md` source only
+- **Export error**: Keep `slides.md` for debugging, task completes
+- **PDF empty**: Keep `slides.md`, task completes
 
-Postflight should check `metadata.typst_generated` to determine what artifacts to report.
+Postflight should check `metadata.pdf_generated` to determine what artifacts to report.

@@ -311,7 +311,7 @@ Five research reports and one prior plan were integrated:
 
 ---
 
-### Phase 6: Skills, Command, Index Updates and Typst Cleanup [NOT STARTED]
+### Phase 6: Skills, Command, Index Updates and Typst Cleanup [COMPLETED]
 
 **Goal**: Update skill wrappers, command entry point, and extension index entries for Slidev. Delete all obsolete Typst files. This is the final phase because it depends on all new files and agent rewrites being in place.
 

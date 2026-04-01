@@ -245,7 +245,7 @@ Deck plan created for task {N}:
 - Plan: specs/{NNN}_{SLUG}/plans/{NN}_{short-slug}.md
 - Status updated to [PLANNED]
 - Changes committed with session {session_id}
-- Next: Run /implement {N} to generate the Typst pitch deck
+- Next: Run /implement {N} to generate the Slidev pitch deck
 ```
 
 ---
