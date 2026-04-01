@@ -5,11 +5,11 @@
     {
       "project_number": 345,
       "project_name": "port_deck_typst_to_slidev",
-      "status": "researched",
+      "status": "planned",
       "language": "founder:deck",
       "created": "2026-03-31T00:00:00Z",
-      "last_updated": "2026-04-01T02:45:24Z",
-      "session_id": "sess_1775010001_0ddd8b",
+      "last_updated": "2026-04-01T03:02:17Z",
+      "session_id": "sess_1775011585_a831d5",
       "artifacts": [
         {
           "type": "research",
@@ -25,10 +25,16 @@
           "type": "research",
           "path": "specs/345_port_deck_typst_to_slidev/reports/03_refactor-analysis.md",
           "summary": "Complete file-by-file refactoring analysis for Typst-to-Slidev port"
+        },
+        {
+          "type": "plan",
+          "path": "specs/345_port_deck_typst_to_slidev/plans/02_implementation-plan.md",
+          "summary": "5-phase implementation plan for porting /deck from Typst to Slidev"
         }
       ],
       "researched": "2026-04-01T02:45:24Z",
-      "next_artifact_number": 3
+      "next_artifact_number": 3,
+      "planned": "2026-04-01T03:02:17Z"
     },
     {
       "project_number": 87,
