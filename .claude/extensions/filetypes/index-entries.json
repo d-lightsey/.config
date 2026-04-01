@@ -105,7 +105,9 @@
       "load_when": {
         "agents": [
           "presentation-agent",
-          "deck-agent"
+          "deck-research-agent",
+          "deck-planner-agent",
+          "deck-builder-agent"
         ],
         "languages": [
           "deck"
@@ -126,7 +128,9 @@
       "load_when": {
         "agents": [
           "presentation-agent",
-          "deck-agent"
+          "deck-research-agent",
+          "deck-planner-agent",
+          "deck-builder-agent"
         ],
         "languages": [
           "deck"

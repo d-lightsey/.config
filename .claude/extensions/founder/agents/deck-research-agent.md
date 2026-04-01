@@ -36,9 +36,9 @@ This agent has access to:
 Load these on-demand using @-references:
 
 **Always Load**:
-- `@.claude/extensions/present/context/project/present/patterns/pitch-deck-structure.md` - 10-slide YC structure
-- `@.claude/extensions/present/context/project/present/patterns/touying-pitch-deck-template.md` - Typst template structure
-- `@.claude/extensions/present/context/project/present/patterns/yc-compliance-checklist.md` - YC compliance requirements
+- `@.claude/extensions/founder/context/project/founder/patterns/pitch-deck-structure.md` - 10-slide YC structure
+- `@.claude/extensions/founder/context/project/founder/patterns/touying-pitch-deck-template.md` - Typst template structure
+- `@.claude/extensions/founder/context/project/founder/patterns/yc-compliance-checklist.md` - YC compliance requirements
 
 **Load for Output**:
 - `@.claude/context/formats/return-metadata-file.md` - Metadata file schema

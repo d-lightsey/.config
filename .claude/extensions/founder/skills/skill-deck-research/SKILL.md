@@ -50,7 +50,7 @@ Do not invoke for:
 - Market sizing (use skill-market)
 - Competitive analysis (use skill-analyze)
 - Financial modeling (use skill-finance)
-- Standalone deck generation without task workflow (use present's skill-deck)
+- Standalone deck generation without task workflow
 
 ---
 

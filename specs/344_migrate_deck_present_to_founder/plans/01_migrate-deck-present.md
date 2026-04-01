@@ -101,7 +101,7 @@ Research report (01_migrate-deck-present.md) provided a complete file inventory,
 
 ---
 
-### Phase 3: Update founder/ and filetypes/ cross-references [NOT STARTED]
+### Phase 3: Update founder/ and filetypes/ cross-references [COMPLETED]
 
 **Goal:** Update all references that previously pointed to present/ deck artifacts so they point to founder/ equivalents.
 

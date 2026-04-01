@@ -574,12 +574,11 @@
       "subdomain": "founder"
     },
     {
-      "path": "project/present/patterns/pitch-deck-structure.md",
+      "path": "project/founder/patterns/pitch-deck-structure.md",
       "summary": "10-slide YC pitch deck structure with content requirements per slide",
       "line_count": 150,
       "load_when": {
         "agents": [
-          "deck-agent",
           "deck-research-agent",
           "deck-planner-agent",
           "deck-builder-agent",
@@ -597,15 +596,14 @@
         ]
       },
       "domain": "project",
-      "subdomain": "present"
+      "subdomain": "founder"
     },
     {
-      "path": "project/present/patterns/touying-pitch-deck-template.md",
+      "path": "project/founder/patterns/touying-pitch-deck-template.md",
       "summary": "Typst touying template structure for pitch deck slide generation",
       "line_count": 200,
       "load_when": {
         "agents": [
-          "deck-agent",
           "deck-research-agent",
           "deck-planner-agent",
           "deck-builder-agent",
@@ -623,15 +621,14 @@
         ]
       },
       "domain": "project",
-      "subdomain": "present"
+      "subdomain": "founder"
     },
     {
-      "path": "project/present/patterns/yc-compliance-checklist.md",
+      "path": "project/founder/patterns/yc-compliance-checklist.md",
       "summary": "YC pitch deck compliance checklist with required elements per slide",
       "line_count": 100,
       "load_when": {
         "agents": [
-          "deck-agent",
           "deck-research-agent",
           "deck-planner-agent",
           "deck-builder-agent",
@@ -649,7 +646,7 @@
         ]
       },
       "domain": "project",
-      "subdomain": "present"
+      "subdomain": "founder"
     },
     {
       "path": "project/founder/templates/typst/deck/deck-dark-blue.typ",
