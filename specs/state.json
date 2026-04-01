@@ -102,12 +102,20 @@
     {
       "project_number": 346,
       "project_name": "refactor_deck_library_to_founder_extension",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-01T17:25:46Z",
-      "last_updated": "2026-04-01T17:25:46Z",
-      "next_artifact_number": 1,
-      "artifacts": []
+      "last_updated": "2026-04-01T17:33:31Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/346_refactor_deck_library_to_founder_extension/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research (2 teammates): file inventory, path audit, extension loader analysis, write-back tension resolution, seed-and-overlay architecture recommendation"
+        }
+      ],
+      "session_id": "sess_1775064430_qxFHkg",
+      "researched": "2026-04-01T17:33:31Z"
     }
   ],
   "completed_projects": [],
