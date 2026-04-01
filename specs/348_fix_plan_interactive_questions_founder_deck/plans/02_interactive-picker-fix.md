@@ -43,7 +43,7 @@ The round-2 research report confirmed the root cause is architectural (not routi
 
 ## Implementation Phases
 
-### Phase 1: Update skill-deck-plan with AskUserQuestion stages [IN PROGRESS]
+### Phase 1: Update skill-deck-plan with AskUserQuestion stages [COMPLETED]
 
 **Goal**: Move interactive question logic from the agent into the skill, add AskUserQuestion to allowed-tools, and pass user selections to the agent.
 
