@@ -1,7 +1,7 @@
 # Implementation Plan: Task #343
 
 - **Task**: 343 - Deck builder typst agent
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3 hours
 - **Dependencies**: Task 340 (COMPLETED), Task 342 (NOT STARTED - deck planner)
 - **Research Inputs**: specs/343_deck_builder_typst_agent/reports/01_deck-builder-research.md
