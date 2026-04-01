@@ -129,7 +129,7 @@ skill_name=${skill_name:-"{default_skill}"}
 
 ---
 
-### Phase 3: Update /task Language Detection [NOT STARTED]
+### Phase 3: Update /task Language Detection [COMPLETED]
 
 **Goal**: Enable the `/task` command to detect and produce compound language values for founder sub-types so that new deck tasks get `language = "founder:deck"` automatically.
 

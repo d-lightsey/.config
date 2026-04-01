@@ -120,6 +120,15 @@ When $ARGUMENTS contains a description (no flags).
    - "web", "astro", "tailwind", "cloudflare" → web
    - "epidemiology", "epimodel", "stan", "infectious" → epidemiology
    - "formal", "logic", "math", "physics", "modal", "kripke" → formal
+   - "deck", "slide", "presentation", "pitch deck" → founder:deck
+   - "spreadsheet", "sheet", "excel" → founder:sheet
+   - "finance", "financial", "revenue", "burn rate" → founder:finance
+   - "market size", "tam", "sam", "som" → founder:market
+   - "competitive", "competitor" → founder:analyze
+   - "strategy", "strategic", "roadmap" → founder:strategy
+   - "legal", "contract", "agreement" → founder:legal
+   - "project plan", "timeline", "milestone" → founder:project
+   - "founder", "go-to-market", "gtm" → founder
    - Otherwise → general
 
 5. **Create slug** from description:
