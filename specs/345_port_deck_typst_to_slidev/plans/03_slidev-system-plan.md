@@ -1,7 +1,7 @@
 # Implementation Plan: Slidev Deck Library System
 
 - **Task**: 345 - Port /deck command-skill-agent from Typst to Slidev
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 8 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_slidev-port-research.md, reports/02_slidev-standards.md, reports/03_refactor-analysis.md, reports/03_slidev-system-design.md, reports/05_deck-library-system.md
