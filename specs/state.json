@@ -237,11 +237,11 @@
     {
       "project_number": 344,
       "project_name": "migrate_deck_present_to_founder",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "task_type": "deck",
       "created": "2026-03-31T05:00:00Z",
-      "last_updated": "2026-04-01T00:26:18Z",
+      "last_updated": "2026-03-31T00:30:00Z",
       "dependencies": [
         341,
         342,
@@ -258,11 +258,18 @@
           "path": "specs/344_migrate_deck_present_to_founder/plans/01_migrate-deck-present.md",
           "type": "plan",
           "summary": "4-phase plan: move context files, edit present/ configs, update founder/filetypes cross-references, verify"
+        },
+        {
+          "type": "summary",
+          "path": "specs/344_migrate_deck_present_to_founder/summaries/01_migrate-deck-present-summary.md",
+          "summary": "Implementation summary for deck migration"
         }
       ],
       "next_artifact_number": 2,
       "planned": "2026-04-01T00:24:27Z",
-      "started": "2026-04-01T00:26:18Z"
+      "started": "2026-04-01T00:26:18Z",
+      "completion_summary": "Migrated deck functionality from present/ to founder/ extension: moved 3 context files, deleted 10 deck artifacts, updated 10 config files across 3 extensions. Present/ is now grant-writing only.",
+      "claudemd_suggestions": "none"
     }
   ],
   "completed_projects": [],
