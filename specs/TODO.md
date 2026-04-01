@@ -18,9 +18,10 @@ next_project_number: 350
 
 ### 349. Review and update .claude/ agent system documentation for correctness and consistency
 - **Effort**: 2-3 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Research**: [01_team-research.md](specs/349_review_update_claude_agent_system_docs/reports/01_team-research.md)
+- **Plan**: [01_documentation-review-plan.md](specs/349_review_update_claude_agent_system_docs/plans/01_documentation-review-plan.md)
 
 **Description**: Systematically review the .claude/ agent system and its various extensions, ensuring all documentation is correct, consistent, clear, complete, and concise. Focus particularly on .claude/README.md, .claude/extensions/README.md, and .claude/extensions/founder/README.md. Ensure Unicode box-drawing characters are used consistently (as in line 35+ of .claude/README.md).
 
