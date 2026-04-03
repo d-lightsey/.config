@@ -194,7 +194,7 @@ function M.show(opts)
   local conf = require("telescope.config").values
 
   pickers.new(opts, {
-    prompt_title = "Background Processes",
+    prompt_title = "Background Processes  <CR> kill | <C-o> open browser | <C-j/k> navigate",
     finder = finders.new_table({
       results = processes,
       entry_maker = create_entry_maker(),
