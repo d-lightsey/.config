@@ -170,10 +170,13 @@
     {
       "project_number": 361,
       "project_name": "typst_process_integration",
-      "status": "planned",
+      "status": "completed",
       "language": "neovim",
       "created": "2026-04-03T17:00:00Z",
-      "last_updated": "2026-04-03T17:15:00Z",
+      "last_updated": "2026-04-03T19:00:00Z",
+      "started": "2026-04-03T18:45:00Z",
+      "completed": "2026-04-03T19:00:00Z",
+      "completion_summary": "Migrated after/ftplugin/typst.lua from ad-hoc vim.fn.jobstart/jobstop with script-local typst_watch_job variable to neotex.util.process registry API. typst_watch and typst_compile now use process.start(), typst_watch_stop uses process.find_by_name/stop. Added TypstPreview wrapper functions (start/stop/toggle) with virtual process registry entries via register_external/deregister. Updated which-key mappings for lp/lx/ll to use wrappers. Updated tinymist_clear_cache to deregister preview entry.",
       "dependencies": [
         358,
         360

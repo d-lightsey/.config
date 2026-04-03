@@ -58,7 +58,7 @@ Key findings from the research report (01_typst-integration.md):
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Migrate typst_watch and typst_compile to process.lua [NOT STARTED]
+### Phase 1: Migrate typst_watch and typst_compile to process.lua [COMPLETED]
 
 **Goal**: Replace raw `vim.fn.jobstart`/`jobstop` calls in `typst_watch()`, `typst_watch_stop()`, and `typst_compile()` with `process.start()`/`process.stop()` from the shared process registry.
 
@@ -97,7 +97,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Wrap TypstPreview commands with virtual registry entries [NOT STARTED]
+### Phase 2: Wrap TypstPreview commands with virtual registry entries [COMPLETED]
 
 **Goal**: Register TypstPreview as a virtual process entry in the registry when started, and deregister when stopped, so it appears in the telescope process picker.
 

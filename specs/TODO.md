@@ -13,7 +13,7 @@ next_project_number: 358
 - **358** [COMPLETED] -- Create process manager core module (lua/neotex/util/process.lua)
 - **359** [COMPLETED] -- Create telescope process picker (depends: 358)
 - **360** [COMPLETED] -- Add which-key mappings under leader-x for process management (depends: 358, 359)
-- **361** [PLANNED] -- Integrate typst preview with process manager (depends: 358, 360)
+- **361** [COMPLETED] -- Integrate typst preview with process manager (depends: 358, 360)
 - **356** [COMPLETED] -- Add phase dependency analysis to plan format and planner agent
 - **357** [COMPLETED] -- Update skill-team-implement to consume plan dependency analysis (depends: 356)
 - **355** [COMPLETED] -- Update founder extension README and deck documentation
@@ -78,9 +78,10 @@ next_project_number: 358
 
 ### 361. Integrate typst preview with process manager
 - **Effort**: 30 minutes
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Research Completed**: 2026-04-03
 - **Planning Completed**: 2026-04-03
+- **Implementation Completed**: 2026-04-03
 - **Language**: neovim
 - **Dependencies**: 358, 360
 - **Research**: [01_typst-integration.md](specs/361_typst_process_integration/reports/01_typst-integration.md)

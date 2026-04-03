@@ -1,6 +1,8 @@
 -- Typst ftplugin configuration
 -- Keybindings use <leader>l (same as LaTeX) - filetype isolation prevents conflicts
 
+local process = require("neotex.util.process")
+
 -- Buffer-local variable to store pinned main file
 vim.b.typst_main_file = vim.b.typst_main_file or nil
 
@@ -220,9 +222,11 @@ local function typst_compile()
 
   local stderr_lines = {}
 
-  vim.fn.jobstart(cmd, {
-    stderr_buffered = true,
-    on_stderr = function(_, data)
+  process.start({
+    name = "typst-compile",
+    cmd = cmd,
+    cwd = root,
+    on_stderr = function(data)
       if data then
         for _, line in ipairs(data) do
           if line and line ~= "" then
@@ -231,7 +235,7 @@ local function typst_compile()
         end
       end
     end,
-    on_exit = function(_, exit_code)
+    on_exit = function(exit_code)
       vim.schedule(function()
         if exit_code == 0 then
           -- Clear quickfix on success
@@ -270,13 +274,11 @@ local function typst_compile()
   })
 end
 
--- Watch job ID for stopping later
-local typst_watch_job = nil
-
 local function typst_watch()
   -- Toggle: stop if running
-  if typst_watch_job then
-    vim.fn.jobstop(typst_watch_job)
+  local entry = process.find_by_name("typst-watch")
+  if entry then
+    process.stop(entry.id)
     return
   end
 
@@ -293,8 +295,11 @@ local function typst_watch()
 
   local root_info = root and (" (root: " .. vim.fn.fnamemodify(root, ":t") .. ")") or ""
   vim.notify("Starting watch on " .. main_filename .. root_info .. "...", vim.log.levels.INFO)
-  typst_watch_job = vim.fn.jobstart(cmd, {
-    on_stdout = function(_, data)
+  process.start({
+    name = "typst-watch",
+    cmd = cmd,
+    cwd = root,
+    on_stdout = function(data)
       if data and #data > 0 then
         local msg = table.concat(data, "\n")
         if msg:match("compiled successfully") then
@@ -302,22 +307,18 @@ local function typst_watch()
         end
       end
     end,
-    on_exit = function(_, exit_code)
-      typst_watch_job = nil
+    on_exit = function(exit_code)
       if exit_code ~= 0 and exit_code ~= 143 then -- 143 is SIGTERM (normal stop)
         vim.notify("Watch stopped (exit code: " .. exit_code .. ")", vim.log.levels.WARN)
-      else
-        vim.notify("Watch stopped", vim.log.levels.INFO)
       end
     end,
   })
 end
 
 local function typst_watch_stop()
-  if typst_watch_job then
-    vim.fn.jobstop(typst_watch_job)
-    typst_watch_job = nil
-    vim.notify("Stopped watch", vim.log.levels.INFO)
+  local entry = process.find_by_name("typst-watch")
+  if entry then
+    process.stop(entry.id)
   else
     vim.notify("No watch process running", vim.log.levels.WARN)
   end
@@ -362,6 +363,7 @@ local function tinymist_clear_cache()
   end
 
   pcall(vim.cmd, "TypstPreviewStop")
+  process.deregister("typst-preview")
   vim.cmd("LspRestart tinymist")
 
   local msg = "tinymist cache cleared"
@@ -369,6 +371,26 @@ local function tinymist_clear_cache()
     msg = msg .. " | deleted: " .. table.concat(deleted, ", ")
   end
   vim.notify(msg .. " | run <leader>lp to reopen", vim.log.levels.INFO)
+end
+
+-- TypstPreview wrappers with process registry tracking
+local function typst_preview_start()
+  vim.cmd("TypstPreview")
+  process.register_external({ name = "typst-preview", cmd = "tinymist preview", type = "browser" })
+end
+
+local function typst_preview_stop()
+  vim.cmd("TypstPreviewStop")
+  process.deregister("typst-preview")
+end
+
+local function typst_preview_toggle()
+  local entry = process.find_by_name("typst-preview")
+  if entry then
+    typst_preview_stop()
+  else
+    typst_preview_start()
+  end
 end
 
 -- Register which-key bindings for Typst (uses <leader>l like LaTeX)
@@ -383,15 +405,15 @@ if ok_wk then
     { "<leader>le", show_diagnostics, desc = "errors (LSP)", icon = "", buffer = 0 },
     { "<leader>lf", typst_format, desc = "format", icon = "", buffer = 0 },
     { "<leader>lq", show_compilation_errors, desc = "quickfix (compile)", icon = "", buffer = 0 },
-    { "<leader>ll", "<cmd>TypstPreviewToggle<CR>", desc = "live preview (web)", icon = "", buffer = 0 },
-    { "<leader>lp", "<cmd>TypstPreview<CR>", desc = "preview (web)", icon = "", buffer = 0 },
+    { "<leader>ll", typst_preview_toggle, desc = "live preview (web)", icon = "", buffer = 0 },
+    { "<leader>lp", typst_preview_start, desc = "preview (web)", icon = "", buffer = 0 },
     { "<leader>lP", pin_main_file, desc = "pin main file", icon = "", buffer = 0 },
     { "<leader>lr", typst_compile, desc = "run (compile once)", icon = "", buffer = 0 },
     { "<leader>ls", "<cmd>TypstPreviewSyncCursor<CR>", desc = "sync cursor (web)", icon = "", buffer = 0 },
     { "<leader>lu", unpin_main_file, desc = "unpin main file", icon = "", buffer = 0 },
     { "<leader>lv", typst_view_pdf, desc = "view pdf (Sioyek)", icon = "", buffer = 0 },
     { "<leader>lw", typst_watch_stop, desc = "stop watch", icon = "󰅚", buffer = 0 },
-    { "<leader>lx", "<cmd>TypstPreviewStop<CR>", desc = "stop preview", icon = "󰅚", buffer = 0 },
+    { "<leader>lx", typst_preview_stop, desc = "stop preview", icon = "󰅚", buffer = 0 },
   })
 end
 
