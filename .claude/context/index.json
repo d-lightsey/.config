@@ -1033,6 +1033,33 @@
       }
     },
     {
+      "path": "patterns/multi-task-operations.md",
+      "domain": "core",
+      "subdomain": "patterns",
+      "summary": "Multi-task argument parsing, parallel dispatch, and batch operations for workflow commands",
+      "line_count": 540,
+      "keywords": [
+        "patterns",
+        "multi-task",
+        "batch",
+        "dispatch",
+        "parallel"
+      ],
+      "topics": [
+        "workflow",
+        "orchestration"
+      ],
+      "load_when": {
+        "agents": [],
+        "languages": [],
+        "commands": [
+          "/research",
+          "/plan",
+          "/implement"
+        ]
+      }
+    },
+    {
       "path": "patterns/context-discovery.md",
       "domain": "core",
       "subdomain": "patterns",
