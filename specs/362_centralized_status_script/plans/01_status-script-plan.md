@@ -1,7 +1,7 @@
 # Implementation Plan: Centralized Status Update Script
 
 - **Task**: 362 - Create centralized update-task-status.sh script
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_meta-research.md
