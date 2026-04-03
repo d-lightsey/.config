@@ -147,17 +147,25 @@
     {
       "project_number": 354,
       "project_name": "update_docs_multi_task",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-02T00:00:00Z",
-      "last_updated": "2026-04-02T00:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-03T02:59:52Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/354_update_docs_multi_task/reports/01_docs-update-scope.md",
+          "type": "research",
+          "summary": "Scope analysis of documentation updates needed for multi-task support"
+        }
+      ],
       "dependencies": [
         351,
         352,
         353
-      ]
+      ],
+      "session_id": "sess_1743552000_r354mt",
+      "researched": "2026-04-03T02:59:52Z"
     },
     {
       "project_number": 349,
