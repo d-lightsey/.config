@@ -64,7 +64,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Core module and process registry [NOT STARTED]
+### Phase 1: Core module and process registry [COMPLETED]
 
 **Goal**: Create the process.lua module with registry data structure, `start()`, `stop()`, `list()`, `stop_all()`, `get()`, `find_by_port()`, and port auto-detection. This phase delivers a working process manager without browser or filetype features.
 
@@ -107,7 +107,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Browser auto-open and notification integration [NOT STARTED]
+### Phase 2: Browser auto-open and notification integration [COMPLETED]
 
 **Goal**: Add browser auto-open functionality with duplicate prevention and integrate with the notification system for user feedback on process lifecycle events.
 
@@ -144,7 +144,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Filetype launcher registry with defaults [NOT STARTED]
+### Phase 3: Filetype launcher registry with defaults [COMPLETED]
 
 **Goal**: Add the filetype launcher registry and ship default launchers for slidev (markdown in slidev dirs) and typst-preview. This makes the module extensible for future filetypes.
 

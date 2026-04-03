@@ -10,7 +10,7 @@ next_project_number: 358
 
 ### Pending
 
-- **358** [PLANNED] -- Create process manager core module (lua/neotex/util/process.lua)
+- **358** [COMPLETED] -- Create process manager core module (lua/neotex/util/process.lua)
 - **359** [PLANNED] -- Create telescope process picker (depends: 358)
 - **360** [PLANNED] -- Add which-key mappings under leader-x for process management (depends: 358, 359)
 - **361** [PLANNED] -- Integrate typst preview with process manager (depends: 358, 360)
@@ -30,13 +30,15 @@ next_project_number: 358
 
 ### 358. Create process manager core module
 - **Effort**: 3 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-03
 - **Research Completed**: 2026-04-03
 - **Planning Completed**: 2026-04-03
 - **Language**: neovim
 - **Dependencies**: None
 - **Research**: [01_process-mgr-core.md](specs/358_process_manager_core/reports/01_process-mgr-core.md)
 - **Plan**: [01_process-mgr-core.md](specs/358_process_manager_core/plans/01_process-mgr-core.md)
+- **Summary**: [01_process-mgr-core-summary.md](specs/358_process_manager_core/summaries/01_process-mgr-core-summary.md)
 
 **Description**: Create `lua/neotex/util/process.lua` - a centralized process manager for background jobs. Features: job registry tracking pid, cmd, port, cwd, start_time, stdout/stderr buffer. API: `start(opts)` using `vim.fn.jobstart` with auto-detection of next available port, `stop(id)` via `vim.fn.jobstop` + cleanup, `list()` returning all tracked processes. Auto-open browser via `xdg-open` on launch (skip if already open for that port). Cleanup all tracked jobs on `VimLeavePre`. Filetype-aware launch: `.md` files in slidev directories run `npx slidev`, `.typ` files trigger typst-preview. Extensible for future filetypes.
 
