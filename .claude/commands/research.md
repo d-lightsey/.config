@@ -1,7 +1,7 @@
 ---
 description: Research a task and create reports
 allowed-tools: Skill, Bash(jq:*), Bash(git:*), Read, Edit
-argument-hint: TASK_NUMBER [FOCUS] [--team [--team-size N]]
+argument-hint: TASK_NUMBERS [FOCUS] [--team [--team-size N]]
 model: opus
 ---
 
@@ -11,8 +11,19 @@ Conduct research for a task by delegating to the appropriate research skill/suba
 
 ## Arguments
 
-- `$1` - Task number (required)
-- Remaining args - Optional focus/prompt for research direction
+- `$1` - Task number(s) (required). Supports single task, comma-separated lists, and ranges.
+- Remaining args - Optional focus/prompt for research direction (applies to all tasks in multi-task mode)
+
+### Multi-Task Syntax
+
+| Input | Tasks | Mode |
+|-------|-------|------|
+| `7` | 7 | single |
+| `7, 22-24, 59` | 7, 22, 23, 24, 59 | multi |
+| `7 focus on APIs` | 7 | single (with focus) |
+| `7, 22-24 --team` | 7, 22, 23, 24 | multi (with team) |
+
+When multiple tasks are specified, each task is researched independently in parallel. Flags and focus prompts apply uniformly to all tasks.
 
 ## Options
 
@@ -28,6 +39,198 @@ When `--team` is specified, research is delegated to `skill-team-research` which
 ## Execution
 
 **Note**: Delegate to skills for language-specific research.
+
+### STAGE 0: PARSE TASK NUMBERS
+
+Parse the raw argument string to separate task numbers from remaining arguments (flags and focus prompts).
+
+**Algorithm**:
+
+```bash
+parse_task_args() {
+  local input="$1"
+  local task_spec=""
+  local remaining=""
+
+  # Match leading task specification: digits, commas, hyphens, spaces
+  # Stop at first alphabetic char or -- flag
+  if [[ "$input" =~ ^([0-9][0-9,\ \-]*)(\ +.*)?$ ]]; then
+    task_spec="${BASH_REMATCH[1]}"
+    remaining="${BASH_REMATCH[2]}"
+  else
+    echo "[FAIL] No task number found in arguments"
+    return 1
+  fi
+
+  # Trim trailing whitespace/commas from task_spec
+  task_spec=$(echo "$task_spec" | sed 's/[, ]*$//')
+
+  # Parse through existing parse_ranges()
+  task_numbers=($(parse_ranges "$task_spec"))
+
+  # Trim leading whitespace from remaining
+  remaining=$(echo "$remaining" | sed 's/^[[:space:]]*//')
+
+  echo "TASK_NUMBERS=${task_numbers[*]}"
+  echo "REMAINING_ARGS=$remaining"
+}
+```
+
+**Dispatch Decision**:
+
+```
+task_numbers = parse_task_args($ARGUMENTS)
+
+if len(task_numbers) == 1:
+    # SINGLE-TASK MODE
+    task_number = task_numbers[0]
+    remaining_args = $REMAINING_ARGS
+    # Fall through to CHECKPOINT 1: GATE IN below
+    # Existing single-task flow proceeds unchanged
+
+elif len(task_numbers) > 1:
+    # MULTI-TASK MODE
+    # Continue to MULTI-TASK DISPATCH below
+    # Do NOT enter CHECKPOINT 1
+```
+
+**On single task**: Fall through to CHECKPOINT 1: GATE IN below (existing flow unchanged).
+**On multiple tasks**: Branch to MULTI-TASK DISPATCH section below. After dispatch completes, skip directly to output (do not enter single-task checkpoints).
+
+---
+
+### MULTI-TASK DISPATCH
+
+When `parse_task_args()` produces more than one task number, execute batch research.
+
+#### Step 1: Batch Validation
+
+Validate all tasks exist and have valid status for research:
+
+```bash
+validated_tasks=()
+skipped_tasks=()
+
+for task_num in "${task_numbers[@]}"; do
+  task_data=$(jq -r --argjson num "$task_num" \
+    '.active_projects[] | select(.project_number == $num)' \
+    specs/state.json)
+
+  if [ -z "$task_data" ]; then
+    skipped_tasks+=("$task_num: not found")
+    continue
+  fi
+
+  status=$(echo "$task_data" | jq -r '.status')
+
+  # Allowed statuses for /research
+  case "$status" in
+    not_started|researched|planned|partial|blocked) validated_tasks+=("$task_num") ;;
+    *) skipped_tasks+=("$task_num: invalid status [$status]") ;;
+  esac
+done
+```
+
+Report skipped tasks as warnings. If no validated tasks remain, ABORT.
+
+#### Step 2: Generate Batch Session ID
+
+```bash
+batch_session_id="sess_$(date +%s)_$(od -An -N3 -tx1 /dev/urandom | tr -d ' ')"
+```
+
+#### Step 3: Invoke Batch Dispatch
+
+Invoke the batch dispatch skill with the validated task list:
+
+```
+Tool: Skill
+Parameters:
+  skill: "skill-batch-dispatch"
+  args: |
+    command=research
+    task_numbers={validated_tasks}
+    session_id={batch_session_id}
+    remaining_args={remaining_args}
+```
+
+The batch skill internally:
+1. Extracts language per task from state.json
+2. Routes to the appropriate research skill per task (extension routing or default)
+3. Spawns one agent per task via parallel Task tool calls
+4. Each agent runs the full single-task research lifecycle independently (preflight, research, postflight)
+5. Collects results from all agents
+
+**Team mode interaction**: If `--team` is in `remaining_args`, the batch skill applies team mode to ALL tasks. Total agents spawned = `N_tasks * team_size`. Use with care due to cost multiplication.
+
+#### Step 4: Batch Git Commit
+
+After all agents complete, produce a single batch commit:
+
+**Full success**:
+```
+research tasks {range_summary}: complete research
+
+Tasks: {comma-separated list}
+Session: {batch_session_id}
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+```
+
+**Partial success**:
+```
+research tasks {range_summary}: complete research ({succeeded}/{total} succeeded)
+
+Tasks completed: {comma-separated}
+Tasks failed: {num} ({reason})[, {num} ({reason})]
+Session: {batch_session_id}
+
+Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
+```
+
+#### Step 5: Consolidated Output
+
+Display batch results and exit (do not enter single-task checkpoints):
+
+```markdown
+## Batch Research Results
+
+Session: {batch_session_id}
+Tasks requested: {count}
+Succeeded: {count}
+Failed: {count}
+Skipped: {count}
+
+### Succeeded
+
+| Task | Title | Status | Artifact |
+|------|-------|--------|----------|
+| #7 | task_title | [RESEARCHED] | specs/007_slug/reports/01_short.md |
+
+### Failed
+
+| Task | Error |
+|------|-------|
+| #23 | Agent timeout |
+
+### Skipped
+
+| Task | Reason |
+|------|--------|
+| #99 | Not found in state.json |
+
+### Next Steps
+- /plan {succeeded_task_numbers}
+```
+
+#### Error Handling (Multi-Task)
+
+- **Partial success is normal**: Failure of one task does not block or roll back others
+- **Failed tasks**: Remain in "researching" status; user can re-run individually (`/research {N}`)
+- **Skipped tasks**: Never dispatched; user fixes the issue and re-runs
+- **Git conflicts**: Non-blocking (logged, not fatal)
+
+---
 
 ### CHECKPOINT 1: GATE IN
 
