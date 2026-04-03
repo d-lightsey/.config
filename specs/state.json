@@ -135,16 +135,16 @@
     {
       "project_number": 366,
       "project_name": "defensive_gate_out",
-      "status": "planned",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-03T20:00:00Z",
-      "last_updated": "2026-04-03T20:05:01Z",
+      "last_updated": "2026-04-03T20:07:35Z",
       "researched": "2026-04-03T20:00:00Z",
       "dependencies": [
         363,
         364
       ],
-      "session_id": "sess_1743638400_plan366",
+      "session_id": "sess_1743638400_impl366",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -156,8 +156,14 @@
           "path": "specs/366_defensive_gate_out/plans/01_defensive-gate-out-plan.md",
           "type": "plan",
           "summary": "Plan for defensive GATE OUT verification"
+        },
+        {
+          "path": "specs/366_defensive_gate_out/summaries/01_defensive-gate-out-summary.md",
+          "type": "summary",
+          "summary": "Execution summary for defensive GATE OUT"
         }
-      ]
+      ],
+      "completion_summary": "Added defensive status verification to /research and /plan GATE OUT checkpoints, matching the existing pattern in /implement. Research gets 2 defensive steps (state.json + TODO.md), plan gets 3 (state.json + TODO.md + plan file status)."
     },
     {
       "project_number": 367,
