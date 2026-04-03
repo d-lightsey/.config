@@ -11,9 +11,9 @@ next_project_number: 355
 ### Pending
 
 - **350** [COMPLETED] -- Create multi-task operations context pattern
-- **351** [RESEARCHING] -- Update /research command for multi-task support (depends: 350)
-- **352** [RESEARCHING] -- Update /plan command for multi-task support (depends: 350)
-- **353** [RESEARCHING] -- Update /implement command for multi-task support (depends: 350)
+- **351** [COMPLETED] -- Update /research command for multi-task support (depends: 350)
+- **352** [COMPLETED] -- Update /plan command for multi-task support (depends: 350)
+- **353** [COMPLETED] -- Update /implement command for multi-task support (depends: 350)
 - **354** [NOT STARTED] -- Update CLAUDE.md argument-hints and documentation (depends: 351, 352, 353)
 - **349** [COMPLETED] -- Review and update .claude/ agent system documentation
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
@@ -39,9 +39,13 @@ next_project_number: 355
 
 ### 351. Update /research command for multi-task support
 - **Effort**: 1 hour
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-02
 - **Language**: meta
 - **Dependencies**: 350
+- **Research**: [01_research-cmd-multi-task.md](specs/351_research_multi_task_support/reports/01_research-cmd-multi-task.md)
+- **Plan**: [01_research-cmd-multi-task.md](specs/351_research_multi_task_support/plans/01_research-cmd-multi-task.md)
+- **Summary**: [01_research-cmd-multi-task-summary.md](specs/351_research_multi_task_support/summaries/01_research-cmd-multi-task-summary.md)
 
 **Description**: Update `.claude/commands/research.md` to accept multiple task numbers, ranges, or both (e.g., `/research 7, 22-24, 59`). Add a STAGE 0: PARSE TASK NUMBERS step before GATE IN that expands ranges into individual task numbers. When multiple tasks are provided, spawn one agent per task number (each running the existing single-task flow), collect results, and produce a single batch git commit and consolidated output. Single task number remains backward-compatible. Flags like `--team` apply to all tasks.
 
@@ -49,9 +53,13 @@ next_project_number: 355
 
 ### 352. Update /plan command for multi-task support
 - **Effort**: 1 hour
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-02
 - **Language**: meta
 - **Dependencies**: 350
+- **Research**: [01_plan-cmd-multi-task.md](specs/352_plan_multi_task_support/reports/01_plan-cmd-multi-task.md)
+- **Plan**: [01_plan-cmd-multi-task.md](specs/352_plan_multi_task_support/plans/01_plan-cmd-multi-task.md)
+- **Summary**: [01_plan-cmd-multi-task-summary.md](specs/352_plan_multi_task_support/summaries/01_plan-cmd-multi-task-summary.md)
 
 **Description**: Update `.claude/commands/plan.md` to accept multiple task numbers, ranges, or both (e.g., `/plan 7, 22-24, 59`). Add a STAGE 0: PARSE TASK NUMBERS step before GATE IN that expands ranges into individual task numbers. When multiple tasks are provided, spawn one agent per task number (each running the existing single-task flow), collect results, and produce a single batch git commit and consolidated output. Single task number remains backward-compatible. Flags like `--team` apply to all tasks.
 
@@ -59,9 +67,13 @@ next_project_number: 355
 
 ### 353. Update /implement command for multi-task support
 - **Effort**: 1 hour
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-02
 - **Language**: meta
 - **Dependencies**: 350
+- **Research**: [01_implement-cmd-multi-task.md](specs/353_implement_multi_task_support/reports/01_implement-cmd-multi-task.md)
+- **Plan**: [01_implement-cmd-multi-task.md](specs/353_implement_multi_task_support/plans/01_implement-cmd-multi-task.md)
+- **Summary**: [01_implement-cmd-multi-task-summary.md](specs/353_implement_multi_task_support/summaries/01_implement-cmd-multi-task-summary.md)
 
 **Description**: Update `.claude/commands/implement.md` to accept multiple task numbers, ranges, or both (e.g., `/implement 7, 22-24, 59`). Add a STAGE 0: PARSE TASK NUMBERS step before GATE IN that expands ranges into individual task numbers. When multiple tasks are provided, spawn one agent per task number (each running the existing single-task flow), collect results, and produce a single batch git commit and consolidated output. Single task number remains backward-compatible. Flags like `--team`, `--force` apply to all tasks.
 

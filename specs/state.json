@@ -39,44 +39,110 @@
     {
       "project_number": 351,
       "project_name": "research_multi_task_support",
-      "status": "researching",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-02T00:00:00Z",
-      "last_updated": "2026-04-03T02:48:55Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-03T02:54:38Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/351_research_multi_task_support/reports/01_research-cmd-multi-task.md",
+          "type": "research",
+          "summary": "Research report on /research command multi-task changes"
+        },
+        {
+          "path": "specs/351_research_multi_task_support/plans/01_research-cmd-multi-task.md",
+          "type": "plan",
+          "summary": "Implementation plan for /research multi-task support"
+        },
+        {
+          "path": "specs/351_research_multi_task_support/summaries/01_research-cmd-multi-task-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for /research multi-task support"
+        }
+      ],
       "dependencies": [
         350
       ],
-      "session_id": "sess_1743552000_batch351"
+      "session_id": "sess_1743552000_batch351",
+      "researched": "2026-04-03T02:54:38Z",
+      "planned": "2026-04-03T02:54:38Z",
+      "started": "2026-04-03T02:54:38Z",
+      "completed": "2026-04-03T02:54:38Z",
+      "completion_summary": "Updated /research command with STAGE 0 multi-task argument parsing and batch dispatch flow supporting ranges, comma-separated lists, parallel agent spawning, batch commits, and consolidated output",
+      "claudemd_suggestions": "Update CLAUDE.md argument-hint for /research to show TASK_NUMBERS syntax"
     },
     {
       "project_number": 352,
       "project_name": "plan_multi_task_support",
-      "status": "researching",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-02T00:00:00Z",
-      "last_updated": "2026-04-03T02:48:55Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-03T02:54:38Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/352_plan_multi_task_support/reports/01_plan-cmd-multi-task.md",
+          "type": "research",
+          "summary": "Research report on /plan command multi-task changes"
+        },
+        {
+          "path": "specs/352_plan_multi_task_support/plans/01_plan-cmd-multi-task.md",
+          "type": "plan",
+          "summary": "Implementation plan for /plan multi-task support"
+        },
+        {
+          "path": "specs/352_plan_multi_task_support/summaries/01_plan-cmd-multi-task-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for /plan multi-task support"
+        }
+      ],
       "dependencies": [
         350
       ],
-      "session_id": "sess_1743552000_batch352"
+      "session_id": "sess_1743552000_batch352",
+      "researched": "2026-04-03T02:54:38Z",
+      "planned": "2026-04-03T02:54:38Z",
+      "started": "2026-04-03T02:54:38Z",
+      "completed": "2026-04-03T02:54:38Z",
+      "completion_summary": "Updated /plan command with STAGE 0 multi-task argument parsing and batch dispatch flow supporting ranges, comma-separated lists, parallel agent spawning, batch commits, and consolidated output",
+      "claudemd_suggestions": "Update CLAUDE.md argument-hint for /plan to show TASK_NUMBERS syntax"
     },
     {
       "project_number": 353,
       "project_name": "implement_multi_task_support",
-      "status": "researching",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-02T00:00:00Z",
-      "last_updated": "2026-04-03T02:48:55Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-03T02:54:38Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/353_implement_multi_task_support/reports/01_implement-cmd-multi-task.md",
+          "type": "research",
+          "summary": "Research report on /implement command multi-task changes"
+        },
+        {
+          "path": "specs/353_implement_multi_task_support/plans/01_implement-cmd-multi-task.md",
+          "type": "plan",
+          "summary": "Implementation plan for /implement multi-task support"
+        },
+        {
+          "path": "specs/353_implement_multi_task_support/summaries/01_implement-cmd-multi-task-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for /implement multi-task support"
+        }
+      ],
       "dependencies": [
         350
       ],
-      "session_id": "sess_1743552000_batch353"
+      "session_id": "sess_1743552000_batch353",
+      "researched": "2026-04-03T02:54:38Z",
+      "planned": "2026-04-03T02:54:38Z",
+      "started": "2026-04-03T02:54:38Z",
+      "completed": "2026-04-03T02:54:38Z",
+      "completion_summary": "Updated /implement command with STAGE 0 multi-task argument parsing and batch dispatch flow supporting ranges, comma-separated lists, parallel agent spawning, batch commits, and consolidated output with --force flag support",
+      "claudemd_suggestions": "Update CLAUDE.md argument-hint for /implement to show TASK_NUMBERS syntax"
     },
     {
       "project_number": 354,
