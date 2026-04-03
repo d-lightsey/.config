@@ -5,13 +5,21 @@
     {
       "project_number": 350,
       "project_name": "multi_task_operations_pattern",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-02T00:00:00Z",
-      "last_updated": "2026-04-02T00:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
-      "dependencies": []
+      "last_updated": "2026-04-03T02:30:59Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/350_multi_task_operations_pattern/reports/01_multi-task-ops.md",
+          "type": "research",
+          "summary": "Research report on multi-task operations pattern covering argument parsing, parallel dispatch, batch commits, and error handling"
+        }
+      ],
+      "dependencies": [],
+      "session_id": "sess_1743552000_r350mt",
+      "researched": "2026-04-03T02:30:59Z"
     },
     {
       "project_number": 351,
