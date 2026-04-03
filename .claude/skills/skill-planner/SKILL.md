@@ -73,19 +73,13 @@ fi
 
 Update task status to "planning" BEFORE invoking subagent.
 
-**Update state.json**:
+The centralized script handles state.json, TODO.md task entry status marker, and TODO.md Task Order status marker atomically:
+
 ```bash
-jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
-   --arg status "planning" \
-   --arg sid "$session_id" \
-  '(.active_projects[] | select(.project_number == '$task_number')) |= . + {
-    status: $status,
-    last_updated: $ts,
-    session_id: $sid
-  }' specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+bash .claude/scripts/update-task-status.sh preflight $task_number plan $session_id
 ```
 
-**Update TODO.md**: Use Edit tool to change status marker from `[RESEARCHED]` or `[NOT STARTED]` to `[PLANNING]`.
+If the script exits non-zero, stop execution and return error. Exit code 2 indicates state.json failure; exit code 3 indicates TODO.md failure.
 
 ---
 

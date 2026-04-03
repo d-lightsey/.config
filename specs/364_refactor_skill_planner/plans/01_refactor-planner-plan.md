@@ -1,7 +1,7 @@
 # Implementation Plan: Refactor skill-planner for centralized status updates
 
 - **Task**: 364 - Refactor skill-planner for centralized status updates
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1.5 hours
 - **Dependencies**: Task 362 (update-task-status.sh must exist)
 - **Research Inputs**: None
@@ -46,7 +46,7 @@ Refactor `.claude/skills/skill-planner/SKILL.md` to replace inline jq/Edit statu
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Replace Stage 2 (Preflight) with script call [NOT STARTED]
+### Phase 1: Replace Stage 2 (Preflight) with script call [COMPLETED]
 
 **Goal**: Replace the inline jq state.json update and Edit TODO.md instruction in Stage 2 with a single call to `update-task-status.sh preflight`.
 
