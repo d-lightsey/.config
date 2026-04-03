@@ -67,16 +67,31 @@ end
 --- Scans base_port through base_port+100 using vim.uv.new_tcp() bind test.
 ---@param base_port number Starting port to scan (default 3030)
 ---@return number|nil port The first available port, or nil on failure
+--- Check if a port is already claimed by a running process in the registry.
+---@param port number
+---@return boolean
+local function _port_in_registry(port)
+  for _, entry in pairs(M._registry) do
+    if entry.port == port and entry.status == "running" then
+      return true
+    end
+  end
+  return false
+end
+
 local function _find_available_port(base_port)
   base_port = base_port or 3030
   for offset = 0, 100 do
     local port = base_port + offset
-    local tcp = vim.uv.new_tcp()
-    if tcp then
-      local ok = tcp:bind("127.0.0.1", port)
-      tcp:close()
-      if ok == 0 then
-        return port
+    -- Skip ports already claimed by our own processes
+    if not _port_in_registry(port) then
+      local tcp = vim.uv.new_tcp()
+      if tcp then
+        local ok = tcp:bind("127.0.0.1", port)
+        tcp:close()
+        if ok == 0 then
+          return port
+        end
       end
     end
   end
