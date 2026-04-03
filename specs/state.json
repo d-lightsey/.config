@@ -39,63 +39,78 @@
     {
       "project_number": 363,
       "project_name": "refactor_skill_researcher",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-03T20:00:00Z",
-      "last_updated": "2026-04-03T20:00:00Z",
+      "last_updated": "2026-04-03T19:58:09Z",
       "researched": "2026-04-03T20:00:00Z",
       "dependencies": [
         362
       ],
-      "session_id": "sess_1743638400_meta_status",
+      "session_id": "sess_1743638400_plan_wave2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/363_refactor_skill_researcher/reports/01_meta-research.md",
           "type": "research",
           "summary": "Analysis of skill-researcher preflight/postflight gaps including missing Task Order updates"
+        },
+        {
+          "path": "specs/363_refactor_skill_researcher/plans/01_refactor-researcher-plan.md",
+          "type": "plan",
+          "summary": "Implementation plan for task 363"
         }
       ]
     },
     {
       "project_number": 364,
       "project_name": "refactor_skill_planner",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-03T20:00:00Z",
-      "last_updated": "2026-04-03T20:00:00Z",
+      "last_updated": "2026-04-03T19:58:10Z",
       "researched": "2026-04-03T20:00:00Z",
       "dependencies": [
         362
       ],
-      "session_id": "sess_1743638400_meta_status",
+      "session_id": "sess_1743638400_plan_wave2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/364_refactor_skill_planner/reports/01_meta-research.md",
           "type": "research",
           "summary": "Analysis of skill-planner preflight/postflight gaps including missing Task Order updates"
+        },
+        {
+          "path": "specs/364_refactor_skill_planner/plans/01_refactor-planner-plan.md",
+          "type": "plan",
+          "summary": "Implementation plan for task 364"
         }
       ]
     },
     {
       "project_number": 365,
       "project_name": "refactor_skill_implementer",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-03T20:00:00Z",
-      "last_updated": "2026-04-03T20:00:00Z",
+      "last_updated": "2026-04-03T19:58:10Z",
       "researched": "2026-04-03T20:00:00Z",
       "dependencies": [
         362
       ],
-      "session_id": "sess_1743638400_meta_status",
+      "session_id": "sess_1743638400_plan_wave2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/365_refactor_skill_implementer/reports/01_meta-research.md",
           "type": "research",
           "summary": "Analysis of skill-implementer status patterns including completion_data handling and partial status"
+        },
+        {
+          "path": "specs/365_refactor_skill_implementer/plans/01_refactor-implementer-plan.md",
+          "type": "plan",
+          "summary": "Implementation plan for task 365"
         }
       ]
     },
@@ -124,21 +139,26 @@
     {
       "project_number": 367,
       "project_name": "refactor_revise_skill",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-03T20:00:00Z",
-      "last_updated": "2026-04-03T20:00:00Z",
+      "last_updated": "2026-04-03T19:58:10Z",
       "researched": "2026-04-03T20:00:00Z",
       "dependencies": [
         362
       ],
-      "session_id": "sess_1743638400_meta_status",
+      "session_id": "sess_1743638400_plan_wave2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/367_refactor_revise_skill/reports/01_meta-research.md",
           "type": "research",
           "summary": "Architecture analysis of /revise inline execution vs skill delegation pattern used by other commands"
+        },
+        {
+          "path": "specs/367_refactor_revise_skill/plans/01_refactor-revise-plan.md",
+          "type": "plan",
+          "summary": "Implementation plan for task 367"
         }
       ]
     },
