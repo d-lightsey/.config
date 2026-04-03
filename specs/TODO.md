@@ -15,7 +15,7 @@ next_project_number: 356
 - **351** [COMPLETED] -- Update /research command for multi-task support (depends: 350)
 - **352** [COMPLETED] -- Update /plan command for multi-task support (depends: 350)
 - **353** [COMPLETED] -- Update /implement command for multi-task support (depends: 350)
-- **354** [RESEARCHED] -- Update CLAUDE.md argument-hints and documentation (depends: 351, 352, 353)
+- **354** [PLANNED] -- Update CLAUDE.md argument-hints and documentation (depends: 351, 352, 353)
 - **349** [COMPLETED] -- Review and update .claude/ agent system documentation
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -89,11 +89,13 @@ next_project_number: 356
 
 ### 354. Update CLAUDE.md argument-hints and documentation
 - **Effort**: 30 minutes
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Research Completed**: 2026-04-02
+- **Planning Completed**: 2026-04-02
 - **Language**: meta
 - **Dependencies**: 351, 352, 353
 - **Research**: [01_docs-update-scope.md](specs/354_update_docs_multi_task/reports/01_docs-update-scope.md)
+- **Plan**: [01_docs-update-plan.md](specs/354_update_docs_multi_task/plans/01_docs-update-plan.md)
 
 **Description**: Update argument-hint frontmatter in research.md, plan.md, and implement.md to reflect new multi-task syntax. Update the command reference table in `.claude/CLAUDE.md` to show the new argument formats. Add a brief note about multi-task dispatch to the Command Reference section.
 
