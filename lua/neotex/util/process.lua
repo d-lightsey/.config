@@ -499,10 +499,13 @@ function M.launch(filepath)
       for _, arg in ipairs(entry.cmd) do
         if arg == filepath then
           local port = entry.port
+          local cats = _categories()
           if port then
-            _notify(string.format("Already open on port: %d", port))
+            _notify(string.format("Already open on port: %d", port),
+              cats and cats.USER_ACTION)
           else
-            _notify(string.format("Already running: %s (id %d)", entry.name, entry.id))
+            _notify(string.format("Already running: %s (id %d)", entry.name, entry.id),
+              cats and cats.USER_ACTION)
           end
           return entry.id
         end
