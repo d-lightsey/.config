@@ -1,5 +1,5 @@
 ---
-next_project_number: 368
+next_project_number: 369
 ---
 
 # TODO
@@ -14,6 +14,15 @@ next_project_number: 368
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 368. Create context documentation for Slidev custom formalism rendering
+- **Effort**: 1-2 hours
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Create context documentation for custom formalism rendering in Slidev presentations. The founder extension's slidev-deck-template.md currently has no documentation about rendering custom mathematical notation. Based on research of the Logos Vision deck (strategy/02-deck/slidev/), the following patterns need to be documented in the founder extension context: (1) LogosOp.vue component -- SVG-based inline operators (boxright, diamondright, circleright, dotcircleright) using currentColor inheritance, 28x16 viewBox, baseline alignment at -0.1em; (2) KaTex.vue component -- KaTeX wrapper with custom macro preprocessing, placeholder substitution to inject SVGs into KaTeX-rendered HTML, props: expr (string), display (boolean); (3) KaTeX macro configuration (setup/katex.ts) -- defines \boxright, \diamondright, \circleright, \dotcircleright macros using \mathrel with \htmlStyle overlap technique as fallback; (4) Unicode HTML entity patterns -- standard operators rendered via HTML entities wrapped in font-serif spans; (5) Dual rendering decision tree -- when to use LogosOp (plain text/HTML context) vs KaTex.vue (mathematical expressions) vs HTML entities (standard Unicode symbols). Files to modify: slidev-deck-template.md (add custom formalism section), deck/README.md (add component docs for LogosOp and KaTex), index-entries.json (add index entries if separate file created), possibly create custom-formalism-patterns.md if content is too large for the template. Source material: /home/benjamin/Projects/Logos/Vision/strategy/02-deck/slidev/components/LogosOp.vue, KaTex.vue, and setup/katex.ts.
+
+---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
