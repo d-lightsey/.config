@@ -1,19 +1,33 @@
 ---
-next_project_number: 369
+next_project_number: 370
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-03. 2 active tasks remaining.*
+*Updated 2026-04-07. 3 active tasks remaining.*
 
 ### Pending
 
+- **369** [PLANNED] -- Integrate ROAD_MAP.md consultation into research/planning agents
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 369. Integrate ROAD_MAP.md consultation into research and planning agents
+- **Effort**: 1-2 hours
+- **Status**: [PLANNED]
+- **Research Completed**: 2026-04-07
+- **Language**: meta
+- **Dependencies**: None
+- **Research**: [01_roadmap-integration-gaps.md](369_roadmap_integration_research_planning/reports/01_roadmap-integration-gaps.md)
+- **Plan**: [01_roadmap-integration.md](369_roadmap_integration_research_planning/plans/01_roadmap-integration.md)
+
+**Description**: Research and planning agents (`general-research-agent`, `planner-agent`) are completely blind to `specs/ROAD_MAP.md`, causing repeated misalignment with project priorities. Fix by: (1) adding a roadmap consultation stage to `general-research-agent.md` (read-only, for strategic context); (2) adding a roadmap alignment stage to `planner-agent.md` (read roadmap, align plan phases, pre-populate `roadmap_items`); (3) updating `context/index.json` `load_when` entries for `formats/roadmap-format.md` and `patterns/roadmap-update.md` to include research/planning agents and commands; (4) adding `roadmap_path` to delegation contexts in `skill-researcher/SKILL.md` and `skill-planner/SKILL.md`. Files: 5 files across agents/, skills/, and context/.
+
+---
 
 ### 368. Create context documentation for Slidev custom formalism rendering
 - **Effort**: 1-2 hours
@@ -25,13 +39,13 @@ next_project_number: 369
 ---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
-- **Effort**: TBD
-- **Status**: [RESEARCHED]
-- **Research Started**: 2026-02-13
-- **Research Completed**: 2026-02-13
-- **Language**: neovim
-- **Dependencies**: None
-- **Research**: [research-001.md](087_investigate_wezterm_terminal_directory_change/reports/research-001.md)
+ **Effort**: TBD
+ **Status**: [RESEARCHED]
+ **Research Started**: 2026-02-13
+ **Research Completed**: 2026-02-13
+ **Language**: neovim
+ **Dependencies**: None
+ **Research**: [research-001.md](087_investigate_wezterm_terminal_directory_change/reports/research-001.md)
 
 **Description**: Investigate why the terminal working directory changes to a project root when opening neovim sessions in wezterm from the home directory (~). Determine whether this behavior is caused by neovim or wezterm (configured in ~/.dotfiles/config/). Identify if any functionality depends on this behavior before modifying it. Goal is to avoid changing the terminal directory unless necessary.
 

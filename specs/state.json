@@ -1,7 +1,29 @@
 {
   "version": "1.0.0",
-  "next_project_number": 369,
+  "next_project_number": 370,
   "active_projects": [
+    {
+      "project_number": 369,
+      "project_name": "roadmap_integration_research_planning",
+      "status": "planned",
+      "language": "meta",
+      "created": "2026-04-07T00:00:00Z",
+      "last_updated": "2026-04-07T20:11:45Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/369_roadmap_integration_research_planning/reports/01_roadmap-integration-gaps.md",
+          "summary": "Analysis of ROAD_MAP.md integration gaps in research/planning agents with 4 recommendations"
+        },
+        {
+          "type": "plan",
+          "path": "specs/369_roadmap_integration_research_planning/plans/01_roadmap-integration.md",
+          "summary": "3-phase plan: update context index and delegation contexts, add roadmap stage to research agent, add roadmap stage to planner agent"
+        }
+      ],
+      "session_id": "sess_1744070400_369meta"
+    },
     {
       "project_number": 368,
       "project_name": "context_docs_slidev_custom_formalism",
