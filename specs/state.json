@@ -5,16 +5,21 @@
     {
       "project_number": 370,
       "project_name": "inject_format_specs_delegation_prompts",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-07T23:36:50Z",
-      "session_id": "sess_370res",
+      "last_updated": "2026-04-07T23:40:01Z",
+      "session_id": "sess_1744070400_370plan",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/370_inject_format_specs_delegation_prompts/reports/01_format-injection-research.md",
           "summary": "Analysis of delegation prompt construction across 3 skills; recommends Stage 4b format injection pattern"
+        },
+        {
+          "type": "plan",
+          "path": "specs/370_inject_format_specs_delegation_prompts/plans/01_format-injection-plan.md",
+          "summary": "3-phase parallel plan: inject format specs via Stage 4b into skill-planner, skill-researcher, skill-implementer"
         }
       ],
       "next_artifact_number": 2
@@ -22,16 +27,21 @@
     {
       "project_number": 371,
       "project_name": "artifact_content_validation_postflight",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-07T23:36:51Z",
-      "session_id": "sess_371res",
+      "last_updated": "2026-04-07T23:40:01Z",
+      "session_id": "sess_1744070400_371plan",
       "artifacts": [
         {
           "type": "research",
           "path": "specs/371_artifact_content_validation_postflight/reports/01_postflight-validation-research.md",
           "summary": "Format requirements matrix for 3 artifact types; recommends reusable validate-artifact.sh with non-blocking warnings"
+        },
+        {
+          "type": "plan",
+          "path": "specs/371_artifact_content_validation_postflight/plans/01_postflight-validation-plan.md",
+          "summary": "3-phase sequential plan: create validate-artifact.sh, integrate into postflight, test against real artifacts"
         }
       ],
       "next_artifact_number": 2

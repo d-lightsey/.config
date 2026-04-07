@@ -10,8 +10,8 @@ next_project_number: 372
 
 ### Pending
 
-- **370** [RESEARCHED] -- Inject artifact format specifications into skill delegation prompts
-- **371** [RESEARCHED] -- Add artifact content validation to skill postflight stages
+- **370** [PLANNED] -- Inject artifact format specifications into skill delegation prompts
+- **371** [PLANNED] -- Add artifact content validation to skill postflight stages
 - **369** [COMPLETED] -- Integrate ROAD_MAP.md consultation into research/planning agents
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -20,10 +20,11 @@ next_project_number: 372
 
 ### 370. Inject artifact format specifications into skill delegation prompts
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_format-injection-research.md](370_inject_format_specs_delegation_prompts/reports/01_format-injection-research.md)
+- **Plan**: [01_format-injection-plan.md](370_inject_format_specs_delegation_prompts/plans/01_format-injection-plan.md)
 
 **Description**: Artifact-producing skills (skill-planner, skill-researcher, skill-implementer) rely on advisory `@` references in agent definitions to communicate format requirements. These references are not automatically resolved -- the spawned subagent must actively Read the file, which it may skip when focused on complex domain content. Fix by updating each skill's delegation stage to explicitly Read the relevant format file (plan-format.md, report-format.md, summary-format.md) and inject its content into the delegation prompt passed to the subagent. This ensures format specifications are unavoidable in the agent's context. Files: `.claude/skills/skill-planner/SKILL.md`, `.claude/skills/skill-researcher/SKILL.md`, `.claude/skills/skill-implementer/SKILL.md`.
 
@@ -31,10 +32,11 @@ next_project_number: 372
 
 ### 371. Add artifact content validation to skill postflight stages
 - **Effort**: 1-2 hours
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_postflight-validation-research.md](371_artifact_content_validation_postflight/reports/01_postflight-validation-research.md)
+- **Plan**: [01_postflight-validation-plan.md](371_artifact_content_validation_postflight/plans/01_postflight-validation-plan.md)
 
 **Description**: Skill postflight stages currently validate only the `.return-meta.json` metadata file, not the actual artifact content. A structurally non-compliant plan/report/summary passes postflight as long as the metadata JSON is valid. Fix by: (1) creating a reusable validation script (`.claude/scripts/validate-artifact-format.sh`) that checks artifacts against format requirements (required metadata fields, required sections, phase heading format); (2) integrating validation into skill-planner, skill-researcher, and skill-implementer postflight between metadata parsing and git commit; (3) on validation failure, attempt auto-fix for missing metadata block or surface the issue to the user. Files: `.claude/scripts/validate-artifact-format.sh` (new), `.claude/skills/skill-planner/SKILL.md`, `.claude/skills/skill-researcher/SKILL.md`, `.claude/skills/skill-implementer/SKILL.md`.
 
