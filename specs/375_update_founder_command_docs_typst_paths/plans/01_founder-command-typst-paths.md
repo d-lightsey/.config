@@ -81,7 +81,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update sheet.md (Special Case) [IN PROGRESS]
+### Phase 2: Update sheet.md (Special Case) [COMPLETED]
 
 **Goal**: Update sheet.md output references from `.pdf` to `.typ`, preserving XLSX/JSON data artifact paths.
 
