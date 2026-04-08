@@ -5,21 +5,47 @@
     {
       "project_number": 378,
       "project_name": "meeting_format_context_files",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "task_type": "meeting",
       "created": "2026-04-08T22:15:32Z",
-      "last_updated": "2026-04-08T22:32:50Z",
+      "last_updated": "2026-04-08T22:41:42Z",
       "artifacts": [
         {
           "path": "specs/378_meeting_format_context_files/reports/01_meeting-format-research.md",
           "type": "research",
           "summary": "Meeting format schema analysis: 27 YAML fields, 10 markdown sections, 22 CSV columns with mapping"
+        },
+        {
+          "path": "specs/378_meeting_format_context_files/plans/01_meeting-format-plan.md",
+          "type": "plan",
+          "summary": "2-phase plan: meeting-format.md template + csv-tracker.md pattern"
         }
       ],
       "next_artifact_number": 2,
-      "session_id": "sess_1775687355_52fad3",
-      "researched": "2026-04-08T22:32:50Z"
+      "session_id": "sess_1775687924_72bc34",
+      "researched": "2026-04-08T22:32:50Z",
+      "planned": "2026-04-08T22:41:42Z",
+      "plan_metadata": {
+        "phases": 2,
+        "total_effort_hours": 1.5,
+        "complexity": "low",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1,
+            2
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_meeting-format-research.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-08"
+          }
+        ]
+      }
     },
     {
       "project_number": 379,
