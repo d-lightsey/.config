@@ -35,34 +35,94 @@
     {
       "project_number": 373,
       "project_name": "typst_primary_output_founder_implement",
-      "status": "not_started",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-07T00:00:00Z",
+      "last_updated": "2026-04-08T01:40:23Z",
       "dependencies": [
         372
-      ]
+      ],
+      "session_id": "sess_1775612138_270bed",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/373_typst_primary_output_founder_implement/reports/01_typst-primary-output.md",
+          "type": "research",
+          "summary": "Research report mapping current markdown-primary references to typst-primary structure with specific line-by-line change recommendations"
+        },
+        {
+          "path": "specs/373_typst_primary_output_founder_implement/plans/01_typst-primary-output.md",
+          "type": "plan",
+          "summary": "2-phase plan to make typst the primary output format in founder-implement-agent"
+        },
+        {
+          "path": "specs/373_typst_primary_output_founder_implement/summaries/01_typst-primary-output-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary"
+        }
+      ],
+      "plan_metadata": {
+        "phases": 2,
+        "total_effort_hours": 0.5,
+        "complexity": "simple",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_typst-primary-output.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-07"
+          }
+        ]
+      },
+      "completion_summary": "Rewrote founder-implement-agent.md to make typst the primary output format: promoted typst templates to Always Load, created Markdown Fallback section, rewrote Stage 4 table with primary/fallback columns, renamed all Phase 4 headings to Typst Report Generation."
     },
     {
       "project_number": 374,
       "project_name": "update_skill_founder_implement_typst_artifacts",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-07T00:00:00Z",
+      "last_updated": "2026-04-08T01:58:37Z",
       "dependencies": [
         373
+      ],
+      "session_id": "sess_1775613282_3866c5_t374",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/374_update_skill_founder_implement_typst_artifacts/reports/01_typst-artifact-reporting.md",
+          "type": "research",
+          "summary": "Analysis of skill-founder-implement postflight for typst/PDF artifact reporting with specific change recommendations"
+        }
       ]
     },
     {
       "project_number": 375,
       "project_name": "update_founder_command_docs_typst_paths",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-07T00:00:00Z",
+      "last_updated": "2026-04-08T01:58:02Z",
       "dependencies": [
         373
+      ],
+      "session_id": "sess_1775613282_3866c5_t375",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/375_update_founder_command_docs_typst_paths/reports/01_founder-command-typst-paths.md",
+          "type": "research",
+          "summary": "Analysis of 6 founder command files identifying 18 markdown output path references to update to typst primary with markdown fallback"
+        }
       ]
     },
     {
