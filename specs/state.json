@@ -5,22 +5,22 @@
     {
       "project_number": 372,
       "project_name": "create_financial_analysis_typst_template",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "created": "2026-04-07T00:00:00Z",
-      "last_updated": "2026-04-08T00:30:57Z",
-      "session_id": "sess_1775607685_890c42",
+      "last_updated": "2026-04-08T01:04:04Z",
+      "session_id": "sess_1775608351_964a56",
       "next_artifact_number": 3,
       "artifacts": [
-        {
-          "type": "plan",
-          "path": "specs/372_create_financial_analysis_typst_template/plans/01_financial-analysis-template.md",
-          "summary": "2-phase plan: core structure and components (1hr), remaining components and example usage (30min)"
-        },
         {
           "path": "specs/372_create_financial_analysis_typst_template/reports/02_financial-spreadsheet-integration.md",
           "type": "research",
           "summary": "Spreadsheet integration design for financial analysis research pipeline"
+        },
+        {
+          "path": "specs/372_create_financial_analysis_typst_template/plans/02_financial-spreadsheet-integration.md",
+          "type": "plan",
+          "summary": "4-phase plan: Typst template, forcing questions, example JSON, routing integration (6 hours)"
         }
       ],
       "description": "Create financial-analysis.typ template at .claude/extensions/founder/context/project/founder/templates/typst/financial-analysis.typ following cost-breakdown.typ pattern. Template must load financial-metrics.json at compile time via json() import for all numerical data (revenue, expenses, cash position, ratios, scenarios). Also create: (1) financial-metrics.json schema covering revenue (ARR, MRR, growth), expenses (by category), cash position (balance, burn, runway), ratios (gross margin, LTV:CAC, burn multiple), and scenarios (upside/base/downside); (2) financial-analysis forcing questions pattern for the spreadsheet agent to gather real numbers via AskUserQuestion; (3) founder:financial-analysis routing key in manifest.json pointing to a skill that produces XLSX + JSON metrics during /research. Use strategy-template.typ components (metric-callout, highlight-box, warning-box, strategy-table). Model sections after templates/financial-analysis.md but all numerical values must come from JSON data, not hardcoded."
