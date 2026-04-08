@@ -1,5 +1,5 @@
 ---
-next_project_number: 377
+next_project_number: 378
 ---
 
 # TODO
@@ -15,6 +15,13 @@ next_project_number: 377
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 377. Add ctrl-based keymap for triggering dictation in Neovim with Claude Code sidebar voice recording support
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: neovim
+
+**Description**: Add a ctrl-based keymapping (non-conflicting with existing bindings) for triggering dictation in Neovim. When inside the Claude Code sidebar, the keymap should directly load voice recording using current best practices (April 2026). Research existing ctrl keymaps to avoid conflicts and determine the optimal dictation/voice integration approach.
 
 ### 376. TTS notification: primary agent only with Notification hook support
 - **Effort**: 30 minutes
@@ -73,3 +80,4 @@ next_project_number: 377
 
 ## Recommended Order
 
+1. **377** -> research (independent)

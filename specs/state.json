@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 377,
+  "next_project_number": 378,
   "active_projects": [
+    {
+      "project_number": 377,
+      "project_name": "ctrl_keymap_dictation_neovim_claude_sidebar",
+      "status": "not_started",
+      "language": "neovim",
+      "created": "2026-04-08T18:40:55Z",
+      "last_updated": "2026-04-08T18:40:55Z"
+    },
     {
       "project_number": 376,
       "project_name": "tts_primary_agent_only_notification_hook",
