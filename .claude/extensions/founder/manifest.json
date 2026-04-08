@@ -17,7 +17,8 @@
       "finance-agent.md",
       "deck-research-agent.md",
       "deck-planner-agent.md",
-      "deck-builder-agent.md"
+      "deck-builder-agent.md",
+      "financial-analysis-agent.md"
     ],
     "skills": [
       "skill-market",
@@ -31,7 +32,8 @@
       "skill-finance",
       "skill-deck-research",
       "skill-deck-plan",
-      "skill-deck-implement"
+      "skill-deck-implement",
+      "skill-financial-analysis"
     ],
     "commands": ["market.md", "analyze.md", "strategy.md", "legal.md", "project.md", "sheet.md", "finance.md", "deck.md"],
     "rules": [],
@@ -49,6 +51,7 @@
       "founder:project": "skill-project",
       "founder:sheet": "skill-spreadsheet",
       "founder:finance": "skill-finance",
+      "founder:financial-analysis": "skill-financial-analysis",
       "founder:deck": "skill-deck-research"
     },
     "plan": {
@@ -60,6 +63,7 @@
       "founder:project": "skill-founder-plan",
       "founder:sheet": "skill-founder-plan",
       "founder:finance": "skill-founder-plan",
+      "founder:financial-analysis": "skill-founder-plan",
       "founder:deck": "skill-deck-plan"
     },
     "implement": {
@@ -71,6 +75,7 @@
       "founder:project": "skill-founder-implement",
       "founder:sheet": "skill-founder-implement",
       "founder:finance": "skill-founder-implement",
+      "founder:financial-analysis": "skill-founder-implement",
       "founder:deck": "skill-deck-implement"
     }
   },

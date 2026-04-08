@@ -10,7 +10,7 @@ next_project_number: 376
 
 ### Pending
 
-- **372** [PLANNED] -- Create financial-analysis.typ template
+- **372** [COMPLETED] -- Create financial-analysis.typ template
 - **373** [NOT STARTED] -- Make typst primary output in founder-implement-agent (depends: 372)
 - **374** [NOT STARTED] -- Update skill-founder-implement artifact reporting for typst (depends: 373)
 - **375** [NOT STARTED] -- Update founder command docs to reference typst output paths (depends: 373)
@@ -24,7 +24,7 @@ next_project_number: 376
 
 ### 372. Create financial-analysis.typ template
 - **Effort**: 30 minutes
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**:
@@ -33,6 +33,7 @@ next_project_number: 376
 - **Plan**:
   - [01_financial-analysis-template.md](specs/372_create_financial_analysis_typst_template/plans/01_financial-analysis-template.md)
   - [02_financial-spreadsheet-integration.md](specs/372_create_financial_analysis_typst_template/plans/02_financial-spreadsheet-integration.md)
+- **Summary**: [02_financial-spreadsheet-integration-summary.md](specs/372_create_financial_analysis_typst_template/summaries/02_financial-spreadsheet-integration-summary.md)
 
 **Description**: Create financial-analysis.typ template at `.claude/extensions/founder/context/project/founder/templates/typst/financial-analysis.typ` following cost-breakdown.typ pattern. Template must load `financial-metrics.json` at compile time via `json()` import for all numerical data (revenue, expenses, cash position, ratios, scenarios). Also create: (1) `financial-metrics.json` schema covering revenue (ARR, MRR, growth), expenses (by category), cash position (balance, burn, runway), ratios (gross margin, LTV:CAC, burn multiple), and scenarios (upside/base/downside); (2) financial-analysis forcing questions pattern for the spreadsheet agent to gather real numbers via AskUserQuestion; (3) `founder:financial-analysis` routing key in manifest.json pointing to a skill that produces XLSX + JSON metrics during /research. Use strategy-template.typ components (metric-callout, highlight-box, warning-box, strategy-table). Model sections after `templates/financial-analysis.md` but all numerical values must come from JSON data, not hardcoded.
 
