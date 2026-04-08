@@ -5,11 +5,11 @@
     {
       "project_number": 377,
       "project_name": "ctrl_keymap_dictation_neovim_claude_sidebar",
-      "status": "researched",
+      "status": "planned",
       "language": "neovim",
       "created": "2026-04-08T18:40:55Z",
-      "last_updated": "2026-04-08T18:51:42Z",
-      "session_id": "sess_1775673856_a83655",
+      "last_updated": "2026-04-08T18:57:49Z",
+      "session_id": "sess_1775674435_8b676c",
       "researched": "2026-04-08T18:51:42Z",
       "next_artifact_number": 2,
       "artifacts": [
@@ -17,6 +17,11 @@
           "path": "specs/377_ctrl_keymap_dictation_neovim_claude_sidebar/reports/01_team-research.md",
           "type": "research",
           "summary": "Team research with 4 teammates"
+        },
+        {
+          "path": "specs/377_ctrl_keymap_dictation_neovim_claude_sidebar/plans/01_dictation-keymap-plan.md",
+          "type": "plan",
+          "summary": "4-phase plan: context-aware dictation keymaps with Claude Code voice routing"
         }
       ]
     },
