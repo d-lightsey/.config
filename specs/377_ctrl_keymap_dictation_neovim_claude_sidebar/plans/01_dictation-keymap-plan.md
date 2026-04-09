@@ -1,7 +1,7 @@
 # Implementation Plan: Context-Aware Dictation Keymaps
 
 - **Task**: 377 - Add ctrl-based keymap for triggering dictation in Neovim with Claude Code sidebar voice recording support
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md
@@ -64,7 +64,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Configure Claude Code keybindings and add detection helper [NOT STARTED]
+### Phase 1: Configure Claude Code keybindings and add detection helper [COMPLETED]
 
 **Goal**: Create `~/.claude/keybindings.json` and add a local helper in `stt/init.lua` to detect Claude Code buffers without hard-coupling to the session-manager module.
 
@@ -87,7 +87,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Add context-aware routing to keymap handlers [NOT STARTED]
+### Phase 2: Add context-aware routing to keymap handlers [COMPLETED]
 
 **Goal**: Modify `<C-\>` (normal mode) and `<C-'>` (terminal mode) handlers to check if the current buffer is a Claude Code buffer and dispatch accordingly -- sending the `meta+k` escape sequence to Claude Code or falling through to Vosk STT.
 
@@ -112,7 +112,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Fix terminal insertion bug for Vosk STT [NOT STARTED]
+### Phase 3: Fix terminal insertion bug for Vosk STT [COMPLETED]
 
 **Goal**: Replace `nvim_put()` with `chansend()` when inserting transcribed text into terminal buffers, so Vosk STT works correctly in non-Claude terminal contexts.
 
@@ -135,7 +135,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Integration testing and documentation [NOT STARTED]
+### Phase 4: Integration testing and documentation [COMPLETED]
 
 **Goal**: End-to-end verification of all four code paths (Claude vs non-Claude x normal vs terminal) and update module documentation.
 

@@ -1,7 +1,7 @@
 # Implementation Plan: Create skill-meeting and meeting.md command
 
 - **Task**: 380 - Create skill-meeting and meeting.md command
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1.5 hours
 - **Dependencies**: meeting-agent.md (exists)
 - **Research Inputs**: specs/380_meeting_skill_command/reports/01_skill-command-research.md
@@ -51,7 +51,7 @@ No ROAD_MAP.md found.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create SKILL.md [NOT STARTED]
+### Phase 1: Create SKILL.md [COMPLETED]
 
 **Goal**: Create the thin skill wrapper that routes meeting requests to meeting-agent
 
@@ -82,7 +82,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Create meeting.md command [NOT STARTED]
+### Phase 2: Create meeting.md command [COMPLETED]
 
 **Goal**: Create the /meeting command definition with input detection, task creation, and direct delegation
 
