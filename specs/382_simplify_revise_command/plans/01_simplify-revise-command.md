@@ -98,7 +98,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Refactor skill-reviser/SKILL.md to thin wrapper [IN PROGRESS]
+### Phase 2: Refactor skill-reviser/SKILL.md to thin wrapper [COMPLETED]
 
 **Goal**: Convert skill-reviser from direct execution to a thin wrapper that delegates to reviser-agent via Task tool, matching skill-planner's pattern.
 
@@ -143,7 +143,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Simplify revise.md command [NOT STARTED]
+### Phase 3: Simplify revise.md command [IN PROGRESS]
 
 **Goal**: Remove status-based ABORT rules from the command, add GATE OUT verification matching /plan's CHECKPOINT 2 pattern, and route solely by plan file existence.
 

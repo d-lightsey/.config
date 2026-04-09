@@ -99,7 +99,7 @@ When `parse_task_args()` produces more than one task number, execute the batch f
 
 #### Step 1: Batch Validation
 
-Validate all tasks exist and have status `researched` (the required status for planning):
+Validate all tasks exist and are not in a terminal state:
 
 ```bash
 validated_tasks=()
@@ -117,11 +117,11 @@ for task_num in "${task_numbers[@]}"; do
 
   status=$(echo "$task_data" | jq -r '.status')
 
-  # /plan requires status = researched
-  if [ "$status" = "researched" ] || [ "$status" = "not_started" ] || [ "$status" = "partial" ]; then
-    validated_tasks+=("$task_num")
+  # /plan accepts any non-terminal status
+  if [ "$status" = "completed" ] || [ "$status" = "abandoned" ]; then
+    invalid_tasks+=("$task_num: terminal status [$status]")
   else
-    invalid_tasks+=("$task_num: invalid status [$status]")
+    validated_tasks+=("$task_num")
   fi
 done
 
@@ -253,14 +253,17 @@ Skipped: {count}
 
 3. **Validate**
    - Task exists (ABORT if not)
-   - Status allows planning: not_started, researched, partial
-   - If planned: Note existing plan, offer --force for revision
-   - If completed: ABORT "Task already completed"
-   - If implementing: ABORT "Task in progress, use /revise instead"
+   - If completed or abandoned: ABORT "Task is in terminal state"
+   - All other states: proceed
 
 4. **Load Context**
    - Task description from state.json
    - Research reports from `specs/{NNN}_{SLUG}/reports/` (if any)
+   - Discover prior plan (if any):
+     ```bash
+     padded_num=$(printf "%03d" "$task_number")
+     prior_plan_path=$(ls -1 "specs/${padded_num}_${project_name}/plans/"*.md 2>/dev/null | sort -V | tail -1)
+     ```
 
 **ABORT** if any validation fails.
 
@@ -358,15 +361,15 @@ else:
 ```
 # For team mode:
 skill: "skill-team-plan"
-args: "task_number={N} research_path={path to research report if exists} team_size={team_size} session_id={session_id}"
+args: "task_number={N} research_path={path to research report if exists} prior_plan_path={path to prior plan if exists} team_size={team_size} session_id={session_id}"
 
 # For extension-routed skill (e.g., skill-founder-plan):
 skill: "{skill_name from extension routing}"
-args: "task_number={N} research_path={path to research report if exists} session_id={session_id}"
+args: "task_number={N} research_path={path to research report if exists} prior_plan_path={path to prior plan if exists} session_id={session_id}"
 
 # For default single-agent mode:
 skill: "skill-planner"
-args: "task_number={N} research_path={path to research report if exists} session_id={session_id}"
+args: "task_number={N} research_path={path to research report if exists} prior_plan_path={path to prior plan if exists} session_id={session_id}"
 ```
 
 The skill spawns agent(s) which analyze task requirements and research findings, decompose into logical phases, identify risks and mitigations, and create a plan in `specs/{NNN}_{SLUG}/plans/`.
@@ -480,7 +483,7 @@ Next: /implement {N}
 
 ### GATE IN Failure
 - Task not found: Return error with guidance
-- Invalid status: Return error with current status
+- Terminal status (completed/abandoned): Return error with current status
 
 ### DELEGATE Failure
 - Skill fails: Keep [PLANNING], log error
