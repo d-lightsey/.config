@@ -95,7 +95,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 1
 
-### Phase 3: Create Domain Context File [IN PROGRESS]
+### Phase 3: Create Domain Context File [COMPLETED]
 
 - **Goal:** Create funding-analysis.md with research funding domain knowledge for the funds-agent.
 - **Tasks:**
@@ -113,7 +113,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 1
 
-### Phase 4: Create Patterns Context File [NOT STARTED]
+### Phase 4: Create Patterns Context File [IN PROGRESS]
 
 - **Goal:** Create funding-forcing-questions.md with mode-specific question routing and push-back patterns.
 - **Tasks:**
