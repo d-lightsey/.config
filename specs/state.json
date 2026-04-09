@@ -182,7 +182,36 @@
           "type": "plan",
           "summary": "5-phase implementation plan for /talk command with talk library, components, skill, agent, and integration"
         }
-      ]
+      ],
+      "plan_metadata": {
+        "phases": 5,
+        "total_effort_hours": 5,
+        "complexity": "medium",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_talk-command-research.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-09"
+          }
+        ]
+      }
     },
     {
       "project_number": 391,
