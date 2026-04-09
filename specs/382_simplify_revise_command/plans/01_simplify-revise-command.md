@@ -1,7 +1,7 @@
 # Implementation Plan: Simplify /revise Command
 
 - **Task**: 382 - Simplify /revise command with command + skill + agent architecture
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_simplify-revise-command.md

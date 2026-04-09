@@ -1,7 +1,7 @@
 # Implementation Plan: Task #383
 
 - **Task**: 383 - Simplify /plan command
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/383_simplify_plan_command/reports/01_simplify-plan-command.md

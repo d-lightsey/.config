@@ -45,10 +45,10 @@
     {
       "project_number": 382,
       "project_name": "simplify_revise_command",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-09T05:20:48Z",
-      "last_updated": "2026-04-09T05:51:53Z",
+      "last_updated": "2026-04-09T05:57:27Z",
       "artifacts": [
         {
           "path": "specs/382_simplify_revise_command/reports/01_simplify-revise-command.md",
@@ -66,10 +66,10 @@
     {
       "project_number": 383,
       "project_name": "simplify_plan_command",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-09T05:20:48Z",
-      "last_updated": "2026-04-09T05:51:53Z",
+      "last_updated": "2026-04-09T05:57:27Z",
       "artifacts": [
         {
           "path": "specs/383_simplify_plan_command/plans/01_simplify-plan-command.md",
