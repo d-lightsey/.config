@@ -133,7 +133,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 2
 
-### Phase 5: Create funds-agent Definition [IN PROGRESS]
+### Phase 5: Create funds-agent Definition [COMPLETED]
 
 - **Goal:** Create the agent definition with full execution flow for all four analysis modes, XLSX output, and metadata return.
 - **Tasks:**
