@@ -1,7 +1,7 @@
 # Implementation Plan: Create /budget Command for Present Extension
 
 - **Task**: 387 - Create /budget command for present extension
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: None (task 391 depends on this for manifest integration)
 - **Research Inputs**: specs/387_create_budget_command_present/reports/01_budget-command-research.md
@@ -57,7 +57,7 @@ Create a standalone `/budget` command for the present extension that generates g
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create Context Files [NOT STARTED]
+### Phase 1: Create Context Files [COMPLETED]
 
 - **Goal:** Establish domain knowledge and forcing question patterns that the agent will reference
 - **Tasks:**
@@ -78,7 +78,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 1 hour
 - **Depends on:** none
 
-### Phase 2: Create Budget Agent [NOT STARTED]
+### Phase 2: Create Budget Agent [COMPLETED]
 
 - **Goal:** Create the budget-agent that handles forcing questions and XLSX generation
 - **Tasks:**
@@ -111,7 +111,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 1.5 hours
 - **Depends on:** 1
 
-### Phase 3: Create Budget Skill [NOT STARTED]
+### Phase 3: Create Budget Skill [COMPLETED]
 
 - **Goal:** Create the thin wrapper skill that delegates to budget-agent with postflight handling
 - **Tasks:**
@@ -128,7 +128,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 1
 
-### Phase 4: Create Budget Command [NOT STARTED]
+### Phase 4: Create Budget Command [COMPLETED]
 
 - **Goal:** Create the /budget slash command with pre-task forcing questions and task creation
 - **Tasks:**
@@ -146,7 +146,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 2, 3
 
-### Phase 5: Verification and Cross-Reference [NOT STARTED]
+### Phase 5: Verification and Cross-Reference [COMPLETED]
 
 - **Goal:** Verify all files are internally consistent and cross-reference correctly
 - **Tasks:**

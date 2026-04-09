@@ -10,7 +10,7 @@ next_project_number: 392
 
 ### Pending
 
-- **387** [IMPLEMENTING] -- Create /budget command for present extension
+- **387** [COMPLETED] -- Create /budget command for present extension
 - **388** [IMPLEMENTING] -- Create /timeline command for present extension
 - **389** [COMPLETED] -- Create /funds command for present extension
 - **390** [IMPLEMENTING] -- Create /talk command for present extension
@@ -61,10 +61,11 @@ next_project_number: 392
 
 ### 387. Create /budget command for present extension
 - **Effort**: 3-5 hours
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Research**: [01_budget-command-research.md](387_create_budget_command_present/reports/01_budget-command-research.md)
 - **Plan**: [01_budget-command-plan.md](387_create_budget_command_present/plans/01_budget-command-plan.md)
+- **Summary**: [01_budget-command-summary.md](387_create_budget_command_present/summaries/01_budget-command-summary.md)
 
 **Description**: Create /budget command for grant budget spreadsheets: NIH modular/detailed formats, NSF budgets, F&A rates, cost-sharing, sub-awards, personnel effort. Adapts founder /sheet command forcing questions and XLSX generation for medical research grant budgets. Deliverables: command, skill (skill-budget), agent (budget-agent), context files (domain, patterns, templates for grant budgets).
 
