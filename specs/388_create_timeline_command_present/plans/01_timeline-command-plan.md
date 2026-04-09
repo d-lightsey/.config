@@ -1,7 +1,7 @@
 # Implementation Plan: Create /timeline Command for Present Extension
 
 - **Task**: 388 - Create /timeline command for present extension
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: None (sibling tasks 387, 389, 390 are independent; task 391 handles manifest integration separately)
 - **Research Inputs**: specs/388_create_timeline_command_present/reports/01_timeline-command-research.md
@@ -56,7 +56,7 @@ This plan creates the /timeline command for the present extension, adapting the 
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Domain Context and Templates [NOT STARTED]
+### Phase 1: Domain Context and Templates [COMPLETED]
 
 - **Goal:** Create the foundational domain knowledge, patterns, and template files that the agent and skill will reference.
 - **Tasks:**
@@ -78,7 +78,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 1.5 hours
 - **Depends on:** none
 
-### Phase 2: Timeline Agent [NOT STARTED]
+### Phase 2: Timeline Agent [COMPLETED]
 
 - **Goal:** Create the timeline-agent that conducts interactive research through forcing questions and produces structured timeline reports.
 - **Tasks:**
@@ -101,7 +101,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 1.5 hours
 - **Depends on:** 1
 
-### Phase 3: Skill (skill-timeline) [NOT STARTED]
+### Phase 3: Skill (skill-timeline) [COMPLETED]
 
 - **Goal:** Create the thin wrapper skill that routes timeline requests to the timeline-agent subagent.
 - **Tasks:**
@@ -120,7 +120,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 0.5 hours
 - **Depends on:** 2
 
-### Phase 4: Command (timeline.md) [NOT STARTED]
+### Phase 4: Command (timeline.md) [COMPLETED]
 
 - **Goal:** Create the /timeline command definition following the /grant hybrid pattern.
 - **Tasks:**
