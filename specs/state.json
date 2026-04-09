@@ -5,10 +5,20 @@
     {
       "project_number": 386,
       "project_name": "expand_filetypes_superdoc_integration",
-      "status": "not_started",
+      "status": "researched",
       "language": "meta",
       "created": "2026-04-09T17:52:37Z",
-      "last_updated": "2026-04-09T17:52:37Z"
+      "last_updated": "2026-04-09T18:03:14Z",
+      "session_id": "sess_1775757258_aaa79a",
+      "researched": "2026-04-09T18:03:14Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/386_expand_filetypes_superdoc_integration/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates: extension patterns, architecture, critic analysis, strategic horizons"
+        }
+      ]
     },
     {
       "project_number": 385,

@@ -20,8 +20,10 @@ next_project_number: 387
 
 ### 386. Expand filetypes extension with SuperDoc MCP integration and partner Office workflows
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Language**: meta
+- **Research**:
+  - [01_team-research.md](specs/386_expand_filetypes_superdoc_integration/reports/01_team-research.md)
 
 **Description**: Expand filetypes extension with SuperDoc MCP integration and partner Office workflows: add skill-docx-edit + docx-edit-agent for in-place DOCX editing with tracked changes via SuperDoc MCP, add skill-xlsx-edit for spreadsheet editing via openpyxl MCP, update manifest.json with new MCP server declarations and routing entries, update conversion-tables.md and mcp-integration.md context files, create docx-editing patterns context file, and add SharePoint/OneDrive workflow patterns. Build on research from task 385 (reports 01_team-research.md and 02_superdoc-workflows.md which detail SuperDoc tool inventory, 5 workflows, and integration architecture).
 
