@@ -113,7 +113,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 1
 
-### Phase 4: Create Patterns Context File [IN PROGRESS]
+### Phase 4: Create Patterns Context File [COMPLETED]
 
 - **Goal:** Create funding-forcing-questions.md with mode-specific question routing and push-back patterns.
 - **Tasks:**
@@ -133,7 +133,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 45 minutes
 - **Depends on:** 2
 
-### Phase 5: Create funds-agent Definition [NOT STARTED]
+### Phase 5: Create funds-agent Definition [IN PROGRESS]
 
 - **Goal:** Create the agent definition with full execution flow for all four analysis modes, XLSX output, and metadata return.
 - **Tasks:**
