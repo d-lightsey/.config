@@ -5,51 +5,118 @@
     {
       "project_number": 387,
       "project_name": "create_budget_command_present",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "description": "Create /budget command for present extension: grant budget spreadsheets with NIH modular/detailed, NSF, F&A rates, cost-sharing, sub-awards. Adapts founder /sheet command with forcing questions and XLSX generation for medical research grant budgets.",
       "created": "2026-04-09T19:39:14Z",
-      "last_updated": "2026-04-09T19:45:37Z",
+      "last_updated": "2026-04-09T19:52:21Z",
       "dependencies": [],
-      "session_id": "sess_1775763708_45d501",
+      "session_id": "sess_1775764151_429db2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/387_create_budget_command_present/reports/01_budget-command-research.md",
           "type": "research",
           "summary": "Research report covering command architecture, agent design, forcing question adaptation, XLSX generation patterns, and context file requirements for /budget command"
+        },
+        {
+          "path": "specs/387_create_budget_command_present/plans/01_budget-command-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for /budget command covering context files, agent, skill, command, and verification"
         }
-      ]
+      ],
+      "plan_metadata": {
+        "phases": 5,
+        "total_effort_hours": 4,
+        "complexity": "medium",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_budget-command-research.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-09"
+          }
+        ]
+      }
     },
     {
       "project_number": 388,
       "project_name": "create_timeline_command_present",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "description": "Create /timeline command for present extension: research project timelines with specific aims schedules, regulatory milestones (IRB, IACUC), reporting periods, no-cost extensions. Adapts founder /project command WBS/PERT/Gantt capabilities for medical research.",
       "created": "2026-04-09T19:39:14Z",
-      "last_updated": "2026-04-09T19:46:04Z",
+      "last_updated": "2026-04-09T19:52:21Z",
       "dependencies": [],
-      "session_id": "sess_1775763708_45d501",
+      "session_id": "sess_1775764151_429db2",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/388_create_timeline_command_present/reports/01_timeline-command-research.md",
           "type": "research",
           "summary": "Research report analyzing founder /project command architecture and identifying adaptations for medical research timelines"
+        },
+        {
+          "path": "specs/388_create_timeline_command_present/plans/01_timeline-command-plan.md",
+          "type": "plan",
+          "summary": "4-phase plan creating 7 files: command, skill, agent, and 4 context files adapting founder /project WBS/PERT/Gantt for medical research timelines"
         }
-      ]
+      ],
+      "plan_metadata": {
+        "phases": 4,
+        "total_effort_hours": 4,
+        "complexity": "medium",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ],
+          [
+            4
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_timeline-command-research.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-09"
+          }
+        ]
+      }
     },
     {
       "project_number": 389,
       "project_name": "create_funds_command_present",
-      "status": "researched",
+      "status": "planned",
       "language": "meta",
       "description": "Create /funds command for present extension: funding landscape analysis with funder portfolio mapping, cost-effectiveness analysis, budget justification verification, funding gap analysis. Adapts founder /finance command audit/model/forecast modes for research funding.",
       "created": "2026-04-09T19:39:14Z",
-      "last_updated": "2026-04-09T19:46:22Z",
+      "last_updated": "2026-04-09T19:52:33Z",
       "dependencies": [],
-      "session_id": "sess_1775763708_45d501",
+      "session_id": "sess_1775764151_429db2",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -62,13 +129,13 @@
     {
       "project_number": 390,
       "project_name": "create_talk_command_present",
-      "status": "researched",
+      "status": "planning",
       "language": "meta",
       "description": "Create /talk command for present extension: research presentations via Slidev with conference talks, poster sessions, grant defense, research seminars, journal clubs. Adapts founder /deck command material synthesis and slide library for medical research presentations.",
       "created": "2026-04-09T19:39:14Z",
-      "last_updated": "2026-04-09T19:46:07Z",
+      "last_updated": "2026-04-09T19:49:41Z",
       "dependencies": [],
-      "session_id": "sess_1775763708_45d501",
+      "session_id": "sess_1775764151_429db2",
       "next_artifact_number": 2,
       "artifacts": [
         {
