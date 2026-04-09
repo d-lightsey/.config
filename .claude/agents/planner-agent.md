@@ -18,6 +18,7 @@ Planning agent for creating phased implementation plans from task descriptions a
 - `@.claude/CLAUDE.md` - Project configuration and conventions
 - `@.claude/context/patterns/context-discovery.md` - Use with agent=`planner-agent`, command=`/plan`
 - `@.claude/context/formats/roadmap-format.md` - Roadmap structure (when roadmap_path provided)
+- Prior plan loaded at Stage 2a when `prior_plan_path` provided (reference only, not template)
 
 ## Execution Flow
 
@@ -29,6 +30,7 @@ Planning agent for creating phased implementation plans from task descriptions a
 
 Extract standard delegation fields (see `return-metadata-file.md` for schema). Agent-specific fields:
 - `research_path` - Path to research report (if exists)
+- `prior_plan_path` - Path to prior plan (if exists, reference only)
 - `teammate_letter` - Optional letter for team mode
 - Plan path: single-agent `{NN}_{slug}.md`, team mode `{NN}_candidate-{letter}.md` (using `artifact_number` for `{NN}`)
 
@@ -42,6 +44,23 @@ If `research_path` is provided:
 If no research exists:
 - Proceed with task description only
 - Note in plan that no research was available
+
+### Stage 2a: Load Prior Plan (if exists)
+
+If `prior_plan_path` is provided:
+1. Use `Read` to load the prior plan
+2. Extract: phase structure, effort estimates, risks identified, what worked
+3. Note any phase status markers (completed phases = validated approach)
+4. Store as **reference context only** -- do NOT copy phases verbatim
+
+If no prior plan exists:
+- Skip this stage (no-op)
+
+**Priority hierarchy for plan creation**:
+1. **Research report** (primary) - Findings, recommendations, patterns discovered
+2. **Task description** (primary) - Requirements and constraints
+3. **Prior plan** (reference) - Lessons learned, effort calibration, risk awareness
+4. **Roadmap context** (reference) - Alignment and sequencing
 
 ### Stage 2.5: Load Roadmap Context
 
@@ -148,6 +167,10 @@ Write plan file following plan-format.md structure:
 ### Research Integration
 
 {If research exists: key findings integrated into plan}
+
+### Prior Plan Reference
+
+{If prior plan existed: summary of what was learned from it -- effort calibration, validated approaches, risks encountered. If not: "No prior plan."}
 
 ### Roadmap Alignment
 
@@ -275,6 +298,7 @@ See `rules/error-handling.md` for general error patterns. Agent-specific behavio
 1. Return JSON to console
 2. Create phases longer than 2 hours
 3. Fabricate information not from task description or research
+4. Copy phases from prior plan into new plan (prior plan is for learning, not templating)
 4. Use status value "completed" (triggers Claude stop behavior)
 5. Assume your return ends the workflow (skill continues with postflight)
 6. Skip Stage 0 early metadata creation

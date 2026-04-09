@@ -10,8 +10,8 @@ next_project_number: 384
 
 ### Pending
 
-- **382** [PLANNED] -- Simplify /revise command with command + skill + agent architecture
-- **383** [PLANNED] -- Simplify /plan command, remove status gates, reference prior plan
+- **382** [IMPLEMENTING] -- Simplify /revise command with command + skill + agent architecture
+- **383** [IMPLEMENTING] -- Simplify /plan command, remove status gates, reference prior plan
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
@@ -19,7 +19,7 @@ next_project_number: 384
 
 ### 382. Simplify /revise command with command + skill + agent architecture
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_simplify-revise-command.md](382_simplify_revise_command/reports/01_simplify-revise-command.md)
@@ -31,7 +31,7 @@ next_project_number: 384
 
 ### 383. Simplify /plan command, remove status gates, reference prior plan
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Language**: meta
 - **Dependencies**: None
 - **Research**: [01_simplify-plan-command.md](383_simplify_plan_command/reports/01_simplify-plan-command.md)

@@ -1,7 +1,7 @@
 # Implementation Plan: Task #383
 
 - **Task**: 383 - Simplify /plan command
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/383_simplify_plan_command/reports/01_simplify-plan-command.md
@@ -56,7 +56,7 @@ No ROAD_MAP.md found.
 | 2 | 2 | 1 |
 | 3 | 3 | 2 |
 
-### Phase 1: Update planner-agent.md [NOT STARTED]
+### Phase 1: Update planner-agent.md [COMPLETED]
 
 **Goal**: Add prior plan loading capability and priority hierarchy to the planner agent.
 

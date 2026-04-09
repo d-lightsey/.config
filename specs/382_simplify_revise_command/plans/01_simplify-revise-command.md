@@ -1,7 +1,7 @@
 # Implementation Plan: Simplify /revise Command
 
 - **Task**: 382 - Simplify /revise command with command + skill + agent architecture
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 4 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_simplify-revise-command.md
@@ -61,7 +61,7 @@ No ROAD_MAP.md found.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create reviser-agent.md [NOT STARTED]
+### Phase 1: Create reviser-agent.md [COMPLETED]
 
 **Goal**: Create the new reviser-agent that handles plan revision and description update logic, modeled on planner-agent.md but with revision-specific behavior.
 
@@ -98,7 +98,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Refactor skill-reviser/SKILL.md to thin wrapper [NOT STARTED]
+### Phase 2: Refactor skill-reviser/SKILL.md to thin wrapper [IN PROGRESS]
 
 **Goal**: Convert skill-reviser from direct execution to a thin wrapper that delegates to reviser-agent via Task tool, matching skill-planner's pattern.
 
