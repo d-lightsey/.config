@@ -1,7 +1,7 @@
 # Implementation Plan: Filetypes SuperDoc Extension
 
 - **Task**: 386 - expand_filetypes_superdoc_integration
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: Task 385 (Zed + Claude Code guide)
 - **Research Inputs**: reports/03_optimal-extension-design.md, reports/01_team-research.md, reports/02_word-reload-workflow.md

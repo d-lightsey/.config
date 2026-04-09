@@ -60,10 +60,10 @@
     {
       "project_number": 386,
       "project_name": "expand_filetypes_superdoc_integration",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "created": "2026-04-09T17:52:37Z",
-      "last_updated": "2026-04-09T18:58:53Z",
+      "last_updated": "2026-04-09T19:41:39Z",
       "session_id": "sess_1744236000_480cf6",
       "researched": "2026-04-09T20:30:00Z",
       "next_artifact_number": 4,
@@ -87,6 +87,11 @@
           "path": "specs/386_expand_filetypes_superdoc_integration/plans/01_extension-implementation.md",
           "type": "plan",
           "summary": "5-phase implementation plan for filetypes SuperDoc extension: manifest updates, context files, command/skill, agent, and documentation"
+        },
+        {
+          "path": "specs/386_expand_filetypes_superdoc_integration/summaries/03_implementation-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for filetypes SuperDoc extension with /edit command, skill-docx-edit, and docx-edit-agent"
         }
       ],
       "plan_metadata": {
@@ -117,7 +122,9 @@
             "integrated_date": "2026-04-09"
           }
         ]
-      }
+      },
+      "completion_summary": "Created /edit command, skill-docx-edit, and docx-edit-agent for in-place DOCX editing via SuperDoc MCP with AppleScript Word automation. Added superdoc-integration.md and office-edit-patterns.md context files. Updated manifest.json with SuperDoc and openpyxl MCP servers, bumped to v2.2.0.",
+      "claudemd_suggestions": "Updated filetypes extension: manifest.json (MCP servers, new components, v2.2.0), EXTENSION.md (skill-agent and command tables), index-entries.json (2 new entries, updated existing entries), mcp-integration.md (SuperDoc section), conversion-tables.md (edit operations), tool-detection.md (SuperDoc detection)"
     },
     {
       "project_number": 385,

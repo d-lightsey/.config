@@ -109,18 +109,33 @@ EOF
 
 ### Stage 3a: Calculate Artifact Number
 
-Count existing plan files to determine the next artifact number. This handles re-planning naturally since each new plan gets a unique number.
+Read `next_artifact_number` from state.json and use (current-1) since plan stays in the same round as research:
 
 ```bash
-# Count existing plan artifacts to determine next number
-padded_num=$(printf "%03d" "$task_number")
-plan_count=$(ls "specs/${padded_num}_${project_name}/plans/"*.md 2>/dev/null | wc -l)
-artifact_number=$((plan_count + 1))
+# Read next_artifact_number from state.json
+next_num=$(jq -r --argjson num "$task_number" \
+  '.active_projects[] | select(.project_number == $num) | .next_artifact_number // 1' \
+  specs/state.json)
+
+# Plan uses (current - 1) to stay in the same round as research
+# If next_artifact_number is 1 (no research yet), use 1
+if [ "$next_num" -le 1 ]; then
+  artifact_number=1
+else
+  artifact_number=$((next_num - 1))
+fi
+
+# Fallback for legacy tasks: count existing plan artifacts
+if [ "$next_num" = "null" ] || [ -z "$next_num" ]; then
+  padded_num=$(printf "%03d" "$task_number")
+  count=$(ls "specs/${padded_num}_${project_name}/plans/"*[0-9][0-9]*.md 2>/dev/null | wc -l)
+  artifact_number=$((count + 1))
+fi
 
 artifact_padded=$(printf "%02d" "$artifact_number")
 ```
 
-**Note**: Plan does NOT increment `next_artifact_number` in state.json. Only research advances the sequence. Plan numbering is independent via file counting.
+**Note**: Plan does NOT increment `next_artifact_number` in state.json. Only research advances the sequence. Plan uses `(current - 1)` to share the same round number as the preceding research.
 
 ---
 
@@ -157,7 +172,7 @@ Prepare delegation context for the subagent:
 }
 ```
 
-**Note**: The `artifact_number` field tells the agent which sequence number to use for artifact naming (e.g., `01`, `02`). Plan numbering is based on file counting, independent of `next_artifact_number`.
+**Note**: The `artifact_number` field tells the agent which sequence number to use for artifact naming (e.g., `01`, `02`). Plan uses `(next_artifact_number - 1)` to share the same round as the preceding research.
 
 ---
 
