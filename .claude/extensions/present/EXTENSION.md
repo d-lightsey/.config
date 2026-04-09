@@ -1,12 +1,13 @@
 ## Present Extension
 
-Structured proposal development (grants) in Typst format.
+Structured proposal development (grants) and research presentation creation (talks) in Typst and Slidev formats.
 
 ### Skill-Agent Mapping
 
 | Skill | Agent | Model | Purpose |
 |-------|-------|-------|---------|
 | skill-grant | grant-agent | opus | Grant proposal research and drafting |
+| skill-talk | talk-agent | opus | Research talk material synthesis and presentation assembly |
 
 ### Commands
 
@@ -16,9 +17,31 @@ Structured proposal development (grants) in Typst format.
 | `/grant` | `/grant N --draft ["focus"]` | Draft narrative sections (exploratory) |
 | `/grant` | `/grant N --budget ["guidance"]` | Develop budget with justification |
 | `/grant` | `/grant --revise N "description"` | Create revision task for existing grant |
+| `/talk` | `/talk "Description"` | Create research talk task with forcing questions |
+| `/talk` | `/talk N` | Resume research on existing talk task |
+| `/talk` | `/talk /path/to/file` | Use file as primary source material for talk |
 
 ### Language Routing
 
-| Language | Research Skill | Implementation Skill | Tools |
-|----------|----------------|---------------------|-------|
-| `grant` | `skill-grant` | `skill-grant` | WebSearch, WebFetch, Read, Write, Edit |
+| Language | Task Type | Research Skill | Implementation Skill | Tools |
+|----------|-----------|----------------|---------------------|-------|
+| `grant` | - | `skill-grant` | `skill-grant` | WebSearch, WebFetch, Read, Write, Edit |
+| `present` | `talk` | `skill-talk` | `skill-talk` | WebSearch, WebFetch, Read, Write, Edit |
+
+### Talk Modes
+
+| Mode | Duration | Slides | Use Case |
+|------|----------|--------|----------|
+| CONFERENCE | 15-20 min | 12-18 | Conference platform presentations |
+| SEMINAR | 45-60 min | 30-45 | Departmental seminars, job talks |
+| DEFENSE | 30-60 min | 25-40 | Grant defense, thesis defense |
+| POSTER | N/A | 1 | Poster session presentations |
+| JOURNAL_CLUB | 15-30 min | 10-15 | Paper review for journal club |
+
+### Talk Library
+
+The talk library at `context/project/present/talk/` contains:
+- **Patterns**: Slide structure definitions for each talk mode
+- **Content Templates**: Slidev-compatible markdown templates for slide types
+- **Components**: Vue components (FigurePanel, DataTable, CitationBlock, StatResult, FlowDiagram)
+- **Themes**: Academic-clean and clinical-teal visual themes

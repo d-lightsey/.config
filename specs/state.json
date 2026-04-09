@@ -177,11 +177,11 @@
     {
       "project_number": 390,
       "project_name": "create_talk_command_present",
-      "status": "implementing",
+      "status": "completed",
       "language": "meta",
       "description": "Create /talk command for present extension: research presentations via Slidev with conference talks, poster sessions, grant defense, research seminars, journal clubs. Adapts founder /deck command material synthesis and slide library for medical research presentations.",
       "created": "2026-04-09T19:39:14Z",
-      "last_updated": "2026-04-09T19:56:15Z",
+      "last_updated": "2026-04-09T20:23:14Z",
       "dependencies": [],
       "session_id": "sess_1775764546_dffa92",
       "next_artifact_number": 2,

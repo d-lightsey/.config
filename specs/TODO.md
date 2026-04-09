@@ -13,7 +13,7 @@ next_project_number: 392
 - **387** [COMPLETED] -- Create /budget command for present extension
 - **388** [IMPLEMENTING] -- Create /timeline command for present extension
 - **389** [COMPLETED] -- Create /funds command for present extension
-- **390** [IMPLEMENTING] -- Create /talk command for present extension
+- **390** [COMPLETED] -- Create /talk command for present extension
 - **391** [NOT STARTED] -- Integrate new commands into present extension manifest (depends: 387-390)
 - **384** [RESEARCHED] -- Improve /convert command-skill-agent pipeline in filetypes extension
 - **382** [COMPLETED] -- Simplify /revise command with command + skill + agent architecture
@@ -33,7 +33,7 @@ next_project_number: 392
 
 ### 390. Create /talk command for present extension
 - **Effort**: 3-5 hours
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Language**: meta
 - **Research**: [01_talk-command-research.md](390_create_talk_command_present/reports/01_talk-command-research.md)
 - **Plan**: [01_talk-command-plan.md](390_create_talk_command_present/plans/01_talk-command-plan.md)
