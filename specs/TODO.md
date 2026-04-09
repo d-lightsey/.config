@@ -52,6 +52,7 @@ next_project_number: 392
 - **Status**: [PLANNED]
 - **Language**: meta
 - **Research**: [01_timeline-command-research.md](388_create_timeline_command_present/reports/01_timeline-command-research.md)
+- **Plan**: [01_timeline-command-plan.md](388_create_timeline_command_present/plans/01_timeline-command-plan.md)
 
 **Description**: Create /timeline command for research project timelines: specific aims schedules, regulatory milestones (IRB, IACUC), reporting periods, no-cost extensions. Adapts founder /project command WBS/PERT/Gantt for medical research. Deliverables: command, skill (skill-timeline), agent (timeline-agent), context files (domain, patterns, templates for research timelines).
 

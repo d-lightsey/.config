@@ -123,6 +123,11 @@
           "path": "specs/389_create_funds_command_present/reports/01_funds-command-research.md",
           "type": "research",
           "summary": "Research report: /funds command design, modes, forcing questions, deliverables"
+        },
+        {
+          "path": "specs/389_create_funds_command_present/plans/01_funds-command-plan.md",
+          "type": "plan",
+          "summary": "5-phase implementation plan for /funds command: command, skill, agent, domain context, patterns context"
         }
       ]
     },

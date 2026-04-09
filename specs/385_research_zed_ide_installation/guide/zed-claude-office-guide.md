@@ -117,27 +117,30 @@ Here is what happens when you ask Claude to edit a Word document:
 
 ```
 1. You type a request in Zed's Agent Panel
-   ("Replace 'ACME Corp' with 'NewCo Inc.' in contract.docx")
+   (/edit ~/Documents/contract.docx "Replace 'ACME Corp' with 'NewCo Inc.'")
 
-2. Claude reads your file using SuperDoc
+2. Claude saves any unsaved changes in Word for you
 
-3. Claude makes the edits (with tracked changes if you ask)
+3. Claude makes the edits using SuperDoc (with tracked changes if you ask)
 
-4. Claude saves the file
+4. Claude reloads the document in Word automatically
 
-5. You open the file in Word and review the changes
+5. You see the tracked changes appear in Word -- no need to reopen anything
 ```
 
-You stay in Zed to give instructions. You open Word only to review the result.
+You stay in Zed to give instructions. Word stays open the whole time -- Claude handles the save-edit-reload cycle for you.
 
 ### What It Cannot Do
 
 Be aware of these limitations:
 
 - **Cannot open Word/Excel files inside Zed** -- Zed is a text editor, not an Office suite. You still need Word or Excel to view the final result.
-- **Cannot edit a file while Word has it open** -- Save and close the file in Word before asking Claude to edit it. Otherwise you may get a "file locked" error.
 - **Each request uses API credits** -- Claude Code runs on a subscription or pay-per-use model. Frequent large edits will use more credits than simple questions.
 - **Complex formatting has limits** -- SuperDoc handles most formatting well (bold, tables, headers, tracked changes), but very complex layouts (embedded charts, SmartArt) may need manual touch-up in Word.
+
+### First-Time Setup Note
+
+The first time Claude edits a document while Word is open, macOS will ask you to grant Zed (or WezTerm) permission to control Microsoft Word. Click **OK** when the dialog appears. This only happens once -- after that, Claude can save and reload Word documents automatically.
 
 ---
 
@@ -147,23 +150,22 @@ These are step-by-step recipes for everyday tasks. Each one includes an example 
 
 ### Workflow 1: Edit a Word Document with Tracked Changes
 
-Use this when you want Claude to make changes to an existing .docx file, and you want to review each change in Word before accepting it.
+Use this when you want Claude to make changes to an existing .docx file, and you want to review each change in Word before accepting it. Word can stay open -- Claude handles saving and reloading for you.
 
 **Steps:**
 
-1. **Save and close** the document in Word
-2. Open **Zed** and press **Cmd + Shift + ?** to open the Agent Panel
-3. Type your request (see example below)
-4. Wait for Claude to confirm the edits are done
-5. Open the file in **Word** -- you will see tracked changes you can Accept or Reject
+1. Open **Zed** and press **Cmd + Shift + ?** to open the Agent Panel
+2. Type your request using `/edit` (see example below)
+3. Wait for Claude to confirm the edits are done
+4. Switch to **Word** -- the tracked changes will already be there
 
 **Example prompt:**
 
-> In ~/Documents/contract.docx, replace every instance of "ACME Corp" with "NewCo Inc." using tracked changes.
+> /edit ~/Documents/contract.docx "Replace every instance of 'ACME Corp' with 'NewCo Inc.' using tracked changes"
 
 ### Workflow 2: Update a Spreadsheet
 
-Use this when you need to change values, add rows, or update formulas in an .xlsx file.
+Use this when you need to change values, add rows, or update formulas in an .xlsx file. **Note:** For spreadsheets, save and close the file in Excel first -- the automatic reload only works with Word for now.
 
 **Steps:**
 
@@ -182,15 +184,14 @@ Use this when you need to make the same change across several Word files -- for 
 
 **Steps:**
 
-1. **Save and close** all the documents in Word
-2. If your files are in OneDrive, **pause syncing** first (see Tips below)
-3. Open the Agent Panel in Zed
-4. Tell Claude which folder and what to change
-5. Resume OneDrive syncing when done
+1. If your files are in OneDrive, **pause syncing** first (see Tips below)
+2. Open the Agent Panel in Zed
+3. Tell Claude which folder and what to change
+4. Resume OneDrive syncing when done
 
 **Example prompt:**
 
-> In all .docx files in ~/Documents/Contracts/, replace "Old Company LLC" with "New Company LLC" using tracked changes. Give me a summary of how many changes were made in each file.
+> /edit ~/Documents/Contracts/ "Replace 'Old Company LLC' with 'New Company LLC' using tracked changes. Give me a summary of how many changes were made in each file."
 
 ### Workflow 4: Create a New Document from Scratch
 
@@ -204,16 +205,13 @@ Use this when you want Claude to draft and format a new Word document for you.
 
 **Example prompt:**
 
-> Create a new Word document at ~/Documents/memo.docx with the title "Q2 Budget Review", dated April 9, 2026, from Sarah Chen (Finance Director) to the Executive Team. Include a brief summary paragraph and a table with 4 columns: Department, Q1 Actual, Q2 Budget, and Variance.
+> /edit --new ~/Documents/memo.docx "Create a Q2 Budget Review memo, dated April 9, 2026, from Sarah Chen (Finance Director) to the Executive Team. Include a brief summary paragraph and a table with 4 columns: Department, Q1 Actual, Q2 Budget, and Variance."
 
 ### Tips for OneDrive and SharePoint Files
 
-If your documents sync with OneDrive or SharePoint, follow these two rules to avoid conflicts:
+If your documents sync with OneDrive or SharePoint:
 
-**Rule 1: Always close the file in Word first.**
-OneDrive locks files that Word has open. If Claude tries to edit a locked file, it will fail. Save the file, close Word, wait a few seconds, then ask Claude.
-
-**Rule 2: Pause OneDrive sync for batch edits.**
+**Pause OneDrive sync for batch edits.**
 If you are editing many files at once (Workflow 3), pause syncing so OneDrive does not try to upload files mid-edit:
 
 1. Click the **OneDrive icon** in your menu bar (top-right of screen)
@@ -241,11 +239,11 @@ That's it. Claude handles the rest.
 | I want to... | Do this |
 |---|---|
 | Open the AI assistant | Press **Cmd + Shift + ?** in Zed |
-| Edit a Word doc with tracked changes | Close it in Word first, then ask Claude (see Workflow 1) |
+| Edit a Word doc with tracked changes | `/edit path/to/file.docx "your instructions"` (see Workflow 1) |
 | Update spreadsheet values | Close it in Excel first, then ask Claude (see Workflow 2) |
-| Edit many files at once | Pause OneDrive sync, then ask Claude (see Workflow 3) |
-| Create a new Word document | Just describe it to Claude (see Workflow 4) |
-| See what Claude changed | Open the file in Word -- look for tracked changes |
+| Edit many files at once | `/edit path/to/folder/ "your instructions"` (see Workflow 3) |
+| Create a new Word document | `/edit --new path/to/file.docx "describe what you need"` (see Workflow 4) |
+| See what Claude changed | Switch to Word -- tracked changes appear automatically |
 | Check which helpers are installed | Run `claude mcp list` in WezTerm |
 | Open a file in Zed | Press **Cmd + P** and type the filename |
 | Search for text in Zed | Press **Cmd + Shift + F** |
@@ -254,10 +252,10 @@ That's it. Claude handles the rest.
 
 ### Useful Phrases for Claude
 
-These are good starting phrases for your prompts:
+Start with `/edit` for any Word document task:
 
-- "In [file path], replace..." -- for find-and-replace edits
-- "In [file path], using tracked changes..." -- to get reviewable changes in Word
-- "Create a new Word document at [path]..." -- for new documents
-- "In all .docx files in [folder]..." -- for batch operations
-- "Give me a summary of..." -- to get a report instead of making edits
+- `/edit file.docx "replace X with Y"` -- for find-and-replace edits
+- `/edit file.docx "replace X with Y using tracked changes"` -- to get reviewable changes in Word
+- `/edit --new file.docx "create a memo about..."` -- for new documents
+- `/edit ~/Documents/Contracts/ "replace X with Y in all files"` -- for batch operations
+- "Give me a summary of..." -- to get a report instead of making edits (no `/edit` needed)
