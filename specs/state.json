@@ -21,7 +21,7 @@
         {
           "path": "specs/393_unify_routing_field_language_task_type/plans/01_unify-routing-field.md",
           "type": "plan",
-          "summary": "5-phase plan for unifying language+task_type into compound routing field"
+          "summary": "Revised plan v2: rename language to task_type as unified routing field"
         }
       ],
       "plan_metadata": {
@@ -29,7 +29,7 @@
         "total_effort_hours": 8,
         "complexity": "complex",
         "research_integrated": true,
-        "plan_version": 1,
+        "plan_version": 2,
         "dependency_waves": [
           [
             1

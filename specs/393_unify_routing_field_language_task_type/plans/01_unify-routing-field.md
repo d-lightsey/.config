@@ -2,57 +2,56 @@
 
 - **Task**: 393 - Unify routing field: replace separate language and task_type with single extension:task_type format
 - **Status**: [NOT STARTED]
-- **Effort**: 8 hours
+- **Effort**: 14 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/393_unify_routing_field_language_task_type/reports/01_team-research.md
 - **Artifacts**: plans/01_unify-routing-field.md (this file)
 - **Standards**: plan-format.md, status-markers.md, artifact-management.md, tasks.md
 - **Type**: meta
-- **Lean Intent**: false
 
 ## Overview
 
-Replace the two-field routing approach (`language` + `task_type`) with a single compound `language` field using colon-delimited format (e.g., `"present:grant"` instead of `"present"` + `"grant"`). The `task_type` field becomes deprecated. Core languages (`meta`, `general`, `markdown`, `neovim`, etc.) remain as bare strings without subtypes. Only the 2 extensions with sub-routing (founder, present) change to compound values. The work is mechanical across ~90 files: 14 extension commands, ~42 extension skills/agents, 5 core files, and ~30 documentation files.
+Rename the `language` routing field to `task_type` throughout the agent system, simultaneously merging the old secondary `task_type` field into it. The unified `task_type` field uses a compound format (`{extension}:{subtype}`) for extension sub-routing and bare strings (`meta`, `general`, `neovim`) for core/simple values. This touches approximately 261+ files that reference `language` as a field name, plus 52 files that reference the old `task_type` field. The work is primarily mechanical renaming but requires careful handling of `meta` special-case checks, context discovery `load_when.languages` arrays, and documentation.
+
+Definition of done: (1) the `language` field no longer exists in any active code path -- replaced by `task_type` everywhere, (2) the old secondary `task_type` field is merged into the new primary `task_type`, (3) compound values like `present:grant` and `founder:deck` work end-to-end through routing, context discovery, and validation, (4) backward compatibility shim handles legacy tasks that still have the old `language` field.
 
 ### Research Integration
 
-Team research (4 teammates) confirmed: (1) the routing commands already handle compound language values with fallback to base key, so the routing layer needs only a compatibility shim, not a rewrite; (2) `task_type` is dead code for routing -- extracted but never used in manifest lookup; (3) the manifest routing tables already use compound keys (`founder:deck`, `present:grant`); (4) three `meta` special-case checks in skill-implementer use `language == "meta"` for load-bearing behavior (ROAD_MAP.md vs claudemd_suggestions routing) and must not break; (5) context discovery `load_when.languages` uses exact matching and needs a companion fix for compound values.
+Team research (4 teammates) confirmed routing mechanics, `meta` special-case risks, and context discovery dependencies. Research recommended keeping `language` as the field name, but the user explicitly overrides this: the unified field is named `task_type`. This increases scope from ~90 files to ~261+ files due to the rename.
 
 ### Prior Plan Reference
 
-No prior plan.
-
-### Roadmap Alignment
-
-No ROAD_MAP.md found.
+Revised from v1 plan which kept `language` as field name and deprecated old `task_type`. This v2 plan inverts the approach: `language` is deprecated and `task_type` becomes the unified field.
 
 ## Goals & Non-Goals
 
 **Goals**:
-- Eliminate the `task_type` field from new task creation, storing compound values directly in `language`
-- Update all extension commands to write `language: "founder:deck"` instead of `language: "founder"` + `task_type: "deck"`
-- Add backward-compatible routing shim for existing tasks that still have `task_type`
-- Update extension skills/agents to validate compound `language` instead of separate `task_type`
-- Update context discovery to handle compound language values
-- Add present sub-type keywords to `/task` language detection
-- Update documentation and schema references
+- Rename the `language` field to `task_type` across all commands, skills, agents, state files, and documentation
+- Merge the old secondary `task_type` values into the new primary `task_type` using compound format
+- Values: bare strings for core types (`meta`, `general`, `markdown`, `neovim`, `lean4`, etc.) and compound `extension:subtype` for sub-routed extensions (`present:grant`, `founder:deck`, etc.)
+- Add backward-compatible shim for legacy tasks that still have old `language` field
+- Update context discovery (`load_when.languages` -> `load_when.task_types` or equivalent)
+- Update all jq queries from `.language` to `.task_type`
+- Update TODO.md format from `**Language**:` to `**Task Type**:` (or similar display label)
+- Update all shell variable references from `$language` to `$task_type`
 
 **Non-Goals**:
-- Renaming the `language` field to `routing` or `domain` (cost: 261 files, no benefit)
-- Making core languages use compound values (`meta:something` -- never needed)
 - Supporting hierarchical routing beyond one colon level (`present:grant:nih`)
-- Migrating archived tasks to new format (archive is read-only, base-key fallback works)
-- Removing `task_type` from the schema entirely (keep deprecated for backward compat)
+- Making core types use compound values (`meta:something` -- never needed)
+- Migrating archived tasks (archive is read-only, backward compat shim handles them)
+- Changing the actual routing logic (manifest lookup, skill resolution stay the same)
 
 ## Risks & Mitigations
 
 | Risk | Impact | Likelihood | Mitigation |
 |------|--------|------------|------------|
-| `meta` special-case breaks | H | L | Core languages stay bare; never add subtypes to `meta`; defensive prefix check |
-| Context discovery fails for compound values | H | M | Update `load_when.languages` entries alongside command changes |
-| Task 392 overlap causes merge conflicts | M | M | Mechanical changes are non-conflicting; phase 2 re-touches present files |
-| Mixed-format coexistence during rollout | M | L | Routing shim constructs compound key from old format; base-key fallback preserved |
-| validate-wiring.sh rejects compound keys | L | H | Update script in final phase |
+| `meta` special-case breaks from rename | H | M | Rename all `language == "meta"` to `task_type == "meta"` atomically; value stays `"meta"` |
+| Context discovery fails during transition | H | M | Rename `load_when.languages` to `load_when.task_types` in index.json and all queries simultaneously |
+| Massive scope causes partial breakage | H | M | Phase the rename by layer (state/schema first, then commands, then skills/agents, then docs); verify at each phase |
+| Shell variable rename misses edge cases | M | M | Comprehensive grep audit after each phase; automated search for `$language` and `.language` |
+| CLAUDE.md documentation references stale | M | H | Dedicated documentation phase with exhaustive grep |
+| `validate-wiring.sh` rejects new field name | L | H | Update script early in Phase 1 |
+| Mixed old/new field names during rollout | M | L | Backward compat shim reads both `language` and `task_type`, preferring `task_type` |
 
 ## Implementation Phases
 
@@ -60,189 +59,270 @@ No ROAD_MAP.md found.
 | Wave | Phases | Blocked by |
 |------|--------|------------|
 | 1 | 1 | -- |
-| 2 | 2, 3 | 1 |
-| 3 | 4, 5 | 2, 3 |
+| 2 | 2 | 1 |
+| 3 | 3, 4 | 2 |
+| 4 | 5 | 3, 4 |
+| 5 | 6 | 5 |
 
-### Phase 1: Core Schema and Routing Compatibility [NOT STARTED]
+Phases within the same wave can execute in parallel.
 
-**Goal**: Establish the compatibility shim in routing commands and update schema documentation so compound values work end-to-end before touching extension files.
+### Phase 1: Schema, State, and Core Infrastructure [NOT STARTED]
+
+**Goal**: Rename `language` to `task_type` in state.json schema, state.json data, TODO.md format, and core configuration files so all downstream phases have a consistent foundation.
 
 **Tasks**:
-- [ ] Add compatibility shim to `research.md`: if `task_type` exists and `language` is bare, construct compound key `{language}:{task_type}` before routing lookup
-- [ ] Add same shim to `plan.md` and `implement.md`
-- [ ] Update `state-management-schema.md`: mark `task_type` as deprecated, document compound `language` format
-- [ ] Update `CLAUDE.md` Language-Based Routing section: document compound format for extensions
-- [ ] Update `CLAUDE.md` state.json structure example: remove `task_type`, show compound language
-- [ ] Add present sub-type keywords to `/task` command language detection (grant, budget, timeline, funds, talk)
-- [ ] Update `/task` to write compound `language` value instead of separate `language` + `task_type` for extension tasks
+- [ ] Update `state-management-schema.md`: rename `language` field to `task_type`, document compound format, mark old `language` as deprecated alias
+- [ ] Update `state.json`: rename `"language"` key to `"task_type"` in all active_projects entries, merge any existing `task_type` values into compound format
+- [ ] Update `TODO.md`: change `**Language**:` display label to `**Task Type**:` for all active tasks
+- [ ] Update `CLAUDE.md` (root `.claude/CLAUDE.md`): rename all `language` references in routing tables, state.json examples, skill-to-agent mappings, context discovery queries
+- [ ] Update `CLAUDE.md` Language-Based Routing section heading and content (rename to Task-Type-Based Routing or similar)
+- [ ] Update `state-management.md` rule: rename language references
+- [ ] Add backward compatibility shim documentation: if old `language` field is found without `task_type`, treat `language` value as `task_type`
 
-**Timing**: 2 hours
+**Timing**: 2.5 hours
 
 **Depends on**: none
 
 **Files to modify**:
-- `.claude/commands/research.md` - Add compatibility shim for task_type -> compound key
-- `.claude/commands/plan.md` - Add same compatibility shim
-- `.claude/commands/implement.md` - Add same compatibility shim
-- `.claude/commands/task.md` - Update language detection keywords; update state.json write to use compound language
-- `.claude/context/reference/state-management-schema.md` - Mark task_type deprecated, document compound format
-- `.claude/CLAUDE.md` - Update routing table docs, state.json example
+- `.claude/context/reference/state-management-schema.md`
+- `specs/state.json`
+- `specs/TODO.md`
+- `.claude/CLAUDE.md`
+- `CLAUDE.md` (root)
+- `.claude/rules/state-management.md`
 
 **Verification**:
-- Grep confirms `task_type` is marked deprecated in schema
-- `/task` keyword detection includes present sub-types
-- Routing commands contain compatibility shim logic
-- CLAUDE.md examples show compound language format
+- `grep -rn '"language"' specs/state.json` returns zero results
+- `grep -n '**Language**' specs/TODO.md` returns zero results
+- CLAUDE.md examples show `task_type` field throughout
 
 ---
 
-### Phase 2: Extension Commands (founder + present) [NOT STARTED]
+### Phase 2: Core Commands and Routing [NOT STARTED]
 
-**Goal**: Update all 14 extension commands to write compound `language` values directly instead of separate `language` + `task_type` fields.
+**Goal**: Update all core command files (`/task`, `/research`, `/plan`, `/implement`, `/revise`, etc.) to use `task_type` instead of `language` for routing decisions, jq queries, and shell variables.
 
 **Tasks**:
-- [ ] Update 9 founder commands: `analyze.md`, `deck.md`, `finance.md`, `legal.md`, `market.md`, `meeting.md`, `project.md`, `sheet.md`, `strategy.md` -- change task creation to use `language: "founder:{subtype}"`, remove `task_type` field
-- [ ] Update 5 present commands: `budget.md`, `funds.md`, `grant.md`, `talk.md`, `timeline.md` -- change task creation to use `language: "present:{subtype}"`, remove `task_type` field
-- [ ] For each command: update mode documentation, examples, and any references to `task_type`
+- [ ] Update `/task` command (`task.md`): rename all `language` references to `task_type` in task creation, state.json writes, keyword detection; merge old `task_type` handling into new unified field; add present sub-type keywords (grant, budget, timeline, funds, talk)
+- [ ] Update `/research` command (`research.md`): rename `$language` variable to `$task_type`, update jq queries from `.language` to `.task_type`, add backward compat shim (if task has old `language` field, read it as `task_type`)
+- [ ] Update `/plan` command (`plan.md`): same rename pattern as research
+- [ ] Update `/implement` command (`implement.md`): same rename pattern, preserve `meta` special-case checks using new field name
+- [ ] Update `/revise` command (`revise.md`): rename language references
+- [ ] Update `/review` command (`review.md`): rename language references
+- [ ] Update `/todo` command (`todo.md`): rename language references, update TODO.md parsing for new `**Task Type**:` label
+- [ ] Update `/meta` command (`meta.md`): rename language references
+- [ ] Update `/errors` command (`errors.md`): rename language references
+- [ ] Update `/fix-it` command (`fix-it.md`): rename language references
+- [ ] Update `/spawn` command (`spawn.md`): rename language references
+- [ ] Update `/task` subcommands (recover, expand, sync, abandon): rename language references
+- [ ] Update `skill-orchestrator/SKILL.md`: rename routing logic from language to task_type
 
-**Timing**: 1.5 hours
+**Timing**: 3 hours
 
 **Depends on**: 1
 
 **Files to modify**:
-- `.claude/extensions/founder/commands/analyze.md`
-- `.claude/extensions/founder/commands/deck.md`
-- `.claude/extensions/founder/commands/finance.md`
-- `.claude/extensions/founder/commands/legal.md`
-- `.claude/extensions/founder/commands/market.md`
-- `.claude/extensions/founder/commands/meeting.md`
-- `.claude/extensions/founder/commands/project.md`
-- `.claude/extensions/founder/commands/sheet.md`
-- `.claude/extensions/founder/commands/strategy.md`
-- `.claude/extensions/present/commands/budget.md`
-- `.claude/extensions/present/commands/funds.md`
-- `.claude/extensions/present/commands/grant.md`
-- `.claude/extensions/present/commands/talk.md`
-- `.claude/extensions/present/commands/timeline.md`
+- `.claude/commands/task.md`
+- `.claude/commands/research.md`
+- `.claude/commands/plan.md`
+- `.claude/commands/implement.md`
+- `.claude/commands/revise.md`
+- `.claude/commands/review.md`
+- `.claude/commands/todo.md`
+- `.claude/commands/meta.md`
+- `.claude/commands/errors.md`
+- `.claude/commands/fix-it.md`
+- `.claude/commands/spawn.md`
+- `.claude/skills/skill-orchestrator/SKILL.md`
 
 **Verification**:
-- `grep -rn 'task_type' .claude/extensions/*/commands/*.md` returns zero results
-- Each command sets compound `language` value (e.g., `"present:grant"`)
+- `grep -rn '\$language\b' .claude/commands/` returns zero results (excluding deprecated comments)
+- `grep -rn '\.language' .claude/commands/` returns zero results (excluding deprecated comments)
+- All jq queries use `.task_type` not `.language`
 
 ---
 
-### Phase 3: Extension Skills and Agents [NOT STARTED]
+### Phase 3: Core Skills and Agents [NOT STARTED]
 
-**Goal**: Update all extension skill and agent files to validate and reference compound `language` values instead of separate `task_type` checks.
+**Goal**: Update all core skill and agent files to use `task_type` instead of `language` in delegation metadata, validation logic, and jq extraction.
 
 **Tasks**:
-- [ ] Update founder skills (~10 files): `skill-market`, `skill-analyze`, `skill-strategy`, `skill-finance`, `skill-meeting`, `skill-deck-research`, `skill-deck-plan`, `skill-deck-implement`, `skill-founder-implement`, `skill-founder-plan` -- change `task_type` validation to compound language check (e.g., `language == "founder:deck"` instead of `task_type == "deck"`)
-- [ ] Update present skills (~5 files): `skill-grant`, `skill-budget`, `skill-timeline`, `skill-funds`, `skill-talk` -- same compound language validation pattern
-- [ ] Update founder agents (~8 files): change delegation metadata from `task_type` to compound `language`
-- [ ] Update present agents (~6 files): same compound language delegation metadata
-- [ ] For each file: update jq extraction (remove `task_type` extraction, use `language` directly), update documentation comments
+- [ ] Update `skill-researcher/SKILL.md`: rename language to task_type in extraction, validation, delegation
+- [ ] Update `skill-planner/SKILL.md`: same rename
+- [ ] Update `skill-implementer/SKILL.md`: same rename, preserve `meta` check using `task_type == "meta"`
+- [ ] Update `skill-meta/SKILL.md`: rename language references
+- [ ] Update `skill-reviser/SKILL.md`: rename language references
+- [ ] Update `skill-fix-it/SKILL.md`: rename language references
+- [ ] Update `skill-spawn/SKILL.md`: rename language references
+- [ ] Update `skill-status-sync/SKILL.md`: rename language references
+- [ ] Update `skill-todo/SKILL.md`: rename language references
+- [ ] Update `skill-git-workflow/SKILL.md`: rename language references
+- [ ] Update `skill-team-research/SKILL.md`, `skill-team-plan/SKILL.md`, `skill-team-implement/SKILL.md`: rename language references
+- [ ] Update `general-research-agent.md`: rename language to task_type in agent context
+- [ ] Update `general-implementation-agent.md`: same rename
+- [ ] Update `planner-agent.md`: same rename
+- [ ] Update `meta-builder-agent.md`: same rename
+- [ ] Update `code-reviewer-agent.md`: same rename
+- [ ] Update `reviser-agent.md`: same rename
+- [ ] Update `spawn-agent.md`: same rename
+
+**Timing**: 2.5 hours
+
+**Depends on**: 2
+
+**Files to modify**:
+- `.claude/skills/*/SKILL.md` (~13 skill files)
+- `.claude/agents/*.md` (~7 agent files)
+
+**Verification**:
+- `grep -rn '\blanguage\b' .claude/skills/*/SKILL.md` returns only deprecated/compat references
+- `grep -rn '\blanguage\b' .claude/agents/*.md` returns only deprecated/compat references
+- `meta` special-case check in skill-implementer uses `task_type == "meta"`
+
+---
+
+### Phase 4: Extension Commands, Skills, and Agents [NOT STARTED]
+
+**Goal**: Update all extension files (founder, present, and all other extensions) to use `task_type` instead of `language` in commands, skills, agents, and manifests.
+
+**Tasks**:
+- [ ] Update 9 founder commands: change `language` field to `task_type` with compound values (e.g., `task_type: "founder:deck"`), remove old secondary `task_type` field
+- [ ] Update 5 present commands: same pattern (e.g., `task_type: "present:grant"`)
+- [ ] Update all other extension commands (neovim, lean4, latex, typst, python, nix, web, z3, epidemiology, formal): rename `language` to `task_type` (bare values like `task_type: "neovim"`)
+- [ ] Update founder skills (~10 files): rename `language` validation to `task_type`, use compound values
+- [ ] Update present skills (~5 files): same rename pattern
+- [ ] Update all other extension skills: rename `language` to `task_type`
+- [ ] Update founder agents (~8 files): rename `language` in delegation metadata
+- [ ] Update present agents (~6 files): same rename
+- [ ] Update all other extension agents: rename `language` to `task_type`
+- [ ] Update all `manifest.json` files: rename `language` field to `task_type` in routing tables
+- [ ] Update extension loader/merger if it references `language` field
+
+**Timing**: 3 hours
+
+**Depends on**: 2
+
+**Files to modify**:
+- `.claude/extensions/founder/commands/*.md` (9 files)
+- `.claude/extensions/present/commands/*.md` (5 files)
+- `.claude/extensions/*/commands/*.md` (remaining extensions)
+- `.claude/extensions/*/skills/*/SKILL.md` (~30+ files)
+- `.claude/extensions/*/agents/*.md` (~20+ files)
+- `.claude/extensions/*/manifest.json` (14 files)
+
+**Verification**:
+- `grep -rn '"language"' .claude/extensions/*/manifest.json` returns zero results
+- `grep -rn '\blanguage\b' .claude/extensions/*/commands/` returns only deprecated/compat references
+- Extension routing resolves `task_type: "present:grant"` to correct skill
+
+---
+
+### Phase 5: Context Discovery, Index, and Rules [NOT STARTED]
+
+**Goal**: Update context discovery system (`load_when.languages` -> `load_when.task_types`), context index, and all rule files that reference the `language` field.
+
+**Tasks**:
+- [ ] Update `.claude/context/index.json`: rename all `load_when.languages` arrays to `load_when.task_types`
+- [ ] Update all context discovery queries in commands/skills/agents: change `load_when.languages` to `load_when.task_types` in jq queries
+- [ ] Update `.claude/context/patterns/context-discovery.md`: rename language references to task_type
+- [ ] Update `.claude/context/architecture/context-layers.md`: rename language references
+- [ ] Update `.claude/context/orchestration/routing.md`: rename language references
+- [ ] Update `.claude/rules/artifact-formats.md`: rename language references
+- [ ] Update `.claude/rules/workflows.md`: rename language references if any
+- [ ] Update `.claude/context/formats/plan-format.md`: update Type field description
+- [ ] Update `.claude/context/reference/artifact-templates.md`: rename language references
+- [ ] Update `.claude/context/patterns/multi-task-operations.md`: rename language references
+- [ ] Update `.claude/docs/reference/standards/` files: rename language references
+- [ ] Add compound value support to `load_when.task_types` matching: for `task_type: "present:grant"`, match entries with `task_types: ["present"]` (prefix matching)
 
 **Timing**: 2 hours
 
-**Depends on**: 1
+**Depends on**: 3, 4
 
 **Files to modify**:
-- `.claude/extensions/founder/skills/*/SKILL.md` (~10 files)
-- `.claude/extensions/present/skills/*/SKILL.md` (~5 files)
-- `.claude/extensions/founder/agents/*.md` (~8 files)
-- `.claude/extensions/present/agents/*.md` (~6 files)
+- `.claude/context/index.json`
+- `.claude/context/patterns/context-discovery.md`
+- `.claude/context/architecture/context-layers.md`
+- `.claude/context/orchestration/routing.md`
+- `.claude/context/formats/plan-format.md`
+- `.claude/context/reference/artifact-templates.md`
+- `.claude/context/patterns/multi-task-operations.md`
+- `.claude/rules/artifact-formats.md`
+- `.claude/rules/workflows.md`
+- `.claude/docs/reference/standards/*.md`
 
 **Verification**:
-- `grep -rn 'task_type' .claude/extensions/*/skills/` returns zero results (excluding deprecated references)
-- `grep -rn 'task_type' .claude/extensions/*/agents/` returns zero results
-- Skills validate compound language (e.g., `language == "present:grant"`) not task_type
+- `grep -rn 'load_when.languages' .claude/` returns zero results
+- Context loads correctly for `task_type: "present:grant"` (prefix match on `present`)
+- Context loads correctly for bare `task_type: "meta"` (exact match)
 
 ---
 
-### Phase 4: Context Discovery and Core Skills [NOT STARTED]
+### Phase 6: Validation Scripts, Final Audit, and Cleanup [NOT STARTED]
 
-**Goal**: Update context index `load_when.languages` entries and core skills that reference `task_type` or make `meta` special-case checks.
-
-**Tasks**:
-- [ ] Update `.claude/context/index.json`: for any entries with `load_when.languages` containing extension languages, ensure compound values are handled (add compound entries if extension context should load for sub-typed tasks, or add prefix-matching logic note)
-- [ ] Review and update `skill-implementer/SKILL.md`: verify `meta` checks use exact match (already correct since meta stays bare); remove any `task_type` extraction code
-- [ ] Review and update `skill-researcher/SKILL.md`: remove any `task_type` extraction code
-- [ ] Update `skill-fix-it/SKILL.md`: update any hardcoded `"language": "meta"` examples if referencing task_type
-- [ ] Add defensive prefix check for `meta` in `skill-implementer`: use `language | startswith("meta")` or `cut -d: -f1 == "meta"` pattern (future-proofing even though meta won't get subtypes)
-
-**Timing**: 1.5 hours
-
-**Depends on**: 2, 3
-
-**Files to modify**:
-- `.claude/context/index.json` - Update `load_when.languages` entries for extension context
-- `.claude/skills/skill-implementer/SKILL.md` - Remove task_type extraction; defensive meta check
-- `.claude/skills/skill-researcher/SKILL.md` - Remove task_type extraction
-- `.claude/skills/skill-fix-it/SKILL.md` - Update examples
-
-**Verification**:
-- Context loads correctly for `language: "present:grant"` tasks (prefix match or explicit entries)
-- `meta` special-case checks still work correctly
-- No core skills reference `task_type` for routing decisions
-
----
-
-### Phase 5: Documentation, Validation Scripts, and Cleanup [NOT STARTED]
-
-**Goal**: Update all remaining documentation, validation scripts, and perform final verification that `task_type` is fully deprecated.
+**Goal**: Update validation scripts, perform exhaustive grep audit, verify end-to-end routing, and clean up any remaining `language` references.
 
 **Tasks**:
-- [ ] Update `validate-wiring.sh`: add compound key awareness for language validation
-- [ ] Update `.claude/context/formats/plan-format.md` if it references `task_type`
-- [ ] Update `.claude/context/reference/artifact-templates.md` if it references `task_type`
-- [ ] Update `.claude/context/orchestration/routing.md` and related orchestration docs
-- [ ] Update any remaining context files that reference `task_type` (scan with grep)
-- [ ] Run `validate-wiring.sh` to confirm all routing still passes
-- [ ] Final grep audit: `grep -rn 'task_type' .claude/` should show only: (1) deprecated schema reference, (2) compatibility shim in routing commands, (3) this plan file
-- [ ] Verify a sample extension routing path works: `language: "present:grant"` resolves to `skill-grant` via manifest lookup
+- [ ] Update `validate-wiring.sh`: rename `language` validation to `task_type`, add compound key awareness
+- [ ] Update `.claude/scripts/export-to-markdown.sh` if it references `language`
+- [ ] Run exhaustive grep: `grep -rn '\blanguage\b' .claude/` -- every hit must be either (1) deprecated/compat reference, (2) English prose (e.g., "natural language"), or (3) this plan file
+- [ ] Run exhaustive grep: `grep -rn 'load_when.languages' .claude/` -- must return zero
+- [ ] Run exhaustive grep: `grep -rn '"language"' specs/state.json` -- must return zero
+- [ ] Run `validate-wiring.sh` to confirm all routing passes
+- [ ] Verify sample routing paths:
+  - `task_type: "meta"` -> `skill-researcher` (bare value)
+  - `task_type: "present:grant"` -> `skill-grant` (compound value)
+  - `task_type: "neovim"` -> `skill-neovim-research` (extension bare value)
+- [ ] Update `.claude/README.md` if it references `language` field
+- [ ] Final review of all CLAUDE.md files for stale `language` references
 
 **Timing**: 1 hour
 
-**Depends on**: 4
+**Depends on**: 5
 
 **Files to modify**:
-- `.claude/scripts/validate-wiring.sh` - Add compound key support
-- `.claude/context/formats/plan-format.md` - Remove task_type references if any
-- `.claude/context/reference/artifact-templates.md` - Update examples
-- `.claude/context/orchestration/routing.md` - Update routing documentation
-- Various context/docs files identified by grep scan
+- `.claude/scripts/validate-wiring.sh`
+- `.claude/scripts/export-to-markdown.sh` (if needed)
+- `.claude/README.md` (if needed)
+- Any remaining files identified by grep audit
 
 **Verification**:
 - `validate-wiring.sh` passes without errors
-- `grep -rn 'task_type' .claude/` shows only deprecated/compat references
-- Manual trace: `present:grant` task creation -> routing -> skill invocation works conceptually
-- All compound keys in manifests have matching documentation
+- `grep -rn '\blanguage\b' .claude/ specs/state.json specs/TODO.md` shows only English prose, deprecated comments, or plan/report files
+- All three sample routing paths resolve correctly
+- No active code path reads `language` without the backward compat shim
 
 ## Testing & Validation
 
-- [ ] Compatibility shim correctly constructs compound key from legacy `language` + `task_type` format
-- [ ] Core language routing (`meta`, `general`, `markdown`) is unaffected
-- [ ] Extension routing resolves compound keys (`founder:deck` -> `skill-deck-research`)
-- [ ] Context discovery loads correct entries for compound language values
-- [ ] `meta` special-case checks in `skill-implementer` still correctly route ROAD_MAP.md vs claudemd_suggestions
-- [ ] `/task` keyword detection produces compound values for present sub-types
-- [ ] `validate-wiring.sh` passes with compound key awareness
-- [ ] No active tasks in state.json reference `task_type` after migration
+- [ ] Backward compat shim correctly reads old `language` field as `task_type` for legacy tasks
+- [ ] Core task type routing (`meta`, `general`, `markdown`) is unaffected by rename
+- [ ] Extension routing resolves compound values (`founder:deck` -> `skill-deck-research`)
+- [ ] Context discovery loads correct entries via `load_when.task_types` for both bare and compound values
+- [ ] `meta` special-case checks in `skill-implementer` still correctly route using `task_type == "meta"`
+- [ ] `/task` keyword detection produces compound `task_type` values for present sub-types
+- [ ] `validate-wiring.sh` passes with new field name and compound key awareness
+- [ ] TODO.md displays `**Task Type**:` label correctly
+- [ ] state.json uses `task_type` field for all active projects
+- [ ] No active jq query references `.language` (only `.task_type`)
 
 ## Artifacts & Outputs
 
-- Updated routing commands (research.md, plan.md, implement.md) with compatibility shim
-- Updated `/task` command with present sub-type keywords and compound language output
-- Updated 14 extension commands (9 founder, 5 present) using compound language
-- Updated ~29 extension skill/agent files using compound language validation
-- Updated context index for compound language matching
-- Updated validation script and documentation
-- Deprecated `task_type` field in schema (kept for backward compat)
+- Updated state.json schema and data (language -> task_type rename)
+- Updated TODO.md format (Language -> Task Type label)
+- Updated all CLAUDE.md files with new field name and routing documentation
+- Updated ~12 core commands with task_type routing and backward compat shim
+- Updated ~13 core skills and ~7 core agents
+- Updated ~14+ extension command files with compound task_type values
+- Updated ~50+ extension skill/agent files
+- Updated 14 extension manifests
+- Updated context index (load_when.languages -> load_when.task_types)
+- Updated validation scripts and remaining documentation
 
 ## Rollback/Contingency
 
-The compatibility shim in routing commands provides bidirectional support: old-format tasks (with `task_type`) work via shim-constructed compound keys, and new-format tasks (with compound `language`) work via direct manifest lookup. If issues arise mid-migration:
+The backward compatibility shim provides bidirectional support: tasks with old `language` field are read as `task_type` via the shim, and new-format tasks use `task_type` directly. If issues arise mid-migration:
 
-1. **Partial rollback**: Revert extension command changes only; the shim handles both formats
-2. **Full rollback**: `git revert` the implementation commits; old-format tasks continue working since manifests already have both bare and compound keys
-3. **Forward fix**: Since all changes are mechanical text replacements, any individual file can be corrected independently
+1. **Partial rollback**: Revert to any phase boundary; the shim handles both field names
+2. **Full rollback**: `git revert` the implementation commits; restore `language` field in state.json
+3. **Forward fix**: Since all changes are mechanical text replacements (field rename), any individual file can be corrected independently
+4. **Emergency**: If routing breaks, the base-key fallback in manifests still resolves bare values regardless of field name
