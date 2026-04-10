@@ -5,10 +5,10 @@
     {
       "project_number": 400,
       "project_name": "epi_extension_overhaul",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-10T21:22:57Z",
-      "last_updated": "2026-04-10T22:06:57Z",
+      "last_updated": "2026-04-10T22:44:34Z",
       "session_id": "sess_1775858777_b45ec9",
       "researched": "2026-04-10T21:55:00Z",
       "next_artifact_number": 3,
@@ -27,6 +27,11 @@
           "path": "specs/400_epi_extension_overhaul/plans/02_epi-extension-overhaul.md",
           "type": "plan",
           "summary": "6-phase implementation plan: infrastructure, context library, skills/agents, /epi command, routing, verification"
+        },
+        {
+          "path": "specs/400_epi_extension_overhaul/summaries/02_implementation-summary.md",
+          "type": "summary",
+          "summary": "Team implementation with 2 max concurrent teammates"
         }
       ],
       "plan_metadata": {
@@ -63,7 +68,9 @@
             "integrated_date": "2026-04-10"
           }
         ]
-      }
+      },
+      "completed": "2026-04-10T22:44:34Z",
+      "completion_summary": "Overhauled epidemiology extension to first-class status: added /epi command with 10-question scoping, compound epi:study routing, full skill/agent infrastructure, and ~2,600 lines of domain context covering study designs, causal inference, missing data, observational methods, and R package references"
     },
     {
       "project_number": 399,
