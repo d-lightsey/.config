@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 394,
+  "next_project_number": 395,
   "active_projects": [
+    {
+      "project_number": 394,
+      "project_name": "remove_language_to_task_type_compat_shim",
+      "status": "not_started",
+      "language": "meta",
+      "created": "2026-04-10T16:37:05Z",
+      "last_updated": "2026-04-10T16:37:05Z"
+    },
     {
       "project_number": 393,
       "project_name": "unify_routing_field_language_task_type",

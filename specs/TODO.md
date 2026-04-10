@@ -1,5 +1,5 @@
 ---
-next_project_number: 394
+next_project_number: 395
 ---
 
 # TODO
@@ -22,6 +22,13 @@ next_project_number: 394
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 394. Remove language-to-task_type backward compatibility shim
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Language**: meta
+
+**Description**: Remove the backward compatibility shim that treats old `language` field values as `task_type` when no `task_type` field is present. This shim was added during task 393 to prevent breakage of existing tasks. Remove it once all existing tasks across current projects have been completed and no legacy-format tasks remain in active state.
 
 ### 393. Unify routing field: replace separate language and task_type with single extension:task_type format
 - **Effort**: TBD
