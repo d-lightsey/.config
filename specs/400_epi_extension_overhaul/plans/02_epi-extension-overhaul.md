@@ -110,7 +110,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: /epi Command [NOT STARTED]
+### Phase 2: /epi Command [COMPLETED]
 
 **Goal**: Create the `/epi` command file that accepts a description, path, or task number and runs a 10-question interactive scoping flow to produce an `epi:study` task with `forcing_data`.
 
@@ -138,7 +138,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Skills [NOT STARTED]
+### Phase 3: Skills [COMPLETED]
 
 **Goal**: Create full thin-wrapper skills for research and implementation that route through the epidemiology agents.
 
