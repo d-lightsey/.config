@@ -1,7 +1,7 @@
 # Implementation Plan: Epidemiology Extension Overhaul
 
 - **Task**: 400 - Overhaul epidemiology extension: /epi command, epi:study routing, and infrastructure completion
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 10 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md, reports/02_team-research.md
@@ -246,7 +246,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 6: Documentation, Index, and Cleanup [NOT STARTED]
+### Phase 6: Documentation, Index, and Cleanup [COMPLETED]
 
 **Goal**: Update all cross-references, expand index-entries.json to cover new files, clean up vestigial artifacts, update extension documentation, and verify end-to-end consistency.
 
