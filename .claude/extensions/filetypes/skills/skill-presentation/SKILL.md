@@ -22,7 +22,7 @@ Note: This skill is a thin wrapper. Context is loaded by the delegated agent, no
 This skill activates when:
 
 ### Direct Invocation
-- User explicitly runs `/slides` command
+- User runs `/convert` with a `.pptx`/`.ppt` source and `--format beamer|polylux|touying`
 - User requests presentation conversion in conversation
 
 ### Implicit Invocation (during task implementation)
@@ -105,7 +105,7 @@ Prepare delegation context:
   "metadata": {
     "session_id": "sess_{timestamp}_{random}",
     "delegation_depth": 1,
-    "delegation_path": ["orchestrator", "slides", "skill-presentation"]
+    "delegation_path": ["orchestrator", "convert", "skill-presentation"]
   }
 }
 ```

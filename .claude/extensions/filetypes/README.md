@@ -8,9 +8,8 @@ This extension provides five commands for file manipulation tasks:
 
 | Command | Purpose | Typical Inputs |
 |---------|---------|----------------|
-| `/convert` | Convert between document formats (PDF/DOCX/Markdown/HTML) | `.pdf`, `.docx`, `.md`, `.html` |
+| `/convert` | Convert between document formats (PDF/DOCX/Markdown/HTML); PPTX -> Beamer/Polylux/Touying via `--format` | `.pdf`, `.docx`, `.md`, `.html`, `.pptx` |
 | `/table` | Convert spreadsheets to LaTeX or Typst table source | `.xlsx`, `.csv` |
-| `/slides` | Convert presentations to Beamer, Polylux, or Touying | `.pptx`, `.key` |
 | `/scrape` | Extract PDF annotations (highlights, comments) to Markdown/JSON | annotated `.pdf` |
 | `/edit` | In-place Office document editing with tracked changes | `.docx` (SuperDoc MCP) |
 
@@ -52,16 +51,19 @@ Configured automatically in `manifest.json`. No API key required.
 
 ### /convert
 
-Convert between document formats using markitdown and pandoc pipelines.
+Convert between document formats using markitdown and pandoc pipelines. Also handles PowerPoint-to-slide-format conversion (PPTX -> Beamer/Polylux/Touying) via the `--format` flag, dispatching to `presentation-agent` via `skill-presentation`.
 
 **Syntax**:
 ```bash
-/convert input.pdf                    # PDF -> Markdown (via markitdown)
-/convert report.docx --to=html        # DOCX -> HTML (via pandoc)
-/convert notes.md --to=pdf            # Markdown -> PDF (via pandoc + LaTeX)
+/convert input.pdf                             # PDF -> Markdown (via markitdown)
+/convert report.docx --to=html                 # DOCX -> HTML (via pandoc)
+/convert notes.md --to=pdf                     # Markdown -> PDF (via pandoc + LaTeX)
+/convert deck.pptx --format beamer             # PPTX -> Beamer (via python-pptx + pandoc)
+/convert deck.pptx slides.typ --format polylux # PPTX -> Polylux (Typst)
+/convert talk.pptx talk.typ --format touying   # PPTX -> Touying (Typst)
 ```
 
-**Agent**: Routed through `filetypes-router-agent` which dispatches to `document-agent`.
+**Agent**: Routed through `filetypes-router-agent` which dispatches to `document-agent` for general document conversion. For PPTX sources with `--format beamer|polylux|touying`, `/convert` delegates to `skill-presentation` -> `presentation-agent` instead.
 
 ### /table
 
@@ -75,19 +77,6 @@ Convert spreadsheets to LaTeX or Typst table source with column alignment infere
 ```
 
 **Agent**: `spreadsheet-agent` (uses `openpyxl` MCP for `.xlsx` reads)
-
-### /slides
-
-Convert slide decks to a LaTeX/Typst presentation framework.
-
-**Syntax**:
-```bash
-/slides deck.pptx                     # Default: Beamer
-/slides deck.pptx --to=polylux        # Polylux (Typst)
-/slides deck.pptx --to=touying        # Touying (Typst)
-```
-
-**Agent**: `presentation-agent` (uses python-pptx for slide extraction)
 
 ### /scrape
 
@@ -123,9 +112,8 @@ filetypes/
 ├── README.md                  # This file
 │
 ├── commands/                  # Slash commands
-│   ├── convert.md             # /convert command
+│   ├── convert.md             # /convert command (general + slide formats)
 │   ├── table.md               # /table command
-│   ├── slides.md              # /slides command
 │   ├── scrape.md              # /scrape command
 │   └── edit.md                # /edit command
 │
@@ -203,9 +191,8 @@ Output written to same directory as input (or user-specified path)
 
 | Command | Output Location | Format |
 |---------|-----------------|--------|
-| `/convert` | Same directory as input (or `--output=` path) | Target format |
+| `/convert` | Same directory as input (or `--output=` path) | Target format (incl. `.tex`/`.typ` for PPTX `--format`) |
 | `/table` | Same directory, `.tex` or `.typ` | LaTeX or Typst table source |
-| `/slides` | Same directory, `.tex` or `.typ` | Beamer/Polylux/Touying source |
 | `/scrape` | Same directory, `.md` or `.json` | Structured annotations |
 | `/edit` | Edits input file in place, creates `.bak` backup | Modified DOCX |
 

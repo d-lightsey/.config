@@ -107,7 +107,7 @@ All phases are sequential: each depends on the file-state established by the pre
 
 ---
 
-### Phase 2: Delete slides.md and update filetypes extension metadata [NOT STARTED]
+### Phase 2: Delete slides.md and update filetypes extension metadata [COMPLETED]
 
 **Goal**: Remove `filetypes/commands/slides.md` from the repo and the filetypes extension's manifest/docs/index, update `skill-presentation` trigger, and scrub the filetypes extension of all `/slides` command references.
 

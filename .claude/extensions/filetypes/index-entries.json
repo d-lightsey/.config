@@ -17,7 +17,6 @@
         "commands": [
           "/convert",
           "/table",
-          "/slides",
           "/edit"
         ]
       },
@@ -42,7 +41,6 @@
         "commands": [
           "/convert",
           "/table",
-          "/slides",
           "/edit"
         ]
       },
@@ -95,7 +93,7 @@
         ],
         "languages": [],
         "commands": [
-          "/slides"
+          "/convert"
         ]
       },
       "domain": "project",
@@ -117,7 +115,7 @@
           "deck"
         ],
         "commands": [
-          "/slides",
+          "/convert",
           "/deck"
         ]
       },
@@ -140,7 +138,7 @@
           "deck"
         ],
         "commands": [
-          "/slides",
+          "/convert",
           "/deck"
         ]
       },
@@ -164,7 +162,6 @@
         "commands": [
           "/convert",
           "/table",
-          "/slides",
           "/scrape"
         ]
       },

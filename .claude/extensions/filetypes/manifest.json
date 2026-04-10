@@ -23,7 +23,6 @@
     "commands": [
       "convert.md",
       "table.md",
-      "slides.md",
       "scrape.md",
       "edit.md"
     ],

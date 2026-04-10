@@ -42,7 +42,7 @@ context/project/filetypes/
 | CSV | Typst table | Typst csv() |
 | ODS | LaTeX/Typst | pandas |
 
-### Presentations (/slides)
+### Presentations (/convert --format)
 
 | From | To | Tools |
 |------|----|----|

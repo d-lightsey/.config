@@ -20,7 +20,7 @@
 | CSV | Typst table | Typst csv() | manual |
 | ODS | LaTeX/Typst table | pandas | - |
 
-## Presentation Conversions (via /slides)
+## Presentation Conversions (via /convert)
 
 | Source | Target | Primary Tool | Fallback |
 |--------|--------|--------------|----------|
@@ -28,6 +28,8 @@
 | PPTX | Polylux (Typst) | python-pptx | markitdown |
 | PPTX | Touying (Typst) | python-pptx | markitdown |
 | Markdown | PPTX | pandoc | - |
+
+**Note**: `/slides` in the `present` extension is a distinct research-talk task-creation command; for PPTX file conversion, use `/convert --format beamer|polylux|touying`.
 
 ## PDF Annotation Extraction (via /scrape)
 
@@ -64,10 +66,10 @@ Edit operations modify documents in-place, unlike format conversion which create
 /table data.xlsx output.typ --format typst
 /table budget.csv budget.tex --format latex
 
-# Presentation conversion
-/slides presentation.pptx                # -> presentation.tex (Beamer)
-/slides deck.pptx slides.typ --format polylux
-/slides talk.pptx talk.typ --format touying
+# Presentation conversion (PPTX to slide formats)
+/convert presentation.pptx --format beamer          # -> presentation.tex (Beamer)
+/convert deck.pptx slides.typ --format polylux
+/convert talk.pptx talk.typ --format touying
 
 # PDF annotation extraction
 /scrape paper.pdf                              # -> paper_annotations.md
@@ -122,11 +124,11 @@ home.packages = with pkgs; [
 | Tool | Purpose | Required For |
 |------|---------|--------------|
 | markitdown | Office to Markdown | /convert |
-| pandoc | Universal converter | /convert, /slides |
+| pandoc | Universal converter | /convert |
 | typst | Typst compiler | /convert (typst output) |
 | pandas | DataFrame handling | /table |
 | openpyxl | XLSX support | /table (xlsx) |
-| python-pptx | PPTX extraction | /slides |
+| python-pptx | PPTX extraction | /convert (with --format) |
 | xlsx2csv | XLSX fallback | /table (fallback) |
 | pdflatex | LaTeX compilation | Beamer PDF output |
 | pymupdf   | PDF annotation extraction     | /scrape (primary)    |
