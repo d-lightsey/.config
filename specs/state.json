@@ -5,11 +5,11 @@
     {
       "project_number": 397,
       "project_name": "fix_team_skill_artifact_linking",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-10T18:55:29Z",
-      "last_updated": "2026-04-10T20:26:02Z",
-      "session_id": "sess_1775852407_5df8f8",
+      "last_updated": "2026-04-10T20:30:53Z",
+      "session_id": "sess_1775852872_c1d287",
       "researched": "2026-04-10T20:26:02Z",
       "next_artifact_number": 2,
       "artifacts": [
@@ -17,6 +17,11 @@
           "path": "specs/397_fix_team_skill_artifact_linking/reports/01_team-skill-artifact-linking.md",
           "type": "research",
           "summary": "Research report locating the TODO.md artifact-linking gap in skill-team-research/plan/implement, confirming the bug on task 396 via git history, and recommending in-place duplication of single-agent Stage 8 with deferred shared-helper refactor."
+        },
+        {
+          "path": "specs/397_fix_team_skill_artifact_linking/plans/01_fix-team-skill-artifact-linking.md",
+          "type": "plan",
+          "summary": "Phased plan to fix team-mode skill TODO.md artifact-linking gap via in-place duplication of single-agent Stage 8, with verification and deferred shared-helper follow-up."
         }
       ]
     },

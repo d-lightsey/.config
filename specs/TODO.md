@@ -18,9 +18,10 @@ next_project_number: 398
 
 ### 397. Fix team-mode skills missing TODO.md artifact linking
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Task Type**: meta
 - **Research**: [01_team-skill-artifact-linking.md](397_fix_team_skill_artifact_linking/reports/01_team-skill-artifact-linking.md)
+- **Plan**: [01_fix-team-skill-artifact-linking.md](397_fix_team_skill_artifact_linking/plans/01_fix-team-skill-artifact-linking.md)
 
 **Description**: The three team-mode skills (`skill-team-research`, `skill-team-plan`, `skill-team-implement`) lack the TODO.md artifact-linking step that their single-agent counterparts (`skill-researcher`, `skill-planner`, `skill-implementer`) perform in their postflight. After a `--team` run, `state.json` correctly contains the artifact entry under `active_projects[].artifacts[]`, but TODO.md does not receive the inline `- **Research/Plan/Summary**: [file](path)` entry specified by `.claude/rules/artifact-formats.md` and `.claude/rules/state-management.md`. This causes silent TODO.md drift for every team-mode invocation. First observed on task 396 after `/research --team 396`. Fix by adding a TODO.md artifact-linking stage to all three team skills (mirroring `skill-researcher` line 292, `skill-planner`, `skill-implementer`), ensuring the count-aware format is used (inline for 1 artifact, multi-line list for 2+). Additionally, investigate whether this should be extracted into a shared postflight helper (e.g., `skill-status-sync` or a utility) so future skills cannot drift from the standard. Verify the fix by re-running `/research --team` on a test task and confirming both state.json and TODO.md are updated.
 
