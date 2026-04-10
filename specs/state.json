@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 400,
+  "next_project_number": 401,
   "active_projects": [
+    {
+      "project_number": 400,
+      "project_name": "epi_extension_overhaul",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-10T21:22:57Z",
+      "last_updated": "2026-04-10T21:22:57Z"
+    },
     {
       "project_number": 399,
       "project_name": "consolidate_slides_commands",

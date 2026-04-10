@@ -1,5 +1,5 @@
 ---
-next_project_number: 400
+next_project_number: 401
 ---
 
 # TODO
@@ -15,6 +15,15 @@ next_project_number: 400
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 400. Overhaul epidemiology extension: /epi command, epi:study routing, and infrastructure completion
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Research the `.claude/extensions/epidemiology/` extension and compare it to other extensions such as `founder/` and `present/` to identify improvements and missing infrastructure. Revise `task_type` routing to use the `{extension}:{type}` compound form with `epi` as the extension prefix (e.g., `epi:study`). Add a new `/epi` command that accepts a path, prompt, or task number and asks interactive questions to scope an epidemiology study in R, producing an `epi:study` task. The interactive questions should collect all paths to relevant directories, data files, descriptions, or other supporting content. After `/epi` creates the task, running `/research` and `/plan` on it should analyze all materials to produce a clear study design and development plan, and `/implement` should execute that plan, review results, and generate a final report of findings. Systematically review the current contents of `epidemiology/` (commands, skills, agents, context, manifest, rules, routing) against `founder/` and `present/` to enumerate what already exists, what is missing, and what should be improved to complete the command-skill-agent infrastructure.
+
+---
 
 ### 399. Consolidate slides.md command into convert.md or talk.md and rename talk.md to slides.md
 - **Effort**: TBD
