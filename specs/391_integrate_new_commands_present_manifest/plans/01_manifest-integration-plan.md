@@ -1,7 +1,7 @@
 # Implementation Plan: Task #391
 
 - **Task**: 391 - Integrate new commands into present extension manifest
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1.5 hours
 - **Dependencies**: 387, 388, 389, 390 (all completed)
 - **Research Inputs**: specs/391_integrate_new_commands_present_manifest/reports/01_manifest-integration.md

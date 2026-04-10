@@ -207,6 +207,54 @@ Use this when you want Claude to draft and format a new Word document for you.
 
 > /edit --new ~/Documents/memo.docx "Create a Q2 Budget Review memo, dated April 9, 2026, from Sarah Chen (Finance Director) to the Executive Team. Include a brief summary paragraph and a table with 4 columns: Department, Q1 Actual, Q2 Budget, and Variance."
 
+### Workflow 5: Grant Writing and Research Presentations
+
+Beyond editing documents, Claude has specialized commands for academic and research work. These walk you through the process with questions before producing output.
+
+**`/grant` -- Write and manage grant proposals**
+
+Start a new grant task, then draft sections or build a budget:
+
+> /grant "NSF CAREER proposal on computational epidemiology"
+
+Claude will ask clarifying questions (funding agency, aims, timeline). Once the task exists, use sub-commands:
+
+> /grant 42 --draft "specific aims page"
+
+> /grant 42 --budget "3-year R01, two postdocs, one graduate student"
+
+**`/budget` -- Create grant budget spreadsheets**
+
+Generates a formatted .xlsx budget with formulas for salaries, overhead, and multi-year totals:
+
+> /budget "NIH R01 detailed budget, 5 years, $300K direct costs per year"
+
+Claude will ask about personnel, equipment, and rates, then produce a ready-to-submit spreadsheet.
+
+**`/funds` -- Research funding opportunities**
+
+Surveys available funding programs and produces a report with eligibility, deadlines, and strategy:
+
+> /funds "NIH and NSF funding landscape for machine learning in clinical trials"
+
+**`/timeline` -- Build a project timeline**
+
+Creates a structured timeline mapping specific aims to milestones and decision points:
+
+> /timeline "R01 project timeline, 5 years, 3 specific aims"
+
+**`/talk` -- Create research presentations**
+
+Builds a slide deck from your research materials. Point it at a paper or manuscript:
+
+> /talk "20-minute conference talk on our survival analysis paper"
+
+> /talk /path/to/manuscript.pdf
+
+Claude will ask about audience, format (conference, seminar, defense, poster, journal club), and key messages before assembling slides.
+
+**How these commands work:** Each one creates a task that Claude works through step by step. You can close Zed and come back later -- type the same command with the task number to resume (e.g., `/grant 42`).
+
 ### Tips for OneDrive and SharePoint Files
 
 If your documents sync with OneDrive or SharePoint:
@@ -243,6 +291,11 @@ That's it. Claude handles the rest.
 | Update spreadsheet values | Close it in Excel first, then ask Claude (see Workflow 2) |
 | Edit many files at once | `/edit path/to/folder/ "your instructions"` (see Workflow 3) |
 | Create a new Word document | `/edit --new path/to/file.docx "describe what you need"` (see Workflow 4) |
+| Write a grant proposal | `/grant "description"` then `/grant N --draft` (see Workflow 5) |
+| Build a grant budget | `/budget "description"` (see Workflow 5) |
+| Find funding opportunities | `/funds "your research area"` (see Workflow 5) |
+| Create a project timeline | `/timeline "description"` (see Workflow 5) |
+| Make a research talk | `/talk "description"` or `/talk /path/to/paper` (see Workflow 5) |
 | See what Claude changed | Switch to Word -- tracked changes appear automatically |
 | Check which helpers are installed | Run `claude mcp list` in WezTerm |
 | Open a file in Zed | Press **Cmd + P** and type the filename |
