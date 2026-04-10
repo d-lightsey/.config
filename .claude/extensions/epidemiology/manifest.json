@@ -1,24 +1,43 @@
 {
   "name": "epidemiology",
-  "version": "1.0.0",
-  "description": "Epidemiology research extension for R and related tooling. Provides agents, skills, and context for statistical modeling, infectious disease dynamics (EpiModel), and Bayesian inference (epidemia/Stan).",
-  "task_type": "epidemiology",
+  "version": "2.0.0",
+  "description": "Epidemiology research extension for R and related tooling. Provides agents, skills, and context for study design, statistical modeling, causal inference, and Bayesian analysis.",
+  "task_type": "epi",
   "dependencies": [],
   "provides": {
     "agents": [
-      "epidemiology-research-agent.md",
-      "epidemiology-implementation-agent.md"
+      "epi-research-agent.md",
+      "epi-implement-agent.md"
     ],
     "skills": [
-      "skill-epidemiology-research",
-      "skill-epidemiology-implementation"
+      "skill-epi-research",
+      "skill-epi-implement"
     ],
     "context": [
       "project/epidemiology"
     ],
-    "commands": [],
+    "commands": [
+      "epi.md"
+    ],
     "scripts": [],
     "rules": []
+  },
+  "routing": {
+    "research": {
+      "epi": "skill-epi-research",
+      "epi:study": "skill-epi-research",
+      "epidemiology": "skill-epi-research"
+    },
+    "plan": {
+      "epi": "skill-planner",
+      "epi:study": "skill-planner",
+      "epidemiology": "skill-planner"
+    },
+    "implement": {
+      "epi": "skill-epi-implement",
+      "epi:study": "skill-epi-implement",
+      "epidemiology": "skill-epi-implement"
+    }
   },
   "merge_targets": {
     "claudemd": {

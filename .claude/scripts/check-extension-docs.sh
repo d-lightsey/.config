@@ -106,6 +106,22 @@ check_manifest_entries() {
   done
 }
 
+check_routing_block() {
+  local ext_path="$1"
+  local manifest="$ext_path/manifest.json"
+
+  # If manifest declares non-empty provides.skills, verify routing block exists
+  local skill_count
+  skill_count=$(jq -r '.provides.skills | length' "$manifest" 2>/dev/null)
+  if [[ "$skill_count" -gt 0 ]]; then
+    local has_routing
+    has_routing=$(jq -r 'has("routing")' "$manifest" 2>/dev/null)
+    if [[ "$has_routing" == "false" ]]; then
+      fail "manifest declares $skill_count skill(s) but has no routing block"
+    fi
+  fi
+}
+
 check_readme_vs_manifest() {
   local ext_path="$1"
   local manifest="$ext_path/manifest.json"
@@ -153,6 +169,7 @@ for ext_path in "$EXT_DIR"/*/; do
   if [[ -f "$ext_path/manifest.json" ]]; then
     if jq empty "$ext_path/manifest.json" 2>/dev/null; then
       check_manifest_entries "$ext_path"
+      check_routing_block "$ext_path"
       check_readme_vs_manifest "$ext_path"
     else
       fail "manifest.json is not valid JSON"

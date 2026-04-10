@@ -18,7 +18,7 @@ next_project_number: 401
 
 ### 400. Overhaul epidemiology extension: /epi command, epi:study routing, and infrastructure completion
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**:
   - [01_team-research.md](400_epi_extension_overhaul/reports/01_team-research.md)

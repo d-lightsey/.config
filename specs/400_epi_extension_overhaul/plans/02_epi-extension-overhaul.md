@@ -80,7 +80,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Manifest, Routing, and Index Fix [NOT STARTED]
+### Phase 1: Manifest, Routing, and Index Fix [COMPLETED]
 
 **Goal**: Make the epidemiology extension discoverable by the standard command pipeline. Fix all structural bugs that prevent routing and context loading.
 

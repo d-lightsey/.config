@@ -118,7 +118,7 @@ When $ARGUMENTS contains a description (no flags).
    - "z3", "smt", "solver", "constraint" → z3
    - "nix", "nixos", "home-manager", "flake" → nix
    - "web", "astro", "tailwind", "cloudflare" → web
-   - "epidemiology", "epimodel", "stan", "infectious" → epidemiology
+   - "epidemiology", "epi", "cohort", "case-control", "strobe" → epi:study
    - "formal", "logic", "math", "physics", "modal", "kripke" → formal
    - "deck", "slide", "presentation", "pitch deck" → founder:deck
    - "spreadsheet", "sheet", "excel" → founder:sheet

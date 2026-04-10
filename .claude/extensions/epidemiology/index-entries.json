@@ -9,8 +9,9 @@
       "summary": "Epidemiology domain overview and R-based research workflows",
       "line_count": 100,
       "load_when": {
-        "languages": ["r", "epidemiology"],
-        "agents": ["epidemiology-research-agent", "epidemiology-implementation-agent"]
+        "task_types": ["epi", "epi:study"],
+        "agents": ["epi-research-agent", "epi-implement-agent"],
+        "commands": ["/epi"]
       }
     },
     {
@@ -22,8 +23,9 @@
       "summary": "Documentation for key R epidemiology packages",
       "line_count": 150,
       "load_when": {
-        "languages": ["r", "epidemiology"],
-        "agents": ["epidemiology-implementation-agent"]
+        "task_types": ["epi", "epi:study"],
+        "agents": ["epi-implement-agent"],
+        "commands": ["/epi"]
       }
     },
     {
@@ -35,8 +37,9 @@
       "summary": "Statistical modeling patterns for epidemiology",
       "line_count": 100,
       "load_when": {
-        "languages": ["r", "epidemiology"],
-        "agents": ["epidemiology-implementation-agent"]
+        "task_types": ["epi", "epi:study"],
+        "agents": ["epi-implement-agent"],
+        "commands": ["/epi"]
       }
     },
     {
@@ -48,8 +51,9 @@
       "summary": "MCP server integration for R-based analysis",
       "line_count": 80,
       "load_when": {
-        "languages": ["r", "epidemiology"],
-        "agents": ["epidemiology-research-agent", "epidemiology-implementation-agent"]
+        "task_types": ["epi", "epi:study"],
+        "agents": ["epi-research-agent", "epi-implement-agent"],
+        "commands": ["/epi"]
       }
     }
   ]
