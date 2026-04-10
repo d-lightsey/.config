@@ -13,10 +13,10 @@
     {
       "project_number": 393,
       "project_name": "unify_routing_field_language_task_type",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-10T15:49:16Z",
-      "last_updated": "2026-04-10T16:41:56Z",
+      "last_updated": "2026-04-10T17:12:05Z",
       "session_id": "sess_1775839306_316c3b",
       "researched": "2026-04-10T16:02:22Z",
       "next_artifact_number": 2,
@@ -30,6 +30,11 @@
           "path": "specs/393_unify_routing_field_language_task_type/plans/01_unify-routing-field.md",
           "type": "plan",
           "summary": "Revised plan v2: rename language to task_type as unified routing field"
+        },
+        {
+          "path": "specs/393_unify_routing_field_language_task_type/summaries/01_unify-routing-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 393"
         }
       ],
       "plan_metadata": {
@@ -58,7 +63,9 @@
             "integrated_date": "2026-04-10"
           }
         ]
-      }
+      },
+      "completion_summary": "Renamed language routing field to task_type across ~180 files including state.json, TODO.md, CLAUDE.md, 8 commands, 10 core skills, 7 core agents, 14 extension manifests, 92 extension files, 96 context index entries, and validation scripts. Added backward compatibility shim for legacy tasks.",
+      "claudemd_suggestions": "Updated CLAUDE.md: Language-Based Routing -> Task-Type-Based Routing, state.json example shows task_type field, context discovery jq queries use load_when.task_types. Updated state-management.md, state-management-schema.md, plan-format-enforcement.md, workflows.md rules."
     },
     {
       "project_number": 392,

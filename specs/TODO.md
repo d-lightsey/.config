@@ -32,10 +32,11 @@ next_project_number: 395
 
 ### 393. Unify routing field: replace separate language and task_type with single extension:task_type format
 - **Effort**: TBD
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_team-research.md](specs/393_unify_routing_field_language_task_type/reports/01_team-research.md)
 - **Plan**: [01_unify-routing-field.md](specs/393_unify_routing_field_language_task_type/plans/01_unify-routing-field.md)
+- **Summary**: [01_unify-routing-summary.md](specs/393_unify_routing_field_language_task_type/summaries/01_unify-routing-summary.md)
 
 **Description**: Instead of both 'language' and 'task-type' fields for tasks, use a single routing field in the form '{extension-or-language}:{task-type}'. Systematically study the .claude/ agent system, the extension system, and best practices to improve uniformity and consistency throughout.
 
