@@ -13,10 +13,10 @@
     {
       "project_number": 396,
       "project_name": "review_claude_architecture_docs",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-10T18:39:40Z",
-      "last_updated": "2026-04-10T19:22:06Z",
+      "last_updated": "2026-04-10T20:18:39Z",
       "session_id": "sess_1775849000_d6e8f4",
       "researched": "2026-04-10T18:49:55Z",
       "next_artifact_number": 2,
@@ -30,8 +30,16 @@
           "path": "specs/396_review_claude_architecture_docs/plans/01_docs-audit-fixes.md",
           "type": "plan",
           "summary": "Three-tier .claude/ documentation audit and remediation plan with 10 phases across 5 dependency waves"
+        },
+        {
+          "path": "specs/396_review_claude_architecture_docs/summaries/01_docs-audit-summary.md",
+          "type": "summary",
+          "summary": "Full implementation summary covering all 10 phases with file lists, verification results, and decision notes"
         }
-      ]
+      ],
+      "implemented": "2026-04-10T20:18:39Z",
+      "completion_summary": "Completed 10-phase .claude/ architecture documentation audit: added 11 extension READMEs (all 14 extensions now documented), fixed core-doc drift across 7 files, consolidated duplicate documentation-standards files, rewrote 4 stale templates plus creating-commands guide, migrated code-reviewer-agent frontmatter, added doc-lint script that passes against final state, and populated ROADMAP with documentation-infrastructure follow-ups.",
+      "claudemd_suggestions": "Updated .claude/CLAUDE.md: added plan-format-enforcement.md to Rules References, removed Co-Authored-By trailer from commit convention example, added check-extension-docs.sh to Utility Scripts. Updated .claude/README.md: added reviser-agent to agents table. Multiple context/reference files updated (skill-agent-mapping.md, reference/README.md) to match current skill roster."
     },
     {
       "project_number": 394,
