@@ -27,7 +27,7 @@ next_project_number: 398
 
 ### 396. Review .claude/ architecture and update all relevant documentation
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [01_team-research.md](396_review_claude_architecture_docs/reports/01_team-research.md)
 - **Plan**: [01_docs-audit-fixes.md](396_review_claude_architecture_docs/plans/01_docs-audit-fixes.md)

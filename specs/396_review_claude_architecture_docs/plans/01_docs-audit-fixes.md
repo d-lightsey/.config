@@ -97,7 +97,8 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Tier 1 -- Core-Doc Surgical Drift Fixes [NOT STARTED]
+### Phase 2: Tier 1 -- Core-Doc Surgical Drift Fixes [COMPLETED]
+**Completed**: 2026-04-10
 
 **Goal**: Apply all surgical fixes from Finding 4 of the research to core `.claude/` documentation.
 

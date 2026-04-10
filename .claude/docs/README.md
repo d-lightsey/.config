@@ -24,7 +24,9 @@ This directory contains the documentation for the `.claude/` agent system. The s
 │   ├── adding-domains.md       # Add new domain support (extensions or core)
 │   ├── creating-extensions.md  # Create domain extensions
 │   ├── context-loading-best-practices.md # Context loading patterns
-│   └── permission-configuration.md # Permission setup
+│   ├── permission-configuration.md # Permission setup
+│   └── development/             # Development subsystem guides
+│       └── context-index-migration.md # Context index migration guide
 ├── examples/                    # Integration examples
 │   ├── research-flow-example.md # End-to-end research flow
 │   └── fix-it-flow-example.md   # Tag extraction and task creation

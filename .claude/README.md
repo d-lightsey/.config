@@ -103,6 +103,7 @@ User-invocable operations with checkpoint-based execution:
 | planner-agent | Plan creation |
 | meta-builder-agent | Meta tasks |
 | code-reviewer-agent | Code review |
+| reviser-agent | Plan revision with research synthesis |
 | spawn-agent | Task decomposition |
 
 ---

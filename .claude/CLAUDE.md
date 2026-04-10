@@ -154,11 +154,11 @@ Format: `task {N}: {action}` with session ID in body.
 task 1: complete research
 
 Session: sess_1736700000_abc123
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 Standard actions: `create`, `complete research`, `create implementation plan`, `phase {P}: {name}`, `complete implementation`.
+
+**Note**: Per user preference (see `~/.claude/projects/.../feedback_no_coauthored_by.md`), omit `Co-Authored-By` trailers from all commits.
 
 ## Skill-to-Agent Mapping
 
@@ -216,6 +216,7 @@ Core rules (auto-applied by file path):
 - @.claude/rules/error-handling.md - Error recovery (.claude/**)
 - @.claude/rules/artifact-formats.md - Report/plan formats (specs/**)
 - @.claude/rules/workflows.md - Command lifecycle (.claude/**)
+- @.claude/rules/plan-format-enforcement.md - Plan format checklist (specs/**)
 
 **Extension Rules**: When extensions are loaded, additional rules are added (e.g., neovim-lua.md for Lua development).
 

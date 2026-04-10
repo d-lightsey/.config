@@ -6,8 +6,10 @@ This directory contains schema definitions and reference documentation for the a
 
 | File | Description |
 |------|-------------|
-| state-json-schema.md | Complete state.json schema with field specifications and examples |
+| state-management-schema.md | Complete state.json schema with field specifications and examples |
 | skill-agent-mapping.md | Skill-to-agent routing and delegation reference |
+| artifact-templates.md | Templates for research reports, implementation plans, and summaries |
+| workflow-diagrams.md | Visual diagrams for research, planning, implementation, and error recovery workflows |
 
 ## Purpose
 

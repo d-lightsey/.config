@@ -19,6 +19,8 @@ Core skills are always available regardless of which extensions are loaded.
 |-------|-------|-------|---------|
 | skill-implementer | general-implementation-agent | - | General file implementation |
 | skill-meta | meta-builder-agent | - | System building and meta tasks |
+| skill-reviser | reviser-agent | opus | Plan revision with research synthesis |
+| skill-spawn | spawn-agent | opus | Blocker analysis and task decomposition |
 
 ### Direct Execution Skills
 
@@ -29,6 +31,9 @@ These skills execute directly without agent delegation:
 | skill-status-sync | Atomic status updates to state.json/TODO.md |
 | skill-refresh | Process and file cleanup |
 | skill-todo | Archive completed tasks, sync metrics |
+| skill-orchestrator | Route commands to appropriate workflows based on task type and status |
+| skill-git-workflow | Create scoped git commits for task operations |
+| skill-fix-it | Scan codebase for tagged comments and create structured tasks |
 
 ### User-Only Skills
 
@@ -151,6 +156,6 @@ When extension loaded:
 
 ## Related Documentation
 
-- [State JSON Schema](state-json-schema.md) - Task task_type field values
+- [State Management Schema](state-management-schema.md) - Task task_type field values
 - [Agent Frontmatter Standard](../../docs/reference/standards/agent-frontmatter-standard.md) - Model declarations
 - [Extensions Architecture](../../extensions/README.md) - Extension structure
