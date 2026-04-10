@@ -1,15 +1,27 @@
 {
   "version": "1.0.0",
-  "next_project_number": 398,
+  "next_project_number": 399,
   "active_projects": [
+    {
+      "project_number": 398,
+      "project_name": "extract_artifact_linking_helper",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-10T20:40:00Z",
+      "last_updated": "2026-04-10T20:40:00Z",
+      "dependencies": [
+        397
+      ],
+      "artifacts": []
+    },
     {
       "project_number": 397,
       "project_name": "fix_team_skill_artifact_linking",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-10T18:55:29Z",
-      "last_updated": "2026-04-10T20:30:53Z",
-      "session_id": "sess_1775852872_c1d287",
+      "last_updated": "2026-04-10T20:39:11Z",
+      "session_id": "sess_1775853279_ac8094",
       "researched": "2026-04-10T20:26:02Z",
       "next_artifact_number": 2,
       "artifacts": [
@@ -22,8 +34,15 @@
           "path": "specs/397_fix_team_skill_artifact_linking/plans/01_fix-team-skill-artifact-linking.md",
           "type": "plan",
           "summary": "Phased plan to fix team-mode skill TODO.md artifact-linking gap via in-place duplication of single-agent Stage 8, with verification and deferred shared-helper follow-up."
+        },
+        {
+          "path": "specs/397_fix_team_skill_artifact_linking/summaries/01_fix-team-skill-artifact-linking-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 397 adding TODO.md artifact linking to skill-team-research/plan/implement."
         }
-      ]
+      ],
+      "completed": "2026-04-10T20:39:11Z",
+      "completion_summary": "Added count-aware TODO.md artifact-linking sub-step to skill-team-research, skill-team-plan, and skill-team-implement postflight stages, mirroring single-agent skill Stage 8 verbatim; registered follow-up task 398 for shared-helper extraction."
     },
     {
       "project_number": 396,

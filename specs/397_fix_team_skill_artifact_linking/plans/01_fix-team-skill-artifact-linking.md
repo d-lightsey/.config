@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Team-Mode Skill TODO.md Artifact Linking
 
 - **Task**: 397 - fix_team_skill_artifact_linking
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/397_fix_team_skill_artifact_linking/reports/01_team-skill-artifact-linking.md
@@ -83,7 +83,7 @@ which is implicit infrastructure health.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Audit and Anchor Mapping [NOT STARTED]
+### Phase 1: Audit and Anchor Mapping [COMPLETED]
 
 **Goal**: Read all six skill files, confirm exact gap locations, verify Edit-tool
 availability in team skill frontmatter, and produce a per-skill anchor table that
@@ -122,7 +122,7 @@ phases 2-4 will apply verbatim.
 
 ---
 
-### Phase 2: Add TODO.md Linking to skill-team-research [NOT STARTED]
+### Phase 2: Add TODO.md Linking to skill-team-research [COMPLETED]
 
 **Goal**: Insert a "Link Artifact to TODO.md" sub-step into skill-team-research
 Stage 10, immediately after the existing state.json artifact append, mirroring the
@@ -157,7 +157,7 @@ skill-researcher Stage 8 four-case Edit block verbatim.
 
 ---
 
-### Phase 3: Add TODO.md Linking to skill-team-plan [NOT STARTED]
+### Phase 3: Add TODO.md Linking to skill-team-plan [COMPLETED]
 
 **Goal**: Insert a "Link Artifact to TODO.md" sub-step into skill-team-plan Stage 10,
 mirroring skill-planner Stage 8 with `- **Plan**:` label and `**Description**:` anchor.
@@ -187,7 +187,7 @@ mirroring skill-planner Stage 8 with `- **Plan**:` label and `**Description**:` 
 
 ---
 
-### Phase 4: Add TODO.md Linking to skill-team-implement [NOT STARTED]
+### Phase 4: Add TODO.md Linking to skill-team-implement [COMPLETED]
 
 **Goal**: Insert a "Link Artifact to TODO.md" sub-step into skill-team-implement
 Stage 12, mirroring skill-implementer Stage 8 with `- **Summary**:` label.
@@ -218,7 +218,7 @@ Stage 12, mirroring skill-implementer Stage 8 with `- **Summary**:` label.
 
 ---
 
-### Phase 5: End-to-End Verification with Test Task [NOT STARTED]
+### Phase 5: End-to-End Verification with Test Task [COMPLETED]
 
 **Goal**: Create a throwaway test task, run all three team commands against it, and
 confirm TODO.md entries receive canonical top-level artifact links in correct order.
@@ -265,7 +265,7 @@ confirm TODO.md entries receive canonical top-level artifact links in correct or
 
 ---
 
-### Phase 6: Document Deferred Shared-Helper Refactor [NOT STARTED]
+### Phase 6: Document Deferred Shared-Helper Refactor [COMPLETED]
 
 **Goal**: Record the deferred shared-helper extraction as an explicit follow-up task
 so the duplication introduced by this plan is tracked and eventually retired.
