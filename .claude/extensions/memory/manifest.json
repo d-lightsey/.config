@@ -11,6 +11,17 @@
     "data": [".memory"],
     "hooks": []
   },
+  "routing": {
+    "research": {
+      "memory": "skill-memory"
+    },
+    "plan": {
+      "memory": "skill-planner"
+    },
+    "implement": {
+      "memory": "skill-memory"
+    }
+  },
   "merge_targets": {
     "claudemd": {
       "source": "EXTENSION.md",

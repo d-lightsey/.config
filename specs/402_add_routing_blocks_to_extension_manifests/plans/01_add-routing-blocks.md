@@ -123,7 +123,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Null task_type extensions [IN PROGRESS]
+### Phase 3: Null task_type extensions [COMPLETED]
 
 **Goal**: Add `routing` blocks to the 2 extensions with `task_type: null` (`filetypes`, `memory`) using the extension name as the bare routing key (per D3).
 
@@ -147,7 +147,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Verification and doc-lint pass [NOT STARTED]
+### Phase 4: Verification and doc-lint pass [IN PROGRESS]
 
 **Goal**: Confirm all 11 manifests now satisfy `check-extension-docs.sh` and that no unrelated manifests were affected.
 
