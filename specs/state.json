@@ -1,7 +1,16 @@
 {
   "version": "1.0.0",
-  "next_project_number": 402,
+  "next_project_number": 403,
   "active_projects": [
+    {
+      "project_number": 402,
+      "project_name": "add_routing_blocks_to_extension_manifests",
+      "status": "not_started",
+      "task_type": "meta",
+      "priority": "high",
+      "created": "2026-04-11T02:23:21Z",
+      "last_updated": "2026-04-11T02:23:21Z"
+    },
     {
       "project_number": 398,
       "project_name": "extract_artifact_linking_helper",

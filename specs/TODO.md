@@ -1,5 +1,5 @@
 ---
-next_project_number: 402
+next_project_number: 403
 ---
 
 # TODO
@@ -15,6 +15,15 @@ next_project_number: 402
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 402. Add routing blocks to 11 extension manifests (doc-lint failures)
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+- **Priority**: high
+- **Review**: [review-2026-04-10.md](reviews/review-2026-04-10.md)
+
+**Description**: `.claude/scripts/check-extension-docs.sh` reports 11 extensions whose `manifest.json` declares skills but has no `routing` block mapping task types to those skills: filetypes (5 skills), formal (4), latex (2), lean (4), memory (1), nix (2), nvim (2), python (2), typst (2), web (3), z3 (2). Without routing entries, when these extensions are loaded via `<leader>ac`, `/research`, `/plan`, and `/implement` fall back to default skills instead of dispatching to the extension's domain skills. Add `routing.research`, `routing.plan`, `routing.implement` blocks to each manifest following the pattern established by `present/manifest.json` and `founder/manifest.json`. Verify with `.claude/scripts/check-extension-docs.sh` exiting 0. This clears the way for the roadmap item "CI enforcement of doc-lint".
 
 ### 398. Extract artifact-linking logic to shared helper script (consolidate six skill Stage 8 blocks)
 - **Effort**: TBD
