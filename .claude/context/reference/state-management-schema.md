@@ -81,7 +81,7 @@ The `task_type` field is the unified routing field for all tasks. It replaces th
 
 **Values**:
 - **Bare values**: `meta`, `general`, `markdown`, `neovim`, `lean4`, `latex`, etc.
-- **Compound values**: `present:grant`, `founder:deck`, `present:talk`, etc.
+- **Compound values**: `present:grant`, `founder:deck`, `present:slides`, etc.
 - Compound format: `{extension}:{subtype}` -- the extension prefix is used for routing to the correct extension, the subtype for sub-routing within the extension.
 
 **Routing Behavior**: When a command is invoked on a task:

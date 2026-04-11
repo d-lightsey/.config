@@ -2,14 +2,14 @@
 title: "Rename talk-agent to slides-agent: Execution Plan"
 task: 401
 date: 2026-04-10
-status: [NOT STARTED]
+status: [COMPLETED]
 type: plan
 ---
 
 # Implementation Plan: Task #401 - Rename talk-agent to slides-agent
 
 - **Task**: 401 - rename_talk_agent_to_slides_agent
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/401_rename_talk_agent_to_slides_agent/reports/01_rename-references-audit.md
@@ -123,7 +123,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 1: Filesystem Renames [NOT STARTED]
+### Phase 1: Filesystem Renames [COMPLETED]
 
 **Goal**: Atomically rename the agent file and skill directory on disk (and parallel `.opencode` file if present) using `git mv` to preserve history.
 
@@ -150,7 +150,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 2: Update manifest.json Routing [NOT STARTED]
+### Phase 2: Update manifest.json Routing [COMPLETED]
 
 **Goal**: Update the extension manifest to point at the renamed agent file, skill directory, and rename routing keys `present:talk` -> `present:slides`.
 
@@ -177,7 +177,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 3: Update Extension context/index-entries.json + opencode-agents.json [NOT STARTED]
+### Phase 3: Update Extension context/index-entries.json + opencode-agents.json [COMPLETED]
 
 **Goal**: Update JSON files that register the agent in the extension's context-loader index and the opencode parallel agent registry.
 
@@ -208,7 +208,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 4: Update Internal References in Extension Files [NOT STARTED]
+### Phase 4: Update Internal References in Extension Files [COMPLETED]
 
 **Goal**: Update all internal identifier references inside the renamed agent file, the renamed skill file, the commands/slides.md file, EXTENSION.md, and README.md.
 
@@ -300,7 +300,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 5: Update Top-Level Schema Doc [NOT STARTED]
+### Phase 5: Update Top-Level Schema Doc [COMPLETED]
 
 **Goal**: Update the one top-level `.claude/` reference doc that cites the `present:talk` compound routing value as an example.
 
@@ -323,7 +323,7 @@ Phases 2 and 3 can run in parallel after Phase 1 completes (both modify differen
 
 ---
 
-### Phase 6: Verification [NOT STARTED]
+### Phase 6: Verification [COMPLETED]
 
 **Goal**: Confirm zero residual identifier references in active paths, library layer untouched, and extension doc-lint passes.
 

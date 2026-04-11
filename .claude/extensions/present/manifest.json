@@ -5,8 +5,8 @@
   "task_type": "present",
   "dependencies": [],
   "provides": {
-    "agents": ["grant-agent.md", "budget-agent.md", "timeline-agent.md", "funds-agent.md", "talk-agent.md"],
-    "skills": ["skill-grant", "skill-budget", "skill-timeline", "skill-funds", "skill-talk"],
+    "agents": ["grant-agent.md", "budget-agent.md", "timeline-agent.md", "funds-agent.md", "slides-agent.md"],
+    "skills": ["skill-grant", "skill-budget", "skill-timeline", "skill-funds", "skill-slides"],
     "commands": ["grant.md", "budget.md", "timeline.md", "funds.md", "slides.md"],
     "rules": [],
     "context": ["project/present"],
@@ -20,7 +20,7 @@
       "present:budget": "skill-budget",
       "present:timeline": "skill-timeline",
       "present:funds": "skill-funds",
-      "present:talk": "skill-talk"
+      "present:slides": "skill-slides"
     },
     "plan": {
       "present": "skill-planner",
@@ -28,7 +28,7 @@
       "present:budget": "skill-planner",
       "present:timeline": "skill-planner",
       "present:funds": "skill-planner",
-      "present:talk": "skill-planner"
+      "present:slides": "skill-planner"
     },
     "implement": {
       "present": "skill-grant",
@@ -36,7 +36,7 @@
       "present:budget": "skill-budget",
       "present:timeline": "skill-timeline",
       "present:funds": "skill-funds",
-      "present:talk": "skill-talk"
+      "present:slides": "skill-slides"
     }
   },
   "merge_targets": {

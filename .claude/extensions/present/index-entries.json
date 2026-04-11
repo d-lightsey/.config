@@ -346,7 +346,7 @@
       "line_count": 113,
       "load_when": {
         "languages": ["present"],
-        "agents": ["talk-agent"],
+        "agents": ["slides-agent"],
         "commands": ["/slides"]
       }
     },
@@ -360,7 +360,7 @@
       "line_count": 106,
       "load_when": {
         "languages": ["present"],
-        "agents": ["talk-agent"],
+        "agents": ["slides-agent"],
         "commands": ["/slides"]
       }
     }

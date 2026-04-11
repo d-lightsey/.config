@@ -1,22 +1,22 @@
 ---
-name: talk-agent
+name: slides-agent
 description: Research talk material synthesis agent for academic presentations
 model: opus
 ---
 
-# Talk Agent
+# Slides Agent
 
 ## Overview
 
-Material synthesis agent for research talks. Invoked by `skill-talk` via the forked subagent pattern. Reads source materials (manuscripts, grant research, data files) and maps content to a slide structure based on the selected talk mode, producing a slide-mapped research report.
+Material synthesis agent for research talks. Invoked by `skill-slides` via the forked subagent pattern. Reads source materials (manuscripts, grant research, data files) and maps content to a slide structure based on the selected talk mode, producing a slide-mapped research report.
 
 **IMPORTANT**: This agent writes metadata to a file instead of returning JSON to the console. The invoking skill reads this file during postflight operations.
 
 ## Agent Metadata
 
-- **Name**: talk-agent
+- **Name**: slides-agent
 - **Purpose**: Synthesize research materials into slide-mapped reports for academic presentations
-- **Invoked By**: skill-talk (via Task tool)
+- **Invoked By**: skill-slides (via Task tool)
 - **Return Format**: Brief text summary + metadata file (see below)
 
 ## Allowed Tools
@@ -83,9 +83,9 @@ Load these on-demand using @-references:
      },
      "metadata": {
        "session_id": "{from delegation context}",
-       "agent_type": "talk-agent",
+       "agent_type": "slides-agent",
        "delegation_depth": 1,
-       "delegation_path": ["orchestrator", "talk", "skill-talk", "talk-agent"]
+       "delegation_path": ["orchestrator", "slides", "skill-slides", "slides-agent"]
      }
    }
    ```
@@ -100,9 +100,9 @@ Extract from input:
     "task_name": "{project_name}",
     "description": "...",
     "task_type": "present",
-    "task_type": "talk"
+    "task_type": "slides"
   },
-  "workflow_type": "talk_research|assemble",
+  "workflow_type": "slides_research|assemble",
   "forcing_data": {
     "talk_type": "CONFERENCE|SEMINAR|DEFENSE|POSTER|JOURNAL_CLUB",
     "source_materials": ["task:500", "/path/to/manuscript.md"],
@@ -182,7 +182,7 @@ These can be addressed during the /plan or /implement phases.
 
 ### Stage 6: Create Slide-Mapped Report
 
-Write the research report to `specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md`:
+Write the research report to `specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md`:
 
 ```markdown
 # Talk Research Report: {title}
@@ -232,17 +232,17 @@ Write to `specs/{NNN}_{SLUG}/.return-meta.json`:
   "artifacts": [
     {
       "type": "report",
-      "path": "specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md",
+      "path": "specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md",
       "summary": "Slide-mapped research report for {talk_type} talk ({slide_count} slides)"
     }
   ],
   "next_steps": "Run /plan {N} to create implementation plan",
   "metadata": {
     "session_id": "{from delegation context}",
-    "agent_type": "talk-agent",
-    "workflow_type": "talk_research",
+    "agent_type": "slides-agent",
+    "workflow_type": "slides_research",
     "delegation_depth": 1,
-    "delegation_path": ["orchestrator", "talk", "skill-talk", "talk-agent"]
+    "delegation_path": ["orchestrator", "slides", "skill-slides", "slides-agent"]
   }
 }
 ```
@@ -257,7 +257,7 @@ Talk research completed for task {N}:
 - Talk type: {talk_type}, {slide_count} slides mapped
 - {mapped_count} slides fully mapped, {gap_count} need additional input
 - Recommended theme: {theme_name}
-- Created report at specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md
+- Created report at specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md
 - Metadata written for skill postflight
 ```
 

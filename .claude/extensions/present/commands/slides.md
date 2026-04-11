@@ -151,7 +151,7 @@ fi
 ### Step 3: Handle Input Type
 
 **If task number**:
-Load existing task, validate language is "present" and task_type is "talk", then delegate to skill-talk for research.
+Load existing task, validate language is "present" and task_type is "slides", then delegate to skill-slides for research.
 
 **If --design**:
 Load existing task, validate status is "researched" or later, then proceed to STAGE 3: DESIGN CONFIRMATION.
@@ -192,7 +192,7 @@ jq --arg ts "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
      "project_name": "slug",
      "status": "not_started",
      "task_type": "present",
-     "task_type": "talk",
+     "task_type": "slides",
      "description": $desc,
      "forcing_data": $forcing,
      "created": $ts,
@@ -250,7 +250,7 @@ Recommended workflow:
 
 ## STAGE 2: RESEARCH DELEGATION (task number input only)
 
-When input is a task number, delegate to skill-talk for research.
+When input is a task number, delegate to skill-slides for research.
 
 ### Step 1: Validate Task
 
@@ -261,7 +261,7 @@ task_data=$(jq -r --argjson num "$task_number" \
 
 # Validate exists
 # Validate language is "present"
-# Validate task_type is "talk"
+# Validate task_type is "slides"
 # Validate status allows research (not_started or researched for re-research)
 ```
 
@@ -269,7 +269,7 @@ task_data=$(jq -r --argjson num "$task_number" \
 
 **Invoke Skill tool**:
 ```
-skill: "skill-talk"
+skill: "skill-slides"
 args: "task_number={N} session_id={session_id}"
 ```
 
@@ -283,7 +283,7 @@ Verify research completed:
 ```
 Talk research completed for Task #{N}
 Status: [RESEARCHED]
-Report: specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md
+Report: specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md
 
 Next: /slides {N} --design (optional: confirm design choices before planning)
       /plan {N} (skip design, go directly to planning)
@@ -305,7 +305,7 @@ task_data=$(jq -r --argjson num "$task_number" \
   '.active_projects[] | select(.project_number == $num)' \
   specs/state.json)
 
-# Validate exists, language is "present", task_type is "talk"
+# Validate exists, language is "present", task_type is "slides"
 # Validate status is "researched" or "planned"
 status=$(echo "$task_data" | jq -r '.status')
 if [ "$status" != "researched" ] && [ "$status" != "planned" ]; then
@@ -320,7 +320,7 @@ fi
 ```bash
 padded_num=$(printf "%03d" "$task_number")
 project_name=$(echo "$task_data" | jq -r '.project_name')
-report_path=$(ls specs/${padded_num}_${project_name}/reports/*_talk-research.md 2>/dev/null | tail -1)
+report_path=$(ls specs/${padded_num}_${project_name}/reports/*_slides-research.md 2>/dev/null | tail -1)
 ```
 
 Read the research report to extract key messages, suggested structure, and themes.
@@ -421,13 +421,13 @@ Next: /plan {N} - Create implementation plan (will use design_decisions)
 
 ## Core Command Integration
 
-Tasks with language="present" and task_type="talk" route through core commands:
+Tasks with language="present" and task_type="slides" route through core commands:
 
 | Command | Routes To | Purpose |
 |---------|-----------|---------|
-| `/research N` | skill-talk | Synthesize materials into slide-mapped report |
+| `/research N` | skill-slides | Synthesize materials into slide-mapped report |
 | `/plan N` | skill-planner | Create implementation plan |
-| `/implement N` | skill-talk (assemble) | Generate Slidev presentation |
+| `/implement N` | skill-slides (assemble) | Generate Slidev presentation |
 
 ---
 
@@ -439,7 +439,7 @@ Tasks with language="present" and task_type="talk" route through core commands:
 
 ### Research Errors
 - Task not found: Return error with guidance to create task first
-- Wrong language/task_type: Return error suggesting /slides for talk tasks
+- Wrong language/task_type: Return error suggesting /slides for slides tasks
 - Invalid status: Return error with current status and valid transitions
 
 ### Git Commit Failure
@@ -466,7 +466,7 @@ Recommended workflow:
 ### Research Success
 ```
 Talk research completed for Task #{N}
-Report: specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md
+Report: specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md
 Status: [RESEARCHED]
 Next: /plan {N}
 ```

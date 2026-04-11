@@ -5,11 +5,11 @@
     {
       "project_number": 401,
       "project_name": "rename_talk_agent_to_slides_agent",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-11T01:57:03Z",
-      "last_updated": "2026-04-11T02:08:49Z",
-      "session_id": "sess_1744338100_p401a",
+      "last_updated": "2026-04-11T02:15:45Z",
+      "session_id": "sess_1744338200_i401a",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -21,8 +21,15 @@
           "path": "specs/401_rename_talk_agent_to_slides_agent/plans/01_rename-execution.md",
           "type": "plan",
           "summary": "6-phase plan to rename talk-agent/skill-talk to slides-agent/skill-slides across present extension"
+        },
+        {
+          "path": "specs/401_rename_talk_agent_to_slides_agent/summaries/01_rename-execution-summary.md",
+          "type": "summary",
+          "summary": "Renamed talk-agent/skill-talk to slides-agent/skill-slides across present extension with filesystem renames and identifier substitutions; library layer and prose preserved."
         }
-      ]
+      ],
+      "completion_summary": "Renamed talk-agent to slides-agent and skill-talk to skill-slides across the present extension (8 active files + 1 top-level schema doc) using git mv for filesystem renames and targeted identifier substitutions, preserving the talk library data layer and all semantic English prose.",
+      "claudemd_suggestions": "none"
     },
     {
       "project_number": 400,

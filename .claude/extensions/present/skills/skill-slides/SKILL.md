@@ -1,6 +1,6 @@
 ---
-name: skill-talk
-description: Research talk material synthesis and presentation assembly. Invoke for talk tasks.
+name: skill-slides
+description: Research talk material synthesis and presentation assembly. Invoke for slides tasks.
 allowed-tools: Task, Bash, Edit, Read, Write, AskUserQuestion
 # Context (loaded by subagent):
 #   - .claude/extensions/present/context/project/present/talk/index.json
@@ -10,9 +10,9 @@ allowed-tools: Task, Bash, Edit, Read, Write, AskUserQuestion
 #   - Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 ---
 
-# Talk Skill
+# Slides Skill
 
-Thin wrapper that delegates talk research work to `talk-agent` subagent.
+Thin wrapper that delegates slides research work to `slides-agent` subagent.
 
 **IMPORTANT**: This skill implements the skill-internal postflight pattern. After the subagent returns,
 this skill handles all postflight operations (status update, artifact linking, git commit) before returning.
@@ -32,23 +32,23 @@ Note: This skill is a thin wrapper with internal postflight. Context is loaded b
 
 This skill activates when:
 - `/slides` command with task number input
-- `/research` on a present task with `task_type: "talk"`
-- `/implement` on a present task with `task_type: "talk"` (assemble workflow)
+- `/research` on a present task with `task_type: "slides"`
+- `/implement` on a present task with `task_type: "slides"` (assemble workflow)
 - Extension is loaded via `<leader>ac`
 
 ---
 
 ## Workflow Type Routing
 
-This skill routes to talk-agent with one of two workflow types:
+This skill routes to slides-agent with one of two workflow types:
 
 | Workflow Type | Preflight Status | Success Status | TODO.md Markers |
 |---------------|-----------------|----------------|-----------------|
-| talk_research | researching | researched | [RESEARCHING] -> [RESEARCHED] |
+| slides_research | researching | researched | [RESEARCHING] -> [RESEARCHED] |
 | assemble | implementing | completed | [IMPLEMENTING] -> [COMPLETED] |
 
 **Note**: The `--design` workflow is handled entirely at the command level (`slides.md`), not by this
-skill. Design confirmation stores `design_decisions` in task metadata. When `/plan N` runs for a talk
+skill. Design confirmation stores `design_decisions` in task metadata. When `/plan N` runs for a slides
 task, the planner should check for and use `design_decisions` (theme, message_order, section_emphasis)
 from state.json metadata.
 
@@ -57,11 +57,11 @@ from state.json metadata.
 ## Input Parameters
 
 ### Required Parameters
-- `task_number` - Task number (must exist in state.json with language="present", task_type="talk")
+- `task_number` - Task number (must exist in state.json with language="present", task_type="slides")
 - `session_id` - Session ID from orchestrator
 
 ### Optional Parameters
-- `workflow_type` - One of: talk_research, assemble (default: talk_research)
+- `workflow_type` - One of: slides_research, assemble (default: slides_research)
 
 ---
 
@@ -71,7 +71,7 @@ from state.json metadata.
 
 Validate required inputs:
 - `task_number` - Must be provided and exist in state.json
-- Verify language is "present" and task_type is "talk"
+- Verify language is "present" and task_type is "slides"
 
 ```bash
 # Lookup task
@@ -92,8 +92,8 @@ project_name=$(echo "$task_data" | jq -r '.project_name')
 description=$(echo "$task_data" | jq -r '.description // ""')
 
 # Validate language and task_type
-if [ "$task_type" != "present" ] || [ "$task_type" != "talk" ]; then
-  return error "Task $task_number is not a talk task (language=$task_type, task_type=$task_type)"
+if [ "$task_type" != "present" ] || [ "$task_type" != "slides" ]; then
+  return error "Task $task_number is not a slides task (language=$task_type, task_type=$task_type)"
 fi
 ```
 
@@ -105,12 +105,12 @@ Update task status based on workflow type BEFORE invoking subagent.
 
 | Workflow Type | state.json status | TODO.md marker |
 |---------------|------------------|----------------|
-| talk_research | researching | [RESEARCHING] |
+| slides_research | researching | [RESEARCHING] |
 | assemble | implementing | [IMPLEMENTING] |
 
 ```bash
 case "$workflow_type" in
-  talk_research)
+  slides_research)
     preflight_status="researching"
     preflight_marker="[RESEARCHING]"
     ;;
@@ -144,7 +144,7 @@ mkdir -p "specs/${padded_num}_${project_name}"
 cat > "specs/${padded_num}_${project_name}/.postflight-pending" << EOF
 {
   "session_id": "${session_id}",
-  "skill": "skill-talk",
+  "skill": "skill-slides",
   "task_number": ${task_number},
   "operation": "${workflow_type}",
   "reason": "Postflight pending: status update, artifact linking, git commit",
@@ -162,16 +162,16 @@ EOF
 {
   "session_id": "sess_{timestamp}_{random}",
   "delegation_depth": 1,
-  "delegation_path": ["orchestrator", "slides", "skill-talk"],
+  "delegation_path": ["orchestrator", "slides", "skill-slides"],
   "timeout": 3600,
   "task_context": {
     "task_number": N,
     "task_name": "{project_name}",
     "description": "{description}",
     "task_type": "present",
-    "task_type": "talk"
+    "task_type": "slides"
   },
-  "workflow_type": "talk_research|assemble",
+  "workflow_type": "slides_research|assemble",
   "forcing_data": "{from state.json task metadata}",
   "metadata_file_path": "specs/{NNN}_{SLUG}/.return-meta.json"
 }
@@ -186,12 +186,12 @@ EOF
 ```
 Tool: Task (NOT Skill)
 Parameters:
-  - subagent_type: "talk-agent"
+  - subagent_type: "slides-agent"
   - prompt: [Include task_context, delegation_context, workflow_type, forcing_data, metadata_file_path]
   - description: "Execute {workflow_type} for task {N}"
 ```
 
-**DO NOT** use `Skill(talk-agent)` - this will FAIL.
+**DO NOT** use `Skill(slides-agent)` - this will FAIL.
 
 ---
 
@@ -217,8 +217,8 @@ fi
 
 | Workflow Type | Meta Status | Final state.json | Final TODO.md |
 |---------------|-------------|-----------------|---------------|
-| talk_research | researched | researched | [RESEARCHED] |
-| talk_research | partial | researching | [RESEARCHING] |
+| slides_research | researched | researched | [RESEARCHED] |
+| slides_research | partial | researching | [RESEARCHING] |
 | assemble | assembled | completed | [COMPLETED] |
 | assemble | partial | implementing | [IMPLEMENTING] |
 | any | failed | (keep preflight) | (keep preflight marker) |
@@ -235,11 +235,11 @@ Add artifact to state.json with summary. Use the two-step jq pattern to avoid Is
 
 ```bash
 case "$workflow_type" in
-  talk_research)
-    commit_action="complete talk research"
+  slides_research)
+    commit_action="complete slides research"
     ;;
   assemble)
-    commit_action="assemble talk presentation"
+    commit_action="assemble slides presentation"
     ;;
 esac
 
@@ -270,7 +270,7 @@ rm -f "specs/${padded_num}_${project_name}/.return-meta.json"
 Talk research completed for task {N}:
 - Synthesized source materials into slide-mapped report
 - Talk type: {talk_type}, {slide_count} slides mapped
-- Created report at specs/{NNN}_{SLUG}/reports/{MM}_talk-research.md
+- Created report at specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md
 - Status updated to [RESEARCHED]
 - Changes committed with session {session_id}
 ```
