@@ -26,6 +26,26 @@
     "scripts": [],
     "rules": []
   },
+  "routing": {
+    "research": {
+      "formal": "skill-formal-research",
+      "formal:logic": "skill-logic-research",
+      "formal:math": "skill-math-research",
+      "formal:physics": "skill-physics-research"
+    },
+    "plan": {
+      "formal": "skill-planner",
+      "formal:logic": "skill-planner",
+      "formal:math": "skill-planner",
+      "formal:physics": "skill-planner"
+    },
+    "implement": {
+      "formal": "skill-implementer",
+      "formal:logic": "skill-implementer",
+      "formal:math": "skill-implementer",
+      "formal:physics": "skill-implementer"
+    }
+  },
   "merge_targets": {
     "claudemd": {
       "source": "EXTENSION.md",

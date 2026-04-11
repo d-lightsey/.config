@@ -98,7 +98,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Multi-skill extensions with sub-routing [IN PROGRESS]
+### Phase 2: Multi-skill extensions with sub-routing [COMPLETED]
 
 **Goal**: Add `routing` blocks to the 2 multi-skill extensions with sub-routing keys: `formal` (4 research skills, implement falls back to `skill-implementer`) and `lean` (sub-routing for `lake` and `version` specialists).
 
@@ -123,7 +123,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Null task_type extensions [NOT STARTED]
+### Phase 3: Null task_type extensions [IN PROGRESS]
 
 **Goal**: Add `routing` blocks to the 2 extensions with `task_type: null` (`filetypes`, `memory`) using the extension name as the bare routing key (per D3).
 
