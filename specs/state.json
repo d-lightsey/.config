@@ -5,12 +5,19 @@
     {
       "project_number": 402,
       "project_name": "add_routing_blocks_to_extension_manifests",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "priority": "high",
       "created": "2026-04-11T02:23:21Z",
-      "last_updated": "2026-04-11T02:30:00Z",
-      "session_id": "sess_1775874254_0921d1"
+      "last_updated": "2026-04-11T02:31:32Z",
+      "session_id": "sess_1775874534_1200ed",
+      "artifacts": [
+        {
+          "path": "specs/402_add_routing_blocks_to_extension_manifests/plans/01_add-routing-blocks.md",
+          "type": "plan",
+          "summary": "Four-phase plan adding routing blocks to 11 failing extension manifests with a final doc-lint verification pass."
+        }
+      ]
     },
     {
       "project_number": 398,
