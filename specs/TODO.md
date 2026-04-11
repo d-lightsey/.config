@@ -18,8 +18,9 @@ next_project_number: 402
 
 ### 401. Rename talk-agent to slides-agent in present extension
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
+- **Research**: [01_rename-references-audit.md](401_rename_talk_agent_to_slides_agent/reports/01_rename-references-audit.md)
 
 **Description**: The command at `.claude/extensions/present/commands/slides.md` was renamed from `talk.md`, but the corresponding agent at `.claude/extensions/present/agents/talk-agent.md` was not renamed to `slides-agent.md`. Find all references to `talk-agent` and `talk` (command) across the present extension and rename systematically to `slides-agent` and `slides` to restore consistency.
 
