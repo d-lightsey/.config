@@ -1,7 +1,7 @@
 # Implementation Plan: Improve /slides Command Task Description
 
 - **Task**: 415 - Improve /slides command task description
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/415_improve_slides_command_task_description/reports/01_slides-description-analysis.md

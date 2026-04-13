@@ -14,10 +14,10 @@
     {
       "project_number": 415,
       "project_name": "improve_slides_command_task_description",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-13T08:38:37Z",
-      "last_updated": "2026-04-13T08:44:58Z",
+      "last_updated": "2026-04-13T08:50:21Z",
       "artifacts": [
         {
           "type": "research",
@@ -28,17 +28,24 @@
           "path": "specs/415_improve_slides_command_task_description/plans/01_slides-description-plan.md",
           "type": "plan",
           "summary": "2-phase implementation plan for improving /slides command task description format"
+        },
+        {
+          "path": "specs/415_improve_slides_command_task_description/summaries/01_slides-description-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for /slides command description improvements"
         }
       ],
-      "session_id": "sess_1776069772_234422"
+      "session_id": "sess_1776070002_d1b843",
+      "completion_summary": "Improved /slides command task description: simplified enriched description format, added Sources section with absolute paths, added Forcing Data Gathered section to TODO.md entries, and enriched console output with forcing data recap.",
+      "claudemd_suggestions": "Updated .claude/extensions/present/commands/slides.md: simplified Step 2.5 enriched description, expanded Step 4 TODO.md template with Sources and Forcing Data sections, updated Step 6 and Output Formats console output"
     },
     {
       "project_number": 414,
       "project_name": "remove_phase_checkpoint_protocol",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-13T12:00:00Z",
-      "last_updated": "2026-04-13T12:20:00Z",
+      "last_updated": "2026-04-13T12:33:08Z",
       "artifacts": [
         {
           "type": "research",
@@ -51,7 +58,7 @@
           "summary": "4-phase plan: simple agents (5), standard agents (2), complex agents (3), verification"
         }
       ],
-      "session_id": "sess_1776069043_5df00a"
+      "session_id": "sess_1776069988_0a783d"
     },
     {
       "project_number": 398,

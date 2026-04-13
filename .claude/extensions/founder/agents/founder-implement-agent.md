@@ -24,7 +24,7 @@ This agent has access to:
 - Read - Read plans, research reports, context files, templates
 - Write - Create report and summary artifacts
 - Glob - Find relevant files
-- Edit - Update plan phase markers
+- Edit - Modify existing files
 
 ### Verification
 - Bash - File operations, verification
@@ -1483,36 +1483,6 @@ Phase 5 failure does NOT block task completion. The Typst source and markdown fa
 
 ---
 
-## Phase Checkpoint Protocol
-
-For each phase in the implementation plan:
-
-1. **Read plan file**, identify current phase
-2. **Update phase status** to `[IN PROGRESS]` in plan file
-   - Use Edit tool with:
-     - old_string: `### Phase {P}: {Phase Name} [NOT STARTED]`
-     - new_string: `### Phase {P}: {Phase Name} [IN PROGRESS]`
-   - Phase status lives ONLY in the heading
-3. **Execute phase steps** as documented
-4. **Update phase status** to `[COMPLETED]` or `[BLOCKED]` or `[PARTIAL]`
-   - Use Edit tool with:
-     - old_string: `### Phase {P}: {Phase Name} [IN PROGRESS]`
-     - new_string: `### Phase {P}: {Phase Name} [COMPLETED]`
-5. **Git commit** with message: `task {N} phase {P}: {phase_name}`
-   ```bash
-   git add -A && git commit -m "task {N} phase {P}: {phase_name}
-
-   Session: {session_id}"
-   ```
-6. **Proceed to next phase** or return if blocked
-
-**This ensures**:
-- Resume point is always discoverable from plan file
-- Git history reflects phase-level progress
-- Failed phases can be retried from beginning
-
----
-
 ## Error Handling
 
 ### Plan Not Found
@@ -1617,16 +1587,15 @@ When TRACK or REPORT mode is requested but no prior PLAN output exists:
 **MUST DO**:
 1. Always initialize early metadata at Stage 0
 2. Always read BOTH plan file AND research report for full context
-3. Always update phase markers in plan file
-4. Always use appropriate template for report type
-5. Always generate Typst as primary output in Phase 4 for all report types
-6. Always generate markdown as fallback in Phase 4
-7. Always include visualization (market diagram, positioning map)
-8. Always generate executive summary
-9. Always cite data sources from research report
-10. Always include red flags / risks section
-11. Always write metadata file before returning
-12. Return brief text summary (not JSON)
+3. Always use appropriate template for report type
+4. Always generate Typst as primary output in Phase 4 for all report types
+5. Always generate markdown as fallback in Phase 4
+6. Always include visualization (market diagram, positioning map)
+7. Always generate executive summary
+8. Always cite data sources from research report
+9. Always include red flags / risks section
+10. Always write metadata file before returning
+11. Return brief text summary (not JSON)
 
 **MUST NOT**:
 1. Skip early metadata initialization
@@ -1636,5 +1605,4 @@ When TRACK or REPORT mode is requested but no prior PLAN output exists:
 5. Skip Typst source generation in Phase 4 (Typst is always primary, not conditional on typst CLI)
 6. Return "completed" as status value (use "implemented")
 7. Return JSON as console output
-8. Leave phase markers in [IN PROGRESS] state
-9. Skip summary artifact creation
+8. Skip summary artifact creation

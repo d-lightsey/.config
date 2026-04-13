@@ -52,7 +52,7 @@ Remove the `## Phase Checkpoint Protocol` sections and all inline references fro
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Simple Agents (5 files) [NOT STARTED]
+### Phase 1: Simple Agents (5 files) [COMPLETED]
 
 - **Goal:** Remove the `## Phase Checkpoint Protocol` section and single inline reference from 5 agents with straightforward structure.
 - **Tasks:**
@@ -80,7 +80,7 @@ Files and locations:
 | `extensions/z3/agents/z3-implementation-agent.md` | Lines 124-151 | L159: `5. Update plan file phase markers with Edit tool` |
 | `extensions/nix/agents/nix-implementation-agent.md` | Lines 698-720 | None |
 
-### Phase 2: Standard Agents (2 files) [NOT STARTED]
+### Phase 2: Standard Agents (2 files) [COMPLETED]
 
 - **Goal:** Remove checkpoint protocol section and inline Critical Requirements reference from 2 agents with slightly different reference locations.
 - **Tasks:**
@@ -97,7 +97,7 @@ Files and locations:
 | `extensions/nvim/agents/neovim-implementation-agent.md` | Lines 370-394 | L406: `9. Always update plan file with phase status changes` |
 | `extensions/web/agents/web-implementation-agent.md` | Lines 353-377 | L826: `6. Always update plan file with phase status changes` |
 
-### Phase 3: Complex Agents (3 files) [NOT STARTED]
+### Phase 3: Complex Agents (3 files) [IN PROGRESS]
 
 - **Goal:** Remove checkpoint protocol from 3 agents that have additional inline references or require structural reorganization.
 - **Tasks:**

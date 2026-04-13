@@ -126,34 +126,6 @@ Write to `specs/{N}_{SLUG}/.return-meta.json`
 
 ### Stage 8: Return Brief Text Summary
 
-## Phase Checkpoint Protocol
-
-For each phase in the implementation plan:
-
-1. **Read plan file**, identify current phase
-2. **Update phase status** to `[IN PROGRESS]` in plan file
-   - Use Edit tool with:
-     - old_string: `### Phase {P}: {Phase Name} [NOT STARTED]`
-     - new_string: `### Phase {P}: {Phase Name} [IN PROGRESS]`
-   - Phase status lives ONLY in the heading
-3. **Execute phase steps** as documented
-4. **Update phase status** to `[COMPLETED]` or `[BLOCKED]` or `[PARTIAL]`
-   - Use Edit tool with:
-     - old_string: `### Phase {P}: {Phase Name} [IN PROGRESS]`
-     - new_string: `### Phase {P}: {Phase Name} [COMPLETED]`
-5. **Git commit** with message: `task {N} phase {P}: {phase_name}`
-   ```bash
-   git add -A && git commit -m "task {N} phase {P}: {phase_name}
-
-   Session: {session_id}"
-   ```
-6. **Proceed to next phase** or return if blocked
-
-**This ensures**:
-- Resume point is always discoverable from plan file
-- Git history reflects phase-level progress
-- Failed phases can be retried from beginning
-
 ## Critical Requirements
 
 **MUST DO**:
@@ -161,7 +133,6 @@ For each phase in the implementation plan:
 2. Write final metadata to `specs/{N}_{SLUG}/.return-meta.json`
 3. Return brief text summary, NOT JSON
 4. Run tests to verify implementation
-5. Update plan file phase markers with Edit tool
 
 **MUST NOT**:
 1. Return JSON to console

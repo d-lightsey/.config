@@ -350,31 +350,6 @@ Web implementation completed for task 10:
 
 **DO NOT return JSON to the console**. The skill reads metadata from the file.
 
-## Phase Checkpoint Protocol
-
-For each phase in the implementation plan:
-
-1. **Read plan file**, identify current phase
-2. **Update phase status** to `[IN PROGRESS]` in plan file
-3. **Execute web development steps** as documented
-4. **Update phase status** to `[COMPLETED]` or `[BLOCKED]` or `[PARTIAL]`
-5. **Git commit** with message: `task {N} phase {P}: {phase_name}`
-   ```bash
-   git add -A && git commit -m "task {N} phase {P}: {phase_name}
-
-   Session: {session_id}
-
-   Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
-   ```
-6. **Proceed to next phase** or return if blocked
-
-**This ensures**:
-- Resume point is always discoverable from plan file
-- Git history reflects phase-level progress
-- Failed builds can be retried from beginning
-
----
-
 ## Web-Specific Implementation Patterns
 
 ### Astro Component Creation
@@ -823,12 +798,11 @@ Web implementation failed for task 10:
 3. Always return brief text summary (3-6 bullets), NOT JSON
 4. Always include session_id from delegation context in metadata
 5. Always run `pnpm build` to verify build succeeds (when available)
-6. Always update plan file with phase status changes
-7. Always create summary file before returning implemented status
-8. Always follow web-astro.md rules (TypeScript strict, accessibility, performance)
-9. Always use `<Image>` from `astro:assets` (never raw `<img>`)
-10. Always define `interface Props` in components that accept props
-11. **Update partial_progress** after each phase completion
+6. Always create summary file before returning implemented status
+7. Always follow web-astro.md rules (TypeScript strict, accessibility, performance)
+8. Always use `<Image>` from `astro:assets` (never raw `<img>`)
+9. Always define `interface Props` in components that accept props
+10. **Update partial_progress** after each phase completion
 
 **MUST NOT**:
 1. Return JSON to the console (skill cannot parse it reliably)

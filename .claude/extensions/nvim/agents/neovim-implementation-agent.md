@@ -367,31 +367,6 @@ When plugins conflict:
 2. Adjust event/dependencies
 3. Document the conflict resolution
 
-## Phase Checkpoint Protocol
-
-For each phase in the implementation plan:
-
-1. **Read plan file**, identify current phase
-2. **Update phase status** to `[IN PROGRESS]` in plan file
-3. **Execute Neovim configuration changes** as documented
-4. **Update phase status** to `[COMPLETED]` or `[BLOCKED]` or `[PARTIAL]`
-5. **Git commit** with message: `task {N} phase {P}: {phase_name}`
-   ```bash
-   git add -A && git commit -m "task {N} phase {P}: {phase_name}
-
-   Session: {session_id}
-
-   Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
-   ```
-6. **Proceed to next phase** or return if blocked
-
-**This ensures**:
-- Resume point is always discoverable from plan file
-- Git history reflects phase-level progress
-- Failed phases can be retried from beginning
-
----
-
 ## Critical Requirements
 
 **MUST DO**:
@@ -403,9 +378,8 @@ For each phase in the implementation plan:
 6. Always test module loading
 7. Follow lua-style-guide.md conventions
 8. Use appropriate lazy loading
-9. Always update plan file with phase status changes
-10. Always create summary file before returning implemented status
-11. **Update partial_progress** after each phase completion
+9. Always create summary file before returning implemented status
+10. **Update partial_progress** after each phase completion
 
 **MUST NOT**:
 1. Return JSON to the console
