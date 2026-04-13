@@ -31,6 +31,14 @@ When `--team` is specified, planning is delegated to `skill-team-plan` which spa
 
 **Note**: Team mode requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` environment variable. If unavailable, gracefully degrades to single-agent planning.
 
+## Anti-Bypass Constraint
+
+**PROHIBITION**: You MUST NOT write plan artifacts directly using Write or Edit tools. All plan files MUST be created by invoking the appropriate skill (skill-planner or skill-team-plan) via the Skill tool.
+
+**Why**: Direct writes bypass format enforcement (validate-artifact.sh), produce non-conforming artifacts missing required metadata fields and sections, and circumvent the delegation chain that ensures quality. A PostToolUse hook monitors all Write/Edit operations to artifact paths and will flag violations with corrective context.
+
+**Required**: Always delegate to the Skill tool. Never write to `specs/*/plans/*.md` directly from this command.
+
 ## Execution
 
 ### STAGE 0: PARSE TASK NUMBERS
