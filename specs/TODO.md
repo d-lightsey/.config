@@ -11,7 +11,7 @@ next_project_number: 419
 ### Pending
 
 - **418** [PLANNED] -- Add postflight self-execution fallback to skill wrapper pattern
-- **398** [RESEARCHING] -- Extract artifact-linking logic to shared helper script
+- **398** [RESEARCHED] -- Extract artifact-linking logic to shared helper script
 - **394** [RESEARCHED] -- Remove language-to-task_type backward compatibility shim
 - **384** [RESEARCHED] -- Improve /convert command-skill-agent pipeline in filetypes extension
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
@@ -32,9 +32,10 @@ next_project_number: 419
 
 ### 398. Extract artifact-linking logic to shared helper script (consolidate six skill Stage 8 blocks)
 - **Effort**: TBD
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Dependencies**: 397
+- **Research**: [01_artifact-linking-helper.md](specs/398_extract_artifact_linking_helper/reports/01_artifact-linking-helper.md)
 
 **Description**: Follow-up to task 397. After task 397 duplicated the four-case TODO.md artifact-linking logic into `skill-team-research`, `skill-team-plan`, and `skill-team-implement` (mirroring the blocks already in `skill-researcher`, `skill-planner`, `skill-implementer`), six skills now carry near-identical Stage 8 logic. Extract this into a shared helper (e.g., `.claude/scripts/link-artifact-todo.sh` or a reusable skill) so the count-aware insertion (inline for 1 artifact, multi-line list for 2+) lives in one place and future skills cannot drift. See task 397's research report (`specs/397_fix_team_skill_artifact_linking/reports/01_team-skill-artifact-linking.md`, section "Existing helper candidates") for the trade-off analysis between sed-based scripts and Edit-tool in-place logic, and the skill-boundary halt constraint documented in `skill-status-sync`. Blocked on 397 being [COMPLETED].
 

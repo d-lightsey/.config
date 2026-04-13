@@ -27,15 +27,22 @@
     {
       "project_number": 398,
       "project_name": "extract_artifact_linking_helper",
-      "status": "researching",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-10T20:40:00Z",
-      "last_updated": "2026-04-13T18:25:53Z",
+      "last_updated": "2026-04-13T18:30:44Z",
       "dependencies": [
         397
       ],
-      "artifacts": [],
-      "session_id": "sess_1776104740_8dc2fe_t398"
+      "artifacts": [
+        {
+          "path": "specs/398_extract_artifact_linking_helper/reports/01_artifact-linking-helper.md",
+          "type": "research",
+          "summary": "Analysis of 26 files carrying duplicated artifact-linking logic; recommends context pattern file extraction over shell script or skill delegation"
+        }
+      ],
+      "session_id": "sess_1776104740_8dc2fe_t398",
+      "next_artifact_number": 2
     },
     {
       "project_number": 394,
