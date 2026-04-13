@@ -5,10 +5,10 @@
     {
       "project_number": 413,
       "project_name": "refine_slides_skill_command",
-      "status": "planning",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-13T12:00:00Z",
-      "last_updated": "2026-04-13T07:55:04Z",
+      "last_updated": "2026-04-13T07:57:36Z",
       "session_id": "sess_1776066839_fa4927",
       "next_artifact_number": 2,
       "artifacts": [
@@ -16,40 +16,91 @@
           "type": "research",
           "path": "specs/413_refine_slides_skill_command/reports/01_refine-slides-skill-command.md",
           "summary": "Analysis of 8 SKILL.md edits and 3 slides.md edits to port from Zed working copy"
+        },
+        {
+          "type": "plan",
+          "path": "specs/413_refine_slides_skill_command/plans/01_refine-slides-skill-command.md",
+          "summary": "5-phase plan for porting 8 SKILL.md edits and 3 slides.md edits from Zed working copy"
         }
-      ]
+      ],
+      "effort": "1 hour",
+      "plan_metadata": {
+        "phases": 5,
+        "total_effort_hours": 1,
+        "complexity": "simple",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            5
+          ]
+        ]
+      }
     },
     {
       "project_number": 412,
       "project_name": "update_docs_python_to_rust",
-      "status": "planning",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-13T12:00:00Z",
-      "last_updated": "2026-04-13T18:30:00Z",
+      "last_updated": "2026-04-13T18:35:00Z",
       "session_id": "sess_1776066839_fa4927",
+      "effort": "1 hour",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "type": "research",
           "path": "specs/412_update_docs_python_to_rust/reports/01_update-docs-python-rust.md",
           "summary": "Catalog of ~45 Python-to-Rust text changes across 7 documentation files"
+        },
+        {
+          "type": "plan",
+          "path": "specs/412_update_docs_python_to_rust/plans/01_update-docs-python-rust.md",
+          "summary": "4-phase plan for ~45 Python-to-Rust text substitutions across 7 documentation files"
         }
-      ]
+      ],
+      "plan_metadata": {
+        "phases": 4,
+        "total_effort_hours": 1,
+        "complexity": "simple",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ]
+      }
     },
     {
       "project_number": 411,
       "project_name": "update_extension_trigger_wording",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-13T12:00:00Z",
-      "last_updated": "2026-04-13T18:00:00Z",
-      "session_id": "sess_1776066556_e77350",
+      "last_updated": "2026-04-13T19:00:00Z",
+      "session_id": "sess_1776066741_766660",
       "effort": "0.5 hours",
+      "completion_summary": "Replaced Neovim-specific <leader>ac trigger wording with mechanism-agnostic alternatives in 5 extension skill files (2 epidemiology, 3 present).",
       "artifacts": [
         {
           "type": "plan",
           "path": "specs/411_update_extension_trigger_wording/plans/01_update-trigger-wording.md",
           "summary": "1-phase plan for replacing trigger wording in 5 extension skill files"
+        },
+        {
+          "type": "summary",
+          "path": "specs/411_update_extension_trigger_wording/summaries/01_update-trigger-wording-summary.md",
+          "summary": "Implementation summary for trigger wording update"
         }
       ],
       "plan_metadata": {
@@ -92,7 +143,13 @@
         "complexity": "simple",
         "research_integrated": true,
         "plan_version": 1,
-        "dependency_waves": [[1, 2, 3]]
+        "dependency_waves": [
+          [
+            1,
+            2,
+            3
+          ]
+        ]
       }
     },
     {

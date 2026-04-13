@@ -11,8 +11,8 @@ next_project_number: 414
 ### Pending
 
 - **413** [PLANNING] -- Refine slides skill and command (design questions, routing, delegation)
-- **412** [PLANNING] -- Update documentation examples from Python to Rust
-- **411** [PLANNED] -- Update extension trigger wording to mechanism-agnostic
+- **412** [PLANNED] -- Update documentation examples from Python to Rust
+- **411** [COMPLETED] -- Update extension trigger wording to mechanism-agnostic
 - **410** [PLANNED] -- Remove meta Stage 5.5 auto-research artifact generation
 - **409** [COMPLETED] -- Remove Phase Checkpoint Protocol from assembly/implement agents
 - **398** [NOT STARTED] -- Extract artifact-linking logic to shared helper script
@@ -34,10 +34,12 @@ next_project_number: 414
 ---
 
 ### 412. Update documentation examples from Python to Rust
-- **Effort**: TBD
-- **Status**: [PLANNING]
+- **Effort**: 1 hour
+- **Status**: [PLANNED]
+- **Planning Completed**: 2026-04-13
 - **Task Type**: meta
 - **Research**: [01_update-docs-python-rust.md](specs/412_update_docs_python_to_rust/reports/01_update-docs-python-rust.md)
+- **Plan**: [01_update-docs-python-rust.md](specs/412_update_docs_python_to_rust/plans/01_update-docs-python-rust.md)
 
 **Description**: Replace Python with Rust as the example language in documentation guides, since Python is a real bundled extension and creates confusion when used as a hypothetical teaching example. Files to update: `.claude/docs/guides/creating-skills.md` (agent/skill names python→rust, packages→crates, asyncio→tokio, pytest→cargo test), `.claude/docs/guides/creating-agents.md` (task_context example, context file reference python/→rust/), `.claude/docs/guides/component-selection.md` (skill routing example, "Adding Python Support"→"Adding Rust Support"), `.claude/docs/guides/adding-domains.md` (domain example "python"→"rust"), `.claude/docs/guides/creating-extensions.md` (remove "python" from simple extensions list), `.claude/docs/architecture/system-overview.md` (rename example section), `.claude/context/architecture/component-checklist.md` (language examples). Source: `/home/benjamin/.config/zed/CHANGE.md` Theme 5.
 
@@ -45,10 +47,11 @@ next_project_number: 414
 
 ### 411. Update extension trigger wording to mechanism-agnostic
 - **Effort**: 0.5 hours
-- **Status**: [PLANNED]
-- **Planning Completed**: 2026-04-13
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-13
 - **Task Type**: meta
 - **Plan**: [01_update-trigger-wording.md](specs/411_update_extension_trigger_wording/plans/01_update-trigger-wording.md)
+- **Summary**: Replaced `<leader>ac` trigger wording with mechanism-agnostic alternatives in 5 extension skill files (2 epidemiology, 3 present).
 
 **Description**: Replace Neovim-specific `"Extension is loaded via \`<leader>ac\`"` trigger wording with mechanism-agnostic alternatives in 5 extension skill files. This makes skills portable across loading methods (keybinding, pre-merged, etc.). Files: `.claude/extensions/epidemiology/skills/skill-epi-implement/SKILL.md` (line 34, →"Epidemiology extension is available"), `.claude/extensions/epidemiology/skills/skill-epi-research/SKILL.md` (line 33, →"Epidemiology extension is available"), `.claude/extensions/present/skills/skill-funds/SKILL.md` (line 36, →"Present extension is available"), `.claude/extensions/present/skills/skill-grant/SKILL.md` (line 34, →"Present extension is available"), `.claude/extensions/present/skills/skill-timeline/SKILL.md` (line 35, →"Present extension is available"). Source: `/home/benjamin/.config/zed/CHANGE.md` Theme 3.
 
