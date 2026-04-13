@@ -11,7 +11,7 @@ next_project_number: 409
 ### Pending
 
 - **403** [COMPLETED] -- Split slides-agent into 3 specialized agents with Phase Checkpoint Protocol
-- **404** [PLANNED] -- Add UCSF theme, PPTX patterns, and templates to present/ context
+- **404** [COMPLETED] -- Add UCSF theme, PPTX patterns, and templates to present/ context
 - **405** [NOT STARTED] -- Update skill-slides for multi-agent dispatch and plan workflow (depends: 403)
 - **406** [NOT STARTED] -- Update /slides command: output format, enriched descriptions, remove --design (depends: 405)
 - **407** [NOT STARTED] -- Update present/ manifest.json and extension metadata (depends: 403, 405)
@@ -66,10 +66,11 @@ next_project_number: 409
 
 ### 404. Add UCSF theme, PPTX patterns, and templates to present/ context
 - **Effort**: 1-2 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_ucsf-pptx-context.md](404_add_ucsf_theme_pptx_patterns_templates/reports/01_ucsf-pptx-context.md)
 - **Plan**: [01_ucsf-pptx-plan.md](404_add_ucsf_theme_pptx_patterns_templates/plans/01_ucsf-pptx-plan.md)
+- **Summary**: [01_ucsf-pptx-summary.md](404_add_ucsf_theme_pptx_patterns_templates/summaries/01_ucsf-pptx-summary.md)
 
 **Description**: Add to present/ extension context: (1) `ucsf-institutional.json` theme with UCSF navy/blue palette and Garamond headings, (2) `pptx-generation.md` pattern documenting python-pptx API, (3) `slidev-pitfalls.md` pattern, (4) `templates/` directory with pptx-project and slidev-project scaffolds, (5) copy UCSF .pptx template from `/home/benjamin/.config/zed/examples/test-files/UCSF_ZSFG_Template_16x9.pptx` into extension. Update existing themes with footer sections, talk-structure.md with format-specific notes, conclusions-takeaway.md with custom footer, talk/index.json with new entries. Source: `/home/benjamin/.config/zed/DIFF.md` section 4.
 

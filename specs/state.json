@@ -73,11 +73,13 @@
     {
       "project_number": 404,
       "project_name": "add_ucsf_theme_pptx_patterns_templates",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-12T12:00:00Z",
-      "last_updated": "2026-04-12T13:00:00Z",
-      "session_id": "sess_1776182400_p404",
+      "last_updated": "2026-04-12T23:30:00Z",
+      "session_id": "sess_1776182400_i404",
+      "completion_summary": "Ported UCSF institutional theme, PPTX generation patterns, Slidev pitfalls docs, and project templates from zed into nvim present/ extension. Created 13 new text files, copied 1 binary .pptx template (3MB), updated 5 existing files (2 themes with footer sections, talk-structure with format notes, conclusions with custom footer, talk/index.json rewritten), and added 8 new index-entries.json entries for context discovery.",
+      "claudemd_suggestions": "none",
       "artifacts": [
         {
           "type": "research",
@@ -88,6 +90,11 @@
           "type": "plan",
           "path": "specs/404_add_ucsf_theme_pptx_patterns_templates/plans/01_ucsf-pptx-plan.md",
           "summary": "5-phase plan: theme/patterns, templates, existing file updates, binary copy, index entries"
+        },
+        {
+          "type": "summary",
+          "path": "specs/404_add_ucsf_theme_pptx_patterns_templates/summaries/01_ucsf-pptx-summary.md",
+          "summary": "Implementation summary: 5 phases completed, 19 file operations"
         }
       ],
       "plan_metadata": {
