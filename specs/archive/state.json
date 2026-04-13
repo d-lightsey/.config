@@ -1,6 +1,30 @@
 {
   "completed_projects": [
     {
+      "project_number": 419,
+      "project_name": "pdftk_postprocess_typst_pdf",
+      "status": "abandoned",
+      "task_type": "neovim",
+      "created": "2026-04-13T20:30:00Z",
+      "last_updated": "2026-04-13T20:45:00Z",
+      "next_artifact_number": 2,
+      "completion_summary": "Abandoned: typst PDFs have no encryption or permission restrictions. The 'restricted file' message in Adobe Reader is caused by Adobe's proprietary feature gate (free Reader limits annotations unless PDF has /UR3 usage rights from Acrobat Pro), not by missing PDF permissions. No amount of pdftk/qpdf post-processing can fix an Adobe Reader limitation.",
+      "artifacts": [
+        {
+          "type": "research",
+          "path": "specs/419_pdftk_postprocess_typst_pdf/reports/01_pdftk-postprocess.md",
+          "summary": "Initial analysis of pdftk post-processing approach"
+        },
+        {
+          "type": "research",
+          "path": "specs/419_pdftk_postprocess_typst_pdf/reports/02_pdftk-alternatives.md",
+          "summary": "Web-sourced validation confirming pdftk approach; typst maintainer rejected native support (issue #4387)"
+        }
+      ],
+      "session_id": "sess_1776112287_1a66c0",
+      "abandoned": "2026-04-13T20:57:58Z"
+    },
+    {
       "project_number": 401,
       "project_name": "rename_talk_agent_to_slides_agent",
       "status": "completed",
