@@ -10,7 +10,7 @@ next_project_number: 414
 
 ### Pending
 
-- **413** [PLANNING] -- Refine slides skill and command (design questions, routing, delegation)
+- **413** [PLANNED] -- Refine slides skill and command (design questions, routing, delegation)
 - **412** [PLANNED] -- Update documentation examples from Python to Rust
 - **411** [COMPLETED] -- Update extension trigger wording to mechanism-agnostic
 - **410** [PLANNED] -- Remove meta Stage 5.5 auto-research artifact generation
@@ -24,10 +24,12 @@ next_project_number: 414
 ## Tasks
 
 ### 413. Refine slides skill and command (design questions, routing, delegation)
-- **Effort**: TBD
-- **Status**: [PLANNING]
+- **Effort**: 1 hour
+- **Status**: [PLANNED]
+- **Planning Completed**: 2026-04-13
 - **Task Type**: meta
 - **Research**: [01_refine-slides-skill-command.md](specs/413_refine_slides_skill_command/reports/01_refine-slides-skill-command.md)
+- **Plan**: [01_refine-slides-skill-command.md](specs/413_refine_slides_skill_command/plans/01_refine-slides-skill-command.md)
 
 **Description**: Port slides skill and command refinements from Zed working copy. In `.claude/extensions/present/skills/skill-slides/SKILL.md`: expand Stage 3.5 (Design Questions) with step-by-step guidance replacing bash automation code, simplify agent resolution case statement syntax, streamline delegation context section, remove duplicate agent/workflow routing table from Stage 5, remove "Plan Success" return message format. In `.claude/extensions/present/commands/slides.md`: simplify output format question wording, renumber steps (remove Step 0.0 references), expand Step 2.5 "Enrich Description" with detailed path relativization logic, remove "Plan Success" return message format. Source: `/home/benjamin/.config/zed/CHANGE.md` Theme 6.
 
