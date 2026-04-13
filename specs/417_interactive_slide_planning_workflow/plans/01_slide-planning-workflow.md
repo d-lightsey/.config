@@ -1,7 +1,7 @@
 # Implementation Plan: Interactive Slide Planning Workflow
 
 - **Task**: 417 - Interactive slide planning workflow with narrative arc feedback and per-slide refinement
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/417_interactive_slide_planning_workflow/reports/01_slide-planning-analysis.md
@@ -65,7 +65,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Create slide-planner-agent [NOT STARTED]
+### Phase 1: Create slide-planner-agent [COMPLETED]
 
 **Goal**: Define the slide-planner-agent that consumes design decisions and research reports to produce slide-by-slide implementation plans.
 
@@ -91,7 +91,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Create skill-slide-planning [NOT STARTED]
+### Phase 2: Create skill-slide-planning [COMPLETED]
 
 **Goal**: Define the interactive skill that runs 5-stage Q&A before delegating to slide-planner-agent.
 
@@ -123,7 +123,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Update manifest routing and provides [NOT STARTED]
+### Phase 3: Update manifest routing and provides [COMPLETED]
 
 **Goal**: Route `/plan present:slides` to skill-slide-planning and register new components in manifest.json.
 
@@ -149,7 +149,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Update index-entries.json and clean up skill-slides [NOT STARTED]
+### Phase 4: Update index-entries.json and clean up skill-slides [COMPLETED]
 
 **Goal**: Register slide-planner-agent in context discovery index and remove plan-workflow code from skill-slides.
 
@@ -180,7 +180,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 5: End-to-end validation [NOT STARTED]
+### Phase 5: End-to-end validation [COMPLETED]
 
 **Goal**: Verify the complete routing chain works and all components are internally consistent.
 

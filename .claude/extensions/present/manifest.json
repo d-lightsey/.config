@@ -5,8 +5,8 @@
   "task_type": "present",
   "dependencies": [],
   "provides": {
-    "agents": ["grant-agent.md", "budget-agent.md", "timeline-agent.md", "funds-agent.md", "slides-research-agent.md", "pptx-assembly-agent.md", "slidev-assembly-agent.md"],
-    "skills": ["skill-grant", "skill-budget", "skill-timeline", "skill-funds", "skill-slides"],
+    "agents": ["grant-agent.md", "budget-agent.md", "timeline-agent.md", "funds-agent.md", "slides-research-agent.md", "pptx-assembly-agent.md", "slidev-assembly-agent.md", "slide-planner-agent.md"],
+    "skills": ["skill-grant", "skill-budget", "skill-timeline", "skill-funds", "skill-slides", "skill-slide-planning"],
     "commands": ["grant.md", "budget.md", "timeline.md", "funds.md", "slides.md"],
     "rules": [],
     "context": ["project/present"],
@@ -28,8 +28,8 @@
       "present:budget": "skill-planner",
       "present:timeline": "skill-planner",
       "present:funds": "skill-planner",
-      "present:slides": "skill-slides",
-      "slides": "skill-slides"
+      "present:slides": "skill-slide-planning",
+      "slides": "skill-slide-planning"
     },
     "implement": {
       "present": "skill-grant",

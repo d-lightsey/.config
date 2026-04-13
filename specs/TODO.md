@@ -10,7 +10,7 @@ next_project_number: 418
 
 ### Pending
 
-- **417** [PLANNED] -- Interactive slide planning workflow with narrative arc feedback and per-slide refinement
+- **417** [COMPLETED] -- Interactive slide planning workflow with narrative arc feedback and per-slide refinement
 - **416** [NOT STARTED] -- Enforce skill delegation for plan artifacts
 - **415** [COMPLETED] -- Improve /slides command task description format (Sources, forcing data, richer text)
 - **414** [COMPLETED] -- Remove Phase Checkpoint Protocol from 10 extension agents
@@ -24,7 +24,9 @@ next_project_number: 418
 
 ### 417. Interactive slide planning workflow with narrative arc feedback and per-slide refinement
 - **Effort**: 2-3 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
+- **Completed**: 2026-04-13
+- **Summary**: Created skill-slide-planning (5-stage interactive Q&A) and slide-planner-agent for /plan present:slides workflow. Updated manifest routing, index-entries, and cleaned plan code from skill-slides.
 - **Task Type**: meta
 - **Research**: [01_slide-planning-analysis.md](specs/417_interactive_slide_planning_workflow/reports/01_slide-planning-analysis.md)
 - **Plan**: [01_slide-planning-workflow.md](specs/417_interactive_slide_planning_workflow/plans/01_slide-planning-workflow.md)
