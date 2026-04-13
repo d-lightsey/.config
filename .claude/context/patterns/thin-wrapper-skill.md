@@ -94,6 +94,24 @@ Parameters:
 **DO NOT** use `Skill({agent-name})` - this will FAIL.
 Agents live in `.claude/agents/`, not `.claude/skills/`.
 
+### 3b. Self-Execution Fallback
+
+If the skill executor performed work inline (without spawning a subagent via Task tool), it MUST write a `.return-meta.json` file before proceeding to postflight. This ensures postflight stages can read metadata regardless of execution path.
+
+**Why this is needed**: The postflight stages (status update, artifact linking, git commit) depend on reading `.return-meta.json`. When work is done by a subagent, the subagent writes this file. When work is done inline, the skill executor must write it manually using the schema from `return-metadata-file.md`.
+
+**Template** (add after Stage 5 / subagent invocation in each skill):
+```markdown
+### Stage 5b: Self-Execution Fallback
+
+**CRITICAL**: If you performed the work above WITHOUT using the Task tool (i.e., you read files,
+wrote artifacts, or updated metadata directly instead of spawning a subagent), you MUST write a
+`.return-meta.json` file now before proceeding to postflight. Use the schema from
+`return-metadata-file.md` with the appropriate status value for this operation.
+
+If you DID use the Task tool (Stage 5), skip this stage -- the subagent already wrote the metadata.
+```
+
 ### 4. Return Validation
 
 Validate subagent return:
@@ -159,6 +177,8 @@ Direct execution skills use:
 ```yaml
 allowed-tools: Bash, Edit, Read
 ```
+
+**Note**: Direct-execution skills do not need the Stage 5b self-execution fallback since they do not delegate to subagents and handle their own metadata directly.
 
 ### Neovim Skills (Standard Pattern)
 

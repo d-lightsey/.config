@@ -24,6 +24,16 @@ Claude Code skill returns can bypass the invoking skill and return directly to t
 └─────────────────────────────────────────────────────────────┘
 ```
 
+## Unconditional Postflight Execution
+
+Postflight stages (status update, artifact linking, git commit, cleanup) MUST execute after Stage 5 regardless of whether work was done by a subagent or inline. This is enforced through:
+
+1. **Stage 5b fallback**: If the skill executor performed work inline without the Task tool, it writes `.return-meta.json` manually before postflight begins.
+2. **"ALWAYS EXECUTE" header**: Postflight stages are marked with `## Postflight (ALWAYS EXECUTE)` to make the unconditional requirement visually prominent.
+3. **Marker file**: Created before Stage 5 and cleaned up at Stage 10 regardless of execution path. The SubagentStop hook is a complementary safety net that prevents premature termination, but it is NOT the primary trigger for postflight -- the skill's instruction flow is.
+
+**Key invariant**: After any work is completed (Stage 5 or Stage 5b), a valid `.return-meta.json` file exists, and postflight stages can proceed identically regardless of how the work was done.
+
 ## Marker File Protocol
 
 ### Location
