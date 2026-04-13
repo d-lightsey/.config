@@ -346,7 +346,7 @@
       "line_count": 113,
       "load_when": {
         "languages": ["present"],
-        "agents": ["slides-agent"],
+        "agents": ["slides-research-agent", "pptx-assembly-agent", "slidev-assembly-agent"],
         "commands": ["/slides"]
       }
     },
@@ -360,7 +360,7 @@
       "line_count": 111,
       "load_when": {
         "languages": ["present"],
-        "agents": ["slides-agent"],
+        "agents": ["slides-research-agent", "pptx-assembly-agent", "slidev-assembly-agent"],
         "commands": ["/slides"]
       }
     },
@@ -473,6 +473,20 @@
       "load_when": {
         "task_types": ["present"],
         "agents": ["slidev-assembly-agent"],
+        "commands": ["/slides"]
+      }
+    },
+    {
+      "path": "project/present/talk/themes/ucsf-institutional.json",
+      "domain": "project",
+      "subdomain": "present",
+      "topics": ["theme", "ucsf", "institutional", "colors", "branding"],
+      "keywords": ["ucsf", "theme", "institutional", "branding"],
+      "summary": "UCSF institutional theme constants for slide generation (colors, fonts, logos)",
+      "line_count": 50,
+      "load_when": {
+        "task_types": ["present"],
+        "agents": ["pptx-assembly-agent", "slidev-assembly-agent"],
         "commands": ["/slides"]
       }
     }

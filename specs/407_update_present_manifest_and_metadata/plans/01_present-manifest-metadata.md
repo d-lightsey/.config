@@ -102,7 +102,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Update index-entries.json [NOT STARTED]
+### Phase 3: Update index-entries.json [COMPLETED]
 
 **Goal**: Fix 2 stale agent references and add the missing ucsf-institutional.json entry.
 
