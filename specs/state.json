@@ -15,7 +15,7 @@
         {
           "path": "specs/418_add_postflight_fallback_to_skill_wrapper/reports/01_postflight-fallback.md",
           "type": "research",
-          "summary": "Research report analyzing postflight gap in skill wrapper pattern with three fix approaches evaluated"
+          "summary": "Research on postflight gap in skill wrapper pattern: identified vulnerability where inline execution skips Stages 6-10, evaluated 3 fix approaches, recommended unconditional postflight with Stage 5b fallback"
         }
       ]
     },
