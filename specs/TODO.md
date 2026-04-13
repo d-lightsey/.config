@@ -10,12 +10,12 @@ next_project_number: 409
 
 ### Pending
 
-- **403** [PLANNED] -- Split slides-agent into 3 specialized agents with Phase Checkpoint Protocol
+- **403** [COMPLETED] -- Split slides-agent into 3 specialized agents with Phase Checkpoint Protocol
 - **404** [PLANNED] -- Add UCSF theme, PPTX patterns, and templates to present/ context
 - **405** [NOT STARTED] -- Update skill-slides for multi-agent dispatch and plan workflow (depends: 403)
 - **406** [NOT STARTED] -- Update /slides command: output format, enriched descriptions, remove --design (depends: 405)
 - **407** [NOT STARTED] -- Update present/ manifest.json and extension metadata (depends: 403, 405)
-- **408** [PLANNED] -- Audit all implementation agents for Phase Checkpoint Protocol compliance
+- **408** [COMPLETED] -- Audit all implementation agents for Phase Checkpoint Protocol compliance
 - **384** [RESEARCHED] -- Improve /convert command-skill-agent pipeline in filetypes extension
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -24,10 +24,11 @@ next_project_number: 409
 
 ### 408. Audit all implementation agents for Phase Checkpoint Protocol compliance
 - **Effort**: 1.5 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_phase-checkpoint-audit.md](specs/408_audit_implementation_agents_phase_checkpoint/reports/01_phase-checkpoint-audit.md)
 - **Plan**: [01_phase-checkpoint-plan.md](specs/408_audit_implementation_agents_phase_checkpoint/plans/01_phase-checkpoint-plan.md)
+- **Summary**: [01_phase-checkpoint-summary.md](specs/408_audit_implementation_agents_phase_checkpoint/summaries/01_phase-checkpoint-summary.md)
 
 **Description**: Audit every implementation agent across all extensions (present, founder, filetypes, etc.) to ensure each updates phase status in plan headings (`[NOT STARTED]` -> `[IN PROGRESS]` -> `[COMPLETED]`) before and after working on each phase, with per-phase git commits. Currently only `grant-agent` in present/ has this protocol. All assembly/implementation agents must follow the same pattern for progress monitoring and resumability.
 
@@ -76,10 +77,11 @@ next_project_number: 409
 
 ### 403. Split slides-agent into 3 specialized agents with Phase Checkpoint Protocol
 - **Effort**: 1.5 hours
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_agent-split-research.md](403_split_slides_agent_with_phase_checkpoint/reports/01_agent-split-research.md)
 - **Plan**: [01_agent-split-plan.md](403_split_slides_agent_with_phase_checkpoint/plans/01_agent-split-plan.md)
+- **Summary**: [01_agent-split-summary.md](403_split_slides_agent_with_phase_checkpoint/summaries/01_agent-split-summary.md)
 
 **Description**: Replace monolithic `slides-agent.md` with 3 specialized agents ported from zed: `slides-research-agent.md` (research synthesis), `pptx-assembly-agent.md` (PowerPoint generation via python-pptx), `slidev-assembly-agent.md` (Slidev project generation). Critically, add Phase Checkpoint Protocol to both assembly agents (missing in zed version) so they update `### Phase {P}: {Name} [NOT STARTED]` -> `[IN PROGRESS]` -> `[COMPLETED]` in plan headings before/after each phase with per-phase commits. Delete old slides-agent.md. Source agents: `/home/benjamin/.config/zed/.claude_NEW/agents/`.
 
