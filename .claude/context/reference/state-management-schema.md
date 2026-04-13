@@ -285,6 +285,8 @@ The vault system manages task number cycling when `next_project_number` exceeds 
 - **Existing inline**: Line matches `- **{Type}**: \[.*\]\(.*\)` (has link on same line)
 - **Existing multi-line**: Line matches `- **{Type}**:$` (ends with colon, no link)
 
+**Implementation Reference**: For the full four-case Edit tool logic used by skills during postflight, see `.claude/context/patterns/artifact-linking-todo.md`.
+
 ## Directory Creation
 
 ### Lazy Directory Creation Rule

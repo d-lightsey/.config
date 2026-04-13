@@ -235,7 +235,7 @@ grep -A 20 "^### ${task_number}\." specs/TODO.md | grep "Language" | sed 's/\*\*
 2. status-sync-manager performs atomic update:
    - Update TODO.md:
      - Status: [NOT STARTED] → [RESEARCHED]
-     - Add **Research**: {report_path} using count-aware format (see state-management.md "Artifact Linking Format")
+     - Add **Research**: {report_path} using count-aware format (see `artifact-linking-todo.md`)
      - Add **Completed**: {date}
    - Update state.json:
      - Update status and timestamps
