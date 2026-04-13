@@ -283,11 +283,40 @@ fi
 
 ### Stage 4: Prepare Delegation Context
 
+**Agent Resolution**: Determine target agent from workflow_type and output_format:
+
+```bash
+case "$workflow_type" in
+  slides_research)
+    target_agent="slides-research-agent"
+    ;;
+  plan)
+    target_agent="planner-agent"
+    ;;
+  assemble)
+    if [ "$output_format" = "pptx" ]; then
+      target_agent="pptx-assembly-agent"
+    else
+      target_agent="slidev-assembly-agent"
+    fi
+    ;;
+esac
+```
+
+| workflow_type | output_format | target_agent |
+|---------------|---------------|--------------|
+| slides_research | (any) | slides-research-agent |
+| plan | (any) | planner-agent |
+| assemble | pptx | pptx-assembly-agent |
+| assemble | slidev (default) | slidev-assembly-agent |
+
+**Delegation context**:
+
 ```json
 {
   "session_id": "sess_{timestamp}_{random}",
   "delegation_depth": 1,
-  "delegation_path": ["orchestrator", "slides", "skill-slides"],
+  "delegation_path": ["orchestrator", "slides", "skill-slides", "{target_agent}"],
   "timeout": 3600,
   "task_context": {
     "task_number": N,
@@ -296,9 +325,10 @@ fi
     "task_type": "present",
     "task_type": "slides"
   },
-  "workflow_type": "slides_research|assemble",
+  "workflow_type": "slides_research|plan|assemble",
   "output_format": "slidev|pptx (extracted from forcing_data, default: slidev)",
   "forcing_data": "{from state.json task metadata, includes output_format}",
+  "design_decisions": "{from state.json task metadata, if present}",
   "metadata_file_path": "specs/{NNN}_{SLUG}/.return-meta.json"
 }
 ```
@@ -307,17 +337,24 @@ fi
 
 ### Stage 5: Invoke Subagent
 
-**CRITICAL**: Use the **Task** tool to spawn the subagent.
+**CRITICAL**: Use the **Task** tool to spawn the resolved `{target_agent}`.
 
 ```
 Tool: Task (NOT Skill)
 Parameters:
-  - subagent_type: "slides-agent"
-  - prompt: [Include task_context, delegation_context, workflow_type, forcing_data, metadata_file_path]
+  - subagent_type: "{target_agent}"
+  - prompt: [Include task_context, delegation_context, workflow_type, forcing_data, design_decisions, metadata_file_path]
   - description: "Execute {workflow_type} for task {N}"
 ```
 
-**DO NOT** use `Skill(slides-agent)` - this will FAIL.
+| workflow_type | output_format | Spawned Agent |
+|---------------|---------------|---------------|
+| slides_research | (any) | slides-research-agent |
+| plan | (any) | planner-agent |
+| assemble | pptx | pptx-assembly-agent |
+| assemble | slidev | slidev-assembly-agent |
+
+**DO NOT** use `Skill({target_agent})` - this will FAIL. Always use the Task tool.
 
 ---
 
@@ -345,6 +382,8 @@ fi
 |---------------|-------------|-----------------|---------------|
 | slides_research | researched | researched | [RESEARCHED] |
 | slides_research | partial | researching | [RESEARCHING] |
+| plan | planned | planned | [PLANNED] |
+| plan | partial | planning | [PLANNING] |
 | assemble | assembled | completed | [COMPLETED] |
 | assemble | partial | implementing | [IMPLEMENTING] |
 | any | failed | (keep preflight) | (keep preflight marker) |
@@ -363,6 +402,9 @@ Add artifact to state.json with summary. Use the two-step jq pattern to avoid Is
 case "$workflow_type" in
   slides_research)
     commit_action="complete slides research"
+    ;;
+  plan)
+    commit_action="create implementation plan"
     ;;
   assemble)
     # Branch commit message on output_format
@@ -403,6 +445,15 @@ Talk research completed for task {N}:
 - Talk type: {talk_type}, {slide_count} slides mapped
 - Created report at specs/{NNN}_{SLUG}/reports/{MM}_slides-research.md
 - Status updated to [RESEARCHED]
+- Changes committed with session {session_id}
+```
+
+**Plan Success**:
+```
+Implementation plan created for task {N}:
+- Design decisions confirmed (theme: {theme}, emphasis: {section_emphasis})
+- Plan created at specs/{NNN}_{SLUG}/plans/{MM}_slides-plan.md
+- Status updated to [PLANNED]
 - Changes committed with session {session_id}
 ```
 
