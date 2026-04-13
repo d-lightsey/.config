@@ -30,7 +30,17 @@
         "complexity": "simple",
         "research_integrated": true,
         "plan_version": 1,
-        "dependency_waves": [[1], [2], [3]],
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
         "reports_integrated": [
           {
             "path": "reports/01_phase-checkpoint-audit.md",
@@ -45,7 +55,10 @@
       "project_name": "update_present_manifest_and_metadata",
       "status": "not_started",
       "task_type": "meta",
-      "dependencies": [403, 405],
+      "dependencies": [
+        403,
+        405
+      ],
       "created": "2026-04-12T12:00:00Z",
       "last_updated": "2026-04-12T12:00:00Z",
       "artifacts": []
@@ -55,7 +68,9 @@
       "project_name": "update_slides_command_format_enriched",
       "status": "not_started",
       "task_type": "meta",
-      "dependencies": [405],
+      "dependencies": [
+        405
+      ],
       "created": "2026-04-12T12:00:00Z",
       "last_updated": "2026-04-12T12:00:00Z",
       "artifacts": []
@@ -63,12 +78,22 @@
     {
       "project_number": 405,
       "project_name": "update_skill_slides_multi_agent_dispatch",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
-      "dependencies": [403],
+      "dependencies": [
+        403
+      ],
       "created": "2026-04-12T12:00:00Z",
-      "last_updated": "2026-04-12T12:00:00Z",
-      "artifacts": []
+      "last_updated": "2026-04-13T06:36:21Z",
+      "artifacts": [
+        {
+          "path": "specs/405_update_skill_slides_multi_agent_dispatch/reports/01_skill-slides-research.md",
+          "type": "research",
+          "summary": "Research report for skill-slides multi-agent dispatch update"
+        }
+      ],
+      "session_id": "sess_1776061899_915559",
+      "next_artifact_number": 2
     },
     {
       "project_number": 404,
@@ -103,7 +128,21 @@
         "complexity": "medium",
         "research_integrated": true,
         "plan_version": 1,
-        "dependency_waves": [[1], [2, 3], [4], [5]],
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4
+          ],
+          [
+            5
+          ]
+        ],
         "reports_integrated": [
           {
             "path": "reports/01_ucsf-pptx-context.md",
@@ -141,7 +180,18 @@
         "complexity": "medium",
         "research_integrated": true,
         "plan_version": 1,
-        "dependency_waves": [[1], [2, 3], [4]],
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            4
+          ]
+        ],
         "reports_integrated": [
           {
             "path": "reports/01_agent-split-research.md",
