@@ -64,7 +64,7 @@ This task does not directly advance any current ROADMAP.md items. It is foundati
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Copy slides-research-agent.md [NOT STARTED]
+### Phase 1: Copy slides-research-agent.md [COMPLETED]
 
 **Goal**: Create the research agent by copying verbatim from zed source.
 
