@@ -1,15 +1,16 @@
 ---
-next_project_number: 416
+next_project_number: 417
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-13. 7 active tasks remaining.*
+*Updated 2026-04-13. 8 active tasks remaining.*
 
 ### Pending
 
+- **416** [NOT STARTED] -- Enforce skill delegation for plan artifacts
 - **415** [RESEARCHED] -- Improve /slides command task description format (Sources, forcing data, richer text)
 - **414** [PLANNED] -- Remove Phase Checkpoint Protocol from 10 extension agents
 - **398** [NOT STARTED] -- Extract artifact-linking logic to shared helper script
@@ -19,6 +20,15 @@ next_project_number: 416
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 416. Enforce skill delegation for plan artifacts
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: The `/plan` command sometimes bypasses `skill-planner` delegation and writes plan files directly, producing artifacts that violate the plan format standard (`plan-format.md`, `plan-format-enforcement.md`). This happened on 2026-04-13 with task 414: the orchestrator read the /plan command spec, skipped the `Skill("skill-planner")` invocation, and wrote a plan missing required metadata (Status, Dependencies, Research Inputs, Artifacts, Standards, Type), required sections (Goals & Non-Goals, Testing & Validation, Artifacts & Outputs, Rollback/Contingency), the Dependency Analysis wave table, and proper phase format (Goal/Tasks/Timing/Depends on). The `plan-format-enforcement.md` rule exists but only influences agents that load it — it cannot prevent the orchestrator from writing non-conforming files directly. The same class of bypass could affect `/research` (skipping `skill-researcher`) or `/implement` (skipping `skill-implementer`). Investigate enforcement mechanisms: (1) settings.json hooks (PostToolUse on Write/Edit matching `specs/**/plans/*.md`) that validate format externally, (2) stronger anti-bypass wording in command specs, (3) feedback memory for future conversations. Determine which combination provides reliable enforcement without excessive overhead.
+
+---
 
 ### 415. Improve /slides command task description format (Sources, forcing data, richer text)
 - **Effort**: 30 min

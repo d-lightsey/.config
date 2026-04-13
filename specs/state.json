@@ -1,7 +1,16 @@
 {
   "version": "1.0.0",
-  "next_project_number": 416,
+  "next_project_number": 417,
   "active_projects": [
+    {
+      "project_number": 416,
+      "project_name": "enforce_skill_delegation_for_plan_artifacts",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:30:00Z",
+      "last_updated": "2026-04-13T12:30:00Z",
+      "artifacts": []
+    },
     {
       "project_number": 415,
       "project_name": "improve_slides_command_task_description",
