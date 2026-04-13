@@ -66,22 +66,52 @@
     {
       "project_number": 406,
       "project_name": "update_slides_command_format_enriched",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "dependencies": [
         405
       ],
       "created": "2026-04-12T12:00:00Z",
-      "last_updated": "2026-04-13T06:51:27Z",
+      "last_updated": "2026-04-13T06:55:14Z",
       "artifacts": [
         {
           "path": "specs/406_update_slides_command_format_enriched/reports/01_slides-command-format.md",
           "type": "research",
           "summary": "Complete change list for /slides command: remove --design flag/Stage 3, add output format selection (Step 0.0), add enriched description (Step 2.5), update routing table and output templates"
+        },
+        {
+          "path": "specs/406_update_slides_command_format_enriched/plans/01_slides-command-format.md",
+          "type": "plan",
+          "summary": "Implementation plan for updating /slides command per DIFF.md section 2: remove --design flag, add output format selection, add enriched description, update routing table"
         }
       ],
-      "session_id": "sess_1776062891_c7b31f",
-      "next_artifact_number": 2
+      "session_id": "sess_1776063143_259084",
+      "next_artifact_number": 2,
+      "plan_metadata": {
+        "phases": 3,
+        "total_effort_hours": 1.5,
+        "complexity": "medium",
+        "research_integrated": true,
+        "plan_version": 1,
+        "dependency_waves": [
+          [
+            1
+          ],
+          [
+            2
+          ],
+          [
+            3
+          ]
+        ],
+        "reports_integrated": [
+          {
+            "path": "reports/01_slides-command-format.md",
+            "integrated_in_plan_version": 1,
+            "integrated_date": "2026-04-12"
+          }
+        ]
+      }
     },
     {
       "project_number": 405,
