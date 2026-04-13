@@ -95,11 +95,11 @@
     {
       "project_number": 384,
       "project_name": "improve_convert_command_skill_agent",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-09T16:15:53Z",
-      "last_updated": "2026-04-13T19:22:39Z",
-      "session_id": "sess_1776107949_3a8d19",
+      "last_updated": "2026-04-13T19:36:31Z",
+      "session_id": "sess_1776108824_770bdd",
       "artifacts": [
         {
           "path": "specs/384_improve_convert_command_skill_agent/reports/02_convert-status-review.md",
@@ -110,6 +110,11 @@
           "path": "specs/384_improve_convert_command_skill_agent/reports/03_pymupdf-vs-markitdown.md",
           "type": "research",
           "summary": "Web research comparing PyMuPDF4LLM vs MarkItDown: pymupdf wins decisively for PDF quality; markitdown best for DOCX/PPTX/XLSX"
+        },
+        {
+          "path": "specs/384_improve_convert_command_skill_agent/plans/02_convert-pipeline-refactor.md",
+          "type": "plan",
+          "summary": "4-phase plan to refactor document-agent for pymupdf-primary PDF extraction with format-aware routing"
         }
       ],
       "next_artifact_number": 3
