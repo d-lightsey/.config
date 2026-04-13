@@ -1,7 +1,52 @@
 {
   "version": "1.0.0",
-  "next_project_number": 409,
+  "next_project_number": 414,
   "active_projects": [
+    {
+      "project_number": 413,
+      "project_name": "refine_slides_skill_command",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:00:00Z",
+      "last_updated": "2026-04-13T12:00:00Z",
+      "artifacts": []
+    },
+    {
+      "project_number": 412,
+      "project_name": "update_docs_python_to_rust",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:00:00Z",
+      "last_updated": "2026-04-13T12:00:00Z",
+      "artifacts": []
+    },
+    {
+      "project_number": 411,
+      "project_name": "update_extension_trigger_wording",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:00:00Z",
+      "last_updated": "2026-04-13T12:00:00Z",
+      "artifacts": []
+    },
+    {
+      "project_number": 410,
+      "project_name": "remove_meta_stage_5_5",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:00:00Z",
+      "last_updated": "2026-04-13T12:00:00Z",
+      "artifacts": []
+    },
+    {
+      "project_number": 409,
+      "project_name": "remove_phase_checkpoint_protocol",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-13T12:00:00Z",
+      "last_updated": "2026-04-13T12:00:00Z",
+      "artifacts": []
+    },
     {
       "project_number": 398,
       "project_name": "extract_artifact_linking_helper",
@@ -81,7 +126,7 @@
   ],
   "completed_projects": [],
   "repository_health": {
-    "last_assessed": "2026-04-13T07:23:45Z",
+    "last_assessed": "2026-04-13T12:00:00Z",
     "todo_count": 44,
     "fixme_count": 2,
     "build_errors": 0,
