@@ -1,15 +1,16 @@
 ---
-next_project_number: 414
+next_project_number: 415
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-13. 5 active tasks remaining.*
+*Updated 2026-04-13. 6 active tasks remaining.*
 
 ### Pending
 
+- **414** [NOT STARTED] -- Remove Phase Checkpoint Protocol from 10 extension agents
 - **398** [NOT STARTED] -- Extract artifact-linking logic to shared helper script
 - **394** [NOT STARTED] -- Remove language-to-task_type backward compatibility shim
 - **384** [RESEARCHED] -- Improve /convert command-skill-agent pipeline in filetypes extension
@@ -17,6 +18,15 @@ next_project_number: 414
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 414. Remove Phase Checkpoint Protocol from 10 extension agents
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Remove the "Phase Checkpoint Protocol" sections from 10 extension implementation agents that still contain them. This protocol documented per-phase `[IN PROGRESS]`/`[COMPLETED]` status tracking in plan headings, per-phase git commits, and phase-to-stage mapping tables. It was already removed from epi-implement-agent, pptx-assembly-agent, and slidev-assembly-agent as unnecessary overhead. The same removal should be applied to: latex-implementation-agent, typst-implementation-agent, python-implementation-agent, nix-implementation-agent, neovim-implementation-agent, web-implementation-agent, z3-implementation-agent, founder-implement-agent, deck-builder-agent, and grant-agent. Also remove inline references to the protocol (preamble notes, per-phase commit instructions, numbered rules at the end). Origin: PORT.md cross-reference audit.
+
+---
 
 ### 398. Extract artifact-linking logic to shared helper script (consolidate six skill Stage 8 blocks)
 - **Effort**: TBD
@@ -78,8 +88,9 @@ next_project_number: 414
 
 ## Recommended Order
 
-1. **384** [RESEARCHED] -> plan (independent)
-2. **78** [PLANNED] -> implement
-3. **87** [RESEARCHED] -> plan
-4. **398** [NOT STARTED] -> research (depends: 397)
-5. **394** [NOT STARTED] -> research
+1. **414** [NOT STARTED] -> research (independent, small)
+2. **384** [RESEARCHED] -> plan (independent)
+3. **78** [PLANNED] -> implement
+4. **87** [RESEARCHED] -> plan
+5. **398** [NOT STARTED] -> research (depends: 397)
+6. **394** [NOT STARTED] -> research
