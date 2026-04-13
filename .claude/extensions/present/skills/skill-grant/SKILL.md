@@ -94,7 +94,7 @@ if [ -z "$task_data" ]; then
 fi
 
 # Extract fields
-language=$(echo "$task_data" | jq -r '.language // "present"')
+task_type=$(echo "$task_data" | jq -r '.task_type // "present"')
 status=$(echo "$task_data" | jq -r '.status')
 project_name=$(echo "$task_data" | jq -r '.project_name')
 description=$(echo "$task_data" | jq -r '.description // ""')
@@ -473,14 +473,14 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add artifact link based on workflow type using count-aware format per `.claude/rules/state-management.md` "Artifact Linking Format".
+**Update TODO.md**: Link artifact using count-aware format. Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md`.
 
-Artifact type labels:
-- funder_research: `**Research**`
-- proposal_draft: `**Draft**`
-- budget_develop: `**Budget**`
-- progress_track: `**Progress**`
-- assemble: `**Grant**`
+Artifact type labels and parameterization:
+- funder_research: `field_name=**Research**`, `next_field=**Plan**`
+- proposal_draft: `field_name=**Draft**`, `next_field=**Description**`
+- budget_develop: `field_name=**Budget**`, `next_field=**Description**`
+- progress_track: `field_name=**Progress**`, `next_field=**Description**`
+- assemble: `field_name=**Grant**`, `next_field=**Description**`
 
 ---
 

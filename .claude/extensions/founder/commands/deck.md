@@ -184,11 +184,10 @@ if [ -z "$task_data" ]; then
   exit 1
 fi
 
-# Validate language is founder and task_type is deck
-task_lang=$(echo "$task_data" | jq -r '.language')
+# Validate task_type is founder:deck (or legacy "deck")
 task_type=$(echo "$task_data" | jq -r '.task_type // ""')
-if [ "$task_lang" != "founder" ] || [ "$task_type" != "deck" ]; then
-  echo "Error: Task $task_number is not a founder:deck task (language: $task_lang, type: $task_type)"
+if [ "$task_type" != "founder:deck" ] && [ "$task_type" != "deck" ]; then
+  echo "Error: Task $task_number is not a founder:deck task (task_type: $task_type)"
   exit 1
 fi
 ```

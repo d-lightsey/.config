@@ -79,7 +79,7 @@ if [ -z "$task_data" ]; then
 fi
 
 # Extract fields
-language=$(echo "$task_data" | jq -r '.language // "present"')
+task_type=$(echo "$task_data" | jq -r '.task_type // "present"')
 status=$(echo "$task_data" | jq -r '.status')
 project_name=$(echo "$task_data" | jq -r '.project_name')
 description=$(echo "$task_data" | jq -r '.description // ""')
@@ -311,7 +311,7 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add artifact link using count-aware format.
+**Update TODO.md**: Link artifact using count-aware format. Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md` with `field_name=**Research**`, `next_field=**Plan**`.
 
 ---
 

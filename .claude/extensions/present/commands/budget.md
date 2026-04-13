@@ -175,11 +175,11 @@ if [ -z "$task_data" ]; then
   exit 1
 fi
 
-task_lang=$(echo "$task_data" | jq -r '.language')
-if [ "$task_lang" = "present" ]; then
+task_type=$(echo "$task_data" | jq -r '.task_type')
+if [ "$task_type" = "present" ]; then
   : # OK
 else
-  echo "Error: Task $task_number has language '$task_lang', expected 'present'"
+  echo "Error: Task $task_number has task_type '$task_type', expected 'present'"
   exit 1
 fi
 ```

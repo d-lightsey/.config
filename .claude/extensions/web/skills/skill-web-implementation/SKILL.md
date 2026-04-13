@@ -276,8 +276,7 @@ jq --arg path "$artifact_path" \
 
 Update TODO.md:
 - Change status marker from `[IMPLEMENTING]` to `[COMPLETED]`
-- Strip specs/ prefix for TODO.md (TODO.md is inside specs/): `todo_link_path="${artifact_path#specs/}"`
-- Add summary artifact link using count-aware format per `.claude/rules/state-management.md` "Artifact Linking Format"
+- Link artifact using count-aware format: apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md` with `field_name=**Summary**`, `next_field=**Description**`
 
 **Update plan file** (if exists): Update the Status field to `[COMPLETED]`:
 ```bash

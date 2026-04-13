@@ -462,7 +462,7 @@ function register_delegation(session_id, context) {
     "command": context.command,
     "subagent": context.target_agent,
     "task_number": context.task_number,
-    "language": context.task_type,
+    "task_type": context.task_type,
     "start_time": new Date().toISOString(),
     "timeout": context.timeout,
     "deadline": new Date(Date.now() + context.timeout * 1000).toISOString(),

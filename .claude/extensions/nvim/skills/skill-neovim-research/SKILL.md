@@ -47,7 +47,7 @@ if [ -z "$task_data" ]; then
 fi
 
 # Extract fields
-language=$(echo "$task_data" | jq -r '.language // "neovim"')
+task_type=$(echo "$task_data" | jq -r '.task_type // "neovim"')
 status=$(echo "$task_data" | jq -r '.status')
 project_name=$(echo "$task_data" | jq -r '.project_name')
 description=$(echo "$task_data" | jq -r '.description // ""')
@@ -182,6 +182,8 @@ If status is "researched", update state.json and TODO.md.
 ### Stage 8: Link Artifacts
 
 Add artifact to state.json with summary.
+
+**Update TODO.md**: Link artifact using count-aware format. Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md` with `field_name=**Research**`, `next_field=**Plan**`.
 
 ---
 

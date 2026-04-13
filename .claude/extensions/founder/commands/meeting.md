@@ -118,10 +118,10 @@ if [ -z "$task_data" ]; then
   exit 1
 fi
 
-# Validate language is founder
-task_lang=$(echo "$task_data" | jq -r '.language')
-if [ "$task_lang" = "founder" | not ]; then
-  echo "Error: Task $task_number is not a founder task (language: $task_lang)"
+# Validate task_type is founder
+task_type=$(echo "$task_data" | jq -r '.task_type')
+if [ "$task_type" != "founder" ]; then
+  echo "Error: Task $task_number is not a founder task (task_type: $task_type)"
   exit 1
 fi
 

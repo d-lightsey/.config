@@ -45,7 +45,7 @@ task_type=$(echo "$task_data" | jq -r '.task_type // "general"')
 status=$(echo "$task_data" | jq -r '.status')
 project_name=$(echo "$task_data" | jq -r '.project_name')
 
-# Validate language (accept both "lean" and "lean4")
+# Validate task_type (accept both "lean" and "lean4")
 if [ "$task_type" != "lean" ] && [ "$task_type" != "lean4" ]; then
   return error "Task $task_number is not a Lean task"
 fi

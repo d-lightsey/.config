@@ -361,13 +361,10 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md**: Add plan artifact link using count-aware format.
+**Update TODO.md**: Link artifact using count-aware format.
 
-See `.claude/rules/state-management.md` "Artifact Linking Format" for canonical rules. Use Edit tool:
-
-1. **If no `- **Plan**:` line exists**: Insert inline format
-2. **If existing inline (single link)**: Convert to multi-line
-3. **If existing multi-line**: Append new item
+Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md`
+with `field_name=**Plan**`, `next_field=**Description**`.
 
 ---
 

@@ -176,10 +176,10 @@ if [ -z "$task_data" ]; then
   exit 1
 fi
 
-# Validate language is present
-task_lang=$(echo "$task_data" | jq -r '.language')
-if [ "$task_lang" = "present" | not ]; then
-  echo "Error: Task $task_number is not a present task (language: $task_lang)"
+# Validate task_type is present
+task_type=$(echo "$task_data" | jq -r '.task_type')
+if [ "$task_type" != "present" ]; then
+  echo "Error: Task $task_number is not a present task (task_type: $task_type)"
   exit 1
 fi
 

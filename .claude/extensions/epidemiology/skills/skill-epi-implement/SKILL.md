@@ -213,6 +213,8 @@ Only this skill performs postflight status transitions.
 Add artifact to state.json with summary. Use the two-step jq pattern to avoid Issue #1132.
 Artifact type: "summary" (implementation summary with R script paths).
 
+**Update TODO.md**: Link artifact using count-aware format. Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md` with `field_name=**Summary**`, `next_field=**Description**`.
+
 ---
 
 ### Stage 9: Git Commit
