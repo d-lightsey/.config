@@ -32,11 +32,19 @@
     {
       "project_number": 416,
       "project_name": "enforce_skill_delegation_for_plan_artifacts",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-13T12:30:00Z",
-      "last_updated": "2026-04-13T12:30:00Z",
-      "artifacts": []
+      "last_updated": "2026-04-13T17:48:22Z",
+      "artifacts": [
+        {
+          "path": "specs/416_enforce_skill_delegation_for_plan_artifacts/reports/01_skill-delegation-enforcement.md",
+          "type": "research",
+          "summary": "Research on enforcement mechanisms for preventing orchestrator bypass of skill delegation when writing plan artifacts. Recommends layered defense: PostToolUse validation hook (primary), command spec hardening (secondary), local .memory/ feedback entry (tertiary)."
+        }
+      ],
+      "session_id": "sess_1776102008_a002ce",
+      "next_artifact_number": 2
     },
     {
       "project_number": 415,
