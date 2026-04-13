@@ -370,30 +370,10 @@ if [ -n "$artifact_path" ]; then
 fi
 ```
 
-**Update TODO.md** (if implemented): Add summary artifact link using count-aware format.
+**Update TODO.md** (if implemented): Link artifact using count-aware format.
 
-See `.claude/rules/state-management.md` "Artifact Linking Format" for canonical rules. Use Edit tool:
-
-1. **Read existing task entry** to detect current summary links
-2. **If no `- **Summary**:` line exists**: Insert inline format:
-   ```markdown
-   - **Summary**: [MM_{short-slug}-summary.md]({artifact_path})
-   ```
-3. **If existing inline (single link)**: Convert to multi-line:
-   ```markdown
-   old_string: - **Summary**: [existing.md](existing/path)
-   new_string: - **Summary**:
-     - [existing.md](existing/path)
-     - [MM_{short-slug}-summary.md]({artifact_path})
-   ```
-4. **If existing multi-line**: Append new item before next field:
-   ```markdown
-   old_string:   - [last-item.md](last/path)
-   **Description**:
-   new_string:   - [last-item.md](last/path)
-     - [MM_{short-slug}-summary.md]({artifact_path})
-   **Description**:
-   ```
+Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md`
+with `field_name=**Summary**`, `next_field=**Description**`.
 
 ---
 

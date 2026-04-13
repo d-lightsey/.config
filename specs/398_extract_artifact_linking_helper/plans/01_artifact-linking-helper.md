@@ -85,7 +85,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update 6 Core Skills [IN PROGRESS]
+### Phase 2: Update 6 Core Skills [COMPLETED]
 
 **Goal**: Replace inline artifact-linking instructions in all core skills with a reference to the pattern file.
 

@@ -459,30 +459,10 @@ jq --arg path "specs/${padded_num}_${project_name}/plans/${run_padded}_implement
   specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
 ```
 
-**Update TODO.md**: Add plan artifact link using count-aware format.
+**Update TODO.md**: Link artifact using count-aware format.
 
-See `.claude/rules/state-management.md` "Artifact Linking Format" for canonical rules. Use Edit tool:
-
-1. **Read existing task entry** to detect current plan links
-2. **If no `- **Plan**:` line exists**: Insert inline format:
-   ```markdown
-   - **Plan**: [{NN}_implementation-plan.md]({artifact_path})
-   ```
-3. **If existing inline (single link)**: Convert to multi-line:
-   ```markdown
-   old_string: - **Plan**: [existing.md](existing/path)
-   new_string: - **Plan**:
-     - [existing.md](existing/path)
-     - [{NN}_implementation-plan.md]({artifact_path})
-   ```
-4. **If existing multi-line**: Append new item before next field:
-   ```markdown
-   old_string:   - [last-item.md](last/path)
-   **Description**:
-   new_string:   - [last-item.md](last/path)
-     - [{NN}_implementation-plan.md]({artifact_path})
-   **Description**:
-   ```
+Apply the four-case Edit logic from `@.claude/context/patterns/artifact-linking-todo.md`
+with `field_name=**Plan**`, `next_field=**Description**`.
 
 ---
 

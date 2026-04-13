@@ -99,7 +99,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update Extension Skills Reading `.language` Directly [IN PROGRESS]
+### Phase 2: Update Extension Skills Reading `.language` Directly [COMPLETED]
 
 **Goal**: Replace `.language` field reads with `.task_type` in 18 extension skill files that were not updated during task 393, including downstream `$language` variable references.
 
@@ -141,7 +141,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Update Extension Commands Reading `.language` Bare [NOT STARTED]
+### Phase 3: Update Extension Commands Reading `.language` Bare [COMPLETED]
 
 **Goal**: Replace `.language` field reads with `.task_type` in 11 extension command files.
 
@@ -172,7 +172,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Update Documentation and Final Sweep [NOT STARTED]
+### Phase 4: Update Documentation and Final Sweep [IN PROGRESS]
 
 **Goal**: Fix stale documentation references and run a comprehensive sweep to confirm no `.language` field references remain anywhere in `.claude/`.
 
