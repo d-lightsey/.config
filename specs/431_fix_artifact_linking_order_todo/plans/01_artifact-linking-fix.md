@@ -59,7 +59,7 @@ Fix three issues in `link-artifact-todo.sh`: (1) blank line above `**Description
 
 **Depends on:** none
 
-### Phase 2: Update state-management-schema.md [NOT STARTED]
+### Phase 2: Update state-management-schema.md [COMPLETED]
 
 **Goal:** Update the artifact linking format documentation to reflect bracket-only link style.
 
