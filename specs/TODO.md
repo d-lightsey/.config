@@ -11,7 +11,7 @@ next_project_number: 432
 ### Pending
 
 - **431** [RESEARCHED] -- Fix artifact linking order and missing blank line in TODO.md
-- **430** [IMPLEMENTING] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
+- **430** [COMPLETED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
 - **429** [COMPLETED] -- Update .claude/docs/ to reflect task 428 changes
 - **428** [COMPLETED] -- Refactor agent system: syncprotect integration, backup elimination, and systematic organization review
 - **427** [COMPLETED] -- Remove Co-Authored-By trailers and refine README.md sync exclusion
@@ -37,11 +37,12 @@ next_project_number: 432
 
 ### 430. Fix /implement excessive front-loading: lead agent should read plan only, not codebase
 - **Effort**: small
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [front-loading-fix](specs/430_fix_implement_excessive_front_loading/reports/01_front-loading-fix.md)
 
 - **Plan**: [01_front-loading-fix.md](430_fix_implement_excessive_front_loading/plans/01_front-loading-fix.md)
+- **Summary**: [01_front-loading-fix-summary.md](430_fix_implement_excessive_front_loading/summaries/01_front-loading-fix-summary.md)
 **Description**: Fix excessive front-loading in /implement: the lead agent (both skill-team-implement and skill-implementer) reads the entire codebase before spawning sub-agents, instead of just reading the plan file. The lead should only read the plan to extract phase structure/dependencies/waves, then immediately delegate to agents. Source file reading, grepping, and MCP tool usage must be the sub-agent's responsibility. Affected files: `.claude/skills/skill-team-implement/SKILL.md` (add anti-front-loading constraint to Stages 5-7), `.claude/skills/skill-implementer/SKILL.md` (add constraint to Stages 4-5), and potentially `.claude/agents/general-implementation-agent.md` (clarify that codebase exploration is the agent's job, not the delegator's).
 
 ### 429. Update .claude/docs/ to reflect task 428 changes
