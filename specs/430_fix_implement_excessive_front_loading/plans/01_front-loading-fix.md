@@ -104,7 +104,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Add codebase responsibility claim to general-implementation-agent [NOT STARTED]
+### Phase 3: Add codebase responsibility claim to general-implementation-agent [COMPLETED]
 
 **Goal**: Add 1 insertion to general-implementation-agent.md establishing that codebase exploration is the agent's exclusive responsibility.
 
