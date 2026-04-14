@@ -21,11 +21,19 @@
     {
       "project_number": 424,
       "project_name": "create_slide_critic_agent",
-      "status": "researching",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-14T03:14:38Z",
-      "last_updated": "2026-04-14T03:49:39Z",
-      "session_id": "sess_1776138565_524582"
+      "last_updated": "2026-04-14T03:53:03Z",
+      "session_id": "sess_1776138565_524582",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/424_create_slide_critic_agent/reports/01_slide-critic-agent-research.md",
+          "type": "research",
+          "summary": "Research on agent patterns, rubric integration, context loading, and structured output design for slide-critic-agent"
+        }
+      ]
     },
     {
       "project_number": 423,
@@ -58,11 +66,11 @@
     {
       "project_number": 422,
       "project_name": "fix_sync_overwriting_all_non_claudemd_files",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-14T03:05:36Z",
-      "last_updated": "2026-04-14T03:50:13Z",
-      "session_id": "sess_1744517400_plan422",
+      "last_updated": "2026-04-14T03:52:36Z",
+      "session_id": "sess_1744517800_impl422",
       "next_artifact_number": 2,
       "artifacts": [
         {

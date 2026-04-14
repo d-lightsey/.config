@@ -12,9 +12,9 @@ next_project_number: 427
 
 - **426** [NOT STARTED] -- Update slides command and manifest for --critic flag (depends: 425)
 - **425** [NOT STARTED] -- Create skill-slide-critic interactive critique skill (depends: 424)
-- **424** [RESEARCHING] -- Create slide-critic-agent (depends: 423)
+- **424** [RESEARCHED] -- Create slide-critic-agent (depends: 423)
 - **423** [COMPLETED] -- Create critique rubric context file
-- **422** [PLANNED] -- Fix sync.lua overwriting all non-CLAUDE.md files
+- **422** [IMPLEMENTING] -- Fix sync.lua overwriting all non-CLAUDE.md files
 - **421** [COMPLETED] -- Fix status script grep pattern and TODO artifact linking
 - **420** [COMPLETED] -- Prevent extension loader overwriting repo customizations
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
@@ -40,10 +40,11 @@ next_project_number: 427
 
 ### 424. Create slide-critic-agent
 - **Effort**: large
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Dependencies**: 423
 
+- **Research**: [01_slide-critic-agent-research.md](424_create_slide_critic_agent/reports/01_slide-critic-agent-research.md)
 **Description**: Create `slide-critic-agent` in the present extension. This agent loads the critique rubric context and reviews all provided materials (source files, research reports, plans, existing slides). It evaluates against rubric criteria: narrative flow, audience alignment, timing balance, content depth, evidence quality, visual design considerations. Produces a structured issue list with severity (critical/high/medium/low), category, description, location in materials, and suggested improvement. Writes `.return-meta.json` with critique artifacts.
 
 ### 423. Create critique rubric context file
@@ -58,7 +59,7 @@ next_project_number: 427
 
 ### 422. Fix sync.lua overwriting all non-CLAUDE.md files in target repos
 - **Effort**: large
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [01_sync-overwrite-diagnosis.md](422_fix_sync_overwriting_all_non_claudemd_files/reports/01_sync-overwrite-diagnosis.md)
 
