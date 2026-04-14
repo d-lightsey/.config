@@ -73,10 +73,10 @@
     {
       "project_number": 432,
       "project_name": "harden_sync_against_repo_specific_leakage",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "neovim",
       "created": "2026-04-14T20:45:00Z",
-      "last_updated": "2026-04-14T20:55:50Z",
+      "last_updated": "2026-04-14T21:01:32Z",
       "artifacts": [
         {
           "path": "specs/432_harden_sync_against_repo_specific_leakage/reports/01_sync-leakage-hardening.md",
@@ -87,6 +87,11 @@
           "path": "specs/432_harden_sync_against_repo_specific_leakage/plans/01_sync-leakage-hardening.md",
           "type": "plan",
           "summary": "4-phase plan: sync-exclude parser with source-side exclusion, auto-seed syncprotect, post-sync content audit, testing"
+        },
+        {
+          "path": "specs/432_harden_sync_against_repo_specific_leakage/summaries/01_sync-leakage-hardening-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for sync leakage hardening: .sync-exclude parser, auto-seed .syncprotect, post-sync content audit"
         }
       ],
       "next_artifact_number": 2,
@@ -116,7 +121,8 @@
             "integrated_date": "2026-04-14"
           }
         ]
-      }
+      },
+      "completion_summary": "Implemented three sync hardening mechanisms: .sync-exclude file with source-side path exclusions and audit-pattern directives, auto-seeding .syncprotect in target repos, and post-sync content audit with non-blocking warnings. All mechanisms are optional and backward-compatible."
     },
     {
       "project_number": 431,

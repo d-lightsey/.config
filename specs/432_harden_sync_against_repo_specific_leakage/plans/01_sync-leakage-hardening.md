@@ -1,7 +1,7 @@
 # Implementation Plan: Harden Sync Against Repo-Specific Leakage
 
 - **Task**: 432 - Harden sync engine against repo-specific content leakage
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3 hours
 - **Dependencies**: None (task 433 depends on this)
 - **Research Inputs**: reports/01_sync-leakage-hardening.md
