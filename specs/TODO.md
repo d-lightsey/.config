@@ -12,7 +12,7 @@ next_project_number: 432
 
 - **431** [NOT STARTED] -- Fix artifact linking order and missing blank line in TODO.md
 - **430** [RESEARCHED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
-- **429** [IMPLEMENTING] -- Update .claude/docs/ to reflect task 428 changes
+- **429** [COMPLETED] -- Update .claude/docs/ to reflect task 428 changes
 - **428** [COMPLETED] -- Refactor agent system: syncprotect integration, backup elimination, and systematic organization review
 - **427** [COMPLETED] -- Remove Co-Authored-By trailers and refine README.md sync exclusion
 - **426** [COMPLETED] -- Update slides command and manifest for --critic flag (depends: 425)
@@ -44,10 +44,12 @@ next_project_number: 432
 
 ### 429. Update .claude/docs/ to reflect task 428 changes
 - **Effort**: small
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [docs-audit](specs/429_update_docs_for_task_428_changes/reports/01_docs-audit.md), [docs-update-research](specs/429_update_docs_for_task_428_changes/reports/02_docs-update-research.md)
 - **Plan**: [02_docs-update-plan.md](429_update_docs_for_task_428_changes/plans/02_docs-update-plan.md)
+- **Summary**: [02_implementation-summary.md](specs/429_update_docs_for_task_428_changes/summaries/02_implementation-summary.md)
+- **Completed**: 2026-04-14
 
 **Description**: Update .claude/docs/ to reflect task 428 changes: fix stale backup system docs in extension-system.md, manifest schema examples (language->task_type, add routing object), renamed spreadsheet agents in extension-slim-standard.md, and agent frontmatter examples for model enforcement
 
