@@ -79,7 +79,6 @@ The marker can appear anywhere in the commit message:
 ```
 task 423: complete research
 
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```
 
 CI result: Skipped on push
@@ -88,8 +87,6 @@ CI result: Skipped on push
 
 ```
 task 334: complete implementation [ci]
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 ```
 
 CI result: Runs build, test, and lint

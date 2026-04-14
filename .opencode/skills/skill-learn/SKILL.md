@@ -940,8 +940,6 @@ git add specs/TODO.md specs/state.json
 git commit -m "learn: create $task_count tasks from tags
 
 Session: $session_id
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ---

@@ -419,7 +419,6 @@ This stage is mandatory. Missing status updates cause synchronization issues.
 4. **Create Git Commit** (if appropriate):
    - Stage artifact files
    - Commit with message: `task {N}: {action}`
-   - Include Co-Authored-By line
 
 **Error Handling**:
 - Artifact validation failure -> Return failed status

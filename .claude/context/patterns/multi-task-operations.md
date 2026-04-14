@@ -334,8 +334,6 @@ After all agents complete, the batch skill produces a single git commit covering
 
 Tasks: {comma-separated list}
 Session: {batch_session_id}
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 **Example**:
@@ -345,8 +343,6 @@ research tasks 7, 22-24, 59: complete research
 
 Tasks: 7, 22, 23, 24, 59
 Session: sess_1743523200_abc123
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 ### Partial Success
@@ -357,8 +353,6 @@ Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 Tasks completed: {comma-separated}
 Tasks failed: {num} ({reason})[, {num} ({reason})]
 Session: {batch_session_id}
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 **Example**:
@@ -369,8 +363,6 @@ research tasks 7, 22-24: complete research (3/4 succeeded)
 Tasks completed: 7, 22, 24
 Tasks failed: 23 (invalid status [IMPLEMENTING])
 Session: sess_1743523200_abc123
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 ### Commit Scope

@@ -216,7 +216,6 @@ Capture all responses in a forcing_data object:
 
    Session: {session_id}
 
-   Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
    ```
 
 9. **Output**:
@@ -466,8 +465,6 @@ git add specs/
 git commit -m "task {NEW_N}: create revision for grant {N}
 
 Session: {session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 **On success, output**:

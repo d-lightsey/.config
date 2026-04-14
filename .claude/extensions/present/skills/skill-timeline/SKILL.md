@@ -331,8 +331,6 @@ git add -A
 git commit -m "task ${task_number}: ${commit_action}
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>"
 ```
 
 **On commit failure**: Non-blocking. Log failure but continue.

@@ -1,7 +1,7 @@
 # Implementation Plan: Remove Co-Authored-By Trailers
 
 - **Task**: 427 - Remove Co-Authored-By trailers and refine README.md sync exclusion
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/427_remove_coauthored_by_and_refine_readme_sync/reports/01_coauthored-by-removal.md
@@ -62,7 +62,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Core Rules, Templates, and CLAUDE.md [NOT STARTED]
+### Phase 1: Core Rules, Templates, and CLAUDE.md [COMPLETED]
 
 **Goal**: Remove Co-Authored-By from the highest-impact files that directly instruct agents on commit format.
 
@@ -91,7 +91,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Commands and Core Skills [NOT STARTED]
+### Phase 2: Commands and Core Skills [COMPLETED]
 
 **Goal**: Remove Co-Authored-By from command files and core skill files that contain commit message examples.
 
@@ -132,7 +132,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Agents, Extension Skills, Extension Commands, and Context [NOT STARTED]
+### Phase 3: Agents, Extension Skills, Extension Commands, and Context [COMPLETED]
 
 **Goal**: Remove Co-Authored-By from all .claude/ agent files, extension skill files, extension command files, and context/documentation files.
 
@@ -160,7 +160,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: OpenCode System [NOT STARTED]
+### Phase 4: OpenCode System [COMPLETED]
 
 **Goal**: Mirror all removals in the .opencode/ directory to maintain parity between Claude Code and OpenCode agent systems.
 
@@ -190,7 +190,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 5: Final Verification and Cleanup [NOT STARTED]
+### Phase 5: Final Verification and Cleanup [COMPLETED]
 
 **Goal**: Run comprehensive grep across all active directories to confirm zero remaining Co-Authored-By references (excluding archive).
 

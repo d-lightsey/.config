@@ -212,7 +212,6 @@ implement tasks {range_summary}: complete implementation
 Tasks: {comma-separated list}
 Session: {batch_session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -227,7 +226,6 @@ Tasks completed: {comma-separated}
 Tasks failed: {num} ({reason})[, {num} ({reason})]
 Session: {batch_session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -527,7 +525,6 @@ task {N}: complete implementation
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```
@@ -540,7 +537,6 @@ task {N}: partial implementation (phases 1-{M} of {total})
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```

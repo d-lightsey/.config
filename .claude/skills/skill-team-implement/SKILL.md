@@ -394,8 +394,6 @@ git add \
 git commit -m "task ${task_number}: complete wave ${wave_num} (phases ${phase_list})
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ---
@@ -548,8 +546,6 @@ git add \
 git commit -m "task ${task_number}: complete team implementation
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ---

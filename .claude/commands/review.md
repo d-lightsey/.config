@@ -1510,7 +1510,6 @@ Task Order: {pruned_count} pruned, {inserted_count} added, {reassigned_count} re
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```

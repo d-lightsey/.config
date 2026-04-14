@@ -89,8 +89,6 @@ Modified:
 {scope}: {action} {description}
 
 Session: {session_id}
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 ### Session ID
@@ -118,24 +116,18 @@ session_id="sess_$(date +%s)_$(od -An -N3 -tx1 /dev/urandom | tr -d ' ')"
 task OC_17: create LaTeX documentation for Logos system
 
 Session: sess_1736700000_a1b2c3
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 ```
 task OC_25 phase 2: implement modal semantics evaluator
 
 Session: sess_1736701234_d4e5f6
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 ```
 todo: archive 3 completed tasks (OC_12, OC_15, OC_18)
 
 Session: sess_1736702000_789abc
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 ## Branch Strategy

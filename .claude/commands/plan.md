@@ -185,8 +185,6 @@ plan tasks {range_summary}: create implementation plan
 
 Tasks: {comma-separated list}
 Session: {batch_session_id}
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 **Partial success**:
@@ -196,8 +194,6 @@ plan tasks {range_summary}: create implementation plan ({succeeded}/{total} succ
 Tasks completed: {comma-separated}
 Tasks failed: {num} ({reason})[, {num} ({reason})]
 Session: {batch_session_id}
-
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 ```
 
 #### Step 5: Consolidated Output
@@ -466,7 +462,6 @@ task {N}: create implementation plan
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.6 (1M context) <noreply@anthropic.com>
 EOF
 )"
 ```

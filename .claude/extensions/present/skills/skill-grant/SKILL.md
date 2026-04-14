@@ -512,8 +512,6 @@ git add -A
 git commit -m "task ${task_number}: ${commit_action}
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 **On commit failure**: Non-blocking. Log the failure but continue with success response.
@@ -889,8 +887,6 @@ git commit -m "task ${task_number}: create fix-it tasks from grant tags
 Created {count} tasks from embedded tags in grant directory.
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ---

@@ -90,8 +90,6 @@ Phase status lives ONLY in the heading. Do NOT add or edit a separate `**Status*
 git add -A && git commit -m "task {N} phase {P}: {phase_name}
 
 Session: {session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ### Stage 5: Final Compilation Verification

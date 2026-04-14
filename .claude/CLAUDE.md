@@ -159,8 +159,6 @@ Session: sess_1736700000_abc123
 
 Standard actions: `create`, `complete research`, `create implementation plan`, `phase {P}: {name}`, `complete implementation`.
 
-**Note**: Per user preference (see `~/.claude/projects/.../feedback_no_coauthored_by.md`), omit `Co-Authored-By` trailers from all commits.
-
 ## Skill-to-Agent Mapping
 
 | Skill | Agent | Model | Purpose |

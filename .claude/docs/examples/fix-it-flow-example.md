@@ -368,8 +368,6 @@ git add specs/TODO.md specs/state.json
 git commit -m "fix-it: create 2 tasks from 4 tags
 
 Session: sess_1768940708_a1b2c3
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ### Step 8: User Sees Results

@@ -146,8 +146,6 @@ Format: `task {N}: {action}` with session ID in body.
 task 1: complete research
 
 Session: sess_1736700000_abc123
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 Standard actions: `create`, `complete research`, `create implementation plan`, `phase {P}: {name}`, `complete implementation`.

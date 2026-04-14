@@ -533,8 +533,6 @@ git add \
 git commit -m "task ${task_number}: complete team research (${team_size} teammates)
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 **Note**: Use targeted staging, NOT `git add -A`. See `.claude/context/standards/git-staging-scope.md`.

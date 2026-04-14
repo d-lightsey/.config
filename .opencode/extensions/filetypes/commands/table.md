@@ -191,7 +191,6 @@ table: convert {source_filename} to {output_format}
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 EOF
 )"
 ```

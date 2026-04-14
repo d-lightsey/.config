@@ -285,8 +285,6 @@ git add specs/TODO.md specs/state.json
 git commit -m "fix-it: create $task_count tasks from tags
 
 Session: $session_id
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>"
 ```
 
 ---

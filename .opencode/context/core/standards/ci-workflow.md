@@ -77,7 +77,6 @@ The marker can appear anywhere in the commit message:
 ```
 task 423: complete research
 
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 CI result: Skipped on push
@@ -86,8 +85,6 @@ CI result: Skipped on push
 
 ```
 task 334: complete implementation [ci]
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 CI result: Runs build, test, and lint

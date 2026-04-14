@@ -121,8 +121,6 @@ fi
 task {N}: {action}
 
 Session: {session_id}
-
-Co-Authored-By: OpenCode <noreply@opencode.ai>
 ```
 
 **Action Values**:

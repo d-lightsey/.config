@@ -285,8 +285,6 @@ git add -A
 git commit -m "task ${task_number}: complete implementation
 
 Session: ${session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ---

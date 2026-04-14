@@ -408,7 +408,6 @@ task {N}: spawn {M} tasks to resolve blocker
 
 Session: {session_id}
 
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>
 EOF
 )"
 ```

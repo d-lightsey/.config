@@ -318,8 +318,6 @@ git add specs/
 git commit -m "task {N}: create {title}
 
 Session: {session_id}
-
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
 ```
 
 ### Step 6: Output

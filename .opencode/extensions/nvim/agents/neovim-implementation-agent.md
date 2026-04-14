@@ -381,7 +381,6 @@ For each phase in the implementation plan:
 
    Session: {session_id}
 
-   Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
    ```
 6. **Proceed to next phase** or return if blocked
 
