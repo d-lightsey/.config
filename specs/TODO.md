@@ -24,6 +24,7 @@ next_project_number: 422
 - **Dependencies**: None
 - **Research**: [01_status-script-bugs.md](421_fix_status_script_grep_pattern_and_todo_linking/reports/01_status-script-bugs.md)
 - **Plan**: [01_fix-status-linking.md](421_fix_status_script_grep_pattern_and_todo_linking/plans/01_fix-status-linking.md)
+- **Summary**: [01_fix-status-linking-summary.md](421_fix_status_script_grep_pattern_and_todo_linking/summaries/01_fix-status-linking-summary.md)
 
 **Description**: Fix update-task-status.sh grep pattern that fails to match TODO.md task entry status lines: script uses `^- \*\*Status\*\*:` but actual format is ` **Status**:` (space-indented, no dash). This causes all task entry status updates to silently fail, while Task Order and state.json updates succeed. Also fix skill-planner postflight to actually perform TODO.md artifact linking (Plan field) which was specified but never executed.
 

@@ -87,7 +87,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Create link-artifact-todo.sh script [NOT STARTED]
+### Phase 2: Create link-artifact-todo.sh script [COMPLETED]
 
 **Goal**: Automate the four-case artifact linking logic as a shell script that skills can call.
 
