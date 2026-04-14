@@ -12,7 +12,7 @@ next_project_number: 427
 
 - **426** [NOT STARTED] -- Update slides command and manifest for --critic flag (depends: 425)
 - **425** [NOT STARTED] -- Create skill-slide-critic interactive critique skill (depends: 424)
-- **424** [IMPLEMENTING] -- Create slide-critic-agent (depends: 423)
+- **424** [COMPLETED] -- Create slide-critic-agent (depends: 423)
 - **423** [COMPLETED] -- Create critique rubric context file
 - **422** [COMPLETED] -- Fix sync.lua overwriting all non-CLAUDE.md files
 - **421** [COMPLETED] -- Fix status script grep pattern and TODO artifact linking
@@ -40,12 +40,13 @@ next_project_number: 427
 
 ### 424. Create slide-critic-agent
 - **Effort**: large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Dependencies**: 423
 
 - **Research**: [01_slide-critic-agent-research.md](424_create_slide_critic_agent/reports/01_slide-critic-agent-research.md)
 - **Plan**: [01_slide-critic-agent-plan.md](424_create_slide_critic_agent/plans/01_slide-critic-agent-plan.md)
+- **Summary**: [01_slide-critic-agent-summary.md](424_create_slide_critic_agent/summaries/01_slide-critic-agent-summary.md)
 **Description**: Create `slide-critic-agent` in the present extension. This agent loads the critique rubric context and reviews all provided materials (source files, research reports, plans, existing slides). It evaluates against rubric criteria: narrative flow, audience alignment, timing balance, content depth, evidence quality, visual design considerations. Produces a structured issue list with severity (critical/high/medium/low), category, description, location in materials, and suggested improvement. Writes `.return-meta.json` with critique artifacts.
 
 ### 423. Create critique rubric context file
