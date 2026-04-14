@@ -65,11 +65,10 @@ The marker can appear anywhere in the commit message:
 
 | Task Language | Default on Completion |
 |---------------|----------------------|
-| `neovim` | Trigger CI (modifies source) |
-| `latex` | Skip (modifies documents) |
-| `typst` | Skip (modifies documents) |
+| `general` | Trigger CI (modifies source) |
 | `meta` | Skip (modifies orchestration) |
 | `markdown` | Skip (documentation only) |
+| _{extension}_ | Depends on extension (source vs. documents) |
 | `general` | Case-by-case |
 
 ## Examples

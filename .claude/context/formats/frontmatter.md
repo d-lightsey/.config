@@ -55,7 +55,7 @@ All subagents MUST include these 13 essential fields:
 **Examples**:
 ```yaml
 name: "researcher"
-name: "neovim-implementation-agent"
+name: "general-implementation-agent"
 name: "status-sync-manager"
 ```
 
@@ -354,7 +354,7 @@ context_loading:
     - "core/workflows/command-lifecycle.md"
     - "formats/subagent-return.md"
   optional:
-    - "project/neovim/plugin-patterns.md"
+    - "patterns/implementation-patterns.md"
   max_context_size: 50000
 ```
 
@@ -561,7 +561,7 @@ context_loading:
 delegation:
   max_depth: 3
   can_delegate_to:
-    - "neovim-implementation-agent"
+    - "general-implementation-agent"
     - "status-sync-manager"
   timeout_default: 7200
   timeout_max: 7200

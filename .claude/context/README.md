@@ -186,7 +186,7 @@ The `index.json` file enables automated context discovery:
 "load_when": { "commands": ["/research", "/implement"] }
 
 // Load for specific languages
-"load_when": { "languages": ["neovim", "lean4"] }
+"load_when": { "task_types": ["meta", "general"] }
 ```
 
 ### Query Examples

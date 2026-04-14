@@ -181,7 +181,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Generalize Example Data in Format and Orchestration Docs [NOT STARTED]
+### Phase 4: Generalize Example Data in Format and Orchestration Docs [COMPLETED]
 
 **Goal**: Replace neovim-specific example values (agent names, file paths, task types) in format and orchestration documentation with generic placeholders or neutral examples.
 
