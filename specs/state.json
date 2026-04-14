@@ -13,11 +13,11 @@
     {
       "project_number": 420,
       "project_name": "prevent_extension_loader_overwriting_repo_customizations",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-13T23:20:00Z",
-      "last_updated": "2026-04-13T23:54:21Z",
-      "session_id": "sess_1776124239_52b969",
+      "last_updated": "2026-04-14T01:15:29Z",
+      "session_id": "sess_1776128912_56a5d4",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -29,8 +29,14 @@
           "path": "specs/420_prevent_extension_loader_overwriting_repo_customizations/plans/01_prevent-loader-overwrite.md",
           "type": "plan",
           "summary": "3-phase plan: section-aware sync for CLAUDE.md, post-sync extension re-injection, and edge case testing"
+        },
+        {
+          "path": "specs/420_prevent_extension_loader_overwriting_repo_customizations/summaries/01_prevent-loader-overwrite-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for section preservation and post-sync re-injection in sync.lua"
         }
-      ]
+      ],
+      "completion_summary": "Added two-layer defense to sync.lua: section-aware overwrite preserves extension-injected SECTION blocks in CLAUDE.md/OPENCODE.md, and post-sync re-injection restores all merge targets (settings.json, index.json) for loaded extensions."
     },
     {
       "project_number": 87,
