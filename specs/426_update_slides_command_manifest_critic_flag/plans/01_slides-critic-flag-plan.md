@@ -1,7 +1,7 @@
 # Implementation Plan: Add --critic Flag to /slides Command
 
 - **Task**: 426 - update_slides_command_manifest_critic_flag
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2 hours
 - **Dependencies**: None (skill-slide-critic, slide-critic-agent, critique-rubric.md already exist)
 - **Research Inputs**: specs/426_update_slides_command_manifest_critic_flag/reports/01_slides-critic-flag-research.md
@@ -58,7 +58,7 @@ No ROADMAP.md consulted.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Update slides.md Command [NOT STARTED]
+### Phase 1: Update slides.md Command [IN PROGRESS]
 
 **Goal**: Add `--critic` flag parsing, new input type, new delegation stage, and updated frontmatter to the `/slides` command definition.
 

@@ -10,7 +10,8 @@ next_project_number: 428
 
 ### Pending
 
-- **426** [PLANNED] -- Update slides command and manifest for --critic flag (depends: 425)
+- **427** [NOT STARTED] -- Remove Co-Authored-By trailers and refine README.md sync exclusion
+- **426** [IMPLEMENTING] -- Update slides command and manifest for --critic flag (depends: 425)
 - **425** [COMPLETED] -- Create skill-slide-critic interactive critique skill (depends: 424)
 - **424** [COMPLETED] -- Create slide-critic-agent (depends: 423)
 - **423** [COMPLETED] -- Create critique rubric context file
@@ -22,9 +23,30 @@ next_project_number: 428
 
 ## Tasks
 
+### 427. Remove Co-Authored-By trailers and refine README.md sync exclusion
+- **Effort**: large
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Two issues remain after task 422 that affect all target repos loading the agent system via `<leader>ac`:
+
+**Issue 1: Co-Authored-By saturates the system (HIGH priority)**
+
+80+ files across .claude/ contain Co-Authored-By trailer lines in commit templates and examples. This contradicts the CLAUDE.md note "omit Co-Authored-By trailers from all commits" and the user's preference to suppress all co-author details. Every target repo inherits these contradictory instructions.
+
+Affected areas: rules/git-workflow.md (4 occurrences), CLAUDE.md (1 occurrence referencing a feedback file that may not exist in target repos), commands/*.md (research, plan, implement, review batch commit templates), skills/*/SKILL.md (git-workflow, implementer, planner, reviser, team-*, spawn, fix-it, researcher), agents/general-implementation-agent.md, context/*.md (checkpoint-commit, ci-workflow, multi-task-operations, file-metadata-exchange, workflow-interruptions), all extension skills/commands/agents, docs/examples and docs/guides.
+
+Fix: Remove all Co-Authored-By lines from commit templates/examples. Update CLAUDE.md to state the no-trailer policy directly. Update rules/git-workflow.md commit format.
+
+**Issue 2: README.md sync exclusion too broad (MEDIUM priority)**
+
+Task 422 added README.md skip to scan_directory_for_sync (scan.lua line ~100-103). This correctly prevents agents/README.md (repo-specific) from being overwritten, but also blocks 5 useful documentation README.md files: context/checkpoints/README.md (100 lines), context/README.md (203 lines), context/reference/README.md (31 lines), docs/README.md (100 lines), docs/templates/README.md (352 lines).
+
+Fix: Make README.md exclusion more targeted - only skip in agents/ subdirectory, or add per-category readme_exclude flag.
+
 ### 426. Update slides command and manifest for --critic flag
 - **Effort**: medium
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Dependencies**: 425
 
