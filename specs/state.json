@@ -5,12 +5,19 @@
     {
       "project_number": 434,
       "project_name": "prevent_lead_agent_post_delegation_takeover",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-14T21:00:00Z",
-      "last_updated": "2026-04-14T21:00:00Z",
-      "artifacts": [],
-      "next_artifact_number": 1
+      "last_updated": "2026-04-14T20:49:24Z",
+      "artifacts": [
+        {
+          "path": "specs/434_prevent_lead_agent_post_delegation_takeover/reports/01_post-delegation-takeover.md",
+          "type": "research",
+          "summary": "Research report analyzing post-delegation boundary enforcement gaps across all implementation skills"
+        }
+      ],
+      "next_artifact_number": 2,
+      "session_id": "sess_1776199605_f617dd"
     },
     {
       "project_number": 433,
@@ -28,12 +35,13 @@
     {
       "project_number": 432,
       "project_name": "harden_sync_against_repo_specific_leakage",
-      "status": "not_started",
+      "status": "researching",
       "task_type": "neovim",
       "created": "2026-04-14T20:45:00Z",
-      "last_updated": "2026-04-14T20:45:00Z",
+      "last_updated": "2026-04-14T20:47:09Z",
       "artifacts": [],
-      "next_artifact_number": 1
+      "next_artifact_number": 1,
+      "session_id": "sess_1776199605_f617dd"
     },
     {
       "project_number": 431,

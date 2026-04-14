@@ -10,9 +10,9 @@ next_project_number: 435
 
 ### Pending
 
-- **434** [NOT STARTED] -- Prevent lead agent post-delegation takeover after subagent returns
+- **434** [RESEARCHED] -- Prevent lead agent post-delegation takeover after subagent returns
 - **433** [NOT STARTED] -- Move nvim-specific core content into neovim extension (depends: 432)
-- **432** [NOT STARTED] -- Harden sync engine against repo-specific content leakage
+- **432** [RESEARCHING] -- Harden sync engine against repo-specific content leakage
 - **431** [COMPLETED] -- Fix artifact linking order and missing blank line in TODO.md
 - **430** [COMPLETED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
 - **429** [COMPLETED] -- Update .claude/docs/ to reflect task 428 changes
@@ -32,8 +32,9 @@ next_project_number: 435
 
 ### 434. Prevent lead agent post-delegation takeover after subagent returns
 - **Effort**: small
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
+- **Research**: [specs/434_prevent_lead_agent_post_delegation_takeover/reports/01_post-delegation-takeover.md](specs/434_prevent_lead_agent_post_delegation_takeover/reports/01_post-delegation-takeover.md)
 
 **Description**: When a subagent returns with incomplete or partial work, the lead agent (skill-implementer, skill-team-implement, or extension implementation skills) sometimes takes over and continues implementation itself -- reading source files, running builds, grepping patterns, and attempting to finish the work. This violates the postflight boundary and must never happen.
 
@@ -70,7 +71,7 @@ After lean-implementation-agent returned from Wave 2 Phase 2, the lead agent: (1
 
 ### 432. Harden sync engine against repo-specific content leakage
 - **Effort**: medium
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Task Type**: neovim
 
 **Description**: The "Load Core" sync in `lua/neotex/plugins/ai/claude/commands/picker/operations/sync.lua` copies all non-extension core files to target repos, but some core files are source-repo-specific (neovim integration guides, neovim routing entries, neotex references). Add three protection mechanisms to prevent repo-specific content from leaking during sync.
