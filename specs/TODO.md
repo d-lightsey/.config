@@ -11,7 +11,7 @@ next_project_number: 435
 ### Pending
 
 - **434** [COMPLETED] -- Prevent lead agent post-delegation takeover after subagent returns
-- **433** [NOT STARTED] -- Move nvim-specific core content into neovim extension (depends: 432)
+- **433** [RESEARCHING] -- Move nvim-specific core content into neovim extension (depends: 432)
 - **432** [COMPLETED] -- Harden sync engine against repo-specific content leakage
 - **431** [COMPLETED] -- Fix artifact linking order and missing blank line in TODO.md
 - **430** [COMPLETED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
@@ -56,9 +56,10 @@ After lean-implementation-agent returned from Wave 2 Phase 2, the lead agent: (1
 
 ### 433. Move nvim-specific core content into neovim extension
 - **Effort**: medium
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Dependencies**: Task #432
+- **Research**: [specs/433_move_nvim_specific_content_to_neovim_extension/reports/01_extension-restructuring.md]
 
 **Description**: Several files in core .claude/ contain neovim-specific content that gets synced to all repos via "Load Core", causing repo-specific leakage. Move this content into the neovim extension so the existing extension blocklist excludes it during sync and it only appears in repos where the neovim extension is loaded.
 

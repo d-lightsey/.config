@@ -60,15 +60,16 @@
     {
       "project_number": 433,
       "project_name": "move_nvim_specific_content_to_neovim_extension",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-14T20:45:00Z",
-      "last_updated": "2026-04-14T20:45:00Z",
+      "last_updated": "2026-04-14T21:04:35Z",
       "artifacts": [],
       "next_artifact_number": 1,
       "dependencies": [
         432
-      ]
+      ],
+      "session_id": "sess_1776200126_research433"
     },
     {
       "project_number": 432,
