@@ -1,7 +1,7 @@
 # Implementation Plan: Task #433
 
 - **Task**: 433 - Move nvim-specific content from core .claude/ files to neovim extension
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: Task 432 (sync hardening) - completed
 - **Research Inputs**: specs/433_move_nvim_specific_content_to_neovim_extension/reports/01_extension-restructuring.md

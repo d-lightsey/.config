@@ -60,22 +60,29 @@
     {
       "project_number": 433,
       "project_name": "move_nvim_specific_content_to_neovim_extension",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-14T20:45:00Z",
-      "last_updated": "2026-04-14T21:16:45Z",
+      "last_updated": "2026-04-14T21:47:58Z",
       "artifacts": [
         {
           "path": "specs/433_move_nvim_specific_content_to_neovim_extension/plans/01_extension-restructuring.md",
           "type": "plan",
           "summary": "Implementation plan: corruption fixes, file moves, section extraction, example generalization"
+        },
+        {
+          "path": "specs/433_move_nvim_specific_content_to_neovim_extension/summaries/01_extension-restructuring-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for extension restructuring"
         }
       ],
       "next_artifact_number": 1,
       "dependencies": [
         432
       ],
-      "session_id": "sess_1776200126_plan433"
+      "session_id": "sess_1776200126_impl433",
+      "completion_summary": "Removed neovim-specific content from ~30 core .claude/context/ files. Fixed corruption artifacts, deleted deprecated routing.md, replaced project-overview with generic template, and generalized all routing tables and example data to use extension placeholders.",
+      "claudemd_suggestions": "Updated ~30 files in .claude/context/ to remove neovim-specific references. Replaced routing tables, agent names, file paths, and task type enumerations with generic extension patterns. Added project-overview.md to .syncprotect. No CLAUDE.md changes needed -- it already uses generic patterns."
     },
     {
       "project_number": 432,
