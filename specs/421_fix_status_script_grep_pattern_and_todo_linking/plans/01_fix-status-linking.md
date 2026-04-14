@@ -1,7 +1,7 @@
 # Implementation Plan: Task #421
 
 - **Task**: 421 - Fix update-task-status.sh grep pattern and TODO.md artifact linking
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/421_fix_status_script_grep_pattern_and_todo_linking/reports/01_status-script-bugs.md
@@ -61,7 +61,7 @@ This plan advances the "Agent System Quality" roadmap area indirectly. Fixing si
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Fix grep pattern and normalize TODO.md entries [NOT STARTED]
+### Phase 1: Fix grep pattern and normalize TODO.md entries [COMPLETED]
 
 **Goal**: Make `update_todo_task_entry()` work with both Status line formats and fix existing non-canonical entries.
 

@@ -192,9 +192,11 @@ update_todo_task_entry() {
   fi
 
   # Find the Status line within the next 10 lines after the heading
+  # Tolerant pattern: matches both canonical "- **Status**:" and space-indented " **Status**:"
+  # Some task entries use space-indented format without leading dash
   local status_line
   status_line=$(sed -n "$((heading_line+1)),$((heading_line+10))p" "$TODO_FILE" \
-    | grep -n -E '^- \*\*Status\*\*: \[' | head -1 | cut -d: -f1)
+    | grep -n -E '^\s*-?\s*\*\*Status\*\*: \[' | head -1 | cut -d: -f1)
 
   if [[ -z "$status_line" ]]; then
     echo "Warning: no Status line found for task $task_number in TODO.md" >&2
