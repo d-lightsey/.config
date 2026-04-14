@@ -1,7 +1,17 @@
 {
   "version": "1.0.0",
-  "next_project_number": 434,
+  "next_project_number": 435,
   "active_projects": [
+    {
+      "project_number": 434,
+      "project_name": "prevent_lead_agent_post_delegation_takeover",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-14T21:00:00Z",
+      "last_updated": "2026-04-14T21:00:00Z",
+      "artifacts": [],
+      "next_artifact_number": 1
+    },
     {
       "project_number": 433,
       "project_name": "move_nvim_specific_content_to_neovim_extension",

@@ -1,5 +1,5 @@
 ---
-next_project_number: 434
+next_project_number: 435
 ---
 
 # TODO
@@ -10,6 +10,7 @@ next_project_number: 434
 
 ### Pending
 
+- **434** [NOT STARTED] -- Prevent lead agent post-delegation takeover after subagent returns
 - **433** [NOT STARTED] -- Move nvim-specific core content into neovim extension (depends: 432)
 - **432** [NOT STARTED] -- Harden sync engine against repo-specific content leakage
 - **431** [COMPLETED] -- Fix artifact linking order and missing blank line in TODO.md
@@ -28,6 +29,27 @@ next_project_number: 434
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 434. Prevent lead agent post-delegation takeover after subagent returns
+- **Effort**: small
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: When a subagent returns with incomplete or partial work, the lead agent (skill-implementer, skill-team-implement, or extension implementation skills) sometimes takes over and continues implementation itself -- reading source files, running builds, grepping patterns, and attempting to finish the work. This violates the postflight boundary and must never happen.
+
+**Observed behavior** (from /implement on a Lean4 task):
+After lean-implementation-agent returned from Wave 2 Phase 2, the lead agent: (1) searched for patterns in source files, (2) ran `lake build` to check sorry sites, (3) analyzed build output, (4) announced "let me tackle the core problem myself." The lead should have immediately proceeded to postflight (read metadata, update status to partial, commit, return).
+
+**Task 430 fixed the pre-delegation boundary** (lead reading codebase before spawning agent). This task fixes the **post-delegation boundary** -- the mirror problem.
+
+**Affected files:**
+1. `skills/skill-implementer/SKILL.md` -- The "Postflight Boundary" section exists (line ~end) but needs stronger enforcement language. Add an explicit **PROHIBITION** block (matching the anti-bypass pattern in implement.md) that names the specific violation: after any Agent/Task tool returns, the skill MUST NOT read source files, run builds, grep/glob codebase, use MCP tools, or attempt to continue implementation. It must proceed directly to Stage 6 (read metadata file).
+2. `skills/skill-team-implement/SKILL.md` -- Same enforcement needed after wave/phase agents return. The lead must not "fill in" incomplete phases.
+3. `agents/general-implementation-agent.md` -- Add a note that partial results are acceptable and the agent should write `.return-meta.json` with status "partial" rather than leaving work for the caller.
+4. Extension implementation skills (check `extensions/*/skills/skill-*-implement*/SKILL.md`) -- Apply the same post-delegation boundary constraint.
+5. `commands/implement.md` -- Consider adding a GATE OUT validation that detects if the skill performed source-file reads after delegation (checking tool call sequence) and warns.
+
+**Key constraint to add:** "After a subagent returns -- whether with status implemented, partial, or failed -- the lead skill MUST proceed immediately to postflight. The lead MUST NOT: read source files, grep/glob the codebase, run build/test commands, use MCP tools, edit source files, or attempt to continue/complete the subagent's work. If the subagent returned partial results, the lead reports partial status. The user re-runs /implement to resume."
 
 ### 433. Move nvim-specific core content into neovim extension
 - **Effort**: medium
@@ -267,7 +289,8 @@ The sync system needs to handle the fact that target repos (zed, other projects)
 
 ## Recommended Order
 
-1. **432** [NOT STARTED] -> research (unblocks 433)
+1. **434** [NOT STARTED] -> research (independent)
+2. **432** [NOT STARTED] -> research (unblocks 433)
 2. **433** [NOT STARTED] -> research (depends: 432)
 3. **78** [PLANNED] -> implement
 2. **87** [RESEARCHED] -> plan
