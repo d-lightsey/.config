@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Artifact Linking in TODO.md
 
 - **Task**: 431 - Fix artifact linking order and missing blank line in TODO.md
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: small
 - **Dependencies**: None
 - **Research Inputs**: specs/431_fix_artifact_linking_order_todo/reports/01_artifact-linking-bug.md
@@ -42,7 +42,7 @@ Fix three issues in `link-artifact-todo.sh`: (1) blank line above `**Description
 | 1    | 1      | --         |
 | 2    | 2      | 1          |
 
-### Phase 1: Fix link-artifact-todo.sh [NOT STARTED]
+### Phase 1: Fix link-artifact-todo.sh [COMPLETED]
 
 **Goal:** Fix blank line preservation and change link format to bracket-only style.
 
