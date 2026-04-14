@@ -1,7 +1,23 @@
 {
   "version": "1.0.0",
-  "next_project_number": 429,
+  "next_project_number": 430,
   "active_projects": [
+    {
+      "project_number": 429,
+      "project_name": "update_docs_for_task_428_changes",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-14T19:27:08Z",
+      "last_updated": "2026-04-14T19:27:08Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/429_update_docs_for_task_428_changes/reports/01_docs-audit.md",
+          "type": "report",
+          "summary": "Documentation audit: 6 stale references across 5 files in .claude/docs/"
+        }
+      ]
+    },
     {
       "project_number": 428,
       "project_name": "refactor_agent_system_syncprotect_and_organization",
