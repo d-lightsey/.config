@@ -12,7 +12,7 @@ next_project_number: 435
 
 - **434** [PLANNED] -- Prevent lead agent post-delegation takeover after subagent returns
 - **433** [NOT STARTED] -- Move nvim-specific core content into neovim extension (depends: 432)
-- **432** [PLANNING] -- Harden sync engine against repo-specific content leakage
+- **432** [PLANNED] -- Harden sync engine against repo-specific content leakage
 - **431** [COMPLETED] -- Fix artifact linking order and missing blank line in TODO.md
 - **430** [COMPLETED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
 - **429** [COMPLETED] -- Update .claude/docs/ to reflect task 428 changes
@@ -72,9 +72,10 @@ After lean-implementation-agent returned from Wave 2 Phase 2, the lead agent: (1
 
 ### 432. Harden sync engine against repo-specific content leakage
 - **Effort**: medium
-- **Status**: [PLANNING]
+- **Status**: [PLANNED]
 - **Task Type**: neovim
 - **Research**: [01_sync-leakage-hardening.md](432_harden_sync_against_repo_specific_leakage/reports/01_sync-leakage-hardening.md)
+- **Plan**: [432_harden_sync_against_repo_specific_leakage/plans/01_sync-leakage-hardening.md]
 
 **Description**: The "Load Core" sync in `lua/neotex/plugins/ai/claude/commands/picker/operations/sync.lua` copies all non-extension core files to target repos, but some core files are source-repo-specific (neovim integration guides, neovim routing entries, neotex references). Add three protection mechanisms to prevent repo-specific content from leaking during sync.
 
