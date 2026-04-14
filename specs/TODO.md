@@ -1,5 +1,5 @@
 ---
-next_project_number: 428
+next_project_number: 429
 ---
 
 # TODO
@@ -10,6 +10,7 @@ next_project_number: 428
 
 ### Pending
 
+- **428** [NOT STARTED] -- Refactor agent system: syncprotect integration, backup elimination, and systematic organization review
 - **427** [COMPLETED] -- Remove Co-Authored-By trailers and refine README.md sync exclusion
 - **426** [COMPLETED] -- Update slides command and manifest for --critic flag (depends: 425)
 - **425** [COMPLETED] -- Create skill-slide-critic interactive critique skill (depends: 424)
@@ -22,6 +23,13 @@ next_project_number: 428
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 428. Refactor agent system: syncprotect integration, backup elimination, and systematic organization review
+- **Effort**: large
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Systematic agent system refactoring: review and improve organization, naming, documentation, .syncprotect integration, and backup elimination across all commands, skills, agents, context files, rules, and extensions. Key objectives: (1) Eliminate .backup file creation during extension loading by leveraging .syncprotect and section preservation -- the backup mechanism in merge.lua should be made conditional or removed where .syncprotect coverage makes it redundant; (2) Create .syncprotect files in project repos (NOT in .claude/) that protect repo-specific customizations like CLAUDE.md, settings.local.json, and any other files that should survive sync operations; (3) Improve .syncprotect documentation, integration with the extension loader, and visibility in the leader-ac picker UI; (4) Conduct systematic review of all 14 commands, 8 agents, 16 core skills, 15 extensions, 6 rules, 94+ context files for naming consistency, documentation gaps, redundancy, and organizational improvements; (5) Update the neovim leader-ac picker (sync.lua, merge.lua, and related files) to handle .syncprotect more prominently and stop creating .backup files when protection is adequate; (6) Ensure .syncprotect is stored in the main repo root (e.g., nvim/.syncprotect or project-root/.syncprotect) not inside .claude/ which gets replaced during updates.
 
 ### 427. Remove Co-Authored-By trailers and refine README.md sync exclusion
 - **Effort**: large

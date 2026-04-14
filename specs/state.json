@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 428,
+  "next_project_number": 429,
   "active_projects": [
+    {
+      "project_number": 428,
+      "project_name": "refactor_agent_system_syncprotect_and_organization",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-14T16:56:14Z",
+      "last_updated": "2026-04-14T16:56:14Z"
+    },
     {
       "project_number": 427,
       "project_name": "remove_coauthored_by_and_refine_readme_sync",
