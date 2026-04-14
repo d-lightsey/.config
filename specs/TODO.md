@@ -10,7 +10,7 @@ next_project_number: 432
 
 ### Pending
 
-- **431** [PLANNED] -- Fix artifact linking order and missing blank line in TODO.md
+- **431** [COMPLETED] -- Fix artifact linking order and missing blank line in TODO.md
 - **430** [COMPLETED] -- Fix /implement excessive front-loading: lead agent should read plan only, not codebase
 - **429** [COMPLETED] -- Update .claude/docs/ to reflect task 428 changes
 - **428** [COMPLETED] -- Refactor agent system: syncprotect integration, backup elimination, and systematic organization review
@@ -29,11 +29,12 @@ next_project_number: 432
 
 ### 431. Fix artifact linking order and missing blank line in TODO.md
 - **Effort**: small
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_artifact-linking-bug.md](431_fix_artifact_linking_order_todo/reports/01_artifact-linking-bug.md)
-
 - **Plan**: [01_artifact-linking-fix.md](431_fix_artifact_linking_order_todo/plans/01_artifact-linking-fix.md)
+- **Completed**: 2026-04-14
+- **Summary**: Fixed blank line preservation and bracket-only link format in link-artifact-todo.sh, updated 3 documentation files
 
 **Description**: Investigate how artifacts are being linked in task 429 where they appear out of order and there is no empty line above the description. Determine the root cause and create a targeted fix.
 
@@ -238,4 +239,3 @@ The sync system needs to handle the fact that target repos (zed, other projects)
 1. **78** [PLANNED] -> implement
 2. **87** [RESEARCHED] -> plan
 3. **422** -> research (independent)
-4. **431** -> research (independent)

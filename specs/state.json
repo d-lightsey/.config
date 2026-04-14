@@ -5,11 +5,11 @@
     {
       "project_number": 431,
       "project_name": "fix_artifact_linking_order_todo",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-14T19:45:09Z",
-      "last_updated": "2026-04-14T20:05:29Z",
-      "session_id": "sess_1776196976_372006",
+      "last_updated": "2026-04-14T20:21:51Z",
+      "session_id": "sess_1776199200_431imp",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -21,8 +21,15 @@
           "path": "specs/431_fix_artifact_linking_order_todo/plans/01_artifact-linking-fix.md",
           "type": "plan",
           "summary": "Revised plan: fix blank line preservation, bracket-only link format, update schema docs"
+        },
+        {
+          "path": "specs/431_fix_artifact_linking_order_todo/summaries/01_artifact-linking-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for artifact linking fix"
         }
-      ]
+      ],
+      "completion_summary": "Fixed link-artifact-todo.sh to preserve blank lines before Description field during insertion and changed link format from [text](url) to bracket-only [path]. Updated state-management-schema.md, artifact-formats.md, and artifact-linking-todo.md to match.",
+      "claudemd_suggestions": "Updated artifact-formats.md rule (inline format example), state-management-schema.md (linking format section and detection patterns), artifact-linking-todo.md (four-case examples and prerequisites)"
     },
     {
       "project_number": 430,

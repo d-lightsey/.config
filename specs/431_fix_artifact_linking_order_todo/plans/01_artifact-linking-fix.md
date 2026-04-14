@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Artifact Linking in TODO.md
 
 - **Task**: 431 - Fix artifact linking order and missing blank line in TODO.md
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: small
 - **Dependencies**: None
 - **Research Inputs**: specs/431_fix_artifact_linking_order_todo/reports/01_artifact-linking-bug.md
