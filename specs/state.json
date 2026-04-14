@@ -29,18 +29,28 @@
     {
       "project_number": 423,
       "project_name": "create_critique_rubric_context",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-14T03:14:38Z",
-      "last_updated": "2026-04-14T03:14:38Z"
+      "last_updated": "2026-04-14T03:26:34Z",
+      "session_id": "sess_1776136883_7185d9",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/423_create_critique_rubric_context/reports/01_critique-rubric-research.md",
+          "type": "research",
+          "summary": "Research on critique rubric patterns for academic presentations - review criteria categories, severity levels, talk-type-specific criteria"
+        }
+      ]
     },
     {
       "project_number": 422,
       "project_name": "fix_sync_overwriting_all_non_claudemd_files",
-      "status": "not_started",
+      "status": "researching",
       "task_type": "meta",
       "created": "2026-04-14T03:05:36Z",
-      "last_updated": "2026-04-14T03:05:36Z"
+      "last_updated": "2026-04-14T03:26:52Z",
+      "session_id": "sess_1744516800_research422"
     },
     {
       "project_number": 421,
