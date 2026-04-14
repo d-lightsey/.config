@@ -1,27 +1,39 @@
 ---
-next_project_number: 421
+next_project_number: 422
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-13. 3 active tasks remaining.*
+*Updated 2026-04-13. 4 active tasks remaining.*
 
 ### Pending
 
+- **421** [NOT STARTED] -- Fix status script grep pattern and TODO artifact linking
 - **420** [PLANNED] -- Prevent extension loader overwriting repo customizations
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
 
+### 421. Fix update-task-status.sh grep pattern and skill-planner TODO.md artifact linking
+ **Effort**: TBD
+ **Status**: [NOT STARTED]
+ **Task Type**: meta
+ **Dependencies**: None
+
+**Description**: Fix update-task-status.sh grep pattern that fails to match TODO.md task entry status lines: script uses `^- \*\*Status\*\*:` but actual format is ` **Status**:` (space-indented, no dash). This causes all task entry status updates to silently fail, while Task Order and state.json updates succeed. Also fix skill-planner postflight to actually perform TODO.md artifact linking (Plan field) which was specified but never executed.
+
+---
+
 ### 420. Prevent extension loader sync from overwriting repo-specific CLAUDE.md customizations
  **Effort**: TBD
- **Status**: [RESEARCHED]
+ **Status**: [PLANNED]
  **Task Type**: meta
  **Dependencies**: None
  **Research**: [01_extension-loader-sync.md](420_prevent_extension_loader_overwriting_repo_customizations/reports/01_extension-loader-sync.md)
+ **Plan**: [01_prevent-loader-overwrite.md](420_prevent_extension_loader_overwriting_repo_customizations/plans/01_prevent-loader-overwrite.md)
 
 **Description**: Investigation and fix for a systemic issue: when the `<leader>ac` extension loader syncs .claude/ files from the nvim config into other repos (like zed), it overwrites repo-specific additions to CLAUDE.md documentation tables. This caused slide-planner-agent and skill-slide-planning (added by task 56 in zed) to be silently removed from CLAUDE.md when the next sync occurred. Root cause analysis needed: (1) Identify how the extension loader syncs CLAUDE.md content between repos, (2) Determine why repo-specific additions are not preserved during sync, (3) Investigate whether extensions.json or manifest.json should declare documentation table entries that get merged rather than overwritten, (4) Check if other repos have similar repo-specific CLAUDE.md customizations at risk. Design and implement a fix: consider merge-based documentation table updates, repo-local sections in CLAUDE.md, extension manifest declarations for table entries, and validation that warns when a sync would remove entries added by tasks in the target repo.
 

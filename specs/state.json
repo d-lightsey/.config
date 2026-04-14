@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 421,
+  "next_project_number": 422,
   "active_projects": [
+    {
+      "project_number": 421,
+      "project_name": "fix_status_script_grep_pattern_and_todo_linking",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-14T01:07:37Z",
+      "last_updated": "2026-04-14T01:07:37Z"
+    },
     {
       "project_number": 420,
       "project_name": "prevent_extension_loader_overwriting_repo_customizations",
