@@ -12,9 +12,9 @@ next_project_number: 427
 
 - **426** [NOT STARTED] -- Update slides command and manifest for --critic flag (depends: 425)
 - **425** [NOT STARTED] -- Create skill-slide-critic interactive critique skill (depends: 424)
-- **424** [PLANNED] -- Create slide-critic-agent (depends: 423)
+- **424** [IMPLEMENTING] -- Create slide-critic-agent (depends: 423)
 - **423** [COMPLETED] -- Create critique rubric context file
-- **422** [IMPLEMENTING] -- Fix sync.lua overwriting all non-CLAUDE.md files
+- **422** [COMPLETED] -- Fix sync.lua overwriting all non-CLAUDE.md files
 - **421** [COMPLETED] -- Fix status script grep pattern and TODO artifact linking
 - **420** [COMPLETED] -- Prevent extension loader overwriting repo customizations
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
@@ -40,7 +40,7 @@ next_project_number: 427
 
 ### 424. Create slide-critic-agent
 - **Effort**: large
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Dependencies**: 423
 
@@ -60,11 +60,12 @@ next_project_number: 427
 
 ### 422. Fix sync.lua overwriting all non-CLAUDE.md files in target repos
 - **Effort**: large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [01_sync-overwrite-diagnosis.md](422_fix_sync_overwriting_all_non_claudemd_files/reports/01_sync-overwrite-diagnosis.md)
 
 - **Plan**: [01_sync-overwrite-fix.md](422_fix_sync_overwriting_all_non_claudemd_files/plans/01_sync-overwrite-fix.md)
+- **Summary**: [01_sync-overwrite-fix-summary.md](422_fix_sync_overwriting_all_non_claudemd_files/summaries/01_sync-overwrite-fix-summary.md)
 **Description**: Follow-up to task 420 (prevent extension loader overwriting repo customizations). Task 420 added section-aware sync for CLAUDE.md and post-sync re-injection of merge targets, but the fix is insufficient -- the zed config (`~/.config/zed/.claude/`) is still getting clobbered on every sync. This has now caused three wasted tasks in zed: task 60 (incorrectly "fixed" the diffs thinking they were stale references), task 61 (reverted task 60), and task 62 (initially misdiagnosed the same diffs again).
 
 **Root cause analysis from the zed codebase:**

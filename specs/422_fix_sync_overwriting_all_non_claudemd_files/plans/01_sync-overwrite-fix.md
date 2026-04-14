@@ -1,7 +1,7 @@
 # Implementation Plan: Fix sync.lua overwriting all non-CLAUDE.md files in target repos
 
 - **Task**: 422 - Fix sync.lua overwriting all non-CLAUDE.md files in target repos
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/422_fix_sync_overwriting_all_non_claudemd_files/reports/01_sync-overwrite-diagnosis.md
