@@ -225,15 +225,29 @@ end
 --- @param files table List of file sync info
 --- @param preserve_perms boolean Preserve execute permissions for shell scripts
 --- @param merge_only boolean If true, skip "replace" actions (only copy new files)
+--- @param protected_paths table|nil Set of relative paths to protect from replacement {[path] = true}
+--- @param base_path string|nil Base path for computing relative paths (e.g., project_dir .. "/" .. base_dir)
 --- @return number success_count Number of successfully synced files
-local function sync_files(files, preserve_perms, merge_only)
+--- @return number protected_count Number of files skipped due to protection
+local function sync_files(files, preserve_perms, merge_only, protected_paths, base_path)
   local success_count = 0
+  local protected_count = 0
   merge_only = merge_only or false
+  protected_paths = protected_paths or {}
 
   for _, file in ipairs(files) do
     -- Skip replace actions if merge_only is true
     if merge_only and file.action == "replace" then
       goto continue
+    end
+
+    -- Skip protected files during replace operations
+    if file.action == "replace" and base_path and next(protected_paths) then
+      local rel_path = file.local_path:sub(#base_path + 2)
+      if protected_paths[rel_path] then
+        protected_count = protected_count + 1
+        goto continue
+      end
     end
 
     -- Ensure parent directory exists
@@ -268,7 +282,7 @@ local function sync_files(files, preserve_perms, merge_only)
     ::continue::
   end
 
-  return success_count
+  return success_count, protected_count
 end
 
 --- Perform sync with the chosen strategy
@@ -276,37 +290,52 @@ end
 --- @param all_artifacts table Map of artifact type -> array of files
 --- @param merge_only boolean If true, only add new files (skip conflicts)
 --- @param base_dir string|nil Base directory name (default: ".claude")
+--- @param protected_paths table|nil Set of relative paths to protect {[path] = true}
 --- @return number total_synced Total number of artifacts synced
-local function execute_sync(project_dir, all_artifacts, merge_only, base_dir)
+local function execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths)
   base_dir = base_dir or ".claude"
+  protected_paths = protected_paths or {}
+  local base_path = project_dir .. "/" .. base_dir
+
   -- Create base directory
-  helpers.ensure_directory(project_dir .. "/" .. base_dir)
+  helpers.ensure_directory(base_path)
+
+  -- Helper to call sync_files with protection support
+  local function sync_with_protect(files, preserve_perms)
+    return sync_files(files, preserve_perms, merge_only, protected_paths, base_path)
+  end
 
   -- Sync all artifact types
   local counts = {}
-  counts.commands = sync_files(all_artifacts.commands or {}, false, merge_only)
-  counts.hooks = sync_files(all_artifacts.hooks or {}, true, merge_only)
-  counts.templates = sync_files(all_artifacts.templates or {}, false, merge_only)
-  counts.lib = sync_files(all_artifacts.lib or {}, true, merge_only)
-  counts.docs = sync_files(all_artifacts.docs or {}, false, merge_only)
-  counts.scripts = sync_files(all_artifacts.scripts or {}, true, merge_only)
-  counts.tests = sync_files(all_artifacts.tests or {}, true, merge_only)
-  counts.skills = sync_files(all_artifacts.skills or {}, true, merge_only)
-  counts.agents = sync_files(all_artifacts.agents or {}, false, merge_only)
-  counts.rules = sync_files(all_artifacts.rules or {}, false, merge_only)
-  counts.context = sync_files(all_artifacts.context or {}, false, merge_only)
-  counts.systemd = sync_files(all_artifacts.systemd or {}, false, merge_only)
-  counts.settings = sync_files(all_artifacts.settings or {}, false, merge_only)
-  counts.root_files = sync_files(all_artifacts.root_files or {}, false, merge_only)
+  local protect_counts = {}
+  counts.commands, protect_counts.commands = sync_with_protect(all_artifacts.commands or {}, false)
+  counts.hooks, protect_counts.hooks = sync_with_protect(all_artifacts.hooks or {}, true)
+  counts.templates, protect_counts.templates = sync_with_protect(all_artifacts.templates or {}, false)
+  counts.lib, protect_counts.lib = sync_with_protect(all_artifacts.lib or {}, true)
+  counts.docs, protect_counts.docs = sync_with_protect(all_artifacts.docs or {}, false)
+  counts.scripts, protect_counts.scripts = sync_with_protect(all_artifacts.scripts or {}, true)
+  counts.tests, protect_counts.tests = sync_with_protect(all_artifacts.tests or {}, true)
+  counts.skills, protect_counts.skills = sync_with_protect(all_artifacts.skills or {}, true)
+  counts.agents, protect_counts.agents = sync_with_protect(all_artifacts.agents or {}, false)
+  counts.rules, protect_counts.rules = sync_with_protect(all_artifacts.rules or {}, false)
+  counts.context, protect_counts.context = sync_with_protect(all_artifacts.context or {}, false)
+  counts.systemd, protect_counts.systemd = sync_with_protect(all_artifacts.systemd or {}, false)
+  counts.settings, protect_counts.settings = sync_with_protect(all_artifacts.settings or {}, false)
+  counts.root_files, protect_counts.root_files = sync_with_protect(all_artifacts.root_files or {}, false)
 
   local total_synced = 0
-  for _, count in pairs(counts) do
+  local total_protected = 0
+  for key, count in pairs(counts) do
     total_synced = total_synced + count
+    total_protected = total_protected + (protect_counts[key] or 0)
   end
 
   -- Report results
-  if total_synced > 0 then
+  if total_synced > 0 or total_protected > 0 then
     local strategy_msg = merge_only and " (new only)" or " (all)"
+    local protect_msg = total_protected > 0
+      and string.format("\n  Protected: %d files skipped (.syncprotect)", total_protected)
+      or ""
 
     -- Calculate subdirectory counts for key directories
     local _, lib_subdir = count_by_depth(all_artifacts.lib or {})
@@ -320,13 +349,14 @@ local function execute_sync(project_dir, all_artifacts, merge_only, base_dir)
         "  Lib: %d (%d nested) | Docs: %d (%d nested)\n" ..
         "  Scripts: %d | Tests: %d | Skills: %d (%d nested)\n" ..
         "  Agents: %d | Rules: %d | Context: %d\n" ..
-        "  Systemd: %d | Settings: %d | Root Files: %d",
+        "  Systemd: %d | Settings: %d | Root Files: %d%s",
         total_synced, strategy_msg,
         counts.commands, counts.hooks, counts.templates,
         counts.lib, lib_subdir, counts.docs, doc_subdir,
         counts.scripts, counts.tests, counts.skills, skill_subdir,
         counts.agents, counts.rules, counts.context,
-        counts.systemd, counts.settings, counts.root_files
+        counts.systemd, counts.settings, counts.root_files,
+        protect_msg
       ),
       "INFO"
     )
@@ -614,7 +644,10 @@ function M.load_all_globally(config)
     end
   end
 
-  local total_synced = execute_sync(project_dir, all_artifacts, merge_only, base_dir)
+  -- Load syncprotect list from target repo (if it exists)
+  local protected_paths = load_syncprotect(project_dir, base_dir)
+
+  local total_synced = execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths)
 
   -- After a full sync (not merge-only), re-inject merge targets for all loaded
   -- extensions. This provides defense-in-depth: section preservation in sync_files()
