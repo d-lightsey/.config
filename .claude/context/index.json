@@ -717,29 +717,6 @@
       }
     },
     {
-      "path": "orchestration/delegation.md",
-      "domain": "core",
-      "subdomain": "orchestration",
-      "summary": "Agent delegation patterns and protocols",
-      "line_count": 859,
-      "keywords": [
-        "orchestration",
-        "delegation"
-      ],
-      "topics": [
-        "orchestration"
-      ],
-      "load_when": {
-        "agents": [
-          "meta-builder-agent"
-        ],
-        "task_types": [
-          "meta"
-        ],
-        "commands": []
-      }
-    },
-    {
       "path": "orchestration/orchestration-core.md",
       "domain": "core",
       "subdomain": "orchestration",
@@ -855,27 +832,6 @@
       }
     },
     {
-      "path": "orchestration/sessions.md",
-      "domain": "core",
-      "subdomain": "orchestration",
-      "summary": "Session management for task execution",
-      "line_count": 166,
-      "keywords": [
-        "orchestration",
-        "sessions"
-      ],
-      "topics": [
-        "orchestration"
-      ],
-      "load_when": {
-        "agents": [],
-        "task_types": [
-          "meta"
-        ],
-        "commands": []
-      }
-    },
-    {
       "path": "orchestration/state-management.md",
       "domain": "core",
       "subdomain": "orchestration",
@@ -897,51 +853,6 @@
           "/task",
           "/todo"
         ]
-      }
-    },
-    {
-      "path": "orchestration/subagent-validation.md",
-      "domain": "core",
-      "subdomain": "orchestration",
-      "summary": "Validation rules for subagent returns",
-      "line_count": 313,
-      "keywords": [
-        "orchestration",
-        "subagent",
-        "validation"
-      ],
-      "topics": [
-        "quality"
-      ],
-      "load_when": {
-        "agents": [],
-        "task_types": [
-          "meta"
-        ],
-        "commands": []
-      }
-    },
-    {
-      "path": "orchestration/validation.md",
-      "domain": "core",
-      "subdomain": "orchestration",
-      "summary": "General validation patterns for orchestration",
-      "line_count": 699,
-      "keywords": [
-        "orchestration",
-        "validation"
-      ],
-      "topics": [
-        "quality"
-      ],
-      "load_when": {
-        "agents": [
-          "meta-builder-agent"
-        ],
-        "task_types": [
-          "meta"
-        ],
-        "commands": []
       }
     },
     {
@@ -2176,30 +2087,6 @@
         "task_types": [],
         "commands": [
           "/review"
-        ]
-      }
-    },
-    {
-      "path": "workflows/status-transitions.md",
-      "domain": "core",
-      "subdomain": "workflows",
-      "summary": "Valid task status transitions",
-      "line_count": 86,
-      "keywords": [
-        "workflows",
-        "status",
-        "transitions"
-      ],
-      "topics": [
-        "state"
-      ],
-      "load_when": {
-        "agents": [],
-        "task_types": [
-          "meta"
-        ],
-        "commands": [
-          "/task"
         ]
       }
     },

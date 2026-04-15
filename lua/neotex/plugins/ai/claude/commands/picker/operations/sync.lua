@@ -745,11 +745,16 @@ function M.load_all_globally(config)
   local total_copy = 0
   local total_replace = 0
 
-  for _, files in pairs(all_artifacts) do
+  for key, files in pairs(all_artifacts) do
+    -- Skip internal metadata keys (e.g., _audit_patterns)
+    if type(key) == "string" and key:sub(1, 1) == "_" then
+      goto continue_count
+    end
     total_files = total_files + #files
     local copy, replace = count_actions(files)
     total_copy = total_copy + copy
     total_replace = total_replace + replace
+    ::continue_count::
   end
 
   if total_files == 0 then
@@ -816,14 +821,49 @@ function M.load_all_globally(config)
   -- Auto-seed .syncprotect if target repo has none (defense-in-depth)
   local syncprotect_path = project_dir .. "/.syncprotect"
   if vim.fn.filereadable(syncprotect_path) == 0 then
+    local seed_entries = { "context/repo/project-overview.md" }
     local seed_content = "# Protected files - not overwritten during sync\n"
       .. "# Add relative paths (one per line) to protect local customizations\n"
       .. "# Paths are relative to the base directory (e.g., rules/my-rule.md)\n"
+      .. "#\n"
+      .. "# Note: this file lives at project root, outside the sync base directory,\n"
+      .. "# so it is inherently safe from sync operations.\n"
       .. "\n"
       .. "# Repository-specific context (defense-in-depth, also in CONTEXT_EXCLUDE_PATTERNS)\n"
       .. "context/repo/project-overview.md\n"
+
+    -- Migrate entries from legacy .claude/.syncprotect (if it exists)
+    local legacy_path = project_dir .. "/" .. base_dir .. "/.syncprotect"
+    if vim.fn.filereadable(legacy_path) == 1 then
+      local legacy_content = helpers.read_file(legacy_path)
+      if legacy_content then
+        local migrated = {}
+        local seed_set = {}
+        for _, e in ipairs(seed_entries) do
+          seed_set[e] = true
+        end
+        for line in legacy_content:gmatch("[^\n]+") do
+          local trimmed = line:match("^%s*(.-)%s*$")
+          if trimmed ~= "" and not trimmed:match("^#") and not seed_set[trimmed] then
+            seed_set[trimmed] = true
+            table.insert(migrated, trimmed)
+          end
+        end
+        if #migrated > 0 then
+          seed_content = seed_content .. "\n# Migrated from " .. base_dir .. "/.syncprotect\n"
+          for _, entry in ipairs(migrated) do
+            seed_content = seed_content .. entry .. "\n"
+          end
+        end
+      end
+    end
+
     helpers.write_file(syncprotect_path, seed_content)
-    helpers.notify("Created .syncprotect with default entries", "INFO")
+    local msg = "Created .syncprotect with default entries"
+    if vim.fn.filereadable(legacy_path) == 1 then
+      msg = msg .. " (migrated legacy entries)"
+    end
+    helpers.notify(msg, "INFO")
     -- Re-read protected paths after seeding
     protected_paths = load_syncprotect(project_dir, base_dir)
   end

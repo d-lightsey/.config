@@ -1,7 +1,7 @@
 # Implementation Plan: Harden Sync Protection and Clean Deprecated Index
 
 - **Task**: 439 - Harden sync protection and clean deprecated index entries
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.75 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_sync-protection.md
@@ -56,7 +56,7 @@ No prior plan.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Fix auto-seed legacy migration in sync.lua [NOT STARTED]
+### Phase 1: Fix auto-seed legacy migration in sync.lua [COMPLETED]
 
 **Goal**: Merge legacy `.claude/.syncprotect` entries into the new root `.syncprotect` during auto-seed, preventing silent entry loss.
 
@@ -82,7 +82,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Remove deprecated index.json entries [NOT STARTED]
+### Phase 2: Remove deprecated index.json entries [COMPLETED]
 
 **Goal**: Remove 5 deprecated entries from `.claude/context/index.json` to recover 2,123 lines of wasted context budget.
 
