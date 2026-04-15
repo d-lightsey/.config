@@ -5,7 +5,7 @@
     {
       "project_number": 440,
       "project_name": "genericize_documentation_and_examples",
-      "status": "not_started",
+      "status": "abandoned",
       "task_type": "meta",
       "created": "2026-04-14T23:00:00Z",
       "last_updated": "2026-04-14T23:00:00Z",
@@ -13,7 +13,8 @@
       "artifacts": [],
       "dependencies": [
         438
-      ]
+      ],
+      "completion_summary": "Superseded by task 438 Phase 4, which genericized all documentation and guide files that task 440 was targeting."
     },
     {
       "project_number": 439,

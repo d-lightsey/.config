@@ -10,7 +10,7 @@ next_project_number: 441
 
 ### Pending
 
-- **440** [NOT STARTED] -- Genericize documentation and examples (depends: 438)
+- **440** [ABANDONED] -- Genericize documentation and examples (superseded by task 438 phase 4)
 - **439** [COMPLETED] -- Harden sync protection and clean deprecated index entries
 - **438** [COMPLETED] -- Comprehensive core genericization (depends: 437)
 - **437** [COMPLETED] -- Move neovim-only files to extension and add to .sync-exclude

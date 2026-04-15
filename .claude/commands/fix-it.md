@@ -45,7 +45,7 @@ This design ensures users always see what was found before any tasks are created
 
 **todo-task**: One task per selected TODO: tag (or grouped by topic). Preserves original text as task description. Language detected from source file type.
 
-**research-task**: One task per selected QUESTION: tag (or grouped by topic). Creates research tasks to answer embedded questions. **Language is detected from question content** (not source file type) using keyword matching: neovim keywords (nvim, lsp, telescope, etc.) -> "neovim", latex keywords (theorem, proof, lemma, etc.) -> "latex", meta keywords (.claude, command, agent, etc.) -> "meta", otherwise -> "general".
+**research-task**: One task per selected QUESTION: tag (or grouped by topic). Creates research tasks to answer embedded questions. **Language is detected from question content** (not source file type) using keyword matching: extension-specific keywords are matched by loaded extensions, latex keywords (theorem, proof, lemma, etc.) -> "latex", meta keywords (.claude, command, agent, etc.) -> "meta", otherwise -> "general".
 
 ### TODO Topic Grouping
 
