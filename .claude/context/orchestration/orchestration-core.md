@@ -8,7 +8,7 @@
 
 ## Overview
 
-This document defines the core orchestration patterns for Neovim Configuration's command-skill-agent architecture:
+This document defines the core orchestration patterns for the project's command-skill-agent architecture:
 
 - **Session Tracking**: Unique identifiers for delegation chains
 - **Delegation Safety**: Depth limits, cycle detection, timeouts

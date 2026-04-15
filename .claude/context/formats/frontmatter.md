@@ -100,7 +100,7 @@ version: "2.0.0"  # Breaking changes
 **Example**:
 ```yaml
 description: |
-  General research agent for non-Neovim tasks with topic subdivision support.
+  General research agent with topic subdivision support.
   Conducts comprehensive research using web sources and documentation.
   Returns detailed reports and summaries following standardized format.
 ```
@@ -695,7 +695,7 @@ temperature: 0.7  # Too high for implementation
 2. **Context Loading Implementation**: Lazy loading with index-based discovery
 3. **Delegation Routing**: Delegation with depth limits and cycle detection
 4. **CI/CD Integration**: GitHub Actions workflow for frontmatter validation
-5. **Plugin Integration**: Add Neovim plugin tooling for configuration agents
+5. **Plugin Integration**: Add domain-specific tooling for configuration agents
 
 ---
 

@@ -70,7 +70,7 @@ This distinction enables identification of which system created each task.
 | `meta` | `skill-researcher` | `skill-implementer` | Read, Grep, Glob, Write, Edit |
 | `markdown` | `skill-researcher` | `skill-implementer` | Read, Write, Edit |
 
-**Extension Task Types** (available when extensions are loaded via `<leader>ac`):
+**Extension Task Types** (available when extensions are loaded via the extension picker):
 
 Extensions provide additional task type support (neovim, lean4, latex, typst, python, nix, web, z3, epi, formal, founder, present, etc.). See `.claude/extensions/*/manifest.json` for available extensions and their capabilities.
 
@@ -117,7 +117,7 @@ TODO.md and state.json must stay synchronized. Update state.json first (machine 
     "project_number": 1,
     "project_name": "task_slug",
     "status": "planned",
-    "task_type": "neovim",
+    "task_type": "general",
     "completion_summary": "Required when status=completed",
     "roadmap_items": ["Optional explicit roadmap items"]
   }],
@@ -197,7 +197,7 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 
 **User-Only Skills**: Skills marked as "user-only" cannot be invoked by agents. These are for human-controlled operations like deployment (`skill-tag`).
 
-**Extension Skills**: When extensions are loaded, additional skill-to-agent mappings are added (e.g., skill-neovim-research -> neovim-research-agent). Extension task types use bare values (e.g., `neovim`) or compound values (e.g., `present:grant`) for sub-routing.
+**Extension Skills**: When extensions are loaded, additional skill-to-agent mappings are added (e.g., skill-{domain}-research -> {domain}-research-agent). Extension task types use bare values (e.g., `python`) or compound values (e.g., `present:grant`) for sub-routing.
 
 **Team Mode Skills**: When `--team` flag is passed to `/research`, `/plan`, or `/implement`, routing overrides to team skills which spawn multiple parallel teammates. Requires `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1` environment variable. Gracefully degrades to single-agent if unavailable.
 
@@ -219,7 +219,7 @@ Core rules (auto-applied by file path):
 - @.claude/rules/workflows.md - Command lifecycle (.claude/**)
 - @.claude/rules/plan-format-enforcement.md - Plan format checklist (specs/**)
 
-**Extension Rules**: When extensions are loaded, additional rules are added (e.g., neovim-lua.md for Lua development).
+**Extension Rules**: When extensions are loaded, additional rules are added (e.g., {domain}-rules.md for domain-specific development).
 
 ## Context Discovery
 
@@ -290,7 +290,7 @@ Core context (always available):
 - @.claude/context/repo/project-overview.md
 - @.claude/context/meta/meta-guide.md
 
-**Extension Context**: Available when extensions are loaded via `<leader>ac`. Query `index.json` for extension-specific context files.
+**Extension Context**: Available when extensions are loaded via the extension picker. Query `index.json` for extension-specific context files.
 
 ## Multi-Task Creation Standards
 

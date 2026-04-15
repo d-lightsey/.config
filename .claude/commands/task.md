@@ -109,7 +109,6 @@ When $ARGUMENTS contains a description (no flags).
    - **Implement**: (default for unrecognized patterns)
 
 4. **Detect task_type** from keywords:
-   - "neovim", "plugin", "nvim", "lua" → neovim
    - "meta", "agent", "command", "skill" → meta
    - "lean", "lean4", "mathlib", "theorem", "proof" → lean4
    - "latex", "tex", "document", "typeset" → latex

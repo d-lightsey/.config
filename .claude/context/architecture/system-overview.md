@@ -9,7 +9,7 @@
 
 ## Three-Layer Architecture
 
-The Neovim Configuration agent system implements a three-layer delegation pattern separating concerns into distinct execution layers.
+The agent system implements a three-layer delegation pattern separating concerns into distinct execution layers.
 
 ```
                          USER INPUT

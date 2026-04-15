@@ -44,7 +44,10 @@
       "Read(//home/benjamin/.config/nvim/$BASE/talk/themes/**)",
       "Read(//home/benjamin/.config/nvim/$BASE/patterns/**)",
       "Bash(bash .claude/scripts/update-task-status.sh postflight 437 implement \"sess_1776217178_5c9282\")",
-      "Read(//home/benjamin/.config/nvim/**)"
+      "Read(//home/benjamin/.config/nvim/**)",
+      "Bash(bash .claude/scripts/update-task-status.sh preflight 438 research \"sess_1776217178_5c9282\")",
+      "Bash(specs/438_comprehensive_core_genericization/.postflight-pending:*)",
+      "Bash(sort -t: -k1,1)"
     ]
   },
   "model": "opus",

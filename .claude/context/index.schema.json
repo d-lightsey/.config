@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://nvim.config/context/index.schema.json",
+  "$id": "https://claude-agent.config/context/index.schema.json",
   "title": "Context Index Schema",
   "description": "Machine-readable index for .claude/context/ files enabling automated context discovery via jq queries",
   "type": "object",
