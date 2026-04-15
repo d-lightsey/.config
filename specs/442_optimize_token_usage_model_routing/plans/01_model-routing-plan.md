@@ -252,7 +252,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 5: Update Documentation [NOT STARTED]
+### Phase 5: Update Documentation [COMPLETED]
 
 **Goal**: Update CLAUDE.md skill-to-agent mapping table and agent-frontmatter-standard.md to reflect new Sonnet defaults, preserved Lean Opus, and new flag mechanism.
 

@@ -27,7 +27,7 @@ description: {brief description of agent purpose}
 ---
 name: general-research-agent
 description: Research general tasks using web search and codebase exploration
-model: opus
+model: sonnet
 ---
 ```
 
@@ -39,42 +39,76 @@ model: opus
 
 The `model` field allows explicit model selection for agents that benefit from specific model capabilities.
 
+### Default Policy
+
+**Non-Lean agents default to Sonnet** for cost efficiency. All 7 core agents and all non-Lean extension agents declare `model: sonnet`.
+
+**Lean4 agents retain Opus** (`lean-research-agent`, `lean-implementation-agent`) because Lean4 proof work requires deep mathematical reasoning that benefits from Opus's superior capabilities.
+
 ### Values
 
 | Value | Use Case | Rationale |
 |-------|----------|-----------|
-| `opus` | Complex reasoning, research, planning | Superior analytical and reasoning capabilities |
-| `sonnet` | Implementation, code generation | Cost-effective, fast, good for routine tasks |
+| `opus` | Lean4 proof tasks requiring deep mathematical reasoning | Superior analytical and reasoning capabilities; reserved for Lean4 |
+| `sonnet` | General research, planning, implementation, coordination | Cost-effective, fast, good quality for most tasks |
 | (omitted) | Default behavior | System chooses based on context |
 
 ### Usage Guidelines
 
 **Use `model: opus` for**:
-- Research agents requiring deep analysis
-- Planning agents requiring complex decomposition
-- Tasks requiring mathematical or logical reasoning
+- Lean4 research and implementation agents (mathematical reasoning)
+- Any future agent requiring provably superior reasoning quality
 
 **Use `model: sonnet` for**:
+- General research agents (default)
+- Planning and implementation agents (default)
 - Team orchestration skills (lightweight coordination)
-- Routine code generation tasks
-- Tasks where speed is prioritized over depth
+- All non-Lean extension agents
 
 **Omit model field when**:
-- Agent handles varied task complexity
-- Default model selection is appropriate
 - Model flexibility is desired
+- Default model selection is appropriate
 
-### Example
+### Runtime Override Flags
+
+Users can override the agent's default model at invocation time using flags on `/research` and `/implement` commands:
+
+| Flag | Maps to | Behavior |
+|------|---------|----------|
+| `--fast` | `sonnet` | Explicit low-cost mode (Sonnet) |
+| `--hard` | `opus` | Explicit high-effort mode (Opus) |
+| `--opus` | `opus` | Explicit Opus (alias for `--hard`) |
+
+If multiple flags are provided, the last one wins. These flags are passed as `model_flag` in the delegation context to the skill and subagent.
+
+**Examples**:
+```
+/research 42 --opus        # Force Opus for this research task
+/implement 42 --hard       # Force Opus for this implementation
+/research 42 --fast        # Explicit Sonnet (same as default)
+```
+
+### Examples
 
 ```yaml
 ---
 name: general-research-agent
 description: Research general tasks using web search and codebase exploration
+model: sonnet
+---
+```
+
+**Rationale**: General research agents use Sonnet for cost efficiency. Use `--hard` or `--opus` at invocation time when a specific research task requires deeper reasoning.
+
+```yaml
+---
+name: lean-research-agent
+description: Research and prove Lean4 theorems
 model: opus
 ---
 ```
 
-**Rationale**: Research agents benefit from Opus's deeper reasoning capabilities when analyzing complex systems, API patterns, and community best practices.
+**Rationale**: Lean4 proof work requires deep mathematical reasoning; Opus is retained for all Lean4 agents.
 
 ## Validation
 
@@ -96,7 +130,7 @@ Agent frontmatter is validated during:
 ---
 name: general-research-agent
 description: Research general tasks using web search and codebase exploration
-model: opus
+model: sonnet
 ---
 ```
 
@@ -106,7 +140,7 @@ model: opus
 ---
 name: general-implementation-agent
 description: Implement general, meta, and markdown tasks from plans
-model: opus
+model: sonnet
 ---
 ```
 
@@ -116,6 +150,16 @@ model: opus
 ---
 name: planner-agent
 description: Create phased implementation plans from research findings
+model: sonnet
+---
+```
+
+### Lean4 Research Agent (retains Opus)
+
+```yaml
+---
+name: lean-research-agent
+description: Research and prove Lean4 theorems using Mathlib
 model: opus
 ---
 ```
@@ -125,10 +169,12 @@ model: opus
 To add model enforcement to existing agents:
 
 1. Open agent file (e.g., `.claude/agents/general-research-agent.md`)
-2. Add `model: opus` or `model: sonnet` to frontmatter
+2. Add `model: sonnet` (default for non-Lean agents) or `model: opus` (Lean4 only) to frontmatter
 3. Document rationale in agent comments
 
 No other changes are required - the Task tool will respect the model field when spawning agents.
+
+**Note**: As of task 442, all non-Lean agents have been migrated to `model: sonnet`. Lean4 agents retain `model: opus`.
 
 ## Related Documentation
 

@@ -84,9 +84,9 @@ All commands use checkpoint-based execution: GATE IN (preflight) -> DELEGATE (sk
 |---------|-------|-------------|
 | `/task` | `/task "Description"` | Create task |
 | `/task` | `/task --recover N`, `--expand N`, `--sync`, `--abandon N` | Manage tasks |
-| `/research` | `/research N[,N-N] [focus] [--team]` | Research task(s), route by task type |
+| `/research` | `/research N[,N-N] [focus] [--team] [--fast\|--hard\|--opus]` | Research task(s), route by task type |
 | `/plan` | `/plan N[,N-N] [--team]` | Create implementation plan(s) |
-| `/implement` | `/implement N[,N-N] [--team] [--force]` | Execute plan(s), resume from incomplete phase |
+| `/implement` | `/implement N[,N-N] [--team] [--force] [--fast\|--hard\|--opus]` | Execute plan(s), resume from incomplete phase |
 | `/revise` | `/revise N` | Create new plan version |
 | `/review` | `/review` | Analyze codebase |
 | `/todo` | `/todo` | Archive completed/abandoned tasks, sync repository metrics |
@@ -163,8 +163,8 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 
 | Skill | Agent | Model | Purpose |
 |-------|-------|-------|---------|
-| skill-researcher | general-research-agent | opus | General web/codebase research |
-| skill-planner | planner-agent | opus | Implementation plan creation |
+| skill-researcher | general-research-agent | sonnet | General web/codebase research |
+| skill-planner | planner-agent | sonnet | Implementation plan creation |
 | skill-implementer | general-implementation-agent | - | General file implementation |
 | skill-meta | meta-builder-agent | - | System building and task creation |
 | skill-status-sync | (direct execution) | - | Atomic status updates |
@@ -174,8 +174,8 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 | skill-team-research | (team orchestration) | sonnet | Multi-agent parallel research (--team flag) |
 | skill-team-plan | (team orchestration) | sonnet | Multi-agent parallel planning (--team flag) |
 | skill-team-implement | (team orchestration) | sonnet | Multi-agent parallel implementation (--team flag) |
-| skill-reviser | reviser-agent | opus | Plan revision and description update |
-| skill-spawn | spawn-agent | opus | Analyze blockers and spawn new tasks |
+| skill-reviser | reviser-agent | sonnet | Plan revision and description update |
+| skill-spawn | spawn-agent | sonnet | Analyze blockers and spawn new tasks |
 | skill-orchestrator | (direct execution) | - | Route commands to appropriate workflows |
 | skill-git-workflow | (direct execution) | - | Create scoped git commits for task operations |
 | skill-fix-it | (direct execution) | - | Scan for FIX:/TODO:/NOTE: tags and create tasks |
@@ -193,7 +193,7 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 | reviser-agent | Plan revision with research synthesis |
 | spawn-agent | Blocker analysis and task decomposition |
 
-**Model Enforcement**: Agents declare preferred models via `model:` frontmatter field. Research and planning agents use `opus` for superior reasoning. Implementation agents use default model. See `.claude/docs/reference/standards/agent-frontmatter-standard.md` for details.
+**Model Enforcement**: Agents declare preferred models via `model:` frontmatter field. Non-Lean agents default to Sonnet for cost efficiency. Lean4 agents (`lean-research-agent`, `lean-implementation-agent`) retain Opus for mathematical reasoning. Use `--opus` or `--hard` flags with `/research` or `/implement` to override to Opus for specific tasks; use `--fast` to explicitly request Sonnet. See `.claude/docs/reference/standards/agent-frontmatter-standard.md` for details.
 
 **User-Only Skills**: Skills marked as "user-only" cannot be invoked by agents. These are for human-controlled operations like deployment (`skill-tag`).
 
