@@ -1,7 +1,7 @@
 # Implementation Plan: Task #442
 
 - **Task**: 442 - optimize_token_usage_model_routing
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/442_optimize_token_usage_model_routing/reports/01_model-routing-research.md
