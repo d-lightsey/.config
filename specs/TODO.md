@@ -32,18 +32,19 @@ next_project_number: 442
 - **421** [COMPLETED] -- Fix status script grep pattern and TODO artifact linking
 - **420** [COMPLETED] -- Prevent extension loader overwriting repo customizations
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
-- **441** [PLANNED] -- Update README.md documentation
+- **441** [COMPLETED] -- Update README.md documentation
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
 
 ### 441. Update README.md documentation
 - **Effort**: medium
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: markdown
 
 **Research**: [specs/441_update_readme_documentation/reports/01_readme-update-research.md]
 - **Plan**: [441_update_readme_documentation/plans/01_readme-update-plan.md]
+- **Summary**: [441_update_readme_documentation/summaries/01_readme-update-summary.md]
 
 **Description**: Update the outdated README.md to reflect current configuration state. Key changes: remove Avante references and document Claude Code integration, add link to .claude/README.md for AI system details, and add link to https://github.com/benbrastmckie/zed at the beginning for users seeking a user-friendly alternative to NeoVim.
 
@@ -489,4 +490,3 @@ The sync system needs to handle the fact that target repos (zed, other projects)
 ### Existing backlog
 7. **78** [PLANNED] -> implement
 8. **87** [RESEARCHED] -> plan
-9. **441** -> research (independent)
