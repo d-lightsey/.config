@@ -11,7 +11,7 @@ LaTeX document development support with VimTeX integration and standard LaTeX to
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `latex` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `latex` becomes a recognized task type.
 
 ## Commands
 

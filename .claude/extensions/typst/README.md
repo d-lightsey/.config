@@ -11,7 +11,7 @@ Typst document development support with single-pass compilation and modern scrip
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `typst` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `typst` becomes a recognized task type.
 
 ## Commands
 

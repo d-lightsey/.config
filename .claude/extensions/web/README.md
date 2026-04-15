@@ -13,7 +13,7 @@ Web development support for Astro/Tailwind CSS v4/TypeScript sites deployed to C
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `web` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `web` becomes a recognized task type.
 
 ## Architecture
 

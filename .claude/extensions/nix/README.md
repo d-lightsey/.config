@@ -11,7 +11,7 @@ NixOS and Home Manager configuration support with `mcp-nixos` integration for pa
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `nix` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `nix` becomes a recognized task type.
 
 ## MCP Tool Setup
 

@@ -13,7 +13,7 @@ The extension routes `lean4` task types through dedicated research and implement
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, the `/lake` and `/lean` commands become available and `lean4` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, the `/lake` and `/lean` commands become available and `lean4` becomes a recognized task type.
 
 ## MCP Tool Setup
 

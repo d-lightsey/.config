@@ -15,7 +15,7 @@ This extension provides five commands for file manipulation tasks:
 
 ## Installation
 
-This extension is loaded via `<leader>ac` in Neovim. Once loaded, the commands above become available at the Claude Code prompt.
+This extension is loaded via the extension picker. Once loaded, the commands above become available at the Claude Code prompt.
 
 ## MCP Tool Setup
 

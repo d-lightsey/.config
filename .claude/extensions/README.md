@@ -37,9 +37,8 @@ Extensions add domain-specific elements:
 
 ## Loading Extensions
 
-Extensions are loaded via the Neovim picker:
-- `<leader>ac` - Claude Code extension picker
-- `<leader>ao` - OpenCode extension picker
+Extensions are loaded via the editor's extension picker:
+- Neovim: `<leader>ac` | OpenCode: `<leader>ao`
 
 When an extension is loaded:
 1. Stale index entries are cleaned (pre-load cleanup removes entries from non-loaded extensions)
@@ -112,7 +111,7 @@ Verification results are shown via notification.
 3. Create EXTENSION.md with content to inject into CLAUDE.md
 4. Create index-entries.json with context index entries (use canonical paths)
 5. Add agents/, skills/, rules/, context/ as needed
-6. Test by loading via `<leader>ac`
+6. Test by loading via the extension picker
 
 ## Validation
 

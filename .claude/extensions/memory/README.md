@@ -6,7 +6,7 @@ retrieves it on demand during research.
 ## Loading the Extension
 
 ```
-<leader>ac -> select "memory"
+Extension picker -> select "memory"
 ```
 
 ---

@@ -11,7 +11,7 @@ Z3 SMT solver development support with constraint-pattern guidance for Python bi
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `z3` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `z3` becomes a recognized task type.
 
 ## Commands
 

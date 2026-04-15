@@ -13,7 +13,7 @@ The extension applies the `neovim-lua.md` rule file to all `.lua` source files a
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Since the repository itself is a Neovim configuration, this extension is typically auto-loaded during development sessions.
+Loaded via the extension picker. Since the repository itself is a Neovim configuration, this extension is typically auto-loaded during development sessions.
 
 ## Commands
 

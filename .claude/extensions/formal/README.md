@@ -15,7 +15,7 @@ This extension is **research-only**: it provides no dedicated implementation age
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `formal`, `logic`, `math`, and `physics` become recognized task types and their research agents are available.
+Loaded via the extension picker. Once loaded, `formal`, `logic`, `math`, and `physics` become recognized task types and their research agents are available.
 
 ## Commands
 

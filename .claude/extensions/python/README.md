@@ -11,7 +11,7 @@ Python development support with pytest integration, type checking (mypy), and li
 
 ## Installation
 
-Loaded via `<leader>ac` in Neovim. Once loaded, `python` becomes a recognized task type.
+Loaded via the extension picker. Once loaded, `python` becomes a recognized task type.
 
 ## Commands
 

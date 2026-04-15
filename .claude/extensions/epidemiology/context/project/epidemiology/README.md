@@ -29,7 +29,7 @@ context/project/epidemiology/
 
 ## Usage
 
-Agents load context files based on task type and command routing. When the epidemiology extension is active (loaded via `<leader>ac`), the `/epi` command and `epidemiology` task type become available.
+Agents load context files based on task type and command routing. When the epidemiology extension is active (loaded via the extension picker), the `/epi` command and `epidemiology` task type become available.
 
 Context files are indexed in `.claude/context/index.json` with `load_when` conditions specifying which agents, commands, and task types trigger loading. Files are loaded lazily -- only when matched by the current operation.
 

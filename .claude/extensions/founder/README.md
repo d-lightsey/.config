@@ -27,7 +27,7 @@ This extension provides eight commands for strategic business analysis:
 
 ## Installation
 
-This extension is automatically available when loaded via `<leader>ac` in Neovim.
+This extension is automatically available when loaded via the extension picker.
 
 ## MCP Tool Setup
 
