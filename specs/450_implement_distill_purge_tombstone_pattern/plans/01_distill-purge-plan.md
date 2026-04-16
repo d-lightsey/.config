@@ -72,7 +72,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Purge Sub-Mode -- Candidate Identification and Tombstone Application [IN PROGRESS]
+### Phase 1: Purge Sub-Mode -- Candidate Identification and Tombstone Application [COMPLETED]
 
 **Goal**: Implement the core purge pipeline in SKILL.md: candidate identification using scoring engine output, category-aware TTL ranking, AskUserQuestion interactive selection, and tombstone frontmatter mutation.
 
