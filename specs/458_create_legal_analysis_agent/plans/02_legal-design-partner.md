@@ -1,7 +1,7 @@
 # Implementation Plan: Legal Analysis Agent (Design Partner)
 
 - **Task**: 458 - Create legal-analysis-agent
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/458_create_legal_analysis_agent/reports/02_legal-design-partner.md, specs/458_create_legal_analysis_agent/reports/01_team-research.md
@@ -66,7 +66,7 @@ This task does not directly advance any current ROADMAP.md items. It extends the
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create legal-reasoning-patterns.md context file [NOT STARTED]
+### Phase 1: Create legal-reasoning-patterns.md context file [IN PROGRESS]
 
 **Goal**: Establish the domain knowledge foundation that the agent references.
 
