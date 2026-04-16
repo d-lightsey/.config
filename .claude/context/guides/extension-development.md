@@ -160,6 +160,85 @@ Add domain knowledge to `context/project/{domain}/`.
 
 Extensions are loaded via the extension picker. The loader discovers extensions by scanning `.claude/extensions/*/manifest.json` directories automatically -- no central registry is needed.
 
+## Dependencies
+
+Extensions can declare dependencies on other extensions. The loader resolves and auto-loads dependencies before the dependent extension.
+
+### Declaring Dependencies
+
+Add extension names to the `dependencies` array in `manifest.json`:
+
+```json
+{
+  "name": "founder",
+  "dependencies": ["slidev"]
+}
+```
+
+### Auto-Loading Behavior
+
+When an extension is loaded (via picker or API):
+
+1. The loader reads `dependencies` from the manifest
+2. For each dependency not already loaded, `manager.load()` is called recursively
+3. Dependencies load silently (no confirmation dialog)
+4. If a dependency fails to load, the parent extension also fails (before copying any files)
+5. The confirmation dialog shows which dependencies were loaded
+
+### Circular Dependency Detection
+
+The loader maintains a loading stack during recursive resolution. If an extension appears twice in the stack, the load fails with an error message showing the cycle:
+
+```
+Circular dependency detected: A -> B -> C -> A
+```
+
+A recursion depth limit of 5 prevents runaway chains even without explicit cycles.
+
+### Unload Safety
+
+Unloading an extension that other loaded extensions depend on triggers a warning:
+
+```
+WARNING: Extension 'slidev' is required by: founder, present
+```
+
+The user can confirm to proceed. Unload does NOT cascade -- only the named extension is removed.
+
+### Resource-Only Extensions
+
+Extensions that only provide shared resources (no agents, commands, or routing) can omit `task_type` entirely. Example: the `slidev` extension provides animation and CSS style files consumed by both `founder` and `present`.
+
+```json
+{
+  "name": "slidev",
+  "version": "1.0.0",
+  "description": "Shared Slidev animation patterns and CSS style presets",
+  "dependencies": [],
+  "provides": {
+    "agents": [],
+    "skills": [],
+    "commands": [],
+    "rules": [],
+    "context": ["project/slidev"],
+    "scripts": [],
+    "hooks": []
+  },
+  "merge_targets": {
+    "index": {
+      "source": "index-entries.json",
+      "target": ".claude/context/index.json"
+    }
+  }
+}
+```
+
+### Picker Preview
+
+The extension picker shows dependency information:
+- **Dependencies**: Lists declared dependencies for each extension
+- **Required by**: Shows which loaded extensions depend on the selected extension
+
 ## Best Practices
 
 1. **Lazy Loading**: Extensions should not load context until needed
