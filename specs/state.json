@@ -5,10 +5,13 @@
     {
       "project_number": 457,
       "project_name": "design_extension_slidev_resource_distribution",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T22:07:02Z",
-      "last_updated": "2026-04-16T22:07:02Z"
+      "last_updated": "2026-04-16T22:21:41Z",
+      "session_id": "sess_1713305222_team457",
+      "researched": "2026-04-16T22:21:41Z",
+      "next_artifact_number": 2
     },
     {
       "project_number": 456,
