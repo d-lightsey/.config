@@ -33,13 +33,15 @@ next_project_number: 459
 - **Status**: [RESEARCHING]
 - **Task Type**: meta
 - **Research**:
+  - [specs/458_create_legal_analysis_agent/reports/01_teammate-b-findings.md]
   - [specs/458_create_legal_analysis_agent/reports/01_teammate-c-findings.md]
+  - [specs/458_create_legal_analysis_agent/reports/01_teammate-d-findings.md]
 
 **Description**: Create a new legal-analysis-agent.md at .claude/extensions/founder/agents/ designed to think like an attorney and provide clear critical feedback with concrete suggestions for improvement. Use this agent to improve legal-ai-example.typ (~/Projects/Logos/Vision/shared/strategy/03-applications/) which has received consistent feedback that its description does not accord with legal fundamentals. Avoid redundancy with the existing legal-council-agent.md -- the new agent's focus is attorney-style critical analysis and actionable improvement suggestions.
 
 ### 457. Design extension-based slidev resource distribution strategy
 - **Effort**: Large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**:
   - [specs/457_design_extension_slidev_resource_distribution/reports/01_team-research.md]
@@ -47,6 +49,7 @@ next_project_number: 459
 - **Plan**:
   - [457_design_extension_slidev_resource_distribution/plans/01_slidev-resource-distribution.md]
   - [457_design_extension_slidev_resource_distribution/plans/02_slidev-dependency-plan.md]
+- **Summary**: [457_design_extension_slidev_resource_distribution/summaries/02_slidev-dependency-summary.md]
 
 **Description**: Design an extension-based slidev resource distribution strategy that combines context files from multiple extensions (epidemiology, founder, present) without redundancy or conflicts. Context files for each slidev feature should combine appropriately upon loading extensions using the `<leader>ac` picker in neovim. Use index-based or lookup-based methods to make domain-specific resources available to appropriate slide commands (/deck, /slides) while avoiding context bloat and preventing irrelevant resources from loading for all slidev commands. Reference the Zed report at `/home/benjamin/.config/zed/specs/073_port_vision_slidev_resources/reports/01_vision-slidev-port.md` and source resources at `/home/benjamin/Projects/Logos/Vision/`. Research best practices online
 
