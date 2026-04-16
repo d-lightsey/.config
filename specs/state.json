@@ -102,15 +102,22 @@
     {
       "project_number": 449,
       "project_name": "create_distill_command_scoring_engine_health_report",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-16T18:53:36Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/449_create_distill_command_scoring_engine_health_report/reports/01_distill-command-research.md",
+          "type": "research",
+          "summary": "Research covering /distill command design, scoring engine, health report, distill-log schema"
+        }
+      ],
       "dependencies": [
         444
-      ]
+      ],
+      "session_id": "sess_1776365385_5ff6f8"
     },
     {
       "project_number": 448,
@@ -154,15 +161,22 @@
     {
       "project_number": 445,
       "project_name": "implement_two_phase_auto_retrieval_memory",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-16T18:54:28Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/445_implement_two_phase_auto_retrieval_memory/reports/01_auto-retrieval-research.md",
+          "type": "research",
+          "summary": "Research on two-phase auto-retrieval covering index schema, injection points, scoring, token budget"
+        }
+      ],
       "dependencies": [
         444
-      ]
+      ],
+      "session_id": "sess_1776365385_5ff6f8"
     },
     {
       "project_number": 444,
