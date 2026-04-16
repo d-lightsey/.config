@@ -457,6 +457,11 @@ function M.create(config)
       return false, "Extension load failed: " .. tostring(load_err)
     end
 
+    -- Re-read state from disk to pick up changes from dependency loads
+    -- (dependency loads write their own state entries; using stale in-memory
+    -- state here would overwrite those entries)
+    state = state_mod.read(project_dir, config)
+
     -- Update state (convert to relative paths for portability)
     local rel_files = paths_to_relative(all_files, project_dir)
     local rel_dirs = paths_to_relative(all_dirs, project_dir)
