@@ -182,6 +182,8 @@ description: Analyze memory vault health, score memories for maintenance, and ru
     - .memory/distill-log.json (operation log entries)
     - specs/state.json (memory_health field updates)
     - .memory/10-Memories/*.md (frontmatter mutation for purge; deletion for gc; content merge for merge/compress)
-    - .memory/memory-index.json (status field updates for purge; entry removal for gc)
+    - .memory/memory-index.json (status field updates for purge; entry removal for gc; regeneration for merge)
+    - .memory/20-Indices/index.md (regeneration for merge)
+    - .memory/10-Memories/README.md (regeneration for merge)
   </writes>
 </state_management>
