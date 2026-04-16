@@ -1,7 +1,7 @@
 # Implementation Plan: Add Passive Memory Nudge Stop Hook
 
 - **Task**: 448 - Add passive memory nudge stop hook
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1 hour
 - **Dependencies**: Task #446 (memory candidate emission, completed)
 - **Research Inputs**: specs/448_add_passive_memory_nudge_stop_hook/reports/01_memory-nudge-research.md
@@ -61,7 +61,7 @@ No ROADMAP.md items directly correspond to this task. This is part of the memory
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create Hook Script [NOT STARTED]
+### Phase 1: Create Hook Script [COMPLETED]
 
 **Goal**: Implement the `memory-nudge.sh` Stop hook script with all detection, suppression, cooldown, and output logic.
 
@@ -101,7 +101,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Settings Integration and Testing [NOT STARTED]
+### Phase 2: Settings Integration and Testing [IN PROGRESS]
 
 **Goal**: Register the hook in settings.json and verify end-to-end behavior.
 
