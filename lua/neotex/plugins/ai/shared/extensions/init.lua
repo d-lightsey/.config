@@ -244,6 +244,58 @@ function M.create(config)
       return false, "Extension already loaded: " .. extension_name
     end
 
+    -- Dependency resolution: auto-load declared dependencies before proceeding
+    local loading_stack = opts._loading_stack or {}
+    local max_depth = 5
+
+    -- Circular dependency detection
+    for _, stack_name in ipairs(loading_stack) do
+      if stack_name == extension_name then
+        local cycle = table.concat(loading_stack, " -> ") .. " -> " .. extension_name
+        return false, "Circular dependency detected: " .. cycle
+      end
+    end
+
+    -- Depth limit check
+    if #loading_stack >= max_depth then
+      return false, string.format(
+        "Dependency depth limit (%d) exceeded while loading '%s'",
+        max_depth, extension_name
+      )
+    end
+
+    -- Resolve dependencies
+    local deps = ext_manifest.dependencies or {}
+    local deps_to_load = {}
+    for _, dep_name in ipairs(deps) do
+      -- Re-read state each iteration (previous dep may have changed it)
+      state = state_mod.read(project_dir, config)
+      if not state_mod.is_loaded(state, dep_name) then
+        table.insert(deps_to_load, dep_name)
+      end
+    end
+
+    -- Load unloaded dependencies recursively
+    if #deps_to_load > 0 then
+      local child_stack = vim.list_extend({}, loading_stack)
+      table.insert(child_stack, extension_name)
+
+      for _, dep_name in ipairs(deps_to_load) do
+        local dep_ok, dep_err = manager.load(dep_name, {
+          confirm = false,  -- dependencies load silently
+          project_dir = project_dir,
+          force = opts.force,
+          _loading_stack = child_stack,
+        })
+        if not dep_ok then
+          return false, string.format(
+            "Failed to load dependency '%s' for '%s': %s",
+            dep_name, extension_name, dep_err or "unknown error"
+          )
+        end
+      end
+    end
+
     -- Check for conflicts (used in confirmation dialog)
     local conflicts = loader_mod.check_conflicts(ext_manifest, target_dir, project_dir)
 
@@ -277,12 +329,21 @@ function M.create(config)
           merge_count, merge_count > 1 and "ies" or "y")
       end
 
+      -- Include dependency info in message
+      local dep_note = ""
+      if #deps_to_load > 0 then
+        dep_note = "\nDependencies loaded: " .. table.concat(deps_to_load, ", ")
+      elseif #deps > 0 then
+        dep_note = "\nDependencies (already loaded): " .. table.concat(deps, ", ")
+      end
+
       local message = string.format(
-        "Load extension '%s' v%s?\n\n%s\n%s%s",
+        "Load extension '%s' v%s?\n\n%s\n%s%s%s",
         extension_name,
         ext_manifest.version,
         ext_manifest.description,
         provides_summary ~= "" and "\nFiles to install:\n" .. provides_summary or "",
+        dep_note,
         conflict_note
       )
 

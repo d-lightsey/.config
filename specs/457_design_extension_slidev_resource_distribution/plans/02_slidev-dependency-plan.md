@@ -1,7 +1,7 @@
 # Implementation Plan: Slidev Extension and Dependency Resolution
 
 - **Task**: 457 - Design extension-based slidev resource distribution strategy
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/457_design_extension_slidev_resource_distribution/reports/02_slidev-dependency-research.md, specs/457_design_extension_slidev_resource_distribution/reports/01_team-research.md
@@ -68,7 +68,7 @@ Plan 01 proposed making present depend directly on founder and using cross-exten
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Implement Dependency Resolution in Extension Loader [NOT STARTED]
+### Phase 1: Implement Dependency Resolution in Extension Loader [COMPLETED]
 
 **Goal**: Add dependency auto-loading to `manager.load()` so that loading an extension with declared dependencies automatically loads those dependencies first.
 
