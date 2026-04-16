@@ -13,7 +13,7 @@ next_project_number: 456
 - **455** [COMPLETED] -- Separate model selection from effort flags, add --haiku and --sonnet
 - **454** [NOT STARTED] -- Memory system documentation and end-to-end validation (depends: 448, 453)
 - **453** [NOT STARTED] -- Integrate /distill with /todo suggestions and retrieval tombstone filtering (depends: 447, 452)
-- **452** [IMPLEMENTING] -- Implement distill compress and refine operations (depends: 450, 451)
+- **452** [COMPLETED] -- Implement distill compress and refine operations (depends: 450, 451)
 - **451** [COMPLETED] -- Implement distill combine operation with keyword superset guarantee (depends: 449)
 - **450** [COMPLETED] -- Implement distill purge operation with tombstone pattern (depends: 449)
 - **449** [COMPLETED] -- Create /distill command with scoring engine and health report (depends: 444)
@@ -183,7 +183,7 @@ The Agent tool's `model` parameter already accepts `"haiku"`, `"sonnet"`, and `"
 
 ### 452. Implement distill compress and refine operations
 - **Effort**: large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Dependencies**: Tasks #450, #451
 
