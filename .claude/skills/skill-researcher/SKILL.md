@@ -264,6 +264,7 @@ if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
     artifact_path=$(jq -r '.artifacts[0].path // ""' "$metadata_file")
     artifact_type=$(jq -r '.artifacts[0].type // ""' "$metadata_file")
     artifact_summary=$(jq -r '.artifacts[0].summary // ""' "$metadata_file")
+    memory_candidates=$(jq -c '.memory_candidates // []' "$metadata_file")
 else
     echo "Error: Invalid or missing metadata file"
     status="failed"
@@ -308,6 +309,24 @@ jq '(.active_projects[] | select(.project_number == '$task_number')).next_artifa
 **Note**: Research is the only operation that increments `next_artifact_number`. Plan and implement use `(current - 1)` to stay in the same "round".
 
 **On partial/failed**: Keep status as "researching" for resume (do not call the script).
+
+---
+
+### Stage 7a: Propagate Memory Candidates
+
+If the agent emitted memory candidates, append them to the task's state.json entry using append semantics (merge with any existing candidates from prior operations).
+
+```bash
+if [ "$memory_candidates" != "[]" ] && [ -n "$memory_candidates" ]; then
+    # Append new candidates to existing array (append semantics, not overwrite)
+    jq --argjson new_candidates "$memory_candidates" \
+      '(.active_projects[] | select(.project_number == '$task_number')).memory_candidates =
+        ((.active_projects[] | select(.project_number == '$task_number')).memory_candidates // []) + $new_candidates' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+fi
+```
+
+**Note**: Uses `// []` fallback so this works whether or not the task already has candidates. Append semantics ensure research and implementation candidates coexist.
 
 ---
 

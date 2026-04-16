@@ -292,6 +292,7 @@ if [ -f "$metadata_file" ] && jq empty "$metadata_file" 2>/dev/null; then
     completion_summary=$(jq -r '.completion_data.completion_summary // ""' "$metadata_file")
     claudemd_suggestions=$(jq -r '.completion_data.claudemd_suggestions // ""' "$metadata_file")
     roadmap_items=$(jq -c '.completion_data.roadmap_items // []' "$metadata_file")
+    memory_candidates=$(jq -c '.memory_candidates // []' "$metadata_file")
 else
     echo "Error: Invalid or missing metadata file"
     status="failed"
@@ -354,7 +355,20 @@ if [ "$task_type" != "meta" ] && [ "$roadmap_items" != "[]" ] && [ -n "$roadmap_
 fi
 ```
 
-**Step 4**: Remove from Recommended Order section (non-blocking, not covered by centralized script):
+**Step 4**: Propagate memory candidates (if any) with append semantics:
+```bash
+if [ "$memory_candidates" != "[]" ] && [ -n "$memory_candidates" ]; then
+    # Append new candidates to existing array (append semantics, not overwrite)
+    jq --argjson new_candidates "$memory_candidates" \
+      '(.active_projects[] | select(.project_number == '$task_number')).memory_candidates =
+        ((.active_projects[] | select(.project_number == '$task_number')).memory_candidates // []) + $new_candidates' \
+      specs/state.json > specs/tmp/state.json && mv specs/tmp/state.json specs/state.json
+fi
+```
+
+**Note**: Uses `// []` fallback and `+` append so research candidates (from skill-researcher) and implementation candidates coexist on the same task entry.
+
+**Step 5**: Remove from Recommended Order section (non-blocking, not covered by centralized script):
 ```bash
 if source "$PROJECT_ROOT/.claude/scripts/update-recommended-order.sh" 2>/dev/null; then
     remove_from_recommended_order "$task_number" || echo "Note: Failed to update Recommended Order"

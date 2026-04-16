@@ -122,7 +122,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Skill Postflight Propagation [NOT STARTED]
+### Phase 3: Skill Postflight Propagation [COMPLETED]
 
 **Goal**: Update skill-researcher and skill-implementer to extract `memory_candidates` from `.return-meta.json` and propagate to state.json with append semantics.
 
