@@ -36,6 +36,7 @@ When multiple tasks are specified, each task is researched independently in para
 | `--haiku` | Use Haiku model (fastest, lowest cost) | false |
 | `--sonnet` | Use Sonnet model (balanced cost/quality) | false |
 | `--opus` | Use Opus model (highest quality, same as agent default) | false |
+| `--clean` | Skip automatic memory retrieval | false |
 
 When `--team` is specified, research is delegated to `skill-team-research` which spawns multiple research agents working in parallel on different aspects of the task. Each teammate produces a research report, and the lead synthesizes findings into a final comprehensive report.
 
@@ -297,12 +298,19 @@ Skipped: {count}
    If multiple are provided, last one wins.
    If none: `model_flag = null` (use agent default, currently opus for all agents)
 
-5. **Extract Focus Prompt**
+5. **Extract Clean Flag**
+   Check remaining args for memory retrieval suppression:
+   - `--clean` -> `clean_flag = true` (skip automatic memory retrieval)
+
+   If not present: `clean_flag = false`
+
+6. **Extract Focus Prompt**
    Remove all recognized flags from remaining args:
    - Remove `--team`
    - Remove `--team-size N` (flag and its value)
    - Remove `--fast`, `--hard`
    - Remove `--haiku`, `--sonnet`, `--opus`
+   - Remove `--clean`
 
    Remaining text is `focus_prompt`.
 
@@ -381,11 +389,11 @@ else:
 ```
 # For team mode:
 skill: "skill-team-research"
-args: "task_number={N} focus={focus_prompt} team_size={team_size} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
+args: "task_number={N} focus={focus_prompt} team_size={team_size} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag} clean_flag={clean_flag}"
 
 # For single-agent mode:
 skill: "{skill-name from table above}"
-args: "task_number={N} focus={focus_prompt} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
+args: "task_number={N} focus={focus_prompt} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag} clean_flag={clean_flag}"
 ```
 
 If `model_flag` is set, pass the `model` parameter to override the agent's default model:

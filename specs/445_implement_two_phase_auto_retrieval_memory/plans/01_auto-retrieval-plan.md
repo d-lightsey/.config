@@ -131,7 +131,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Add --clean Flag to Commands [IN PROGRESS]
+### Phase 3: Add --clean Flag to Commands [COMPLETED]
 
 **Goal**: Parse the --clean flag in /research, /plan, and /implement commands and pass it through to the skill delegation context.
 
@@ -159,7 +159,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Validation and Documentation [NOT STARTED]
+### Phase 4: Validation and Documentation [IN PROGRESS]
 
 **Goal**: End-to-end validation of the auto-retrieval pipeline and final documentation updates.
 

@@ -84,9 +84,9 @@ All commands use checkpoint-based execution: GATE IN (preflight) -> DELEGATE (sk
 |---------|-------|-------------|
 | `/task` | `/task "Description"` | Create task |
 | `/task` | `/task --recover N`, `--expand N`, `--sync`, `--abandon N` | Manage tasks |
-| `/research` | `/research N[,N-N] [focus] [--team] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Research task(s), route by task type |
-| `/plan` | `/plan N[,N-N] [--team] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Create implementation plan(s) |
-| `/implement` | `/implement N[,N-N] [--team] [--force] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Execute plan(s), resume from incomplete phase |
+| `/research` | `/research N[,N-N] [focus] [--team] [--clean] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Research task(s), route by task type |
+| `/plan` | `/plan N[,N-N] [--team] [--clean] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Create implementation plan(s) |
+| `/implement` | `/implement N[,N-N] [--team] [--force] [--clean] [--fast\|--hard] [--haiku\|--sonnet\|--opus]` | Execute plan(s), resume from incomplete phase |
 | `/revise` | `/revise N` | Create new plan version |
 | `/review` | `/review` | Analyze codebase |
 | `/todo` | `/todo` | Archive completed/abandoned tasks, sync repository metrics |
