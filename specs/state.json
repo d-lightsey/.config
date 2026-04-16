@@ -5,12 +5,19 @@
     {
       "project_number": 456,
       "project_name": "fix_doc_regressions_agent_system_update",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:27:09Z",
-      "last_updated": "2026-04-16T20:27:09Z",
-      "next_artifact_number": 1,
-      "artifacts": []
+      "last_updated": "2026-04-16T20:34:43Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/456_fix_doc_regressions_agent_system_update/reports/01_fix-doc-regressions.md",
+          "type": "report",
+          "summary": "Research report confirming 4 documentation regressions across 3 files with exact change specifications"
+        }
+      ],
+      "session_id": "sess_1776371469_877296"
     },
     {
       "project_number": 455,
