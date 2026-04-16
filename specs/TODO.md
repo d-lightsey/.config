@@ -30,9 +30,11 @@ next_project_number: 459
 
 ### 458. Create legal-analysis-agent for critical legal feedback
 - **Effort**: Medium
-- **Status**: [RESEARCHING]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Research**:
+  - [specs/458_create_legal_analysis_agent/reports/01_team-research.md]
+  - [specs/458_create_legal_analysis_agent/reports/01_teammate-a-findings.md]
   - [specs/458_create_legal_analysis_agent/reports/01_teammate-b-findings.md]
   - [specs/458_create_legal_analysis_agent/reports/01_teammate-c-findings.md]
   - [specs/458_create_legal_analysis_agent/reports/01_teammate-d-findings.md]
