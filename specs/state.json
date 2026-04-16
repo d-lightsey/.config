@@ -265,5 +265,13 @@
     "fixme_count": 2,
     "build_errors": 0,
     "status": "healthy"
+  },
+  "memory_health": {
+    "last_distilled": null,
+    "distill_count": 0,
+    "total_memories": 1,
+    "never_retrieved": 1,
+    "health_score": 100,
+    "status": "healthy"
   }
 }

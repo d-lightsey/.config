@@ -1057,3 +1057,196 @@ Additionally, flag specific conditions:
 - `duplicate > 0.6` -> Merge candidate regardless of composite
 - `size_penalty > 0.5` -> Compress candidate regardless of composite
 - `zero_retrieval == 1.0` -> Review for relevance
+
+### Health Report Template
+
+The `report` sub-mode generates a formatted health report displayed to the user. Template:
+
+```
+## Memory Vault Health Report
+
+**Generated**: {today}
+**Vault**: .memory/
+
+---
+
+### Overview
+
+| Metric | Value |
+|--------|-------|
+| Total memories | {total_count} |
+| Total tokens | {total_tokens} |
+| Average tokens/memory | {avg_tokens} |
+| Oldest memory | {oldest_date} ({oldest_id}) |
+| Newest memory | {newest_date} ({newest_id}) |
+
+---
+
+### Category Distribution
+
+| Category | Count | Tokens | Avg Score |
+|----------|-------|--------|-----------|
+| {category_1} | {count} | {tokens} | {avg_composite} |
+| {category_2} | {count} | {tokens} | {avg_composite} |
+| ... | ... | ... | ... |
+
+---
+
+### Topic Clusters
+
+| Cluster | Memories | Avg Staleness | Avg Duplicate |
+|---------|----------|---------------|---------------|
+| {cluster_1} | {count} | {avg_staleness} | {avg_duplicate} |
+| {cluster_2} | {count} | {avg_staleness} | {avg_duplicate} |
+| ... | ... | ... | ... |
+
+---
+
+### Retrieval Statistics
+
+| Metric | Value |
+|--------|-------|
+| Never retrieved | {never_retrieved_count} ({never_retrieved_pct}%) |
+| Retrieved 1-3 times | {low_retrieval_count} |
+| Retrieved 4+ times | {high_retrieval_count} |
+| Most retrieved | {most_retrieved_id} ({most_retrieved_count} times) |
+
+---
+
+### Maintenance Candidates
+
+#### Purge Candidates (score >= 0.7)
+{purge_list or "None"}
+
+#### Merge Candidates (duplicate > 0.6)
+{merge_list or "None"}
+
+#### Compress Candidates (size > 0.5)
+{compress_list or "None"}
+
+#### Review Candidates (score 0.3-0.7)
+{review_list or "None"}
+
+---
+
+### Health Score
+
+**Score**: {health_score}/100
+**Status**: {status_emoji} {status_label}
+
+Formula: `100 - (purge_count * 3) - (merge_count * 5) - (compress_count * 2)`
+
+| Threshold | Status |
+|-----------|--------|
+| 80-100 | Healthy |
+| 60-79 | Manageable |
+| 40-59 | Concerning |
+| 0-39 | Critical |
+
+---
+
+### Recommended Actions
+
+{action_list based on candidates found}
+```
+
+#### Health Score Formula
+
+```
+health_score = 100 - (purge_count * 3) - (merge_count * 5) - (compress_count * 2)
+health_score = clamp(health_score, 0, 100)
+```
+
+Where:
+- `purge_count` = number of memories with composite score >= 0.7
+- `merge_count` = number of memories with duplicate score > 0.6
+- `compress_count` = number of memories with size_penalty > 0.5
+
+#### Health Status Thresholds
+
+| Score Range | Status | Description |
+|-------------|--------|-------------|
+| 80-100 | healthy | Vault is well-maintained |
+| 60-79 | manageable | Some maintenance recommended |
+| 40-59 | concerning | Significant maintenance needed |
+| 0-39 | critical | Urgent maintenance required |
+
+These thresholds mirror `repository_health.status` vocabulary in state.json.
+
+### Distill Log Schema
+
+Operations are logged to `.memory/distill-log.json` for tracking maintenance history.
+
+#### Schema
+
+```json
+{
+  "version": "1.0.0",
+  "operations": [
+    {
+      "id": "distill_{timestamp}",
+      "timestamp": "ISO8601",
+      "type": "report|purge|merge|compress|refine|gc",
+      "session_id": "sess_...",
+      "pre_metrics": {
+        "total_memories": 0,
+        "total_tokens": 0,
+        "health_score": 100,
+        "purge_candidates": 0,
+        "merge_candidates": 0,
+        "compress_candidates": 0
+      },
+      "post_metrics": {
+        "total_memories": 0,
+        "total_tokens": 0,
+        "health_score": 100,
+        "purge_candidates": 0,
+        "merge_candidates": 0,
+        "compress_candidates": 0
+      },
+      "affected_memories": [],
+      "notes": ""
+    }
+  ],
+  "summary": {
+    "total_operations": 0,
+    "total_purged": 0,
+    "total_merged": 0,
+    "total_compressed": 0,
+    "total_refined": 0,
+    "last_operation": null
+  }
+}
+```
+
+#### Operation Types
+
+| Type | Description | Task |
+|------|-------------|------|
+| `report` | Health report generated (read-only) | 449 |
+| `purge` | Memories removed via tombstone pattern | 450 |
+| `merge` | Duplicate memories combined | 451 |
+| `compress` | Oversized memories summarized | 452 |
+| `refine` | Memory quality improved | 452 |
+| `gc` | Combined purge + merge + compress | 452 |
+
+For `report` operations, `pre_metrics` and `post_metrics` are identical (no changes made).
+
+### State Integration
+
+After each distill operation, update `memory_health` in `specs/state.json`:
+
+```json
+{
+  "memory_health": {
+    "last_distilled": "ISO8601 timestamp",
+    "distill_count": 1,
+    "total_memories": 5,
+    "never_retrieved": 2,
+    "health_score": 85,
+    "status": "healthy"
+  }
+}
+```
+
+The `memory_health` field is a top-level sibling of `repository_health` in state.json. Update it after every distill operation (including report-only operations).
