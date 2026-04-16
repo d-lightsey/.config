@@ -1,5 +1,5 @@
 ---
-next_project_number: 458
+next_project_number: 459
 ---
 
 # TODO
@@ -27,6 +27,13 @@ next_project_number: 458
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 458. Create legal-analysis-agent for critical legal feedback
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Create a new legal-analysis-agent.md at .claude/extensions/founder/agents/ designed to think like an attorney and provide clear critical feedback with concrete suggestions for improvement. Use this agent to improve legal-ai-example.typ (~/Projects/Logos/Vision/shared/strategy/03-applications/) which has received consistent feedback that its description does not accord with legal fundamentals. Avoid redundancy with the existing legal-council-agent.md -- the new agent's focus is attorney-style critical analysis and actionable improvement suggestions.
 
 ### 457. Design extension-based slidev resource distribution strategy
 - **Effort**: Large
@@ -617,3 +624,4 @@ The Agent tool's `model` parameter already accepts `"haiku"`, `"sonnet"`, and `"
 13. **78** [PLANNED] -> implement
 14. **87** [RESEARCHED] -> plan
 15. **457** [RESEARCHED] -> plan (independent)
+16. **458** -> research (independent)
