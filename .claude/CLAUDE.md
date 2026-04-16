@@ -209,6 +209,53 @@ Standard actions: `create`, `complete research`, `create implementation plan`, `
 
 **Note**: Team mode uses ~5x tokens compared to single-agent. Default team_size=2 minimizes cost.
 
+## Memory Extension
+
+When the memory extension is loaded, the following capabilities are available.
+
+### Memory Commands
+
+| Command | Usage | Description |
+|---------|-------|-------------|
+| `/learn` | `/learn "text"`, `/learn /path`, `/learn --task N` | Add text, file, directory, or task artifacts as memories |
+| `/distill` | `/distill` | Generate memory vault health report with scoring |
+| `/distill` | `/distill --purge` | Tombstone stale memories (interactive) |
+| `/distill` | `/distill --merge` | Combine duplicate memories by keyword overlap |
+| `/distill` | `/distill --compress` | Summarize oversized memories to key points |
+| `/distill` | `/distill --refine` | Improve memory metadata quality |
+| `/distill` | `/distill --gc` | Hard-delete tombstoned memories past 7-day grace period |
+| `/distill` | `/distill --auto` | Automated Tier 1 maintenance (non-interactive) |
+
+Flags: `--dry-run` (preview without changes), `--verbose` (detailed scoring).
+
+### Memory Skill Mapping
+
+| Skill | Agent | Purpose |
+|-------|-------|---------|
+| skill-memory | (direct execution) | Memory creation, distillation, and vault management |
+
+### Auto-Retrieval
+
+Memory retrieval is automatic in `/research`, `/plan`, and `/implement` preflight stages via `memory-retrieve.sh`. The script scores memory-index.json entries by keyword overlap with a TOKEN_BUDGET=2000 and MAX_ENTRIES=5 limit. The `--clean` flag on these commands suppresses auto-retrieval. Tombstoned memories are excluded from retrieval.
+
+### Memory Lifecycle
+
+1. **Create**: `/learn` captures knowledge into `.memory/` vault with content mapping and deduplication
+2. **Retrieve**: Auto-retrieval injects relevant memories into agent context during task operations
+3. **Harvest**: `/todo` Stage 7 collects `memory_candidates` from completed tasks for batch review
+4. **Maintain**: `/distill` scores vault health and runs maintenance (purge, merge, compress, refine, gc, auto)
+
+### Validate-on-Read
+
+There is no `--reindex` command. The memory system uses validate-on-read: before scoring or retrieval, `memory-index.json` is compared against the filesystem and auto-regenerated if stale.
+
+### State Integration
+
+The `memory_health` field in `state.json` tracks vault health metrics:
+- `last_distilled`: Timestamp of last distill operation
+- `distill_count`: Number of maintenance operations (report excluded)
+- `total_memories`, `never_retrieved`, `health_score`, `status`
+
 ## Rules References
 
 Core rules (auto-applied by file path):

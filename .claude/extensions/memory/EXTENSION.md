@@ -1,12 +1,12 @@
 ## Memory Extension
 
-Knowledge capture and retrieval via the memory vault. Supports text, file, directory, and task-based memory creation with MCP-backed search and deduplication.
+Knowledge capture and retrieval via the memory vault. Supports text, file, directory, and task-based memory creation with MCP-backed search and deduplication. Includes vault distillation for scoring, health reporting, and automated maintenance.
 
 ### Skill-Agent Mapping
 
 | Skill | Agent | Purpose |
 |-------|-------|---------|
-| skill-memory | (direct execution) | Memory creation and management |
+| skill-memory | (direct execution) | Memory creation, distillation, and management |
 
 ### Commands
 
@@ -17,14 +17,25 @@ Knowledge capture and retrieval via the memory vault. Supports text, file, direc
 | `/learn` | `/learn /path/to/dir/` | Scan directory for learnable content |
 | `/learn` | `/learn --task N` | Review task artifacts and create memories |
 | `/distill` | `/distill` | Generate memory vault health report with scoring |
-| `/distill` | `/distill --purge` | Remove low-value memories (placeholder) |
-| `/distill` | `/distill --merge` | Combine duplicate memories (placeholder) |
-| `/distill` | `/distill --compress` | Reduce oversized memories (placeholder) |
+| `/distill` | `/distill --purge` | Tombstone stale memories (interactive purge) |
+| `/distill` | `/distill --merge` | Combine duplicate memories by keyword overlap |
+| `/distill` | `/distill --compress` | Summarize oversized memories to key points |
+| `/distill` | `/distill --refine` | Improve memory metadata quality (keywords, tags, topics) |
+| `/distill` | `/distill --gc` | Hard-delete tombstoned memories past 7-day grace period |
+| `/distill` | `/distill --auto` | Automated Tier 1 maintenance (non-interactive) |
 
 ### Memory-Augmented Research
 
-The `--remember` flag on `/research` searches the memory vault for relevant prior knowledge and includes matches in the research context. Requires this extension to be loaded; ignored gracefully if not.
+Memory retrieval is automatic: when the memory extension is loaded, `/research`, `/plan`, and `/implement` preflight stages call `memory-retrieve.sh` to inject relevant memories as `<memory-context>` into the agent context. The `--clean` flag on these commands suppresses auto-retrieval.
 
-```bash
-/research N --remember
+### Memory Lifecycle
+
 ```
+/learn -> create memories -> auto-retrieval in /research, /plan, /implement
+                          -> /todo harvests memory candidates from completed tasks
+                          -> /distill scores, reports, and maintains the vault
+```
+
+### Validate-on-Read
+
+There is no `--reindex` command. The memory system uses validate-on-read: before any scoring or retrieval operation, `memory-index.json` is compared against the filesystem. If stale (missing entries or orphaned entries), the index is automatically regenerated. This provides self-healing index consistency without explicit user intervention.

@@ -1,7 +1,7 @@
 # Implementation Plan: Memory System Documentation and End-to-End Validation
 
 - **Task**: 454 - Memory system documentation and end-to-end validation
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 4 hours
 - **Dependencies**: Tasks #448, #453 (both completed)
 - **Research Inputs**: specs/454_memory_system_documentation_end_to_end_validation/reports/01_memory-docs-research.md
@@ -71,7 +71,7 @@ This task does not directly advance any current ROADMAP.md items. However, it co
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: EXTENSION.md Cleanup and CLAUDE.md Memory Section [NOT STARTED]
+### Phase 1: EXTENSION.md Cleanup and CLAUDE.md Memory Section [COMPLETED]
 
 **Goal**: Fix stale EXTENSION.md placeholders and create the Memory Extension section in CLAUDE.md.
 
@@ -99,7 +99,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: skill-memory README and distill-usage.md [NOT STARTED]
+### Phase 2: skill-memory README and distill-usage.md [COMPLETED]
 
 **Goal**: Complete skill-memory README with distill mode documentation and create the new distill-usage.md context file.
 
@@ -126,7 +126,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Index Entries and Context Registration [NOT STARTED]
+### Phase 3: Index Entries and Context Registration [COMPLETED]
 
 **Goal**: Fix index-entries.json and ensure all memory context files are discoverable.
 
@@ -153,7 +153,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Validation Sweep and Summary [NOT STARTED]
+### Phase 4: Validation Sweep and Summary [COMPLETED]
 
 **Goal**: Execute the 26-item validation checklist via documentation inspection, record results, and note any discrepancies as follow-up items.
 
