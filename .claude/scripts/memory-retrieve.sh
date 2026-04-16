@@ -72,7 +72,10 @@ keywords_json=$(echo "$keywords" | tr ' ' '\n' | jq -R . | jq -s .)
 
 # Score each entry: keyword overlap count + topic match bonus (+2)
 scored_entries=$(jq --argjson kw "$keywords_json" --arg tt "$task_type" '
-  .entries // [] | map(
+  .entries // [] |
+  # Pre-filter: exclude tombstoned memories (absent status defaults to "active")
+  map(select((.status // "active") == "active")) |
+  map(
     . as $entry |
     ($entry.keywords // []) as $entry_kw |
     # Count keyword overlaps (case-insensitive)

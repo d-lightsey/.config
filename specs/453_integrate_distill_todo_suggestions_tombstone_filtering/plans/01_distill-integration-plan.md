@@ -1,7 +1,7 @@
 # Implementation Plan: Integrate /distill with /todo Suggestions and Retrieval Tombstone Filtering
 
 - **Task**: 453 - Integrate /distill with /todo suggestions and retrieval tombstone filtering
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2 hours
 - **Dependencies**: Tasks #447, #452
 - **Research Inputs**: specs/453_integrate_distill_todo_suggestions_tombstone_filtering/reports/01_distill-integration-research.md
@@ -56,7 +56,7 @@ No ROADMAP.md items are directly advanced by this task. This is part of the memo
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Tombstone Filtering in memory-retrieve.sh [NOT STARTED]
+### Phase 1: Tombstone Filtering in memory-retrieve.sh [COMPLETED]
 
 **Goal**: Prevent tombstoned memories from being scored and returned during retrieval.
 
@@ -79,7 +79,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Conditional /distill Suggestions in skill-todo [NOT STARTED]
+### Phase 2: Conditional /distill Suggestions in skill-todo [IN PROGRESS]
 
 **Goal**: Append numbered "Suggested Next Steps" to /todo output based on memory_health state.
 
