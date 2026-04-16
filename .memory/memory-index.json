@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "generated_at": "2026-04-16",
+  "entry_count": 1,
+  "total_tokens": 302,
+  "entries": [
+    {
+      "id": "MEM-plan-delegation-required",
+      "path": ".memory/10-Memories/MEM-plan-delegation-required.md",
+      "title": "Artifact Creation Must Use Skill Delegation",
+      "summary": "When executing /plan, /research, or /implement commands, always invoke the appropriate Skill tool to create artifact files rather than writing directly from the orchestrator level.",
+      "topic": "agent-system",
+      "category": "enforcement",
+      "keywords": ["delegation", "artifact", "skill", "bypass-prevention", "enforcement"],
+      "token_count": 302,
+      "created": "2026-04-13",
+      "modified": "2026-04-13",
+      "last_retrieved": null,
+      "retrieval_count": 0
+    }
+  ]
+}

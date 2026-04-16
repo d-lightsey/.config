@@ -5,6 +5,10 @@ tags: {{tags}}
 topic: "{{topic}}"
 source: "{{source}}"
 modified: {{last_updated}}
+retrieval_count: 0
+last_retrieved: null
+keywords: []
+summary: ""
 ---
 
 # {{title}}

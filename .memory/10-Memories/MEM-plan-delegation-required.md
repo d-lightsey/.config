@@ -5,6 +5,11 @@ tags: [enforcement, delegation, bypass-prevention, artifacts, plans]
 topic: agent-system
 source: task-414, task-416
 modified: 2026-04-13
+retrieval_count: 0
+last_retrieved: null
+keywords: [delegation, artifact, skill, bypass-prevention, enforcement]
+summary: "When executing /plan, /research, or /implement commands, always invoke the appropriate Skill tool to create artifact files rather than writing directly from the orchestrator level."
+token_count: 302
 ---
 
 # Artifact Creation Must Use Skill Delegation

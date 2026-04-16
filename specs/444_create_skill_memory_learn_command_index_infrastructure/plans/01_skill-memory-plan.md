@@ -1,7 +1,7 @@
 # Implementation Plan: Task #444
 
 - **Task**: 444 - Create skill-memory with /learn command and memory index infrastructure
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/444_create_skill_memory_learn_command_index_infrastructure/reports/01_skill-memory-research.md
@@ -66,7 +66,7 @@ No ROADMAP.md items directly correspond to memory system work. This task is stan
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Template and Schema Foundation [NOT STARTED]
+### Phase 1: Template and Schema Foundation [COMPLETED]
 
 **Goal**: Establish the updated template with retrieval-tracking fields and create the memory-index.json schema with initial data.
 
