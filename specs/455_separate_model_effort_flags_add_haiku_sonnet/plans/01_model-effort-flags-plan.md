@@ -95,7 +95,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update command files (research.md, implement.md, plan.md) [NOT STARTED]
+### Phase 2: Update command files (research.md, implement.md, plan.md) [COMPLETED]
 
 - **Goal:** Rewrite flag parsing in all three commands to separate effort flags from model flags, and add --haiku/--sonnet as new model flags
 - **Tasks:**

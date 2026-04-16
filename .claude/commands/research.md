@@ -1,7 +1,7 @@
 ---
 description: Research a task and create reports
 allowed-tools: Skill, Bash(jq:*), Bash(git:*), Read, Edit
-argument-hint: TASK_NUMBERS [FOCUS] [--team [--team-size N]] [--fast] [--hard] [--opus]
+argument-hint: TASK_NUMBERS [FOCUS] [--team [--team-size N]] [--fast|--hard] [--haiku|--sonnet|--opus]
 model: opus
 ---
 
@@ -31,9 +31,11 @@ When multiple tasks are specified, each task is researched independently in para
 |------|-------------|---------|
 | `--team` | Enable multi-agent parallel research with multiple teammates | false |
 | `--team-size N` | Number of teammates to spawn (2-4) | 2 |
-| `--fast` | Use Sonnet model (explicit low-cost mode) | false |
-| `--hard` | Use Opus model (explicit high-effort mode) | false |
-| `--opus` | Use Opus model (alias for --hard) | false |
+| `--fast` | Low-effort mode: lighter reasoning, faster responses | false |
+| `--hard` | High-effort mode: deeper reasoning, more thorough analysis | false |
+| `--haiku` | Use Haiku model (fastest, lowest cost) | false |
+| `--sonnet` | Use Sonnet model (balanced cost/quality) | false |
+| `--opus` | Use Opus model (highest quality, same as agent default) | false |
 
 When `--team` is specified, research is delegated to `skill-team-research` which spawns multiple research agents working in parallel on different aspects of the task. Each teammate produces a research report, and the lead synthesizes findings into a final comprehensive report.
 
@@ -278,20 +280,29 @@ Skipped: {count}
    [ "$team_size" -gt 4 ] && team_size=4
    ```
 
-3. **Extract Model Override Flags**
-   Check remaining args for model flags:
-   - `--fast` -> `model_flag = "fast"` (uses Sonnet, explicit low-cost mode)
-   - `--hard` -> `model_flag = "hard"` (uses Opus, explicit high-effort mode)
-   - `--opus` -> `model_flag = "opus"` (uses Opus, explicit alias for --hard)
+3. **Extract Effort Flags**
+   Check remaining args for effort flags:
+   - `--fast` -> `effort_flag = "fast"` (low-effort mode: lighter reasoning)
+   - `--hard` -> `effort_flag = "hard"` (high-effort mode: deeper reasoning)
 
    If multiple are provided, last one wins.
-   If none: `model_flag = null` (use agent default, which is Sonnet)
+   If none: `effort_flag = null` (normal effort)
 
-4. **Extract Focus Prompt**
+4. **Extract Model Flags**
+   Check remaining args for model flags:
+   - `--haiku` -> `model_flag = "haiku"` (use Haiku model)
+   - `--sonnet` -> `model_flag = "sonnet"` (use Sonnet model)
+   - `--opus` -> `model_flag = "opus"` (use Opus model)
+
+   If multiple are provided, last one wins.
+   If none: `model_flag = null` (use agent default, currently opus for all agents)
+
+5. **Extract Focus Prompt**
    Remove all recognized flags from remaining args:
    - Remove `--team`
    - Remove `--team-size N` (flag and its value)
-   - Remove `--fast`, `--hard`, `--opus`
+   - Remove `--fast`, `--hard`
+   - Remove `--haiku`, `--sonnet`, `--opus`
 
    Remaining text is `focus_prompt`.
 
@@ -370,17 +381,20 @@ else:
 ```
 # For team mode:
 skill: "skill-team-research"
-args: "task_number={N} focus={focus_prompt} team_size={team_size} session_id={session_id} model_flag={model_flag}"
+args: "task_number={N} focus={focus_prompt} team_size={team_size} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
 
 # For single-agent mode:
 skill: "{skill-name from table above}"
-args: "task_number={N} focus={focus_prompt} session_id={session_id} model_flag={model_flag}"
+args: "task_number={N} focus={focus_prompt} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
 ```
 
 If `model_flag` is set, pass the `model` parameter to override the agent's default model:
-- `model_flag="fast"` -> pass `model: sonnet` (explicit Sonnet)
-- `model_flag="hard"` or `model_flag="opus"` -> pass `model: opus` (override to Opus)
-- `model_flag=null` -> omit `model` parameter (use agent default)
+- `model_flag="haiku"` -> pass `model: haiku`
+- `model_flag="sonnet"` -> pass `model: sonnet`
+- `model_flag="opus"` -> pass `model: opus`
+- `model_flag=null` -> omit `model` parameter (use agent default, currently opus for all agents)
+
+If `effort_flag` is set, pass it as prompt context to the skill/agent for reasoning depth guidance.
 
 The skill will spawn the appropriate agent(s) to conduct research and create a report.
 

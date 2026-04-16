@@ -1,7 +1,7 @@
 ---
 description: Execute implementation with resume support
 allowed-tools: Skill, Bash(jq:*), Bash(git:*), Read, Edit, Glob
-argument-hint: TASK_NUMBERS [--team [--team-size N]] [--force] [--fast] [--hard] [--opus]
+argument-hint: TASK_NUMBERS [--team [--team-size N]] [--force] [--fast|--hard] [--haiku|--sonnet|--opus]
 model: opus
 ---
 
@@ -25,9 +25,11 @@ Execute implementation plan with automatic resume support by delegating to the a
 | `--team` | Enable parallel phase execution with multiple teammates | false |
 | `--team-size N` | Number of implementation teammates to spawn (2-4) | 2 |
 | `--force` | Override status validation | false |
-| `--fast` | Use Sonnet model (explicit low-cost mode) | false |
-| `--hard` | Use Opus model (explicit high-effort mode) | false |
-| `--opus` | Use Opus model (alias for --hard) | false |
+| `--fast` | Low-effort mode: lighter reasoning, faster responses | false |
+| `--hard` | High-effort mode: deeper reasoning, more thorough analysis | false |
+| `--haiku` | Use Haiku model (fastest, lowest cost) | false |
+| `--sonnet` | Use Sonnet model (balanced cost/quality) | false |
+| `--opus` | Use Opus model (highest quality, same as agent default) | false |
 
 When `--team` is specified, implementation is delegated to `skill-team-implement` which spawns teammates to execute independent phases in parallel. Dependent phases wait for their dependencies. A debugger teammate can be spawned on build errors.
 
@@ -322,16 +324,24 @@ Skipped: {count}
 2. **Extract Other Flags**
    - `--force` -> `force_mode = true`
 
-3. **Extract Model Override Flags**
-   Check remaining args for model flags:
-   - `--fast` -> `model_flag = "fast"` (uses Sonnet, explicit low-cost mode)
-   - `--hard` -> `model_flag = "hard"` (uses Opus, explicit high-effort mode)
-   - `--opus` -> `model_flag = "opus"` (uses Opus, explicit alias for --hard)
+3. **Extract Effort Flags**
+   Check remaining args for effort flags:
+   - `--fast` -> `effort_flag = "fast"` (low-effort mode: lighter reasoning)
+   - `--hard` -> `effort_flag = "hard"` (high-effort mode: deeper reasoning)
 
    If multiple are provided, last one wins.
-   If none: `model_flag = null` (use agent default, which is Sonnet)
+   If none: `effort_flag = null` (normal effort)
 
-4. **Validate Team Size**
+4. **Extract Model Flags**
+   Check remaining args for model flags:
+   - `--haiku` -> `model_flag = "haiku"` (use Haiku model)
+   - `--sonnet` -> `model_flag = "sonnet"` (use Sonnet model)
+   - `--opus` -> `model_flag = "opus"` (use Opus model)
+
+   If multiple are provided, last one wins.
+   If none: `model_flag = null` (use agent default, currently opus for all agents)
+
+5. **Validate Team Size**
    ```bash
    # Clamp team_size to valid range
    team_size=${team_size:-2}
@@ -415,21 +425,24 @@ else:
 ```
 # For team mode:
 skill: "skill-team-implement"
-args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} team_size={team_size} session_id={session_id} model_flag={model_flag}"
+args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} team_size={team_size} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
 
 # For extension-routed skill (e.g., skill-founder-implement):
 skill: "{skill_name from extension routing}"
-args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} session_id={session_id} model_flag={model_flag}"
+args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
 
 # For default single-agent mode:
 skill: "skill-implementer"
-args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} session_id={session_id} model_flag={model_flag}"
+args: "task_number={N} plan_path={path to implementation plan} resume_phase={phase number} session_id={session_id} effort_flag={effort_flag} model_flag={model_flag}"
 ```
 
 If `model_flag` is set, pass the `model` parameter to override the agent's default model:
-- `model_flag="fast"` -> pass `model: sonnet` (explicit Sonnet)
-- `model_flag="hard"` or `model_flag="opus"` -> pass `model: opus` (override to Opus)
-- `model_flag=null` -> omit `model` parameter (use agent default)
+- `model_flag="haiku"` -> pass `model: haiku`
+- `model_flag="sonnet"` -> pass `model: sonnet`
+- `model_flag="opus"` -> pass `model: opus`
+- `model_flag=null` -> omit `model` parameter (use agent default, currently opus for all agents)
+
+If `effort_flag` is set, pass it as prompt context to the skill/agent for reasoning depth guidance.
 
 The skill will spawn the appropriate agent(s) which execute plan phases (in parallel for team mode), update phase markers, create commits per phase, and return a structured result.
 

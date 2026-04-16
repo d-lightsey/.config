@@ -21,7 +21,7 @@ next_project_number: 456
 - **447** [NOT STARTED] -- Upgrade /todo memory harvest with pre-classification and batch review (depends: 446)
 - **446** [NOT STARTED] -- Add memory candidate emission to agents and return metadata (depends: 445)
 - **445** [NOT STARTED] -- Implement two-phase auto-retrieval for memory system (depends: 444)
-- **444** [IMPLEMENTING] -- Create skill-memory with /learn command and memory index infrastructure
+- **444** [COMPLETED] -- Create skill-memory with /learn command and memory index infrastructure
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
@@ -487,7 +487,7 @@ The Agent tool's `model` parameter already accepts `"haiku"`, `"sonnet"`, and `"
 
 ### 444. Create skill-memory with /learn command and memory index infrastructure
 - **Effort**: large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 
 **Description**: Create the foundational memory skill (`skill-memory`) with `/learn` command and the machine-queryable memory index (`memory-index.json`). This is the prerequisite for all subsequent memory system tasks.

@@ -1,7 +1,7 @@
 # Implementation Plan: Task #444
 
 - **Task**: 444 - Create skill-memory with /learn command and memory index infrastructure
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/444_create_skill_memory_learn_command_index_infrastructure/reports/01_skill-memory-research.md
