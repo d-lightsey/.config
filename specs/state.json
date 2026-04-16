@@ -76,16 +76,21 @@
     {
       "project_number": 451,
       "project_name": "implement_distill_combine_keyword_superset_guarantee",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:08:30Z",
+      "last_updated": "2026-04-16T19:15:13Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/451_implement_distill_combine_keyword_superset_guarantee/reports/01_distill-combine-research.md",
           "type": "research",
           "summary": "Research on distill combine operation with keyword superset guarantee"
+        },
+        {
+          "path": "specs/451_implement_distill_combine_keyword_superset_guarantee/plans/01_distill-combine-plan.md",
+          "type": "plan",
+          "summary": "Distill combine with keyword superset plan"
         }
       ],
       "dependencies": [
@@ -96,16 +101,21 @@
     {
       "project_number": 450,
       "project_name": "implement_distill_purge_tombstone_pattern",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:08:56Z",
+      "last_updated": "2026-04-16T19:15:13Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/450_implement_distill_purge_tombstone_pattern/reports/01_distill-purge-research.md",
           "type": "research",
           "summary": "Research on distill purge operation with tombstone pattern"
+        },
+        {
+          "path": "specs/450_implement_distill_purge_tombstone_pattern/plans/01_distill-purge-plan.md",
+          "type": "plan",
+          "summary": "Distill purge with tombstone plan"
         }
       ],
       "dependencies": [
@@ -173,16 +183,21 @@
     {
       "project_number": 446,
       "project_name": "add_memory_candidate_emission_agents_return_metadata",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:08:44Z",
+      "last_updated": "2026-04-16T19:15:13Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/446_add_memory_candidate_emission_agents_return_metadata/reports/01_memory-emission-research.md",
           "type": "research",
           "summary": "Research on memory candidate emission in agents and return metadata"
+        },
+        {
+          "path": "specs/446_add_memory_candidate_emission_agents_return_metadata/plans/01_memory-emission-plan.md",
+          "type": "plan",
+          "summary": "Memory candidate emission plan"
         }
       ],
       "dependencies": [
