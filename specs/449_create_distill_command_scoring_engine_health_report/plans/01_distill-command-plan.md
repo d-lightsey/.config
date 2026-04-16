@@ -1,7 +1,7 @@
 # Implementation Plan: /distill Command, Scoring Engine, and Health Report
 
 - **Task**: 449 - Create /distill command with scoring engine and health report
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 4 hours
 - **Dependencies**: Task 444 (completed)
 - **Research Inputs**: specs/449_create_distill_command_scoring_engine_health_report/reports/01_distill-command-research.md
