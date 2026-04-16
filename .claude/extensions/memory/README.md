@@ -11,14 +11,15 @@ Extension picker -> select "memory"
 
 ---
 
-## The Two Commands
+## The Three Commands
 
-Everything in this extension comes down to two operations:
+Everything in this extension comes down to three operations:
 
 | Operation | Command | When to use |
 |-----------|---------|-------------|
 | **Write** | `/learn <input>` | After finishing work, to capture what you learned |
 | **Read** | `/research N --remember` | Before starting work, to surface relevant prior knowledge |
+| **Maintain** | `/distill` | Periodically, to assess vault health and run maintenance |
 
 **Important**: Memories are NOT automatically injected into every session. The vault is passive.
 You must pass `--remember` explicitly to have memories included in a research context.
@@ -259,11 +260,13 @@ Use 2-3 levels. Examples:
 
 Avoid 4+ levels. The index becomes hard to navigate.
 
-### Vault Size
+### Vault Maintenance
 
 The extension is optimized for under 1000 memories. Periodically:
+- Run `/distill` to see a health report with maintenance recommendations
 - Accept UPDATE/EXTEND over CREATE when content overlaps
-- Delete obsolete memories (just delete the markdown file)
+- Use `/distill --purge` to remove low-value memories (when available)
+- Use `/distill --merge` to combine duplicate memories (when available)
 - Run `/learn --task N` on recent tasks to consolidate learnings
 
 ---
