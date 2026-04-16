@@ -5,19 +5,24 @@
     {
       "project_number": 455,
       "project_name": "separate_model_effort_flags_add_haiku_sonnet",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T21:00:00Z",
-      "last_updated": "2026-04-16T18:32:41Z",
+      "last_updated": "2026-04-16T18:38:06Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/455_separate_model_effort_flags_add_haiku_sonnet/reports/01_model-effort-flags-research.md",
           "type": "research",
           "summary": "Comprehensive analysis of current flag system across 20+ files, identifies documentation inconsistencies, provides complete file inventory and two-dimensional refactoring approach"
+        },
+        {
+          "path": "specs/455_separate_model_effort_flags_add_haiku_sonnet/plans/01_model-effort-flags-plan.md",
+          "type": "plan",
+          "summary": "4-phase plan: separate model selection from effort level across commands, skills, and docs"
         }
       ],
-      "session_id": "sess_1776363971_ac132f"
+      "session_id": "sess_1776364404_91f6f1"
     },
     {
       "project_number": 454,
@@ -155,19 +160,24 @@
     {
       "project_number": 444,
       "project_name": "create_skill_memory_learn_command_index_infrastructure",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T18:32:00Z",
+      "last_updated": "2026-04-16T18:37:22Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/444_create_skill_memory_learn_command_index_infrastructure/reports/01_skill-memory-research.md",
           "type": "research",
           "summary": "Research report revealing existing memory extension infrastructure and identifying 3 genuinely missing pieces: memory-index.json, template field additions, and backfilling"
+        },
+        {
+          "path": "specs/444_create_skill_memory_learn_command_index_infrastructure/plans/01_skill-memory-plan.md",
+          "type": "plan",
+          "summary": "3-phase plan: memory-index.json creation, template field additions, backfilling, SKILL.md JSON index enhancement"
         }
       ],
-      "session_id": "sess_1776363971_ac132f"
+      "session_id": "sess_1776364404_91f6f1"
     },
     {
       "project_number": 87,
