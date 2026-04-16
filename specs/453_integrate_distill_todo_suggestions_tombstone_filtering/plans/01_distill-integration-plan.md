@@ -1,7 +1,7 @@
 # Implementation Plan: Integrate /distill with /todo Suggestions and Retrieval Tombstone Filtering
 
 - **Task**: 453 - Integrate /distill with /todo suggestions and retrieval tombstone filtering
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: Tasks #447, #452
 - **Research Inputs**: specs/453_integrate_distill_todo_suggestions_tombstone_filtering/reports/01_distill-integration-research.md
