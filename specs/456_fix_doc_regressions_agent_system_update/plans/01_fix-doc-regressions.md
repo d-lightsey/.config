@@ -1,7 +1,7 @@
 # Implementation Plan: Fix Documentation Regressions from Agent System Update
 
 - **Task**: 456 - Fix documentation regressions from agent system update
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 1 hour
 - **Dependencies**: None
 - **Research Inputs**: specs/456_fix_doc_regressions_agent_system_update/reports/01_fix-doc-regressions.md

@@ -5,10 +5,10 @@
     {
       "project_number": 456,
       "project_name": "fix_doc_regressions_agent_system_update",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-16T20:27:09Z",
-      "last_updated": "2026-04-16T20:49:23Z",
+      "last_updated": "2026-04-16T20:59:44Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -20,9 +20,15 @@
           "path": "specs/456_fix_doc_regressions_agent_system_update/plans/01_fix-doc-regressions.md",
           "type": "plan",
           "summary": "3-phase plan fixing 4 documentation regressions across 3 files, all phases parallelizable"
+        },
+        {
+          "path": "specs/456_fix_doc_regressions_agent_system_update/summaries/01_fix-doc-regressions-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for fixing 4 documentation regressions across 3 files"
         }
       ],
-      "session_id": "sess_1776372380_51fe2a"
+      "session_id": "sess_1776372664_a5644b",
+      "completion_summary": "Fixed 4 documentation regressions across 3 .claude/ files: added missing frontmatter fields to SKILL.md CREATE template, restored Planning Success and Implementation Partial examples to return-metadata-file.md, and added plan_metadata JSON example plus sequential plan note to plan-format.md."
     },
     {
       "project_number": 455,
