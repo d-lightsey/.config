@@ -166,7 +166,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Register in manifest.json and verify integration [NOT STARTED]
+### Phase 4: Register in manifest.json and verify integration [COMPLETED]
 
 **Goal**: Register all new artifacts in the founder extension manifest and verify end-to-end wiring.
 
