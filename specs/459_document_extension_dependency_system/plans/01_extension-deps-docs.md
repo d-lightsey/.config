@@ -1,7 +1,7 @@
 # Implementation Plan: Document Extension Dependency System
 
 - **Task**: 459 - document_extension_dependency_system
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1 hour
 - **Dependencies**: Task 457 (implementation complete)
 - **Research Inputs**: reports/01_extension-deps-docs.md
@@ -56,7 +56,7 @@ Advances "Agent System Quality" by reducing documentation drift. Supports "Exten
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Update High-Visibility Docs [NOT STARTED]
+### Phase 1: Update High-Visibility Docs [COMPLETED]
 
 **Goal**: Update the three most-read documentation files: CLAUDE.md, extensions/README.md, and project-overview.md.
 
@@ -115,7 +115,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update Architecture and Guide Docs [NOT STARTED]
+### Phase 2: Update Architecture and Guide Docs [COMPLETED]
 
 **Goal**: Update the three architecture/guide documents to reflect dependency resolution in load/unload processes and add resource-only extension pattern.
 

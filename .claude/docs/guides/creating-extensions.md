@@ -8,7 +8,7 @@ Step-by-step guide for creating a new domain extension for the .claude/ system.
 
 ## Overview
 
-Extensions are self-contained packages that add domain-specific support (agents, skills, rules, context) to the .claude/ system. Extensions can be loaded/unloaded via the extension picker without modifying core files.
+Extensions are self-contained packages that add domain-specific support (agents, skills, rules, context) to the .claude/ system. Extensions can be loaded/unloaded via the extension picker without modifying core files. Extensions can optionally declare dependencies on other extensions for shared resources.
 
 **When to Create an Extension**:
 - Adding support for a new language/framework (Rust, React, Go)
@@ -104,7 +104,7 @@ Follow the templates below for each file type.
 | `version` | Yes | Semantic version for update tracking |
 | `description` | Yes | Shown in picker UI |
 | `task_type` | Yes | Language code for orchestrator routing |
-| `dependencies` | No | Extensions that must load first |
+| `dependencies` | No | Extensions that must load first (auto-loaded silently) |
 | `provides` | Yes | Lists all files/directories provided |
 | `merge_targets` | Yes | Defines CLAUDE.md and index.json merging |
 | `mcp_servers` | No | MCP server configs to merge |
@@ -201,6 +201,39 @@ Context file metadata for agent discovery:
   ]
 }
 ```
+
+---
+
+## Resource-Only Extensions
+
+Extensions that provide only shared context (no agents, skills, commands, or routing) are called resource-only extensions. They exist to share resources between other extensions.
+
+**Example**: The `slidev` extension provides Slidev animation patterns and CSS style presets consumed by `founder` and `present`:
+
+```json
+{
+  "name": "slidev",
+  "version": "1.0.0",
+  "description": "Shared Slidev animation patterns and CSS style presets",
+  "dependencies": [],
+  "provides": {
+    "agents": [], "skills": [], "commands": [],
+    "rules": [], "context": ["project/slidev"],
+    "scripts": [], "hooks": []
+  },
+  "merge_targets": {
+    "index": { "source": "index-entries.json", "target": ".claude/context/index.json" }
+  }
+}
+```
+
+Consuming extensions declare the dependency: `"dependencies": ["slidev"]`. When founder or present is loaded, slidev is auto-loaded first if not already present.
+
+**Key characteristics**:
+- No `task_type` field (no routing)
+- No `EXTENSION.md` or `claudemd` merge target (nothing injected into CLAUDE.md)
+- Only `provides.context` populated
+- Loaded automatically as a dependency, not typically selected directly
 
 ---
 

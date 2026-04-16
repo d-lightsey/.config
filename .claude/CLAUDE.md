@@ -76,6 +76,8 @@ Extensions provide additional task type support (neovim, lean4, latex, typst, py
 
 When an extension is loaded, its routing entries are merged into the command tables and context index.
 
+Extensions can declare dependencies on other extensions via the `dependencies` array in manifest.json. Dependencies are auto-loaded silently when the parent extension is loaded, with circular detection and a depth limit of 5. See `.claude/context/guides/extension-development.md` for details.
+
 ## Command Reference
 
 All commands use checkpoint-based execution: GATE IN (preflight) -> DELEGATE (skill/agent) -> GATE OUT (postflight) -> COMMIT.

@@ -2,7 +2,7 @@
 
 [Back to Docs](../README.md) | [Adding Domains](../guides/adding-domains.md) | [Creating Extensions](../guides/creating-extensions.md)
 
-The extension system enables modular domain support that can be loaded and unloaded on demand. Extensions are self-contained packages containing agents, skills, rules, commands, and context files that integrate with the core .claude/ system when loaded.
+The extension system enables modular domain support that can be loaded and unloaded on demand. Extensions are self-contained packages containing agents, skills, rules, commands, and context files that integrate with the core .claude/ system when loaded. Extensions can optionally declare dependencies on other extensions for shared resources.
 
 ---
 
@@ -232,7 +232,12 @@ Configuration presets for different agent systems:
 
 ```
 1. Read manifest.json
-2. Check for conflicts (check_conflicts)
+2. Resolve dependencies:
+   a. Check manifest dependencies array
+   b. Auto-load any unloaded dependencies recursively (confirm=false)
+   c. Circular detection via loading stack; depth limit of 5
+   d. Re-read state from disk after dependency loads complete
+3. Check for conflicts (check_conflicts)
 3. Copy files:
    a. copy_simple_files(agents, .md)
    b. copy_simple_files(commands, .md)
@@ -264,7 +269,11 @@ Configuration presets for different agent systems:
 
 ```
 1. Read state (get extension info)
-2. Remove merged content:
+2. Check reverse dependencies:
+   a. Scan loaded extensions for ones declaring this extension in dependencies
+   b. If dependents exist, show warning: "Extension 'X' is required by: Y, Z"
+   c. Proceed with unload if user confirms (dependents are NOT cascade-unloaded)
+3. Remove merged content:
    a. remove_section() from CLAUDE.md
    b. remove_index_entries_tracked() from index.json
    c. unmerge_settings() if settings were merged

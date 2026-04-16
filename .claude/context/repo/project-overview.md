@@ -37,7 +37,9 @@ Extensions supply project-specific knowledge:
 - Coding standards and patterns
 - Tool-specific guides
 
-See `.claude/extensions/*/manifest.json` for available extensions and their capabilities.
+Extensions can declare dependencies on other extensions (e.g., founder and present both depend on slidev for shared Slidev animation patterns). Resource-only extensions like slidev/ provide only context files with no agents, skills, or routing.
+
+See `.claude/extensions/*/manifest.json` for available extensions, their capabilities, and dependency declarations.
 
 ## AI-Assisted Workflow
 

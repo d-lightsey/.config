@@ -34,6 +34,7 @@ Extensions add domain-specific elements:
 | founder | founder | Business strategy and startup operations |
 | present | present | Grant writing and proposal development |
 | memory | - | Learning and knowledge management |
+| slidev | - | Shared Slidev animation patterns and CSS style presets |
 
 ## Loading Extensions
 
@@ -48,6 +49,8 @@ When an extension is loaded:
 5. Extension index entries are merged into .claude/context/index.json (tracked for unload)
 6. EXTENSION.md content is injected into .claude/CLAUDE.md
 7. Post-load verification runs to check integrity
+
+Extensions can declare dependencies on other extensions via the `dependencies` array in manifest.json. When an extension with dependencies is loaded, unloaded dependencies are auto-loaded silently before proceeding. The picker preview shows each extension's dependencies and which loaded extensions depend on it.
 
 ## Extension Structure
 
