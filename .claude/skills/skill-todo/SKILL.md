@@ -152,21 +152,34 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
   </stage>
   
   <stage id="7" name="HarvestMemories">
-    <action>Scan artifacts for memory harvest suggestions</action>
+    <action>Collect, deduplicate, and classify memory candidates from state.json</action>
     <process>
-      1. For each completed task:
-         - Scan reports/ for insights and findings
-         - Scan plans/ for reusable patterns
-         - Check summaries/ for key learnings
-      2. Extract potential memory candidates:
-         - Research findings with general applicability
-         - Implementation patterns documented
-         - Configuration examples
-         - Workflow descriptions
-      3. Generate suggestions list with:
-         - Source file path
-         - Brief description of insight
-         - Suggested memory category (TECHNIQUE, PATTERN, CONFIG, WORKFLOW, INSIGHT)
+      1. Collect candidates from state.json:
+         - For each completed task in the archival batch:
+           - Read `memory_candidates // []` from the task's state.json entry
+           - Flatten into a single list, tagging each candidate with `task_number` provenance
+         - If no candidates across all tasks, set `harvest_candidates = []` and skip to Stage 8
+
+      2. Deduplicate against existing memory-index.json:
+         - Read `.memory/memory-index.json` (if missing or empty, skip dedup -- all candidates are CREATE)
+         - For each candidate, compute keyword overlap against every index entry:
+           ```
+           overlap = |candidate.suggested_keywords INTERSECT entry.keywords| / |candidate.suggested_keywords|
+           ```
+         - Classify dedup action:
+           - overlap > 90%: mark `dedup_action = "NOOP"` (exclude from prompt)
+           - overlap > 60%: mark `dedup_action = "UPDATE"` (present with warning label)
+           - overlap <= 60%: mark `dedup_action = "CREATE"` (standard new memory)
+         - If ALL candidates are NOOP after dedup, set `harvest_candidates = []` and skip to Stage 8
+
+      3. Apply three-tier classification:
+         - **Tier 1** (pre-selected): category in [PATTERN, CONFIG] AND confidence >= 0.8
+         - **Tier 2** (shown, not pre-selected): category in [WORKFLOW, TECHNIQUE] AND confidence >= 0.5
+         - **Tier 3** (hidden by default): category == INSIGHT OR confidence < 0.5
+         - Assign `tier` (1, 2, or 3) to each non-NOOP candidate
+
+      4. Store the classified candidate list as `harvest_candidates`:
+         Each entry contains: `task_number`, `content`, `category`, `source_artifact`, `confidence`, `suggested_keywords`, `tier`, `dedup_action`
     </process>
   </stage>
   
@@ -192,7 +205,23 @@ Direct execution skill for archiving tasks, updating CHANGE_LOG.md, and suggesti
       1. **Orphaned directories**: track/skip options per directory
       2. **Misplaced directories**: move/skip options per directory
       3. **TODO.md orphans**: multiSelect list of completed/abandoned tasks not in state.json; store as `selected_todo_orphans`
-      4. **Memory harvest suggestions**: multiSelect with category-tagged options (e.g., "[PATTERN] Config from task 142"); store selected for creation
+      4. **Memory harvest candidates** (from `harvest_candidates`):
+         - If `harvest_candidates` is empty (no candidates or all NOOP), skip this sub-step entirely
+         - Build multiSelect option list, ordered by tier:
+           a. **Tier 1 candidates first** (pre-selected): Format each as:
+              `[PRE-SELECTED] [TIER 1] [{CATEGORY}] Task {N}: {content first 80 chars}... (confidence: {X.XX})`
+              If `dedup_action == "UPDATE"`, append: ` [WARNING: similar memory exists]`
+           b. **Tier 2 candidates** (shown, not pre-selected): Format each as:
+              `[TIER 2] [{CATEGORY}] Task {N}: {content first 80 chars}... (confidence: {X.XX})`
+              If `dedup_action == "UPDATE"`, append: ` [WARNING: similar memory exists]`
+           c. **Tier 3 expansion option**: If Tier 3 candidates exist, add a final option:
+              `Show {count} more candidates (Tier 3 -- low confidence/insight)`
+         - Present AskUserQuestion with multiSelect
+         - If user selected the Tier 3 expansion option:
+           - Re-prompt with ALL tiers visible (Tier 1 + Tier 2 + Tier 3), Tier 1 still pre-selected
+           - Tier 3 candidates formatted as:
+             `[TIER 3] [{CATEGORY}] Task {N}: {content first 80 chars}... (confidence: {X.XX})`
+         - Store user-approved candidates as `approved_memories` for Stage 14
     </process>
   </stage>
   

@@ -1,7 +1,7 @@
 # Implementation Plan: Upgrade /todo memory harvest with pre-classification and batch review
 
 - **Task**: 447 - Upgrade /todo memory harvest with pre-classification and batch review
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3 hours
 - **Dependencies**: Task 446 (completed)
 - **Research Inputs**: specs/447_upgrade_todo_memory_harvest_pre_classification/reports/01_todo-harvest-research.md
@@ -65,7 +65,7 @@ No ROADMAP.md items directly reference this task. However, this task is part of 
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Rewrite Stage 7 (HarvestMemories) [NOT STARTED]
+### Phase 1: Rewrite Stage 7 (HarvestMemories) [COMPLETED]
 
 **Goal**: Replace heuristic artifact scanning with structured consumption of `memory_candidates` from state.json, including deduplication and three-tier classification.
 
@@ -91,7 +91,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Rewrite Stage 9 sub-step 4 (InteractivePrompts) [NOT STARTED]
+### Phase 2: Rewrite Stage 9 sub-step 4 (InteractivePrompts) [COMPLETED]
 
 **Goal**: Replace the simple multiSelect memory prompt with tiered AskUserQuestion presentation showing pre-selected Tier 1 candidates, visible Tier 2 candidates, and a "Show Tier 3" expansion option.
 
@@ -119,7 +119,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Rewrite Stage 14 (CreateMemories) [NOT STARTED]
+### Phase 3: Rewrite Stage 14 (CreateMemories) [IN PROGRESS]
 
 **Goal**: Replace the stub memory creation with autonomous file creation using skill-memory's template and slug patterns, followed by batch index regeneration.
 

@@ -62,10 +62,10 @@
     {
       "project_number": 452,
       "project_name": "implement_distill_compress_and_refine_operations",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:30:45Z",
+      "last_updated": "2026-04-16T19:31:32Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -181,10 +181,10 @@
     {
       "project_number": 448,
       "project_name": "add_passive_memory_nudge_stop_hook",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:30:23Z",
+      "last_updated": "2026-04-16T19:31:32Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -206,10 +206,10 @@
     {
       "project_number": 447,
       "project_name": "upgrade_todo_memory_harvest_pre_classification",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:31:27Z",
+      "last_updated": "2026-04-16T19:31:32Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
