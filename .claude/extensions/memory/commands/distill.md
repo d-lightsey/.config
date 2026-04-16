@@ -21,7 +21,7 @@ description: Analyze memory vault health, score memories for maintenance, and ru
     **Sub-Mode Dispatch** (first match wins):
     1. No arguments (bare invocation) -> Report mode (health report)
     2. `--purge` -> Purge mode (tombstone stale/zero-retrieval memories) [available - task 450]
-    3. `--merge` -> Merge mode (combine duplicate memories) [placeholder - task 451]
+    3. `--merge` -> Merge mode (combine duplicate memories) [available - task 451]
     4. `--compress` -> Compress mode (reduce oversized memories) [placeholder - task 452]
     5. `--refine` -> Refine mode (improve memory quality) [placeholder - task 452]
     6. `--gc` -> Garbage collection (hard-delete tombstoned memories past grace period) [available - task 450]
@@ -67,7 +67,7 @@ description: Analyze memory vault health, score memories for maintenance, and ru
       |----------|--------|------|
       | report | Available | 449 |
       | purge | Available | 450 |
-      | merge | Placeholder | 451 |
+      | merge | Available | 451 |
       | compress | Placeholder | 452 |
       | refine | Placeholder | 452 |
       | gc | Available | 450 |
@@ -76,8 +76,8 @@ description: Analyze memory vault health, score memories for maintenance, and ru
       If sub-mode is a placeholder, display:
       ```
       /distill --{sub_mode} is not yet implemented.
-      Currently available: /distill (health report), /distill --purge, /distill --gc
-      See tasks 451-452 for planned sub-mode implementations.
+      Currently available: /distill (health report), /distill --purge, /distill --merge, /distill --gc
+      See task 452 for planned sub-mode implementations.
       ```
     </process>
   </step_1>
@@ -116,6 +116,13 @@ description: Analyze memory vault health, score memories for maintenance, and ru
         - Log purge operation to distill-log.json (type: "purge")
         - Update memory_health in state.json
 
+      Merge mode:
+        - Display merged pair count, primary/secondary IDs, overlap scores
+        - Show keyword superset verification results per pair
+        - Show cross-reference updates performed
+        - Log merge operation to distill-log.json (type: "merge")
+        - Update memory_health in state.json
+
       GC mode:
         - Display deleted memory count and IDs
         - Show before/after token counts
@@ -148,7 +155,7 @@ description: Analyze memory vault health, score memories for maintenance, and ru
 <error_handling>
   <argument_errors>
     - Unknown flag -> "Unknown flag: {flag}. Available: --purge, --merge, --compress, --refine, --gc, --auto, --dry-run, --verbose"
-    - Unimplemented sub-mode -> "Sub-mode not yet implemented. Currently available: /distill (health report), /distill --purge, /distill --gc"
+    - Unimplemented sub-mode -> "Sub-mode not yet implemented. Currently available: /distill (health report), /distill --purge, /distill --merge, /distill --gc"
   </argument_errors>
 
   <execution_errors>
@@ -174,6 +181,7 @@ description: Analyze memory vault health, score memories for maintenance, and ru
   <writes>
     - .memory/distill-log.json (operation log entries)
     - specs/state.json (memory_health field updates)
-    - .memory/10-Memories/*.md (only for purge/merge/compress operations)
+    - .memory/10-Memories/*.md (frontmatter mutation for purge; deletion for gc; content merge for merge/compress)
+    - .memory/memory-index.json (status field updates for purge; entry removal for gc)
   </writes>
 </state_management>

@@ -1474,6 +1474,7 @@ Operations are logged to `.memory/distill-log.json` for tracking maintenance his
     "total_merged": 0,
     "total_compressed": 0,
     "total_refined": 0,
+    "total_gc_deleted": 0,
     "last_operation": null
   }
 }
@@ -1488,7 +1489,7 @@ Operations are logged to `.memory/distill-log.json` for tracking maintenance his
 | `merge` | Duplicate memories combined | 451 |
 | `compress` | Oversized memories summarized | 452 |
 | `refine` | Memory quality improved | 452 |
-| `gc` | Combined purge + merge + compress | 452 |
+| `gc` | Hard-delete tombstoned memories past grace period | 450 |
 
 For `report` operations, `pre_metrics` and `post_metrics` are identical (no changes made).
 
