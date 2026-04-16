@@ -20,7 +20,7 @@ next_project_number: 456
 - **448** [NOT STARTED] -- Add passive memory nudge stop hook (depends: 446)
 - **447** [NOT STARTED] -- Upgrade /todo memory harvest with pre-classification and batch review (depends: 446)
 - **446** [NOT STARTED] -- Add memory candidate emission to agents and return metadata (depends: 445)
-- **445** [IMPLEMENTING] -- Implement two-phase auto-retrieval for memory system (depends: 444)
+- **445** [COMPLETED] -- Implement two-phase auto-retrieval for memory system (depends: 444)
 - **444** [COMPLETED] -- Create skill-memory with /learn command and memory index infrastructure
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -459,7 +459,7 @@ The Agent tool's `model` parameter already accepts `"haiku"`, `"sonnet"`, and `"
 
 ### 445. Implement two-phase auto-retrieval for memory system
 - **Effort**: large
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Dependencies**: Task #444
 
