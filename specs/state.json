@@ -5,12 +5,19 @@
     {
       "project_number": 455,
       "project_name": "separate_model_effort_flags_add_haiku_sonnet",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T21:00:00Z",
-      "last_updated": "2026-04-16T21:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": []
+      "last_updated": "2026-04-16T18:32:41Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/455_separate_model_effort_flags_add_haiku_sonnet/reports/01_model-effort-flags-research.md",
+          "type": "research",
+          "summary": "Comprehensive analysis of current flag system across 20+ files, identifies documentation inconsistencies, provides complete file inventory and two-dimensional refactoring approach"
+        }
+      ],
+      "session_id": "sess_1776363971_ac132f"
     },
     {
       "project_number": 454,
@@ -148,12 +155,19 @@
     {
       "project_number": 444,
       "project_name": "create_skill_memory_learn_command_index_infrastructure",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": []
+      "last_updated": "2026-04-16T18:32:00Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/444_create_skill_memory_learn_command_index_infrastructure/reports/01_skill-memory-research.md",
+          "type": "research",
+          "summary": "Research report revealing existing memory extension infrastructure and identifying 3 genuinely missing pieces: memory-index.json, template field additions, and backfilling"
+        }
+      ],
+      "session_id": "sess_1776363971_ac132f"
     },
     {
       "project_number": 87,
