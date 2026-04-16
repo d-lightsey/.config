@@ -104,7 +104,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Retrieval Exclusion and Link-Scan [NOT STARTED]
+### Phase 2: Retrieval Exclusion and Link-Scan [COMPLETED]
 
 **Goal**: Update retrieval paths to skip tombstoned memories and implement the link-scan warning step that runs after tombstone application.
 
@@ -133,7 +133,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: GC Sub-Mode -- Hard Deletion [NOT STARTED]
+### Phase 3: GC Sub-Mode -- Hard Deletion [COMPLETED]
 
 **Goal**: Implement the `--gc` sub-mode that identifies tombstoned memories past the 7-day grace period and performs hard deletion with user confirmation.
 
