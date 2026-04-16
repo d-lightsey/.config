@@ -142,7 +142,32 @@ Check if research reveals gaps in project context documentation:
    - Include in "Context Extension Recommendations" section
    - For meta tasks: omit this section or set to "none"
 
-### Stage 5: Create Research Report
+### Stage 5: Emit Memory Candidates
+
+Review findings from Stage 4 and emit 0-3 structured memory candidates for novel, reusable knowledge discovered during research. Candidates are written to the `.return-meta.json` metadata file (Stage 7).
+
+**What to capture** (research-specific):
+- Unexpected patterns or conventions found in the codebase
+- Reusable configurations or tool settings discovered
+- Workflow insights that would benefit future tasks
+- API behaviors or library quirks not documented elsewhere
+
+**What NOT to capture**:
+- Task-specific findings that only apply to this task
+- Information already documented in `.claude/context/` or `.memory/`
+- Obvious or well-known patterns
+
+**Candidate Construction**:
+For each candidate, create an object with:
+- `content`: Concise description of the reusable knowledge (~300 tokens max)
+- `category`: One of `TECHNIQUE`, `PATTERN`, `CONFIG`, `WORKFLOW`, `INSIGHT`
+- `source_artifact`: Path to the research report being created
+- `confidence`: Float 0-1 (>= 0.8 for clearly reusable, 0.5-0.8 for potentially useful, < 0.5 for speculative)
+- `suggested_keywords`: 3-6 keywords for memory index retrieval
+
+Store the candidates array in memory for inclusion in the metadata file at Stage 7. If no candidates are worth emitting, use an empty array.
+
+### Stage 6: Create Research Report
 
 Create directory and write report:
 
@@ -200,11 +225,11 @@ Create directory and write report:
 - References to documentation
 ```
 
-### Stage 6: Write Metadata File
+### Stage 7: Write Metadata File
 
-Write to `specs/{NNN}_{SLUG}/.return-meta.json` with status `researched`. Agent-specific metadata fields: `findings_count`. Set `next_steps` to `"Run /plan {N} to create implementation plan"`.
+Write to `specs/{NNN}_{SLUG}/.return-meta.json` with status `researched`. Agent-specific metadata fields: `findings_count`. Include `memory_candidates` array (from Stage 5) at the top level of the JSON output. Set `next_steps` to `"Run /plan {N} to create implementation plan"`.
 
-### Stage 7: Return Brief Text Summary
+### Stage 8: Return Brief Text Summary
 
 Return 3-6 bullet points summarizing: key findings, patterns discovered, report path, metadata status.
 

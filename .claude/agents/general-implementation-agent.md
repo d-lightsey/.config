@@ -184,9 +184,34 @@ Write to `specs/{NNN}_{SLUG}/summaries/{NN}_{short-slug}-summary.md`:
 }
 ```
 
+### Stage 6b: Emit Memory Candidates
+
+Review work completed across all phases and emit 0-3 structured memory candidates for reusable knowledge discovered during implementation.
+
+**What to capture** (implementation-specific):
+- Reusable code patterns or architecture approaches that worked well
+- Configuration discoveries (tool settings, flags, build options)
+- Debugging techniques that resolved non-obvious issues
+- File organization or naming patterns worth preserving
+
+**What NOT to capture**:
+- Task-specific implementation details that only apply to this task
+- Information already documented in `.claude/context/` or `.memory/`
+- Obvious or well-known patterns
+
+**Candidate Construction**:
+For each candidate, create an object with:
+- `content`: Concise description of the reusable knowledge (~300 tokens max)
+- `category`: One of `TECHNIQUE`, `PATTERN`, `CONFIG`, `WORKFLOW`, `INSIGHT`
+- `source_artifact`: Path to the implementation summary being created
+- `confidence`: Float 0-1 (>= 0.8 for clearly reusable, 0.5-0.8 for potentially useful, < 0.5 for speculative)
+- `suggested_keywords`: 3-6 keywords for memory index retrieval
+
+Store the candidates array in memory for inclusion in the metadata file at Stage 7. If no candidates are worth emitting, use an empty array.
+
 ### Stage 7: Write Metadata File
 
-Write to `specs/{NNN}_{SLUG}/.return-meta.json` with status `implemented|partial|failed`. Include `completion_data` with `completion_summary` (all tasks) and `claudemd_suggestions` (meta) or `roadmap_items` (non-meta). Agent-specific metadata fields: `phases_completed`, `phases_total`.
+Write to `specs/{NNN}_{SLUG}/.return-meta.json` with status `implemented|partial|failed`. Include `completion_data` with `completion_summary` (all tasks) and `claudemd_suggestions` (meta) or `roadmap_items` (non-meta). Include `memory_candidates` array (from Stage 6b) at the top level of the JSON output. Agent-specific metadata fields: `phases_completed`, `phases_total`.
 
 ### Stage 8: Return Brief Text Summary
 

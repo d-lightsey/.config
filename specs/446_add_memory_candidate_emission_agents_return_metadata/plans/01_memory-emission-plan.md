@@ -91,7 +91,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Agent Emission Stages [NOT STARTED]
+### Phase 2: Agent Emission Stages [COMPLETED]
 
 **Goal**: Add memory candidate emission instructions to all three core agent definitions.
 
