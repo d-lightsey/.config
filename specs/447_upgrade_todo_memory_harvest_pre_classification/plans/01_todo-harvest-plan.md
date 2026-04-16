@@ -119,7 +119,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Rewrite Stage 14 (CreateMemories) [IN PROGRESS]
+### Phase 3: Rewrite Stage 14 (CreateMemories) [COMPLETED]
 
 **Goal**: Replace the stub memory creation with autonomous file creation using skill-memory's template and slug patterns, followed by batch index regeneration.
 
@@ -147,7 +147,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Update Supporting Stages and Validate Consistency [NOT STARTED]
+### Phase 4: Update Supporting Stages and Validate Consistency [IN PROGRESS]
 
 **Goal**: Update Stage 8 (DryRunOutput) and Stage 16 (OutputResults) to reflect the new tiered candidate model, and verify cross-stage data flow consistency.
 
