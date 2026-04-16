@@ -48,16 +48,21 @@
     {
       "project_number": 453,
       "project_name": "integrate_distill_todo_suggestions_tombstone_filtering",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T19:43:21Z",
+      "last_updated": "2026-04-16T19:45:37Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
           "path": "specs/453_integrate_distill_todo_suggestions_tombstone_filtering/reports/01_distill-integration-research.md",
           "type": "research",
           "summary": "Research on /distill + /todo integration and tombstone filtering"
+        },
+        {
+          "path": "specs/453_integrate_distill_todo_suggestions_tombstone_filtering/plans/01_distill-integration-plan.md",
+          "type": "plan",
+          "summary": "3-phase plan: tombstone filter, /todo suggestions, state consistency"
         }
       ],
       "dependencies": [
