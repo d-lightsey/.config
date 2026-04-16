@@ -37,7 +37,7 @@ next_project_number: 460
 
 ### 459. Document extension dependency system
 - **Effort**: small
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNING]
 - **Task Type**: meta
 - **Research**: [459_document_extension_dependency_system/reports/01_extension-deps-docs.md]
 

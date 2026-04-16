@@ -133,7 +133,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Create /consult command and skill-consult wrapper [NOT STARTED]
+### Phase 3: Create /consult command and skill-consult wrapper [COMPLETED]
 
 **Goal**: Create the command file and skill wrapper that route to the agent.
 
