@@ -1,7 +1,7 @@
 # Implementation Plan: Two-Phase Auto-Retrieval for Memory System
 
 - **Task**: 445 - Implement two-phase auto-retrieval for memory system
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3.5 hours
 - **Dependencies**: Task 444 (memory-index.json creation -- completed)
 - **Research Inputs**: specs/445_implement_two_phase_auto_retrieval_memory/reports/01_auto-retrieval-research.md
@@ -70,7 +70,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 1: Create Shared Retrieval Script [NOT STARTED]
+### Phase 1: Create Shared Retrieval Script [COMPLETED]
 
 **Goal**: Build the memory-retrieve.sh script that encapsulates both phases of retrieval (score index, read files) and outputs formatted memory context.
 
@@ -101,7 +101,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Integrate Retrieval into Skills [NOT STARTED]
+### Phase 2: Integrate Retrieval into Skills [IN PROGRESS]
 
 **Goal**: Add Stage 4a (Memory Retrieval) to skill-researcher, skill-planner, and skill-implementer, injecting retrieved memory into the delegation prompt.
 

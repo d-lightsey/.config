@@ -99,7 +99,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Implement Scoring Engine in SKILL.md [NOT STARTED]
+### Phase 2: Implement Scoring Engine in SKILL.md [IN PROGRESS]
 
 **Goal**: Add the four-component scoring engine to skill-memory's SKILL.md as part of the mode=distill section.
 

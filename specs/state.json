@@ -102,10 +102,10 @@
     {
       "project_number": 449,
       "project_name": "create_distill_command_scoring_engine_health_report",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T18:57:21Z",
+      "last_updated": "2026-04-16T18:57:52Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
@@ -166,10 +166,10 @@
     {
       "project_number": 445,
       "project_name": "implement_two_phase_auto_retrieval_memory",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T18:57:37Z",
+      "last_updated": "2026-04-16T18:57:52Z",
       "next_artifact_number": 2,
       "artifacts": [
         {
