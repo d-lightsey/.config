@@ -76,28 +76,42 @@
     {
       "project_number": 451,
       "project_name": "implement_distill_combine_keyword_superset_guarantee",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-16T19:08:30Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/451_implement_distill_combine_keyword_superset_guarantee/reports/01_distill-combine-research.md",
+          "type": "research",
+          "summary": "Research on distill combine operation with keyword superset guarantee"
+        }
+      ],
       "dependencies": [
         449
-      ]
+      ],
+      "session_id": "sess_1776366318_6bc332"
     },
     {
       "project_number": 450,
       "project_name": "implement_distill_purge_tombstone_pattern",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-16T19:08:56Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/450_implement_distill_purge_tombstone_pattern/reports/01_distill-purge-research.md",
+          "type": "research",
+          "summary": "Research on distill purge operation with tombstone pattern"
+        }
+      ],
       "dependencies": [
         449
-      ]
+      ],
+      "session_id": "sess_1776366318_6bc332"
     },
     {
       "project_number": 449,
@@ -159,15 +173,22 @@
     {
       "project_number": 446,
       "project_name": "add_memory_candidate_emission_agents_return_metadata",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-16T20:00:00Z",
-      "last_updated": "2026-04-16T20:00:00Z",
-      "next_artifact_number": 1,
-      "artifacts": [],
+      "last_updated": "2026-04-16T19:08:44Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/446_add_memory_candidate_emission_agents_return_metadata/reports/01_memory-emission-research.md",
+          "type": "research",
+          "summary": "Research on memory candidate emission in agents and return metadata"
+        }
+      ],
       "dependencies": [
         445
-      ]
+      ],
+      "session_id": "sess_1776366318_6bc332"
     },
     {
       "project_number": 445,
