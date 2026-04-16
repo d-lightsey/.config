@@ -123,7 +123,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Consolidate Template and Rule Duplicates [NOT STARTED]
+### Phase 3: Consolidate Template and Rule Duplicates [COMPLETED]
 
 **Goal**: Eliminate the report/plan/summary templates from artifact-templates.md (they duplicate format files and introduce inconsistencies) and slim down plan-format-enforcement.md to a redirect.
 

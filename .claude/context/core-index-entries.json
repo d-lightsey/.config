@@ -834,12 +834,12 @@
       "path": "reference/artifact-templates.md",
       "domain": "core",
       "subdomain": "reference",
-      "summary": "Templates for task artifacts (reports, plans, summaries)",
-      "line_count": 179,
-      "keywords": ["reference", "artifact", "templates"],
+      "summary": "Error report template (other artifact types use format files directly)",
+      "line_count": 50,
+      "keywords": ["reference", "artifact", "templates", "error-report"],
       "topics": ["documentation"],
       "load_when": {
-        "agents": ["general-research-agent", "planner-agent", "general-implementation-agent"],
+        "agents": [],
         "task_types": [],
         "commands": []
       }

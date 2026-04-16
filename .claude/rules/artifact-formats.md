@@ -114,5 +114,7 @@ Use count-aware format from `.claude/context/reference/state-management-schema.m
 
 ## Template Reference
 
-For complete artifact templates (research reports, implementation plans, summaries, error reports), see:
-- [Artifact Templates](.claude/context/reference/artifact-templates.md)
+For error report templates, see [Artifact Templates](.claude/context/reference/artifact-templates.md). For research reports, plans, and summaries, use the format files directly:
+- `.claude/context/formats/report-format.md`
+- `.claude/context/formats/plan-format.md`
+- `.claude/context/formats/summary-format.md`
