@@ -959,19 +959,6 @@ function M.create_special_entries(config)
   local entries = {}
 
   table.insert(entries, {
-    is_load_all = true,
-    name = "~~~load_all",
-    display = string.format(
-      "%-40s %s",
-      "[Load Core Agent System]",
-      "Sync core system artifacts (excludes extensions)"
-    ),
-    command = nil,
-    entry_type = "special",
-    config = config,  -- Thread config for previewer access
-  })
-
-  table.insert(entries, {
     is_help = true,
     name = "~~~help",
     display = string.format(
