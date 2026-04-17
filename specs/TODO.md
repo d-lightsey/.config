@@ -10,7 +10,7 @@ next_project_number: 476
 
 ### Pending
 
-- **474** [IMPLEMENTING] -- Create core extension README.md
+- **474** [COMPLETED] -- Create core extension README.md
 - **473** [COMPLETED] -- Clean up stale permissions in settings.local.json
 - **472** [COMPLETED] -- Fix lean MCP script permissions
 - **471** [COMPLETED] -- Add model: opus to nix agent frontmatter
@@ -32,11 +32,12 @@ next_project_number: 476
 
 ### 474. Create core extension README.md
 - **Effort**: small
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Dependencies**: 466, 470
 - **Research**: [474_create_core_extension_readme/reports/01_team-research.md]
 - **Plan**: [474_create_core_extension_readme/plans/01_core-extension-readme.md]
+- **Summary**: [474_create_core_extension_readme/summaries/01_core-extension-readme-summary.md]
 
 **Description**: Create a README.md for the core extension at `extensions/core/README.md`. The core extension currently fails `check-extension-docs.sh` because it has no README. This is a ROADMAP item for doc generation. The README should document core's role as the foundational system payload (not a peer extension), its provides categories, and why it has no routing block.
 

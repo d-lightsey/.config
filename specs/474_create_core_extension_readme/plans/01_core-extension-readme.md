@@ -1,7 +1,7 @@
 # Implementation Plan: Create Core Extension README
 
 - **Task**: 474 - Create core extension README.md
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md

@@ -13,10 +13,10 @@
     {
       "project_number": 474,
       "project_name": "create_core_extension_readme",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-17T06:41:09Z",
-      "last_updated": "2026-04-17T16:35:54Z",
+      "last_updated": "2026-04-17T16:40:45Z",
       "dependencies": [
         466,
         470
@@ -34,6 +34,28 @@
           "path": "specs/474_create_core_extension_readme/plans/01_core-extension-readme.md",
           "type": "plan",
           "summary": "3-phase implementation plan for core extension README and validator routing exemption fix"
+        },
+        {
+          "path": "specs/474_create_core_extension_readme/summaries/01_core-extension-readme-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for core extension README creation"
+        }
+      ],
+      "completion_summary": "Created core extension README.md (178 lines) with System Payload Inventory pattern, added routing_exempt manifest flag, and updated check-extension-docs.sh validator to honor the exemption. Core now passes all doc-lint checks.",
+      "claudemd_suggestions": "Added routing_exempt field to core manifest.json, updated check-extension-docs.sh with routing exemption logic in check_routing_block()",
+      "memory_candidates": [
+        {
+          "content": "The check-extension-docs.sh validator supports a routing_exempt flag in manifest.json. Extensions with \"routing_exempt\": true skip the check_routing_block() validation, which requires a routing block for extensions that declare skills. This is useful for infrastructure extensions like core that provide skills but handle routing through hardcoded orchestrator logic rather than manifest routing entries.",
+          "category": "CONFIG",
+          "source_artifact": "specs/474_create_core_extension_readme/summaries/01_core-extension-readme-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "routing_exempt",
+            "check-extension-docs",
+            "manifest",
+            "validator",
+            "core-extension"
+          ]
         }
       ]
     },
