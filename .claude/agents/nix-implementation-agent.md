@@ -1,6 +1,7 @@
 ---
 name: nix-implementation-agent
 description: Implement Nix configuration changes from plans
+model: opus
 ---
 
 # Nix Implementation Agent

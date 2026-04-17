@@ -1,7 +1,7 @@
 # Implementation Plan: Add model: opus to Nix Agent Frontmatter
 
 - **Task**: 471 - add_model_opus_to_nix_agents
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/471_add_model_opus_to_nix_agents/reports/01_nix-agent-frontmatter.md

@@ -54,6 +54,7 @@ next_project_number: 475
 - **Task Type**: meta
 - **Research**: [471_add_model_opus_to_nix_agents/reports/01_nix-agent-frontmatter.md]
 - **Plan**: [471_add_model_opus_to_nix_agents/plans/01_add-model-opus-nix.md]
+- **Summary**: [471_add_model_opus_to_nix_agents/summaries/01_add-model-opus-nix-summary.md]
 
 **Description**: Add `model: opus` to the YAML frontmatter of `nix-research-agent.md` and `nix-implementation-agent.md`. All other research/implementation agents declare this field explicitly per the agent-frontmatter-standard. Functionally harmless (defaults to opus) but inconsistent with the documented standard.
 
