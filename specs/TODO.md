@@ -12,9 +12,9 @@ next_project_number: 475
 
 - **474** [NOT STARTED] -- Create core extension README.md
 - **473** [NOT STARTED] -- Clean up stale permissions in settings.local.json
-- **472** [PLANNED] -- Fix lean MCP script permissions
-- **471** [PLANNED] -- Add model: opus to nix agent frontmatter
-- **470** [PLANNED] -- Fix loader to handle root-level context files
+- **472** [COMPLETED] -- Fix lean MCP script permissions
+- **471** [COMPLETED] -- Add model: opus to nix agent frontmatter
+- **470** [IMPLEMENTING] -- Fix loader to handle root-level context files
 - **469** [COMPLETED] -- Systematically review agent system post-refactor
 - **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
@@ -40,16 +40,17 @@ next_project_number: 475
 
 ### 472. Fix lean MCP script permissions
 - **Effort**: small
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [472_fix_lean_mcp_script_permissions/reports/01_script-permissions-fix.md]
 - **Plan**: [472_fix_lean_mcp_script_permissions/plans/01_script-permissions-fix.md]
+- **Summary**: [472_fix_lean_mcp_script_permissions/summaries/01_script-permissions-summary.md]
 
 **Description**: Add execute permissions to `setup-lean-mcp.sh` and `verify-lean-mcp.sh` in `extensions/core/scripts/`. Both have shebangs but are `-rw-r--r--` unlike all other scripts which are executable. The loader copies permissions verbatim, so fixing the source fixes the deployed copies on next load.
 
 ### 471. Add model: opus to nix agent frontmatter
 - **Effort**: small
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Research**: [471_add_model_opus_to_nix_agents/reports/01_nix-agent-frontmatter.md]
 - **Plan**: [471_add_model_opus_to_nix_agents/plans/01_add-model-opus-nix.md]
@@ -58,7 +59,7 @@ next_project_number: 475
 
 ### 470. Fix loader to handle root-level context files
 - **Effort**: medium
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: neovim
 - **Research**: [470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md]
 - **Plan**: [470_fix_loader_root_level_context_files/plans/01_loader-context-fix.md]
@@ -125,7 +126,7 @@ Lives in `.claude/` AFTER extensions are loaded — commands, agents, skills, ru
 
 ### 466. Convert core-index-entries.json from static fixture to standard merge_targets
 - **Effort**: TBD
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Parent Task**: 465
 - **Research**: [466_convert_core_index_entries/reports/01_convert-merge-targets.md]
@@ -197,7 +198,7 @@ Key changes: (1) Move core files from `.claude/{agents,commands,rules,skills,con
 ## Recommended Order
 
 Wave 1 (independent, parallel):
-- **466** [PLANNED] -- Convert core-index-entries.json to merge_targets
+- **466** [IMPLEMENTING] -- Convert core-index-entries.json to merge_targets
 - **470** [NOT STARTED] -- Fix loader root-level context files
 - **471** [NOT STARTED] -- Add model: opus to nix agents (trivial, batch with 472)
 - **472** [NOT STARTED] -- Fix lean MCP script permissions (trivial, batch with 471)

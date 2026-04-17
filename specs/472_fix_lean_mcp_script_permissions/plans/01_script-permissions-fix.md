@@ -1,7 +1,7 @@
 # Implementation Plan: Task #472
 
 - **Task**: 472 - fix_lean_mcp_script_permissions
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/472_fix_lean_mcp_script_permissions/reports/01_script-permissions-fix.md
