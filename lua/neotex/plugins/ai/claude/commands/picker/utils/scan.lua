@@ -50,12 +50,16 @@ end
 --- @param exclude_patterns table|nil Optional array of relative path strings to exclude (e.g., {"project/repo/project-overview.md"})
 --- @param base_dir string|nil Base directory name (default: ".claude", use ".opencode" for OpenCode)
 --- @param skip_symlinks boolean|nil Skip symlink files as defense in depth (default: false)
+--- @param source_base_dir string|nil Override base dir for global source path only (e.g., ".claude/extensions/core")
 --- @return table Array of file sync info {name, global_path, local_path, action, is_subdir}
-function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive, exclude_patterns, base_dir, skip_symlinks)
+function M.scan_directory_for_sync(global_dir, local_dir, subdir, extension, recursive, exclude_patterns, base_dir, skip_symlinks, source_base_dir)
   if recursive == nil then recursive = true end
   base_dir = base_dir or ".claude"
 
-  local global_path = global_dir .. "/" .. base_dir .. "/" .. subdir
+  -- source_base_dir allows reading from a different location (e.g., extensions/core/)
+  -- while still writing to the standard base_dir destination in the project
+  local effective_source_base = source_base_dir or base_dir
+  local global_path = global_dir .. "/" .. effective_source_base .. "/" .. subdir
   local local_path = local_dir .. "/" .. base_dir .. "/" .. subdir
 
   local all_files = {}

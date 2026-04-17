@@ -705,6 +705,13 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   local allow_list = core_provides and manifest.build_allow_list(core_provides) or nil
   local blocklist = manifest.aggregate_extension_artifacts(extension_cfg)
 
+  -- For .claude base_dir, core artifact categories (agents, commands, rules, skills, etc.)
+  -- are now physically located in extensions/core/ after the Phase 2 migration.
+  -- We read from {global_dir}/.claude/extensions/core/{subdir} but write to
+  -- {project_dir}/.claude/{subdir} to maintain the standard project layout.
+  -- For .opencode, no core extension migration has occurred, so paths are unchanged.
+  local core_source_base = (base_dir == ".claude") and ".claude/extensions/core" or nil
+
   -- Helper to scan with base_dir and filtering threaded through.
   -- When an allow-list exists for the category, files are post-filtered to only
   -- include those in the allow-list. Otherwise, falls back to blocklist exclusion.
@@ -713,7 +720,8 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   -- @param recursive boolean|nil Recursive scanning (default true)
   -- @param extra_exclude table|nil Additional exclude patterns to merge
   -- @param filter_category string|nil Which category to filter (e.g., "agents", "skills")
-  local function sync_scan(subdir, ext, recursive, extra_exclude, filter_category)
+  -- @param use_core_source boolean|nil Read from extensions/core/ instead of base_dir root (default: true for .claude)
+  local function sync_scan(subdir, ext, recursive, extra_exclude, filter_category, use_core_source)
     local exclude = extra_exclude and vim.deepcopy(extra_exclude) or {}
 
     -- Merge source-side exclusions from .sync-exclude
@@ -731,7 +739,16 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
       end
     end
 
-    local results = scan.scan_directory_for_sync(global_dir, project_dir, subdir, ext, recursive, exclude, base_dir)
+    -- Determine source base: core categories use extensions/core/ as the global source
+    -- (use_core_source defaults to true when core_source_base is set, false when nil)
+    local source_base
+    if use_core_source == false then
+      source_base = nil  -- Use standard base_dir for source
+    else
+      source_base = core_source_base  -- nil for .opencode (no override), path for .claude
+    end
+
+    local results = scan.scan_directory_for_sync(global_dir, project_dir, subdir, ext, recursive, exclude, base_dir, nil, source_base)
 
     -- Allow-list post-filter: only keep files that appear in the core provides
     if allow_list and filter_category and allow_list[filter_category] then
@@ -763,6 +780,7 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   end
 
   -- Core artifacts common to both systems (with blocklist filtering)
+  -- These categories are sourced from extensions/core/ in the global .claude directory
   artifacts.commands = sync_scan("commands", "*.md", true, nil, "commands")
 
   -- Use config-provided agents_subdir (different for .claude vs .opencode)
@@ -820,9 +838,9 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
     end
   end
 
-  -- Systemd (multiple file types: .service, .timer) - shared by both systems
-  local systemd_service = sync_scan("systemd", "*.service")
-  local systemd_timer = sync_scan("systemd", "*.timer")
+  -- Systemd: not a core extension category; read from base_dir root (not extensions/core/)
+  local systemd_service = sync_scan("systemd", "*.service", true, nil, nil, false)
+  local systemd_timer = sync_scan("systemd", "*.timer", true, nil, nil, false)
   artifacts.systemd = {}
   for _, file in ipairs(systemd_service) do
     table.insert(artifacts.systemd, file)
@@ -832,10 +850,12 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   end
 
   -- .claude-specific artifacts (directories that don't exist in .opencode/)
+  -- lib and tests are not core extension categories; read from base_dir root
   if base_dir == ".claude" then
-    artifacts.lib = sync_scan("lib", "*.sh")
-    artifacts.tests = sync_scan("tests", "test_*.sh")
-    artifacts.settings = sync_scan("", "settings.json")
+    artifacts.lib = sync_scan("lib", "*.sh", true, nil, nil, false)
+    artifacts.tests = sync_scan("tests", "test_*.sh", true, nil, nil, false)
+    -- Settings are not in extensions/core/; read from base_dir root
+    artifacts.settings = sync_scan("", "settings.json", true, nil, nil, false)
   end
 
   -- Root files vary by system
