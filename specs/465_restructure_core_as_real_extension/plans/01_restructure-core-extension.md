@@ -98,7 +98,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Physical File Migration [NOT STARTED]
+### Phase 2: Physical File Migration [COMPLETED]
 
 **Goal**: Move all ~208 core files from `.claude/` root directories into `.claude/extensions/core/` using `git mv` to preserve history.
 
@@ -136,7 +136,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Manifest and Virtual Flag Removal [NOT STARTED]
+### Phase 3: Manifest and Virtual Flag Removal [COMPLETED]
 
 **Goal**: Update the core manifest to remove `"virtual": true` and add `merge_targets` for CLAUDE.md generation. Remove virtual fast-path code from the loader.
 

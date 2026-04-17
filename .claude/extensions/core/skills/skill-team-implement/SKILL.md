@@ -6,7 +6,7 @@ allowed-tools: Task, Bash, Edit, Read, Write, Glob
 # Context loaded by lead during coordination:
 #   - .claude/context/patterns/team-orchestration.md
 #   - .claude/context/formats/team-metadata-extension.md
-#   - .claude/utils/team-wave-helpers.md
+#   - .claude/extensions/core/context/reference/team-wave-helpers.md
 ---
 
 # Team Implement Skill
@@ -21,7 +21,7 @@ Reference (load as needed during coordination):
 - Path: `.claude/context/patterns/team-orchestration.md` - Wave coordination patterns
 - Path: `.claude/context/formats/team-metadata-extension.md` - Team result schema
 - Path: `.claude/context/formats/return-metadata-file.md` - Base metadata schema
-- Path: `.claude/utils/team-wave-helpers.md` - Reusable wave patterns
+- Path: `.claude/extensions/core/context/reference/team-wave-helpers.md` - Reusable wave patterns
 
 ## Trigger Conditions
 

@@ -1,9 +1,15 @@
 {
   "name": "core",
   "version": "1.0.0",
-  "description": "Virtual core manifest describing the base agent system files. These files are already in place and are not copied or removed by the extension loader.",
-  "virtual": true,
+  "description": "Core agent system extension providing base commands, agents, rules, skills, scripts, hooks, and context for the Claude Code agent infrastructure.",
   "dependencies": [],
+  "merge_targets": {
+    "claudemd": {
+      "source": "merge-sources/claudemd.md",
+      "target": ".claude/CLAUDE.md",
+      "section_id": "core"
+    }
+  },
   "provides": {
     "agents": [
       "code-reviewer-agent.md",
@@ -115,6 +121,11 @@
       "templates",
       "troubleshooting",
       "workflows"
+    ],
+    "docs": "docs",
+    "templates": [
+      "extension-readme-template.md",
+      "settings.json"
     ]
   }
 }

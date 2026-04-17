@@ -354,24 +354,6 @@ function M.create(config)
     -- Ensure base directory exists
     helpers.ensure_directory(target_dir)
 
-    -- Virtual extension fast path: skip file copy/merge entirely.
-    -- Virtual extensions describe files already in place (e.g., core).
-    if ext_manifest.virtual then
-      -- Re-read state from disk to pick up changes from dependency loads
-      state = state_mod.read(project_dir, config)
-
-      -- Record state with empty file/dir lists (nothing was copied)
-      state = state_mod.mark_loaded(state, extension_name, ext_manifest, {}, {}, {}, {})
-      state_mod.write(project_dir, state, config)
-
-      helpers.notify(
-        string.format("Loaded virtual extension '%s' (no files copied)", extension_name),
-        "INFO"
-      )
-
-      return true, nil
-    end
-
     -- Track all installed files, directories, merged sections, and data skeleton files
     -- Declared before pcall so rollback can access them
     local all_files = {}
@@ -538,30 +520,6 @@ function M.create(config)
     -- Get extension manifest for reverse merge
     local extension = manifest_mod.get_extension(extension_name, config)
 
-    -- Virtual extension fast path: skip file removal (files are not owned by loader).
-    if extension and extension.manifest and extension.manifest.virtual then
-      if confirm then
-        local choice = vim.fn.confirm(
-          string.format("Unload virtual extension '%s'?\n\nNo files will be removed.", extension_name),
-          "&Unload\n&Cancel", 2
-        )
-        if choice ~= 1 then
-          helpers.notify("Extension unload cancelled", "INFO")
-          return false, "Cancelled by user"
-        end
-      end
-
-      state = state_mod.mark_unloaded(state, extension_name)
-      state_mod.write(project_dir, state, config)
-
-      helpers.notify(
-        string.format("Unloaded virtual extension '%s' (no files removed)", extension_name),
-        "INFO"
-      )
-
-      return true, nil
-    end
-
     -- Check if any loaded extensions depend on this one
     local dependents = {}
     local loaded_names = state_mod.list_loaded(state)
@@ -578,6 +536,20 @@ function M.create(config)
       end
     end
 
+    -- Hard block: prevent unloading core (or any extension) when dependents are loaded.
+    -- This is a hard error, not just a warning, to prevent orphaned dependent extensions.
+    if #dependents > 0 then
+      local dep_list = table.concat(dependents, ", ")
+      local msg = string.format(
+        "Cannot unload extension '%s': required by loaded extension(s): %s\n"
+          .. "Unload dependent extension(s) first.",
+        extension_name,
+        dep_list
+      )
+      helpers.notify(msg, "ERROR")
+      return false, msg
+    end
+
     -- Confirmation dialog
     if confirm then
       local total_files = #installed_files + #data_skeleton_files
@@ -586,22 +558,11 @@ function M.create(config)
         data_note = "\n(User-created data files will be preserved)"
       end
 
-      -- Warn about active dependents
-      local dep_warning = ""
-      if #dependents > 0 then
-        dep_warning = string.format(
-          "\n\nWARNING: Extension '%s' is required by: %s",
-          extension_name,
-          table.concat(dependents, ", ")
-        )
-      end
-
       local message = string.format(
-        "Unload extension '%s'?\n\nThis will remove %d files.%s%s",
+        "Unload extension '%s'?\n\nThis will remove %d files.%s",
         extension_name,
         total_files,
-        data_note,
-        dep_warning
+        data_note
       )
 
       local choice = vim.fn.confirm(message, "&Unload\n&Cancel", 2)
@@ -760,7 +721,6 @@ function M.create(config)
       version = extension.manifest.version,
       description = extension.manifest.description,
       language = extension.manifest.language,
-      virtual = extension.manifest.virtual or false,
       dependencies = extension.manifest.dependencies or {},
       provides = extension.manifest.provides,
       merge_targets = extension.manifest.merge_targets,
