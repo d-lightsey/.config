@@ -116,7 +116,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Validate and verify [IN PROGRESS]
+### Phase 3: Validate and verify [COMPLETED]
 
 **Goal**: Run the full validator and confirm zero failures for core.
 
