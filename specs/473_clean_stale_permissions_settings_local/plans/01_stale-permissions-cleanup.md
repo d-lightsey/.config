@@ -1,7 +1,7 @@
 # Implementation Plan: Clean Stale Permissions in settings.local.json
 
 - **Task**: 473 - Clean stale permissions in settings.local.json
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md
@@ -63,7 +63,7 @@ Advances roadmap item: "Zero stale references to removed/renamed files in `.clau
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Replace Stale Permissions Array [NOT STARTED]
+### Phase 1: Replace Stale Permissions Array [COMPLETED]
 
 **Goal**: Remove all 45 stale entries and retain only the 7 useful entries in `permissions.allow`.
 
@@ -94,7 +94,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Validate and Verify [NOT STARTED]
+### Phase 2: Validate and Verify [COMPLETED]
 
 **Goal**: Confirm the cleanup is correct and the file functions properly.
 
