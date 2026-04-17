@@ -61,6 +61,7 @@ next_project_number: 475
 - **Status**: [PLANNED]
 - **Task Type**: neovim
 - **Research**: [470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md]
+- **Plan**: [470_fix_loader_root_level_context_files/plans/01_loader-context-fix.md]
 
 **Description**: Fix `copy_context_dirs()` in `lua/neotex/plugins/ai/shared/extensions/loader.lua` to deploy individual files at the context root, not just subdirectories. Currently `vim.fn.isdirectory()` check silently skips root-level files like README.md, routing.md, and validation.md. The core manifest's `provides.context` only lists subdirectory names, so root files have no deployment path. Either add a `root_files` list within context provides, or have the loader scan for files alongside directories. Note: task 469 applied a manual workaround by committing these files directly to `.claude/context/`, but the loader bug persists -- reloading extensions will not regenerate them.
 

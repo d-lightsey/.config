@@ -19593,3 +19593,19 @@
 [2026-04-17T07:39:48-07:00] Task directory: specs/466_convert_core_index_entries
 [2026-04-17T07:39:48-07:00] Loop guard incremented to 2
 [2026-04-17T07:39:48-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-17T07:39:55-07:00] Postflight marker found at: specs/470_fix_loader_root_level_context_files/.postflight-pending
+[2026-04-17T07:39:55-07:00] Task directory: specs/470_fix_loader_root_level_context_files
+[2026-04-17T07:39:55-07:00] Loop guard initialized to 1
+[2026-04-17T07:39:55-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-17T07:39:56-07:00] Postflight marker found at: specs/470_fix_loader_root_level_context_files/.postflight-pending
+[2026-04-17T07:39:56-07:00] Task directory: specs/470_fix_loader_root_level_context_files
+[2026-04-17T07:39:56-07:00] Loop guard incremented to 2
+[2026-04-17T07:39:56-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-17T07:39:56-07:00] Postflight marker found at: specs/470_fix_loader_root_level_context_files/.postflight-pending
+[2026-04-17T07:39:56-07:00] Task directory: specs/470_fix_loader_root_level_context_files
+[2026-04-17T07:39:56-07:00] Loop guard incremented to 3
+[2026-04-17T07:39:56-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-17T07:39:59-07:00] Postflight marker found at: specs/470_fix_loader_root_level_context_files/.postflight-pending
+[2026-04-17T07:39:59-07:00] Task directory: specs/470_fix_loader_root_level_context_files
+[2026-04-17T07:39:59-07:00] Loop guard triggered: 3 >= 3
+[2026-04-17T07:39:59-07:00] Loop guard prevented continuation

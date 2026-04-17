@@ -121,6 +121,11 @@
           "path": "specs/470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md",
           "type": "research",
           "summary": "Research on fixing copy_context_dirs to handle root-level files"
+        },
+        {
+          "path": "specs/470_fix_loader_root_level_context_files/plans/01_loader-context-fix.md",
+          "type": "plan",
+          "summary": "Implementation plan with 4 phases: add filereadable fallback, update core manifest, verify deployment, verify unload/reload cycle"
         }
       ]
     },
