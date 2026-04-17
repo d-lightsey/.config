@@ -19589,3 +19589,7 @@
 [2026-04-17T07:39:39-07:00] Task directory: specs/466_convert_core_index_entries
 [2026-04-17T07:39:39-07:00] Loop guard initialized to 1
 [2026-04-17T07:39:39-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-17T07:39:48-07:00] Postflight marker found at: specs/466_convert_core_index_entries/.postflight-pending
+[2026-04-17T07:39:48-07:00] Task directory: specs/466_convert_core_index_entries
+[2026-04-17T07:39:48-07:00] Loop guard incremented to 2
+[2026-04-17T07:39:48-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit

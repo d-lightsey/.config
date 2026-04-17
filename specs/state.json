@@ -110,10 +110,10 @@
     {
       "project_number": 470,
       "project_name": "fix_loader_root_level_context_files",
-      "status": "planning",
+      "status": "planned",
       "task_type": "neovim",
       "created": "2026-04-17T06:41:09Z",
-      "last_updated": "2026-04-17T14:37:57Z",
+      "last_updated": "2026-04-17T14:39:47Z",
       "session_id": "sess_1713249000_plan470",
       "next_artifact_number": 2,
       "artifacts": [

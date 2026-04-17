@@ -14,7 +14,7 @@ next_project_number: 475
 - **473** [NOT STARTED] -- Clean up stale permissions in settings.local.json
 - **472** [PLANNED] -- Fix lean MCP script permissions
 - **471** [PLANNED] -- Add model: opus to nix agent frontmatter
-- **470** [PLANNING] -- Fix loader to handle root-level context files
+- **470** [PLANNED] -- Fix loader to handle root-level context files
 - **469** [COMPLETED] -- Systematically review agent system post-refactor
 - **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
@@ -58,7 +58,7 @@ next_project_number: 475
 
 ### 470. Fix loader to handle root-level context files
 - **Effort**: medium
-- **Status**: [PLANNING]
+- **Status**: [PLANNED]
 - **Task Type**: neovim
 - **Research**: [470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md]
 
