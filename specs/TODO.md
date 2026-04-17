@@ -12,9 +12,9 @@ next_project_number: 475
 
 - **474** [NOT STARTED] -- Create core extension README.md
 - **473** [NOT STARTED] -- Clean up stale permissions in settings.local.json
-- **472** [NOT STARTED] -- Fix lean MCP script permissions
-- **471** [NOT STARTED] -- Add model: opus to nix agent frontmatter
-- **470** [NOT STARTED] -- Fix loader to handle root-level context files
+- **472** [RESEARCHING] -- Fix lean MCP script permissions
+- **471** [RESEARCHING] -- Add model: opus to nix agent frontmatter
+- **470** [RESEARCHED] -- Fix loader to handle root-level context files
 - **469** [COMPLETED] -- Systematically review agent system post-refactor
 - **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
@@ -27,6 +27,7 @@ next_project_number: 475
 - **Effort**: small
 - **Status**: [NOT STARTED]
 - **Task Type**: meta
+- **Dependencies**: 466, 470
 
 **Description**: Create a README.md for the core extension at `extensions/core/README.md`. The core extension currently fails `check-extension-docs.sh` because it has no README. This is a ROADMAP item for doc generation. The README should document core's role as the foundational system payload (not a peer extension), its provides categories, and why it has no routing block.
 
@@ -39,24 +40,25 @@ next_project_number: 475
 
 ### 472. Fix lean MCP script permissions
 - **Effort**: small
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Task Type**: meta
 
 **Description**: Add execute permissions to `setup-lean-mcp.sh` and `verify-lean-mcp.sh` in `extensions/core/scripts/`. Both have shebangs but are `-rw-r--r--` unlike all other scripts which are executable. The loader copies permissions verbatim, so fixing the source fixes the deployed copies on next load.
 
 ### 471. Add model: opus to nix agent frontmatter
 - **Effort**: small
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHING]
 - **Task Type**: meta
 
 **Description**: Add `model: opus` to the YAML frontmatter of `nix-research-agent.md` and `nix-implementation-agent.md`. All other research/implementation agents declare this field explicitly per the agent-frontmatter-standard. Functionally harmless (defaults to opus) but inconsistent with the documented standard.
 
 ### 470. Fix loader to handle root-level context files
 - **Effort**: medium
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: neovim
+- **Research**: [470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md]
 
-**Description**: Fix `copy_context_dirs()` in `lua/neotex/plugins/ai/shared/extensions/loader.lua` to deploy individual files at the context root, not just subdirectories. Currently `vim.fn.isdirectory()` check silently skips root-level files like README.md, routing.md, and validation.md. The core manifest's `provides.context` only lists subdirectory names, so root files have no deployment path. Either add a `root_files` list within context provides, or have the loader scan for files alongside directories.
+**Description**: Fix `copy_context_dirs()` in `lua/neotex/plugins/ai/shared/extensions/loader.lua` to deploy individual files at the context root, not just subdirectories. Currently `vim.fn.isdirectory()` check silently skips root-level files like README.md, routing.md, and validation.md. The core manifest's `provides.context` only lists subdirectory names, so root files have no deployment path. Either add a `root_files` list within context provides, or have the loader scan for files alongside directories. Note: task 469 applied a manual workaround by committing these files directly to `.claude/context/`, but the loader bug persists -- reloading extensions will not regenerate them.
 
 ### 469. Systematically review agent system post-refactor for errors and improvements
 - **Effort**: TBD
@@ -73,6 +75,7 @@ next_project_number: 475
 - **Status**: [NOT STARTED]
 - **Task Type**: meta
 - **Parent Task**: 465
+- **Dependencies**: 466, 470
 
 **Description**: Systematically update all documentation to reflect how the extension system actually works after tasks 465 and 467. The system has two distinct layers that must not be conflated:
 
@@ -117,9 +120,10 @@ Lives in `.claude/` AFTER extensions are loaded — commands, agents, skills, ru
 
 ### 466. Convert core-index-entries.json from static fixture to standard merge_targets
 - **Effort**: TBD
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Parent Task**: 465
+- **Research**: [466_convert_core_index_entries/reports/01_convert-merge-targets.md]
 
 **Description**: Convert `core-index-entries.json` from a static fixture (special-cased in `init.lua:451-462`) to a standard `merge_targets` entry in the core extension manifest. Currently the core extension uses a hardcoded path to `.claude/context/core-index-entries.json` which is loaded via special-case code in the extension loader. This should instead use the standard `merge_targets` mechanism that other extensions use (e.g., `index-entries.json` merged into `context/index.json`). This eliminates the last piece of core-specific special-casing in the loader and makes core fully uniform with other extensions. Follow-up to task 465 (restructure core as real extension).
 
@@ -186,5 +190,15 @@ Key changes: (1) Move core files from `.claude/{agents,commands,rules,skills,con
 
 ## Recommended Order
 
-1. **465** [COMPLETED]
-(none)
+Wave 1 (independent, parallel):
+- **466** [RESEARCHED] -- Convert core-index-entries.json to merge_targets
+- **470** [NOT STARTED] -- Fix loader root-level context files
+- **471** [NOT STARTED] -- Add model: opus to nix agents (trivial, batch with 472)
+- **472** [NOT STARTED] -- Fix lean MCP script permissions (trivial, batch with 471)
+
+Wave 2 (independent):
+- **473** [NOT STARTED] -- Clean stale permissions in settings.local.json (interactive)
+
+Wave 3 (depends on 466+470):
+- **468** [NOT STARTED] -- Document extension loader architecture
+- **474** [NOT STARTED] -- Create core extension README
