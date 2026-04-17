@@ -37,6 +37,105 @@ local CONFIG_MARKDOWN_FILES = {
   ["OPENCODE.md"] = true,
 }
 
+--- Strip all extension-injected section blocks from content
+--- Removes <!-- SECTION: extension_* -->...<!-- END_SECTION: extension_* --> blocks
+--- to prevent extension sections loaded in the source repo from leaking into sync targets.
+--- @param content string File content to strip
+--- @return string content Content with extension sections removed
+local function strip_extension_sections(content)
+  -- Remove extension section blocks (including surrounding blank lines)
+  -- Match blocks like: <!-- SECTION: extension_nvim --> ... <!-- END_SECTION: extension_nvim -->
+  content = content:gsub(
+    "\n*<!%-%- SECTION: extension_[^\n]- %-%->.-<!%-%- END_SECTION: extension_[^\n]- %-%->\n*",
+    "\n"
+  )
+  -- Clean up any trailing whitespace from removal
+  content = content:gsub("\n\n\n+", "\n\n")
+  return content
+end
+
+--- Strip extension-merged settings keys from settings.local.json content
+--- Reads extensions.json from the global source directory to identify which keys
+--- were merged by loaded extensions, then removes those keys from the content.
+--- @param content string JSON content of settings.local.json
+--- @param global_dir string Global source directory path
+--- @return string content Content with extension settings stripped
+local function strip_extension_settings(content, global_dir)
+  -- Parse the settings content
+  local ok, settings = pcall(vim.json.decode, content)
+  if not ok or type(settings) ~= "table" then
+    return content
+  end
+
+  -- Read extensions.json from the source repo to find merged keys
+  -- Check both .claude and .opencode extensions.json
+  local base_dirs = { ".claude", ".opencode" }
+  local any_stripped = false
+
+  for _, base_dir in ipairs(base_dirs) do
+    local ext_state_path = global_dir .. "/" .. base_dir .. "/extensions.json"
+    local state_file = io.open(ext_state_path, "r")
+    if state_file then
+      local state_content = state_file:read("*all")
+      state_file:close()
+      local state_ok, state_data = pcall(vim.json.decode, state_content)
+      if state_ok and type(state_data) == "table" and state_data.extensions then
+        for _, ext_info in pairs(state_data.extensions) do
+          if ext_info.merged_sections and ext_info.merged_sections.settings then
+            local tracked = ext_info.merged_sections.settings
+            -- Remove tracked keys from settings using the same structure
+            local function remove_tracked(t, track)
+              for key, info in pairs(track) do
+                if type(info) == "table" and info.type then
+                  if info.type == "new_array" or info.type == "new_object" or info.type == "new_value" then
+                    t[key] = nil
+                    any_stripped = true
+                  elseif info.type == "appended" and info.items then
+                    if t[key] and vim.isarray(t[key]) then
+                      for _, item in ipairs(info.items) do
+                        for i = #t[key], 1, -1 do
+                          if vim.deep_equal(t[key][i], item) then
+                            table.remove(t[key], i)
+                            any_stripped = true
+                            break
+                          end
+                        end
+                      end
+                    end
+                  elseif info.type == "merged" and info.children then
+                    if t[key] then
+                      remove_tracked(t[key], info.children)
+                    end
+                  end
+                elseif type(info) == "table" then
+                  if t[key] then
+                    remove_tracked(t[key], info)
+                  end
+                end
+              end
+            end
+            remove_tracked(settings, tracked)
+          end
+        end
+      end
+    end
+  end
+
+  if any_stripped then
+    local encode_ok, encoded = pcall(vim.json.encode, settings)
+    if encode_ok then
+      -- Pretty-print with jq if available
+      local formatted = vim.fn.system('echo ' .. vim.fn.shellescape(encoded) .. ' | jq .', '')
+      if vim.v.shell_error == 0 and formatted ~= "" then
+        return formatted
+      end
+      return encoded
+    end
+  end
+
+  return content
+end
+
 --- Extract all section blocks from content
 --- Finds all <!-- SECTION: {id} -->...<!-- END_SECTION: {id} --> blocks
 --- and returns them as an ordered array of strings (including markers).
@@ -227,9 +326,10 @@ end
 --- @param merge_only boolean If true, skip "replace" actions (only copy new files)
 --- @param protected_paths table|nil Set of relative paths to protect from replacement {[path] = true}
 --- @param base_path string|nil Base path for computing relative paths (e.g., project_dir .. "/" .. base_dir)
+--- @param global_dir string|nil Global source directory for extension stripping
 --- @return number success_count Number of successfully synced files
 --- @return number protected_count Number of files skipped due to protection
-local function sync_files(files, preserve_perms, merge_only, protected_paths, base_path)
+local function sync_files(files, preserve_perms, merge_only, protected_paths, base_path, global_dir)
   local success_count = 0
   local protected_count = 0
   merge_only = merge_only or false
@@ -257,6 +357,21 @@ local function sync_files(files, preserve_perms, merge_only, protected_paths, ba
     -- Read global file
     local content = helpers.read_file(file.global_path)
     if content then
+      -- Strip extension-injected content from source before syncing to target.
+      -- This prevents extension artifacts loaded in the source repo from leaking
+      -- into target repos during sync.
+      if global_dir then
+        -- Strip extension sections from config markdown files (CLAUDE.md, OPENCODE.md)
+        if CONFIG_MARKDOWN_FILES[file.name] then
+          content = strip_extension_sections(content)
+        end
+
+        -- Strip extension-merged keys from settings.local.json
+        if file.name == "settings.local.json" then
+          content = strip_extension_settings(content, global_dir)
+        end
+      end
+
       -- For config markdown files (CLAUDE.md, OPENCODE.md), preserve any
       -- extension-injected section blocks before overwriting with global content.
       -- This prevents sync from destroying sections added by loaded extensions.
@@ -291,8 +406,9 @@ end
 --- @param merge_only boolean If true, only add new files (skip conflicts)
 --- @param base_dir string|nil Base directory name (default: ".claude")
 --- @param protected_paths table|nil Set of relative paths to protect {[path] = true}
+--- @param global_dir string|nil Global source directory for extension stripping
 --- @return number total_synced Total number of artifacts synced
-local function execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths)
+local function execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths, global_dir)
   base_dir = base_dir or ".claude"
   protected_paths = protected_paths or {}
   local base_path = project_dir .. "/" .. base_dir
@@ -300,9 +416,9 @@ local function execute_sync(project_dir, all_artifacts, merge_only, base_dir, pr
   -- Create base directory
   helpers.ensure_directory(base_path)
 
-  -- Helper to call sync_files with protection support
+  -- Helper to call sync_files with protection support and extension stripping
   local function sync_with_protect(files, preserve_perms)
-    return sync_files(files, preserve_perms, merge_only, protected_paths, base_path)
+    return sync_files(files, preserve_perms, merge_only, protected_paths, base_path, global_dir)
   end
 
   -- Sync all artifact types
@@ -868,7 +984,7 @@ function M.load_all_globally(config)
     protected_paths = load_syncprotect(project_dir, base_dir)
   end
 
-  local total_synced = execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths)
+  local total_synced = execute_sync(project_dir, all_artifacts, merge_only, base_dir, protected_paths, global_dir)
 
   -- Post-sync content audit: check synced files for repo-specific references
   local audit_pats = all_artifacts._audit_patterns
@@ -944,6 +1060,65 @@ function M.update_artifact_from_global(artifact, artifact_type, silent, picker_c
       helpers.notify("Cannot update artifacts in the global directory", "WARN")
     end
     return false
+  end
+
+  -- Check blocklist: block individual updates of extension-provided artifacts
+  local extension_cfg = get_extension_config(base_dir, global_dir)
+  local blocklist = manifest.aggregate_extension_artifacts(extension_cfg)
+
+  -- Map singular artifact_type to plural blocklist category
+  local type_to_category = {
+    agent = "agents",
+    skill = "skills",
+    command = "commands",
+    rule = "rules",
+    script = "scripts",
+    hook = "hooks",
+    hook_event = "hooks",
+  }
+  local blocklist_category = type_to_category[artifact_type]
+  if blocklist_category and blocklist[blocklist_category] then
+    -- Check if the artifact name (with extension) is in the blocklist
+    local check_name = artifact.name
+    -- For types where the name doesn't include the extension, add it
+    local ext_map = {
+      agent = ".md", skill = ".md", command = ".md",
+      rule = ".md", script = ".sh", hook = ".sh", hook_event = ".sh",
+    }
+    local suffix = ext_map[artifact_type] or ""
+    -- Check both with and without extension suffix
+    if blocklist[blocklist_category][check_name]
+        or blocklist[blocklist_category][check_name .. suffix] then
+      if not silent then
+        helpers.notify(
+          string.format(
+            "Blocked: '%s' is provided by an extension and cannot be individually updated from global. "
+              .. "Use the extension system to manage this artifact.",
+            artifact.name
+          ),
+          "WARN"
+        )
+      end
+      return false
+    end
+  end
+
+  -- Also block context artifacts that match extension context directories
+  if artifact_type == "context" and blocklist.context then
+    for ctx_prefix, _ in pairs(blocklist.context) do
+      if artifact.name:sub(1, #ctx_prefix) == ctx_prefix then
+        if not silent then
+          helpers.notify(
+            string.format(
+              "Blocked: '%s' is provided by an extension and cannot be individually updated from global.",
+              artifact.name
+            ),
+            "WARN"
+          )
+        end
+        return false
+      end
+    end
   end
 
   -- Check syncprotect: skip protected files with a warning

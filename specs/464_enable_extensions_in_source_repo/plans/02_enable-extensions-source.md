@@ -1,7 +1,7 @@
 # Implementation Plan: Enable Extensions in Source Repo
 
 - **Task**: 464 - Enable extension loading in global source repository without sync leakage
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/464_enable_extensions_in_source_repo/reports/01_team-research.md, specs/464_enable_extensions_in_source_repo/reports/02_team-research.md
@@ -65,7 +65,7 @@ This task is a prerequisite for several Phase 1 and Phase 2 roadmap items:
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Sync Leak Fixes [NOT STARTED]
+### Phase 1: Sync Leak Fixes [COMPLETED]
 
 **Goal**: Close all three identified sync leak vectors so that extension artifacts loaded in the source repo cannot propagate to target repos during sync.
 
