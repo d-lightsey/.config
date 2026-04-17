@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Core agent system extension providing base commands, agents, rules, skills, scripts, hooks, and context for the Claude Code agent infrastructure.",
   "dependencies": [],
+  "routing_exempt": true,
   "merge_targets": {
     "claudemd": {
       "source": "merge-sources/claudemd.md",

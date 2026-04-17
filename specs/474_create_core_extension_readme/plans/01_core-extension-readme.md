@@ -92,7 +92,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Fix validator routing block exemption [IN PROGRESS]
+### Phase 2: Fix validator routing block exemption [COMPLETED]
 
 **Goal**: Add `routing_exempt` support to manifest.json and the validator script so core passes the routing block check.
 
@@ -116,7 +116,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Validate and verify [NOT STARTED]
+### Phase 3: Validate and verify [IN PROGRESS]
 
 **Goal**: Run the full validator and confirm zero failures for core.
 
