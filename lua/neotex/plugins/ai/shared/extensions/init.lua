@@ -209,21 +209,18 @@ function M.create(config)
     local project_dir = opts.project_dir or vim.fn.getcwd()
     local target_dir = project_dir .. "/" .. config.base_dir
 
-    -- Self-loading guard: prevent loading extensions into the global source directory
-    -- This would contaminate the source and cause extension artifacts to leak into core sync
-    local global_dir = vim.fn.expand("~/.config/nvim")
-    if project_dir == global_dir and not opts.force then
-      return false, "Cannot load extensions into source directory (~/.config/nvim). " ..
-        "Extensions loaded here would leak into core sync for all projects. " ..
-        "Use opts.force = true to bypass this check (not recommended)."
-    end
-
-    -- Log warning if force is used
-    if project_dir == global_dir and opts.force then
+    -- Self-loading guard: warn when loading extensions into the global source directory.
+    -- Sync leak vectors are now closed (Phase 1), so this is safe but worth noting.
+    -- Derive global_dir from config: global_extensions_dir is {global_dir}/{base_dir}/extensions
+    local global_dir = config.global_extensions_dir:match("^(.+)/" .. config.base_dir .. "/extensions$")
+    if global_dir and project_dir == global_dir then
       vim.schedule(function()
         vim.notify(
-          "WARNING: Loading extension into source directory with force=true. " ..
-          "This may cause extension artifacts to leak into core sync.",
+          string.format(
+            "Loading extension '%s' in source repository (%s). "
+              .. "Sync leak protection is active.",
+            extension_name, global_dir
+          ),
           vim.log.levels.WARN
         )
       end)

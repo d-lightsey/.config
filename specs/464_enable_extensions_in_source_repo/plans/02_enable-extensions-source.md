@@ -120,7 +120,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Relax Self-Loading Guard [NOT STARTED]
+### Phase 3: Relax Self-Loading Guard [COMPLETED]
 
 **Goal**: Replace the hard block on loading extensions in the source repo with a notification, now that sync leak vectors are closed.
 
