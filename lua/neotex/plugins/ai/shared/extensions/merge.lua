@@ -534,6 +534,131 @@ function M.remove_orphaned_index_entries(index_path, valid_prefixes, context_dir
   return true, removed_count
 end
 
+--- Generate CLAUDE.md (or equivalent config markdown) as a fully computed artifact.
+--- Starts from a header template, then appends each loaded extension's claudemd source
+--- content in dependency order (core first, then extensions sorted by load order).
+---
+--- This replaces the section-injection approach: the generated file has no section
+--- markers and is fully deterministic given the set of loaded extensions.
+---
+--- @param project_dir string Project directory
+--- @param config table Extension system configuration (needs base_dir, merge_target_key,
+---   global_extensions_dir, state_file)
+--- @return boolean success True if generation succeeded
+--- @return string|nil error Error message if generation failed
+function M.generate_claudemd(project_dir, config)
+  -- Lazy-require to avoid circular deps (manifest/state require helpers, not merge)
+  local state_mod = require("neotex.plugins.ai.shared.extensions.state")
+  local manifest_mod = require("neotex.plugins.ai.shared.extensions.manifest")
+
+  local target_dir = project_dir .. "/" .. config.base_dir
+  local merge_key = config.merge_target_key  -- "claudemd" or "opencode_md"
+
+  -- Determine the target CLAUDE.md path from state or fallback convention.
+  -- We derive it from the first loaded extension that declares a claudemd target,
+  -- falling back to a sensible default.
+  local target_path = nil
+  local header_template_path = nil
+
+  -- Find the target path from loaded extensions' manifests
+  local state = state_mod.read(project_dir, config)
+  local loaded_names = state_mod.list_loaded(state)
+
+  -- Build dependency-ordered list: core always first, then others
+  local ordered_names = {}
+  local seen = {}
+
+  -- Core goes first
+  for _, name in ipairs(loaded_names) do
+    if name == "core" then
+      table.insert(ordered_names, name)
+      seen[name] = true
+      break
+    end
+  end
+
+  -- Remaining extensions in sorted order (stable ordering)
+  for _, name in ipairs(loaded_names) do
+    if not seen[name] then
+      table.insert(ordered_names, name)
+      seen[name] = true
+    end
+  end
+
+  -- Collect content fragments
+  local fragments = {}
+
+  for _, ext_name in ipairs(ordered_names) do
+    local extension = manifest_mod.get_extension(ext_name, config)
+    if extension and extension.manifest and extension.manifest.merge_targets then
+      local mt = extension.manifest.merge_targets[merge_key]
+      if mt and mt.source and mt.target then
+        -- Resolve target path (use the first one found; all should agree)
+        if not target_path then
+          target_path = project_dir .. "/" .. mt.target
+        end
+
+        -- For core: also find the header template
+        if ext_name == "core" and not header_template_path then
+          -- Header template lives in core's templates/ directory
+          local core_templates_dir = extension.path .. "/templates"
+          local candidate = core_templates_dir .. "/claudemd-header.md"
+          if vim.fn.filereadable(candidate) == 1 then
+            header_template_path = candidate
+          end
+        end
+
+        -- Read source fragment
+        local source_path = extension.path .. "/" .. mt.source
+        local content = read_file_string(source_path)
+        if content then
+          table.insert(fragments, content)
+        end
+      end
+    end
+  end
+
+  -- If no fragments (no loaded extensions with claudemd targets), nothing to generate
+  if #fragments == 0 then
+    return true, nil
+  end
+
+  -- If no target_path found, we cannot write
+  if not target_path then
+    return false, "generate_claudemd: could not determine target path from loaded extensions"
+  end
+
+  -- Build output: header + fragments
+  local parts = {}
+
+  -- Prepend header template if found
+  if header_template_path then
+    local header = read_file_string(header_template_path)
+    if header then
+      table.insert(parts, header)
+    end
+  end
+
+  -- Append each fragment (ensure separation)
+  for _, fragment in ipairs(fragments) do
+    -- Strip any trailing whitespace/newlines from fragment, then add two newlines
+    local trimmed = fragment:gsub("%s+$", "")
+    table.insert(parts, trimmed)
+  end
+
+  local output = table.concat(parts, "\n\n") .. "\n"
+
+  -- Ensure parent directory exists
+  helpers.ensure_directory(vim.fn.fnamemodify(target_path, ":h"))
+
+  local success = write_file_string(target_path, output)
+  if not success then
+    return false, "generate_claudemd: failed to write " .. target_path
+  end
+
+  return true, nil
+end
+
 --- Merge opencode.json agent definitions
 --- Adds agent definitions from fragment to target opencode.json.
 --- Only adds keys that don't already exist (no overwrite).

@@ -78,25 +78,12 @@ local function process_merge_targets(ext_manifest, source_dir, project_dir, conf
 
   local target_dir = project_dir .. "/" .. config.base_dir
 
-  -- Process config markdown section injection (CLAUDE.md or OPENCODE.md)
-  local merge_key = config.merge_target_key
-  if ext_manifest.merge_targets[merge_key] then
-    local mt_config = ext_manifest.merge_targets[merge_key]
-    local source_path = source_dir .. "/" .. mt_config.source
-    local target_path = project_dir .. "/" .. mt_config.target
-
-    local section_content = read_file_string(source_path)
-    if section_content then
-      local success, tracked = merge_mod.inject_section(
-        target_path,
-        section_content,
-        mt_config.section_id
-      )
-      if success then
-        merged_sections[merge_key] = tracked
-      end
-    end
-  end
+  -- Config markdown (CLAUDE.md or OPENCODE.md) is now a computed artifact.
+  -- Section injection is skipped here; generate_claudemd() regenerates the file
+  -- from all loaded extensions after each load/unload operation.
+  -- The merge_key entry in merged_sections is intentionally left empty so that
+  -- reverse_merge_targets has nothing to remove (generation handles removal by
+  -- regenerating without the unloaded extension's content).
 
   -- Process settings merge
   if ext_manifest.merge_targets.settings then
@@ -163,12 +150,9 @@ local function reverse_merge_targets(ext_manifest, merged_sections, project_dir,
 
   local merge_key = config.merge_target_key
 
-  -- Reverse config markdown section
-  if merged_sections[merge_key] and ext_manifest.merge_targets and ext_manifest.merge_targets[merge_key] then
-    local mt_config = ext_manifest.merge_targets[merge_key]
-    local target_path = project_dir .. "/" .. mt_config.target
-    merge_mod.remove_section(target_path, mt_config.section_id)
-  end
+  -- Config markdown section removal is skipped: CLAUDE.md is now a computed artifact.
+  -- generate_claudemd() is called after state is updated (extension removed from state)
+  -- so regeneration naturally excludes the unloaded extension's content.
 
   -- Reverse settings merge
   if merged_sections.settings and ext_manifest.merge_targets and ext_manifest.merge_targets.settings then
@@ -481,6 +465,15 @@ function M.create(config)
     state = state_mod.mark_loaded(state, extension_name, ext_manifest, rel_files, rel_dirs, merged_sections, rel_data_files)
     state_mod.write(project_dir, state, config)
 
+    -- Regenerate CLAUDE.md (computed artifact) after state is updated so the
+    -- newly loaded extension's content is included. Errors are non-fatal.
+    local gen_ok, gen_err = merge_mod.generate_claudemd(project_dir, config)
+    if not gen_ok then
+      vim.schedule(function()
+        vim.notify("Warning: CLAUDE.md regeneration failed: " .. tostring(gen_err), vim.log.levels.WARN)
+      end)
+    end
+
     helpers.notify(
       string.format("Loaded extension '%s' (%d files)", extension_name, #all_files),
       "INFO"
@@ -600,6 +593,15 @@ function M.create(config)
     -- Update state
     state = state_mod.mark_unloaded(state, extension_name)
     state_mod.write(project_dir, state, config)
+
+    -- Regenerate CLAUDE.md (computed artifact) after state is updated so the
+    -- unloaded extension's content is excluded from the output. Errors are non-fatal.
+    local gen_ok, gen_err = merge_mod.generate_claudemd(project_dir, config)
+    if not gen_ok then
+      vim.schedule(function()
+        vim.notify("Warning: CLAUDE.md regeneration failed: " .. tostring(gen_err), vim.log.levels.WARN)
+      end)
+    end
 
     helpers.notify(
       string.format("Unloaded extension '%s' (%d files removed)", extension_name, removed_count),
