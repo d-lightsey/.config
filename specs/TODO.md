@@ -10,7 +10,7 @@ next_project_number: 470
 
 ### Pending
 
-- **469** [RESEARCHED] -- Systematically review agent system post-refactor
+- **469** [PLANNED] -- Systematically review agent system post-refactor
 - **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
@@ -20,9 +20,10 @@ next_project_number: 470
 
 ### 469. Systematically review agent system post-refactor for errors and improvements
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Task Type**: meta
 - **Research**: [469_review_agent_system_post_refactor/reports/01_team-research.md]
+- **Plan**: [469_review_agent_system_post_refactor/plans/01_system-review-fixes.md]
 
 **Description**: Review the resulting agent system in .claude/ after loading nvim + memory + nix + core extensions following the recent refactoring in tasks 464, 465, 467. Systematically detect errors, inconsistencies, or opportunities for improvement across the loaded system.
 
