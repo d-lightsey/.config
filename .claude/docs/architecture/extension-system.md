@@ -503,6 +503,7 @@ Extension files are tracked by git. Use `git checkout HEAD -- .claude/extensions
 - [Adding Domains](../guides/adding-domains.md) - When to use extensions vs core
 - [Creating Extensions](../guides/creating-extensions.md) - Step-by-step guide
 - [Context Loading](../guides/context-loading-best-practices.md) - How agents load context
+- [Loader Function Reference](../../extensions/core/context/guides/loader-reference.md) - All 12 public loader.lua functions with signatures and copy semantics
 
 ---
 

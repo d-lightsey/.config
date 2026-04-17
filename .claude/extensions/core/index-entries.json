@@ -310,6 +310,20 @@
       }
     },
     {
+      "path": "guides/loader-reference.md",
+      "domain": "core",
+      "subdomain": "guides",
+      "summary": "Loader function reference: all 12 public loader.lua functions with signatures, copy semantics, and source file descriptions",
+      "line_count": 150,
+      "keywords": ["guide", "loader", "reference", "copy", "extension", "functions"],
+      "topics": ["development", "extensions"],
+      "load_when": {
+        "agents": ["meta-builder-agent"],
+        "task_types": ["meta"],
+        "commands": []
+      }
+    },
+    {
       "path": "meta/architecture-principles.md",
       "domain": "core",
       "subdomain": "meta",
