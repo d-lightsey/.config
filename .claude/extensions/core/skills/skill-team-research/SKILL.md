@@ -6,7 +6,7 @@ allowed-tools: Task, Bash, Edit, Read, Write
 # Context loaded by lead during synthesis:
 #   - .claude/context/patterns/team-orchestration.md
 #   - .claude/context/formats/team-metadata-extension.md
-#   - .claude/extensions/core/context/reference/team-wave-helpers.md
+#   - .claude/context/reference/team-wave-helpers.md
 ---
 
 # Team Research Skill
@@ -23,7 +23,7 @@ Reference (load as needed during synthesis):
 - Path: `.claude/context/patterns/team-orchestration.md` - Wave coordination patterns
 - Path: `.claude/context/formats/team-metadata-extension.md` - Team result schema
 - Path: `.claude/context/formats/return-metadata-file.md` - Base metadata schema
-- Path: `.claude/extensions/core/context/reference/team-wave-helpers.md` - Reusable wave patterns
+- Path: `.claude/context/reference/team-wave-helpers.md` - Reusable wave patterns
 
 ## Trigger Conditions
 
