@@ -144,7 +144,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Manifest-Driven Allow-List Sync [NOT STARTED]
+### Phase 4: Manifest-Driven Allow-List Sync [COMPLETED]
 
 **Goal**: Switch `scan_all_artifacts()` from the current blocklist approach (exclude extension files) to an allow-list approach (sync only what core's `provides` declares), closing all unprotected category gaps.
 

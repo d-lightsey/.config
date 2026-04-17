@@ -260,4 +260,35 @@ function M.aggregate_extension_artifacts(config)
   return blocklist
 end
 
+--- Get the core extension's provides map
+--- Reads the virtual core manifest and returns its provides entries.
+--- Returns nil if the core extension doesn't exist or isn't virtual.
+--- @param config table Extension system configuration
+--- @return table|nil provides Map of category -> array of filenames, or nil
+function M.get_core_provides(config)
+  local core = M.get_extension("core", config)
+  if not core or not core.manifest or not core.manifest.virtual then
+    return nil
+  end
+  return core.manifest.provides
+end
+
+--- Build an allow-list from core provides for sync filtering
+--- Converts the core provides map into a category-keyed set of allowed filenames.
+--- When an allow-list is available, only files in the list are synced (whitelist approach).
+--- @param core_provides table Core provides map from get_core_provides()
+--- @return table allow_list Map of category -> {[filename] = true} for O(1) lookup
+function M.build_allow_list(core_provides)
+  local allow_list = {}
+  for category, files in pairs(core_provides) do
+    if type(files) == "table" then
+      allow_list[category] = {}
+      for _, filename in ipairs(files) do
+        allow_list[category][filename] = true
+      end
+    end
+  end
+  return allow_list
+end
+
 return M

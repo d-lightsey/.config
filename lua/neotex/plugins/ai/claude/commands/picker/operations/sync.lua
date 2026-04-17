@@ -685,7 +685,8 @@ local function audit_synced_content(project_dir, all_artifacts, audit_patterns, 
 end
 
 --- Scan all artifact types from global directory
---- Filters extension artifacts via manifest-based blocklist to ensure only core artifacts are synced
+--- Filters extension artifacts via manifest-driven allow-list (preferred) or blocklist (fallback)
+--- to ensure only core artifacts are synced.
 --- @param global_dir string Global directory path
 --- @param project_dir string Project directory path
 --- @param config table|nil Picker config with base_dir field (defaults to .claude config)
@@ -698,17 +699,21 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
   local sync_exclude_set, audit_patterns = load_sync_exclude(global_dir)
   local sync_exclude_array = set_to_array(sync_exclude_set)
 
-  -- Build blocklist from all extension manifests
+  -- Build filtering strategy: prefer allow-list from core manifest, fall back to blocklist
   local extension_cfg = get_extension_config(base_dir, global_dir)
+  local core_provides = manifest.get_core_provides(extension_cfg)
+  local allow_list = core_provides and manifest.build_allow_list(core_provides) or nil
   local blocklist = manifest.aggregate_extension_artifacts(extension_cfg)
 
-  -- Helper to scan with base_dir and blocklist threaded through
+  -- Helper to scan with base_dir and filtering threaded through.
+  -- When an allow-list exists for the category, files are post-filtered to only
+  -- include those in the allow-list. Otherwise, falls back to blocklist exclusion.
   -- @param subdir string Subdirectory to scan
   -- @param ext string File extension pattern
   -- @param recursive boolean|nil Recursive scanning (default true)
   -- @param extra_exclude table|nil Additional exclude patterns to merge
-  -- @param blocklist_category string|nil Which blocklist category to apply (e.g., "agents", "skills")
-  local function sync_scan(subdir, ext, recursive, extra_exclude, blocklist_category)
+  -- @param filter_category string|nil Which category to filter (e.g., "agents", "skills")
+  local function sync_scan(subdir, ext, recursive, extra_exclude, filter_category)
     local exclude = extra_exclude and vim.deepcopy(extra_exclude) or {}
 
     -- Merge source-side exclusions from .sync-exclude
@@ -716,15 +721,45 @@ function M.scan_all_artifacts(global_dir, project_dir, config)
       table.insert(exclude, entry)
     end
 
-    -- Merge blocklist entries for this category
-    if blocklist_category and blocklist[blocklist_category] then
-      local blocklist_entries = set_to_array(blocklist[blocklist_category])
-      for _, entry in ipairs(blocklist_entries) do
-        table.insert(exclude, entry)
+    -- Blocklist fallback: when no allow-list exists for this category
+    if not allow_list or (filter_category and not allow_list[filter_category]) then
+      if filter_category and blocklist[filter_category] then
+        local blocklist_entries = set_to_array(blocklist[filter_category])
+        for _, entry in ipairs(blocklist_entries) do
+          table.insert(exclude, entry)
+        end
       end
     end
 
-    return scan.scan_directory_for_sync(global_dir, project_dir, subdir, ext, recursive, exclude, base_dir)
+    local results = scan.scan_directory_for_sync(global_dir, project_dir, subdir, ext, recursive, exclude, base_dir)
+
+    -- Allow-list post-filter: only keep files that appear in the core provides
+    if allow_list and filter_category and allow_list[filter_category] then
+      local allowed = allow_list[filter_category]
+      local filtered = {}
+      for _, file_info in ipairs(results) do
+        -- For context, use prefix matching (context entries are directory names)
+        if filter_category == "context" then
+          local rel_name = file_info.name
+          -- Extract the top-level context subdirectory from the relative path
+          local rel_path = file_info.global_path:match("/context/(.+)$")
+          if rel_path then
+            local top_dir = rel_path:match("^([^/]+)")
+            if top_dir and allowed[top_dir] then
+              table.insert(filtered, file_info)
+            end
+          end
+        else
+          -- For other categories, check the filename directly
+          if allowed[file_info.name] then
+            table.insert(filtered, file_info)
+          end
+        end
+      end
+      return filtered
+    end
+
+    return results
   end
 
   -- Core artifacts common to both systems (with blocklist filtering)
