@@ -932,14 +932,8 @@ function M.create_extensions_entries(config)
     -- Asterisk prefix for active extensions (loaded and current)
     local prefix = (ext.status == "active") and "*" or " "
 
-    local status_indicator
-    if ext.status == "active" then
-      status_indicator = "[active]"
-    elseif ext.status == "update-available" then
-      status_indicator = "[update]"
-    else
-      status_indicator = "[inactive]"
-    end
+    -- Only show [update] indicator; active/inactive is conveyed by asterisk prefix
+    local status_indicator = ext.status == "update-available" and "[update]" or ""
 
     local display = string.format(
       "%s %s %-28s %-10s %s",

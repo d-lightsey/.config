@@ -1,7 +1,7 @@
 # Implementation Plan: Review and Refactor Picker Cursor Restoration
 
 - **Task**: 461 - Review and refactor picker cursor restoration
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/461_refactor_picker_cursor_restore/reports/01_picker-cursor-restore.md
@@ -53,7 +53,7 @@ No ROADMAP.md found.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Add Clarifying Comment and Commit [NOT STARTED]
+### Phase 1: Add Clarifying Comment and Commit [COMPLETED]
 
 **Goal**: Add a brief comment at the extension toggle block explaining the cursor-restore rationale, then commit all uncommitted changes.
 

@@ -25,6 +25,10 @@ local helpers = require("neotex.plugins.ai.claude.commands.picker.utils.helpers"
 function M.show_commands_picker(opts, config)
   opts = opts or {}
 
+  -- Extract restore target (set after extension load/unload to preserve cursor)
+  local restore_ext_name = opts._restore_extension_name
+  opts._restore_extension_name = nil
+
   -- Get config values with defaults for Claude
   local label = config and config.label or "Claude"
   local base_dir = config and config.base_dir or ".claude"
@@ -67,6 +71,25 @@ function M.show_commands_picker(opts, config)
     default_selection_index = 2,
     previewer = previewer.create_command_previewer(),
     attach_mappings = function(prompt_bufnr, map)
+      -- Restore cursor to previously selected extension after load/unload
+      if restore_ext_name then
+        local p = action_state.get_current_picker(prompt_bufnr)
+        p:register_completion_callback(function(self)
+          vim.schedule(function()
+            if not self.manager then
+              return
+            end
+            for idx = 1, self.manager:num_results() do
+              local entry = self.manager:get_entry(idx)
+              if entry and entry.value and entry.value.name == restore_ext_name then
+                self:set_selection(self:get_row(idx))
+                return
+              end
+            end
+          end)
+        end)
+      end
+
       -- Escape key: close picker immediately
       map("i", "<Esc>", actions.close)
       map("n", "<Esc>", actions.close)
@@ -141,8 +164,11 @@ function M.show_commands_picker(opts, config)
           actions.close(prompt_bufnr)
           edit.edit_artifact_file(selection.value.filepath)
         elseif selection.value.entry_type == "extension" then
-          actions.close(prompt_bufnr)
+          -- Cursor restore: only extension toggle needs this because the entry
+          -- list is stable across load/unload. Other reopen cycles (Ctrl-l,
+          -- Ctrl-u, Ctrl-s, Load All) change the list, so cursor reset is expected.
           local ext = selection.value
+          actions.close(prompt_bufnr)
           local exts = require(extensions_module)
           if ext.status == "active" or ext.status == "update-available" then
             exts.unload(ext.name, { confirm = true })
@@ -150,7 +176,10 @@ function M.show_commands_picker(opts, config)
             exts.load(ext.name, { confirm = true })
           end
           vim.defer_fn(function()
-            M.show_commands_picker(opts, config)
+            M.show_commands_picker(
+              vim.tbl_extend("force", opts, { _restore_extension_name = ext.name }),
+              config
+            )
           end, 100)
         end
       end)
