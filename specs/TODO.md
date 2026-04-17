@@ -12,9 +12,9 @@ next_project_number: 475
 
 - **474** [NOT STARTED] -- Create core extension README.md
 - **473** [NOT STARTED] -- Clean up stale permissions in settings.local.json
-- **472** [RESEARCHED] -- Fix lean MCP script permissions
-- **471** [RESEARCHED] -- Add model: opus to nix agent frontmatter
-- **470** [RESEARCHED] -- Fix loader to handle root-level context files
+- **472** [PLANNING] -- Fix lean MCP script permissions
+- **471** [PLANNED] -- Add model: opus to nix agent frontmatter
+- **470** [PLANNING] -- Fix loader to handle root-level context files
 - **469** [COMPLETED] -- Systematically review agent system post-refactor
 - **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
@@ -40,7 +40,7 @@ next_project_number: 475
 
 ### 472. Fix lean MCP script permissions
 - **Effort**: small
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNING]
 - **Task Type**: meta
 - **Research**: [472_fix_lean_mcp_script_permissions/reports/01_script-permissions-fix.md]
 
@@ -48,15 +48,16 @@ next_project_number: 475
 
 ### 471. Add model: opus to nix agent frontmatter
 - **Effort**: small
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Task Type**: meta
 - **Research**: [471_add_model_opus_to_nix_agents/reports/01_nix-agent-frontmatter.md]
+- **Plan**: [471_add_model_opus_to_nix_agents/plans/01_add-model-opus-nix.md]
 
 **Description**: Add `model: opus` to the YAML frontmatter of `nix-research-agent.md` and `nix-implementation-agent.md`. All other research/implementation agents declare this field explicitly per the agent-frontmatter-standard. Functionally harmless (defaults to opus) but inconsistent with the documented standard.
 
 ### 470. Fix loader to handle root-level context files
 - **Effort**: medium
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNING]
 - **Task Type**: neovim
 - **Research**: [470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md]
 
@@ -122,7 +123,7 @@ Lives in `.claude/` AFTER extensions are loaded — commands, agents, skills, ru
 
 ### 466. Convert core-index-entries.json from static fixture to standard merge_targets
 - **Effort**: TBD
-- **Status**: [RESEARCHED]
+- **Status**: [PLANNED]
 - **Task Type**: meta
 - **Parent Task**: 465
 - **Research**: [466_convert_core_index_entries/reports/01_convert-merge-targets.md]
@@ -193,7 +194,7 @@ Key changes: (1) Move core files from `.claude/{agents,commands,rules,skills,con
 ## Recommended Order
 
 Wave 1 (independent, parallel):
-- **466** [RESEARCHED] -- Convert core-index-entries.json to merge_targets
+- **466** [PLANNED] -- Convert core-index-entries.json to merge_targets
 - **470** [NOT STARTED] -- Fix loader root-level context files
 - **471** [NOT STARTED] -- Add model: opus to nix agents (trivial, batch with 472)
 - **472** [NOT STARTED] -- Fix lean MCP script permissions (trivial, batch with 471)
