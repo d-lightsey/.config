@@ -11,7 +11,7 @@ next_project_number: 475
 ### Pending
 
 - **474** [NOT STARTED] -- Create core extension README.md
-- **473** [NOT STARTED] -- Clean up stale permissions in settings.local.json
+- **473** [RESEARCHED] -- Clean up stale permissions in settings.local.json
 - **472** [COMPLETED] -- Fix lean MCP script permissions
 - **471** [COMPLETED] -- Add model: opus to nix agent frontmatter
 - **470** [COMPLETED] -- Fix loader to handle root-level context files
@@ -33,8 +33,9 @@ next_project_number: 475
 
 ### 473. Clean up stale permissions in settings.local.json
 - **Effort**: small
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
+- **Research**: [473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md]
 
 **Description**: Remove 40+ accumulated stale bash permission entries from `settings.local.json`. These are operational artifacts from past agent sessions (specific mv commands, specs directory paths for completed tasks, shell loop constructs). They add noise and should be pruned to keep the file auditable.
 

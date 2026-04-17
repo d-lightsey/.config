@@ -17,10 +17,34 @@
     {
       "project_number": 473,
       "project_name": "clean_stale_permissions_settings_local",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-17T06:41:09Z",
-      "last_updated": "2026-04-17T06:41:09Z"
+      "last_updated": "2026-04-17T15:08:34Z",
+      "session_id": "sess_1776438305_90cfd9",
+      "next_artifact_number": 2,
+      "memory_candidates": [
+        {
+          "content": "settings.local.json accumulates stale bash permission entries from agent sessions. These include mv commands for completed file reorganizations, specs path references for archived tasks, and shell loop construct fragments. Periodic cleanup is needed. The python3:* wildcard subsumes specific python3 validation commands, and Read(//path/**) wildcards subsume variable-based Read entries.",
+          "category": "INSIGHT",
+          "source_artifact": "specs/473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md",
+          "confidence": 0.75,
+          "suggested_keywords": [
+            "settings.local.json",
+            "permissions",
+            "cleanup",
+            "stale",
+            "maintenance"
+          ]
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "specs/473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md",
+          "type": "research",
+          "summary": "Audited 52 permission entries, found 43 stale across 5 categories, 7 to retain"
+        }
+      ]
     },
     {
       "project_number": 472,
