@@ -1,20 +1,55 @@
 ---
-next_project_number: 468
+next_project_number: 469
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-16. 3 active tasks remaining.*
+*Updated 2026-04-16. 4 active tasks remaining.*
 
 ### Pending
 
+- **468** [NOT STARTED] -- Document extension loader architecture
 - **467** [COMPLETED] -- Move remaining root files to extensions/core/
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 468. Document extension loader architecture and .claude/ lifecycle
+- **Effort**: TBD
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+- **Parent Task**: 465
+
+**Description**: Systematically update all documentation to reflect how the extension system actually works after tasks 465 and 467. The system has two distinct layers that must not be conflated:
+
+**Layer 1: The Extension Loader** (Neovim Lua code)
+Lives in `lua/neotex/plugins/ai/shared/extensions/` — this is Neovim plugin code that manages which files are present in `.claude/`. It reads extension manifests from `.claude/extensions/*/manifest.json`, copies files via category-specific functions (copy_agents, copy_commands, copy_hooks, copy_scripts, copy_docs, copy_templates, copy_systemd, copy_root_files, copy_context_dirs, copy_data_dirs), handles merge targets (settings, index.json, CLAUDE.md generation), manages state in `extensions.json`, and provides the `<leader>ac` picker UI. The loader does NOT depend on any files in `.claude/` to function — it reads from `extensions/*/` and writes to `.claude/`.
+
+**Layer 2: The Agent System** (Markdown/JSON files read by Claude Code)
+Lives in `.claude/` AFTER extensions are loaded — commands, agents, skills, rules, hooks, context, scripts, settings, CLAUDE.md. These files are consumed by Claude Code (the CLI tool), not by Neovim. Claude Code reads CLAUDE.md for project instructions, discovers commands/skills/agents from their respective directories, applies rules, executes hooks, and loads context. None of this exists until extensions are loaded via the picker.
+
+**The .claude/ lifecycle**:
+1. Fresh state: `.claude/` contains only `extensions/` (extension source code) and runtime dirs (`logs/`, `output/`, `worktrees/`)
+2. User opens picker (`<leader>ac`) and loads `core` extension
+3. Loader copies ~210 files from `extensions/core/` into `.claude/{agents,commands,rules,skills,scripts,hooks,context,docs,templates,systemd}/` and root files (`settings.json`, `.gitignore`, `settings.local.json`)
+4. Loader generates `CLAUDE.md` from header template + core's merge-sources fragment
+5. Loader generates `context/index.json` from core-index-entries
+6. User loads additional extensions (nvim, memory, etc.) — each adds its own files and merges into CLAUDE.md, index.json, settings
+7. Unloading an extension removes its files and regenerates computed artifacts
+
+**Documentation to update**:
+- `.claude/extensions/core/EXTENSION.md` — describe what core provides, the root-files mechanism, how CLAUDE.md is generated
+- `.claude/extensions/core/docs/README.md` — update system overview to reflect real-extension architecture
+- `.claude/CLAUDE.md` merge source (`extensions/core/merge-sources/claudemd.md`) — update context discovery, structure sections
+- Project overview (`extensions/core/context/repo/project-overview.md`) — update .claude/ directory description
+- Extension development guide (`extensions/core/context/guides/extension-development.md`) — document root_files and systemd provides categories
+- Any context files that reference old paths (`.claude/agents/` vs `extensions/core/agents/` in the source repo)
+- Clarify in all docs: "extension source" (in `extensions/*/`) vs "loaded files" (in `.claude/` root dirs)
+
+---
 
 ### 467. Move remaining .claude/ root files into extensions/core/
 - **Effort**: TBD

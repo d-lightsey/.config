@@ -1,7 +1,17 @@
 {
   "version": "1.0.0",
-  "next_project_number": 468,
+  "next_project_number": 469,
   "active_projects": [
+    {
+      "project_number": 468,
+      "project_name": "document_extension_loader_architecture",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-17T05:46:55Z",
+      "last_updated": "2026-04-17T05:46:55Z",
+      "next_artifact_number": 1,
+      "artifacts": []
+    },
     {
       "project_number": 467,
       "project_name": "move_remaining_root_files_to_core",
