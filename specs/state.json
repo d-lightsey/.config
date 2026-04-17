@@ -17,11 +17,11 @@
     {
       "project_number": 473,
       "project_name": "clean_stale_permissions_settings_local",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-17T06:41:09Z",
-      "last_updated": "2026-04-17T15:12:36Z",
-      "session_id": "sess_1776438594_a9f8af",
+      "last_updated": "2026-04-17T15:25:00Z",
+      "session_id": "sess_1776439164_fb2f47",
       "next_artifact_number": 2,
       "memory_candidates": [
         {
@@ -48,8 +48,16 @@
           "path": "specs/473_clean_stale_permissions_settings_local/plans/01_stale-permissions-cleanup.md",
           "type": "plan",
           "summary": "Implementation plan with 2 phases to remove 45 stale permission entries from settings.local.json"
+        },
+        {
+          "path": "specs/473_clean_stale_permissions_settings_local/summaries/01_stale-permissions-cleanup-summary.md",
+          "type": "summary",
+          "summary": "Removed 44 stale permission entries, reduced permissions.allow from 52 to 8 entries"
         }
       ],
+      "completed": "2026-04-17T15:25:00Z",
+      "completion_summary": "Removed 44 stale bash permission entries from .claude/settings.local.json, reducing permissions.allow from 52 entries to 8 functional entries. All stale categories (mv commands, archived task refs, shell fragments, variable assignments, subsumed python validations) cleaned.",
+      "claudemd_suggestions": "none",
       "plan_metadata": {
         "phases": 2,
         "total_effort_hours": 0.5,
