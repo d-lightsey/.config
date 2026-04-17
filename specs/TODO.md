@@ -1,19 +1,31 @@
 ---
-next_project_number: 467
+next_project_number: 468
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-16. 2 active tasks remaining.*
+*Updated 2026-04-16. 3 active tasks remaining.*
 
 ### Pending
 
+- **467** [RESEARCHED] -- Move remaining root files to extensions/core/
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 467. Move remaining .claude/ root files into extensions/core/
+- **Effort**: TBD
+- **Status**: [RESEARCHED]
+- **Task Type**: meta
+- **Parent Task**: 465
+- **Research**: [467_move_remaining_root_files_to_core/reports/01_root-files-investigation.md]
+
+**Description**: After task 465 moved ~203 core agent system files into `.claude/extensions/core/`, 10 files remain in `.claude/` root directories that are core extension content rather than loader infrastructure. These should move to `extensions/core/` so that `.claude/` root directories are empty until the core extension is loaded. Files to move: `context/core-index-entries.json`, `context/index.schema.json`, `context/README.md`, `context/routing.md`, `context/validation.md`, `systemd/claude-refresh.service`, `systemd/claude-refresh.timer`, and root `README.md`. Requires updating init.lua (core-index-entries path), adding `copy_systemd()` to loader, updating manifest provides, and handling root README.md copy/generation on load. Should execute before task 466 (which changes how core-index-entries.json is consumed).
+
+---
 
 ### 466. Convert core-index-entries.json from static fixture to standard merge_targets
 - **Effort**: TBD

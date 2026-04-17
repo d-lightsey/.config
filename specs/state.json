@@ -1,7 +1,25 @@
 {
   "version": "1.0.0",
-  "next_project_number": 467,
+  "next_project_number": 468,
   "active_projects": [
+    {
+      "project_number": 467,
+      "project_name": "move_remaining_root_files_to_core",
+      "status": "researched",
+      "task_type": "meta",
+      "created": "2026-04-17T05:21:22Z",
+      "last_updated": "2026-04-17T05:21:22Z",
+      "session_id": "sess_1776400640_d16198",
+      "researched": "2026-04-17T05:21:22Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/467_move_remaining_root_files_to_core/reports/01_root-files-investigation.md",
+          "type": "research",
+          "summary": "Investigation of 10 files remaining in .claude/ root that should move to extensions/core/"
+        }
+      ]
+    },
     {
       "project_number": 465,
       "project_name": "restructure_core_as_real_extension",
