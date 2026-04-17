@@ -1,7 +1,7 @@
 # Implementation Plan: Create Core Extension README
 
 - **Task**: 474 - Create core extension README.md
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md
@@ -60,7 +60,7 @@ No prior plan.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create core extension README.md [NOT STARTED]
+### Phase 1: Create core extension README.md [COMPLETED]
 
 **Goal**: Write the README following the System Payload Inventory pattern that passes all validator content checks.
 
@@ -92,7 +92,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Fix validator routing block exemption [NOT STARTED]
+### Phase 2: Fix validator routing block exemption [IN PROGRESS]
 
 **Goal**: Add `routing_exempt` support to manifest.json and the validator script so core passes the routing block check.
 
