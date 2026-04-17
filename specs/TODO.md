@@ -30,10 +30,11 @@ next_project_number: 464
 
 ### 463. Conditionally display artifacts in commands picker based on loaded state
 - **Effort**: medium
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: neovim
 - **Research**: [specs/463_commands_picker_conditional_artifact_display/reports/01_conditional-artifact-display.md]
 - **Plan**: [463_commands_picker_conditional_artifact_display/plans/01_conditional-artifact-display.md]
+- **Summary**: [463_commands_picker_conditional_artifact_display/summaries/01_conditional-artifact-display-summary.md]
 
 **Description**: Refactor the `<leader>ac` commands picker (ClaudeCommands) to conditionally display artifacts based on whether the core agent system and extensions are loaded. Currently, unloaded artifacts (commands, skills, agents, etc.) appear in the picker with no asterisk and get an asterisk once loaded -- but this asterisk pattern should be reserved exclusively for extensions. The desired behavior: (1) When no extensions are loaded, only show the Extensions section so the user can load what they need; (2) Once the core agent system is loaded and extensions are loaded, show the full artifact listing (commands, skills, agents, hooks, scripts, tests, docs, templates, etc.) from those loaded extensions; (3) Remove the asterisk loaded/unloaded indicator from non-extension artifacts -- artifacts should simply appear or not appear based on whether their parent extension is loaded; (4) All displayed artifacts should continue to show previews and relevant metadata in the previewer pane. Key files: lua/neotex/plugins/ai/claude/commands/picker/display/entries.lua (entry creation and display formatting), lua/neotex/plugins/ai/claude/commands/picker/init.lua (picker orchestration), lua/neotex/plugins/ai/claude/commands/parser.lua (structure parsing).
 

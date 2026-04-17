@@ -5,10 +5,10 @@
     {
       "project_number": 463,
       "project_name": "commands_picker_conditional_artifact_display",
-      "status": "planned",
+      "status": "completed",
       "task_type": "neovim",
       "created": "2026-04-17T00:28:25Z",
-      "last_updated": "2026-04-17T00:40:49Z",
+      "last_updated": "2026-04-17T00:53:16Z",
       "session_id": "sess_1776385923_14c03e",
       "next_artifact_number": 2,
       "artifacts": [
@@ -21,6 +21,11 @@
           "path": "specs/463_commands_picker_conditional_artifact_display/plans/01_conditional-artifact-display.md",
           "type": "plan",
           "summary": "2-phase plan for conditional artifact display and asterisk removal"
+        },
+        {
+          "path": "specs/463_commands_picker_conditional_artifact_display/summaries/01_conditional-artifact-display-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for conditional artifact display"
         }
       ],
       "memory_candidates": [
@@ -53,7 +58,8 @@
             2
           ]
         ]
-      }
+      },
+      "completion_summary": "Removed asterisk prefix from 15 non-extension artifact types, added conditional display gate to show only Extensions section when no extensions are loaded, and relaxed picker guard so it always opens."
     },
     {
       "project_number": 462,
