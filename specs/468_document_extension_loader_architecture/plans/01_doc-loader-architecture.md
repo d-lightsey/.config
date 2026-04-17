@@ -96,7 +96,7 @@ This task is a prerequisite enabler for three ROADMAP Phase 1 documentation item
 
 ---
 
-### Phase 2: Fix Factual Errors in Remaining Documentation [NOT STARTED]
+### Phase 2: Fix Factual Errors in Remaining Documentation [COMPLETED]
 
 **Goal**: Correct stale references in the other 3 documentation files that contain factual errors.
 
@@ -124,7 +124,7 @@ This task is a prerequisite enabler for three ROADMAP Phase 1 documentation item
 
 ---
 
-### Phase 3: Add Two-Layer Architecture Documentation [NOT STARTED]
+### Phase 3: Add Two-Layer Architecture Documentation [COMPLETED]
 
 **Goal**: Add explicit architectural explanation of the two-layer system and establish vocabulary.
 

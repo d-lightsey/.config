@@ -45,7 +45,7 @@ When an extension is loaded:
 1. Stale index entries are cleaned (pre-load cleanup removes entries from non-loaded extensions)
 2. Agent, skill, rule files are copied to .claude/
 3. Context directories are copied to .claude/context/project/
-4. Merge targets are processed (CLAUDE.md injection, index.json entry merging, settings merging)
+4. Merge targets are processed (CLAUDE.md is regenerated from all loaded extensions, index.json entries merged, settings merged)
    - Core index entries are loaded via core's `merge_targets.index` (same mechanism as all extensions)
    - Extension-specific index entries are merged into .claude/context/index.json (tracked for unload)
 5. Post-load verification runs to check integrity
@@ -59,14 +59,25 @@ Each extension follows this structure:
 ```
 extensions/{name}/
   manifest.json       # Name, version, provides, merge_targets
-  EXTENSION.md        # Content to inject into CLAUDE.md
+  EXTENSION.md        # CLAUDE.md source content (standard extensions)
   index-entries.json  # Context index entries to merge
   agents/             # Agent definition files (.md)
   skills/             # Skill directories with SKILL.md
   rules/              # Rule files (.md)
   context/            # Context files (preserving project/* structure)
   scripts/            # Optional shell scripts
+  merge-sources/      # Alternative CLAUDE.md source (core extension only)
+    claudemd.md       # Used instead of EXTENSION.md for the core extension
 ```
+
+### CLAUDE.md Source Pattern
+
+`.claude/CLAUDE.md` is a **computed artifact** regenerated on every load/unload. The loader concatenates CLAUDE.md source files from all loaded extensions (core first, then others in sorted order).
+
+- **Standard extensions**: provide `EXTENSION.md` at the extension root (`"source": "EXTENSION.md"` in manifest)
+- **Core extension** (`extensions/core/`): provides `merge-sources/claudemd.md` as its CLAUDE.md source (`"source": "merge-sources/claudemd.md"` in manifest)
+
+Do not edit `.claude/CLAUDE.md` directly -- changes will be overwritten. Edit the extension's CLAUDE.md source file instead.
 
 ## index-entries.json Format
 
@@ -102,7 +113,7 @@ After loading, the system verifies:
 - All skill directories exist in .claude/skills/
 - All rule files exist in .claude/rules/
 - All context files referenced in index-entries.json exist
-- EXTENSION.md section was injected into CLAUDE.md
+- EXTENSION.md content appears in regenerated CLAUDE.md
 - Index entries were merged into index.json
 
 Verification results are shown via notification.
@@ -111,7 +122,7 @@ Verification results are shown via notification.
 
 1. Create extension directory in `.claude/extensions/{name}/`
 2. Create manifest.json with name, version, description, provides
-3. Create EXTENSION.md with content to inject into CLAUDE.md
+3. Create EXTENSION.md with content that will appear in CLAUDE.md when loaded
 4. Create index-entries.json with context index entries (use canonical paths)
 5. Add agents/, skills/, rules/, context/ as needed
 6. Test by loading via the extension picker

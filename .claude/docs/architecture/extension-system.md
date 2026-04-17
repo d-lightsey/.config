@@ -36,6 +36,66 @@ Extension Source                           Target Project
 
 ---
 
+## Two-Layer Architecture
+
+The extension system operates across two distinct layers. Understanding this separation is essential for working with extensions correctly.
+
+```
+Layer 1: Neovim Lua Loader                 Layer 2: .claude/ Agent System
+(lua/neotex/plugins/ai/shared/extensions/) (.claude/)
+
+┌─────────────────────────────────┐        ┌──────────────────────────────┐
+│ Extension Sources                │        │ Loaded Runtime               │
+│ .claude/extensions/*/            │  copy  │ .claude/agents/              │
+│   manifest.json                  │ -----> │ .claude/skills/              │
+│   EXTENSION.md                   │        │ .claude/rules/               │
+│   agents/, skills/, rules/, ...  │        │ .claude/context/             │
+│                                  │ regen  │ .claude/CLAUDE.md            │
+│ Lua modules:                     │ -----> │ .claude/context/index.json   │
+│   init.lua (public API)          │        └──────────────────────────────┘
+│   loader.lua (file copies)       │
+│   merge.lua (CLAUDE.md, index)   │                    |
+│   state.lua (extensions.json)    │                    | reads
+│   manifest.lua (discovery)       │                    v
+│   verify.lua (post-load checks)  │        ┌──────────────────────────────┐
+└─────────────────────────────────┘        │ Claude Code                  │
+                                            │ (sees only .claude/ runtime) │
+         |                                  └──────────────────────────────┘
+         | triggered by
+         v
+┌─────────────────────────────────┐
+│ Extension Picker                 │
+│ (Neovim UI, <leader>ac)          │
+└─────────────────────────────────┘
+```
+
+**How the layers interact**:
+1. User triggers the extension picker in Neovim (`<leader>ac`)
+2. The picker calls the Lua loader (`init.lua`) to load or unload an extension
+3. The loader copies files from the **extension source** (`.claude/extensions/*/`) into the **loaded runtime** (`.claude/agents/`, `.claude/skills/`, etc.)
+4. After copying, `generate_claudemd()` rebuilds `.claude/CLAUDE.md` from all loaded extensions' content
+5. Claude Code reads only the `.claude/` runtime structure and has no knowledge of the extension system
+
+**Key consequence**: Claude Code agents work with the *loaded runtime* in `.claude/`. The extension sources in `.claude/extensions/*/` are invisible to Claude Code. When an extension is unloaded, its files are removed from the runtime, and Claude Code loses access to those capabilities.
+
+### Source vs Loaded Vocabulary
+
+> **Extension source**: Files in `.claude/extensions/*/` -- the canonical definitions
+> that are never modified by the loader. These are what you edit when developing
+> an extension.
+>
+> **Loaded runtime**: Files in `.claude/{agents,skills,rules,commands,context}/` -- copies
+> produced by the Lua loader from the extension sources. These are what Claude Code reads.
+> Runtime files should not be edited directly; they will be overwritten on next load.
+
+This vocabulary appears throughout the documentation:
+- "Load an extension" = copy from extension source to loaded runtime
+- "Unload an extension" = remove from loaded runtime (source files are preserved)
+- "Extension provides X" = the extension source contains X to be copied
+- "X is available" = X exists in the loaded runtime
+
+---
+
 ## Directory Structure
 
 ### Extension Layout
