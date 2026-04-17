@@ -1,7 +1,7 @@
 # Implementation Plan: Enable Extensions in Source Repo
 
 - **Task**: 464 - Enable extension loading in global source repository without sync leakage
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/464_enable_extensions_in_source_repo/reports/01_team-research.md, specs/464_enable_extensions_in_source_repo/reports/02_team-research.md

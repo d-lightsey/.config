@@ -5,11 +5,11 @@
     {
       "project_number": 464,
       "project_name": "enable_extensions_in_source_repo",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-17T02:32:51Z",
-      "last_updated": "2026-04-17T02:59:07Z",
-      "session_id": "sess_1776394420_b9c324",
+      "last_updated": "2026-04-17T03:23:27Z",
+      "session_id": "sess_1776395405_721345",
       "researched": "2026-04-17T02:51:58Z",
       "next_artifact_number": 3,
       "artifacts": [
@@ -27,6 +27,11 @@
           "path": "specs/464_enable_extensions_in_source_repo/plans/02_enable-extensions-source.md",
           "type": "plan",
           "summary": "5-phase implementation: sync fixes, virtual core manifest, allow-list sync, dependency formalization, validation"
+        },
+        {
+          "path": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for enabling extensions in source repo with sync leak protection"
         }
       ],
       "plan_metadata": {
@@ -60,7 +65,37 @@
             "integrated_date": "2026-04-17"
           }
         ]
-      }
+      },
+      "completion_summary": "Enabled safe extension loading in source repository by closing 3 sync leak vectors, creating virtual core manifest, switching to allow-list sync, and adding core dependency to all 15 extensions.",
+      "claudemd_suggestions": "Created .claude/extensions/core/manifest.json (new virtual core manifest). Modified extension loader init.lua (virtual handling, relaxed guard). No changes to CLAUDE.md files.",
+      "memory_candidates": [
+        {
+          "content": "Virtual extension pattern: extensions with virtual: true in manifest skip file copy on load and file removal on unload. Use this for describing files that already exist in-place (like core system files) without physical migration.",
+          "category": "PATTERN",
+          "source_artifact": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "confidence": 0.9,
+          "suggested_keywords": [
+            "virtual-extension",
+            "core-manifest",
+            "extension-loader",
+            "no-copy-load",
+            "picker-filter"
+          ]
+        },
+        {
+          "content": "Allow-list sync pattern: when a core manifest exists, scan_all_artifacts() post-filters results against the core provides allow-list instead of using the blocklist. Falls back to blocklist if no core manifest.",
+          "category": "TECHNIQUE",
+          "source_artifact": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "allow-list-sync",
+            "core-provides",
+            "blocklist-fallback",
+            "scan-filter",
+            "sync-safety"
+          ]
+        }
+      ]
     },
     {
       "project_number": 87,
