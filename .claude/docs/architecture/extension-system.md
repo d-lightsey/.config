@@ -238,7 +238,7 @@ Configuration presets for different agent systems:
    c. Circular detection via loading stack; depth limit of 5
    d. Re-read state from disk after dependency loads complete
 3. Check for conflicts (check_conflicts)
-3. Copy files:
+4. Copy files:
    a. copy_simple_files(agents, .md)
    b. copy_simple_files(commands, .md)
    c. copy_simple_files(rules, .md)
@@ -246,23 +246,23 @@ Configuration presets for different agent systems:
    e. copy_context_dirs()
    f. copy_scripts()
    g. copy_data_dirs() (merge-copy semantics)
-4. Pre-load index cleanup:
+5. Pre-load index cleanup:
    a. Collect provides.context prefixes from already-loaded extensions
    b. remove_orphaned_index_entries() - remove stale project/ entries
       not matching any loaded extension's prefix (or whose files don't
       exist on disk). The current extension is excluded from valid
       prefixes so its stale entries are removed before fresh ones are
       added, ensuring proper tracking.
-5. Load core index entries:
+6. Load core index entries:
    a. Read core-index-entries.json (always included, not extension-specific)
    b. append_index_entries() with deduplication
-6. Merge shared files:
+7. Merge shared files:
    a. inject_section() into CLAUDE.md
    b. append_index_entries() to index.json (extension entries, tracked)
    c. merge_settings() if mcp_servers defined
-7. Update state (mark_loaded)
-8. Write extensions.json
-9. Post-load verification
+8. Update state (mark_loaded)
+9. Write extensions.json
+10. Post-load verification
 ```
 
 ### Unloading an Extension
@@ -277,10 +277,10 @@ Configuration presets for different agent systems:
    a. remove_section() from CLAUDE.md
    b. remove_index_entries_tracked() from index.json
    c. unmerge_settings() if settings were merged
-3. Remove files:
+4. Remove files:
    a. remove_installed_files() (files first, then empty dirs)
-4. Update state (mark_unloaded)
-5. Write extensions.json
+5. Update state (mark_unloaded)
+6. Write extensions.json
 ```
 
 ### Index Lifecycle
