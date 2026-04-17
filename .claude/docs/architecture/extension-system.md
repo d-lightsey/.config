@@ -253,16 +253,15 @@ Configuration presets for different agent systems:
       exist on disk). The current extension is excluded from valid
       prefixes so its stale entries are removed before fresh ones are
       added, ensuring proper tracking.
-6. Load core index entries:
-   a. Read core-index-entries.json (always included, not extension-specific)
-   b. append_index_entries() with deduplication
-7. Merge shared files:
-   a. inject_section() into CLAUDE.md
-   b. append_index_entries() to index.json (extension entries, tracked)
+6. Merge shared files (process_merge_targets):
+   a. inject_section() into CLAUDE.md (claudemd merge target)
+   b. append_index_entries() to index.json (index merge target, tracked)
+      - Core index entries loaded via core's merge_targets.index (same as other extensions)
+      - Extension-specific entries loaded via each extension's merge_targets.index
    c. merge_settings() if mcp_servers defined
-8. Update state (mark_loaded)
-9. Write extensions.json
-10. Post-load verification
+7. Update state (mark_loaded)
+8. Write extensions.json
+9. Post-load verification
 ```
 
 ### Unloading an Extension
@@ -285,10 +284,11 @@ Configuration presets for different agent systems:
 
 ### Index Lifecycle
 
-The extension loader maintains `index.json` with entries from three sources:
+The extension loader maintains `index.json` with entries from all loaded extensions:
 
-1. **Core entries** (`core-index-entries.json`): ~95 entries for agent system context files
-   (orchestration, patterns, standards, etc.). Always loaded, not extension-specific.
+1. **Core entries** (core extension's `index-entries.json`): ~95 entries for agent system
+   context files (orchestration, patterns, standards, etc.). Loaded via the standard
+   `merge_targets.index` mechanism, same as all other extensions.
 2. **Extension entries** (each extension's `index-entries.json`): Domain-specific context.
    Tracked for clean removal on unload.
 3. **Stale entries**: Remnants from previous sessions or external modifications. Removed by

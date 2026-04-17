@@ -43,12 +43,12 @@ Extensions are loaded via the editor's extension picker:
 
 When an extension is loaded:
 1. Stale index entries are cleaned (pre-load cleanup removes entries from non-loaded extensions)
-2. Core index entries are loaded from `.claude/context/core-index-entries.json` (always included)
-3. Agent, skill, rule files are copied to .claude/
-4. Context directories are copied to .claude/context/project/
-5. Extension index entries are merged into .claude/context/index.json (tracked for unload)
-6. EXTENSION.md content is injected into .claude/CLAUDE.md
-7. Post-load verification runs to check integrity
+2. Agent, skill, rule files are copied to .claude/
+3. Context directories are copied to .claude/context/project/
+4. Merge targets are processed (CLAUDE.md injection, index.json entry merging, settings merging)
+   - Core index entries are loaded via core's `merge_targets.index` (same mechanism as all extensions)
+   - Extension-specific index entries are merged into .claude/context/index.json (tracked for unload)
+5. Post-load verification runs to check integrity
 
 Extensions can declare dependencies on other extensions via the `dependencies` array in manifest.json. When an extension with dependencies is loaded, unloaded dependencies are auto-loaded silently before proceeding. The picker preview shows each extension's dependencies and which loaded extensions depend on it.
 

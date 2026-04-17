@@ -27,7 +27,6 @@
 ├── routing.md                  # Language-based routing
 ├── validation.md               # Return validation
 ├── index.json                  # Automated context discovery index (rebuilt by loader)
-├── core-index-entries.json     # Core index entries (always loaded, survives reloads)
 ├── index.schema.json           # Schema for index.json
 └── README.md                   # This file
 ```

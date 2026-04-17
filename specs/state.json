@@ -421,22 +421,17 @@
     {
       "project_number": 466,
       "project_name": "convert_core_index_entries",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-16T00:00:00Z",
-      "last_updated": "2026-04-17T14:45:46Z",
+      "last_updated": "2026-04-17T14:51:46Z",
       "parent_task": 465,
       "next_artifact_number": 2,
       "artifacts": [
         {
-          "path": "specs/466_convert_core_index_entries/reports/01_convert-merge-targets.md",
-          "type": "research",
-          "summary": "Research on converting core-index-entries.json to standard merge_targets"
-        },
-        {
-          "path": "specs/466_convert_core_index_entries/plans/01_convert-merge-targets.md",
-          "type": "plan",
-          "summary": "4-phase plan: relocate file + update manifest, remove special-case init.lua code, update 5 docs, verify end-to-end"
+          "path": "specs/466_convert_core_index_entries/summaries/01_convert-merge-targets-summary.md",
+          "type": "summary",
+          "summary": "Converted core index entry loading from special-case code to standard merge_targets mechanism"
         }
       ],
       "session_id": "sess_1713250000_impl466",
@@ -482,7 +477,9 @@
             "integrated_date": "2026-04-16"
           }
         ]
-      }
+      },
+      "completion_summary": "Converted core extension index entry loading from 12-line special-case code block in init.lua to the standard merge_targets.index mechanism. Relocated index-entries.json to extension root, updated manifest, removed special-case code, and updated 5 documentation files.",
+      "claudemd_suggestions": "No CLAUDE.md changes needed -- the core extension merge_targets now handle index entry loading automatically through the standard pipeline."
     }
   ],
   "completed_projects": [],

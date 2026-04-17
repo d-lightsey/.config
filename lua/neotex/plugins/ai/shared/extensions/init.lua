@@ -485,19 +485,6 @@ function M.create(config)
         merge_mod.remove_orphaned_index_entries(index_path, valid_prefixes, context_dir)
       end
 
-      -- Load core context entries from extension source directory
-      local core_index_path = source_dir .. "/context/core-index-entries.json"
-      local core_stat = vim.loop.fs_stat(core_index_path)
-      if core_stat then
-        local ok_core, core_data = pcall(read_json, core_index_path)
-        if ok_core and core_data then
-          local core_entries = core_data.entries or (vim.isarray(core_data) and core_data) or nil
-          if core_entries then
-            merge_mod.append_index_entries(index_path, core_entries)
-          end
-        end
-      end
-
       -- Process merge targets
       merged_sections = process_merge_targets(ext_manifest, source_dir, project_dir, config)
     end)

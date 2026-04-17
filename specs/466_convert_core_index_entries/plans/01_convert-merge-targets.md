@@ -1,7 +1,7 @@
 # Implementation Plan: Convert core-index-entries.json to standard merge_targets
 
 - **Task**: 466 - Convert core-index-entries.json from static fixture to standard merge_targets
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 1 hour
 - **Dependencies**: 465 (completed)
 - **Research Inputs**: [specs/466_convert_core_index_entries/reports/01_convert-merge-targets.md]
@@ -53,7 +53,7 @@ The core extension loads its index entries via 12 lines of special-case code (in
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Relocate file and update manifest [NOT STARTED]
+### Phase 1: Relocate file and update manifest [COMPLETED]
 
 - **Goal:** Move the index entries file to the standard location and add `merge_targets.index` to the core manifest
 - **Tasks:**
@@ -69,7 +69,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 10 minutes
 - **Depends on:** none
 
-### Phase 2: Remove special-case code from init.lua [NOT STARTED]
+### Phase 2: Remove special-case code from init.lua [COMPLETED]
 
 - **Goal:** Delete the 12-line special-case block that loads core index entries outside the standard merge_targets pipeline
 - **Tasks:**
@@ -80,7 +80,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 10 minutes
 - **Depends on:** 1
 
-### Phase 3: Update documentation [NOT STARTED]
+### Phase 3: Update documentation [COMPLETED]
 
 - **Goal:** Fix all documentation references to the old file path and mechanism
 - **Tasks:**
@@ -92,7 +92,7 @@ Phases within the same wave can execute in parallel.
 - **Timing:** 20 minutes
 - **Depends on:** 2
 
-### Phase 4: Verification [NOT STARTED]
+### Phase 4: Verification [COMPLETED]
 
 - **Goal:** Confirm the conversion works correctly end-to-end
 - **Tasks:**
