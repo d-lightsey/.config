@@ -5,10 +5,20 @@
     {
       "project_number": 475,
       "project_name": "review_extension_docs_and_manifests",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-17T16:38:06Z",
-      "last_updated": "2026-04-17T16:38:06Z"
+      "last_updated": "2026-04-17T17:06:13Z",
+      "session_id": "sess_1776444885_b6f071",
+      "researched": "2026-04-17T17:06:13Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/475_review_extension_docs_and_manifests/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates"
+        }
+      ]
     },
     {
       "project_number": 474,
