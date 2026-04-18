@@ -5,10 +5,10 @@
     {
       "project_number": 479,
       "project_name": "fix_remaining_nvim_refs_in_core_ext",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-18T21:28:28Z",
-      "last_updated": "2026-04-18T21:47:15Z",
+      "last_updated": "2026-04-18T21:55:00Z",
       "session_id": "sess_1745014800_f2b6c9",
       "researched": "2026-04-18T21:35:00Z",
       "next_artifact_number": 2,
@@ -22,8 +22,15 @@
           "path": "specs/479_fix_remaining_nvim_refs_in_core_ext/plans/01_fix-nvim-refs.md",
           "type": "plan",
           "summary": "Implementation plan for fixing 6 remaining nvim/neotex references in core extension files"
+        },
+        {
+          "path": "specs/479_fix_remaining_nvim_refs_in_core_ext/summaries/01_fix-nvim-refs-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for fixing remaining nvim references in core extension files"
         }
-      ]
+      ],
+      "completion_summary": "Fixed 6 nvim/neotex references in core extension source files and deployed copies, plus duplicate path bug in meta-guide.md. Zero stale references remain in core.",
+      "claudemd_suggestions": "Updated 7 core extension source files and 6 deployed copies under .claude/ to remove nvim/neotex-specific language. CLAUDE.md will auto-regenerate on next extension reload."
     },
     {
       "project_number": 478,
