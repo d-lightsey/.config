@@ -2,19 +2,20 @@
   "entries": [
     {
       "subdomain": "architecture",
-      "line_count": 363,
+      "path": "architecture/component-checklist.md",
       "summary": "Component creation checklist for agent system",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -23,22 +24,22 @@
         "checklist",
         "architecture"
       ],
-      "domain": "core",
-      "path": "architecture/component-checklist.md"
+      "line_count": 363
     },
     {
       "subdomain": "architecture",
-      "line_count": 54,
+      "path": "architecture/context-layers.md",
       "summary": "Context layer architecture overview",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "context-loading"
       ],
@@ -47,24 +48,24 @@
         "layers",
         "architecture"
       ],
-      "domain": "core",
-      "path": "architecture/context-layers.md"
+      "line_count": 54
     },
     {
       "subdomain": "architecture",
-      "line_count": 454,
+      "path": "architecture/generation-guidelines.md",
       "summary": "Guidelines for generating agent system components",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -73,22 +74,22 @@
         "guidelines",
         "components"
       ],
-      "domain": "core",
-      "path": "architecture/generation-guidelines.md"
+      "line_count": 454
     },
     {
       "subdomain": "architecture",
-      "line_count": 492,
+      "path": "architecture/system-overview.md",
       "summary": "High-level agent system architecture overview",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -97,20 +98,20 @@
         "system",
         "overview"
       ],
-      "domain": "core",
-      "path": "architecture/system-overview.md"
+      "line_count": 492
     },
     {
       "subdomain": "checkpoints",
-      "line_count": 116,
+      "path": "checkpoints/checkpoint-commit.md",
       "summary": "Git commit checkpoint pattern for commands",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -119,20 +120,20 @@
         "commit",
         "git"
       ],
-      "domain": "core",
-      "path": "checkpoints/checkpoint-commit.md"
+      "line_count": 116
     },
     {
       "subdomain": "checkpoints",
-      "line_count": 84,
+      "path": "checkpoints/checkpoint-gate-in.md",
       "summary": "Preflight gate-in checkpoint pattern",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -141,20 +142,20 @@
         "preflight",
         "gate-in"
       ],
-      "domain": "core",
-      "path": "checkpoints/checkpoint-gate-in.md"
+      "line_count": 84
     },
     {
       "subdomain": "checkpoints",
-      "line_count": 101,
+      "path": "checkpoints/checkpoint-gate-out.md",
       "summary": "Postflight gate-out checkpoint pattern",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -163,19 +164,19 @@
         "postflight",
         "gate-out"
       ],
-      "domain": "core",
-      "path": "checkpoints/checkpoint-gate-out.md"
+      "line_count": 101
     },
     {
       "subdomain": "checkpoints",
-      "line_count": 100,
+      "path": "checkpoints/README.md",
       "summary": "Checkpoint system documentation index",
       "load_when": {
-        "agents": [],
         "always": true,
+        "task_types": [],
         "commands": [],
-        "task_types": []
+        "agents": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -183,24 +184,24 @@
         "checkpoints",
         "readme"
       ],
-      "domain": "core",
-      "path": "checkpoints/README.md"
+      "line_count": 100
     },
     {
       "subdomain": "formats",
-      "line_count": 467,
+      "path": "formats/command-output.md",
       "summary": "Standard output formats for commands",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -209,24 +210,24 @@
         "output",
         "command"
       ],
-      "domain": "core",
-      "path": "formats/command-output.md"
+      "line_count": 467
     },
     {
       "subdomain": "formats",
-      "line_count": 965,
+      "path": "formats/command-structure.md",
       "summary": "Slash command file structure and organization",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -235,24 +236,24 @@
         "command",
         "structure"
       ],
-      "domain": "core",
-      "path": "formats/command-structure.md"
+      "line_count": 965
     },
     {
       "subdomain": "formats",
-      "line_count": 705,
+      "path": "formats/frontmatter.md",
       "summary": "YAML frontmatter specification for agents and skills",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -261,20 +262,20 @@
         "frontmatter",
         "yaml"
       ],
-      "domain": "core",
-      "path": "formats/frontmatter.md"
+      "line_count": 705
     },
     {
       "subdomain": "formats",
-      "line_count": 188,
+      "path": "formats/handoff-artifact.md",
       "summary": "Handoff artifact format between agents",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -283,22 +284,22 @@
         "handoff",
         "artifact"
       ],
-      "domain": "core",
-      "path": "formats/handoff-artifact.md"
+      "line_count": 188
     },
     {
       "subdomain": "formats",
-      "line_count": 136,
+      "path": "formats/plan-format.md",
       "summary": "Implementation plan file format specification",
       "load_when": {
-        "commands": [
-          "/plan"
-        ],
         "agents": [
           "planner-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/plan"
+        ]
       },
+      "domain": "core",
       "topics": [
         "planning"
       ],
@@ -307,22 +308,22 @@
         "plan",
         "implementation"
       ],
-      "domain": "core",
-      "path": "formats/plan-format.md"
+      "line_count": 136
     },
     {
       "subdomain": "formats",
-      "line_count": 250,
+      "path": "formats/progress-file.md",
       "summary": "Progress tracking file format",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "implementation"
       ],
@@ -331,22 +332,22 @@
         "progress",
         "tracking"
       ],
-      "domain": "core",
-      "path": "formats/progress-file.md"
+      "line_count": 250
     },
     {
       "subdomain": "formats",
-      "line_count": 131,
+      "path": "formats/report-format.md",
       "summary": "Research report file format specification",
       "load_when": {
-        "commands": [
-          "/research"
-        ],
         "agents": [
           "general-research-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/research"
+        ]
       },
+      "domain": "core",
       "topics": [
         "research"
       ],
@@ -355,22 +356,22 @@
         "report",
         "research"
       ],
-      "domain": "core",
-      "path": "formats/report-format.md"
+      "line_count": 131
     },
     {
       "subdomain": "formats",
-      "line_count": 502,
+      "path": "formats/return-metadata-file.md",
       "summary": "Metadata file schema for subagent returns",
       "load_when": {
-        "commands": [],
         "agents": [
           "general-research-agent",
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -379,22 +380,22 @@
         "metadata",
         "return"
       ],
-      "domain": "core",
-      "path": "formats/return-metadata-file.md"
+      "line_count": 502
     },
     {
       "subdomain": "formats",
-      "line_count": 65,
+      "path": "formats/roadmap-format.md",
       "summary": "ROADMAP.md file format specification",
       "load_when": {
-        "commands": [
-          "/todo"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/todo"
         ]
       },
+      "domain": "core",
       "topics": [
         "planning"
       ],
@@ -402,22 +403,22 @@
         "format",
         "roadmap"
       ],
-      "domain": "core",
-      "path": "formats/roadmap-format.md"
+      "line_count": 65
     },
     {
       "subdomain": "formats",
-      "line_count": 323,
+      "path": "formats/subagent-return.md",
       "summary": "Return format for subagent delegations",
       "load_when": {
-        "commands": [],
         "agents": [
           "general-research-agent",
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -426,22 +427,22 @@
         "subagent",
         "return"
       ],
-      "domain": "core",
-      "path": "formats/subagent-return.md"
+      "line_count": 323
     },
     {
       "subdomain": "formats",
-      "line_count": 59,
+      "path": "formats/summary-format.md",
       "summary": "Implementation summary file format",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "implementation"
       ],
@@ -450,26 +451,26 @@
         "summary",
         "implementation"
       ],
-      "domain": "core",
-      "path": "formats/summary-format.md"
+      "line_count": 59
     },
     {
       "subdomain": "formats",
-      "line_count": 296,
+      "path": "formats/task-order-format.md",
       "summary": "Task ordering and dependency format",
       "load_when": {
-        "commands": [
-          "/meta",
-          "/spawn"
-        ],
         "agents": [
           "meta-builder-agent",
           "spawn-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta",
+          "/spawn"
         ]
       },
+      "domain": "core",
       "topics": [
         "planning"
       ],
@@ -479,20 +480,20 @@
         "order",
         "dependency"
       ],
-      "domain": "core",
-      "path": "formats/task-order-format.md"
+      "line_count": 296
     },
     {
       "subdomain": "formats",
-      "line_count": 111,
+      "path": "formats/team-metadata-extension.md",
       "summary": "Metadata extensions for team mode",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -501,24 +502,24 @@
         "team",
         "metadata"
       ],
-      "domain": "core",
-      "path": "formats/team-metadata-extension.md"
+      "line_count": 111
     },
     {
       "subdomain": "guides",
-      "line_count": 191,
+      "path": "guides/extension-development.md",
       "summary": "Guide for creating new extensions",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "development"
       ],
@@ -527,22 +528,22 @@
         "extension",
         "development"
       ],
-      "domain": "core",
-      "path": "guides/extension-development.md"
+      "line_count": 191
     },
     {
       "subdomain": "guides",
-      "line_count": 150,
+      "path": "guides/loader-reference.md",
       "summary": "Loader function reference: all 12 public loader.lua functions with signatures, copy semantics, and source file descriptions",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "development",
         "extensions"
@@ -555,24 +556,24 @@
         "extension",
         "functions"
       ],
-      "domain": "core",
-      "path": "guides/loader-reference.md"
+      "line_count": 150
     },
     {
       "subdomain": "meta",
-      "line_count": 270,
+      "path": "meta/architecture-principles.md",
       "summary": "Core architecture principles for agent system",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -581,24 +582,24 @@
         "architecture",
         "principles"
       ],
-      "domain": "core",
-      "path": "meta/architecture-principles.md"
+      "line_count": 270
     },
     {
       "subdomain": "meta",
-      "line_count": 323,
+      "path": "meta/context-revision-guide.md",
       "summary": "Guide for revising context documentation",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -607,24 +608,24 @@
         "context",
         "revision"
       ],
-      "domain": "core",
-      "path": "meta/context-revision-guide.md"
+      "line_count": 323
     },
     {
       "subdomain": "meta",
-      "line_count": 259,
+      "path": "meta/domain-patterns.md",
       "summary": "Domain-specific patterns for extensions",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "extensions"
       ],
@@ -633,24 +634,24 @@
         "domain",
         "patterns"
       ],
-      "domain": "core",
-      "path": "meta/domain-patterns.md"
+      "line_count": 259
     },
     {
       "subdomain": "meta",
-      "line_count": 224,
+      "path": "meta/interview-patterns.md",
       "summary": "User interview patterns for task gathering",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "user-interaction"
       ],
@@ -659,24 +660,24 @@
         "interview",
         "patterns"
       ],
-      "domain": "core",
-      "path": "meta/interview-patterns.md"
+      "line_count": 224
     },
     {
       "subdomain": "meta",
-      "line_count": 462,
+      "path": "meta/meta-guide.md",
       "summary": "Comprehensive guide for meta tasks",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -684,24 +685,24 @@
         "meta",
         "guide"
       ],
-      "domain": "core",
-      "path": "meta/meta-guide.md"
+      "line_count": 462
     },
     {
       "subdomain": "meta",
-      "line_count": 379,
+      "path": "meta/standards-checklist.md",
       "summary": "Checklist for applying system standards",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -710,22 +711,22 @@
         "standards",
         "checklist"
       ],
-      "domain": "core",
-      "path": "meta/standards-checklist.md"
+      "line_count": 379
     },
     {
       "subdomain": "orchestration",
-      "line_count": 757,
+      "path": "orchestration/architecture.md",
       "summary": "Orchestration system architecture",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -733,22 +734,22 @@
         "orchestration",
         "architecture"
       ],
-      "domain": "core",
-      "path": "orchestration/architecture.md"
+      "line_count": 757
     },
     {
       "subdomain": "orchestration",
-      "line_count": 859,
+      "path": "orchestration/delegation.md",
       "summary": "Agent delegation patterns and protocols",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -756,22 +757,22 @@
         "orchestration",
         "delegation"
       ],
-      "domain": "core",
-      "path": "orchestration/delegation.md"
+      "line_count": 859
     },
     {
       "subdomain": "orchestration",
-      "line_count": 248,
+      "path": "orchestration/orchestration-core.md",
       "summary": "Core orchestration concepts and patterns",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -779,22 +780,22 @@
         "orchestration",
         "core"
       ],
-      "domain": "core",
-      "path": "orchestration/orchestration-core.md"
+      "line_count": 248
     },
     {
       "subdomain": "orchestration",
-      "line_count": 309,
+      "path": "orchestration/orchestration-reference.md",
       "summary": "Quick reference for orchestration patterns",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -802,22 +803,22 @@
         "orchestration",
         "reference"
       ],
-      "domain": "core",
-      "path": "orchestration/orchestration-reference.md"
+      "line_count": 309
     },
     {
       "subdomain": "orchestration",
-      "line_count": 233,
+      "path": "orchestration/orchestration-validation.md",
       "summary": "Validation rules for orchestration",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -825,22 +826,22 @@
         "orchestration",
         "validation"
       ],
-      "domain": "core",
-      "path": "orchestration/orchestration-validation.md"
+      "line_count": 233
     },
     {
       "subdomain": "orchestration",
-      "line_count": 876,
+      "path": "orchestration/orchestrator.md",
       "summary": "Orchestrator agent pattern definition",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -848,22 +849,22 @@
         "orchestration",
         "orchestrator"
       ],
-      "domain": "core",
-      "path": "orchestration/orchestrator.md"
+      "line_count": 876
     },
     {
       "subdomain": "orchestration",
-      "line_count": 336,
+      "path": "orchestration/postflight-pattern.md",
       "summary": "Postflight execution pattern for commands",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -871,22 +872,22 @@
         "orchestration",
         "postflight"
       ],
-      "domain": "core",
-      "path": "orchestration/postflight-pattern.md"
+      "line_count": 336
     },
     {
       "subdomain": "orchestration",
-      "line_count": 217,
+      "path": "orchestration/preflight-pattern.md",
       "summary": "Preflight execution pattern for commands",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -894,20 +895,20 @@
         "orchestration",
         "preflight"
       ],
-      "domain": "core",
-      "path": "orchestration/preflight-pattern.md"
+      "line_count": 217
     },
     {
       "subdomain": "orchestration",
-      "line_count": 166,
+      "path": "orchestration/sessions.md",
       "summary": "Session management for task execution",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -915,23 +916,23 @@
         "orchestration",
         "sessions"
       ],
-      "domain": "core",
-      "path": "orchestration/sessions.md"
+      "line_count": 166
     },
     {
       "subdomain": "orchestration",
-      "line_count": 337,
+      "path": "orchestration/state-management.md",
       "summary": "State management patterns and protocols",
       "load_when": {
-        "commands": [
-          "/task",
-          "/todo"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task",
+          "/todo"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -939,20 +940,20 @@
         "orchestration",
         "state"
       ],
-      "domain": "core",
-      "path": "orchestration/state-management.md"
+      "line_count": 337
     },
     {
       "subdomain": "orchestration",
-      "line_count": 313,
+      "path": "orchestration/subagent-validation.md",
       "summary": "Validation rules for subagent returns",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -961,22 +962,22 @@
         "subagent",
         "validation"
       ],
-      "domain": "core",
-      "path": "orchestration/subagent-validation.md"
+      "line_count": 313
     },
     {
       "subdomain": "orchestration",
-      "line_count": 699,
+      "path": "orchestration/validation.md",
       "summary": "General validation patterns for orchestration",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -984,22 +985,22 @@
         "orchestration",
         "validation"
       ],
-      "domain": "core",
-      "path": "orchestration/validation.md"
+      "line_count": 699
     },
     {
       "subdomain": "patterns",
-      "line_count": 174,
+      "path": "patterns/anti-stop-patterns.md",
       "summary": "Patterns to avoid premature task stopping",
       "load_when": {
-        "commands": [],
         "agents": [
           "general-research-agent",
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1007,23 +1008,23 @@
         "patterns",
         "anti-stop"
       ],
-      "domain": "core",
-      "path": "patterns/anti-stop-patterns.md"
+      "line_count": 174
     },
     {
       "subdomain": "patterns",
-      "line_count": 114,
+      "path": "patterns/artifact-linking-todo.md",
       "summary": "Artifact linking patterns for TODO.md entries",
       "load_when": {
-        "commands": [
-          "/task",
-          "/todo"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task",
+          "/todo"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -1033,22 +1034,22 @@
         "linking",
         "todo"
       ],
-      "domain": "core",
-      "path": "patterns/artifact-linking-todo.md"
+      "line_count": 114
     },
     {
       "subdomain": "patterns",
-      "line_count": 254,
+      "path": "patterns/checkpoint-execution.md",
       "summary": "Checkpoint-based execution pattern",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1057,19 +1058,19 @@
         "checkpoint",
         "execution"
       ],
-      "domain": "core",
-      "path": "patterns/checkpoint-execution.md"
+      "line_count": 254
     },
     {
       "subdomain": "patterns",
-      "line_count": 209,
+      "path": "patterns/context-discovery.md",
       "summary": "Context discovery query patterns",
       "load_when": {
-        "agents": [],
         "always": true,
+        "task_types": [],
         "commands": [],
-        "task_types": []
+        "agents": []
       },
+      "domain": "core",
       "topics": [
         "context-loading"
       ],
@@ -1078,22 +1079,22 @@
         "context",
         "discovery"
       ],
-      "domain": "core",
-      "path": "patterns/context-discovery.md"
+      "line_count": 209
     },
     {
       "subdomain": "patterns",
-      "line_count": 260,
+      "path": "patterns/early-metadata-pattern.md",
       "summary": "Early metadata creation for interruption recovery",
       "load_when": {
-        "commands": [],
         "agents": [
           "general-research-agent",
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "recovery"
       ],
@@ -1102,20 +1103,20 @@
         "metadata",
         "early"
       ],
-      "domain": "core",
-      "path": "patterns/early-metadata-pattern.md"
+      "line_count": 260
     },
     {
       "subdomain": "patterns",
-      "line_count": 301,
+      "path": "patterns/file-metadata-exchange.md",
       "summary": "File-based metadata exchange between agents",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1124,22 +1125,22 @@
         "metadata",
         "exchange"
       ],
-      "domain": "core",
-      "path": "patterns/file-metadata-exchange.md"
+      "line_count": 301
     },
     {
       "subdomain": "patterns",
-      "line_count": 278,
+      "path": "patterns/inline-status-update.md",
       "summary": "Inline status update pattern for plans",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1148,19 +1149,19 @@
         "status",
         "inline"
       ],
-      "domain": "core",
-      "path": "patterns/inline-status-update.md"
+      "line_count": 278
     },
     {
       "subdomain": "patterns",
-      "line_count": 262,
+      "path": "patterns/jq-escaping-workarounds.md",
       "summary": "Workarounds for jq escaping issues",
       "load_when": {
-        "agents": [],
         "always": true,
+        "task_types": [],
         "commands": [],
-        "task_types": []
+        "agents": []
       },
+      "domain": "core",
       "topics": [
         "troubleshooting"
       ],
@@ -1169,20 +1170,20 @@
         "jq",
         "escaping"
       ],
-      "domain": "core",
-      "path": "patterns/jq-escaping-workarounds.md"
+      "line_count": 262
     },
     {
       "subdomain": "patterns",
-      "line_count": 254,
+      "path": "patterns/mcp-tool-recovery.md",
       "summary": "Recovery patterns for MCP tool failures",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "recovery"
       ],
@@ -1191,22 +1192,22 @@
         "mcp",
         "recovery"
       ],
-      "domain": "core",
-      "path": "patterns/mcp-tool-recovery.md"
+      "line_count": 254
     },
     {
       "subdomain": "patterns",
-      "line_count": 147,
+      "path": "patterns/metadata-file-return.md",
       "summary": "Metadata file return pattern for subagents",
       "load_when": {
-        "commands": [],
         "agents": [
           "general-research-agent",
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1215,24 +1216,24 @@
         "metadata",
         "return"
       ],
-      "domain": "core",
-      "path": "patterns/metadata-file-return.md"
+      "line_count": 147
     },
     {
       "subdomain": "patterns",
-      "line_count": 522,
+      "path": "patterns/multi-task-operations.md",
       "summary": "Multi-task command syntax and parallel processing patterns",
       "load_when": {
+        "agents": [],
+        "task_types": [
+          "meta"
+        ],
         "commands": [
           "/research",
           "/plan",
           "/implement"
-        ],
-        "agents": [],
-        "task_types": [
-          "meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1242,20 +1243,20 @@
         "parallel",
         "operations"
       ],
-      "domain": "core",
-      "path": "patterns/multi-task-operations.md"
+      "line_count": 522
     },
     {
       "subdomain": "patterns",
-      "line_count": 265,
+      "path": "patterns/postflight-control.md",
       "summary": "Postflight control flow patterns",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1264,20 +1265,20 @@
         "postflight",
         "control"
       ],
-      "domain": "core",
-      "path": "patterns/postflight-control.md"
+      "line_count": 265
     },
     {
       "subdomain": "patterns",
-      "line_count": 100,
+      "path": "patterns/roadmap-update.md",
       "summary": "Roadmap update pattern for task completion",
       "load_when": {
+        "agents": [],
+        "task_types": [],
         "commands": [
           "/todo"
-        ],
-        "agents": [],
-        "task_types": []
+        ]
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1286,22 +1287,22 @@
         "roadmap",
         "update"
       ],
-      "domain": "core",
-      "path": "patterns/roadmap-update.md"
+      "line_count": 100
     },
     {
       "subdomain": "patterns",
-      "line_count": 165,
+      "path": "patterns/skill-lifecycle.md",
       "summary": "Skill lifecycle management pattern",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1310,20 +1311,20 @@
         "skill",
         "lifecycle"
       ],
-      "domain": "core",
-      "path": "patterns/skill-lifecycle.md"
+      "line_count": 165
     },
     {
       "subdomain": "patterns",
-      "line_count": 146,
+      "path": "patterns/team-orchestration.md",
       "summary": "Team mode orchestration patterns",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1332,24 +1333,24 @@
         "team",
         "orchestration"
       ],
-      "domain": "core",
-      "path": "patterns/team-orchestration.md"
+      "line_count": 146
     },
     {
       "subdomain": "patterns",
-      "line_count": 184,
+      "path": "patterns/thin-wrapper-skill.md",
       "summary": "Thin wrapper skill pattern for delegation",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1358,22 +1359,22 @@
         "skill",
         "wrapper"
       ],
-      "domain": "core",
-      "path": "patterns/thin-wrapper-skill.md"
+      "line_count": 184
     },
     {
       "subdomain": "processes",
-      "line_count": 576,
+      "path": "processes/implementation-workflow.md",
       "summary": "Implementation phase workflow details",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "implementation"
       ],
@@ -1382,22 +1383,22 @@
         "implementation",
         "workflow"
       ],
-      "domain": "core",
-      "path": "processes/implementation-workflow.md"
+      "line_count": 576
     },
     {
       "subdomain": "processes",
-      "line_count": 540,
+      "path": "processes/planning-workflow.md",
       "summary": "Planning phase workflow details",
       "load_when": {
-        "commands": [
-          "/plan"
-        ],
         "agents": [
           "planner-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/plan"
+        ]
       },
+      "domain": "core",
       "topics": [
         "planning"
       ],
@@ -1406,22 +1407,22 @@
         "planning",
         "workflow"
       ],
-      "domain": "core",
-      "path": "processes/planning-workflow.md"
+      "line_count": 540
     },
     {
       "subdomain": "processes",
-      "line_count": 628,
+      "path": "processes/research-workflow.md",
       "summary": "Research phase workflow details",
       "load_when": {
-        "commands": [
-          "/research"
-        ],
         "agents": [
           "general-research-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/research"
+        ]
       },
+      "domain": "core",
       "topics": [
         "research"
       ],
@@ -1430,18 +1431,39 @@
         "research",
         "workflow"
       ],
+      "line_count": 628
+    },
+    {
+      "subdomain": "root",
+      "path": "README.md",
+      "summary": "Context directory documentation index",
+      "load_when": {
+        "always": true,
+        "task_types": [],
+        "commands": [],
+        "agents": []
+      },
       "domain": "core",
-      "path": "processes/research-workflow.md"
+      "topics": [
+        "documentation"
+      ],
+      "keywords": [
+        "readme",
+        "index",
+        "documentation"
+      ],
+      "line_count": 202
     },
     {
       "subdomain": "reference",
-      "line_count": 50,
+      "path": "reference/artifact-templates.md",
       "summary": "Error report template (other artifact types use format files directly)",
       "load_when": {
-        "commands": [],
         "agents": [],
-        "task_types": []
+        "task_types": [],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -1451,19 +1473,19 @@
         "templates",
         "error-report"
       ],
-      "domain": "core",
-      "path": "reference/artifact-templates.md"
+      "line_count": 50
     },
     {
       "subdomain": "reference",
-      "line_count": 29,
+      "path": "reference/README.md",
       "summary": "Reference documentation index",
       "load_when": {
-        "agents": [],
         "always": true,
+        "task_types": [],
         "commands": [],
-        "task_types": []
+        "agents": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -1472,22 +1494,22 @@
         "readme",
         "index"
       ],
-      "domain": "core",
-      "path": "reference/README.md"
+      "line_count": 29
     },
     {
       "subdomain": "reference",
-      "line_count": 156,
+      "path": "reference/skill-agent-mapping.md",
       "summary": "Mapping of skills to agents",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1497,23 +1519,23 @@
         "agent",
         "mapping"
       ],
-      "domain": "core",
-      "path": "reference/skill-agent-mapping.md"
+      "line_count": 156
     },
     {
       "subdomain": "reference",
-      "line_count": 352,
+      "path": "reference/state-management-schema.md",
       "summary": "Schema for state.json and TODO.md",
       "load_when": {
-        "commands": [
-          "/task",
-          "/todo"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task",
+          "/todo"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -1522,20 +1544,20 @@
         "state",
         "schema"
       ],
-      "domain": "core",
-      "path": "reference/state-management-schema.md"
+      "line_count": 352
     },
     {
       "subdomain": "reference",
-      "line_count": 400,
+      "path": "reference/team-wave-helpers.md",
       "summary": "Helper patterns for team wave-based parallel execution",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1545,20 +1567,20 @@
         "wave",
         "helpers"
       ],
-      "domain": "core",
-      "path": "reference/team-wave-helpers.md"
+      "line_count": 400
     },
     {
       "subdomain": "reference",
-      "line_count": 197,
+      "path": "reference/workflow-diagrams.md",
       "summary": "Visual workflow diagrams",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -1567,19 +1589,19 @@
         "workflow",
         "diagrams"
       ],
-      "domain": "core",
-      "path": "reference/workflow-diagrams.md"
+      "line_count": 197
     },
     {
       "subdomain": "repo",
-      "line_count": 144,
+      "path": "repo/project-overview.md",
       "summary": "Project-specific repository overview",
       "load_when": {
-        "agents": [],
         "always": true,
+        "task_types": [],
         "commands": [],
-        "task_types": []
+        "agents": []
       },
+      "domain": "core",
       "topics": [
         "project"
       ],
@@ -1588,23 +1610,23 @@
         "project",
         "overview"
       ],
-      "domain": "core",
-      "path": "repo/project-overview.md"
+      "line_count": 144
     },
     {
       "subdomain": "repo",
-      "line_count": 599,
+      "path": "repo/self-healing-implementation-details.md",
       "summary": "Self-healing system implementation details",
       "load_when": {
-        "commands": [
-          "/errors",
-          "/fix-it"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/errors",
+          "/fix-it"
         ]
       },
+      "domain": "core",
       "topics": [
         "recovery"
       ],
@@ -1613,22 +1635,22 @@
         "self-healing",
         "implementation"
       ],
-      "domain": "core",
-      "path": "repo/self-healing-implementation-details.md"
+      "line_count": 599
     },
     {
       "subdomain": "repo",
-      "line_count": 142,
+      "path": "repo/update-project.md",
       "summary": "Guide for updating project overview",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -1637,20 +1659,20 @@
         "update",
         "project"
       ],
-      "domain": "core",
-      "path": "repo/update-project.md"
+      "line_count": 142
     },
     {
       "subdomain": "root",
-      "line_count": 43,
+      "path": "routing.md",
       "summary": "Quick routing reference",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -1658,24 +1680,24 @@
         "routing",
         "reference"
       ],
-      "domain": "core",
-      "path": "routing.md"
+      "line_count": 43
     },
     {
       "subdomain": "schemas",
-      "line_count": 190,
+      "path": "schemas/frontmatter-schema.json",
       "summary": "JSON schema for agent and skill YAML frontmatter validation",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -1685,24 +1707,24 @@
         "validation",
         "json-schema"
       ],
-      "domain": "core",
-      "path": "schemas/frontmatter-schema.json"
+      "line_count": 190
     },
     {
       "subdomain": "schemas",
-      "line_count": 198,
+      "path": "schemas/subagent-frontmatter.yaml",
       "summary": "YAML schema for subagent frontmatter fields",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -1712,22 +1734,22 @@
         "frontmatter",
         "yaml"
       ],
-      "domain": "core",
-      "path": "schemas/subagent-frontmatter.yaml"
+      "line_count": 198
     },
     {
       "subdomain": "standards",
-      "line_count": 152,
+      "path": "standards/analysis-framework.md",
       "summary": "Framework for code analysis tasks",
       "load_when": {
-        "commands": [
-          "/review"
-        ],
         "agents": [
           "code-reviewer-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/review"
+        ]
       },
+      "domain": "core",
       "topics": [
         "code-review"
       ],
@@ -1736,20 +1758,20 @@
         "analysis",
         "framework"
       ],
-      "domain": "core",
-      "path": "standards/analysis-framework.md"
+      "line_count": 152
     },
     {
       "subdomain": "standards",
-      "line_count": 144,
+      "path": "standards/ci-workflow.md",
       "summary": "CI/CD workflow standards",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "devops"
       ],
@@ -1758,22 +1780,22 @@
         "ci",
         "workflow"
       ],
-      "domain": "core",
-      "path": "standards/ci-workflow.md"
+      "line_count": 144
     },
     {
       "subdomain": "standards",
-      "line_count": 377,
+      "path": "standards/code-patterns.md",
       "summary": "Code pattern standards for reviews",
       "load_when": {
-        "commands": [
-          "/review"
-        ],
         "agents": [
           "code-reviewer-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/review"
+        ]
       },
+      "domain": "core",
       "topics": [
         "code-review"
       ],
@@ -1782,23 +1804,23 @@
         "code",
         "patterns"
       ],
-      "domain": "core",
-      "path": "standards/code-patterns.md"
+      "line_count": 377
     },
     {
       "subdomain": "standards",
-      "line_count": 300,
+      "path": "standards/documentation-standards.md",
       "summary": "Documentation standards: formatting, naming, README requirements, prohibited content",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta",
           "markdown"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "documentation"
       ],
@@ -1808,22 +1830,22 @@
         "formatting",
         "readme"
       ],
-      "domain": "core",
-      "path": "standards/documentation-standards.md"
+      "line_count": 300
     },
     {
       "subdomain": "standards",
-      "line_count": 1056,
+      "path": "standards/error-handling.md",
       "summary": "Error handling standards and patterns",
       "load_when": {
-        "commands": [
-          "/errors"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/errors"
         ]
       },
+      "domain": "core",
       "topics": [
         "recovery"
       ],
@@ -1832,20 +1854,20 @@
         "error",
         "handling"
       ],
-      "domain": "core",
-      "path": "standards/error-handling.md"
+      "line_count": 1056
     },
     {
       "subdomain": "standards",
-      "line_count": 212,
+      "path": "standards/git-integration.md",
       "summary": "Git integration standards",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "devops"
       ],
@@ -1854,20 +1876,20 @@
         "git",
         "integration"
       ],
-      "domain": "core",
-      "path": "standards/git-integration.md"
+      "line_count": 212
     },
     {
       "subdomain": "standards",
-      "line_count": 571,
+      "path": "standards/git-safety.md",
       "summary": "Git safety guidelines and patterns",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "devops"
       ],
@@ -1876,26 +1898,26 @@
         "git",
         "safety"
       ],
-      "domain": "core",
-      "path": "standards/git-safety.md"
+      "line_count": 571
     },
     {
       "subdomain": "standards",
-      "line_count": 272,
+      "path": "standards/interactive-selection.md",
       "summary": "Interactive selection UI patterns",
       "load_when": {
-        "commands": [
-          "/meta",
-          "/fix-it",
-          "/review"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta",
+          "/fix-it",
+          "/review"
         ]
       },
+      "domain": "core",
       "topics": [
         "user-interaction"
       ],
@@ -1904,20 +1926,20 @@
         "interactive",
         "selection"
       ],
-      "domain": "core",
-      "path": "standards/interactive-selection.md"
+      "line_count": 272
     },
     {
       "subdomain": "standards",
-      "line_count": 202,
+      "path": "standards/postflight-tool-restrictions.md",
       "summary": "Tool restrictions in postflight phase",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -1926,25 +1948,25 @@
         "postflight",
         "tools"
       ],
-      "domain": "core",
-      "path": "standards/postflight-tool-restrictions.md"
+      "line_count": 202
     },
     {
       "subdomain": "standards",
-      "line_count": 373,
+      "path": "standards/status-markers.md",
       "summary": "Task status marker conventions",
       "load_when": {
-        "commands": [
-          "/task",
-          "/plan",
-          "/implement"
-        ],
         "agents": [
           "planner-agent",
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/task",
+          "/plan",
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -1953,23 +1975,23 @@
         "status",
         "markers"
       ],
-      "domain": "core",
-      "path": "standards/status-markers.md"
+      "line_count": 373
     },
     {
       "subdomain": "standards",
-      "line_count": 375,
+      "path": "standards/task-management.md",
       "summary": "Task management standards",
       "load_when": {
-        "commands": [
-          "/task",
-          "/todo"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task",
+          "/todo"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -1978,22 +2000,22 @@
         "task",
         "management"
       ],
-      "domain": "core",
-      "path": "standards/task-management.md"
+      "line_count": 375
     },
     {
       "subdomain": "standards",
-      "line_count": 127,
+      "path": "standards/testing.md",
       "summary": "Testing standards for implementations",
       "load_when": {
-        "commands": [
-          "/implement"
-        ],
         "agents": [
           "general-implementation-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/implement"
+        ]
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -2001,24 +2023,24 @@
         "standards",
         "testing"
       ],
-      "domain": "core",
-      "path": "standards/testing.md"
+      "line_count": 127
     },
     {
       "subdomain": "standards",
-      "line_count": 709,
+      "path": "standards/xml-structure.md",
       "summary": "XML structure standards for prompts",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "standards"
       ],
@@ -2027,24 +2049,24 @@
         "xml",
         "structure"
       ],
-      "domain": "core",
-      "path": "standards/xml-structure.md"
+      "line_count": 709
     },
     {
       "subdomain": "templates",
-      "line_count": 334,
+      "path": "templates/agent-template.md",
       "summary": "Template for creating new agents",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -2052,24 +2074,24 @@
         "template",
         "agent"
       ],
-      "domain": "core",
-      "path": "templates/agent-template.md"
+      "line_count": 334
     },
     {
       "subdomain": "templates",
-      "line_count": 135,
+      "path": "templates/command-template.md",
       "summary": "Template for creating new commands",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -2077,22 +2099,22 @@
         "template",
         "command"
       ],
-      "domain": "core",
-      "path": "templates/command-template.md"
+      "line_count": 135
     },
     {
       "subdomain": "templates",
-      "line_count": 82,
+      "path": "templates/delegation-context.md",
       "summary": "Template for delegation context objects",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "orchestration"
       ],
@@ -2101,24 +2123,24 @@
         "delegation",
         "context"
       ],
-      "domain": "core",
-      "path": "templates/delegation-context.md"
+      "line_count": 82
     },
     {
       "subdomain": "templates",
-      "line_count": 273,
+      "path": "templates/orchestrator-template.md",
       "summary": "Template for creating orchestrators",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -2126,24 +2148,24 @@
         "template",
         "orchestrator"
       ],
-      "domain": "core",
-      "path": "templates/orchestrator-template.md"
+      "line_count": 273
     },
     {
       "subdomain": "templates",
-      "line_count": 69,
+      "path": "templates/state-template.json",
       "summary": "Template for state.json initialization",
       "load_when": {
-        "commands": [
-          "/task"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -2152,24 +2174,24 @@
         "state",
         "json"
       ],
-      "domain": "core",
-      "path": "templates/state-template.json"
+      "line_count": 69
     },
     {
       "subdomain": "templates",
-      "line_count": 223,
+      "path": "templates/subagent-template.md",
       "summary": "Template for creating subagents",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -2177,24 +2199,24 @@
         "template",
         "subagent"
       ],
-      "domain": "core",
-      "path": "templates/subagent-template.md"
+      "line_count": 223
     },
     {
       "subdomain": "templates",
-      "line_count": 273,
+      "path": "templates/thin-wrapper-skill.md",
       "summary": "Template for thin wrapper skills",
       "load_when": {
-        "commands": [
-          "/meta"
-        ],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/meta"
         ]
       },
+      "domain": "core",
       "topics": [
         "system-design"
       ],
@@ -2203,23 +2225,23 @@
         "skill",
         "wrapper"
       ],
-      "domain": "core",
-      "path": "templates/thin-wrapper-skill.md"
+      "line_count": 273
     },
     {
       "subdomain": "troubleshooting",
-      "line_count": 337,
+      "path": "troubleshooting/workflow-interruptions.md",
       "summary": "Troubleshooting workflow interruptions",
       "load_when": {
-        "commands": [
-          "/errors",
-          "/fix-it"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/errors",
+          "/fix-it"
         ]
       },
+      "domain": "core",
       "topics": [
         "recovery"
       ],
@@ -2228,20 +2250,20 @@
         "workflow",
         "interruptions"
       ],
-      "domain": "core",
-      "path": "troubleshooting/workflow-interruptions.md"
+      "line_count": 337
     },
     {
       "subdomain": "root",
-      "line_count": 46,
+      "path": "validation.md",
       "summary": "Validation quick reference",
       "load_when": {
-        "commands": [],
         "agents": [],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "quality"
       ],
@@ -2249,22 +2271,22 @@
         "validation",
         "reference"
       ],
-      "domain": "core",
-      "path": "validation.md"
+      "line_count": 46
     },
     {
       "subdomain": "workflows",
-      "line_count": 452,
+      "path": "workflows/command-lifecycle.md",
       "summary": "Complete command lifecycle documentation",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -2273,22 +2295,22 @@
         "command",
         "lifecycle"
       ],
-      "domain": "core",
-      "path": "workflows/command-lifecycle.md"
+      "line_count": 452
     },
     {
       "subdomain": "workflows",
-      "line_count": 589,
+      "path": "workflows/preflight-postflight.md",
       "summary": "Preflight and postflight workflow details",
       "load_when": {
-        "commands": [],
         "agents": [
           "meta-builder-agent"
         ],
         "task_types": [
           "meta"
-        ]
+        ],
+        "commands": []
       },
+      "domain": "core",
       "topics": [
         "workflow"
       ],
@@ -2297,22 +2319,22 @@
         "preflight",
         "postflight"
       ],
-      "domain": "core",
-      "path": "workflows/preflight-postflight.md"
+      "line_count": 589
     },
     {
       "subdomain": "workflows",
-      "line_count": 164,
+      "path": "workflows/review-process.md",
       "summary": "Code review workflow process",
       "load_when": {
-        "commands": [
-          "/review"
-        ],
         "agents": [
           "code-reviewer-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/review"
+        ]
       },
+      "domain": "core",
       "topics": [
         "code-review"
       ],
@@ -2321,22 +2343,22 @@
         "review",
         "process"
       ],
-      "domain": "core",
-      "path": "workflows/review-process.md"
+      "line_count": 164
     },
     {
       "subdomain": "workflows",
-      "line_count": 86,
+      "path": "workflows/status-transitions.md",
       "summary": "Valid task status transitions",
       "load_when": {
-        "commands": [
-          "/task"
-        ],
         "agents": [],
         "task_types": [
           "meta"
+        ],
+        "commands": [
+          "/task"
         ]
       },
+      "domain": "core",
       "topics": [
         "state"
       ],
@@ -2345,24 +2367,24 @@
         "status",
         "transitions"
       ],
-      "domain": "core",
-      "path": "workflows/status-transitions.md"
+      "line_count": 86
     },
     {
       "subdomain": "workflows",
-      "line_count": 270,
+      "path": "workflows/task-breakdown.md",
       "summary": "Task breakdown and decomposition workflow",
       "load_when": {
-        "commands": [
-          "/plan",
-          "/spawn"
-        ],
         "agents": [
           "planner-agent",
           "spawn-agent"
         ],
-        "task_types": []
+        "task_types": [],
+        "commands": [
+          "/plan",
+          "/spawn"
+        ]
       },
+      "domain": "core",
       "topics": [
         "planning"
       ],
@@ -2371,21 +2393,21 @@
         "task",
         "breakdown"
       ],
-      "domain": "core",
-      "path": "workflows/task-breakdown.md"
+      "line_count": 270
     },
     {
       "subdomain": "memory",
-      "line_count": 150,
+      "path": "project/memory/learn-usage.md",
       "summary": "Usage guide for /learn command and memory management",
       "load_when": {
-        "skills": [
-          "skill-memory"
-        ],
         "commands": [
           "/learn"
+        ],
+        "skills": [
+          "skill-memory"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "learn",
@@ -2397,21 +2419,21 @@
         "vault",
         "content-mapping"
       ],
-      "domain": "project",
-      "path": "project/memory/learn-usage.md"
+      "line_count": 150
     },
     {
       "subdomain": "memory",
-      "line_count": 120,
+      "path": "project/memory/memory-setup.md",
       "summary": "MCP server setup for Obsidian memory vault",
       "load_when": {
-        "skills": [
-          "skill-memory"
-        ],
         "commands": [
           "/learn"
+        ],
+        "skills": [
+          "skill-memory"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "mcp",
@@ -2423,18 +2445,18 @@
         "setup",
         "configuration"
       ],
-      "domain": "project",
-      "path": "project/memory/memory-setup.md"
+      "line_count": 120
     },
     {
       "subdomain": "memory",
-      "line_count": 250,
+      "path": "project/memory/memory-troubleshooting.md",
       "summary": "Troubleshooting guide for memory system issues",
       "load_when": {
         "skills": [
           "skill-memory"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "troubleshooting",
@@ -2446,25 +2468,25 @@
         "memory",
         "mcp"
       ],
-      "domain": "project",
-      "path": "project/memory/memory-troubleshooting.md"
+      "line_count": 250
     },
     {
       "subdomain": "memory",
-      "line_count": 57,
+      "path": "project/memory/domain/memory-reference.md",
       "summary": "Memory vault reference: MCP integration, vault structure, classification, scoring engine, maintenance operations",
       "load_when": {
+        "agents": [
+          "general-research-agent"
+        ],
         "skills": [
           "skill-memory"
         ],
         "commands": [
           "/learn",
           "/distill"
-        ],
-        "agents": [
-          "general-research-agent"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "reference",
@@ -2478,21 +2500,21 @@
         "scoring",
         "distill"
       ],
-      "domain": "project",
-      "path": "project/memory/domain/memory-reference.md"
+      "line_count": 57
     },
     {
       "subdomain": "memory",
-      "line_count": 180,
+      "path": "project/memory/knowledge-capture-usage.md",
       "summary": "Example workflows for knowledge capture system",
       "load_when": {
-        "skills": [
-          "skill-memory"
-        ],
         "commands": [
           "/learn"
+        ],
+        "skills": [
+          "skill-memory"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "knowledge-capture",
@@ -2505,24 +2527,24 @@
         "todo",
         "harvest"
       ],
-      "domain": "project",
-      "path": "project/memory/knowledge-capture-usage.md"
+      "line_count": 180
     },
     {
       "subdomain": "memory",
-      "line_count": 180,
+      "path": "project/memory/distill-usage.md",
       "summary": "Usage guide for /distill command: sub-mode workflows, scoring formula, maintenance cadence",
       "load_when": {
+        "agents": [
+          "general-research-agent"
+        ],
         "skills": [
           "skill-memory"
         ],
         "commands": [
           "/distill"
-        ],
-        "agents": [
-          "general-research-agent"
         ]
       },
+      "domain": "project",
       "topics": [
         "memory",
         "distill",
@@ -2538,11 +2560,11 @@
         "scoring",
         "health"
       ],
-      "domain": "project",
-      "path": "project/memory/distill-usage.md"
+      "line_count": 180
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/README.md",
       "summary": "Nix context overview with directory structure and loading strategy",
       "load_when": {
         "agents": [
@@ -2553,13 +2575,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/README.md",
-      "line_count": 100,
       "domain": "project",
-      "description": "Nix context overview with directory structure and loading strategy"
+      "description": "Nix context overview with directory structure and loading strategy",
+      "line_count": 100
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/domain/nix-language.md",
       "summary": "Nix expression language syntax and builtins reference",
       "load_when": {
         "agents": [
@@ -2570,13 +2592,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/domain/nix-language.md",
-      "line_count": 150,
       "domain": "project",
-      "description": "Nix expression language syntax and builtins reference"
+      "description": "Nix expression language syntax and builtins reference",
+      "line_count": 150
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/domain/flakes.md",
       "summary": "Nix flake structure, inputs, outputs, and lockfile management",
       "load_when": {
         "agents": [
@@ -2587,13 +2609,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/domain/flakes.md",
-      "line_count": 180,
       "domain": "project",
-      "description": "Nix flake structure, inputs, outputs, and lockfile management"
+      "description": "Nix flake structure, inputs, outputs, and lockfile management",
+      "line_count": 180
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/domain/nixos-modules.md",
       "summary": "NixOS module system with options, config, and imports",
       "load_when": {
         "agents": [
@@ -2604,13 +2626,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/domain/nixos-modules.md",
-      "line_count": 170,
       "domain": "project",
-      "description": "NixOS module system with options, config, and imports"
+      "description": "NixOS module system with options, config, and imports",
+      "line_count": 170
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/domain/home-manager.md",
       "summary": "Home Manager user-level configuration and module patterns",
       "load_when": {
         "agents": [
@@ -2621,13 +2643,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/domain/home-manager.md",
-      "line_count": 160,
       "domain": "project",
-      "description": "Home Manager user-level configuration and module patterns"
+      "description": "Home Manager user-level configuration and module patterns",
+      "line_count": 160
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/patterns/module-patterns.md",
       "summary": "NixOS and Home Manager module definition patterns",
       "load_when": {
         "agents": [
@@ -2638,13 +2660,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/patterns/module-patterns.md",
-      "line_count": 140,
       "domain": "project",
-      "description": "NixOS and Home Manager module definition patterns"
+      "description": "NixOS and Home Manager module definition patterns",
+      "line_count": 140
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/patterns/overlay-patterns.md",
       "summary": "Nixpkgs overlay patterns for package customization",
       "load_when": {
         "agents": [
@@ -2655,13 +2677,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/patterns/overlay-patterns.md",
-      "line_count": 130,
       "domain": "project",
-      "description": "Nixpkgs overlay patterns for package customization"
+      "description": "Nixpkgs overlay patterns for package customization",
+      "line_count": 130
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/patterns/derivation-patterns.md",
       "summary": "Nix derivation and package building patterns",
       "load_when": {
         "agents": [
@@ -2672,13 +2694,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/patterns/derivation-patterns.md",
-      "line_count": 160,
       "domain": "project",
-      "description": "Nix derivation and package building patterns"
+      "description": "Nix derivation and package building patterns",
+      "line_count": 160
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/standards/nix-style-guide.md",
       "summary": "Nix code formatting and naming conventions",
       "load_when": {
         "agents": [
@@ -2689,13 +2711,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/standards/nix-style-guide.md",
-      "line_count": 150,
       "domain": "project",
-      "description": "Nix code formatting and naming conventions"
+      "description": "Nix code formatting and naming conventions",
+      "line_count": 150
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/tools/nixos-rebuild-guide.md",
       "summary": "NixOS system rebuild commands and workflows",
       "load_when": {
         "agents": [
@@ -2706,13 +2728,13 @@
           "nix"
         ]
       },
-      "path": "project/nix/tools/nixos-rebuild-guide.md",
-      "line_count": 120,
       "domain": "project",
-      "description": "NixOS system rebuild commands and workflows"
+      "description": "NixOS system rebuild commands and workflows",
+      "line_count": 120
     },
     {
       "subdomain": "nix",
+      "path": "project/nix/tools/home-manager-guide.md",
       "summary": "Home Manager CLI commands and configuration workflows",
       "load_when": {
         "agents": [
@@ -2723,13 +2745,14 @@
           "nix"
         ]
       },
-      "path": "project/nix/tools/home-manager-guide.md",
-      "line_count": 130,
       "domain": "project",
-      "description": "Home Manager CLI commands and configuration workflows"
+      "description": "Home Manager CLI commands and configuration workflows",
+      "line_count": 130
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/README.md",
+      "summary": "Neovim configuration domain overview",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -2739,23 +2762,23 @@
           "neovim"
         ]
       },
-      "summary": "Neovim configuration domain overview",
-      "line_count": 80,
-      "path": "project/neovim/README.md",
-      "keywords": [
-        "neovim",
-        "lua",
-        "plugin"
-      ],
       "domain": "project",
       "topics": [
         "neovim",
         "lua",
         "configuration"
-      ]
+      ],
+      "keywords": [
+        "neovim",
+        "lua",
+        "plugin"
+      ],
+      "line_count": 80
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/domain/lua-patterns.md",
+      "summary": "Common Lua patterns and idioms for Neovim",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -2765,23 +2788,23 @@
           "neovim"
         ]
       },
-      "summary": "Common Lua patterns and idioms for Neovim",
-      "line_count": 120,
-      "path": "project/neovim/domain/lua-patterns.md",
-      "keywords": [
-        "lua",
-        "patterns",
-        "module"
-      ],
       "domain": "project",
       "topics": [
         "lua",
         "patterns",
         "idioms"
-      ]
+      ],
+      "keywords": [
+        "lua",
+        "patterns",
+        "module"
+      ],
+      "line_count": 120
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/domain/neovim-api.md",
+      "summary": "Neovim API reference and usage patterns",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -2791,23 +2814,23 @@
           "neovim"
         ]
       },
-      "summary": "Neovim API reference and usage patterns",
-      "line_count": 200,
-      "path": "project/neovim/domain/neovim-api.md",
-      "keywords": [
-        "api",
-        "vim",
-        "nvim_*"
-      ],
       "domain": "project",
       "topics": [
         "api",
         "vim",
         "nvim"
-      ]
+      ],
+      "keywords": [
+        "api",
+        "vim",
+        "nvim_*"
+      ],
+      "line_count": 200
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/domain/plugin-ecosystem.md",
+      "summary": "Neovim plugin ecosystem overview",
       "load_when": {
         "agents": [
           "neovim-research-agent"
@@ -2816,23 +2839,23 @@
           "neovim"
         ]
       },
-      "summary": "Neovim plugin ecosystem overview",
-      "line_count": 150,
-      "path": "project/neovim/domain/plugin-ecosystem.md",
-      "keywords": [
-        "plugin",
-        "lazy",
-        "ecosystem"
-      ],
       "domain": "project",
       "topics": [
         "plugins",
         "ecosystem",
         "community"
-      ]
+      ],
+      "keywords": [
+        "plugin",
+        "lazy",
+        "ecosystem"
+      ],
+      "line_count": 150
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/domain/lsp-overview.md",
+      "summary": "LSP configuration and integration in Neovim",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -2842,23 +2865,23 @@
           "neovim"
         ]
       },
-      "summary": "LSP configuration and integration in Neovim",
-      "line_count": 180,
-      "path": "project/neovim/domain/lsp-overview.md",
-      "keywords": [
-        "lsp",
-        "language",
-        "server"
-      ],
       "domain": "project",
       "topics": [
         "lsp",
         "language-server",
         "completion"
-      ]
+      ],
+      "keywords": [
+        "lsp",
+        "language",
+        "server"
+      ],
+      "line_count": 180
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/patterns/autocommand-patterns.md",
+      "summary": "Autocommand patterns and best practices",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2867,23 +2890,23 @@
           "neovim"
         ]
       },
-      "summary": "Autocommand patterns and best practices",
-      "line_count": 100,
-      "path": "project/neovim/patterns/autocommand-patterns.md",
-      "keywords": [
-        "autocmd",
-        "augroup",
-        "event"
-      ],
       "domain": "project",
       "topics": [
         "autocommands",
         "events",
         "augroup"
-      ]
+      ],
+      "keywords": [
+        "autocmd",
+        "augroup",
+        "event"
+      ],
+      "line_count": 100
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/patterns/ftplugin-patterns.md",
+      "summary": "Filetype plugin patterns and organization",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2892,23 +2915,23 @@
           "neovim"
         ]
       },
-      "summary": "Filetype plugin patterns and organization",
-      "line_count": 90,
-      "path": "project/neovim/patterns/ftplugin-patterns.md",
-      "keywords": [
-        "ftplugin",
-        "filetype",
-        "after"
-      ],
       "domain": "project",
       "topics": [
         "ftplugin",
         "filetype",
         "settings"
-      ]
+      ],
+      "keywords": [
+        "ftplugin",
+        "filetype",
+        "after"
+      ],
+      "line_count": 90
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/patterns/keymap-patterns.md",
+      "summary": "Keymap definition patterns and organization",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2917,23 +2940,23 @@
           "neovim"
         ]
       },
-      "summary": "Keymap definition patterns and organization",
-      "line_count": 120,
-      "path": "project/neovim/patterns/keymap-patterns.md",
-      "keywords": [
-        "keymap",
-        "map",
-        "leader"
-      ],
       "domain": "project",
       "topics": [
         "keymaps",
         "mappings",
         "which-key"
-      ]
+      ],
+      "keywords": [
+        "keymap",
+        "map",
+        "leader"
+      ],
+      "line_count": 120
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/patterns/plugin-spec.md",
+      "summary": "lazy.nvim plugin specification patterns",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2942,23 +2965,23 @@
           "neovim"
         ]
       },
-      "summary": "lazy.nvim plugin specification patterns",
-      "line_count": 150,
-      "path": "project/neovim/patterns/plugin-spec.md",
-      "keywords": [
-        "lazy",
-        "plugin",
-        "dependencies"
-      ],
       "domain": "project",
       "topics": [
         "lazy-nvim",
         "plugin-spec",
         "dependencies"
-      ]
+      ],
+      "keywords": [
+        "lazy",
+        "plugin",
+        "dependencies"
+      ],
+      "line_count": 150
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/lua-style-guide.md",
+      "summary": "Lua coding style guide for Neovim",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2967,23 +2990,23 @@
           "neovim"
         ]
       },
-      "summary": "Lua coding style guide for Neovim",
-      "line_count": 100,
-      "path": "project/neovim/standards/lua-style-guide.md",
-      "keywords": [
-        "style",
-        "format",
-        "convention"
-      ],
       "domain": "project",
       "topics": [
         "style",
         "conventions",
         "formatting"
-      ]
+      ],
+      "keywords": [
+        "style",
+        "format",
+        "convention"
+      ],
+      "line_count": 100
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/testing-patterns.md",
+      "summary": "Testing patterns for Neovim configuration",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -2992,48 +3015,23 @@
           "neovim"
         ]
       },
-      "summary": "Testing patterns for Neovim configuration",
-      "line_count": 80,
-      "path": "project/neovim/standards/testing-patterns.md",
-      "keywords": [
-        "test",
-        "plenary",
-        "spec"
-      ],
       "domain": "project",
       "topics": [
         "testing",
         "plenary",
         "busted"
-      ]
+      ],
+      "keywords": [
+        "test",
+        "plenary",
+        "spec"
+      ],
+      "line_count": 80
     },
     {
       "subdomain": "neovim",
-      "load_when": {
-        "agents": [
-          "neovim-implementation-agent"
-        ],
-        "languages": [
-          "neovim"
-        ]
-      },
-      "summary": "Template for creating new ftplugin files",
-      "line_count": 60,
       "path": "project/neovim/templates/ftplugin-template.md",
-      "keywords": [
-        "template",
-        "ftplugin",
-        "starter"
-      ],
-      "domain": "project",
-      "topics": [
-        "template",
-        "ftplugin",
-        "boilerplate"
-      ]
-    },
-    {
-      "subdomain": "neovim",
+      "summary": "Template for creating new ftplugin files",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -3042,23 +3040,48 @@
           "neovim"
         ]
       },
-      "summary": "Template for creating new plugin specs",
-      "line_count": 70,
-      "path": "project/neovim/templates/plugin-template.md",
+      "domain": "project",
+      "topics": [
+        "template",
+        "ftplugin",
+        "boilerplate"
+      ],
       "keywords": [
         "template",
-        "plugin",
+        "ftplugin",
         "starter"
       ],
+      "line_count": 60
+    },
+    {
+      "subdomain": "neovim",
+      "path": "project/neovim/templates/plugin-template.md",
+      "summary": "Template for creating new plugin specs",
+      "load_when": {
+        "agents": [
+          "neovim-implementation-agent"
+        ],
+        "languages": [
+          "neovim"
+        ]
+      },
       "domain": "project",
       "topics": [
         "template",
         "plugin",
         "boilerplate"
-      ]
+      ],
+      "keywords": [
+        "template",
+        "plugin",
+        "starter"
+      ],
+      "line_count": 70
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/tools/lazy-nvim-guide.md",
+      "summary": "Guide to lazy.nvim plugin manager",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3068,23 +3091,23 @@
           "neovim"
         ]
       },
-      "summary": "Guide to lazy.nvim plugin manager",
-      "line_count": 200,
-      "path": "project/neovim/tools/lazy-nvim-guide.md",
-      "keywords": [
-        "lazy",
-        "plugin",
-        "manager"
-      ],
       "domain": "project",
       "topics": [
         "lazy-nvim",
         "plugin-manager",
         "loading"
-      ]
+      ],
+      "keywords": [
+        "lazy",
+        "plugin",
+        "manager"
+      ],
+      "line_count": 200
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/tools/telescope-guide.md",
+      "summary": "Guide to telescope.nvim fuzzy finder",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3094,23 +3117,23 @@
           "neovim"
         ]
       },
-      "summary": "Guide to telescope.nvim fuzzy finder",
-      "line_count": 150,
-      "path": "project/neovim/tools/telescope-guide.md",
-      "keywords": [
-        "telescope",
-        "find",
-        "picker"
-      ],
       "domain": "project",
       "topics": [
         "telescope",
         "fuzzy-finder",
         "pickers"
-      ]
+      ],
+      "keywords": [
+        "telescope",
+        "find",
+        "picker"
+      ],
+      "line_count": 150
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/tools/treesitter-guide.md",
+      "summary": "Guide to nvim-treesitter integration",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3120,23 +3143,23 @@
           "neovim"
         ]
       },
-      "summary": "Guide to nvim-treesitter integration",
-      "line_count": 180,
-      "path": "project/neovim/tools/treesitter-guide.md",
-      "keywords": [
-        "treesitter",
-        "parse",
-        "highlight"
-      ],
       "domain": "project",
       "topics": [
         "treesitter",
         "parsing",
         "highlighting"
-      ]
+      ],
+      "keywords": [
+        "treesitter",
+        "parse",
+        "highlight"
+      ],
+      "line_count": 180
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/box-drawing-guide.md",
+      "summary": "Unicode box-drawing character reference for UI elements",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3146,24 +3169,24 @@
           "neovim"
         ]
       },
-      "summary": "Unicode box-drawing character reference for UI elements",
-      "line_count": 80,
-      "path": "project/neovim/standards/box-drawing-guide.md",
+      "domain": "project",
+      "topics": [
+        "box-drawing",
+        "unicode",
+        "characters"
+      ],
       "keywords": [
         "box",
         "drawing",
         "unicode",
         "border"
       ],
-      "domain": "project",
-      "topics": [
-        "box-drawing",
-        "unicode",
-        "characters"
-      ]
+      "line_count": 80
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/documentation-policy.md",
+      "summary": "README requirements, structure template, and style guidelines",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3173,24 +3196,24 @@
           "neovim"
         ]
       },
-      "summary": "README requirements, structure template, and style guidelines",
-      "line_count": 100,
-      "path": "project/neovim/standards/documentation-policy.md",
+      "domain": "project",
+      "topics": [
+        "documentation",
+        "readme",
+        "policy"
+      ],
       "keywords": [
         "documentation",
         "readme",
         "structure",
         "style"
       ],
-      "domain": "project",
-      "topics": [
-        "documentation",
-        "readme",
-        "policy"
-      ]
+      "line_count": 100
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/emoji-policy.md",
+      "summary": "Character encoding guidelines and approved emoji alternatives",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3200,24 +3223,24 @@
           "neovim"
         ]
       },
-      "summary": "Character encoding guidelines and approved emoji alternatives",
-      "line_count": 60,
-      "path": "project/neovim/standards/emoji-policy.md",
+      "domain": "project",
+      "topics": [
+        "emoji",
+        "encoding",
+        "characters"
+      ],
       "keywords": [
         "emoji",
         "encoding",
         "unicode",
         "policy"
       ],
-      "domain": "project",
-      "topics": [
-        "emoji",
-        "encoding",
-        "characters"
-      ]
+      "line_count": 60
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/standards/lua-assertion-patterns.md",
+      "summary": "Correct string:match() assertion usage for Lua tests",
       "load_when": {
         "agents": [
           "neovim-implementation-agent"
@@ -3226,51 +3249,24 @@
           "neovim"
         ]
       },
-      "summary": "Correct string:match() assertion usage for Lua tests",
-      "line_count": 80,
-      "path": "project/neovim/standards/lua-assertion-patterns.md",
+      "domain": "project",
+      "topics": [
+        "testing",
+        "assertions",
+        "lua"
+      ],
       "keywords": [
         "assert",
         "match",
         "string",
         "test"
       ],
-      "domain": "project",
-      "topics": [
-        "testing",
-        "assertions",
-        "lua"
-      ]
+      "line_count": 80
     },
     {
       "subdomain": "neovim",
-      "load_when": {
-        "agents": [
-          "neovim-research-agent",
-          "neovim-implementation-agent"
-        ],
-        "languages": [
-          "neovim"
-        ]
-      },
-      "summary": "WezTerm terminal integration for Neovim workflow",
-      "line_count": 100,
       "path": "project/neovim/hooks/wezterm-integration.md",
-      "keywords": [
-        "wezterm",
-        "terminal",
-        "hooks",
-        "integration"
-      ],
-      "domain": "project",
-      "topics": [
-        "wezterm",
-        "terminal",
-        "integration"
-      ]
-    },
-    {
-      "subdomain": "neovim",
+      "summary": "WezTerm terminal integration for Neovim workflow",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3280,17 +3276,33 @@
           "neovim"
         ]
       },
-      "summary": "Hook-based readiness signaling, TTS notifications, and STT voice input for Neovim",
-      "line_count": 336,
-      "path": "project/neovim/guides/neovim-integration.md",
-      "keywords": [
-        "neovim",
-        "integration",
-        "hooks",
-        "sidebar",
-        "tts",
-        "stt"
+      "domain": "project",
+      "topics": [
+        "wezterm",
+        "terminal",
+        "integration"
       ],
+      "keywords": [
+        "wezterm",
+        "terminal",
+        "hooks",
+        "integration"
+      ],
+      "line_count": 100
+    },
+    {
+      "subdomain": "neovim",
+      "path": "project/neovim/guides/neovim-integration.md",
+      "summary": "Hook-based readiness signaling, TTS notifications, and STT voice input for Neovim",
+      "load_when": {
+        "agents": [
+          "neovim-research-agent",
+          "neovim-implementation-agent"
+        ],
+        "languages": [
+          "neovim"
+        ]
+      },
       "domain": "project",
       "topics": [
         "neovim",
@@ -3299,10 +3311,21 @@
         "readiness",
         "tts",
         "stt"
-      ]
+      ],
+      "keywords": [
+        "neovim",
+        "integration",
+        "hooks",
+        "sidebar",
+        "tts",
+        "stt"
+      ],
+      "line_count": 336
     },
     {
       "subdomain": "neovim",
+      "path": "project/neovim/guides/tts-stt-integration.md",
+      "summary": "TTS/STT setup, configuration, and troubleshooting for Claude Code and Neovim",
       "load_when": {
         "agents": [
           "neovim-research-agent",
@@ -3312,9 +3335,14 @@
           "neovim"
         ]
       },
-      "summary": "TTS/STT setup, configuration, and troubleshooting for Claude Code and Neovim",
-      "line_count": 367,
-      "path": "project/neovim/guides/tts-stt-integration.md",
+      "domain": "project",
+      "topics": [
+        "tts",
+        "stt",
+        "piper",
+        "vosk",
+        "audio"
+      ],
       "keywords": [
         "tts",
         "stt",
@@ -3323,69 +3351,34 @@
         "speech",
         "audio"
       ],
-      "domain": "project",
-      "topics": [
-        "tts",
-        "stt",
-        "piper",
-        "vosk",
-        "audio"
-      ]
+      "line_count": 367
     },
     {
-      "subdomain": "guides",
-      "line_count": 173,
-      "summary": "Complete loader function reference with signatures and copy semantics",
-      "load_when": {
-        "commands": [
-          "/meta"
-        ],
-        "agents": [
-          "meta-builder-agent"
-        ],
-        "task_types": [
-          "meta"
-        ]
-      },
-      "topics": [
-        "extension-system"
-      ],
-      "keywords": [
-        "loader",
-        "extension",
-        "copy",
-        "functions",
-        "reference"
-      ],
+      "path": "index.schema.json",
       "domain": "core",
-      "path": "guides/loader-reference.md"
-    },
-    {
       "subdomain": "schemas",
-      "line_count": 127,
       "summary": "JSON Schema for context index.json validation",
-      "load_when": {
-        "commands": [
-          "/meta"
-        ],
-        "agents": [
-          "meta-builder-agent"
-        ],
-        "task_types": [
-          "meta"
-        ]
-      },
-      "topics": [
-        "context-system"
-      ],
+      "line_count": 127,
       "keywords": [
         "schema",
         "index",
         "validation",
         "json-schema"
       ],
-      "domain": "core",
-      "path": "index.schema.json"
+      "topics": [
+        "context-system"
+      ],
+      "load_when": {
+        "agents": [
+          "meta-builder-agent"
+        ],
+        "task_types": [
+          "meta"
+        ],
+        "commands": [
+          "/meta"
+        ]
+      }
     }
   ]
 }
