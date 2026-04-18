@@ -8,20 +8,9 @@ Extensions provide task-type-specific and domain-specific capabilities to the co
 
 ## Two-Layer Architecture
 
-The extension system is split across two layers:
+The extension system splits across a Neovim Lua loader (Layer 1) that manages which files exist in the `.claude/` runtime, and the `.claude/` agent system (Layer 2) that Claude Code reads. The loader copies files from extension sources into the runtime on load, merges context index entries, and calls `generate_claudemd()` to rebuild `.claude/CLAUDE.md`. On unload, it removes those files and regenerates. Claude Code has no knowledge of the extension system itself -- it only sees the resulting runtime.
 
-- **Layer 1 -- Neovim Lua loader** (`lua/neotex/plugins/ai/shared/extensions/`): Manages which files exist in the `.claude/` runtime. Triggered by the extension picker (`<leader>ac`), it copies files from extension sources into the loaded runtime and regenerates CLAUDE.md.
-- **Layer 2 -- .claude/ agent system** (`.claude/`): The runtime that Claude Code reads. Contains only what the loader has installed. Claude Code has no knowledge of the extension system itself.
-
-**Lifecycle**:
-1. User opens the extension picker in Neovim
-2. Picker calls `manager.load(extension_name)` via `init.lua`
-3. Lua loader copies agent, skill, rule, context files from `.claude/extensions/{name}/` into `.claude/agents/`, `.claude/skills/`, etc.
-4. Loader merges index entries into `.claude/context/index.json`
-5. `generate_claudemd()` rebuilds `.claude/CLAUDE.md` from all loaded extensions' CLAUDE.md source files
-6. Claude Code reads the resulting `.claude/` structure -- routing, agents, and context are now available
-
-When unloading, the loader removes the copied files and regenerates CLAUDE.md without that extension's content.
+For complete architecture details, see [Extension System Architecture](../../docs/architecture/extension-system.md).
 
 ### Source vs Loaded Vocabulary
 
@@ -32,19 +21,12 @@ When unloading, the loader removes the copied files and regenerates CLAUDE.md wi
 
 ## Extension Structure
 
-```
-.claude/extensions/{name}/
-├── manifest.json           # Extension metadata
-├── context/                # Domain-specific context
-│   ├── index.json          # Context discovery entries
-│   └── project/
-│       └── {domain}/
-├── agents/                 # Domain agents
-│   ├── {domain}-research-agent.md
-│   └── {domain}-implementation-agent.md
-└── skills/                 # Domain skills
-    └── skill-{domain}-research/SKILL.md
-```
+Each extension lives under `.claude/extensions/{name}/` with three key files:
+- `manifest.json` -- Extension metadata and file inventory
+- `EXTENSION.md` -- Content included in CLAUDE.md via `generate_claudemd()`
+- `index-entries.json` -- Context discovery entries merged into `.claude/context/index.json`
+
+For the full directory layout including agents, skills, rules, context, and optional resource directories, see [Extension System Architecture](../../docs/architecture/extension-system.md).
 
 ## Manifest Format
 
@@ -90,16 +72,18 @@ When unloading, the loader removes the copied files and regenerates CLAUDE.md wi
 
 ### Manifest Fields
 
-| Field | Type | Description |
-|-------|------|-------------|
-| `name` | string | Extension identifier |
-| `version` | string | Semver version |
-| `description` | string | Brief description |
-| `task_type` | string | Task type this extension handles |
-| `dependencies` | array | Other extensions required |
-| `provides` | object | Agents, skills, commands, rules, context, scripts, hooks, docs, templates, systemd, root_files, data |
-| `routing` | object | Task-type to skill mapping for research/plan/implement |
-| `merge_targets` | object | Source-to-target file mappings for system integration |
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `name` | string | Yes | Extension identifier |
+| `version` | string | Yes | Semver version |
+| `description` | string | Yes | Brief description |
+| `task_type` | string | No | Task type this extension handles (omit for resource-only extensions) |
+| `dependencies` | array | No | Other extensions required |
+| `provides` | object | Yes | Agents, skills, commands, rules, context, scripts, hooks, docs, templates, systemd, root_files, data |
+| `routing` | object | No | Task-type to skill mapping for research/plan/implement |
+| `merge_targets` | object | Yes | Source-to-target file mappings for system integration |
+
+For the complete manifest schema with all fields and examples, see [Extension System Architecture](../../docs/architecture/extension-system.md#manifest-schema).
 
 ## Merge Process
 
@@ -148,69 +132,15 @@ The function detects which case applies by checking `vim.fn.isdirectory()` first
 
 ## Creating an Extension
 
-### Step 1: Create Directory Structure
+For a complete step-by-step creation guide with file templates, agent templates, skill templates, and testing checklists, see [Creating Extensions](../../docs/guides/creating-extensions.md).
 
-```bash
-mkdir -p .claude/extensions/{name}/{context,agents,skills}
-```
-
-### Step 2: Create Manifest
-
-```json
-{
-  "name": "myextension",
-  "version": "1.0.0",
-  "description": "My domain extension",
-  "task_type": "mydomain",
-  "dependencies": [],
-  "provides": {
-    "agents": ["mydomain-research-agent.md"],
-    "skills": ["skill-mydomain-research"],
-    "commands": [],
-    "rules": [],
-    "context": ["project/mydomain"],
-    "scripts": [],
-    "hooks": [],
-    "docs": [],
-    "templates": [],
-    "systemd": [],
-    "root_files": [],
-    "data": []
-  },
-  "routing": {
-    "research": { "mydomain": "skill-mydomain-research" },
-    "plan": { "mydomain": "skill-planner" },
-    "implement": { "mydomain": "skill-implementer" }
-  },
-  "merge_targets": {
-    "claudemd": {
-      "source": "EXTENSION.md",
-      "target": ".claude/CLAUDE.md",
-      "section_id": "extension_mydomain"
-    },
-    "index": {
-      "source": "index-entries.json",
-      "target": ".claude/context/index.json"
-    }
-  }
-}
-```
-
-### Step 3: Create Agents
-
-Create research and implementation agents in `agents/`.
-
-### Step 4: Create Skills
-
-Create skills in `skills/skill-{name}/SKILL.md`.
-
-### Step 5: Create Context
-
-Add domain knowledge to `context/project/{domain}/`.
-
-### Step 6: Load Extension
-
-Extensions are loaded via the extension picker. The loader discovers extensions by scanning `.claude/extensions/*/manifest.json` directories automatically -- no central registry is needed.
+**Quick checklist**:
+1. `mkdir -p .claude/extensions/{name}/{agents,skills,rules,context/project/{domain}}`
+2. Create `manifest.json` (see Manifest Format above)
+3. Create `EXTENSION.md` with routing tables and skill-agent mapping
+4. Create `index-entries.json` with context load conditions
+5. Create agents in `agents/` and skills in `skills/`
+6. Load via the extension picker (`<leader>ac`)
 
 ## Dependencies
 
@@ -249,13 +179,13 @@ A recursion depth limit of 5 prevents runaway chains even without explicit cycle
 
 ### Unload Safety
 
-Unloading an extension that other loaded extensions depend on triggers a warning:
+Unloading an extension that other loaded extensions depend on is a **hard block**. The loader emits an ERROR notification and returns false before showing any dialog:
 
 ```
-WARNING: Extension 'slidev' is required by: founder, present
+ERROR: Cannot unload 'slidev' -- required by: founder, present
 ```
 
-The user can confirm to proceed. Unload does NOT cascade -- only the named extension is removed.
+The unload is refused entirely. To unload a dependency, first unload all extensions that depend on it. Unload does NOT cascade -- only the named extension is removed when no dependents remain.
 
 ### Resource-Only Extensions
 

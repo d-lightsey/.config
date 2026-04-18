@@ -128,7 +128,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Deduplicate extension-development.md and creating-extensions.md [NOT STARTED]
+### Phase 3: Deduplicate extension-development.md and creating-extensions.md [COMPLETED]
 
 **Goal**: Remove duplicated content from the agent guide and how-to guide, replacing verbose sections with cross-references to extension-system.md while retaining all information agents and developers need in context.
 
