@@ -85,6 +85,10 @@ install_commands() {
   for cmd in "$commands_dir"/*.md; do
     if [ -f "$cmd" ]; then
       local cmd_name=$(basename "$cmd")
+      # Skip README.md files to prevent loading docs into runtime directories
+      if [ "$cmd_name" = "README.md" ]; then
+        continue
+      fi
       local target="$target_dir/$cmd_name"
 
       if [ -L "$target" ]; then
@@ -157,6 +161,10 @@ install_agents() {
   for agent in "$agents_dir"/*.md; do
     if [ -f "$agent" ]; then
       local agent_name=$(basename "$agent")
+      # Skip README.md files to prevent loading docs into runtime directories
+      if [ "$agent_name" = "README.md" ]; then
+        continue
+      fi
       local target="$target_dir/$agent_name"
 
       if [ -L "$target" ]; then

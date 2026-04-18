@@ -22,7 +22,6 @@
       "general-research-agent.md",
       "meta-builder-agent.md",
       "planner-agent.md",
-      "README.md",
       "reviser-agent.md",
       "spawn-agent.md"
     ],
@@ -111,7 +110,6 @@
       "wezterm-task-number.sh"
     ],
     "context": [
-      "README.md",
       "routing.md",
       "validation.md",
       "index.schema.json",

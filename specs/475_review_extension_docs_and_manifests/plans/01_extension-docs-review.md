@@ -1,7 +1,7 @@
 # Implementation Plan: Review Extension Docs and Manifests
 
 - **Task**: 475 - Review extension docs and manifests
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 4 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md, reports/02_followup-research.md
@@ -68,7 +68,7 @@ No prior plan.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Loading Safety [NOT STARTED]
+### Phase 1: Loading Safety [COMPLETED]
 
 **Goal**: Prevent README.md files from being loaded into runtime agent/command directories.
 

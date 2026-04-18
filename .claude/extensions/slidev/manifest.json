@@ -5,6 +5,7 @@
   "dependencies": [
     "core"
   ],
+  "routing_exempt": true,
   "provides": {
     "agents": [],
     "skills": [],
