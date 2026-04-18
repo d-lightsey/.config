@@ -18,7 +18,7 @@ next_project_number: 480
 
 ### 479. Fix remaining nvim-specific references in core extension sources
 - **Effort**: Small
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [specs/479_fix_remaining_nvim_refs_in_core_ext/reports/01_nvim-refs-audit.md]
 - **Plan**: [479_fix_remaining_nvim_refs_in_core_ext/plans/01_fix-nvim-refs.md]

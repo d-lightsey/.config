@@ -1,7 +1,7 @@
 # Implementation Plan: Task #479
 
 - **Task**: 479 - fix_remaining_nvim_refs_in_core_ext
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.5 hours
 - **Dependencies**: None (task 478 completed)
 - **Research Inputs**: specs/479_fix_remaining_nvim_refs_in_core_ext/reports/01_nvim-refs-audit.md
@@ -51,7 +51,7 @@ Advances "Zero stale references to removed/renamed files in `.claude/`" success 
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Fix Source Files [NOT STARTED]
+### Phase 1: Fix Source Files [COMPLETED]
 
 **Goal**: Apply all 6 text replacements to core extension source files.
 
@@ -86,7 +86,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Mirror to Deployed Copies [NOT STARTED]
+### Phase 2: Mirror to Deployed Copies [IN PROGRESS]
 
 **Goal**: Apply identical replacements to deployed copies under `.claude/` for immediate effect.
 

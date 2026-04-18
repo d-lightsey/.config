@@ -5,11 +5,11 @@
     {
       "project_number": 479,
       "project_name": "fix_remaining_nvim_refs_in_core_ext",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-18T21:28:28Z",
-      "last_updated": "2026-04-18T21:42:23Z",
-      "session_id": "sess_1745014200_e5a7b3",
+      "last_updated": "2026-04-18T21:47:15Z",
+      "session_id": "sess_1745014800_f2b6c9",
       "researched": "2026-04-18T21:35:00Z",
       "next_artifact_number": 2,
       "artifacts": [
