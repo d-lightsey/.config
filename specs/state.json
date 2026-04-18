@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 478,
+  "next_project_number": 479,
   "active_projects": [
+    {
+      "project_number": 478,
+      "project_name": "editor_agnostic_extension_docs",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-18T20:31:40Z",
+      "last_updated": "2026-04-18T20:31:40Z"
+    },
     {
       "project_number": 477,
       "project_name": "fix_generated_claudemd_and_restore_readme",
