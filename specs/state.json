@@ -5,13 +5,20 @@
     {
       "project_number": 478,
       "project_name": "editor_agnostic_extension_docs",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-18T20:31:40Z",
-      "last_updated": "2026-04-18T20:42:45Z",
-      "session_id": "sess_1745005900_a7b3c1",
+      "last_updated": "2026-04-18T20:48:40Z",
+      "session_id": "sess_1745006800_b2c4d5",
       "researched": "2026-04-18T20:42:45Z",
-      "next_artifact_number": 2
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/478_editor_agnostic_extension_docs/plans/01_editor-agnostic-docs.md",
+          "type": "plan",
+          "summary": "3-phase plan: editor-agnostic docs, generic project-overview, deploy copies"
+        }
+      ]
     },
     {
       "project_number": 477,
