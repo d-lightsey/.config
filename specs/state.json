@@ -5,10 +5,20 @@
     {
       "project_number": 479,
       "project_name": "fix_remaining_nvim_refs_in_core_ext",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-18T21:28:28Z",
-      "last_updated": "2026-04-18T21:28:28Z"
+      "last_updated": "2026-04-18T21:35:00Z",
+      "session_id": "sess_1745013700_c8d2f4",
+      "researched": "2026-04-18T21:35:00Z",
+      "next_artifact_number": 2,
+      "artifacts": [
+        {
+          "path": "specs/479_fix_remaining_nvim_refs_in_core_ext/reports/01_nvim-refs-audit.md",
+          "type": "research",
+          "summary": "Audit of remaining nvim references in core extension sources with exact line content and proposed replacements"
+        }
+      ]
     },
     {
       "project_number": 478,
