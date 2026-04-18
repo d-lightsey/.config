@@ -19997,3 +19997,19 @@
 [2026-04-18T13:48:29-07:00] Task directory: specs/478_editor_agnostic_extension_docs
 [2026-04-18T13:48:29-07:00] Loop guard triggered: 3 >= 3
 [2026-04-18T13:48:29-07:00] Loop guard prevented continuation
+[2026-04-18T14:12:10-07:00] Postflight marker found at: specs/478_editor_agnostic_extension_docs/.postflight-pending
+[2026-04-18T14:12:10-07:00] Task directory: specs/478_editor_agnostic_extension_docs
+[2026-04-18T14:12:10-07:00] Loop guard initialized to 1
+[2026-04-18T14:12:10-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-18T14:12:14-07:00] Postflight marker found at: specs/478_editor_agnostic_extension_docs/.postflight-pending
+[2026-04-18T14:12:14-07:00] Task directory: specs/478_editor_agnostic_extension_docs
+[2026-04-18T14:12:14-07:00] Loop guard incremented to 2
+[2026-04-18T14:12:14-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-18T14:12:18-07:00] Postflight marker found at: specs/478_editor_agnostic_extension_docs/.postflight-pending
+[2026-04-18T14:12:18-07:00] Task directory: specs/478_editor_agnostic_extension_docs
+[2026-04-18T14:12:18-07:00] Loop guard incremented to 3
+[2026-04-18T14:12:18-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-18T14:12:20-07:00] Postflight marker found at: specs/478_editor_agnostic_extension_docs/.postflight-pending
+[2026-04-18T14:12:20-07:00] Task directory: specs/478_editor_agnostic_extension_docs
+[2026-04-18T14:12:20-07:00] Loop guard triggered: 3 >= 3
+[2026-04-18T14:12:20-07:00] Loop guard prevented continuation

@@ -1,7 +1,7 @@
 # Implementation Plan: Make Extension Core Docs Editor-Agnostic
 
 - **Task**: 478 - editor_agnostic_extension_docs
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 1.5 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/478_editor_agnostic_extension_docs/reports/01_team-research.md
