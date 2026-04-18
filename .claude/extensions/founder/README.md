@@ -411,6 +411,10 @@ All commands evaluate multiple scenarios, not just the optimistic one.
 | /legal --quick | `founder/contract-analysis-{datetime}.md` |
 | /project --quick | `founder/project-timeline-{datetime}.typ` |
 
+## Dependencies
+
+- **slidev** ([../slidev/README.md](../slidev/README.md)) - Shared Slidev animation patterns and CSS style presets used by `/deck`
+
 ## References
 
 - [gstack (Garry Tan)](https://github.com/garrytan/gstack) - Source of office hours and CEO review patterns

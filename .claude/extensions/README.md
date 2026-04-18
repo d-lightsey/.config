@@ -18,23 +18,23 @@ Extensions add domain-specific elements:
 
 ## Available Extensions
 
-| Extension | Task Type | Description |
-|-----------|----------|-------------|
-| nvim | neovim | Neovim configuration development |
-| lean | lean4 | Lean 4 theorem proving with Mathlib |
-| latex | latex | LaTeX document preparation |
-| typst | typst | Modern document typesetting |
-| python | python | Python development |
-| nix | nix | NixOS and Home Manager configuration |
-| web | web | Astro/Tailwind web development |
-| z3 | z3 | Z3 SMT solver |
-| epidemiology | epi, epi:study | Epidemiology research with R, /epi command |
-| formal | formal, logic, math, physics | Formal verification domains |
-| filetypes | - | File format conversion |
-| founder | founder | Business strategy and startup operations |
-| present | present | Grant writing and proposal development |
-| memory | - | Learning and knowledge management |
-| slidev | - | Shared Slidev animation patterns and CSS style presets |
+| Extension | Task Type | Description | Docs |
+|-----------|----------|-------------|------|
+| nvim | neovim | Neovim configuration development | [README](nvim/README.md) |
+| lean | lean4 | Lean 4 theorem proving with Mathlib | [README](lean/README.md) |
+| latex | latex | LaTeX document preparation | [README](latex/README.md) |
+| typst | typst | Modern document typesetting | [README](typst/README.md) |
+| python | python | Python development | [README](python/README.md) |
+| nix | nix | NixOS and Home Manager configuration | [README](nix/README.md) |
+| web | web | Astro/Tailwind web development | [README](web/README.md) |
+| z3 | z3 | Z3 SMT solver | [README](z3/README.md) |
+| epidemiology | epi, epi:study | Epidemiology research with R, /epi command | [README](epidemiology/README.md) |
+| formal | formal, logic, math, physics | Formal verification domains | [README](formal/README.md) |
+| filetypes | - | File format conversion | [README](filetypes/README.md) |
+| founder | founder | Business strategy and startup operations | [README](founder/README.md) |
+| present | present | Grant writing and proposal development | [README](present/README.md) |
+| memory | - | Learning and knowledge management | [README](memory/README.md) |
+| slidev | - | Shared Slidev animation patterns and CSS style presets | [README](slidev/README.md) |
 
 ## Loading Extensions
 
