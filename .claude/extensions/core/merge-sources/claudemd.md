@@ -25,7 +25,7 @@ Task management and agent orchestration for project development. For comprehensi
 
 **Project-specific structure**: See `.claude/context/repo/project-overview.md` for details about this repository's layout.
 
-**New repository setup**: If project-overview.md doesn't exist, see `.claude/context/repo/update-project.md` for guidance on generating project-appropriate documentation.
+**New repository setup**: If project-overview.md doesn't exist or contains the generic template notice (`<!-- GENERIC TEMPLATE`), run `/task "Generate project-overview.md for this repository"` to create a project-specific version. See `.claude/context/repo/update-project.md` for guidance.
 
 ## Task Management
 

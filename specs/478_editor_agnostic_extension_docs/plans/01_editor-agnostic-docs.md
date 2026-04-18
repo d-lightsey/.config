@@ -117,7 +117,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Enhance claudemd.md Detection Instruction [NOT STARTED]
+### Phase 3: Enhance claudemd.md Detection Instruction [COMPLETED]
 
 **Goal**: Upgrade the passive "see update-project.md" hint to an active task-creation instruction that triggers when project-overview.md is missing or contains the generic template.
 
