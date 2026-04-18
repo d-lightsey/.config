@@ -18500,6 +18500,419 @@
       "session_id": "sess_1776364720_50e855",
       "completion_summary": "Created memory-index.json, updated template with retrieval-tracking fields, backfilled existing memory, enhanced SKILL.md with JSON index maintenance and validate-on-read sections.",
       "claudemd_suggestions": "Updated SKILL.md in memory extension with JSON Index Maintenance and Validate-on-Read sections; no core .claude/ files modified"
+    },
+    {
+      "project_number": 475,
+      "project_name": "review_extension_docs_and_manifests",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Reviewed and corrected extension documentation across 7 files: removed README.md loading risks from core manifest and install script, fixed stale content in memory/nix/founder READMEs, expanded present/README.md for template compliance, added cross-linking to extension hub. check-extension-docs.sh passes cleanly.",
+      "created": "2026-04-17T16:38:06Z",
+      "last_updated": "2026-04-18T00:13:25Z",
+      "artifacts": [
+        {
+          "path": "specs/475_review_extension_docs_and_manifests/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates"
+        },
+        {
+          "path": "specs/475_review_extension_docs_and_manifests/plans/01_extension-docs-review.md",
+          "type": "plan",
+          "summary": "Implementation plan with 4 phases: loading safety, stale content fixes, present README expansion, and cross-linking"
+        },
+        {
+          "path": "specs/475_review_extension_docs_and_manifests/summaries/01_extension-docs-review-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for extension docs review"
+        }
+      ],
+      "claudemd_suggestions": "Added routing_exempt field to extension-development.md manifest fields table, fixed stale template reference",
+      "memory_candidates": [
+        {
+          "content": "README.md files listed in manifest.json provides.agents or provides.commands arrays get copied to runtime directories (.claude/agents/, .claude/commands/) by install-extension.sh. This is a documentation loading risk -- README files have no frontmatter and can break agent resolution. Fix: remove from manifest arrays AND add skip logic to install-extension.sh glob loops.",
+          "category": "INSIGHT",
+          "source_artifact": "specs/475_review_extension_docs_and_manifests/summaries/01_extension-docs-review-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "manifest",
+            "README",
+            "install-extension",
+            "loading-safety",
+            "provides-agents"
+          ]
+        }
+      ]
+    },
+    {
+      "project_number": 474,
+      "project_name": "create_core_extension_readme",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Created core extension README.md (178 lines) with System Payload Inventory pattern, added routing_exempt manifest flag, and updated check-extension-docs.sh validator to honor the exemption. Core now passes all doc-lint checks.",
+      "created": "2026-04-17T06:41:09Z",
+      "last_updated": "2026-04-17T16:40:45Z",
+      "artifacts": [
+        {
+          "path": "specs/474_create_core_extension_readme/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates"
+        },
+        {
+          "path": "specs/474_create_core_extension_readme/plans/01_core-extension-readme.md",
+          "type": "plan",
+          "summary": "3-phase implementation plan for core extension README and validator routing exemption fix"
+        },
+        {
+          "path": "specs/474_create_core_extension_readme/summaries/01_core-extension-readme-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for core extension README creation"
+        }
+      ],
+      "claudemd_suggestions": "Added routing_exempt field to core manifest.json, updated check-extension-docs.sh with routing exemption logic in check_routing_block()",
+      "memory_candidates": [
+        {
+          "content": "The check-extension-docs.sh validator supports a routing_exempt flag in manifest.json. Extensions with \"routing_exempt\": true skip the check_routing_block() validation, which requires a routing block for extensions that declare skills. This is useful for infrastructure extensions like core that provide skills but handle routing through hardcoded orchestrator logic rather than manifest routing entries.",
+          "category": "CONFIG",
+          "source_artifact": "specs/474_create_core_extension_readme/summaries/01_core-extension-readme-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "routing_exempt",
+            "check-extension-docs",
+            "manifest",
+            "validator",
+            "core-extension"
+          ]
+        }
+      ]
+    },
+    {
+      "project_number": 473,
+      "project_name": "clean_stale_permissions_settings_local",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Removed 44 stale bash permission entries from .claude/settings.local.json, reducing permissions.allow from 52 entries to 8 functional entries. All stale categories (mv commands, archived task refs, shell fragments, variable assignments, subsumed python validations) cleaned.",
+      "created": "2026-04-17T06:41:09Z",
+      "last_updated": "2026-04-17T15:25:00Z",
+      "artifacts": [
+        {
+          "path": "specs/473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md",
+          "type": "research",
+          "summary": "Audited 52 permission entries, found 43 stale across 5 categories, 7 to retain"
+        },
+        {
+          "path": "specs/473_clean_stale_permissions_settings_local/plans/01_stale-permissions-cleanup.md",
+          "type": "plan",
+          "summary": "Implementation plan with 2 phases to remove 45 stale permission entries from settings.local.json"
+        },
+        {
+          "path": "specs/473_clean_stale_permissions_settings_local/summaries/01_stale-permissions-cleanup-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for stale permissions cleanup"
+        }
+      ],
+      "claudemd_suggestions": "none",
+      "memory_candidates": [
+        {
+          "content": "settings.local.json accumulates stale bash permission entries from agent sessions. These include mv commands for completed file reorganizations, specs path references for archived tasks, and shell loop construct fragments. Periodic cleanup is needed. The python3:* wildcard subsumes specific python3 validation commands, and Read(//path/**) wildcards subsume variable-based Read entries.",
+          "category": "INSIGHT",
+          "source_artifact": "specs/473_clean_stale_permissions_settings_local/reports/01_stale-permissions-audit.md",
+          "confidence": 0.75,
+          "suggested_keywords": [
+            "settings.local.json",
+            "permissions",
+            "cleanup",
+            "stale",
+            "maintenance"
+          ]
+        }
+      ]
+    },
+    {
+      "project_number": 472,
+      "project_name": "fix_lean_mcp_script_permissions",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Fixed execute permissions on setup-lean-mcp.sh and verify-lean-mcp.sh in both source (.claude/extensions/core/scripts/) and deployed (.claude/scripts/) locations. Git tracks the mode change from 100644 to 100755.",
+      "created": "2026-04-17T06:41:09Z",
+      "last_updated": "2026-04-17T14:46:50Z",
+      "artifacts": [
+        {
+          "path": "specs/472_fix_lean_mcp_script_permissions/reports/01_script-permissions-fix.md",
+          "type": "research",
+          "summary": "Research on fixing lean MCP script permissions"
+        },
+        {
+          "path": "specs/472_fix_lean_mcp_script_permissions/plans/01_script-permissions-fix.md",
+          "type": "plan",
+          "summary": "2-phase implementation plan for fixing execute permissions on Lean MCP scripts"
+        },
+        {
+          "path": "specs/472_fix_lean_mcp_script_permissions/summaries/01_script-permissions-summary.md",
+          "type": "summary",
+          "summary": "Fixed execute permissions on 4 Lean MCP scripts (source + deployed)"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 471,
+      "project_name": "add_model_opus_to_nix_agents",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Added model: opus to YAML frontmatter in all 4 nix agent files (2 deployed + 2 extension source), achieving full compliance with agent-frontmatter-standard.",
+      "created": "2026-04-17T06:41:09Z",
+      "last_updated": "2026-04-17T14:46:56Z",
+      "artifacts": [
+        {
+          "path": "specs/471_add_model_opus_to_nix_agents/reports/01_nix-agent-frontmatter.md",
+          "type": "research",
+          "summary": "Research on adding model: opus to nix agent frontmatter"
+        },
+        {
+          "path": "specs/471_add_model_opus_to_nix_agents/plans/01_add-model-opus-nix.md",
+          "type": "plan",
+          "summary": "Single-phase plan to add model: opus to 4 nix agent frontmatter files"
+        },
+        {
+          "path": "specs/471_add_model_opus_to_nix_agents/summaries/01_add-model-opus-nix-summary.md",
+          "type": "summary",
+          "summary": "Added model: opus to all 4 nix agent frontmatter files for standards compliance"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 470,
+      "project_name": "fix_loader_root_level_context_files",
+      "status": "completed",
+      "task_type": "neovim",
+      "completion_summary": "Added elseif filereadable fallback to copy_context_dirs() in loader.lua (mirroring copy_docs pattern) and listed 5 root-level files in core manifest provides.context. Root-level context files are now properly deployed and tracked for unload.",
+      "created": "2026-04-17T06:41:09Z",
+      "last_updated": "2026-04-17T14:47:24Z",
+      "artifacts": [
+        {
+          "path": "specs/470_fix_loader_root_level_context_files/reports/01_loader-context-fix.md",
+          "type": "research",
+          "summary": "Research on fixing copy_context_dirs to handle root-level files"
+        },
+        {
+          "path": "specs/470_fix_loader_root_level_context_files/plans/01_loader-context-fix.md",
+          "type": "plan",
+          "summary": "Implementation plan with 4 phases: add filereadable fallback, update core manifest, verify deployment, verify unload/reload cycle"
+        },
+        {
+          "path": "specs/470_fix_loader_root_level_context_files/summaries/01_loader-context-fix-summary.md",
+          "type": "summary",
+          "summary": "Added filereadable fallback to copy_context_dirs and listed 5 root-level files in core manifest"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 469,
+      "project_name": "review_agent_system_post_refactor",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Fixed all HIGH and MEDIUM bookkeeping gaps from task 464/465/467 refactoring: repaired 4 broken context index entries, deployed 3 missing files, added 6 unindexed entries, fixed team skill paths, removed duplicate CLAUDE.md section, repaired both validation scripts, and replaced 28 stale subagent-return-format.md references.",
+      "created": "2026-04-17T06:19:50Z",
+      "last_updated": "2026-04-17T06:59:27Z",
+      "artifacts": [
+        {
+          "path": "specs/469_review_agent_system_post_refactor/plans/01_system-review-fixes.md",
+          "type": "plan",
+          "summary": "4-phase plan: context index fixes, team skill paths, validator repairs, stale reference cleanup"
+        },
+        {
+          "path": "specs/469_review_agent_system_post_refactor/summaries/01_system-review-fixes-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for task 469"
+        }
+      ],
+      "claudemd_suggestions": "Removed duplicate Memory Extension section from core merge-sources/claudemd.md, regenerated CLAUDE.md. Fixed validate-wiring.sh and validate-context-index.sh. Updated core-index-entries.json with 6 new entries and removed 1 stale entry.",
+      "memory_candidates": [
+        {
+          "content": "When using ((VAR++)) in bash with set -e, the expression returns exit code 1 when VAR is 0 (because ((0)) is falsy), causing the script to abort. Use VAR=$((VAR + 1)) instead to avoid this interaction.",
+          "category": "INSIGHT",
+          "source_artifact": "specs/469_review_agent_system_post_refactor/summaries/01_system-review-fixes-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "bash",
+            "set-e",
+            "arithmetic",
+            "increment",
+            "validate-context-index"
+          ]
+        }
+      ]
+    },
+    {
+      "project_number": 468,
+      "project_name": "document_extension_loader_architecture",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Fixed all factual errors in extension system documentation (inject_section, conflict handling, unload behavior, settings merging), added two-layer architecture explanation (Neovim Lua loader vs .claude/ agent system) with source-vs-loaded vocabulary, and created loader-reference.md with all 12 loader functions documented",
+      "created": "2026-04-17T05:46:55Z",
+      "last_updated": "2026-04-17T15:55:45Z",
+      "artifacts": [
+        {
+          "path": "specs/468_document_extension_loader_architecture/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates"
+        },
+        {
+          "path": "specs/468_document_extension_loader_architecture/plans/01_doc-loader-architecture.md",
+          "type": "plan",
+          "summary": "4-phase plan to fix factual errors in extension docs, add two-layer architecture explanation, and create loader reference"
+        },
+        {
+          "path": "specs/468_document_extension_loader_architecture/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Team implementation with 2 max concurrent teammates"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 467,
+      "project_name": "move_remaining_root_files_to_core",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Moved 8 remaining root files (5 context docs, 2 systemd units, root README) into extensions/core/. Added copy_systemd() to loader, updated init.lua core-index-entries path to read from extension source dir, added systemd to VALID_PROVIDES and check_conflicts.",
+      "created": "2026-04-17T05:21:22Z",
+      "last_updated": "2026-04-17T05:33:16Z",
+      "artifacts": [
+        {
+          "path": "specs/467_move_remaining_root_files_to_core/reports/01_root-files-investigation.md",
+          "type": "research",
+          "summary": "Investigation of 10 files remaining in .claude/ root that should move to extensions/core/"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 465,
+      "project_name": "restructure_core_as_real_extension",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Restructured core agent system from virtual extension to real physical extension at .claude/extensions/core/. Moved ~203 files, added hooks/docs/templates copy support to loader, removed virtual flag and fast-paths, updated sync system to source from extensions/core/, implemented computed CLAUDE.md generation, and added legacy migration detection.",
+      "created": "2026-04-17T03:40:40Z",
+      "last_updated": "2026-04-17T04:57:05Z",
+      "artifacts": [
+        {
+          "path": "specs/465_restructure_core_as_real_extension/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates: implementation architecture, prior art, critical evaluation, strategic direction"
+        },
+        {
+          "path": "specs/465_restructure_core_as_real_extension/plans/01_restructure-core-extension.md",
+          "type": "plan",
+          "summary": "6-phase implementation plan for restructuring core agent system as a real extension"
+        },
+        {
+          "path": "specs/465_restructure_core_as_real_extension/summaries/01_implementation-summary.md",
+          "type": "summary",
+          "summary": "Team implementation: restructured core agent system as real extension"
+        }
+      ],
+      "claudemd_suggestions": null,
+      "memory_candidates": null
+    },
+    {
+      "project_number": 464,
+      "project_name": "enable_extensions_in_source_repo",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Enabled safe extension loading in source repository by closing 3 sync leak vectors, creating virtual core manifest, switching to allow-list sync, and adding core dependency to all 15 extensions.",
+      "created": "2026-04-17T02:32:51Z",
+      "last_updated": "2026-04-17T03:23:27Z",
+      "artifacts": [
+        {
+          "path": "specs/464_enable_extensions_in_source_repo/reports/01_team-research.md",
+          "type": "research",
+          "summary": "Team research with 4 teammates: sync leak analysis, architecture evaluation, gap identification, roadmap alignment"
+        },
+        {
+          "path": "specs/464_enable_extensions_in_source_repo/reports/02_team-research.md",
+          "type": "research",
+          "summary": "Round 2: core-as-extension architecture with virtual manifest approach"
+        },
+        {
+          "path": "specs/464_enable_extensions_in_source_repo/plans/02_enable-extensions-source.md",
+          "type": "plan",
+          "summary": "5-phase implementation: sync fixes, virtual core manifest, allow-list sync, dependency formalization, validation"
+        },
+        {
+          "path": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for enabling extensions in source repo with sync leak protection"
+        }
+      ],
+      "claudemd_suggestions": "Created .claude/extensions/core/manifest.json (new virtual core manifest). Modified extension loader init.lua (virtual handling, relaxed guard). No changes to CLAUDE.md files.",
+      "memory_candidates": [
+        {
+          "content": "Virtual extension pattern: extensions with virtual: true in manifest skip file copy on load and file removal on unload. Use this for describing files that already exist in-place (like core system files) without physical migration.",
+          "category": "PATTERN",
+          "source_artifact": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "confidence": 0.9,
+          "suggested_keywords": [
+            "virtual-extension",
+            "core-manifest",
+            "extension-loader",
+            "no-copy-load",
+            "picker-filter"
+          ]
+        },
+        {
+          "content": "Allow-list sync pattern: when a core manifest exists, scan_all_artifacts() post-filters results against the core provides allow-list instead of using the blocklist. Falls back to blocklist if no core manifest.",
+          "category": "TECHNIQUE",
+          "source_artifact": "specs/464_enable_extensions_in_source_repo/summaries/02_enable-extensions-source-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "allow-list-sync",
+            "core-provides",
+            "blocklist-fallback",
+            "scan-filter",
+            "sync-safety"
+          ]
+        }
+      ]
+    },
+    {
+      "project_number": 466,
+      "project_name": "convert_core_index_entries",
+      "status": "completed",
+      "task_type": "meta",
+      "completion_summary": "Converted core extension index entry loading from 12-line special-case code block in init.lua to the standard merge_targets.index mechanism. Relocated index-entries.json to extension root, updated manifest, removed special-case code, and updated 5 documentation files.",
+      "created": "2026-04-16T00:00:00Z",
+      "last_updated": "2026-04-17T14:51:46Z",
+      "artifacts": [
+        {
+          "path": "specs/466_convert_core_index_entries/summaries/01_convert-merge-targets-summary.md",
+          "type": "summary",
+          "summary": "Converted core index entry loading from special-case code to standard merge_targets mechanism"
+        }
+      ],
+      "claudemd_suggestions": "No CLAUDE.md changes needed -- the core extension merge_targets now handle index entry loading automatically through the standard pipeline.",
+      "memory_candidates": [
+        {
+          "content": "The extension loader's remove_orphaned_index_entries() function only removes entries with paths starting with 'project/' -- all other entries (architecture/, formats/, patterns/, etc.) are unconditionally preserved. This means core agent system context entries survive orphan cleanup regardless of which extension loaded them.",
+          "category": "INSIGHT",
+          "source_artifact": "specs/466_convert_core_index_entries/reports/01_convert-merge-targets.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "extension-loader",
+            "orphan-cleanup",
+            "index-entries",
+            "core-context",
+            "merge"
+          ]
+        }
+      ]
     }
   ],
   "abandoned_projects": []
