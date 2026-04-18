@@ -101,7 +101,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Align Validators and Schema with Reality [NOT STARTED]
+### Phase 2: Align Validators and Schema with Reality [COMPLETED]
 
 **Goal**: Fix index.schema.json and validate-context-index.sh so they match the actual index.json format the loader produces, and wire new files into index.json.
 
