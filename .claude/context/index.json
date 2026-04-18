@@ -1434,27 +1434,6 @@
       "path": "processes/research-workflow.md"
     },
     {
-      "subdomain": "root",
-      "line_count": 202,
-      "summary": "Context directory documentation index",
-      "load_when": {
-        "agents": [],
-        "always": true,
-        "commands": [],
-        "task_types": []
-      },
-      "topics": [
-        "documentation"
-      ],
-      "keywords": [
-        "readme",
-        "index",
-        "documentation"
-      ],
-      "domain": "core",
-      "path": "README.md"
-    },
-    {
       "subdomain": "reference",
       "line_count": 50,
       "summary": "Error report template (other artifact types use format files directly)",
@@ -3352,6 +3331,61 @@
         "vosk",
         "audio"
       ]
+    },
+    {
+      "subdomain": "guides",
+      "line_count": 173,
+      "summary": "Complete loader function reference with signatures and copy semantics",
+      "load_when": {
+        "commands": [
+          "/meta"
+        ],
+        "agents": [
+          "meta-builder-agent"
+        ],
+        "task_types": [
+          "meta"
+        ]
+      },
+      "topics": [
+        "extension-system"
+      ],
+      "keywords": [
+        "loader",
+        "extension",
+        "copy",
+        "functions",
+        "reference"
+      ],
+      "domain": "core",
+      "path": "guides/loader-reference.md"
+    },
+    {
+      "subdomain": "schemas",
+      "line_count": 127,
+      "summary": "JSON Schema for context index.json validation",
+      "load_when": {
+        "commands": [
+          "/meta"
+        ],
+        "agents": [
+          "meta-builder-agent"
+        ],
+        "task_types": [
+          "meta"
+        ]
+      },
+      "topics": [
+        "context-system"
+      ],
+      "keywords": [
+        "schema",
+        "index",
+        "validation",
+        "json-schema"
+      ],
+      "domain": "core",
+      "path": "index.schema.json"
     }
   ]
 }

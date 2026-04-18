@@ -1,7 +1,7 @@
 # Implementation Plan: Consolidate Extension System Docs
 
 - **Task**: 476 - Consolidate extension system documentation into single source of truth
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 4 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/476_consolidate_extension_system_docs/reports/01_consolidate-ext-docs.md
@@ -69,7 +69,7 @@ No prior plan.
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Fix extension-system.md (Architecture Reference) [NOT STARTED]
+### Phase 1: Fix extension-system.md (Architecture Reference) [COMPLETED]
 
 **Goal**: Make extension-system.md fully accurate against the Lua implementation, covering all 12 provides categories, all 12 loader functions, correct CLAUDE.md generation, correct conflict/unload behavior, and correct schema examples.
 

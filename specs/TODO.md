@@ -10,7 +10,7 @@ next_project_number: 477
 
 ### Pending
 
-- **476** [PLANNED] -- Consolidate extension system documentation into single source of truth
+- **476** [IMPLEMENTING] -- Consolidate extension system documentation into single source of truth
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
@@ -18,7 +18,7 @@ next_project_number: 477
 
 ### 476. Consolidate extension system documentation into single source of truth
 - **Effort**: Medium
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [476_consolidate_extension_system_docs/reports/01_consolidate-ext-docs.md]
 - **Plan**: [476_consolidate_extension_system_docs/plans/01_consolidate-ext-docs.md]

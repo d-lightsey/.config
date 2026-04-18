@@ -30,12 +30,12 @@ WARNINGS=0
 
 log_error() {
     echo "[ERROR] $1" >&2
-    ((ERRORS++))
+    ERRORS=$((ERRORS + 1))
 }
 
 log_warning() {
     echo "[WARN] $1" >&2
-    ((WARNINGS++))
+    WARNINGS=$((WARNINGS + 1))
 }
 
 log_info() {
@@ -57,8 +57,10 @@ fi
 log_info "JSON syntax is valid"
 
 # Check required top-level fields
+# Note: version and generated are optional -- the loader (merge.lua) does not write them.
+# Only entries is required.
 log_info "Checking required fields..."
-for field in version generated entries; do
+for field in entries; do
     if ! jq -e ".$field" "$INDEX_FILE" > /dev/null 2>&1; then
         log_error "Missing required field: $field"
     fi
