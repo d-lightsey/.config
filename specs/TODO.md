@@ -1,5 +1,5 @@
 ---
-next_project_number: 477
+next_project_number: 478
 ---
 
 # TODO
@@ -15,6 +15,13 @@ next_project_number: 477
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 477. Fix generated CLAUDE.md duplicate header, restore README.md, and improve generation
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Fix the generated `.claude/CLAUDE.md` file which has a duplicate header (lines 1-10). Restore the missing `.claude/README.md` from git history and update it for accuracy. Add a reference to the root `README.md` in the generated CLAUDE.md. Review the generated CLAUDE.md for additional improvements to how the file is produced.
 
 ### 476. Consolidate extension system documentation into single source of truth
 - **Effort**: Medium
