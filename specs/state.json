@@ -1,7 +1,15 @@
 {
   "version": "1.0.0",
-  "next_project_number": 476,
+  "next_project_number": 477,
   "active_projects": [
+    {
+      "project_number": 476,
+      "project_name": "consolidate_extension_system_docs",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-18T01:14:22Z",
+      "last_updated": "2026-04-18T01:14:22Z"
+    },
     {
       "project_number": 87,
       "project_name": "investigate_wezterm_terminal_directory_change",

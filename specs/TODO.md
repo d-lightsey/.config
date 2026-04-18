@@ -1,19 +1,31 @@
 ---
-next_project_number: 476
+next_project_number: 477
 ---
 
 # TODO
 
 ## Task Order
 
-*Updated 2026-04-17. 2 active tasks remaining.*
+*Updated 2026-04-17. 3 active tasks remaining.*
 
 ### Pending
 
+- **476** [NOT STARTED] -- Consolidate extension system documentation into single source of truth
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 476. Consolidate extension system documentation into single source of truth
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Consolidate extension system documentation into a single source of truth to eliminate contradictions between `docs/architecture/extension-system.md`, `context/guides/extension-development.md`, and `docs/guides/creating-extensions.md`. The files have drifted out of sync -- some describe CLAUDE.md as a computed artifact via `generate_claudemd()` while others regress to the old section-injection approach. Additional inconsistencies exist in conflict handling behavior, `provides` field coverage, loader function documentation, and validator expectations vs actual index.json schema.
+
+Scope: (1) Audit the Lua loader implementation for ground truth, (2) designate `docs/architecture/extension-system.md` as the comprehensive reference with other files cross-referencing rather than restating, (3) eliminate content duplication so each concept is documented in exactly one place, (4) fix all contradictions to reflect actual implementation, (5) align `validate-context-index.sh` with actual index.json schema, (6) integrate untracked `loader-reference.md` and `index.schema.json`, (7) clean up stale references.
+
+---
 
 ### 87. Investigate terminal directory change when opening neovim in wezterm
 - **Effort**: TBD
