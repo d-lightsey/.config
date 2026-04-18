@@ -9,7 +9,24 @@
       "task_type": "meta",
       "created": "2026-04-18T19:25:18Z",
       "last_updated": "2026-04-18T19:35:00Z",
-      "session_id": "sess_1776540520_11e735"
+      "session_id": "sess_1776540520_11e735",
+      "memory_candidates": [
+        {
+          "content": "The generate_claudemd() function in shared/extensions/merge.lua builds .claude/CLAUDE.md by concatenating a header template from extensions/core/templates/claudemd-header.md with content fragments from each loaded extension's merge-sources/claudemd.md or EXTENSION.md. The sync operation (sync.lua) uses a different code path (inject_section with section markers). Both paths must be kept consistent when modifying generation behavior.",
+          "category": "PATTERN",
+          "source_artifact": "specs/477_fix_generated_claudemd_and_restore_readme/reports/01_fix-claudemd-generation.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "claudemd",
+            "generate",
+            "merge",
+            "extension-loader",
+            "header-template",
+            "inject-section"
+          ]
+        }
+      ],
+      "next_artifact_number": 2
     },
     {
       "project_number": 476,
