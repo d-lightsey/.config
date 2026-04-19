@@ -28,10 +28,10 @@
 
 ## By Topic
 
-Topics use slash-separated hierarchical paths (e.g., `neovim/plugins/telescope`, `meta/commands`).
+Topics use slash-separated hierarchical paths (e.g., `python/libs/requests`, `meta/commands`).
 
-### neovim/
-<!-- Neovim-related memories -->
+### python/
+<!-- Python-related memories -->
 
 ### meta/
 <!-- System building and .claude/ changes -->

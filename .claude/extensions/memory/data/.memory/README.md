@@ -71,7 +71,7 @@ Memory files follow the pattern:
 MEM-{semantic-slug}.md
 ```
 
-Example: `MEM-telescope-custom-pickers.md`, `MEM-neovim-lsp-best-practices.md`
+Example: `MEM-project-code-patterns.md`, `MEM-project-code-patterns.md`
 
 The MEM- prefix is preserved for grep discoverability (`grep -r "MEM-" .memory/`).
 
@@ -80,10 +80,10 @@ The MEM- prefix is preserved for grep discoverability (`grep -r "MEM-" .memory/`
 Memory entries use YAML frontmatter:
 ```yaml
 ---
-title: "Neovim LSP Best Practices"
+title: "Python HTTP Best Practices"
 created: 2026-03-06
-tags: neovim, lsp, configuration
-topic: "neovim/lsp"
+tags: python, http, configuration
+topic: "python/http"
 source: "user input"
 modified: 2026-03-06
 ---

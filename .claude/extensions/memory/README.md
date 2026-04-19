@@ -84,7 +84,7 @@ To suppress auto-retrieval for a specific invocation, pass the `--clean` flag:
 Since memories are plain markdown files, you can also:
 - Open `.memory/10-Memories/` in Obsidian to browse and search visually
 - Read individual files directly with any text editor
-- Use grep: `grep -rl "telescope" .memory/10-Memories/`
+- Use grep: `grep -rl "keyword" .memory/10-Memories/`
 - Consult the index: `.memory/20-Indices/index.md`
 
 There is no `/recall` command. Outside of auto-retrieval, manual access is through the filesystem.
@@ -114,7 +114,7 @@ Each memory is a markdown file with YAML frontmatter:
 title: "Lua pcall for safe function calls"
 created: 2026-03-15
 tags: lua, error-handling, patterns
-topic: "neovim/lua/patterns"
+topic: "python/patterns"
 source: "user input"
 modified: 2026-03-15
 ---
@@ -142,8 +142,8 @@ end
 Files follow the `MEM-{semantic-slug}.md` pattern:
 
 - `MEM-lua-pcall-safe-calls.md`
-- `MEM-telescope-custom-pickers.md`
-- `MEM-neovim-lazy-loading.md`
+- `MEM-requests-retry-patterns.md`
+- `MEM-http-session-config.md`
 
 The `MEM-` prefix keeps files grep-discoverable. Slugs are derived from topic and title.
 Collision handling appends `-2`, `-3`, etc.
@@ -155,7 +155,7 @@ Collision handling appends `-2`, `-3`, etc.
 | `title` | string | Memory title (from summary or first line) |
 | `created` | date | Original creation date (YYYY-MM-DD) |
 | `tags` | list | Comma-separated keywords |
-| `topic` | string | Hierarchical path, e.g. `neovim/plugins/telescope` |
+| `topic` | string | Hierarchical path, e.g. `python/libs/requests` |
 | `source` | string | Origin: "user input", "file: /path", etc. |
 | `modified` | date | Last modification date |
 
@@ -164,7 +164,7 @@ Collision handling appends `-2`, `-3`, etc.
 `.memory/20-Indices/index.md` organizes memories two ways:
 
 - **By Category**: grouped by tags (error-handling, patterns, config, ...)
-- **By Topic**: hierarchical tree (neovim/plugins/telescope, ...)
+- **By Topic**: hierarchical tree (python/libs/requests, ...)
 
 The index regenerates from filesystem state on each write, so it stays accurate even if
 you manually add or delete files.
@@ -255,9 +255,9 @@ Limit is 200 files. Narrow the path or run multiple `/learn` invocations.
 ### Topic Hierarchy
 
 Use 2-3 levels. Examples:
-- `neovim/config`
-- `neovim/plugins/telescope`
-- `lua/patterns`
+- `python/patterns`
+- `python/libs/requests`
+- `meta/commands`
 
 Avoid 4+ levels. The index becomes hard to navigate.
 
