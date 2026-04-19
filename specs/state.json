@@ -5,10 +5,10 @@
     {
       "project_number": 480,
       "project_name": "strip_all_nvim_refs_from_ext_sources",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-19T00:44:13Z",
-      "last_updated": "2026-04-19T01:48:45Z",
+      "last_updated": "2026-04-19T16:28:48Z",
       "session_id": "sess_1776563312_e3b6d8",
       "researched": "2026-04-19T00:53:52Z",
       "next_artifact_number": 2,
@@ -22,8 +22,15 @@
           "path": "specs/480_strip_all_nvim_refs_from_ext_sources/plans/01_strip-nvim-refs.md",
           "type": "plan",
           "summary": "6-phase implementation plan to strip ~75 nvim/neovim/VimTeX references from extension sources with deploy mirroring and prevention check"
+        },
+        {
+          "path": "specs/480_strip_all_nvim_refs_from_ext_sources/summaries/01_strip-nvim-refs-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for stripping nvim references from extension sources"
         }
-      ]
+      ],
+      "completion_summary": "Stripped ~75 nvim/neovim/neotex/VimTeX references from 20+ extension source files across core, latex, memory, and typst extensions, mirrored all changes to deployed copies, and added prevention check to check-extension-docs.sh.",
+      "claudemd_suggestions": "Updated check-extension-docs.sh with check_core_purity() function; modified code-reviewer-agent.md, validate-wiring.sh, extension-readme-template.md, extension-system.md, and 9 memory extension files"
     },
     {
       "project_number": 479,

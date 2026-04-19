@@ -1,7 +1,7 @@
 # Implementation Plan: Strip All Nvim Refs from Extension Sources
 
 - **Task**: 480 - strip_all_nvim_refs_from_ext_sources
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/480_strip_all_nvim_refs_from_ext_sources/reports/01_team-research.md
