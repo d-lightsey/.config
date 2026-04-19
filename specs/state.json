@@ -5,11 +5,11 @@
     {
       "project_number": 480,
       "project_name": "strip_all_nvim_refs_from_ext_sources",
-      "status": "planned",
+      "status": "implementing",
       "task_type": "meta",
       "created": "2026-04-19T00:44:13Z",
-      "last_updated": "2026-04-19T01:15:49Z",
-      "session_id": "sess_1776561110_8fd370",
+      "last_updated": "2026-04-19T01:48:45Z",
+      "session_id": "sess_1776563312_e3b6d8",
       "researched": "2026-04-19T00:53:52Z",
       "next_artifact_number": 2,
       "artifacts": [

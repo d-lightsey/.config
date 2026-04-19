@@ -1,7 +1,7 @@
 {
   "name": "latex",
   "version": "1.0.0",
-  "description": "LaTeX document development with VimTeX integration",
+  "description": "LaTeX document development with latexmk/pdflatex toolchain",
   "task_type": "latex",
   "dependencies": [
     "core"

@@ -14,13 +14,6 @@ This project includes LaTeX document development support via the latex extension
 |-------|-------|---------|
 | skill-latex-implementation | latex-implementation-agent | LaTeX document implementation |
 
-### VimTeX Integration
-
-- Compile: `:VimtexCompile` (`<leader>lc`)
-- View PDF: `:VimtexView` (`<leader>lv`)
-- Clean: `:VimtexClean` (`<leader>lk`)
-- TOC: `:VimtexTocOpen` (`<leader>li`)
-
 ### Document Structure
 
 - Use `\documentclass` appropriate for document type

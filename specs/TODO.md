@@ -18,7 +18,7 @@ next_project_number: 481
 
 ### 480. Comprehensively strip ALL remaining nvim/neovim/neotex/VimTeX references from extension sources
 - **Effort**: Medium
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [480_strip_all_nvim_refs_from_ext_sources/reports/01_team-research.md]
 - **Plan**: [480_strip_all_nvim_refs_from_ext_sources/plans/01_strip-nvim-refs.md]

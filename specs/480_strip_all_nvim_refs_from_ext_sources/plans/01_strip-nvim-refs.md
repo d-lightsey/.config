@@ -1,7 +1,7 @@
 # Implementation Plan: Strip All Nvim Refs from Extension Sources
 
 - **Task**: 480 - strip_all_nvim_refs_from_ext_sources
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 3 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/480_strip_all_nvim_refs_from_ext_sources/reports/01_team-research.md
@@ -71,7 +71,7 @@ Phases are sequential because each priority level builds on the previous, mirror
 
 ---
 
-### Phase 1: Priority 1 -- Core and Latex Source Fixes [NOT STARTED]
+### Phase 1: Priority 1 -- Core and Latex Source Fixes [COMPLETED]
 
 **Goal**: Remove all 17+ Priority 1 references from 8 source files (6 from task description + 2 gaps).
 
