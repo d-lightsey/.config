@@ -6,7 +6,7 @@ This directory contains context files for LaTeX document development.
 
 - `patterns/` - Document structure patterns, theorem environments
 - `standards/` - Style guide, notation conventions
-- `tools/` - Compilation guide, VimTeX integration
+- `tools/` - Compilation guide, build toolchain reference
 
 ## Key Files
 

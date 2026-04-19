@@ -143,7 +143,7 @@ Phases are sequential because each priority level builds on the previous, mirror
 
 ---
 
-### Phase 3: Priority 3 -- Compilation Guide Fixes [NOT STARTED]
+### Phase 3: Priority 3 -- Compilation Guide Fixes [COMPLETED]
 
 **Goal**: Remove or genericize nvim references in latex and typst compilation guides.
 

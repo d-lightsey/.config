@@ -219,7 +219,7 @@ latexmk -pdf -pvc MainDocument.tex
 
 ### Editor Integration
 
-Most LaTeX editors (TeXstudio, VS Code with LaTeX Workshop, Neovim with VimTeX) provide:
+Most LaTeX editors (TeXstudio, VS Code with LaTeX Workshop, Overleaf) provide:
 - Build on save
 - Forward/inverse search between source and PDF
 - Error highlighting in source
