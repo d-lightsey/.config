@@ -1,5 +1,5 @@
 ---
-next_project_number: 482
+next_project_number: 485
 ---
 
 # TODO
@@ -10,11 +10,37 @@ next_project_number: 482
 
 ### Pending
 
+- **482** [NOT STARTED] -- Create project-overview detection rule
+- **483** [NOT STARTED] -- Create skill-project-overview for interactive repo generation (depends: 482)
+- **484** [NOT STARTED] -- Wire project-overview components into extension system (depends: 482, 483)
 - **476** [COMPLETED] -- Consolidate extension system documentation into single source of truth
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 482. Create project-overview detection rule
+- **Effort**: Small
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Create a detection rule that fires when `project-overview.md` contains the `<!-- GENERIC TEMPLATE` marker. The rule should instruct the agent to notify the user and suggest invoking the project-overview generation workflow (task 483's skill).
+
+### 483. Create skill-project-overview for interactive repo generation
+- **Effort**: Medium
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+- **Dependencies**: Task #482
+
+**Description**: Create `skill-project-overview` implementing a 3-step workflow: (1) automatically research the repo (directory structure, languages, frameworks, key files), (2) ask the user interactive questions to verify findings and make clarifications, (3) create a task with a research artifact summarizing findings, then close with guidance to continue with `/research` or proceed to `/plan` then `/implement`.
+
+### 484. Wire project-overview components into extension system
+- **Effort**: Small
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+- **Dependencies**: Task #482, #483
+
+**Description**: Wire the detection rule and skill into the extension system: update CLAUDE.md skill/agent tables, add context index entries, update extension manifest `provides` and `index-entries.json`, and update `update-project.md` to reference the new automated workflow.
 
 ### 481. Remove check_core_purity() function from check-extension-docs.sh
 - **Effort**: Small

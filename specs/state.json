@@ -1,7 +1,44 @@
 {
   "version": "1.0.0",
-  "next_project_number": 482,
+  "next_project_number": 485,
   "active_projects": [
+    {
+      "project_number": 482,
+      "project_name": "project_overview_detection_rule",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-19T21:00:00Z",
+      "last_updated": "2026-04-19T21:00:00Z",
+      "session_id": "sess_1745096400_meta482",
+      "artifacts": []
+    },
+    {
+      "project_number": 483,
+      "project_name": "skill_project_overview",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-19T21:00:00Z",
+      "last_updated": "2026-04-19T21:00:00Z",
+      "session_id": "sess_1745096400_meta482",
+      "dependencies": [
+        482
+      ],
+      "artifacts": []
+    },
+    {
+      "project_number": 484,
+      "project_name": "wire_project_overview_components",
+      "status": "not_started",
+      "task_type": "meta",
+      "created": "2026-04-19T21:00:00Z",
+      "last_updated": "2026-04-19T21:00:00Z",
+      "session_id": "sess_1745096400_meta482",
+      "dependencies": [
+        482,
+        483
+      ],
+      "artifacts": []
+    },
     {
       "project_number": 481,
       "project_name": "remove_check_core_purity_from_check_extension_docs",
