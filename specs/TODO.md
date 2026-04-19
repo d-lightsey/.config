@@ -18,9 +18,10 @@ next_project_number: 482
 
 ### 481. Remove check_core_purity() function from check-extension-docs.sh
 - **Effort**: Small
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Plan**: [481_remove_check_core_purity_from_check_extension_docs/plans/01_remove-core-purity.md]
+- **Summary**: [481_remove_check_core_purity_from_check_extension_docs/summaries/01_remove-core-purity-summary.md]
 
 **Description**: Remove check_core_purity() function from check-extension-docs.sh (both source and deployed copy) added by task 480 - this prevention infrastructure is scope creep beyond the reference removal task.
 

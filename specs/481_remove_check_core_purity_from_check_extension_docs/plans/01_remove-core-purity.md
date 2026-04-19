@@ -1,7 +1,7 @@
 # Implementation Plan: Remove check_core_purity from check-extension-docs.sh
 
 - **Task**: 481 - Remove check_core_purity() function from check-extension-docs.sh
-- **Status**: [NOT STARTED]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: None
@@ -52,7 +52,7 @@ This task does not directly advance any roadmap item. It removes unnecessary lin
 |------|--------|------------|
 | 1 | 1 | -- |
 
-### Phase 1: Remove check_core_purity from both script copies [NOT STARTED]
+### Phase 1: Remove check_core_purity from both script copies [COMPLETED]
 
 **Goal**: Delete the function definition and its call from both copies of check-extension-docs.sh.
 

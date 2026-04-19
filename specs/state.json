@@ -5,18 +5,24 @@
     {
       "project_number": 481,
       "project_name": "remove_check_core_purity_from_check_extension_docs",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-19T19:10:48Z",
-      "last_updated": "2026-04-19T19:14:11Z",
+      "last_updated": "2026-04-19T20:13:18Z",
       "session_id": "sess_1776625900_1a949f",
       "artifacts": [
         {
           "path": "specs/481_remove_check_core_purity_from_check_extension_docs/plans/01_remove-core-purity.md",
           "type": "plan",
           "summary": "1-phase plan to remove check_core_purity function from check-extension-docs.sh"
+        },
+        {
+          "path": "specs/481_remove_check_core_purity_from_check_extension_docs/summaries/01_remove-core-purity-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for removing check_core_purity from check-extension-docs.sh"
         }
-      ]
+      ],
+      "completion_summary": "Removed check_core_purity() function and invocation from both copies of check-extension-docs.sh (106 lines deleted). Script verified working with all 16 extensions passing."
     },
     {
       "project_number": 480,

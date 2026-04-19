@@ -20133,3 +20133,19 @@
 [2026-04-19T12:14:00-07:00] Task directory: specs/481_remove_check_core_purity_from_check_extension_docs
 [2026-04-19T12:14:00-07:00] Loop guard triggered: 3 >= 3
 [2026-04-19T12:14:00-07:00] Loop guard prevented continuation
+[2026-04-19T13:12:56-07:00] Postflight marker found at: specs/481_remove_check_core_purity_from_check_extension_docs/.postflight-pending
+[2026-04-19T13:12:56-07:00] Task directory: specs/481_remove_check_core_purity_from_check_extension_docs
+[2026-04-19T13:12:56-07:00] Loop guard initialized to 1
+[2026-04-19T13:12:56-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-19T13:12:59-07:00] Postflight marker found at: specs/481_remove_check_core_purity_from_check_extension_docs/.postflight-pending
+[2026-04-19T13:12:59-07:00] Task directory: specs/481_remove_check_core_purity_from_check_extension_docs
+[2026-04-19T13:12:59-07:00] Loop guard incremented to 2
+[2026-04-19T13:12:59-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-19T13:13:03-07:00] Postflight marker found at: specs/481_remove_check_core_purity_from_check_extension_docs/.postflight-pending
+[2026-04-19T13:13:03-07:00] Task directory: specs/481_remove_check_core_purity_from_check_extension_docs
+[2026-04-19T13:13:03-07:00] Loop guard incremented to 3
+[2026-04-19T13:13:03-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-19T13:13:06-07:00] Postflight marker found at: specs/481_remove_check_core_purity_from_check_extension_docs/.postflight-pending
+[2026-04-19T13:13:06-07:00] Task directory: specs/481_remove_check_core_purity_from_check_extension_docs
+[2026-04-19T13:13:06-07:00] Loop guard triggered: 3 >= 3
+[2026-04-19T13:13:06-07:00] Loop guard prevented continuation
