@@ -674,14 +674,14 @@
           "/meta"
         ]
       },
-      "line_count": 462,
+      "line_count": 259,
       "keywords": [
         "meta",
         "guide"
       ],
       "domain": "core",
       "path": "meta/meta-guide.md",
-      "summary": "Comprehensive guide for meta tasks",
+      "summary": "Reference guide for /meta command and meta-builder-agent",
       "topics": [
         "system-design"
       ],
