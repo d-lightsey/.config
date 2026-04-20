@@ -95,7 +95,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Rewrite domain-patterns.md [NOT STARTED]
+### Phase 2: Rewrite domain-patterns.md [COMPLETED]
 
 **Goal**: Slim domain-patterns.md to ~150 lines, keeping the extension domain template and development domain pattern while removing stale business/hybrid domains, phantom attributions, and broken cross-references.
 
