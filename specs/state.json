@@ -5,11 +5,11 @@
     {
       "project_number": 485,
       "project_name": "rewrite_meta_guide",
-      "status": "planned",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-19T21:30:00Z",
-      "last_updated": "2026-04-20T00:42:16Z",
-      "session_id": "sess_1776645523_a1f3a3",
+      "last_updated": "2026-04-20T00:58:28Z",
+      "session_id": "sess_1776646282_44f749",
       "artifacts": [
         {
           "path": "specs/485_rewrite_meta_guide/reports/01_team-research.md",
@@ -20,10 +20,32 @@
           "path": "specs/485_rewrite_meta_guide/plans/01_rewrite-meta-guide.md",
           "type": "plan",
           "summary": "3-phase plan to rewrite meta-guide.md from scratch, update CLAUDE.md imports, and sync both file copies"
+        },
+        {
+          "path": "specs/485_rewrite_meta_guide/summaries/01_rewrite-meta-guide-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary: rewrote meta-guide.md from scratch, synced copies, updated imports"
         }
       ],
       "researched": "2026-04-20T00:28:13Z",
-      "next_artifact_number": 2
+      "next_artifact_number": 2,
+      "completion_summary": "Rewrote meta-guide.md from scratch (462 -> 259 lines) to accurately document the /meta command's 3 modes, 7-stage interview, Kahn's topological sorting, and multi-task creation standard compliance. Removed from always-available imports, synced extension source copy.",
+      "claudemd_suggestions": "Removed meta-guide.md from always-available context imports in CLAUDE.md and claudemd.md merge source. Updated index.json line count and summary for meta-guide.md entry.",
+      "memory_candidates": [
+        {
+          "content": "When rewriting documentation files that exist in both deployed (.claude/context/) and extension source (.claude/extensions/core/context/) locations, always sync both copies and verify with diff. The extension source is the canonical location that gets merged during loader operations, while the deployed copy is what agents actually read. Also check and update line_count in index.json entries.",
+          "category": "WORKFLOW",
+          "source_artifact": "specs/485_rewrite_meta_guide/summaries/01_rewrite-meta-guide-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "extension-source",
+            "deployed-copy",
+            "sync",
+            "index-json",
+            "documentation-rewrite"
+          ]
+        }
+      ]
     },
     {
       "project_number": 486,
