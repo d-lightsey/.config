@@ -92,7 +92,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Create the command file [NOT STARTED]
+### Phase 2: Create the command file [COMPLETED]
 
 **Goal**: Create the user-facing `/project-overview` command that invokes the skill
 
