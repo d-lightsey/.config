@@ -1,7 +1,16 @@
 {
   "version": "1.0.0",
-  "next_project_number": 488,
+  "next_project_number": 489,
   "active_projects": [
+    {
+      "project_number": 488,
+      "project_name": "widen_todo_entry_format_context",
+      "status": "not_started",
+      "task_type": "meta",
+      "description": "Widen load_when for state-management-schema.md in index.json so /review and all task-creating commands see the TODO.md entry format spec. Add explicit format reference to review.md task creation section.",
+      "created": "2026-04-20T19:05:51Z",
+      "last_updated": "2026-04-20T19:05:51Z"
+    },
     {
       "project_number": 485,
       "project_name": "rewrite_meta_guide",

@@ -1,5 +1,5 @@
 ---
-next_project_number: 488
+next_project_number: 489
 ---
 
 # TODO
@@ -10,6 +10,7 @@ next_project_number: 488
 
 ### Pending
 
+- **488** [NOT STARTED] -- Widen load_when for state-management-schema.md in index.json so task-creating commands see TODO.md entry format spec
 - **487** [COMPLETED] -- Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **485** [COMPLETED] -- Rewrite meta-guide.md to match current system
 - **486** [COMPLETED] -- Align skill-meta and agent frontmatter/references
@@ -21,6 +22,13 @@ next_project_number: 488
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 488. Widen load_when for state-management-schema.md in index.json so task-creating commands see TODO.md entry format spec
+- **Effort**: Small
+- **Status**: [NOT STARTED]
+- **Task Type**: meta
+
+**Description**: Widen load_when for state-management-schema.md in index.json so /review and all task-creating commands see the TODO.md entry format spec. Add explicit format reference to review.md task creation section.
 
 ### 487. Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **Effort**: Medium
