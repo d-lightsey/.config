@@ -125,12 +125,19 @@
     {
       "project_number": 482,
       "project_name": "project_overview_detection_rule",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-19T21:00:00Z",
-      "last_updated": "2026-04-20T22:56:29Z",
-      "session_id": "sess_1745186400_4d1507",
-      "artifacts": []
+      "last_updated": "2026-04-20T23:02:00Z",
+      "session_id": "sess_1745186500_10c95d",
+      "artifacts": [
+        {
+          "path": "specs/482_project_overview_detection_rule/plans/01_overview-detection-rule.md",
+          "type": "plan",
+          "summary": "2-phase plan to create and install project-overview detection rule"
+        }
+      ],
+      "next_artifact_number": 2
     },
     {
       "project_number": 483,
