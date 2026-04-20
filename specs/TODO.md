@@ -17,7 +17,7 @@ next_project_number: 490
 - **486** [COMPLETED] -- Align skill-meta and agent frontmatter/references
 - **482** [IMPLEMENTING] -- Create project-overview detection rule
 - **483** [COMPLETED] -- Create skill-project-overview for interactive repo generation (depends: 482)
-- **484** [PLANNED] -- Wire project-overview components into extension system (depends: 482, 483)
+- **484** [IMPLEMENTING] -- Wire project-overview components into extension system (depends: 482, 483)
 - **476** [COMPLETED] -- Consolidate extension system documentation into single source of truth
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -117,7 +117,7 @@ The command, skill, and agent files are structurally intact -- the regression is
 
 ### 484. Wire project-overview components into extension system
 - **Effort**: Small
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Dependencies**: Task #482, #483
 - **Research**: [484_wire_project_overview_components/reports/01_wire-components.md]

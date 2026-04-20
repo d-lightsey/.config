@@ -1,7 +1,7 @@
 # Implementation Plan: Wire project-overview components
 
 - **Task**: 484 - Wire project-overview components into extension system
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 1 hour
 - **Dependencies**: Task 482 (detection rule), Task 483 (skill + command)
 - **Research Inputs**: specs/484_wire_project_overview_components/reports/01_wire-components.md
@@ -58,7 +58,7 @@ No ROADMAP.md items are directly advanced by this task. This is internal extensi
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Install missing files and update extensions.json [NOT STARTED]
+### Phase 1: Install missing files and update extensions.json [COMPLETED]
 
 **Goal**: Copy extension source files to working directories and register them in extensions.json tracking.
 
@@ -90,7 +90,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Update CLAUDE.md merge-source [NOT STARTED]
+### Phase 2: Update CLAUDE.md merge-source [IN PROGRESS]
 
 **Goal**: Add /project-overview command and skill-project-overview entries to the claudemd.md merge-source, and update the "New repository setup" paragraph.
 
