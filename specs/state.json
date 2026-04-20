@@ -477,7 +477,7 @@
     {
       "project_number": 489,
       "project_name": "fix_meta_command_bypass",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "description": "Fix /meta prompt mode regression: model bypasses Skill delegation and implements changes directly instead of creating tasks via interactive picker",
       "dependencies": [],
@@ -486,11 +486,16 @@
           "path": "specs/489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md",
           "type": "research",
           "summary": "Meta bypass analysis: 4 enforcement gaps identified with concrete fixes"
+        },
+        {
+          "path": "specs/489_fix_meta_command_bypass/plans/01_meta-bypass-fix.md",
+          "type": "plan",
+          "summary": "Implementation plan with 4 phases across 3 waves"
         }
       ],
       "next_artifact_number": 2,
-      "last_updated": "2026-04-20T22:23:26Z",
-      "session_id": "sess_1776723566_6ab7d1",
+      "last_updated": "2026-04-20T22:27:57Z",
+      "session_id": "sess_1776723894_572be3",
       "memory_candidates": [
         {
           "content": "The /meta command bypass regression is caused by a missing Anti-Bypass Constraint section (present in /plan, /research, /implement but absent from /meta) combined with no PostToolUse hook monitoring writes to .claude/ paths. The validate-plan-write.sh hook only covers specs/*/plans/*.md, specs/*/reports/*.md, and specs/*/summaries/*.md. Fix requires: (1) Anti-Bypass section in meta.md, (2) new hook for .claude/ writes, (3) skill-level reinforcement.",
