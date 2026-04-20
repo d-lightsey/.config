@@ -39,7 +39,8 @@
       "spawn.md",
       "tag.md",
       "task.md",
-      "todo.md"
+      "todo.md",
+      "project-overview.md"
     ],
     "rules": [
       "artifact-formats.md",
@@ -66,7 +67,8 @@
       "skill-team-implement",
       "skill-team-plan",
       "skill-team-research",
-      "skill-todo"
+      "skill-todo",
+      "skill-project-overview"
     ],
     "scripts": [
       "check-extension-docs.sh",

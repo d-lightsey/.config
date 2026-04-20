@@ -114,7 +114,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Register in manifest [NOT STARTED]
+### Phase 3: Register in manifest [COMPLETED]
 
 **Goal**: Add skill and command to core extension manifest
 
@@ -136,7 +136,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Update detection rule [NOT STARTED]
+### Phase 4: Update detection rule [COMPLETED]
 
 **Goal**: Update the project-overview-detection rule to suggest `/project-overview` command
 
