@@ -1,7 +1,7 @@
 # Implementation Plan: Align skill-meta and agent frontmatter/references
 
 - **Task**: 486 - Align skill-meta and agent frontmatter/references
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 0.5 hours
 - **Dependencies**: None
 - **Research Inputs**: reports/01_team-research.md
