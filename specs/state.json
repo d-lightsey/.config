@@ -193,11 +193,11 @@
     {
       "project_number": 484,
       "project_name": "wire_project_overview_components",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-19T21:00:00Z",
-      "last_updated": "2026-04-20T23:44:22Z",
-      "session_id": "sess_1745187400_dc14c0",
+      "last_updated": "2026-04-20T23:47:24Z",
+      "session_id": "sess_1745187500_682b80",
       "dependencies": [
         482,
         483
@@ -207,6 +207,11 @@
           "path": "specs/484_wire_project_overview_components/reports/01_wire-components.md",
           "type": "research",
           "summary": "Comprehensive audit of extension wiring gaps for project-overview components"
+        },
+        {
+          "path": "specs/484_wire_project_overview_components/plans/01_wire-components.md",
+          "type": "plan",
+          "summary": "3-phase plan for wiring project-overview components into extension system"
         }
       ],
       "next_artifact_number": 2
