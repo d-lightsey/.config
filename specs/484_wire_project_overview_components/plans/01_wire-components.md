@@ -1,7 +1,7 @@
 # Implementation Plan: Wire project-overview components
 
 - **Task**: 484 - Wire project-overview components into extension system
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 1 hour
 - **Dependencies**: Task 482 (detection rule), Task 483 (skill + command)
 - **Research Inputs**: specs/484_wire_project_overview_components/reports/01_wire-components.md

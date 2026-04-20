@@ -193,10 +193,10 @@
     {
       "project_number": 484,
       "project_name": "wire_project_overview_components",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-19T21:00:00Z",
-      "last_updated": "2026-04-20T23:48:07Z",
+      "last_updated": "2026-04-20T23:58:42Z",
       "session_id": "sess_1745187600_fe81ad",
       "dependencies": [
         482,
@@ -212,9 +212,16 @@
           "path": "specs/484_wire_project_overview_components/plans/01_wire-components.md",
           "type": "plan",
           "summary": "3-phase plan for wiring project-overview components into extension system"
+        },
+        {
+          "path": "specs/484_wire_project_overview_components/summaries/01_wire-components-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for wiring project-overview components into extension system"
         }
       ],
-      "next_artifact_number": 2
+      "next_artifact_number": 2,
+      "completion_summary": "Wired project-overview components into extension system: installed command, skill, and updated rule files; registered in extensions.json; added command and skill table entries to CLAUDE.md merge-source; updated update-project.md to reference /project-overview workflow.",
+      "claudemd_suggestions": "Added /project-overview to Command Reference table, skill-project-overview to Skill-to-Agent Mapping table, updated New repository setup paragraph in merge-source. Updated both update-project.md files with Recommended Workflow section. Updated extensions.json with 3 installed_files and 1 installed_dirs entry."
     },
     {
       "project_number": 481,
