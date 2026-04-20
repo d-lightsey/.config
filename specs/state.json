@@ -149,11 +149,11 @@
     {
       "project_number": 483,
       "project_name": "skill_project_overview",
-      "status": "researched",
+      "status": "planned",
       "task_type": "meta",
       "created": "2026-04-19T21:00:00Z",
-      "last_updated": "2026-04-20T23:14:07Z",
-      "session_id": "sess_1745187000_a657c3",
+      "last_updated": "2026-04-20T23:17:24Z",
+      "session_id": "sess_1745187100_3850f0",
       "dependencies": [
         482
       ],
@@ -161,6 +161,11 @@
         {
           "path": "specs/483_skill_project_overview/reports/01_skill-project-overview.md",
           "type": "research"
+        },
+        {
+          "path": "specs/483_skill_project_overview/plans/01_skill-project-overview.md",
+          "type": "plan",
+          "summary": "4-phase plan for skill-project-overview: SKILL.md, command, detection rule update, manifest registration"
         }
       ]
     },

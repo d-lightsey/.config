@@ -75,6 +75,19 @@ If the file does not exist, skip this stage gracefully and proceed without roadm
 
 **MUST NOT**: Modify, write to, or create ROADMAP.md. This is a read-only consultation.
 
+### Stage 2.6: Evaluate Roadmap Flag
+
+If `roadmap_flag` is `true` in the delegation context:
+
+1. **ROADMAP.md must exist** - If it was not loaded in Stage 2.5 (file missing), log a warning and proceed without roadmap phases. The flag has no effect without an existing ROADMAP.md.
+2. When ROADMAP.md exists, the plan MUST include two additional phases:
+   - **First phase**: "Review and Snapshot ROADMAP.md" - Read current ROADMAP.md state, identify which items this task will advance, record the before-state for comparison
+   - **Last phase**: "Update ROADMAP.md" - Mark completed items with `- [x]` and completion annotation `*(Completed: Task {N}, {DATE})*`, add any new items discovered during implementation, update phase progress
+3. These roadmap phases wrap the core implementation phases. The dependency chain is: roadmap-review (Phase 1) -> core phases -> roadmap-update (final phase, depends on all core phases)
+4. All other plan construction proceeds as usual (Stages 3-5)
+
+If `roadmap_flag` is `false` or not present, skip this stage entirely. Plan construction is unchanged.
+
 ### Stage 3: Analyze Task Scope and Complexity
 
 Evaluate task to determine complexity:

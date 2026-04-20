@@ -63,15 +63,6 @@
             "command": "bash .claude/hooks/validate-plan-write.sh 2>/dev/null || echo '{}'"
           }
         ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash .claude/hooks/validate-meta-write.sh 2>/dev/null || echo '{}'"
-          }
-        ]
       }
     ],
     "SessionStart": [
