@@ -17,7 +17,7 @@ next_project_number: 490
 - **486** [COMPLETED] -- Align skill-meta and agent frontmatter/references
 - **482** [IMPLEMENTING] -- Create project-overview detection rule
 - **483** [COMPLETED] -- Create skill-project-overview for interactive repo generation (depends: 482)
-- **484** [NOT STARTED] -- Wire project-overview components into extension system (depends: 482, 483)
+- **484** [RESEARCHED] -- Wire project-overview components into extension system (depends: 482, 483)
 - **476** [COMPLETED] -- Consolidate extension system documentation into single source of truth
 - **87** [RESEARCHED] -- Investigate terminal directory change in wezterm
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
@@ -117,9 +117,10 @@ The command, skill, and agent files are structurally intact -- the regression is
 
 ### 484. Wire project-overview components into extension system
 - **Effort**: Small
-- **Status**: [NOT STARTED]
+- **Status**: [RESEARCHED]
 - **Task Type**: meta
 - **Dependencies**: Task #482, #483
+- **Research**: [484_wire_project_overview_components/reports/01_wire-components.md]
 
 **Description**: Wire the detection rule and skill into the extension system: update CLAUDE.md skill/agent tables, add context index entries, update extension manifest `provides` and `index-entries.json`, and update `update-project.md` to reference the new automated workflow.
 
