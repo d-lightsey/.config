@@ -1,7 +1,7 @@
 # Implementation Plan: Task #489
 
 - **Task**: 489 - Fix /meta prompt mode regression: model bypasses Skill delegation and implements changes directly instead of creating tasks via interactive picker
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md

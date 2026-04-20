@@ -10,7 +10,7 @@ next_project_number: 490
 
 ### Pending
 
-- **489** [PLANNED] -- Fix /meta prompt mode regression: model bypasses Skill delegation and implements directly instead of creating tasks
+- **489** [COMPLETED] -- Fix /meta prompt mode regression: model bypasses Skill delegation and implements directly instead of creating tasks
 - **488** [COMPLETED] -- Widen load_when for state-management-schema.md in index.json so task-creating commands see TODO.md entry format spec
 - **487** [COMPLETED] -- Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **485** [COMPLETED] -- Rewrite meta-guide.md to match current system
@@ -26,11 +26,12 @@ next_project_number: 490
 
 ### 489. Fix /meta prompt mode regression: model bypasses Skill delegation and implements directly instead of creating tasks
 - **Effort**: Medium
-- **Status**: [PLANNED]
+- **Status**: [COMPLETED]
 - **Task Type**: meta
 - **Dependencies**: None
 - **Research**: [489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md]
 - **Plan**: [489_fix_meta_command_bypass/plans/01_meta-bypass-fix.md]
+- **Summary**: [489_fix_meta_command_bypass/summaries/01_meta-bypass-summary.md]
 
 **Description**: When `/meta PROMPT` is invoked with a clear, actionable request (e.g., "add a --roadmap flag to /plan"), the model bypasses the entire Skill delegation chain and implements the changes directly using Read/Edit/Write tools, instead of creating tasks via the interactive picker flow.
 

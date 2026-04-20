@@ -20383,3 +20383,19 @@
 [2026-04-20T15:27:45-07:00] Task directory: specs/489_fix_meta_command_bypass
 [2026-04-20T15:27:45-07:00] Loop guard triggered: 3 >= 3
 [2026-04-20T15:27:45-07:00] Loop guard prevented continuation
+[2026-04-20T15:33:53-07:00] Postflight marker found at: specs/489_fix_meta_command_bypass/.postflight-pending
+[2026-04-20T15:33:53-07:00] Task directory: specs/489_fix_meta_command_bypass
+[2026-04-20T15:33:53-07:00] Loop guard initialized to 1
+[2026-04-20T15:33:53-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-20T15:33:56-07:00] Postflight marker found at: specs/489_fix_meta_command_bypass/.postflight-pending
+[2026-04-20T15:33:56-07:00] Task directory: specs/489_fix_meta_command_bypass
+[2026-04-20T15:33:56-07:00] Loop guard incremented to 2
+[2026-04-20T15:33:56-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-20T15:34:01-07:00] Postflight marker found at: specs/489_fix_meta_command_bypass/.postflight-pending
+[2026-04-20T15:34:01-07:00] Task directory: specs/489_fix_meta_command_bypass
+[2026-04-20T15:34:01-07:00] Loop guard incremented to 3
+[2026-04-20T15:34:01-07:00] Blocking stop: Postflight pending: status update, artifact linking, git commit
+[2026-04-20T15:34:04-07:00] Postflight marker found at: specs/489_fix_meta_command_bypass/.postflight-pending
+[2026-04-20T15:34:04-07:00] Task directory: specs/489_fix_meta_command_bypass
+[2026-04-20T15:34:04-07:00] Loop guard triggered: 3 >= 3
+[2026-04-20T15:34:04-07:00] Loop guard prevented continuation
