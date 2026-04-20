@@ -1,7 +1,7 @@
 # Implementation Plan: Update Stale Meta Sister Files
 
 - **Task**: 487 - Update stale meta sister files
-- **Status**: [IMPLEMENTING]
+- **Status**: [COMPLETED]
 - **Effort**: 2 hours
 - **Dependencies**: 485 (completed)
 - **Research Inputs**: specs/487_update_stale_meta_sister_files/reports/01_meta-sister-files.md

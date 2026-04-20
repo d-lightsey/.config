@@ -361,10 +361,10 @@
     {
       "project_number": 487,
       "project_name": "update_stale_meta_sister_files",
-      "status": "implementing",
+      "status": "completed",
       "task_type": "meta",
       "created": "2026-04-19T01:00:00Z",
-      "last_updated": "2026-04-20T01:34:35Z",
+      "last_updated": "2026-04-20T01:49:18Z",
       "description": "Update or consolidate the 3 stale sister files in .claude/context/meta/: architecture-principles.md (references .opencode, phantom 3-level context model, non-existent status-sync-manager/git-workflow-manager), standards-checklist.md (references subagent-return.md, non-existent frontmatter fields temperature/max_tokens/can_delegate_to, non-existent tools), interview-patterns.md (references old interview stages). These were identified as follow-on work during task 485 research. Each file should be rewritten to match the current system or removed if redundant with the new meta-guide.md. Both deployed (.claude/context/meta/) and extension source (.claude/extensions/core/context/meta/) copies must be synced. Update index.json line counts if file sizes change.",
       "next_artifact_number": 2,
       "session_id": "sess_1776652800_a7b3c1",
@@ -394,6 +394,19 @@
             "stale-references",
             "cleanup"
           ]
+        },
+        {
+          "content": "When deleting context files from .claude/context/meta/, there are typically 4 places in extensions.json that reference them: installed_files, data_skeleton_files, merged_sections.index.paths, plus the main index.json and extension index-entries.json. All must be updated atomically. The extensions.json uses an object keyed by extension name (not an array), so access via .extensions.core rather than .extensions[].",
+          "category": "PATTERN",
+          "source_artifact": "specs/487_update_stale_meta_sister_files/summaries/01_update-meta-sister-files-summary.md",
+          "confidence": 0.85,
+          "suggested_keywords": [
+            "extensions.json",
+            "index-update",
+            "context-deletion",
+            "meta-files",
+            "file-removal"
+          ]
         }
       ],
       "artifacts": [
@@ -406,8 +419,15 @@
           "path": "specs/487_update_stale_meta_sister_files/plans/01_update-meta-sister-files.md",
           "type": "plan",
           "summary": "4-phase plan: delete 3 files, rewrite 2 files, update indexes, fix cross-references"
+        },
+        {
+          "path": "specs/487_update_stale_meta_sister_files/summaries/01_update-meta-sister-files-summary.md",
+          "type": "summary",
+          "summary": "Implementation summary for meta sister file cleanup"
         }
-      ]
+      ],
+      "completion_summary": "Deleted 3 redundant meta context files (architecture-principles.md, standards-checklist.md, interview-patterns.md) and rewrote 2 stale files (domain-patterns.md, context-revision-guide.md). Updated all index files and cross-references. Net reduction of ~870 lines of misleading context.",
+      "claudemd_suggestions": "Updated extensions.json (removed deleted files from installed_files, data_skeleton_files, merged_sections), updated index.json and index-entries.json (removed 3 entries, updated 2 line_counts), updated meta-guide.md Future Extensions note, updated context-loading-best-practices.md references"
     }
   ],
   "completed_projects": [],
