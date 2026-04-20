@@ -1,7 +1,7 @@
 # Implementation Plan: Task #489
 
 - **Task**: 489 - Fix /meta prompt mode regression: model bypasses Skill delegation and implements changes directly instead of creating tasks via interactive picker
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 2 hours
 - **Dependencies**: None
 - **Research Inputs**: specs/489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md
@@ -58,7 +58,7 @@ This plan advances the "Agent System Quality" roadmap area by closing a structur
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Add Anti-Bypass Constraint to meta.md [NOT STARTED]
+### Phase 1: Add Anti-Bypass Constraint to meta.md [COMPLETED]
 
 **Goal**: Add explicit mechanism-focused anti-bypass section to the /meta command definition
 
@@ -81,7 +81,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Create validate-meta-write.sh PostToolUse hook [NOT STARTED]
+### Phase 2: Create validate-meta-write.sh PostToolUse hook [COMPLETED]
 
 **Goal**: Create a PostToolUse hook that detects and injects corrective context when Write/Edit targets `.claude/` paths
 
@@ -109,7 +109,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 3: Reinforce delegation in skill-meta and meta-builder-agent [NOT STARTED]
+### Phase 3: Reinforce delegation in skill-meta and meta-builder-agent [COMPLETED]
 
 **Goal**: Add explicit anti-bypass language to the skill and agent definitions
 
@@ -132,7 +132,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 4: Sync extension sources [NOT STARTED]
+### Phase 4: Sync extension sources [COMPLETED]
 
 **Goal**: Copy all changes to the canonical extension source files so they survive sync operations
 

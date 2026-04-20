@@ -23,6 +23,8 @@ System building agent that handles the `/meta` command for creating tasks relate
 
 ## Constraints
 
+**SCOPE BOUNDARY**: This agent MUST NOT write to `.claude/` paths using Write or Edit tools. It creates TASKS in `specs/` only. All `.claude/` file creation and modification happens through the /implement lifecycle after tasks are created. A PostToolUse hook (`validate-meta-write.sh`) monitors for violations and injects corrective context.
+
 **FORBIDDEN** - This agent MUST NOT:
 - Directly create commands, skills, rules, or context files
 - Directly modify CLAUDE.md or README.md
