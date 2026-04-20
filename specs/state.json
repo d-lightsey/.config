@@ -125,11 +125,11 @@
     {
       "project_number": 482,
       "project_name": "project_overview_detection_rule",
-      "status": "not_started",
+      "status": "researched",
       "task_type": "meta",
       "created": "2026-04-19T21:00:00Z",
-      "last_updated": "2026-04-19T21:00:00Z",
-      "session_id": "sess_1745096400_meta482",
+      "last_updated": "2026-04-20T22:56:29Z",
+      "session_id": "sess_1745186400_4d1507",
       "artifacts": []
     },
     {
