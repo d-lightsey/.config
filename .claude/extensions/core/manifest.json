@@ -47,7 +47,8 @@
       "git-workflow.md",
       "plan-format-enforcement.md",
       "state-management.md",
-      "workflows.md"
+      "workflows.md",
+      "project-overview-detection.md"
     ],
     "skills": [
       "skill-fix-it",

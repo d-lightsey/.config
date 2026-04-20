@@ -1,7 +1,7 @@
 # Implementation Plan: Task #482
 
 - **Task**: 482 - project_overview_detection_rule
-- **Status**: [NOT STARTED]
+- **Status**: [IMPLEMENTING]
 - **Effort**: 0.5 hours
 - **Dependencies**: None (task 483 provides the generation workflow referenced by this rule)
 - **Research Inputs**: [specs/482_project_overview_detection_rule/reports/01_overview-detection-rule.md]
@@ -60,7 +60,7 @@ This task advances "Agent System Quality" in Phase 1 of the roadmap -- it automa
 
 Phases within the same wave can execute in parallel.
 
-### Phase 1: Create Detection Rule [NOT STARTED]
+### Phase 1: Create Detection Rule [COMPLETED]
 
 **Goal**: Write the rule file with YAML frontmatter and conditional detection instructions.
 
@@ -84,7 +84,7 @@ Phases within the same wave can execute in parallel.
 
 ---
 
-### Phase 2: Register and Install Rule [NOT STARTED]
+### Phase 2: Register and Install Rule [COMPLETED]
 
 **Goal**: Add the rule to the core extension manifest and install to active rules directory.
 
