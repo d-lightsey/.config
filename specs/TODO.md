@@ -10,7 +10,7 @@ next_project_number: 488
 
 ### Pending
 
-- **487** [PLANNED] -- Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
+- **487** [IMPLEMENTING] -- Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **485** [COMPLETED] -- Rewrite meta-guide.md to match current system
 - **486** [COMPLETED] -- Align skill-meta and agent frontmatter/references
 - **482** [NOT STARTED] -- Create project-overview detection rule
@@ -24,7 +24,7 @@ next_project_number: 488
 
 ### 487. Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **Effort**: Medium
-- **Status**: [PLANNED]
+- **Status**: [IMPLEMENTING]
 - **Task Type**: meta
 - **Research**: [487_update_stale_meta_sister_files/reports/01_meta-sister-files.md]
 - **Plan**: [487_update_stale_meta_sister_files/plans/01_update-meta-sister-files.md]
