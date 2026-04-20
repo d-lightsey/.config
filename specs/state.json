@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "next_project_number": 489,
+  "next_project_number": 490,
   "active_projects": [
     {
       "project_number": 488,
@@ -473,6 +473,40 @@
       ],
       "completion_summary": "Deleted 3 redundant meta context files (architecture-principles.md, standards-checklist.md, interview-patterns.md) and rewrote 2 stale files (domain-patterns.md, context-revision-guide.md). Updated all index files and cross-references. Net reduction of ~870 lines of misleading context.",
       "claudemd_suggestions": "Updated extensions.json (removed deleted files from installed_files, data_skeleton_files, merged_sections), updated index.json and index-entries.json (removed 3 entries, updated 2 line_counts), updated meta-guide.md Future Extensions note, updated context-loading-best-practices.md references"
+    },
+    {
+      "project_number": 489,
+      "project_name": "fix_meta_command_bypass",
+      "status": "researched",
+      "task_type": "meta",
+      "description": "Fix /meta prompt mode regression: model bypasses Skill delegation and implements changes directly instead of creating tasks via interactive picker",
+      "dependencies": [],
+      "artifacts": [
+        {
+          "path": "specs/489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md",
+          "type": "research",
+          "summary": "Meta bypass analysis: 4 enforcement gaps identified with concrete fixes"
+        }
+      ],
+      "next_artifact_number": 2,
+      "last_updated": "2026-04-20T22:23:26Z",
+      "session_id": "sess_1776723566_6ab7d1",
+      "memory_candidates": [
+        {
+          "content": "The /meta command bypass regression is caused by a missing Anti-Bypass Constraint section (present in /plan, /research, /implement but absent from /meta) combined with no PostToolUse hook monitoring writes to .claude/ paths. The validate-plan-write.sh hook only covers specs/*/plans/*.md, specs/*/reports/*.md, and specs/*/summaries/*.md. Fix requires: (1) Anti-Bypass section in meta.md, (2) new hook for .claude/ writes, (3) skill-level reinforcement.",
+          "category": "PATTERN",
+          "source_artifact": "specs/489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md",
+          "confidence": 0.9,
+          "suggested_keywords": [
+            "meta",
+            "bypass",
+            "anti-bypass",
+            "hook",
+            "delegation",
+            "enforcement"
+          ]
+        }
+      ]
     }
   ],
   "completed_projects": [],

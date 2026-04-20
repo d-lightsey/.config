@@ -1,5 +1,5 @@
 ---
-next_project_number: 489
+next_project_number: 490
 ---
 
 # TODO
@@ -10,6 +10,7 @@ next_project_number: 489
 
 ### Pending
 
+- **489** [RESEARCHED] -- Fix /meta prompt mode regression: model bypasses Skill delegation and implements directly instead of creating tasks
 - **488** [COMPLETED] -- Widen load_when for state-management-schema.md in index.json so task-creating commands see TODO.md entry format spec
 - **487** [COMPLETED] -- Update stale meta sister files (architecture-principles, standards-checklist, interview-patterns)
 - **485** [COMPLETED] -- Rewrite meta-guide.md to match current system
@@ -22,6 +23,37 @@ next_project_number: 489
 - **78** [PLANNED] -- Fix Himalaya SMTP authentication failure
 
 ## Tasks
+
+### 489. Fix /meta prompt mode regression: model bypasses Skill delegation and implements directly instead of creating tasks
+- **Effort**: Medium
+- **Status**: [RESEARCHED]
+- **Task Type**: meta
+- **Dependencies**: None
+- **Research**: [489_fix_meta_command_bypass/reports/01_meta-bypass-analysis.md]
+
+**Description**: When `/meta PROMPT` is invoked with a clear, actionable request (e.g., "add a --roadmap flag to /plan"), the model bypasses the entire Skill delegation chain and implements the changes directly using Read/Edit/Write tools, instead of creating tasks via the interactive picker flow.
+
+**Root Cause Analysis**:
+
+The command, skill, and agent files are structurally intact -- the regression is behavioral:
+
+1. **Command expansion injects actionable context**: When `/meta PROMPT` runs, the full meta.md content is expanded inline. The user's prompt ("add --roadmap flag") is so clear that the model treats it as implementation instructions rather than as input to the task-creation workflow.
+
+2. **`allowed-tools: Skill` is advisory, not enforced**: The command frontmatter says only `Skill` is allowed, but the model has global permission for Read/Write/Edit from settings.json. There's no hook or enforcement mechanism to prevent the model from using those tools when the /meta command context is active.
+
+3. **No anti-bypass constraint**: Unlike `/plan` which has an explicit "Anti-Bypass Constraint" section with a PostToolUse hook (`validate-plan-write.sh`) that catches direct artifact writes, `/meta` has no equivalent enforcement. The "FORBIDDEN" and "REQUIRED" sections in meta.md are purely instructional.
+
+4. **Prompt mode's abbreviated flow is too terse**: The prompt mode flow (5 steps) gives high-level guidance ("Parse prompt -> Check related -> Propose breakdown -> Confirm -> Create") but doesn't emphasize the mandatory Skill tool invocation step prominently enough. The model sees a shortcut and takes it.
+
+**Proposed Fix Areas**:
+
+- **meta.md**: Add an Anti-Bypass Constraint section (matching /plan pattern) that explicitly prohibits direct file edits outside specs/ and mandates Skill tool invocation
+- **meta.md**: Strengthen prompt mode flow with explicit "EXECUTE NOW: Invoke Skill tool" directive (matching /plan's STAGE 2 pattern)
+- **Hook enforcement**: Consider adding a PostToolUse hook that detects when /meta context is active and Write/Edit is used on non-specs/ files, injecting corrective guidance
+- **skill-meta**: The loaded version at .claude/skills/ has `agent: meta-builder-agent` frontmatter (good), but the extension source at extensions/core/ is missing this field -- sync them
+- **meta-builder-agent**: The prompt mode (Stage 3B) flow should more explicitly require AskUserQuestion confirmation before any task creation, with a stronger gate
+
+---
 
 ### 488. Widen load_when for state-management-schema.md in index.json so task-creating commands see TODO.md entry format spec
 - **Effort**: Small
